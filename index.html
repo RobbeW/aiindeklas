@@ -1,0 +1,1465 @@
+<!-- Auteur: Robbe Wulgaert / aiindeklas.be -->
+<!-- Copyright 2025 - Gebruik vrij voor educatie -->
+<!DOCTYPE html>
+<html lang="nl" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <title>K-nabije buren — oefenomgeving</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fonts & CodeMirror -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/python/python.js"></script>
+
+  <!-- Pyodide -->
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+
+  <!-- jsPDF voor export -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+  <style>
+    :root {
+      --brand-purple:#5200FF;
+      --brand-green:#00FF99;
+      --bg:#F9F8FC;
+      --ink:#1A224C;
+      --muted:#9aa3b2;
+      --card:#ffffff;
+      --border:#e2e4f0;
+      --danger:#d7263d;
+    }
+
+    * {
+      box-sizing:border-box;
+    }
+    body {
+      margin:0;
+      font-family:Roboto, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+    }
+    .page {
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    header {
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(90deg, #f7f5ff, #f5fffb);
+      padding:0.5rem 1.5rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+    .brand-block {
+      display:flex;
+      align-items:center;
+      gap:0.75rem;
+    }
+    .brand-text h1 {
+      margin:0;
+      font-size:1rem;
+      font-weight:700;
+      letter-spacing:0.04em;
+      text-transform:uppercase;
+    }
+    .brand-text p {
+      margin:0;
+      font-size:0.8rem;
+      color:var(--muted);
+    }
+    .toolbar {
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
+    }
+    .brand-btn {
+      border-radius:999px;
+      border:1px solid transparent;
+      padding:0.35rem 0.9rem;
+      font-size:0.8rem;
+      font-weight:500;
+      background:var(--brand-purple);
+      color:#fff;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:0.35rem;
+      box-shadow:0 4px 12px rgba(82,0,255,0.35);
+      transition:background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+    }
+    .brand-btn.small {
+      padding:0.25rem 0.7rem;
+      font-size:0.75rem;
+      box-shadow:none;
+    }
+    .brand-btn.secondary {
+      background:#ffffff;
+      color:var(--ink);
+      border-color:var(--border);
+      box-shadow:none;
+    }
+    .brand-btn:hover {
+      transform:translateY(-1px);
+      box-shadow:0 6px 18px rgba(82,0,255,0.4);
+    }
+    .brand-btn.secondary:hover {
+      box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    }
+    .theme-toggle {
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:transparent;
+      padding:0.25rem 0.65rem;
+      display:inline-flex;
+      align-items:center;
+      gap:0.35rem;
+      font-size:0.8rem;
+      color:var(--muted);
+      cursor:pointer;
+    }
+
+    main.layout {
+      flex:1;
+      display:flex;
+      gap:1rem;
+      padding:0.75rem 1.5rem 1.25rem;
+    }
+    .editor-panel,
+    .exercise-panel {
+      background:var(--card);
+      border-radius:18px;
+      border:1px solid var(--border);
+      padding:0.75rem 0.85rem;
+      display:flex;
+      flex-direction:column;
+      box-shadow:0 12px 32px rgba(15,23,42,0.06);
+    }
+    .editor-panel {
+      flex:3;
+      min-width:0;
+    }
+    .exercise-panel {
+      flex:3;
+      min-width:0;
+      position:relative;
+    }
+
+    .editor-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:0.75rem;
+      margin-bottom:0.5rem;
+    }
+    .editor-header h2 {
+      margin:0;
+      font-size:0.9rem;
+      text-transform:uppercase;
+      letter-spacing:0.06em;
+    }
+    .editor-sub {
+      font-size:0.8rem;
+      color:var(--muted);
+      margin-top:0.1rem;
+    }
+
+    .editor-wrapper {
+      border-radius:14px;
+      border:1px solid var(--border);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      height:calc(100vh - 210px);
+      min-height:380px;
+      max-height:800px;
+    }
+    .CodeMirror {
+      flex:1;
+      font-family:"JetBrains Mono","Fira Code",monospace;
+      font-size:14px;
+      height:100%;
+    }
+    .run-bar {
+      border-top:1px solid var(--border);
+      padding:0.4rem 0.5rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:0.5rem;
+      background:linear-gradient(90deg, #fafbff, #f6f9ff);
+    }
+    .run-btn {
+      border-radius:999px;
+      border:1px solid transparent;
+      padding:0.3rem 0.8rem;
+      font-size:0.8rem;
+      font-weight:500;
+      background:var(--brand-green);
+      color:#041017;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:0.35rem;
+    }
+    .run-meta {
+      font-size:0.75rem;
+      color:var(--muted);
+    }
+
+    .output-block {
+      margin-top:0.5rem;
+      border-radius:12px;
+      border:1px dashed var(--border);
+      background:rgba(9,9,22,0.03);
+      padding:0.4rem 0.5rem;
+    }
+    .output-label {
+      font-size:0.75rem;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      color:var(--muted);
+      margin-bottom:0.2rem;
+    }
+    #py-output {
+      margin:0;
+      font-family:"JetBrains Mono","Fira Code",monospace;
+      font-size:0.8rem;
+      max-height:150px;
+      overflow:auto;
+      white-space:pre-wrap;
+    }
+
+    .exercise-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:0.4rem;
+      gap:0.5rem;
+    }
+    .exercise-header h2 {
+      margin:0;
+      font-size:0.95rem;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+    }
+    .exercise-progress {
+      font-size:0.75rem;
+      color:var(--muted);
+    }
+
+    .exercise-card {
+      border-radius:14px;
+      border:1px solid var(--border);
+      padding:0.75rem 0.8rem 0.6rem;
+      background:radial-gradient(circle at 0 0, rgba(82,0,255,0.05), transparent 55%);
+    }
+    .exercise-card.hidden {
+      display:none;
+    }
+    .exercise-title {
+      font-weight:600;
+      font-size:0.98rem;
+      margin:0 0 0.25rem;
+    }
+    .exercise-lead {
+      font-size:0.85rem;
+      color:var(--muted);
+      margin:0 0 0.45rem;
+    }
+    .exercise-body {
+      font-size:0.85rem;
+    }
+    .exercise-body p {
+      margin:0 0 0.45rem;
+    }
+    .exercise-body ul {
+      margin:0 0 0.5rem 1.1rem;
+      padding:0;
+      font-size:0.85rem;
+    }
+    .exercise-body li {
+      margin-bottom:0.1rem;
+    }
+
+    .formularium-card {
+      background:#ffffff;
+      margin-bottom:0.7rem;
+    }
+
+    .data-table {
+      width:100%;
+      border-collapse:collapse;
+      margin:0.3rem 0 0.5rem;
+      font-size:0.8rem;
+    }
+    .data-table th,
+    .data-table td {
+      border:1px solid var(--border);
+      padding:0.25rem 0.35rem;
+      text-align:center;
+    }
+    .data-table th {
+      background:rgba(82,0,255,0.06);
+      font-weight:600;
+    }
+    .data-table td.label {
+      text-align:left;
+      font-weight:500;
+      white-space:nowrap;
+    }
+
+    .exercise-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.4rem;
+      margin-top:0.35rem;
+      align-items:center;
+    }
+
+    .chip {
+      border-radius:999px;
+      border:1px solid var(--border);
+      padding:0.2rem 0.55rem;
+      font-size:0.75rem;
+      color:var(--muted);
+    }
+
+    .feedback-box {
+      margin-top:0.45rem;
+      font-size:0.8rem;
+      border-radius:10px;
+      border:1px solid var(--border);
+      padding:0.35rem 0.45rem;
+      background:rgba(0,0,0,0.015);
+    }
+    .feedback-box.ok {
+      border-color:#16a34a;
+      background:rgba(22,163,74,0.06);
+    }
+    .feedback-box.bad {
+      border-color:var(--danger);
+      background:rgba(215,38,61,0.06);
+    }
+    .feedback-title {
+      font-weight:600;
+      font-size:0.78rem;
+      margin-bottom:0.15rem;
+    }
+
+    .graph-canvas {
+      display:block;
+      width:100%;
+      max-width:520px;
+      height:auto;
+      margin-top:0.45rem;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:#ffffff;
+    }
+
+    .radio-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.6rem;
+      margin:0.35rem 0;
+      font-size:0.85rem;
+    }
+    .radio-row label {
+      display:inline-flex;
+      align-items:center;
+      gap:0.25rem;
+      cursor:pointer;
+    }
+
+    .input-row {
+      margin:0.35rem 0;
+      display:flex;
+      align-items:center;
+      gap:0.4rem;
+      font-size:0.85rem;
+    }
+    .input-row input[type="text"] {
+      padding:0.25rem 0.4rem;
+      border-radius:8px;
+      border:1px solid var(--border);
+      font-size:0.85rem;
+      min-width:0;
+      flex:0 0 130px;
+    }
+
+    .dots-nav {
+      display:flex;
+      justify-content:center;
+      gap:0.3rem;
+      margin-top:0.55rem;
+    }
+    .dot {
+      width:9px;
+      height:9px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#ffffff;
+      cursor:pointer;
+      padding:0;
+    }
+    .dot.active {
+      width:22px;
+      background:var(--brand-purple);
+      border-color:var(--brand-purple);
+    }
+
+    .modal-overlay {
+      position:fixed;
+      inset:0;
+      background:rgba(249,248,252,0.9);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:40;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity 0.15s ease;
+    }
+    .modal-overlay.visible {
+      opacity:1;
+      pointer-events:auto;
+    }
+    .modal-box {
+      width:100%;
+      max-width:540px;
+      border-radius:18px;
+      background:var(--card);
+      border:1px solid var(--border);
+      padding:1rem 1.1rem 0.9rem;
+      box-shadow:0 18px 42px rgba(15,23,42,0.25);
+      position:relative;
+    }
+    .modal-box h2 {
+      margin:0 0 0.4rem;
+      font-size:1rem;
+    }
+    .modal-lead {
+      margin:0 0 0.5rem;
+      font-size:0.85rem;
+      color:var(--muted);
+    }
+    .intro-grid {
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:0.5rem;
+      margin-bottom:0.55rem;
+    }
+    .intro-card {
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:0.4rem 0.45rem;
+      font-size:0.78rem;
+      background:radial-gradient(circle at 0 0, rgba(0,255,153,0.12), transparent 55%);
+    }
+    .intro-card h3 {
+      margin:0 0 0.2rem;
+      font-size:0.8rem;
+    }
+
+    .brand-chip-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.4rem;
+      margin:0.2rem 0 0.45rem;
+    }
+    .brand-chip-pill {
+      display:inline-flex;
+      align-items:center;
+      gap:0.35rem;
+      padding:0.25rem 0.55rem;
+      border-radius:999px;
+      background:#f2f4ff;
+      font-size:0.8rem;
+    }
+    .brand-icon-small {
+      width:20px;
+      height:20px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:0.75rem;
+      font-weight:800;
+      color:#fff;
+    }
+    .brand-tiktok { background:#000000; }
+    .brand-spotify { background:#1DB954; }
+    .brand-netflix { background:#E50914; }
+    .brand-youtube { background:#FF0000; }
+    .brand-amazon { background:#ff9900; }
+
+    .intro-text {
+      margin:0 0 0.4rem;
+      font-size:0.8rem;
+      color:var(--muted);
+    }
+
+    .intro-actions {
+      margin-top:0.4rem;
+      display:flex;
+      justify-content:flex-end;
+      gap:0.5rem;
+    }
+
+    .modal-close-btn {
+      position:absolute;
+      top:0.45rem;
+      right:0.55rem;
+      border:none;
+      background:transparent;
+      cursor:pointer;
+      font-size:0.9rem;
+      color:var(--muted);
+    }
+
+    .export-form {
+      margin-top:0.6rem;
+      display:flex;
+      flex-direction:column;
+      gap:0.45rem;
+      font-size:0.85rem;
+    }
+    .export-form label {
+      display:flex;
+      flex-direction:column;
+      gap:0.15rem;
+    }
+    .export-input {
+      border-radius:8px;
+      border:1px solid var(--border);
+      padding:0.3rem 0.45rem;
+      font-size:0.85rem;
+      max-width:260px;
+    }
+    .export-actions {
+      display:flex;
+      justify-content:flex-end;
+      gap:0.45rem;
+      margin-top:0.7rem;
+    }
+    .export-note {
+      margin-top:0.35rem;
+      font-size:0.78rem;
+      color:var(--muted);
+    }
+
+    @media (max-width:960px) {
+      main.layout {
+        flex-direction:column;
+      }
+      .editor-wrapper {
+        height:320px;
+        max-height:none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand-block">
+        <div class="brand-text">
+          <h1>AI in de Klas — K-nabije buren</h1>
+          <p>Aanbevelingen met buurpunten en afstanden</p>
+        </div>
+      </div>
+      <div class="toolbar">
+        <button id="export-open" class="brand-btn" type="button">
+          <span>Exporteren als PDF</span>
+        </button>
+        <button id="theme-toggle" class="theme-toggle" type="button">
+          <span>Thema</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <!-- LINKERKANT — PYTHON EDITOR -->
+      <section class="editor-panel">
+        <div class="editor-header">
+          <div>
+            <h2>Python-code</h2>
+            <div class="editor-sub">Schrijf en run je eigen code voor de oefeningen.</div>
+          </div>
+        </div>
+        <div class="editor-wrapper">
+          <textarea id="code">
+import math
+
+# Oefening 1: 2D-afstand tussen Noah en drie klanten
+# (x, y)-coördinaten
+noah_x,  noah_y  = 4, 2
+emma_x,  emma_y  = 3, 1
+bilal_x, bilal_y = 6, 1
+chloe_x, chloe_y = 5, 4
+
+print("We berekenen hieronder de afstanden:")
+          </textarea>
+          <div class="run-bar">
+            <button id="run-btn" class="run-btn" type="button">
+              Run Python
+            </button>
+            <div class="run-meta">
+              Pyodide runt lokaal in je browser. Gebruik alleen <code>print(...)</code> voor output.
+            </div>
+          </div>
+        </div>
+        <div class="output-block">
+          <div class="output-label">Python-uitvoer</div>
+          <pre id="py-output"></pre>
+        </div>
+      </section>
+
+      <!-- RECHTERKANT — OEFENINGEN -->
+      <section class="exercise-panel">
+        <div class="exercise-header">
+          <h2>Oefeningen</h2>
+          <div class="exercise-progress" id="exercise-progress">Oefening 1 van 3</div>
+        </div>
+
+        <!-- FORMULARIUM -->
+        <div class="exercise-card formularium-card">
+          <h3 class="exercise-title">Formularium</h3>
+          <div class="exercise-body">
+            <p>
+              <strong>Euclidische afstand in 2D</strong><br>
+              d((x₁, y₁), (x₂, y₂)) = √((x₂ − x₁)² + (y₂ − y₁)²)
+            </p>
+            <p>
+              <strong>Euclidische afstand in 3D</strong><br>
+              d((x₁, y₁, z₁), (x₂, y₂, z₂)) = √((x₂ − x₁)² + (y₂ − y₁)² + (z₂ − z₁)²)
+            </p>
+
+            <p style="font-size:0.8rem;color:var(--muted);">
+              Tip: schrijf de formule eerst zelf in Python uit en test met kleine voorbeeldgetallen.
+            </p>
+          </div>
+        </div>
+
+        <!-- OEFENING 1 -->
+        <article id="exercise-0" class="exercise-card">
+          <h3 class="exercise-title">1. Afstand in 2D: Noah en drie klanten</h3>
+          <p class="exercise-lead">
+            We bekijken in 2D hoe ver Noah ligt van Emma, Bilal en Chloé. De dichtste buur geeft een voorspelling.
+          </p>
+          <div class="exercise-body">
+            <p><b>Gegeven:</b></p>
+            <p>De punten liggen op een vlak:</p>
+            <ul>
+              <li>Noah: (4, 2)</li>
+              <li>Emma: (3, 1)</li>
+              <li>Bilal: (6, 1)</li>
+              <li>Chloé: (5, 4)</li>
+            </ul>
+            <p><b>Gevraagd:</b></p>
+            <p>Schrijf in de editor links Python-code die voor elk van de drie klanten de Euclidische afstand tot Noah berekent.</p>
+            <p>Gebruik bijvoorbeeld <code>math.sqrt(...)</code> en <code>**2</code>.</p>
+            <p>Vergelijk je cijfers met de grafiek en het modelantwoord hieronder.</p>
+          </div>
+
+          <div class="exercise-actions">
+            <button id="ex1-check" class="brand-btn small" type="button">
+              Controleer afstand en dichtste buur
+            </button>
+            <button id="ex1-graph" class="brand-btn small secondary" type="button">
+              Toon grafiek
+            </button>
+            <span class="chip">k = 1, 2D-afstand</span>
+          </div>
+
+          <div id="ex1-feedback" class="feedback-box" style="display:none;"></div>
+          <canvas id="ex1-canvas" class="graph-canvas" width="420" height="280" style="display:none;"></canvas>
+        </article>
+
+        <!-- OEFENING 2 -->
+        <article id="exercise-1" class="exercise-card hidden">
+          <h3 class="exercise-title">2. Zonnecrème, boek en ski's: zwembroek aanraden?</h3>
+          <p class="exercise-lead">
+            Een webshop kijkt naar vorige klanten. Op basis van hun aankopen beslist het systeem of Noah een zwembroek aangeraden krijgt.
+          </p>
+          <div class="exercise-body">
+            <p>We bekijken drie producten in de webshop:</p>
+            <ul>
+              <li>P1: zonnecrème</li>
+              <li>P2: vakantieboek</li>
+              <li>P3: skimateriaal</li>
+            </ul>
+            <p>
+              In de tabel staat per klant of hij het product kocht (<code>1</code>) of niet (<code>0</code>).
+              In de laatste kolom zie je of er ook een <strong>zwembroek</strong> in het mandje zat.
+            </p>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Klant</th>
+                  <th>P1 (zonnecrème)</th>
+                  <th>P2 (boek)</th>
+                  <th>P3 (ski)</th>
+                  <th>Kocht zwembroek?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="label">Emma</td>
+                  <td>1</td><td>1</td><td>0</td><td>Ja</td>
+                </tr>
+                <tr>
+                  <td class="label">Bilal</td>
+                  <td>1</td><td>0</td><td>1</td><td>Ja</td>
+                </tr>
+                <tr>
+                  <td class="label">Chloé</td>
+                  <td>0</td><td>0</td><td>1</td><td>Nee</td>
+                </tr>
+                <tr>
+                  <td class="label">Noah</td>
+                  <td>1</td><td>0</td><td>0</td><td>?</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              We nemen k = 3. Het model zoekt de drie klanten die het meest op Noah lijken
+              (kleinste binaire afstand) en laat die “stemmen” over de zwembroek.
+            </p>
+            <p><strong>Vraag:</strong> Moet het model Noah een zwembroek aanraden?</p>
+
+            <div class="radio-row">
+              <label>
+                <input type="radio" name="ex2-reco" value="yes">
+                Ja, zwembroek aanraden
+              </label>
+              <label>
+                <input type="radio" name="ex2-reco" value="no">
+                Nee, geen zwembroek aanraden
+              </label>
+            </div>
+          </div>
+
+          <div class="exercise-actions">
+            <button id="ex2-check" class="brand-btn small" type="button">
+              Controleer aanbeveling
+            </button>
+            <button id="ex2-graph" class="brand-btn small secondary" type="button">
+              Toon grafiek (P1 vs P2)
+            </button>
+            <span class="chip">k = 3, binaire kenmerken</span>
+          </div>
+          <div id="ex2-feedback" class="feedback-box" style="display:none;"></div>
+          <canvas id="ex2-canvas" class="graph-canvas" width="420" height="280" style="display:none;"></canvas>
+        </article>
+
+        <!-- OEFENING 3 -->
+        <article id="exercise-2" class="exercise-card hidden">
+          <h3 class="exercise-title">3. Netflix-series en fans die op elkaar lijken</h3>
+          <p class="exercise-lead">
+            Een streamingdienst kijkt naar hoeveel afleveringen je al gezien hebt. Meer afleveringen betekent: grotere fan.
+          </p>
+          <div class="exercise-body">
+            <p>We bekijken drie populaire Netflix-series:</p>
+            <ul>
+              <li>Kenmerk 1: aantal afleveringen <strong>Stranger Things</strong></li>
+              <li>Kenmerk 2: aantal afleveringen <strong>Wednesday</strong></li>
+              <li>Kenmerk 3: aantal afleveringen <strong>One Piece</strong></li>
+            </ul>
+            <p>De dienst kent voor vier personen hoeveel afleveringen ze al zagen:</p>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Persoon</th>
+                  <th>Stranger Things</th>
+                  <th>Wednesday</th>
+                  <th>One Piece</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="label">Noah</td>
+                  <td>8</td><td>6</td><td>0</td>
+                </tr>
+                <tr>
+                  <td class="label">Emma</td>
+                  <td>7</td><td>5</td><td>1</td>
+                </tr>
+                <tr>
+                  <td class="label">Bilal</td>
+                  <td>1</td><td>0</td><td>0</td>
+                </tr>
+                <tr>
+                  <td class="label">Chloé</td>
+                  <td>8</td><td>7</td><td>2</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              De dienst gebruikt k = 3 en zoekt kijkers die lijken op Noah voor een nieuwe science-fictionserie.
+              Wie ligt qua 3D-afstand het dichtst bij Noah?
+            </p>
+            <div class="input-row">
+              <span>Dichtste buur van Noah:</span>
+              <input id="ex3-answer" type="text" placeholder=" voer de naam in">
+            </div>
+            <p style="font-size:0.8rem;color:var(--muted);">
+              De grafiek toont alleen Kenmerk 1 en 2. Kenmerk 3 (One Piece) telt wel mee in de berekening van de afstand.
+            </p>
+          </div>
+
+          <div class="exercise-actions">
+            <button id="ex3-check" class="brand-btn small" type="button">
+              Controleer dichtste buur
+            </button>
+            <button id="ex3-graph" class="brand-btn small secondary" type="button">
+              Toon grafiek met 3D-afstanden
+            </button>
+            <span class="chip">k = 3, 3D-kenmerken</span>
+          </div>
+          <div id="ex3-feedback" class="feedback-box" style="display:none;"></div>
+          <canvas id="ex3-canvas" class="graph-canvas" width="520" height="340" style="display:none;"></canvas>
+        </article>
+
+        <div class="dots-nav">
+          <button class="dot active" data-ex="0" type="button"></button>
+          <button class="dot" data-ex="1" type="button"></button>
+          <button class="dot" data-ex="2" type="button"></button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- EXPORT MODAL -->
+  <div id="export-modal" class="modal-overlay">
+    <div class="modal-box">
+      <button id="export-close" class="modal-close-btn" type="button">x</button>
+      <h2>Exporteren naar PDF</h2>
+      <p class="modal-lead">
+        Maak een eenvoudige PDF met je huidige code, uitvoer en antwoorden op de oefeningen.
+      </p>
+      <div class="export-form">
+        <label>
+          Naam (optioneel)
+          <input id="export-name" class="export-input" type="text" placeholder="Voornaam Naam">
+        </label>
+        <label>
+          Klas / groep (optioneel)
+          <input id="export-group" class="export-input" type="text" placeholder="bv. 3NW3">
+        </label>
+      </div>
+      <div class="export-actions">
+        <button id="export-cancel" class="brand-btn small secondary" type="button">Annuleren</button>
+        <button id="export-generate" class="brand-btn small" type="button">Genereer PDF</button>
+      </div>
+      <p class="export-note">
+        De PDF wordt volledig lokaal in je browser gemaakt en als download aangeboden (geen printerdialoog, ook in SEB).
+      </p>
+    </div>
+  </div>
+
+  <!-- INTRO MODAL -->
+  <div id="intro-modal" class="modal-overlay visible">
+    <div class="modal-box">
+      <button id="intro-close" class="modal-close-btn" type="button">x</button>
+      <h2>Wat doen “dichtste buren” in machine learning?</h2>
+      <p class="modal-lead">
+        In deze omgeving oefen je met het k-nabije-buren-algoritme (k-nearest neighbours). Je leert hoe “afstand”
+        tussen personen of profielen leidt tot aanbevelingen.
+      </p>
+
+      <div class="intro-grid">
+        <div class="intro-card">
+          <h3>1. Punten in een ruimte</h3>
+          <p>Elke persoon is een punt met kenmerken: coördinaten, aankopen, bekeken afleveringen, enzovoort.</p>
+        </div>
+        <div class="intro-card">
+          <h3>2. Afstand meten</h3>
+          <p>Met een afstandsformule (meestal Euclidisch) berekent het model wie dicht bij wie ligt in die ruimte.</p>
+        </div>
+        <div class="intro-card">
+          <h3>3. Stem van de buren</h3>
+          <p>De k dichtste buren “stemmen” mee. Hun gedrag voorspelt wat jij waarschijnlijk interessant vindt.</p>
+        </div>
+      </div>
+
+      <p class="intro-text"><strong>Waar zie je dit terug?</strong></p>
+      <div class="brand-chip-row">
+        <div class="brand-chip-pill">
+          <div class="brand-icon-small brand-tiktok">T</div>
+          <span>TikTok For You</span>
+        </div>
+        <div class="brand-chip-pill">
+          <div class="brand-icon-small brand-spotify">S</div>
+          <span>Spotify-afspeellijsten</span>
+        </div>
+        <div class="brand-chip-pill">
+          <div class="brand-icon-small brand-netflix">N</div>
+          <span>Netflix-aanbevelingen</span>
+        </div>
+        <div class="brand-chip-pill">
+          <div class="brand-icon-small brand-youtube">Y</div>
+          <span>YouTube-suggesties</span>
+        </div>
+        <div class="brand-chip-pill">
+          <div class="brand-icon-small brand-amazon">A</div>
+          <span>Amazon “dit kochten anderen”</span>
+        </div>
+      </div>
+
+      <p class="intro-text">
+        Al deze systemen vergelijken jouw profiel met dat van andere gebruikers. Lijken jullie sterk op elkaar
+        (gelijkaardige muziek, series, producten)? Dan is de kans groter dat jij dezelfde video, playlist of serie ook leuk vindt.
+      </p>
+
+      <p class="intro-text">
+        In de oefeningen programmeer je zelf afstanden in Python, bekijk je grafieken en redeneer je mee als een
+        eenvoudige aanbevelingsengine.
+      </p>
+
+      <div class="intro-actions">
+        <button id="intro-ok" class="brand-btn" type="button">Aan de slag</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    // Thema-toggle (op dit moment alleen een data-attribuut, geen echte dark-mode)
+    (function initTheme() {
+      const btn = $("theme-toggle");
+      const root = document.documentElement;
+      btn.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme") || "light";
+        const next = current === "light" ? "dark" : "light";
+        root.setAttribute("data-theme", next);
+      });
+    })();
+
+    // CodeMirror initialisatie
+    let editor;
+    document.addEventListener("DOMContentLoaded", () => {
+      editor = CodeMirror.fromTextArea($("code"), {
+        mode:"python",
+        lineNumbers:true,
+        indentUnit:4,
+        tabSize:4,
+        viewportMargin:Infinity
+      });
+    });
+
+    // Pyodide laden
+    let pyodideReady = (async () => {
+      const pyodide = await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/" });
+      return pyodide;
+    })();
+
+    async function runPython() {
+      const pyOut = $("py-output");
+      pyOut.textContent = "";
+      const code = editor.getValue();
+      const pyodide = await pyodideReady;
+
+      pyodide.setStdout({
+        batched: (msg) => { pyOut.textContent += msg; }
+      });
+      pyodide.setStderr({
+        batched: (msg) => { pyOut.textContent += msg; }
+      });
+
+      try {
+        await pyodide.runPythonAsync(code);
+      } catch (err) {
+        pyOut.textContent += "\n[Python-fout] " + err;
+      }
+    }
+    $("run-btn").addEventListener("click", runPython);
+
+    // Oefeningen navigatie
+    const exercises = [
+      { id:"exercise-0", title:"Afstand in 2D: Noah en drie klanten" },
+      { id:"exercise-1", title:"Zwembroek-aanbeveling op basis van aankopen" },
+      { id:"exercise-2", title:"Netflix-series en fans" }
+    ];
+    let currentExercise = 0;
+
+    function setExercise(idx) {
+      currentExercise = idx;
+      exercises.forEach((ex, i) => {
+        $(ex.id).classList.toggle("hidden", i !== idx);
+      });
+      document.querySelectorAll(".dot").forEach((dot, i) => {
+        dot.classList.toggle("active", i === idx);
+      });
+      $("exercise-progress").textContent = "Oefening " + (idx + 1) + " van " + exercises.length;
+    }
+    document.querySelectorAll(".dot").forEach(dot => {
+      dot.addEventListener("click", () => {
+        const idx = parseInt(dot.getAttribute("data-ex"), 10);
+        setExercise(idx);
+      });
+    });
+
+    // Feedback helper
+    function setExerciseFeedback(id, ok, title, body) {
+      const box = $(id);
+      box.style.display = "block";
+      box.classList.remove("ok","bad");
+      box.classList.add(ok ? "ok" : "bad");
+      box.innerHTML =
+        '<div class="feedback-title">' + title + '</div>' +
+        '<div>' + body + '</div>';
+    }
+
+    // Grafieken
+    function drawExercise1Graph() {
+      const canvas = $("ex1-canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.style.display = "block";
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+
+      const padding = 40;
+      const w = canvas.width;
+      const h = canvas.height;
+
+      // Assen
+      ctx.strokeStyle = "#9aa3b2";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(padding, h-padding);
+      ctx.lineTo(w-padding+5, h-padding);
+      ctx.moveTo(padding, h-padding);
+      ctx.lineTo(padding, padding-5);
+      ctx.stroke();
+
+      ctx.fillStyle = "#1A224C";
+      ctx.font = "10px Roboto, Arial";
+      ctx.fillText("x", w-padding+10, h-padding+3);
+      ctx.fillText("y", padding-10, padding-12);
+
+      function toCanvas(x, y) {
+        const scale = 40;
+        const cx = padding + x*scale;
+        const cy = h-padding - y*scale;
+        return [cx, cy];
+      }
+
+      const points = [
+        { name:"Noah",  x:4, y:2, color:"#5200FF" },
+        { name:"Emma",  x:3, y:1, color:"#4b5563" },
+        { name:"Bilal", x:6, y:1, color:"#4b5563" },
+        { name:"Chloé", x:5, y:4, color:"#4b5563" }
+      ];
+
+      const noah = points[0];
+      function dist(a, b) {
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        return Math.sqrt(dx*dx + dy*dy);
+      }
+
+      // Lijnen + afstanden vanaf Noah
+      points.slice(1).forEach(p => {
+        const [x1,y1] = toCanvas(noah.x, noah.y);
+        const [x2,y2] = toCanvas(p.x, p.y);
+        const d = dist(noah, p);
+
+        ctx.strokeStyle = "rgba(82,0,255,0.5)";
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.moveTo(x1,y1);
+        ctx.lineTo(x2,y2);
+        ctx.stroke();
+
+        const mx = (x1 + x2)/2;
+        const my = (y1 + y2)/2;
+        ctx.fillStyle = "#1A224C";
+        ctx.font = "10px Roboto, Arial";
+        ctx.fillText("d ≈ " + d.toFixed(2), mx + 4, my - 4);
+      });
+
+      // Punten
+      points.forEach(p => {
+        const [cx, cy] = toCanvas(p.x, p.y);
+        ctx.beginPath();
+        ctx.fillStyle = p.color;
+        ctx.arc(cx, cy, p.name === "Noah" ? 6 : 5, 0, Math.PI*2);
+        ctx.fill();
+
+        ctx.font = "11px Roboto, Arial";
+        ctx.fillStyle = "#111827";
+        const label = p.name === "Noah" ? "Noah (doel)" : p.name;
+        ctx.fillText(label, cx + 8, cy - 4);
+      });
+
+      ctx.font = "10px Roboto, Arial";
+      ctx.fillStyle = "#6b7280";
+      ctx.fillText("Lijnen tonen de 2D-afstand van Noah tot de andere klanten.", padding, padding - 12);
+    }
+
+    function drawExercise2Graph() {
+      const canvas = $("ex2-canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.style.display = "block";
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+
+      const padding = 40;
+      const w = canvas.width;
+      const h = canvas.height;
+
+      ctx.strokeStyle = "#9aa3b2";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(padding, h-padding);
+      ctx.lineTo(w-padding+5, h-padding);
+      ctx.moveTo(padding, h-padding);
+      ctx.lineTo(padding, padding-5);
+      ctx.stroke();
+
+      ctx.fillStyle = "#1A224C";
+      ctx.font = "10px Roboto, Arial";
+      ctx.fillText("P1 (zonnecrème)", padding, h-padding+22);
+      ctx.save();
+      ctx.translate(16, (h-padding+padding)/2);
+      ctx.rotate(-Math.PI/2);
+      ctx.fillText("P2 (boek)", 0,0);
+      ctx.restore();
+
+      function toCanvas(x, y) {
+        const scale = 80;
+        const cx = padding + x*scale;
+        const cy = h-padding - y*scale;
+        return [cx, cy];
+      }
+
+      const customers = [
+        { name:"Emma",  p1:1, p2:1, success:true },   // kocht zwembroek
+        { name:"Bilal", p1:1, p2:0, success:true },
+        { name:"Chloé", p1:0, p2:0, success:false },  // geen zwembroek
+        { name:"Noah",  p1:1, p2:0, success:null }
+      ];
+
+      customers.forEach(c => {
+        const [cx, cy] = toCanvas(c.p1, c.p2);
+        ctx.beginPath();
+        if (c.name === "Noah") {
+          ctx.fillStyle = "#5200FF";
+        } else if (c.success) {
+          ctx.fillStyle = "#16a34a";   // kocht zwembroek
+        } else {
+          ctx.fillStyle = "#d7263d";   // geen zwembroek
+        }
+        ctx.arc(cx, cy, c.name === "Noah" ? 6 : 5, 0, Math.PI*2);
+        ctx.fill();
+
+        ctx.font = "11px Roboto, Arial";
+        ctx.fillStyle = "#111827";
+        const label = c.name === "Noah" ? "Noah (?)" : c.name;
+        ctx.fillText(label, cx + 8, cy - 4);
+      });
+
+      ctx.font = "10px Roboto, Arial";
+      ctx.fillStyle = "#6b7280";
+      ctx.fillText("Groen = kocht zwembroek, rood = geen zwembroek, paars = Noah.", padding, padding - 12);
+    }
+
+    function drawExercise3Graph() {
+      const canvas = $("ex3-canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.style.display = "block";
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+
+      const padding = 45;
+      const w = canvas.width;
+      const h = canvas.height;
+
+      ctx.strokeStyle = "#9aa3b2";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(padding, h-padding);
+      ctx.lineTo(w-padding+5, h-padding);
+      ctx.moveTo(padding, h-padding);
+      ctx.lineTo(padding, padding-5);
+      ctx.stroke();
+
+      ctx.fillStyle = "#1A224C";
+      ctx.font = "10px Roboto, Arial";
+      ctx.fillText("Stranger Things (afl.)", padding, h-padding+22);
+      ctx.save();
+      ctx.translate(18, (h-padding+padding)/2);
+      ctx.rotate(-Math.PI/2);
+      ctx.fillText("Wednesday (afl.)", 0,0);
+      ctx.restore();
+
+      function toCanvas(x, y) {
+        const maxX = 8;
+        const maxY = 7;
+        const scaleX = (canvas.width - 2*padding) / maxX;
+        const scaleY = (canvas.height - 2*padding) / maxY;
+        const scale = Math.min(scaleX, scaleY);
+        const cx = padding + x*scale;
+        const cy = h - padding - y*scale;
+        return [cx, cy];
+      }
+
+      const customers = [
+        { name:"Noah",  st:8, wed:6, op:0, base:"#5200FF" },
+        { name:"Emma",  st:7, wed:5, op:1, base:"#2563eb" },
+        { name:"Bilal", st:1, wed:0, op:0, base:"#0f766e" },
+        { name:"Chloé", st:8, wed:7, op:2, base:"#e11d48" }
+      ];
+
+      customers.forEach(c => {
+        const [cx, cy] = toCanvas(c.st, c.wed);
+
+        ctx.beginPath();
+        if (c.name === "Noah") {
+          ctx.fillStyle = "#5200FF";
+        } else {
+          ctx.fillStyle = c.base;
+        }
+        ctx.arc(cx, cy, c.name === "Noah" ? 6 : 5, 0, Math.PI*2);
+        ctx.fill();
+
+        ctx.font = "11px Roboto, Arial";
+        ctx.fillStyle = "#111827";
+        ctx.fillText(c.name, cx + 8, cy - 4);
+
+        ctx.font = "9px Roboto, Arial";
+        ctx.fillStyle = "#4b5563";
+        ctx.fillText("OP: " + c.op, cx + 8, cy + 8);
+      });
+
+      const noah = customers[0];
+      function dist3(a, b) {
+        const dx = a.st - b.st;
+        const dy = a.wed - b.wed;
+        const dz = a.op - b.op;
+        return Math.sqrt(dx*dx + dy*dy + dz*dz);
+      }
+
+      customers.slice(1).forEach(c => {
+        const [x1, y1] = toCanvas(noah.st, noah.wed);
+        const [x2, y2] = toCanvas(c.st, c.wed);
+        const d = dist3(noah, c);
+
+        ctx.strokeStyle = "rgba(82,0,255,0.5)";
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.moveTo(x1,y1);
+        ctx.lineTo(x2,y2);
+        ctx.stroke();
+
+        const mx = (x1 + x2)/2;
+        const my = (y1 + y2)/2;
+        ctx.fillStyle = "#1A224C";
+        ctx.font = "10px Roboto, Arial";
+        ctx.fillText("d3D ≈ " + d.toFixed(2), mx + 4, my - 4);
+      });
+
+      ctx.font = "10px Roboto, Arial";
+      ctx.fillStyle = "#6b7280";
+      ctx.fillText("Lijnen tonen de 3D-afstand tot Noah; assen tonen alleen Stranger Things en Wednesday.", padding, padding - 14);
+    }
+
+    $("ex1-graph").addEventListener("click", drawExercise1Graph);
+    $("ex2-graph").addEventListener("click", drawExercise2Graph);
+    $("ex3-graph").addEventListener("click", drawExercise3Graph);
+
+    // Check-knoppen
+    $("ex1-check").addEventListener("click", () => {
+      const body =
+        "De exacte 2D-afstanden zijn:<br>" +
+        "d(Noah, Emma) ≈ <strong>1,41</strong><br>" +
+        "d(Noah, Bilal) ≈ <strong>2,24</strong><br>" +
+        "d(Noah, Chloé) ≈ <strong>2,24</strong><br><br>" +
+        "De dichtste buur is dus <strong>Emma</strong>.";
+      setExerciseFeedback("ex1-feedback", true, "Modelantwoord oefening 1", body);
+      drawExercise1Graph();
+    });
+
+    $("ex2-check").addEventListener("click", () => {
+      const choice = document.querySelector('input[name="ex2-reco"]:checked');
+      if (!choice) {
+        setExerciseFeedback("ex2-feedback", false, "Nog geen keuze", "Duid eerst aan of je denkt dat de promotie aan Noah getoond wordt.");
+        return;
+      }
+      const correctYes = true;
+      const userYes = choice.value === "yes";
+
+      if (userYes === correctYes) {
+        const body =
+          "De drie buren van Noah zijn Emma, Bilal en Chloé.<br>" +
+          "De afstand tot Emma en Bilal is het kleinst (binaire verschillen = 1),<br>" +
+          "Chloé ligt verder weg (2 verschillen).<br><br>" +
+          "Twee van de drie dichtste buren hadden een <strong>succesvolle</strong> promotie, " +
+          "dus k = 3 stemt voor <strong>aanbevelen</strong>.";
+        setExerciseFeedback("ex2-feedback", true, "Correct", body);
+      } else {
+        const body =
+          "Emma en Bilal liggen dichter bij Noah dan Chloé (slechts 1 verschillend product).<br>" +
+          "Bij zowel Emma als Bilal was de promotie succesvol, bij Chloé niet.<br><br>" +
+          "Bij k = 3 krijg je dus 2× ‘ja’ en 1× ‘nee’ → de promotie wordt <strong>wél</strong> aanbevolen.";
+        setExerciseFeedback("ex2-feedback", false, "Niet helemaal", body);
+      }
+      drawExercise2Graph();
+    });
+
+    $("ex3-check").addEventListener("click", () => {
+      const val = ($("ex3-answer").value || "").trim().toLowerCase();
+      const correct = "emma";
+      if (!val) {
+        setExerciseFeedback("ex3-feedback", false, "Nog geen antwoord", "Vul de naam in van de persoon die jij als dichtste buur van Noah verwacht.");
+        return;
+      }
+      if (val === correct) {
+        const body =
+          "Als je de 3D-afstand gebruikt (Stranger Things, Wednesday, One Piece),<br>" +
+          "dan krijgt Emma de kleinste afstand tot Noah:<br><br>" +
+          "d(Noah, Emma) ≈ <strong>1,73</strong><br>" +
+          "d(Noah, Chloé) ≈ <strong>2,24</strong><br>" +
+          "d(Noah, Bilal) ≈ <strong>9,22</strong><br><br>" +
+          "De streamingdienst behandelt Emma dus als de sterkste ‘look-alike’ van Noah.";
+        setExerciseFeedback("ex3-feedback", true, "Correct", body);
+      } else {
+        const body =
+          "De 3D-afstand in drie kenmerken is het kleinst voor <strong>Emma</strong>:<br><br>" +
+          "d(Noah, Emma) ≈ 1,73<br>" +
+          "d(Noah, Chloé) ≈ 2,24<br>" +
+          "d(Noah, Bilal) ≈ 9,22<br><br>" +
+          "Controleer je berekeningen: de dichtste buur (k = 1) zou Emma moeten zijn.";
+        setExerciseFeedback("ex3-feedback", false, "Niet helemaal", body);
+      }
+      drawExercise3Graph();
+    });
+
+    // Intro-modal
+    (function initIntroModal() {
+      const overlay = $("intro-modal");
+      const ok = $("intro-ok");
+      const close = $("intro-close");
+      function hide() {
+        overlay.classList.remove("visible");
+      }
+      ok.addEventListener("click", hide);
+      close.addEventListener("click", hide);
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) hide();
+      });
+    })();
+
+    // Export-modal + jsPDF
+    (function initExportModal() {
+      const overlay = $("export-modal");
+      const openBtn = $("export-open");
+      const closeBtn = $("export-close");
+      const cancelBtn = $("export-cancel");
+      const genBtn = $("export-generate");
+
+      function open() {
+        overlay.classList.add("visible");
+      }
+      function close() {
+        overlay.classList.remove("visible");
+      }
+
+      openBtn.addEventListener("click", open);
+      closeBtn.addEventListener("click", close);
+      cancelBtn.addEventListener("click", close);
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) close();
+      });
+
+      async function generatePDF() {
+        if (!window.jspdf || !window.jspdf.jsPDF) {
+          alert("PDF-bibliotheek kon niet geladen worden.");
+          return;
+        }
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ unit:"pt", format:"a4" });
+
+        let y = 48;
+        const margin = 40;
+        const lineHeight = 14;
+        const maxWidth = 520;
+        const pageHeight = doc.internal.pageSize.getHeight();
+
+        function addSection(title, content) {
+          if (y > pageHeight - 80) {
+            doc.addPage();
+            y = margin;
+          }
+          doc.setFont("helvetica","bold");
+          doc.setFontSize(11);
+          doc.text(title, margin, y);
+          y += 14;
+
+          doc.setFont("helvetica","normal");
+          doc.setFontSize(9);
+          const text = content.replace(/\r\n/g, "\n");
+          const lines = doc.splitTextToSize(text, maxWidth);
+          lines.forEach(line => {
+            if (y > pageHeight - 60) {
+              doc.addPage();
+              y = margin;
+            }
+            doc.text(line, margin, y);
+            y += lineHeight;
+          });
+          y += 6;
+        }
+
+        doc.setFont("helvetica","bold");
+        doc.setFontSize(14);
+        doc.text("K-nabije buren — oefeningen", margin, y);
+        y += 18;
+
+        doc.setFont("helvetica","normal");
+        doc.setFontSize(10);
+        const name = $("export-name").value.trim();
+        const group = $("export-group").value.trim();
+        if (name) {
+          doc.text("Naam: " + name, margin, y);
+          y += 14;
+        }
+        if (group) {
+          doc.text("Klas / groep: " + group, margin, y);
+          y += 14;
+        }
+        const exTitle = exercises[currentExercise].title;
+        doc.text("Actieve oefening: " + (currentExercise + 1) + " — " + exTitle, margin, y);
+        y += 20;
+
+        addSection("Python-code", editor.getValue());
+        const out = $("py-output").textContent || "(geen uitvoer)";
+        addSection("Python-uitvoer", out);
+
+        const choice = document.querySelector('input[name="ex2-reco"]:checked');
+        let ex2Text = "(geen antwoord)";
+        if (choice) {
+          ex2Text = choice.value === "yes" ? "Ja, aanbevelen" : "Nee, niet aanbevelen";
+        }
+        addSection("Oefening 2 — keuze promotie", ex2Text);
+
+        const ex3Val = ($("ex3-answer") && $("ex3-answer").value.trim()) || "(geen antwoord)";
+        addSection("Oefening 3 — dichtste buur", ex3Val);
+
+        doc.save("knn-oefeningen.pdf");
+      }
+
+      genBtn.addEventListener("click", async () => {
+        await generatePDF();
+        overlay.classList.remove("visible");
+      });
+    })();
+
+    // Start in oefening 1
+    setExercise(0);
+  </script>
+</body>
+</html>
