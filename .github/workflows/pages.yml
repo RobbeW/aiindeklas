@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -25,15 +26,13 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '>=22.13.0 <23'
+      - uses: pnpm/action-setup@v6
         with:
           version: 11.9.0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22.12.0
-          cache: pnpm
-          cache-dependency-path: website/pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile
         working-directory: website
       - run: pnpm build:project
@@ -49,21 +48,22 @@ jobs:
         working-directory: website
       - run: node scripts/p18-browser-smoke.mjs
         working-directory: website
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: pages-preview
           path: _site
           include-hidden-files: true
           retention-days: 3
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
         if: inputs.publish_to_pages
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         if: inputs.publish_to_pages
         with:
           path: _site
+          include-hidden-files: true
       - id: deployment
         if: inputs.publish_to_pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
       - name: Smoke check deployed project routes and assets
         if: inputs.publish_to_pages
         env:
