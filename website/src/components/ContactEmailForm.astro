@@ -1,0 +1,148 @@
+---
+interface Props {
+  lang?: "nl-BE" | "en";
+}
+
+const { lang = "nl-BE" } = Astro.props;
+const isEnglish = lang === "en";
+const copy = isEnglish
+  ? {
+      legend: "Send a message",
+      intro: "Fill in the fields below. The button opens a prefilled email in your default email app; nothing is sent by this website.",
+      name: "Name",
+      email: "Email address",
+      subject: "Subject",
+      message: "Message",
+      namePlaceholder: "Your name",
+      subjectPlaceholder: "What would you like to discuss?",
+      messagePlaceholder: "Write your message here",
+      submit: "Open email draft",
+      noScript: "JavaScript is needed to prepare the email draft. Enable JavaScript and try again.",
+      workshopIntro: "Your workshop preferences from the finder are included below. Add practical details if you have them.",
+      organisation: "School or organisation",
+      preferredDate: "Preferred date or period",
+      context: "Additional context or questions"
+    }
+  : {
+      legend: "Stuur een bericht",
+      intro: "Vul de velden hieronder in. De knop opent een vooraf ingevulde e-mail in je standaard mailprogramma; deze website verstuurt niets.",
+      name: "Naam",
+      email: "E-mailadres",
+      subject: "Onderwerp",
+      message: "Bericht",
+      namePlaceholder: "Je naam",
+      subjectPlaceholder: "Waarover wil je contact opnemen?",
+      messagePlaceholder: "Schrijf hier je bericht",
+      submit: "Open e-mailconcept",
+      noScript: "JavaScript is nodig om de e-mail voor te bereiden. Schakel JavaScript in en probeer opnieuw.",
+      workshopIntro: "Je voorkeuren uit de finder staan hieronder in het bericht. Vul praktische gegevens aan als je die al weet.",
+      organisation: "School of organisatie",
+      preferredDate: "Gewenste datum of periode",
+      context: "Extra context of vragen"
+    };
+---
+
+<form class="contact-email-form" data-contact-email-form data-language={lang} data-recipient="robbe.wulgaert@gmail.com">
+  <fieldset>
+    <legend>{copy.legend}</legend>
+    <p class="contact-email-form__intro">{copy.intro}</p>
+
+    <div class="contact-email-form__field">
+      <label for={`contact-name-${lang}`}>{copy.name}</label>
+      <input id={`contact-name-${lang}`} name="name" type="text" autocomplete="name" placeholder={copy.namePlaceholder} required />
+    </div>
+
+    <div class="contact-email-form__field">
+      <label for={`contact-email-${lang}`}>{copy.email}</label>
+      <input id={`contact-email-${lang}`} name="email" type="email" autocomplete="email" placeholder="naam@voorbeeld.be" required />
+    </div>
+
+    <div class="contact-email-form__field">
+      <label for={`contact-subject-${lang}`}>{copy.subject}</label>
+      <input id={`contact-subject-${lang}`} name="subject" type="text" placeholder={copy.subjectPlaceholder} />
+    </div>
+
+    <div class="contact-email-form__field">
+      <label for={`contact-message-${lang}`}>{copy.message}</label>
+      <textarea id={`contact-message-${lang}`} name="message" rows="7" placeholder={copy.messagePlaceholder} required></textarea>
+    </div>
+
+    <div class="contact-email-form__workshop" data-workshop-context hidden>
+      <p>{copy.workshopIntro}</p>
+      <div class="contact-email-form__field">
+        <label for={`contact-organisation-${lang}`}>{copy.organisation}</label>
+        <input id={`contact-organisation-${lang}`} name="organisation" type="text" autocomplete="organization" />
+      </div>
+      <div class="contact-email-form__field">
+        <label for={`contact-date-${lang}`}>{copy.preferredDate}</label>
+        <input id={`contact-date-${lang}`} name="preferred_date" type="text" />
+      </div>
+      <div class="contact-email-form__field">
+        <label for={`contact-context-${lang}`}>{copy.context}</label>
+        <textarea id={`contact-context-${lang}`} name="context" rows="4"></textarea>
+      </div>
+    </div>
+
+    <button class="button button--primary" type="submit">{copy.submit}</button>
+    <noscript><p class="contact-email-form__noscript">{copy.noScript}</p></noscript>
+  </fieldset>
+</form>
+
+<script>
+  const forms = document.querySelectorAll<HTMLFormElement>("[data-contact-email-form]");
+
+  forms.forEach((form) => {
+    const params = new URLSearchParams(window.location.search);
+    const workshopRequest = params.has("offer_id") || params.get("workshop_request") === "1";
+    if (workshopRequest) {
+      const isEnglish = form.dataset.language === "en";
+      const title = params.get("offer")?.trim() ?? "";
+      const subject = form.elements.namedItem("subject") as HTMLInputElement;
+      const message = form.elements.namedItem("message") as HTMLTextAreaElement;
+      subject.value = title ? `${isEnglish ? "Workshop enquiry" : "Aanvraag sessie"}: ${title}` :
+        isEnglish ? "Workshop enquiry" : "Vraag over een keynote of workshop";
+      const labels = isEnglish
+        ? [["offer_id", "Offer ID"], ["offer", "Session"], ["persona", "Role"], ["need", "Need"], ["subject_area", "Subject area"], ["duration", "Available time"], ["group_size", "Group size"]]
+        : [["offer_id", "Sessie-ID"], ["offer", "Sessie"], ["persona", "Rol"], ["need", "Vraag"], ["subject_area", "Domein"], ["duration", "Beschikbare tijd"], ["group_size", "Groepsgrootte"]];
+      message.value = labels.flatMap(([key, label]) => params.get(key) ? [`${label}: ${params.get(key)}`] : []).join("\n") + "\n\n";
+      const fields = form.querySelector<HTMLElement>("[data-workshop-context]");
+      if (fields) fields.hidden = false;
+    }
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const values = new FormData(form);
+      const recipient = form.dataset.recipient ?? "robbe.wulgaert@gmail.com";
+      const isEnglish = form.dataset.language === "en";
+      const name = String(values.get("name") ?? "").trim();
+      const email = String(values.get("email") ?? "").trim();
+      const subject = String(values.get("subject") ?? "").trim() || "Contact via robbewulgaert.be";
+      const message = String(values.get("message") ?? "").trim();
+      const organisation = String(values.get("organisation") ?? "").trim();
+      const preferredDate = String(values.get("preferred_date") ?? "").trim();
+      const context = String(values.get("context") ?? "").trim();
+      const body = [`${isEnglish ? "Name" : "Naam"}: ${name}`, `E-mail: ${email}`,
+        ...(organisation ? [`${isEnglish ? "Organisation" : "Organisatie"}: ${organisation}`] : []),
+        ...(preferredDate ? [`${isEnglish ? "Preferred date" : "Gewenste datum"}: ${preferredDate}`] : []),
+        "", message, ...(context ? ["", `${isEnglish ? "Additional context" : "Extra context"}: ${context}`] : [])].join("\n");
+      window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  });
+</script>
+
+<style>
+  .contact-email-form { max-width: var(--content-readable); margin-block: 0 2rem; }
+  fieldset { display: grid; gap: 1rem; border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); padding: clamp(1rem, 3vw, 1.75rem); }
+  legend { color: var(--color-ink); padding-inline: 0.4rem; font-size: 1.45rem; font-weight: 850; }
+  .contact-email-form__intro { margin: 0; color: var(--color-muted); }
+  .contact-email-form__field { display: grid; gap: 0.4rem; }
+  .contact-email-form__workshop { display: grid; gap: 1rem; border-top: 1px solid var(--color-line); padding-top: 1rem; }
+  .contact-email-form__workshop[hidden] { display: none; }
+  .contact-email-form__workshop p { margin: 0; color: var(--color-muted); }
+  label { color: var(--color-ink); font-weight: 750; }
+  input,
+  textarea { width: 100%; border: 1px solid var(--color-line); border-radius: 0.25rem; color: var(--color-ink); background: var(--color-background); padding: 0.75rem 0.85rem; }
+  textarea { min-height: 9rem; resize: vertical; }
+  input::placeholder,
+  textarea::placeholder { color: var(--color-muted); opacity: 0.9; }
+  .contact-email-form__noscript { margin: 0; color: var(--color-muted); font-size: 0.95rem; }
+</style>

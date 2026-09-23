@@ -1,0 +1,70 @@
+---
+import type { SiteLocale } from "../lib/routing";
+
+interface Props { lang: SiteLocale; }
+const { lang } = Astro.props;
+const english = lang === "en";
+---
+
+<section id="privacy-notice" class="privacy-notice" data-privacy-notice aria-labelledby="privacy-notice-title">
+  <div class="privacy-notice__inner shell">
+    <div>
+      <h2 id="privacy-notice-title">{english ? "Privacy and cookies" : "Privacy en cookies"}</h2>
+      <p>{english
+        ? "This page uses no tracking cookies or analytics. When browser storage is available, your dismissal of this notice is saved in this browser. The separate teaching apps load libraries from jsDelivr after you choose to load them; running Python then downloads Pyodide. jsDelivr can receive your IP address. The contact form opens a draft in your email app."
+        : "Deze pagina gebruikt geen trackingcookies of statistieksoftware. Als browseropslag beschikbaar is, wordt je keuze om deze melding te sluiten in deze browser bewaard. De aparte lesapps laden bibliotheken van jsDelivr nadat je daarvoor kiest; Python uitvoeren downloadt daarna Pyodide. jsDelivr kan je IP-adres ontvangen. Het contactformulier opent een concept in je mailprogramma."}</p>
+    </div>
+    <button type="button" class="button button--primary" data-privacy-dismiss>{english ? "Understood" : "Begrepen"}</button>
+  </div>
+</section>
+
+<script>
+  const key = "rw-privacy-notice-v1";
+  const notice = document.querySelector<HTMLElement>("[data-privacy-notice]");
+  const dismiss = notice?.querySelector<HTMLButtonElement>("[data-privacy-dismiss]");
+  const reopen = document.querySelector<HTMLButtonElement>("[data-privacy-open]");
+  if (notice && dismiss) {
+    let dismissed = false;
+    try { dismissed = window.localStorage.getItem(key) === "dismissed"; } catch { /* Browser storage may be unavailable. */ }
+    notice.hidden = dismissed;
+    reopen?.setAttribute("aria-expanded", String(!dismissed));
+    dismiss.addEventListener("click", () => {
+      notice.hidden = true;
+      reopen?.setAttribute("aria-expanded", "false");
+      try { window.localStorage.setItem(key, "dismissed"); } catch { /* Dismiss for this page only. */ }
+      reopen?.focus();
+    });
+    reopen?.addEventListener("click", () => {
+      notice.hidden = false;
+      reopen.setAttribute("aria-expanded", "true");
+      dismiss.focus();
+    });
+  }
+</script>
+
+<style>
+  .privacy-notice[hidden] { display: none; }
+  .privacy-notice {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 100;
+    border-top: 2px solid var(--color-brand);
+    background: var(--color-surface);
+    box-shadow: 0 -0.5rem 2rem rgb(0 0 0 / 16%);
+  }
+  .privacy-notice__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    padding-block: 1rem;
+  }
+  .privacy-notice__inner > div { max-width: 65rem; }
+  h2 { margin: 0 0 0.35rem; color: var(--color-ink); font-size: 1.1rem; }
+  p { margin: 0; color: var(--color-muted); }
+  button { flex: none; }
+  @media (max-width: 40rem) {
+    .privacy-notice__inner { max-height: 60vh; overflow-y: auto; }
+  }
+</style>

@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "profile": "production-sim",
+  "site": "https://www.robbewulgaert.be/",
+  "base": "/",
+  "html_files": 365,
+  "internal_urls_checked": 12591,
+  "indexable_pages": 0,
+  "noindex_pages": 365,
+  "generated_system_outputs": 2,
+  "errors": [
+    "production simulation: no indexable page exists"
+  ],
+  "status": "failed"
+}

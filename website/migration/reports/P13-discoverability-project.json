@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "profile": "project",
+  "site": "https://robbew.github.io",
+  "base": "/aiindeklas/",
+  "rendered_html_files": 365,
+  "internal_links_checked": 5235,
+  "genuine_broken_links": 0,
+  "genuine_broken_link_examples": [],
+  "links_to_accepted_case_collisions": 0,
+  "links_to_accepted_redirects": 0,
+  "noncanonical_internal_html_targets": 0,
+  "canonical_mismatches": 0,
+  "redirect_canonical_mismatches": 3,
+  "accepted_case_collision_canonical_mismatches": 17,
+  "encoded_filename_canonical_mappings": 2,
+  "canonical_mismatch_examples": [],
+  "sitemap_locations": 0,
+  "sitemap_locations_matching_indexable_canonicals": 0,
+  "sitemap_set_matches_indexable_canonicals": true,
+  "indexable_canonicals": 0,
+  "feed_items": {
+    "nl": {
+      "items": 0,
+      "channel_link": "https://robbew.github.io/aiindeklas"
+    },
+    "en": {
+      "items": 0,
+      "channel_link": "https://robbew.github.io/aiindeklas"
+    }
+  },
+  "feed_channel_base_matches": true,
+  "feed_items_while_noindex": false,
+  "robots": {
+    "disallows_all": true,
+    "allows_root": false,
+    "expected_allow": false,
+    "posture_matches": true,
+    "sitemap_url": "https://robbew.github.io/aiindeklas/sitemap.xml",
+    "sitemap_url_matches": true
+  },
+  "json_ld": {
+    "blocks": 0,
+    "parsed_object_blocks": 0,
+    "parse_errors": 0,
+    "typed_blocks": 0,
+    "P12_manifest_mismatches": 0
+  },
+  "unresolved_case_collision_routes": [
+    "/education/tag/ai",
+    "/education/tag/education",
+    "/education/tag/greek",
+    "/education/tag/grieks",
+    "/education/tag/onderwijs",
+    "/education/tag/pythia",
+    "/education/tag/taal",
+    "/education/tag/vr",
+    "/onderwijs/tag/ai",
+    "/onderwijs/tag/education",
+    "/onderwijs/tag/gaming",
+    "/onderwijs/tag/greek",
+    "/onderwijs/tag/grieks",
+    "/onderwijs/tag/onderwijs",
+    "/onderwijs/tag/pythia",
+    "/onderwijs/tag/taal",
+    "/onderwijs/tag/vr"
+  ],
+  "accepted_exception_counts_match": true,
+  "status": "passed"
+}

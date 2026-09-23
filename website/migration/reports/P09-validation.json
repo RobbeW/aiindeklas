@@ -1,0 +1,22 @@
+{
+  "schema": "website-migration.p09-validation/v1",
+  "built": null,
+  "base": "/",
+  "passed": true,
+  "counts": {
+    "html_files": 0,
+    "iframes": 0,
+    "embeds_and_objects": 0,
+    "external_scripts": 0,
+    "provider_links": 0,
+    "unlabeled_provider_links": 0,
+    "source_markdown_files": 155,
+    "labelled_provider_links": 158,
+    "contact_content_records_checked": 2,
+    "contact_form_blocks": 2,
+    "embedly_wrapper_instances": 148,
+    "p08_video_deferrals_referenced": 18,
+    "contact_routes_checked": 0
+  },
+  "problems": []
+}

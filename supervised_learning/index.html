@@ -7,17 +7,7 @@
   <title>K-nabije buren — oefenomgeving</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Fonts & CodeMirror -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/python/python.js"></script>
-
-  <!-- Pyodide -->
-  <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
-
-  <!-- jsPDF voor export -->
-  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <!-- Optional teaching libraries load only after the visitor opts in. -->
 
   <style>
     :root {
@@ -551,6 +541,17 @@
       font-size:0.78rem;
       color:var(--muted);
     }
+    .resource-choice {
+      margin:0.75rem 1.5rem 0;
+      padding:0.85rem 1rem;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:#fff;
+    }
+    .resource-choice h2 { margin:0 0 0.35rem; font-size:1rem; }
+    .resource-choice p { margin:0 0 0.6rem; max-width:75ch; font-size:0.88rem; }
+    .resource-choice__status { min-height:1.2em; margin-top:0.4rem !important; color:var(--muted); }
+    button:disabled { cursor:not-allowed; opacity:0.6; }
 
     @media (max-width:960px) {
       main.layout {
@@ -573,7 +574,7 @@
         </div>
       </div>
       <div class="toolbar">
-        <button id="export-open" class="brand-btn" type="button">
+        <button id="export-open" class="brand-btn" type="button" disabled>
           <span>Exporteren als PDF</span>
         </button>
         <button id="theme-toggle" class="theme-toggle" type="button">
@@ -581,6 +582,13 @@
         </button>
       </div>
     </header>
+
+    <section class="resource-choice" aria-labelledby="resource-choice-title">
+      <h2 id="resource-choice-title">Externe lesbibliotheken</h2>
+      <p>De uitleg en oefeningen laden zonder externe diensten. Kies hieronder om CodeMirror en jsPDF van jsDelivr te laden. Deze aanbieder kan je IP-adres ontvangen. De Python-omgeving (Pyodide) wordt pas van jsDelivr gedownload wanneer je voor het eerst Python uitvoert.</p>
+      <button id="enable-online-resources" class="brand-btn" type="button">Laad lesbibliotheken</button>
+      <p id="resource-choice-status" class="resource-choice__status" role="status" aria-live="polite">Python uitvoeren en PDF-export zijn uitgeschakeld tot je dit kiest.</p>
+    </section>
 
     <main class="layout">
       <!-- LINKERKANT — PYTHON EDITOR -->
@@ -605,7 +613,7 @@ chloe_x, chloe_y = 5, 4
 print("We berekenen hieronder de afstanden:")
           </textarea>
           <div class="run-bar">
-            <button id="run-btn" class="run-btn" type="button">
+            <button id="run-btn" class="run-btn" type="button" disabled>
               Run Python
             </button>
             <div class="run-meta">
@@ -941,29 +949,75 @@ print("We berekenen hieronder de afstanden:")
       });
     })();
 
-    // CodeMirror initialisatie
+    // External libraries are loaded only after an informed visitor action.
     let editor;
-    document.addEventListener("DOMContentLoaded", () => {
-      editor = CodeMirror.fromTextArea($("code"), {
-        mode:"python",
-        lineNumbers:true,
-        indentUnit:4,
-        tabSize:4,
-        viewportMargin:Infinity
-      });
+    let pyodideReady;
+    const resourceStatus = $("resource-choice-status");
+    const loadExternalScript = (src) => new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[src="${src}"]`);
+      if (existing?.dataset.loaded === "true") { resolve(); return; }
+      const script = existing || document.createElement("script");
+      script.src = src;
+      script.async = true;
+      script.onload = () => { script.dataset.loaded = "true"; resolve(); };
+      script.onerror = () => { script.remove(); reject(new Error("Een lesbibliotheek kon niet worden geladen.")); };
+      if (!existing) document.head.appendChild(script);
+    });
+    const loadExternalStylesheet = (href) => new Promise((resolve, reject) => {
+      const existing = document.querySelector(`link[rel="stylesheet"][href="${href}"]`);
+      if (existing?.dataset.loaded === "true") { resolve(); return; }
+      const link = existing || document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = href;
+      link.onload = () => { link.dataset.loaded = "true"; resolve(); };
+      link.onerror = () => { link.remove(); reject(new Error("De editorstijl kon niet worden geladen.")); };
+      if (!existing) document.head.appendChild(link);
     });
 
-    // Pyodide laden
-    let pyodideReady = (async () => {
-      const pyodide = await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/" });
-      return pyodide;
-    })();
+    $("enable-online-resources").addEventListener("click", async (event) => {
+      const button = event.currentTarget;
+      button.disabled = true;
+      resourceStatus.textContent = "Lesbibliotheken worden geladen…";
+      try {
+        await Promise.all([
+          loadExternalStylesheet("https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.css"),
+          loadExternalScript("https://cdn.jsdelivr.net/npm/codemirror@5.65.16/lib/codemirror.min.js"),
+          loadExternalScript("https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js")
+        ]);
+        await loadExternalScript("https://cdn.jsdelivr.net/npm/codemirror@5.65.16/mode/python/python.js");
+        editor = CodeMirror.fromTextArea($("code"), {
+          mode:"python",
+          lineNumbers:true,
+          indentUnit:4,
+          tabSize:4,
+          viewportMargin:Infinity
+        });
+        $("run-btn").disabled = false;
+        $("export-open").disabled = false;
+        resourceStatus.textContent = "Bibliotheken geladen. Pyodide wordt pas gedownload wanneer je Python uitvoert.";
+      } catch (error) {
+        resourceStatus.textContent = error.message + " Controleer je verbinding en probeer opnieuw.";
+        button.disabled = false;
+      }
+    });
 
     async function runPython() {
       const pyOut = $("py-output");
       pyOut.textContent = "";
       const code = editor.getValue();
-      const pyodide = await pyodideReady;
+      if (!pyodideReady) {
+        pyOut.textContent = "Pythonomgeving wordt gedownload van jsDelivr…";
+        pyodideReady = loadExternalScript("https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js")
+          .then(() => loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/" }));
+      }
+      let pyodide;
+      try {
+        pyodide = await pyodideReady;
+      } catch (error) {
+        pyodideReady = null;
+        pyOut.textContent = "De Python-omgeving kon niet worden geladen. Controleer je verbinding en probeer opnieuw.\n" + error;
+        return;
+      }
 
       pyodide.setStdout({
         batched: (msg) => { pyOut.textContent += msg; }

@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase, type SiteLocale } from "../lib/routing";
+
+interface Props {
+  targetPath: string;
+  lang?: SiteLocale;
+}
+
+const { targetPath, lang = "nl-BE" } = Astro.props;
+const target = withBase(targetPath);
+const message = lang === "en" ? "This page has moved." : "Deze pagina is verhuisd.";
+const linkLabel = lang === "en" ? "Continue to the new page" : "Ga verder naar de nieuwe pagina";
+---
+
+<BaseLayout
+  title={`${message} — Robbe Wulgaert`}
+  description={message}
+  lang={lang}
+  canonicalPath={targetPath}
+  noindex={true}
+>
+  <meta slot="head" http-equiv="refresh" content={`0;url=${target}`} />
+  <main id="main-content" tabindex="-1" class="shell redirect-shell">
+    <h1>{message}</h1>
+    <p><a class="button button--primary" href={target}>{linkLabel}</a></p>
+  </main>
+  <script is:inline define:vars={{ target }}>window.location.replace(target);</script>
+</BaseLayout>
+
+<style>
+  .redirect-shell { display: grid; min-height: 100svh; align-content: center; padding-block: var(--section-space); }
+  h1 { max-width: 14ch; margin: 0; color: var(--color-ink); font-size: var(--font-size-h2); line-height: 1; }
+</style>

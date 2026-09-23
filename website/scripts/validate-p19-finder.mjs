@@ -1,0 +1,30 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { load } from "cheerio";
+import { recommendWorkshops, relatedProjects } from "../src/lib/workshop-finder.mjs";
+
+const html = readFileSync(resolve(import.meta.dirname, "../dist/onderwijs/workshops-en-nascholingen.html"), "utf8");
+const $ = load(html);
+const data = JSON.parse($("#workshop-finder-data").text());
+assert.equal($(".offer-category").length, 3, "three offer categories must be visible");
+assert.equal(data.offers.length, 12, "all twelve published sessions must be mapped");
+assert.ok(data.offers.every((offer) => offer.published && !Object.hasOwn(offer, "price")));
+assert.ok(data.offers.every((offer) => $("#detail-" + offer.slug).length === 1), "each recommendation must lead to preserved source details");
+assert.ok(!data.offers.some((offer) => offer.title === "Interview met de Geschiedenis"), "supporting projects cannot be bookable");
+const choice = { persona: "schoolleider_beleid", need: "breed_kader", subject: "", duration: "ongeveer_90_min", groupSize: "31_100" };
+const keynote = recommendWorkshops(data, choice);
+assert.equal(keynote.length, 2);
+assert.ok(keynote.every((result) => result.offer.category === "keynote_inspiratie" && result.formats.every((format) => format.type === "keynote")));
+assert.deepEqual(recommendWorkshops(data, { ...choice, groupSize: "meer_dan_100" }), []);
+assert.ok(!recommendWorkshops(data, { ...choice, need: "praktisch_ai", groupSize: "31_100" })
+  .some((result) => result.offer.id === "putting_the_chat_in_chatgpt"), "published 30-person limit must filter the offer");
+const history = { ...choice, need: "vakspecifiek", subject: "geschiedenis", groupSize: "tot_15" };
+assert.deepEqual(recommendWorkshops(data, history), []);
+assert.ok(relatedProjects(data, history).some((project) => project.title === "Interview met de Geschiedenis"));
+const writing = recommendWorkshops(data, { ...choice, need: "vakspecifiek", subject: "talen", duration: "ongeveer_2_uur", groupSize: "16_30" });
+assert.ok(writing.some((result) => result.offer.id === "schrijftaken_zonder_aiaiai" && result.offer.durationConflict));
+assert.ok(writing.length <= 3);
+assert.ok($("[data-workshop-finder] select[required]").length >= 4);
+assert.ok($("[data-contact-email-form]", readFileSync(resolve(import.meta.dirname, "../dist/contact.html"), "utf8")).length === 1);
+console.log(JSON.stringify({ categories: 3, publishedOffers: data.offers.length, cases: 6, status: "passed" }, null, 2));

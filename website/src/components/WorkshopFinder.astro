@@ -1,0 +1,250 @@
+---
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { parse } from "yaml";
+import { withBase } from "../lib/routing";
+
+interface Workshop { title: string; slug: string; programme: string; }
+interface Props { workshops: Workshop[]; }
+const { workshops } = Astro.props;
+const brief = parse(readFileSync(resolve(process.cwd(), "docs/client_onboarding_workshop_finder.yaml"), "utf8"));
+const byTitle = new Map(workshops.map((workshop) => [workshop.title, workshop]));
+const offers = Object.entries(brief.bookable_offers as Record<string, any>)
+  .filter(([, offer]) => offer.published === true)
+  .map(([id, offer]) => {
+    const source = byTitle.get(offer.published_title);
+    if (!source) throw new Error(`Finder offer is missing from the published workshop collection: ${id}`);
+    const formats = offer.published_formats
+      .filter((format: any) => !offer.finder_exposed_formats || offer.finder_exposed_formats.includes(format.type))
+      .map((format: any) => ({
+        type: format.type,
+        duration_minutes: format.duration_minutes ?? format.duration_minutes_for_routing,
+        max_group_size: format.max_group_size ?? null,
+        online_available: format.online_available ?? format.type === "workshop_online",
+        laptop_required: format.laptop_required ?? false
+      }));
+    if (!formats.length || formats.some((format: any) => !Number.isFinite(format.duration_minutes))) {
+      throw new Error(`Finder offer has no usable published format: ${id}`);
+    }
+    return {
+      id, title: offer.published_title, slug: source.slug, category: offer.primary_category,
+      subcategory: offer.subcategory, published: true, formats,
+      audience: offer.published_audience, tags: offer.topic_tags,
+      programme: source.programme, durationConflict: Boolean(offer.data_quality?.duration_conflict)
+    };
+  });
+const offerById = new Map(offers.map((offer) => [offer.id, offer]));
+for (const [id, category] of Object.entries(brief.categories as Record<string, any>)) {
+  for (const offerId of category.bookable_offer_ids ?? Object.values(category.subcategories ?? {}).flatMap((sub: any) => sub.bookable_offer_ids)) {
+    if (!offerById.has(offerId)) throw new Error(`Category ${id} refers to an unpublished offer: ${offerId}`);
+  }
+}
+const categories = Object.entries(brief.categories as Record<string, any>).map(([id, value]) => ({
+  id, label: value.label, question: value.customer_question,
+  offerIds: value.bookable_offer_ids ?? Object.values(value.subcategories ?? {}).flatMap((sub: any) => sub.bookable_offer_ids)
+}));
+const data = {
+  offers,
+  projects: Object.entries(brief.supporting_projects as Record<string, any>)
+    .filter(([, project]) => project.bookable_offer === false)
+    .map(([id, project]) => ({ id, title: project.published_title, category: project.primary_category, subcategory: project.subcategory })),
+  categories: Object.fromEntries(categories.map((category) => [category.id, category.label])),
+  subcategories: Object.fromEntries(Object.entries(brief.categories.vakspecifieke_professionalisering.subcategories as Record<string, any>)
+    .map(([id, sub]) => [id, sub.label])),
+  personas: brief.personas,
+  questions: brief.onboarding_questions,
+  maxRecommendations: brief.result_page.max_recommendations,
+  maxProjects: brief.result_page.supporting_content.max_projects
+};
+const serialized = JSON.stringify(data).replaceAll("<", "\\u003c");
+---
+
+<section class="section shell finder-section" aria-labelledby="offer-heading">
+  <div class="finder-intro">
+    <h2 id="offer-heading">Kies een sessie die past bij je vraag</h2>
+    <p>Verken het gepubliceerde aanbod per thema of beantwoord vier korte vragen. De finder stelt maximaal drie bestaande sessies voor. Duur en groepsgrootte worden waar nodig samen bevestigd.</p>
+  </div>
+  <div class="offer-categories">
+    {categories.map((category) => <article class="offer-category">
+      <h3>{category.label}</h3>
+      <p>{category.question}</p>
+      <ul>{category.offerIds.map((id: string) => {
+        const offer = offerById.get(id)!;
+        return <li><a href={`#detail-${offer.slug}`}>{offer.title}</a></li>;
+      })}</ul>
+    </article>)}
+  </div>
+
+  <div class="finder-panel" data-workshop-finder data-contact-href={withBase("/contact")}>
+    <div class="finder-heading">
+      <h3 id="finder-heading">Vind een passende keynote of workshop</h3>
+      <p>Je keuzes blijven in deze browserpagina. Voor contact opent de website een e-mailconcept in je eigen mailprogramma.</p>
+    </div>
+    <form class="finder-form" aria-labelledby="finder-heading" data-finder-form>
+      <div class="finder-field">
+        <label for="finder-persona">{brief.onboarding_questions.q1_persona.prompt}</label>
+        <select id="finder-persona" name="persona" required><option value="">Maak een keuze</option>{brief.onboarding_questions.q1_persona.options.map((option: any) => <option value={option.id}>{option.label}</option>)}</select>
+      </div>
+      <div class="finder-field">
+        <label for="finder-need">{brief.onboarding_questions.q2_need.prompt}</label>
+        <select id="finder-need" name="need" required><option value="">Maak een keuze</option>{brief.onboarding_questions.q2_need.options.map((option: any) => <option value={option.id}>{option.label}</option>)}</select>
+      </div>
+      <div class="finder-field" data-subject-field hidden>
+        <label for="finder-subject">{brief.onboarding_questions.q2b_subject.prompt}</label>
+        <select id="finder-subject" name="subject" disabled><option value="">Maak een keuze</option>{brief.onboarding_questions.q2b_subject.options.map((option: any) => <option value={option.id}>{option.label}</option>)}</select>
+      </div>
+      <div class="finder-field">
+        <label for="finder-duration">{brief.onboarding_questions.q3_duration.prompt}</label>
+        <select id="finder-duration" name="duration" required><option value="">Maak een keuze</option>{brief.onboarding_questions.q3_duration.options.map((option: any) => <option value={option.id}>{option.label}</option>)}</select>
+      </div>
+      <div class="finder-field">
+        <label for="finder-group">{brief.onboarding_questions.q4_group_size.prompt}</label>
+        <select id="finder-group" name="groupSize" required><option value="">Maak een keuze</option>{brief.onboarding_questions.q4_group_size.options.map((option: any) => <option value={option.id}>{option.label}</option>)}</select>
+      </div>
+      <button class="button button--primary" type="submit">Toon passende sessies</button>
+    </form>
+    <div class="finder-results" data-finder-results aria-live="polite" aria-atomic="false" hidden></div>
+    <noscript><p>De finder gebruikt JavaScript. Je kan alle sessies via de categorieën hierboven en de volledige beschrijvingen hieronder bekijken.</p></noscript>
+  </div>
+  <script id="workshop-finder-data" type="application/json" is:inline set:html={serialized} />
+</section>
+
+<script>
+  import { recommendWorkshops, relatedProjects } from "../lib/workshop-finder.mjs";
+
+  const finder = document.querySelector<HTMLElement>("[data-workshop-finder]");
+  const dataElement = document.querySelector<HTMLScriptElement>("#workshop-finder-data");
+  if (finder && dataElement) {
+    const data = JSON.parse(dataElement.textContent ?? "{}");
+    const form = finder.querySelector<HTMLFormElement>("[data-finder-form]")!;
+    const results = finder.querySelector<HTMLElement>("[data-finder-results]")!;
+    const need = form.elements.namedItem("need") as HTMLSelectElement;
+    const subject = form.elements.namedItem("subject") as HTMLSelectElement;
+    const subjectField = finder.querySelector<HTMLElement>("[data-subject-field]")!;
+    const node = (tag: string, className: string, value?: string) => {
+      const element = document.createElement(tag);
+      if (className) element.className = className;
+      if (value) element.textContent = value;
+      return element;
+    };
+    const optionLabel = (question: string, id: string) => data.questions[question].options.find((option: any) => option.id === id)?.label ?? id;
+    const durationLabel = (minutes: number) => `${minutes} minuten`;
+    const formatLabel = (type: string) => ({ workshop_online: "Online workshop", workshop_fysiek: "Workshop op locatie" } as Record<string, string>)[type] ?? type;
+    const contactLink = (choice: Record<string, string>, offer?: any) => {
+      const url = new URL(finder.dataset.contactHref ?? "/contact", location.origin);
+      url.searchParams.set("persona", optionLabel("q1_persona", choice.persona));
+      url.searchParams.set("need", optionLabel("q2_need", choice.need));
+      if (choice.subject) url.searchParams.set("subject_area", optionLabel("q2b_subject", choice.subject));
+      url.searchParams.set("duration", optionLabel("q3_duration", choice.duration));
+      url.searchParams.set("group_size", optionLabel("q4_group_size", choice.groupSize));
+      if (offer) { url.searchParams.set("offer_id", offer.id); url.searchParams.set("offer", offer.title); }
+      else url.searchParams.set("workshop_request", "1");
+      return url.pathname + url.search;
+    };
+    const syncSubject = () => {
+      const visible = need.value === "vakspecifiek";
+      subjectField.hidden = !visible;
+      subject.disabled = !visible;
+      subject.required = visible;
+      if (!visible) subject.value = "";
+    };
+    need.addEventListener("change", syncSubject);
+    form.addEventListener("change", () => { results.hidden = true; });
+    syncSubject();
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const values = new FormData(form);
+      const choice = Object.fromEntries(["persona", "need", "subject", "duration", "groupSize"]
+        .map((key) => [key, String(values.get(key) ?? "")])) as Record<string, string>;
+      const recommendations = recommendWorkshops(data, choice);
+      results.replaceChildren();
+      results.hidden = false;
+      results.append(node("h4", "", recommendations.length ? "Voorgestelde sessies" : "Geen bevestigde sessie voor deze combinatie"));
+      if (!recommendations.length) {
+        results.append(node("p", "", choice.subject === "geschiedenis"
+          ? "Er staat momenteel geen afzonderlijke geschiedenisnascholing in het gepubliceerde aanbod."
+          : choice.groupSize === "meer_dan_100"
+            ? "Voor meer dan 100 deelnemers is geen sessie met een gepubliceerd passend maximum bevestigd. Bespreek je vraag rechtstreeks."
+            : "Er is geen gepubliceerde sessie die aan deze combinatie voldoet. Bespreek je vraag rechtstreeks."));
+      }
+      const list = node("div", "finder-result-list");
+      for (const item of recommendations) {
+        const { offer, formats, bestFormat, exactDuration, groupConfirmed } = item;
+        const card = node("article", "finder-result");
+        card.append(node("h5", "", offer.title));
+        const reason = exactDuration
+          ? "De inhoud en opgegeven tijd sluiten aan op je keuze."
+          : "De inhoud sluit aan; de gepubliceerde tijd wijkt af van je keuze en moet worden besproken.";
+        card.append(node("p", "finder-reason", reason));
+        card.append(node("p", "", `Categorie: ${data.categories[offer.category]}${offer.subcategory ? ` · ${data.subcategories[offer.subcategory]}` : ""}`));
+        card.append(node("p", "", `Vormen en duur: ${formats.map((format: any) => `${formatLabel(format.type)} (${durationLabel(format.duration_minutes)})`).join("; ")}.`));
+        card.append(node("p", "", groupConfirmed
+          ? `Gepubliceerd maximum: ${bestFormat.max_group_size} deelnemers.`
+          : "Groepsgrootte voor deze vorm te bevestigen."));
+        if (formats.some((format: any) => format.laptop_required)) card.append(node("p", "", "Voor de praktische vorm is een laptop nodig."));
+        if (formats.some((format: any) => format.online_available)) card.append(node("p", "", "Een online vorm is gepubliceerd."));
+        if (offer.durationConflict) card.append(node("p", "finder-caution", "De huidige pagina vermeldt tegenstrijdige duurtijden. Bevestig de juiste duur bij contact."));
+        card.append(node("p", "", `Voor: ${offer.audience.join(", ")}.`));
+        card.append(node("p", "", `Onderwerpen: ${offer.tags.join(", ")}.`));
+        const detail = node("a", "finder-detail", "Bekijk programma, leerdoelen en praktische informatie");
+        detail.setAttribute("href", `#detail-${offer.slug}`);
+        card.append(detail);
+        const contact = node("a", "button button--primary finder-contact", "Bespreek deze sessie");
+        contact.setAttribute("href", contactLink(choice, offer));
+        card.append(contact);
+        list.append(card);
+      }
+      results.append(list);
+      const projects = relatedProjects(data, choice);
+      if (projects.length) {
+        results.append(node("h5", "finder-project-heading", "Bekijk ook relevant lesmateriaal en projecten"));
+        const projectList = node("ul", "finder-projects");
+        for (const project of projects) projectList.append(node("li", "", project.title));
+        results.append(projectList);
+        results.append(node("p", "finder-project-note", "Dit zijn voorbeelden en geen boekbare sessies."));
+      }
+      if (!recommendations.length) {
+        const contact = node("a", "button button--primary finder-contact", "Bespreek je vraag");
+        contact.setAttribute("href", contactLink(choice));
+        results.append(contact);
+      }
+      results.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    });
+  }
+</script>
+
+<style>
+  .finder-section { display: grid; gap: 2rem; }
+  .finder-intro { max-width: var(--content-readable); }
+  .finder-intro h2 { color: var(--color-ink); margin-bottom: .5rem; }
+  .finder-intro p { color: var(--color-muted); }
+  .offer-categories { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+  .offer-category, .finder-panel, :global(.finder-result) { border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); padding: clamp(1rem, 2.5vw, 1.5rem); }
+  .offer-category h3 { margin-top: 0; color: var(--color-ink); }
+  .offer-category p { color: var(--color-muted); }
+  .offer-category ul { margin-bottom: 0; padding-left: 1.25rem; }
+  .offer-category li + li { margin-top: .45rem; }
+  .offer-category a, :global(.finder-detail) { color: var(--color-brand-dark); text-underline-offset: .2em; }
+  .finder-panel { display: grid; gap: 1.5rem; scroll-margin-top: 2rem; }
+  .finder-heading h3 { margin: 0 0 .4rem; color: var(--color-ink); }
+  .finder-heading p { margin: 0; color: var(--color-muted); }
+  .finder-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; gap: 1rem; }
+  .finder-field { display: grid; gap: .35rem; }
+  .finder-field[hidden] { display: none; }
+  .finder-field label { font-weight: 750; color: var(--color-ink); }
+  .finder-field select { width: 100%; min-height: 2.9rem; padding: .5rem; border: 1px solid var(--color-line); border-radius: .25rem; color: var(--color-ink); background: var(--color-background); }
+  .finder-form button { justify-self: start; }
+  .finder-results[hidden] { display: none; }
+  .finder-results { display: grid; gap: 1rem; scroll-margin-top: 2rem; }
+  .finder-results :global(h4), .finder-results :global(h5) { color: var(--color-ink); margin: 0; }
+  .finder-results :global(.finder-result-list) { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+  .finder-results :global(.finder-result) { display: grid; align-content: start; gap: .65rem; }
+  .finder-results :global(.finder-result p) { margin: 0; }
+  .finder-results :global(.finder-reason), .finder-results :global(.finder-caution) { font-weight: 650; }
+  .finder-results :global(.finder-caution) { color: var(--color-brand-dark); }
+  .finder-results :global(.finder-contact) { justify-self: start; margin-top: .4rem; }
+  .finder-results :global(.finder-projects) { margin: 0; }
+  .finder-results :global(.finder-project-note) { color: var(--color-muted); margin-top: 0; }
+  @media (max-width: 42rem) { .finder-form { grid-template-columns: 1fr; } }
+</style>

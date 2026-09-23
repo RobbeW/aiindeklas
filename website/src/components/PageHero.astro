@@ -1,0 +1,75 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  tone?: "brand" | "light";
+}
+
+const { title, lead, tone = "light" } = Astro.props;
+---
+
+<section class:list={["page-hero", `page-hero--${tone}`]} aria-labelledby="page-title">
+  <div class="shell page-hero-grid">
+    <div>
+      <h1 id="page-title">{title}</h1>
+      <p class="lead">{lead}</p>
+      <div class="hero-actions"><slot name="actions" /></div>
+    </div>
+    <div class="hero-aside"><slot name="aside" /></div>
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    overflow: clip;
+    padding-block: clamp(4.5rem, 10vw, 8rem);
+  }
+
+  .page-hero--brand {
+    position: relative;
+    color: white;
+    background:
+      radial-gradient(circle at 90% 15%, rgb(61 255 208 / 28%), transparent 28rem),
+      linear-gradient(140deg, var(--color-brand-dark), var(--color-brand) 62%, #6a2cff);
+  }
+
+  .page-hero--light {
+    background:
+      radial-gradient(circle at 85% 10%, rgb(82 0 255 / 13%), transparent 24rem),
+      var(--color-background);
+  }
+
+  .page-hero-grid { display: grid; min-width: 0; grid-template-columns: minmax(0, 1fr); gap: 2.5rem; align-items: center; }
+  .page-hero-grid > * { min-width: 0; }
+
+  h1 {
+    max-width: 13ch;
+    overflow-wrap: anywhere;
+    margin: 0;
+    color: inherit;
+    font-size: var(--font-size-hero);
+    font-weight: 950;
+    letter-spacing: -0.052em;
+    line-height: 0.95;
+  }
+
+  .page-hero--light h1 { color: var(--color-ink); }
+
+  .lead {
+    max-width: 42rem;
+    margin: 1.6rem 0 0;
+    color: inherit;
+    font-size: var(--font-size-lead);
+    opacity: 0.84;
+  }
+
+  .page-hero--light .lead { color: var(--color-muted); opacity: 1; }
+  .hero-actions:empty,
+  .hero-aside:empty { display: none; }
+  .hero-actions { margin-top: 2rem; }
+
+  @media (min-width: 52rem) {
+    .page-hero-grid:has(.hero-aside:not(:empty)) { grid-template-columns: minmax(0, 1.45fr) minmax(17rem, 0.75fr); }
+  }
+</style>
