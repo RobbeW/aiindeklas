@@ -1,0 +1,58 @@
+schema_version: "1.0.0"
+updated_at: "2026-07-20T10:15:00+02:00"
+tasks:
+  - id: "P0-T01"
+    objective: "Preserve the workspace and establish a reproducible local Astro build."
+    phase: "P0"
+    dependencies: []
+    status: "completed"
+  - id: "P1-T01"
+    objective: "Discover and classify all public same-origin source URLs."
+    phase: "P1"
+    dependencies: ["P0-T01"]
+    status: "completed"
+  - id: "P2-T01"
+    objective: "Snapshot and hash every migratable source page."
+    phase: "P2"
+    dependencies: ["P1-T01"]
+    status: "completed"
+  - id: "P3-T01"
+    objective: "Finalise content, route, design, and decision models."
+    phase: "P3"
+    dependencies: ["P2-T01"]
+    status: "completed"
+  - id: "H2"
+    objective: "Owner approval of information architecture, design, CMS, contact, privacy, media, and canonical direction."
+    phase: "H2"
+    dependencies: ["P3-T01"]
+    status: "completed"
+  - id: "P4-T01"
+    objective: "Integrate the approved models into the local application."
+    phase: "P4"
+    dependencies: ["H2"]
+    status: "completed"
+  - id: "P5-T01"
+    objective: "Migrate source content and assets deterministically."
+    phase: "P5"
+    dependencies: ["P4-T01"]
+    status: "completed"
+  - id: "P6-T01"
+    objective: "Build and document the local CMS Studio."
+    phase: "P6"
+    dependencies: ["P5-T01"]
+    status: "completed"
+  - id: "P7-T01"
+    objective: "Run parity and quality gates."
+    phase: "P7"
+    dependencies: ["P5-T01", "P6-T01"]
+    status: "blocked_by_owner_decision"
+  - id: "P8-T01"
+    objective: "Prepare the local owner-review package."
+    phase: "P8"
+    dependencies: ["P7-T01"]
+    status: "pending"
+  - id: "P9-T01"
+    objective: "Optionally create and publish RobbeW/aiindeklas."
+    phase: "P9"
+    dependencies: ["P8-T01", "H3"]
+    status: "blocked_by_human_gate"

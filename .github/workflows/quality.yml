@@ -21,25 +21,5 @@ jobs:
         with:
           node-version: 22.12.0
           cache: pnpm
-          cache-dependency-path: website/pnpm-lock.yaml
       - run: pnpm install --frozen-lockfile
-        working-directory: website
-      - run: node scripts/validate-content-model.mjs
-        working-directory: website
-      - run: node scripts/run-astro.mjs check
-        working-directory: website
-      - run: node scripts/build-profile.mjs root
-        working-directory: website
-      - run: node scripts/build-profile.mjs project
-        working-directory: website
-      - run: node scripts/validate-p19-finder.mjs
-        working-directory: website
-      - run: node scripts/p19-browser-smoke.mjs
-        working-directory: website
-      - run: node scripts/p14-pages-smoke.mjs --local dist
-        working-directory: website
-      - run: node scripts/assemble-pages-artifact.mjs
-      - run: node scripts/validate-p18-privacy.mjs
-        working-directory: website
-      - run: node scripts/p18-browser-smoke.mjs
-        working-directory: website
+      - run: pnpm quality:p4

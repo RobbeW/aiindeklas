@@ -1,0 +1,18 @@
+kind: "footer"
+schema_version: "1.0.0"
+copyright_name: "Robbe Wulgaert"
+business_registration: "Ondernemingsnummer ‘AI in de Klas’: BE0802831980"
+locales:
+  nl-BE:
+    links:
+      - label: "Contact"
+        path: "/contact"
+        destination_locale: "nl-BE"
+      - label: "Verkoopsvoorwaarden"
+        path: "/verkoopsvoorwaarden"
+        destination_locale: "nl-BE"
+  en:
+    links:
+      - label: "Contact Info"
+        path: "/contactinfo"
+        destination_locale: "en"

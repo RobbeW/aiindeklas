@@ -1,0 +1,9 @@
+{
+  "schema": "website-migration.p18-privacy-audit/v1",
+  "artifact": "../_site",
+  "html_pages": 366,
+  "pages_with_notice": 361,
+  "automatic_external_resources": 0,
+  "passed": true,
+  "problems": []
+}

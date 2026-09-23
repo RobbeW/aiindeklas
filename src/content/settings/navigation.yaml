@@ -1,0 +1,27 @@
+kind: "navigation"
+schema_version: "1.0.0"
+locales:
+  nl-BE:
+    label: "Nederlands"
+    items:
+      - label: "Over"
+        path: "/"
+      - label: "Boek"
+        path: "/boek"
+      - label: "Onderwijs"
+        path: "/onderwijs"
+      - label: "Nascholingen"
+        path: "/onderwijs/workshops-en-nascholingen"
+      - label: "Contact"
+        path: "/contact"
+  en:
+    label: "English"
+    items:
+      - label: "About"
+        path: "/about"
+      - label: "Contact Info"
+        path: "/contactinfo"
+      - label: "Education"
+        path: "/education"
+      - label: "Projects"
+        path: "/projects"

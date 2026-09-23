@@ -1,0 +1,188 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import type { ImageMetadata } from "astro";
+import { getImage } from "astro:assets";
+import ContentPage from "../components/ContentPage.astro";
+import RouteListingPage, { type ListingCard } from "../components/RouteListingPage.astro";
+import WorkshopCollectionPage from "../components/WorkshopCollectionPage.astro";
+import taxonomyRoutes from "../data/taxonomy-routes.json";
+import { toDocumentViewModel } from "../lib/content-view";
+import type { SiteLocale } from "../lib/routing";
+
+type BodyEntry = CollectionEntry<"pages"> | CollectionEntry<"articles">;
+type ListingProps = {
+  kind: "listing";
+  title: string;
+  seoTitle?: string;
+  description: string;
+  locale: SiteLocale;
+  canonicalPath: string;
+  eyebrow: string;
+  cards: ListingCard[];
+  alternatePath?: string | null;
+  introEntry?: CollectionEntry<"pages"> | null;
+};
+type WorkshopProps = { kind: "workshops"; workshops: Array<{ data: CollectionEntry<"workshops">["data"]; html: string }> };
+type RouteProps = { kind: "content"; entry: BodyEntry; socialImage: ImageMetadata | null; alternatePath?: string | null } | ListingProps | WorkshopProps;
+
+export const getStaticPaths = async () => {
+  const [pageEntries, articleEntries, workshopEntries, projectEntries, mediaEntries] = await Promise.all([
+    getCollection("pages"),
+    getCollection("articles"),
+    getCollection("workshops"),
+    getCollection("projects"),
+    getCollection("media")
+  ]);
+  const migratedImages = import.meta.glob<{ default: ImageMetadata }>("../assets/migrated/**/*.{avif,gif,jpeg,jpg,png,webp}", { eager: true });
+  const mediaById = new Map(mediaEntries.map((entry) => [entry.id, entry]));
+  const imageFor = (entry: CollectionEntry<"articles"> | CollectionEntry<"pages">) => {
+    const reference = entry.data.hero ?? entry.data.seo.image;
+    const mediaId = typeof reference === "string" ? reference : reference?.id;
+    const media = mediaId ? mediaById.get(mediaId) : null;
+    if (!media || !media.data.mime_type.startsWith("image/")) return null;
+    const importPath = media.data.output_path.replace(/^src\/assets\//, "../assets/");
+    return migratedImages[importPath]?.default ?? null;
+  };
+  const pagesByPath = new Map(pageEntries.flatMap((entry) => entry.data.seo.canonical_path ? [[entry.data.seo.canonical_path, entry] as const] : []));
+  const articlesByPath = new Map(articleEntries.flatMap((entry) => entry.data.seo.canonical_path ? [[entry.data.seo.canonical_path, entry] as const] : []));
+  const descriptionFor = (entry: CollectionEntry<"articles">) =>
+    toDocumentViewModel(entry).description;
+  const listingPaths = new Set(["/onderwijs", "/education", "/projects"]);
+
+  const contentRoutes = [
+    ...pageEntries.filter(({ data }) => data.seo.canonical_path && data.seo.canonical_path !== "/" && !listingPaths.has(data.seo.canonical_path)),
+    ...articleEntries
+  ].map((entry) => ({
+    params: { path: entry.data.seo.canonical_path!.slice(1) },
+    props: {
+      kind: "content" as const,
+      entry,
+      socialImage: entry.collection === "articles" || entry.collection === "pages" ? imageFor(entry) : null,
+      alternatePath: entry.collection === "pages"
+        ? entry.data.seo.canonical_path === "/about" ? "/"
+          : entry.data.seo.canonical_path === "/contact" ? "/contactinfo"
+            : entry.data.seo.canonical_path === "/contactinfo" ? "/contact"
+              : null
+        : null
+    }
+  }));
+
+  const articleCards = (locale: SiteLocale): ListingCard[] => articleEntries
+    .filter(({ data }) => data.locale === locale)
+    .sort((a, b) => String(b.data.published_at).localeCompare(String(a.data.published_at)))
+    .map((entry) => ({
+      id: entry.id,
+      title: entry.data.title,
+      description: descriptionFor(entry),
+      href: entry.data.seo.canonical_path!,
+      meta: entry.data.published_at ? new Date(entry.data.published_at).toLocaleDateString(locale) : null,
+      image: imageFor(entry)
+    }));
+
+  const listingRoutes: Array<{ params: { path: string }; props: ListingProps | WorkshopProps }> = [
+    {
+      params: { path: "onderwijs" },
+      props: {
+        kind: "listing", title: pagesByPath.get("/onderwijs")!.data.title,
+        description: pagesByPath.get("/onderwijs")!.data.seo.description ?? "Artikels over onderwijs en technologie.",
+        locale: "nl-BE", canonicalPath: "/onderwijs", eyebrow: "Onderwijs",
+        cards: articleCards("nl-BE"), alternatePath: "/education", introEntry: pagesByPath.get("/onderwijs")
+      }
+    },
+    {
+      params: { path: "education" },
+      props: {
+        kind: "listing", title: pagesByPath.get("/education")!.data.title,
+        description: pagesByPath.get("/education")!.data.seo.description ?? "Articles about education and technology.",
+        locale: "en", canonicalPath: "/education", eyebrow: "Education",
+        cards: articleCards("en"), alternatePath: "/onderwijs", introEntry: pagesByPath.get("/education")
+      }
+    },
+    {
+      params: { path: "onderwijs/workshops-en-nascholingen" },
+      props: {
+        kind: "workshops",
+        workshops: workshopEntries.map((entry) => {
+          const prefix = `workshop-${entry.data.slug}-`;
+          const html = (entry as typeof entry & { rendered?: { html?: string } }).rendered?.html;
+          if (typeof html !== "string") throw new Error(`Missing compiled Markdown body for ${entry.id}`);
+          const ids = new Map([...html.matchAll(/\bid="([^"]+)"/g)].map((match) => [match[1], `${prefix}${match[1]}`]));
+          let namespaced = html.replace(/\bid="([^"]+)"/g, (_match, id: string) => `id="${ids.get(id)}"`);
+          for (const [oldId, newId] of ids) namespaced = namespaced.replaceAll(`href="#${oldId}"`, `href="#${newId}"`);
+          return { data: entry.data, html: namespaced };
+        })
+      }
+    },
+    {
+      params: { path: "projects" },
+      props: {
+        kind: "listing", title: pagesByPath.get("/projects")!.data.title,
+        description: pagesByPath.get("/projects")!.data.seo.description ?? "Educational projects by Robbe Wulgaert.",
+        locale: "en", canonicalPath: "/projects", eyebrow: "Project catalogue",
+        cards: projectEntries.map((entry) => ({
+          id: entry.data.slug,
+          title: entry.data.title,
+          description: entry.data.excerpt ?? "Educational technology project.",
+          href: entry.data.external_url,
+          meta: entry.data.project_family.replaceAll("_", " "),
+          external: true
+        })),
+        introEntry: pagesByPath.get("/projects")
+      }
+    }
+  ];
+
+  const taxonomyListings = taxonomyRoutes.map((taxonomy) => ({
+    params: { path: decodeURIComponent(taxonomy.path.slice(1)) },
+    props: {
+      kind: "listing" as const,
+      title: taxonomy.label,
+      seoTitle: `${taxonomy.type === "tag" ? "Tag" : "Category"}: ${taxonomy.label} — ${taxonomy.locale === "en" ? "Education" : "Onderwijs"}`,
+      description: taxonomy.locale === "en"
+        ? `Articles in the source ${taxonomy.type} archive “${taxonomy.label}”.`
+        : `Artikels in het bronarchief ${taxonomy.type} “${taxonomy.label}”.`,
+      locale: taxonomy.locale as SiteLocale,
+      canonicalPath: taxonomy.path,
+      eyebrow: taxonomy.type === "tag" ? "Tag" : "Category",
+      cards: taxonomy.articles.flatMap((pathname) => {
+        const entry = articlesByPath.get(pathname);
+        return entry ? [{
+          id: entry.id,
+          title: entry.data.title,
+          description: descriptionFor(entry),
+          href: pathname,
+          meta: entry.data.published_at ? new Date(entry.data.published_at).toLocaleDateString(entry.data.locale) : null,
+          image: imageFor(entry)
+        }] : [];
+      })
+    }
+  }));
+
+  return [...contentRoutes, ...listingRoutes, ...taxonomyListings];
+};
+
+const route = Astro.props as RouteProps;
+const renderedContent = route.kind === "content" ? await render(route.entry) : null;
+const renderedIntro = route.kind === "listing" && route.introEntry ? await render(route.introEntry) : null;
+const Content = renderedContent?.Content;
+const Intro = renderedIntro?.Content;
+const view = route.kind === "content" ? toDocumentViewModel(route.entry, route.socialImage) : null;
+const socialImage = view?.socialImage ? (await getImage({ src: view.socialImage })).src : null;
+---
+
+{route.kind === "content" && Content && view
+  ? <ContentPage view={view} socialImage={socialImage} alternatePath={route.alternatePath}><Content /></ContentPage>
+  : route.kind === "workshops"
+    ? <WorkshopCollectionPage workshops={route.workshops.map(({ data, html }) => ({ ...data, sourceDetails: data.source_details, html }))} />
+  : route.kind === "listing"
+    ? <RouteListingPage
+        title={route.title}
+        seoTitle={route.seoTitle}
+        description={route.description}
+        locale={route.locale}
+        canonicalPath={route.canonicalPath}
+        eyebrow={route.eyebrow}
+        cards={route.cards}
+        alternatePath={route.alternatePath}
+      >{Intro && <Intro />}</RouteListingPage>
+    : null}

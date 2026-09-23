@@ -1,0 +1,96 @@
+---
+import { getCollection } from "astro:content";
+import { withBase, type SiteLocale } from "../lib/routing";
+
+interface Props { lang: SiteLocale; sourceHome?: boolean; }
+const { lang, sourceHome = false } = Astro.props;
+const settings = await getCollection("settings");
+const footerEntry = settings.find(({ data }) => data.kind === "footer");
+const socialEntry = settings.find(({ data }) => data.kind === "social");
+if (!footerEntry || footerEntry.data.kind !== "footer") throw new Error("Footer settings are missing");
+if (!socialEntry || socialEntry.data.kind !== "social") throw new Error("Social settings are missing");
+---
+
+<footer class:list={["site-footer", { "source-home-footer": sourceHome }]}>
+  <div class="shell footer-grid">
+    <div>
+      <p class="footer-name">Robbe Wulgaert</p>
+      <p class="footer-registration">{footerEntry.data.business_registration}</p>
+    </div>
+    <nav aria-label={lang === "en" ? "Footer navigation" : "Voetnavigatie"}>
+      <ul class="footer-links">
+        {footerEntry.data.locales[lang].links.map((link) => (
+          <li>
+            <a href={withBase(link.path)} hreflang={link.destination_locale} lang={link.destination_locale}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+        {socialEntry.data.links.map((link) => (
+          <li><a href={link.url} target="_blank" rel="me noopener noreferrer" aria-label={`${link.platform} — ${link.label}`}>{link.platform}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+  <div class="shell footer-bottom">
+    <small>© {new Date().getFullYear()} {footerEntry.data.copyright_name}</small>
+    <button type="button" class="privacy-open" data-privacy-open aria-controls="privacy-notice" aria-expanded="true">{lang === "en" ? "Privacy and cookies" : "Privacy en cookies"}</button>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-line);
+    background: var(--color-ink);
+    color: var(--color-on-brand);
+    padding-block: clamp(3rem, 7vw, 5rem) 1.5rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .footer-name { margin: 0; font-size: 1.25rem; font-weight: 900; }
+  .footer-registration { max-width: 34rem; color: var(--color-on-dark-muted); overflow-wrap: anywhere; }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem 1.2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-footer a { color: var(--color-on-brand); text-underline-offset: 0.25em; }
+  .privacy-open { border: 0; padding: 0; color: inherit; background: transparent; font: inherit; text-decoration: underline; text-underline-offset: 0.25em; cursor: pointer; }
+  .privacy-open:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem 2rem;
+    border-top: 1px solid rgb(255 255 255 / 18%);
+    margin-top: 3rem;
+    padding-top: 1.25rem;
+    color: var(--color-on-dark-muted);
+  }
+
+  .site-footer.source-home-footer {
+    border-top-color: var(--color-line);
+    color: var(--color-brand-dark);
+    background: var(--color-surface);
+  }
+
+  .source-home-footer .footer-registration,
+  .source-home-footer .footer-bottom { color: var(--color-muted); }
+  .source-home-footer a { color: var(--color-brand-dark); }
+  .source-home-footer .footer-bottom { border-top-color: var(--color-line); }
+
+  @media (min-width: 48rem) {
+    .footer-grid { grid-template-columns: 1.4fr 1fr; align-items: end; }
+    .footer-links { justify-content: flex-end; }
+  }
+</style>

@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-07-20T08:38:49.728Z",
+  "automated_status": "passed",
+  "phase_status": "owner_decisions_pending",
+  "pages_checked": 365,
+  "images_checked": 2050,
+  "decorative_images_with_labelled_links": 1021,
+  "rendered_images_pending_alt_review": 603,
+  "image_links_pending_accessible_name_review": 0,
+  "fragment_links_checked": 377,
+  "duplicate_titles": 0,
+  "duplicate_meta_descriptions": 0,
+  "duplicate_canonicals": 0,
+  "external_scripts": 0,
+  "external_forms": 0,
+  "content_buttons": 177,
+  "migrated_source_buttons": 178,
+  "unrendered_author_buttons": 1,
+  "home_initial_payload_bytes": 225381,
+  "rss": [
+    {
+      "path": "/onderwijs/rss.xml",
+      "items": 78
+    },
+    {
+      "path": "/education/rss.xml",
+      "items": 46
+    }
+  ],
+  "owner_decisions": {
+    "native_video_records": 18,
+    "media_alt_review_records": 753,
+    "media_rights_review_records": 829,
+    "case_only_taxonomy_collision_groups": 17
+  },
+  "errors": []
+}

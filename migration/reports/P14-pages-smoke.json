@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "profile": "github-pages-project",
+  "deployment_url": null,
+  "base": "/aiindeklas/",
+  "smoke_kind": "local_artifact",
+  "checked_routes": 40,
+  "checked_assets": 3,
+  "case_collision_pairs": 17,
+  "unresolved_case_collision_pairs": [
+    [
+      "/education/tag/ai",
+      "/education/tag/AI"
+    ],
+    [
+      "/education/tag/education",
+      "/education/tag/Education"
+    ],
+    [
+      "/education/tag/greek",
+      "/education/tag/Greek"
+    ],
+    [
+      "/education/tag/grieks",
+      "/education/tag/Grieks"
+    ],
+    [
+      "/education/tag/onderwijs",
+      "/education/tag/Onderwijs"
+    ],
+    [
+      "/education/tag/pythia",
+      "/education/tag/Pythia"
+    ],
+    [
+      "/education/tag/taal",
+      "/education/tag/Taal"
+    ],
+    [
+      "/education/tag/vr",
+      "/education/tag/VR"
+    ],
+    [
+      "/onderwijs/tag/ai",
+      "/onderwijs/tag/AI"
+    ],
+    [
+      "/onderwijs/tag/education",
+      "/onderwijs/tag/Education"
+    ],
+    [
+      "/onderwijs/tag/gaming",
+      "/onderwijs/tag/Gaming"
+    ],
+    [
+      "/onderwijs/tag/greek",
+      "/onderwijs/tag/Greek"
+    ],
+    [
+      "/onderwijs/tag/grieks",
+      "/onderwijs/tag/Grieks"
+    ],
+    [
+      "/onderwijs/tag/onderwijs",
+      "/onderwijs/tag/Onderwijs"
+    ],
+    [
+      "/onderwijs/tag/pythia",
+      "/onderwijs/tag/Pythia"
+    ],
+    [
+      "/onderwijs/tag/taal",
+      "/onderwijs/tag/Taal"
+    ],
+    [
+      "/onderwijs/tag/vr",
+      "/onderwijs/tag/VR"
+    ]
+  ],
+  "case_sensitive_route_verification": false,
+  "noindex_review_gate_preserved": true,
+  "status": "passed",
+  "failures": []
+}

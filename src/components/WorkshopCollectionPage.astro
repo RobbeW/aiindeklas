@@ -1,0 +1,70 @@
+---
+import PageHero from "./PageHero.astro";
+import PreviewNotice from "./PreviewNotice.astro";
+import WorkshopFinder from "./WorkshopFinder.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { withBase } from "../lib/routing";
+
+interface Workshop {
+  id: string;
+  html: string;
+  slug: string;
+  title: string;
+  summary: string;
+  duration_display: string;
+  workshop_type: string;
+  programme: string;
+  target_audience: string;
+  prerequisites: string[];
+  delivery_modes: string[];
+  location_notes: string;
+  price: { display: string; amount_eur: number | null; includes_vat: boolean | null };
+  travel_cost: { display: string; amount_per_km_eur: number | null; public_transport_policy: string | null };
+  group_size: { display: string; minimum: number | null; maximum: number | null };
+  booking_cta: { label: string; href: string };
+  sourceDetails: Array<{ heading: string; html: string; volatile: boolean }>;
+}
+interface Props { workshops: Workshop[]; }
+const { workshops } = Astro.props;
+const baseSourceHtml = (html: string) => html.replace(/href="(\/(?!\/)[^"]*)"/g, (_match, href) => `href="${withBase(href)}"`);
+---
+
+<SiteLayout title="Workshops en nascholingen — Robbe Wulgaert" description="Ontdek keynotes en workshops voor onderwijs, AI-geletterdheid en vakspecifieke professionalisering." lang="nl-BE" canonicalPath="/onderwijs/workshops-en-nascholingen" noindex={true}>
+  <main id="main-content" tabindex="-1" data-content-collection="workshops" data-workshop-count={workshops.length}>
+    <PageHero eyebrow="Nascholingen" title="Workshops en nascholingen" lead="Keynotes en workshops voor onderwijsprofessionals. Verken het aanbod of vind een sessie die bij je vraag past." />
+    <WorkshopFinder workshops={workshops} />
+    <section class="section shell collection" aria-labelledby="workshop-index">
+      <PreviewNotice lang="nl-BE" />
+      <h2 id="workshop-index">Alle sessies en broninformatie</h2>
+      <nav aria-label="Spring naar een workshop"><ol class="index">{workshops.map((w) => <li><a href={`#detail-${w.slug}`}>{w.title}</a></li>)}</ol></nav>
+      {workshops.map((w) => <article class="workshop" id={`detail-${w.slug}`} data-workshop-id={w.id}>
+        <h2>{w.title}</h2>
+        {(w.duration_display || w.workshop_type) && <p class="meta">{[w.duration_display, w.workshop_type].filter(Boolean).join(" · ")}</p>}
+        {w.id === "source-workshop-minecraft-en-klassieke-talen-0d14e1d3" && <p class="verification" data-verification="pending-live-verification-before-release">Brongegevens, inclusief richtprijzen — live verificatie vereist vóór publicatie.</p>}
+        <div class="prose" set:html={baseSourceHtml(w.html)} />
+        <section class="source-details" aria-label={`Broninformatie: ${w.title}`}>
+          {w.sourceDetails.map((detail) => <div data-source-section={detail.heading} data-verification={detail.volatile ? "pending-live-verification-before-release" : undefined}>
+            <h3>{detail.heading}</h3><div set:html={baseSourceHtml(detail.html)} />
+            {detail.volatile && <p class="verification">Broninformatie; live verificatie vereist vóór publicatie.</p>}
+          </div>)}
+        </section>
+        {w.booking_cta.label && <p><a class="cta" href={withBase(w.booking_cta.href)}>{w.booking_cta.label}</a></p>}
+      </article>)}
+    </section>
+  </main>
+</SiteLayout>
+
+<style>
+  .collection { display: grid; gap: 2rem; }
+  .index { columns: 2; }
+  .workshop, .rates { border-top: 1px solid var(--color-line); padding-top: 2rem; scroll-margin-top: 2rem; }
+  .workshop h2, .rates h2 { color: var(--color-ink); }
+  .meta, .verification { color: var(--color-muted); }
+  .prose { max-width: var(--content-readable); font-size: 1.06rem; }
+  .source-details { max-width: var(--content-readable); }
+  .source-details h3 { margin-bottom: .25rem; }
+  .source-details p { white-space: pre-line; }
+  .facts h3 { margin-top: 0; }
+  .cta { display: inline-block; padding: .65rem 1rem; border-radius: var(--radius-card); background: var(--color-brand); color: white; }
+  @media (max-width: 42rem) { .index { columns: 1; } }
+</style>

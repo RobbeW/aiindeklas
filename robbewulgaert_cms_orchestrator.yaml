@@ -1,0 +1,1872 @@
+schema_version: "1.1.0"
+cookbook_id: "robbewulgaert-custom-cms-migration"
+cookbook_title: "Robbe Wulgaert website migration and custom CMS orchestrator"
+generated_on: "2026-07-15"
+last_amended_on: "2026-07-15"
+revision_summary: "Local-first build; RobbeW/aiindeklas and registrar work postponed behind owner approval gates."
+primary_language: "en"
+content_languages:
+  - "nl-BE"
+  - "en"
+owner:
+  name: "Robbe Wulgaert"
+  copyright_holder: "Robbe Wulgaert"
+  organisation: "AI in de Klas"
+  enterprise_number: "BE0802831980"
+
+mission:
+  statement: >-
+    First build or rebuild the website locally in the current workspace, then
+    replace the current Squarespace website at robbewulgaert.be with a
+    maintainable, statically hosted website and a custom Git-backed CMS.
+    Migrate all public content and assets, preserve existing URLs wherever
+    technically possible, and apply a consolidated design system derived from
+    the owner's educational websites and projects. Remote repository creation,
+    GitHub Pages publication, registrar access, and production-domain cutover
+    are later steps and must not block the local build.
+  success_definition:
+    - "The current local folder contains a reproducible working build before any remote repository or registrar action is required."
+    - "Every public source URL is discovered, classified, migrated, redirected, or explicitly excluded with a reason."
+    - "The new site preserves the source meaning, media, metadata, language, attribution, and publication dates."
+    - "The public website is statically generated and deployable through GitHub Actions to GitHub Pages."
+    - "Content is editable through structured Markdown or MDX collections and a schema-driven CMS workflow."
+    - "The visual language is recognisably derived from the referenced GitHub Pages projects."
+    - "Production cutover is reversible without losing the Squarespace source snapshot."
+
+non_goals:
+  - "Do not clone Squarespace's proprietary editor or backend."
+  - "Do not recreate Squarespace implementation details that have no user-facing value."
+  - "Do not silently rewrite the author's prose."
+  - "Do not merge the complete source code of every educational project into the main website."
+  - "Do not introduce a database when Git-backed content is sufficient."
+  - "Do not add tracking, advertising, or third-party scripts without an explicit architecture decision."
+  - "Do not change production DNS during autonomous execution."
+  - "Do not require creation of a GitHub repository or access to a registrar during local development and migration."
+
+hard_constraints:
+  hosting:
+    - "The website must first build and run as static files from the current local workspace."
+    - "The eventual public website must remain compatible with GitHub Pages."
+    - "No server runtime may be assumed on GitHub Pages."
+    - "All build-time operations must run locally or in GitHub Actions."
+    - "P0 through P8 must be executable without a remote repository or registrar credentials."
+  content:
+    - "Original page text is authoritative."
+    - "Normalisation may fix encoding, whitespace, duplicated navigation, and invalid markup only."
+    - "Substantive copy edits require a separate proposed_changes artifact."
+    - "Source URLs and source hashes must remain traceable after migration."
+  security:
+    - "Never place GitHub tokens, OAuth client secrets, API keys, form-provider secrets, or private keys in client-side code."
+    - "Never commit secrets to the repository."
+    - "All production writes occur through reviewed pull requests."
+  release:
+    - "Squarespace remains active until the production acceptance gate passes."
+    - "DNS changes require human approval."
+    - "A rollback plan and source backup are mandatory before cutover."
+
+runtime_parameters:
+  source_origin: "https://www.robbewulgaert.be"
+  canonical_target_origin: "https://www.robbewulgaert.be"
+  execution_mode: "local_first"
+  local_workspace_root: "."
+  local_preview_origin: "http://localhost:4321"
+  local_git_policy: "Initialise a local repository if missing, but do not configure or create a remote before H3."
+  apex_domain: "robbewulgaert.be"
+  preferred_host: "www.robbewulgaert.be"
+  github_owner: "RobbeW"
+  remote_repository_status: "postponed_until_local_owner_review"
+  target_repository: null
+  candidate_target_repository: "RobbeW/aiindeklas"
+  candidate_repository_url: "https://github.com/RobbeW/aiindeklas"
+  candidate_pages_origin: "https://robbew.github.io"
+  candidate_pages_url: "https://robbew.github.io/aiindeklas/"
+  candidate_pages_base_path: "/aiindeklas/"
+  default_branch: "main"
+  staging_branch: "migration/staging"
+  content_root: "src/content"
+  public_asset_root: "public"
+  build_output: "dist"
+  registrar: null
+  registrar_status: "postponed_until_approved_production_cutover"
+  node_version: "current_active_lts"
+  package_manager: "pnpm"
+  framework:
+    default: "Astro"
+    output_mode: "static"
+    rationale:
+      - "Static output matches GitHub Pages."
+      - "Content collections provide typed, schema-validated content."
+      - "Markdown and MDX support long-form educational material."
+      - "Component islands can be used selectively without turning the whole site into a client application."
+  cms:
+    name: "Robbe CMS Studio"
+    publishing_mode_default: "pull_request"
+    secure_publish_modes:
+      - "github_web_editor"
+      - "local_studio_with_git"
+      - "external_oauth_bridge"
+    forbidden_publish_mode: "client_side_long_lived_token"
+
+authoritative_sources:
+  content_source:
+    origin: "https://www.robbewulgaert.be"
+    platform_observed: "Squarespace"
+    crawl_scope:
+      include:
+        - "https://www.robbewulgaert.be/**"
+      exclude:
+        - "Squarespace account, checkout, login, preview, analytics, and administration endpoints"
+        - "Third-party pages linked from the site"
+    fixed_page_seeds:
+      - path: "/"
+        locale: "nl-BE"
+        type: "landing_page"
+      - path: "/boek"
+        locale: "nl-BE"
+        type: "book_page"
+      - path: "/onderwijs"
+        locale: "nl-BE"
+        type: "article_collection"
+      - path: "/onderwijs/workshops-en-nascholingen"
+        locale: "nl-BE"
+        type: "workshop_catalogue"
+      - path: "/contact"
+        locale: "nl-BE"
+        type: "contact_page"
+      - path: "/about"
+        locale: "en"
+        type: "profile_page"
+      - path: "/contactinfo"
+        locale: "en"
+        type: "contact_page"
+      - path: "/education"
+        locale: "en"
+        type: "education_page"
+      - path: "/projects"
+        locale: "en"
+        type: "project_portfolio"
+    known_article_seeds:
+      note: >-
+        These are discovery seeds, not a complete inventory. The crawler must
+        follow collection pagination, previous and next article links, RSS,
+        sitemap entries, and internal links until graph closure.
+      paths:
+        - "/onderwijs/recensiesenjongerentaal"
+        - "/onderwijs/ai-geletterdheid-waarom-moeten-wij-dit-kennen"
+        - "/onderwijs/schrijftaken-zonder-aiaiai"
+        - "/onderwijs/javascript-en-computationeel-denken-in-de-browser"
+        - "/onderwijs/voorspel-het-verleden-aeneas"
+        - "/onderwijs/in-dialoog-met-ai"
+        - "/onderwijs/ai-act-van-verplichting-naar-ambitie"
+        - "/onderwijs/handvat-voor-lesmateriaal"
+        - "/onderwijs/hey-siri-kloon-mijn-stem-2025"
+        - "/onderwijs/webinar-ai-met-klasse"
+        - "/onderwijs/interview-met-de-geschiedenis"
+        - "/onderwijs/interview-ai-op-een-college"
+        - "/onderwijs/ai-for-education-awards-tweemaal-prijs"
+        - "/onderwijs/het-digitale-dilemma"
+        - "/onderwijs/social-media"
+        - "/onderwijs/breng-de-romeinse-keizers-tot-leven"
+        - "/onderwijs/taalalgoritmes-op-de-werkvloer"
+        - "/onderwijs/taalalgoritmes-en-sentimentsanalyse"
+        - "/onderwijs/latijnse-wordle"
+        - "/onderwijs/ithaca-teaching-history-journal"
+        - "/onderwijs/tips-voor-verantwoord-gebruik-en-afspraken"
+        - "/onderwijs/taaltechnologie-op-de-redactie"
+  design_sources:
+    - id: "blockly"
+      public_url: "https://robbew.github.io/Blockly/"
+      repository: "RobbeW/Blockly"
+      role: "canonical design and motion reference"
+    - id: "javascript_in_de_klas"
+      public_url: "https://robbew.github.io/jsindeklas/"
+      repository: "RobbeW/jsindeklas"
+      role: "canonical design and platform-family reference"
+    - id: "html_in_de_klas"
+      public_url: "https://robbew.github.io/htmlindeklas/"
+      repository: "RobbeW/htmlindeklas"
+      role: "canonical design and responsive layout reference"
+    - id: "delphi"
+      public_url: "https://robbew.github.io/delphi/"
+      repository: "RobbeW/delphi"
+      role: "canonical design, background treatment, and browser-tool reference"
+    - id: "smartplants"
+      public_url: "https://robbew.github.io/smartplants/"
+      repository: "RobbeW/smartplants"
+      role: "structured research-project and bilingual toggle reference"
+    - id: "robothand"
+      public_url: "https://robbew.github.io/robothand/"
+      repository: "RobbeW/robothand"
+      role: "STEaM project, hardware, privacy, and project landing reference"
+    - id: "projectwind"
+      public_url: "https://robbew.github.io/projectwind/"
+      repository: "RobbeW/projectwind"
+      role: "research workflow, reporting, privacy, and project landing reference"
+    - id: "slimme_vuilnisbak"
+      public_url: "https://robbew.github.io/slimme_vuilnisbak/"
+      repository: "RobbeW/slimme_vuilnisbak"
+      role: "AI project and lifecycle explanation reference"
+    - id: "projectfijnstof"
+      public_url: "https://robbew.github.io/projectfijnstof/"
+      repository: "RobbeW/projectfijnstof"
+      role: "sensor research, data reporting, and poster workflow reference"
+
+research_findings:
+  source_site:
+    information_architecture:
+      - "The primary navigation contains Dutch pages for profile, book, education, workshops, and contact."
+      - "A secondary English navigation contains profile, contact, education, and projects pages."
+      - "The education section is a paginated long-form article collection."
+      - "The workshop page is a large catalogue with repeated structured fields such as type, duration, programme, goals, target audience, location, price, travel costs, and group size."
+      - "The contact page refers to a web form, Discord community, social channels, and a support link."
+      - "Articles may contain large image sequences, galleries, embedded media, external references, and downloadable teaching resources."
+    migration_implications:
+      - "A flat set of manually copied HTML pages is insufficient."
+      - "Articles, workshops, projects, pages, navigation, assets, and site settings require separate schemas."
+      - "Pagination and historical article traversal must be automated."
+      - "Form handling must be replaced because GitHub Pages has no application backend."
+      - "Bilingual pages require locale-aware navigation and alternate-language metadata."
+  project_ecosystem:
+    recurring_product_principles:
+      - "No learner accounts."
+      - "Privacy-first, browser-local state."
+      - "Static deployment without a mandatory backend."
+      - "Progressive workflows that move from prediction or reasoning to action, measurement, comparison, and reflection."
+      - "Accessible skip links, semantic landmarks, clear primary actions, and responsive navigation."
+      - "Project families cross-link to computation, coding, and STEaM resources."
+    reusable_content_patterns:
+      - "Hero with one dominant statement, short lead, and one or two actions."
+      - "Numbered workflow cards."
+      - "Feature or learning-goal cards."
+      - "Teacher-facing practical section."
+      - "Curriculum or platform-family map."
+      - "Privacy and technical-requirements section."
+      - "Final call-to-action band."
+      - "Author, copyright, and ecosystem links in the footer."
+  design_consensus:
+    colours:
+      brand: "#5200FF"
+      brand_dark: "#3700B3"
+      accent: "#3DFFD0"
+      accent_variant_observed: "#03DDEF"
+      ink: "#160033"
+      text: "#1D1930"
+      muted: "#625B70"
+      background: "#F8F7F3"
+      surface: "#FFFFFF"
+      brand_soft: "#F7F3FF"
+      line: "#E2DDEA"
+      success: "#00A66A"
+      warning: "#FFB000"
+      danger: "#D0006F"
+    typography:
+      body_stack: 'system-ui, -apple-system, "Segoe UI", Arial, sans-serif'
+      code_stack: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+      body_line_height: 1.55
+      hero_size: "clamp(2.45rem, 7vw, 5.8rem)"
+      section_title_size: "clamp(1.8rem, 4vw, 3.25rem)"
+      lead_size: "clamp(1.05rem, 2vw, 1.32rem)"
+      heading_weight: 900
+      navigation_weight: 700
+    layout:
+      content_max_width: "1180px"
+      page_inline_padding: "22px"
+      desktop_section_block_padding: "82px"
+      navigation_padding: "16px 22px"
+      header: "sticky, translucent white, 14px to 16px backdrop blur"
+    radii:
+      small: "10px"
+      brand_mark: "14px"
+      card: "20px"
+      panel: "24px"
+      hero_card: "28px"
+      pill: "999px"
+    shadows:
+      soft: "0 18px 55px rgba(32, 20, 54, 0.10)"
+      card: "0 10px 30px rgba(32, 20, 54, 0.08)"
+      brand: "0 12px 24px rgba(82, 0, 255, 0.24)"
+      primary_button: "0 16px 30px rgba(82, 0, 255, 0.23)"
+    motion:
+      fast: "150ms"
+      medium: "260ms"
+      slow: "520ms"
+      standard_easing: "cubic-bezier(0.2, 0, 0, 1)"
+      exit_or_reveal_easing: "cubic-bezier(0.22, 1, 0.36, 1)"
+      recurring_hover: "translateY(-1px)"
+      recurring_reveal: "opacity 0 to 1; translateY(12px) to 0"
+    drift_policy:
+      canonicalise:
+        - "Use the consensus token values as the global design system."
+        - "Record deviations found in individual projects."
+        - "Preserve a deviation only when it conveys a deliberate project identity or status meaning."
+        - "Do not let later CSS overrides silently redefine global tokens."
+      known_drift:
+        - "Some project styles use 160ms component transitions while the canonical fast token is 150ms."
+        - "Some project styles use #03DDEF as the aqua accent while the majority token is #3DFFD0."
+        - "Some projects redefine brand-dark with a nearby purple value."
+  hosting:
+    facts:
+      - "GitHub Pages serves static output and supports custom GitHub Actions workflows."
+      - "A custom domain may use an apex domain, a www subdomain, or both."
+      - "The www subdomain is configured through DNS with a CNAME record."
+      - "GitHub recommends verifying the custom domain before attaching it to the Pages site."
+    consequences:
+      - "The website build, CMS schemas, preview generation, and validation belong in the repository and GitHub Actions."
+      - "Dynamic forms and secure OAuth publishing require a deliberately selected external service or local workflow."
+      - "Exact URL preservation is preferable to relying on host-level redirect rules."
+
+architecture:
+  style: "static-site-plus-git-backed-cms"
+  public_site:
+    framework: "Astro"
+    output: "static"
+    build_profiles:
+      local:
+        site: "http://localhost:4321"
+        base: "/"
+        required_first: true
+      github_project_preview:
+        site: "https://robbew.github.io"
+        base: "/aiindeklas/"
+        activation: "Only after H3 authorises creation of RobbeW/aiindeklas."
+        indexing: "noindex, nofollow until the production custom-domain cutover"
+      production_custom_domain:
+        site: "https://www.robbewulgaert.be"
+        base: "/"
+        activation: "Only after H4 authorises DNS cutover."
+    rendering:
+      default: "build-time"
+      client_javascript_policy: "Only hydrate components that require interaction."
+    content_engine:
+      format:
+        - "Markdown"
+        - "MDX only when structured interactive blocks are required"
+      validation: "Astro content collections with strict schemas"
+    routing:
+      rule: "Generate routes that preserve existing Squarespace paths."
+      trailing_slash_policy: "Match the observed production URL behaviour and enforce one canonical form."
+      base_path_policy:
+        - "All internal links, assets, admin routes, feeds, and canonical helpers must be generated through a shared base-path utility."
+        - "Do not hard-code root-relative URLs that fail under /aiindeklas/."
+        - "The same source tree must build with base / for local and custom-domain use and with base /aiindeklas/ for the candidate GitHub project Pages preview."
+    search:
+      default: "build-time generated local index"
+      external_service_required: false
+  cms_studio:
+    type: "custom schema-driven editor"
+    deployment: "Base-aware static admin application: /admin/ locally and on the custom domain, /aiindeklas/admin/ on the project Pages preview."
+    capabilities:
+      - "Browse collections and filter by locale, status, type, tag, and publication date."
+      - "Create, edit, duplicate, archive, and preview content."
+      - "Edit structured workshop fields without raw frontmatter manipulation."
+      - "Upload media through the controlled asset pipeline."
+      - "Preview responsive pages against the production design system."
+      - "Display source provenance and migration warnings."
+      - "Validate required fields before publish."
+      - "Generate a pull request or export a content patch."
+    publishing_modes:
+      github_web_editor:
+        backend_required: false
+        description: "Open the exact repository file in GitHub's authenticated editor."
+      local_studio_with_git:
+        backend_required: false
+        description: "Run the studio locally and commit through local Git credentials."
+      pull_request_bundle:
+        backend_required: false
+        description: "Export a deterministic patch bundle for an agent or authenticated GitHub workflow."
+      external_oauth_bridge:
+        backend_required: true
+        description: >-
+          Use a minimal separately hosted OAuth or GitHub App bridge to create
+          branches, commits, and pull requests without exposing secrets.
+        approval_required: true
+    default_publish_workflow:
+      - "Editor validates content."
+      - "Editor creates or exports a branch patch."
+      - "A pull request is opened."
+      - "CI runs schema, build, accessibility, link, SEO, and visual checks."
+      - "Human review approves the pull request."
+      - "Merge triggers the production Pages build."
+  contact:
+    static_content: "Preserve contact copy, community links, and social links."
+    form_replacement_decision:
+      options:
+        - id: "mailto"
+          backend_required: false
+          privacy_profile: "No form processing; opens the visitor's mail client."
+        - id: "external_form_service"
+          backend_required: true
+          privacy_profile: "Requires processor review, privacy notice, spam control, and data retention configuration."
+        - id: "serverless_form_endpoint"
+          backend_required: true
+          privacy_profile: "Requires a separately hosted endpoint, secret management, logging policy, and abuse controls."
+      default_until_approved: "mailto"
+  educational_projects:
+    strategy: "catalogue-and-link"
+    rules:
+      - "Keep each existing project deployable in its own repository."
+      - "Create structured Project entries in the main CMS."
+      - "Reuse shared design tokens through a versioned design package only after compatibility tests."
+      - "Do not iframe projects by default."
+      - "Open external project tools with clear context and return navigation."
+
+content_model:
+  common_fields:
+    id:
+      type: "string"
+      required: true
+      rule: "Stable UUID or deterministic source-derived identifier."
+    title:
+      type: "string"
+      required: true
+    slug:
+      type: "string"
+      required: true
+    locale:
+      type: "enum"
+      values: ["nl-BE", "en"]
+      required: true
+    translation_key:
+      type: "string_or_null"
+      required: true
+    status:
+      type: "enum"
+      values: ["draft", "review", "published", "archived"]
+      required: true
+    source_url:
+      type: "absolute_url_or_null"
+      required: true
+    source_html_sha256:
+      type: "sha256_or_null"
+      required: true
+    migration_status:
+      type: "enum"
+      values:
+        - "not_started"
+        - "extracted"
+        - "transformed"
+        - "needs_review"
+        - "approved"
+        - "excluded"
+      required: true
+    created_at:
+      type: "iso_datetime_or_null"
+      required: true
+    updated_at:
+      type: "iso_datetime_or_null"
+      required: true
+    published_at:
+      type: "iso_datetime_or_null"
+      required: true
+    author:
+      type: "author_reference"
+      required: true
+    excerpt:
+      type: "string_or_null"
+      required: true
+    hero:
+      type: "media_reference_or_null"
+      required: true
+    seo:
+      type: "seo_object"
+      required: true
+    body:
+      type: "markdown_or_mdx"
+      required: true
+  collections:
+    pages:
+      path: "src/content/pages"
+      extra_fields:
+        template:
+          values: ["home", "profile", "book", "contact", "education", "projects", "generic"]
+        navigation:
+          type: "navigation_placement_array"
+        call_to_actions:
+          type: "cta_array"
+    articles:
+      path: "src/content/articles"
+      extra_fields:
+        tags: "string_array"
+        categories: "string_array"
+        reading_time: "derived"
+        featured: "boolean"
+        previous_source_url: "url_or_null"
+        next_source_url: "url_or_null"
+        gallery: "media_reference_array"
+        downloads: "download_reference_array"
+        citations: "external_reference_array"
+    workshops:
+      path: "src/content/workshops"
+      extra_fields:
+        workshop_type: "enum[keynote, workshop, training, webinar, trajectory, other]"
+        duration_minutes: "integer_or_null"
+        duration_display: "string"
+        summary: "string"
+        programme: "rich_text"
+        goals:
+          knowledge: "string_array"
+          skills: "string_array"
+          attitudes: "string_array"
+        target_audience: "rich_text"
+        prerequisites: "string_array"
+        delivery_modes: "enum_array[on_site, online, hybrid, cno, other]"
+        location_notes: "rich_text"
+        price:
+          amount_eur: "decimal_or_null"
+          includes_vat: "boolean_or_null"
+          display: "string"
+        travel_cost:
+          amount_per_km_eur: "decimal_or_null"
+          public_transport_policy: "string_or_null"
+          display: "string"
+        group_size:
+          minimum: "integer_or_null"
+          maximum: "integer_or_null"
+          display: "string"
+        booking_cta: "cta_object"
+    projects:
+      path: "src/content/projects"
+      extra_fields:
+        external_url: "absolute_url"
+        repository_url: "absolute_url_or_null"
+        project_family: "enum[platform, steam_project, publication, research, other]"
+        target_age: "string_or_null"
+        technologies: "string_array"
+        learning_goals: "string_array"
+        privacy_profile: "string_or_null"
+        hardware: "string_array"
+        featured: "boolean"
+    authors:
+      path: "src/content/authors"
+      extra_fields:
+        name: "string"
+        bio: "rich_text"
+        portrait: "media_reference_or_null"
+        social_links: "social_link_array"
+    site_settings:
+      path: "src/content/settings"
+      files:
+        - "site.yaml"
+        - "navigation.yaml"
+        - "footer.yaml"
+        - "social.yaml"
+        - "redirects.yaml"
+    media_registry:
+      path: "src/content/media/media.yaml"
+      fields:
+        source_url: "absolute_url"
+        original_path: "string"
+        output_path: "string"
+        sha256: "sha256"
+        mime_type: "string"
+        width: "integer_or_null"
+        height: "integer_or_null"
+        alt: "string_or_null"
+        caption: "string_or_null"
+        decorative: "boolean"
+        rights: "string_or_null"
+        used_by: "content_reference_array"
+
+block_model:
+  permitted_blocks:
+    - "paragraph"
+    - "heading"
+    - "quote"
+    - "ordered_list"
+    - "unordered_list"
+    - "image"
+    - "gallery"
+    - "figure"
+    - "video_embed"
+    - "audio_embed"
+    - "download"
+    - "callout"
+    - "code"
+    - "table"
+    - "button_group"
+    - "project_card_grid"
+    - "workshop_details"
+    - "timeline"
+    - "research_steps"
+  migration_rule: >-
+    Prefer semantic Markdown. Use an explicit block component only when plain
+    Markdown cannot preserve structure, interaction, captioning, or accessibility.
+  forbidden_blocks:
+    - "raw Squarespace layout wrappers"
+    - "unreviewed arbitrary scripts"
+    - "inline event handlers"
+    - "opaque HTML blobs when semantic conversion is possible"
+
+repository_layout:
+  root:
+    - ".github/"
+    - "astro.config.mjs"
+    - "package.json"
+    - "pnpm-lock.yaml"
+    - "tsconfig.json"
+    - "src/"
+    - "public/"
+    - "scripts/"
+    - "migration/"
+    - "tests/"
+    - "docs/"
+  paths:
+    ".github/workflows/":
+      - "validate.yml"
+      - "visual-regression.yml"
+      - "deploy-pages.yml"
+      - "scheduled-link-check.yml"
+    "src/components/":
+      - "layout/"
+      - "navigation/"
+      - "content/"
+      - "cards/"
+      - "forms/"
+      - "media/"
+      - "seo/"
+    "src/layouts/":
+      - "BaseLayout.astro"
+      - "PageLayout.astro"
+      - "ArticleLayout.astro"
+      - "WorkshopLayout.astro"
+      - "ProjectLayout.astro"
+    "src/styles/":
+      - "tokens.css"
+      - "reset.css"
+      - "global.css"
+      - "utilities.css"
+      - "print.css"
+    "src/content/":
+      - "config.ts"
+      - "pages/"
+      - "articles/"
+      - "workshops/"
+      - "projects/"
+      - "authors/"
+      - "settings/"
+      - "media/"
+    "src/pages/":
+      - "index.astro"
+      - "404.astro"
+      - "admin/"
+      - "rss.xml.ts"
+      - "sitemap-index.xml.ts"
+    "migration/":
+      - "source-manifest.json"
+      - "url-ledger.csv"
+      - "asset-ledger.csv"
+      - "content-diff/"
+      - "screenshots/source/"
+      - "screenshots/target/"
+      - "raw-html/"
+      - "reports/"
+    "scripts/":
+      - "discover-source.mjs"
+      - "snapshot-source.mjs"
+      - "extract-squarespace.mjs"
+      - "transform-content.mjs"
+      - "download-assets.mjs"
+      - "verify-content-parity.mjs"
+      - "generate-redirect-stubs.mjs"
+      - "build-search-index.mjs"
+    "tests/":
+      - "unit/"
+      - "content/"
+      - "accessibility/"
+      - "e2e/"
+      - "visual/"
+
+design_system:
+  package_name: "@robbew/design-system"
+  token_file: "src/styles/tokens.css"
+  token_policy:
+    - "All components consume semantic CSS custom properties."
+    - "Raw brand hex values are forbidden outside the token file and documented theme overrides."
+    - "Spacing and typography use fluid values with explicit minimum and maximum bounds."
+    - "Focus styles must remain visible against every surface."
+  tokens:
+    colour:
+      "--color-brand": "#5200FF"
+      "--color-brand-dark": "#3700B3"
+      "--color-accent": "#3DFFD0"
+      "--color-ink": "#160033"
+      "--color-text": "#1D1930"
+      "--color-muted": "#625B70"
+      "--color-background": "#F8F7F3"
+      "--color-surface": "#FFFFFF"
+      "--color-brand-soft": "#F7F3FF"
+      "--color-line": "#E2DDEA"
+      "--color-success": "#00A66A"
+      "--color-warning": "#FFB000"
+      "--color-danger": "#D0006F"
+    typography:
+      "--font-body": 'system-ui, -apple-system, "Segoe UI", Arial, sans-serif'
+      "--font-code": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+      "--font-size-hero": "clamp(2.45rem, 7vw, 5.8rem)"
+      "--font-size-h2": "clamp(1.8rem, 4vw, 3.25rem)"
+      "--font-size-lead": "clamp(1.05rem, 2vw, 1.32rem)"
+      "--line-height-body": "1.55"
+    layout:
+      "--content-max": "1180px"
+      "--page-gutter": "clamp(18px, 3vw, 22px)"
+      "--section-space": "clamp(58px, 8vw, 82px)"
+    radius:
+      "--radius-sm": "10px"
+      "--radius-brand": "14px"
+      "--radius-card": "20px"
+      "--radius-panel": "24px"
+      "--radius-hero": "28px"
+      "--radius-pill": "999px"
+    shadow:
+      "--shadow-soft": "0 18px 55px rgba(32, 20, 54, 0.10)"
+      "--shadow-card": "0 10px 30px rgba(32, 20, 54, 0.08)"
+      "--shadow-brand": "0 12px 24px rgba(82, 0, 255, 0.24)"
+      "--shadow-action": "0 16px 30px rgba(82, 0, 255, 0.23)"
+    motion:
+      "--motion-fast": "150ms"
+      "--motion-medium": "260ms"
+      "--motion-slow": "520ms"
+      "--ease-standard": "cubic-bezier(0.2, 0, 0, 1)"
+      "--ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+  components:
+    site_header:
+      characteristics:
+        - "Sticky at top."
+        - "Translucent white background."
+        - "14px to 16px backdrop blur."
+        - "Subtle lower border."
+        - "Responsive menu with correct aria-expanded and focus behaviour."
+    brand_mark:
+      characteristics:
+        - "44px square at standard desktop size."
+        - "14px radius."
+        - "Purple or purple gradient."
+        - "High-contrast white initials or project mark."
+    button:
+      variants: ["primary", "secondary", "text", "danger"]
+      characteristics:
+        - "Minimum target height 46px."
+        - "Pill radius."
+        - "Strong weight."
+        - "One-pixel upward hover movement."
+        - "No movement under reduced-motion preference."
+    card:
+      variants: ["article", "project", "workshop", "feature", "step", "audience"]
+      characteristics:
+        - "20px to 24px radius."
+        - "Subtle border."
+        - "Soft shadow."
+        - "Clear heading hierarchy."
+    hero:
+      characteristics:
+        - "One dominant heading."
+        - "Lead paragraph limited to readable measure."
+        - "At most two primary actions."
+        - "Optional supporting visual, not decorative clutter."
+    language_switcher:
+      characteristics:
+        - "NL and ENG options."
+        - "aria-pressed state."
+        - "Visible focus ring using the accent colour."
+        - "Links to actual translated routes, not client-only text replacement."
+    content_article:
+      characteristics:
+        - "Readable text measure between 65ch and 75ch."
+        - "Wide media may break out into a controlled wider container."
+        - "Headings produce stable anchor links."
+        - "Figures preserve captions and alt text."
+    footer:
+      characteristics:
+        - "Author and copyright."
+        - "Enterprise number."
+        - "Social and ecosystem links."
+        - "Language-aware navigation."
+  animation_rules:
+    allowed:
+      - "Soft rise on initial hero or section reveal."
+      - "Small hover translation for interactive cards and buttons."
+      - "Opacity and transform transitions."
+      - "Menu open and close transitions."
+    forbidden:
+      - "Continuous decorative motion without user value."
+      - "Parallax that impairs reading."
+      - "Animations longer than the slow token without an explicit rationale."
+      - "Layout-shifting animations."
+    reduced_motion:
+      required: true
+      behaviour:
+        - "Disable smooth scrolling."
+        - "Remove non-essential transforms and reveal animations."
+        - "Set transition durations close to zero while preserving state changes."
+
+seo_and_discovery:
+  preview_policy:
+    local: "Not publicly indexable."
+    github_project_pages: "Emit noindex, nofollow and do not include the preview origin in production sitemaps or feeds."
+    production_custom_domain: "Enable normal indexing only after H4 cutover checks pass."
+  required_outputs:
+    - "Canonical URL for every indexable page."
+    - "Unique title and meta description."
+    - "Open Graph and social preview metadata."
+    - "XML sitemap or sitemap index."
+    - "RSS feed for the education article collection."
+    - "robots.txt."
+    - "hreflang links for actual NL and EN translation pairs."
+    - "JSON-LD where semantically valid."
+    - "Custom 404 page."
+  structured_data:
+    site:
+      types: ["WebSite", "Person", "Organization"]
+    book:
+      types: ["Book"]
+    articles:
+      types: ["Article", "BlogPosting"]
+    workshops:
+      types: ["Course", "Event"]
+      rule: "Use Event only when a concrete dated event exists."
+    projects:
+      types: ["CreativeWork", "SoftwareApplication"]
+      rule: "Choose the narrowest truthful type per project."
+  url_policy:
+    preserve_exact_paths: true
+    preserve_case: true
+    preserve_diacritics: "Use current slugs; do not invent transliterated alternatives unless required."
+    query_pagination:
+      action: "Migrate the content, then replace legacy query pagination with canonical paginated or archive routes."
+    redirects:
+      preferred: "Exact route preservation."
+      fallback: "Generate static redirect stub pages for changed legacy paths."
+      warning: "Do not assume Netlify-style _redirects work on GitHub Pages."
+  historical_metadata:
+    preserve:
+      - "publication date"
+      - "last modified date when reliably extractable"
+      - "author"
+      - "source title"
+      - "source description"
+      - "image captions"
+      - "external references"
+      - "canonical source URL in migration metadata"
+
+accessibility:
+  target: "WCAG 2.2 AA"
+  mandatory:
+    - "Semantic landmarks and heading order."
+    - "Skip link."
+    - "Keyboard-operable navigation and dialogs."
+    - "Visible focus styles."
+    - "Sufficient colour contrast."
+    - "Alt text for informative images."
+    - "Empty alt text for decorative images."
+    - "Captions or transcripts for meaningful audio and video where available."
+    - "Form labels, instructions, validation summaries, and error associations."
+    - "No interaction based solely on colour, hover, or pointer position."
+    - "Respect prefers-reduced-motion."
+    - "Minimum 44px effective interactive target where practical."
+  automated_tools:
+    - "axe-core"
+    - "Playwright accessibility checks"
+    - "HTML validation"
+  manual_checks:
+    - "Keyboard-only navigation."
+    - "Screen-reader landmark and heading scan."
+    - "200 percent zoom."
+    - "Mobile reflow at 320 CSS pixels."
+    - "Reduced motion."
+    - "High-contrast focus state."
+
+migration_pipeline:
+  principles:
+    - "Idempotent."
+    - "Resumable."
+    - "Evidence-backed."
+    - "Non-destructive."
+    - "Content-first."
+    - "Deterministic output."
+  stages:
+    discover:
+      inputs:
+        - "root navigation"
+        - "English navigation"
+        - "sitemap.xml when available"
+        - "robots.txt"
+        - "RSS or collection feeds"
+        - "collection pagination links"
+        - "previous and next article links"
+        - "all same-origin links found in content"
+      rules:
+        - "Normalise host, fragments, tracking parameters, and duplicate trailing slash forms."
+        - "Retain meaningful query parameters used for pagination or content selection."
+        - "Continue until two consecutive graph passes add no new same-origin public URLs."
+      outputs:
+        - "migration/source-manifest.json"
+        - "migration/url-ledger.csv"
+    snapshot:
+      rules:
+        - "Store raw HTML before transformation."
+        - "Record HTTP status, final URL, content type, response timestamp, and SHA-256."
+        - "Take desktop and mobile screenshots of every distinct template and every high-value page."
+        - "Record source meta tags, structured data, canonical link, and Open Graph data."
+      outputs:
+        - "migration/raw-html/"
+        - "migration/screenshots/source/"
+        - "migration/reports/source-metadata.json"
+    classify:
+      page_types:
+        - "landing_page"
+        - "fixed_page"
+        - "article_index"
+        - "article"
+        - "workshop_catalogue"
+        - "contact_page"
+        - "profile_page"
+        - "project_portfolio"
+        - "asset"
+        - "redirect"
+        - "error_or_private"
+      rule: "Every discovered URL receives exactly one primary classification."
+    extract:
+      selectors:
+        strategy:
+          - "Prefer semantic main/article elements."
+          - "Use Squarespace data attributes and JSON payloads as supporting signals."
+          - "Remove repeated site navigation, cookie banners, footer duplication, and editor wrappers."
+          - "Do not remove inline content solely because it repeats elsewhere."
+      captured_data:
+        - "title"
+        - "headings"
+        - "body blocks"
+        - "lists"
+        - "links"
+        - "publication data"
+        - "author"
+        - "images"
+        - "alt text"
+        - "captions"
+        - "downloads"
+        - "embeds"
+        - "SEO metadata"
+        - "language"
+    transform:
+      rules:
+        - "Convert source content to the appropriate typed collection."
+        - "Preserve paragraph and list order."
+        - "Convert repeated workshop sections into structured workshop records."
+        - "Convert galleries to ordered media arrays."
+        - "Replace absolute same-origin links with route-aware internal links."
+        - "Retain external URLs as external."
+        - "Flag malformed or ambiguous source fragments for review."
+        - "Never invent missing prose."
+      outputs:
+        - "src/content/**"
+        - "migration/content-diff/**"
+    assets:
+      rules:
+        - "Download every same-origin media asset referenced by migrated content."
+        - "Preserve the original binary."
+        - "Hash and deduplicate exact duplicates."
+        - "Generate web-optimised derivatives at build time or through a deterministic asset script."
+        - "Do not upscale raster images."
+        - "Preserve animation for meaningful GIF or video content."
+        - "Retain source filename in metadata even when output filenames are hash-based."
+        - "Detect and report hot-linked third-party assets."
+        - "Do not copy third-party assets without a clear right to do so."
+      outputs:
+        - "public/media/original/"
+        - "public/media/derived/"
+        - "src/content/media/media.yaml"
+        - "migration/asset-ledger.csv"
+    compose:
+      rules:
+        - "Render all content through shared layouts and components."
+        - "Do not reproduce source Squarespace layout classes."
+        - "Use canonical design tokens."
+        - "Preserve source information architecture before proposing redesign changes."
+    verify:
+      checks:
+        - "Normalised text parity."
+        - "Heading and list parity."
+        - "Image count and order."
+        - "Alt and caption parity."
+        - "Internal and external link status."
+        - "Publication metadata."
+        - "Route existence."
+        - "Visual regression."
+      outputs:
+        - "migration/reports/content-parity.json"
+        - "migration/reports/link-report.json"
+        - "migration/reports/visual-report/"
+        - "migration/reports/manual-review-queue.csv"
+
+orchestrator:
+  role: "Main autonomous programme manager and integration authority"
+  model_requirements:
+    - "Large context window."
+    - "Strong code generation and repository reasoning."
+    - "Ability to create and supervise specialist subagents."
+    - "Ability to maintain durable state through files rather than hidden memory."
+  operating_mode:
+    local_first: true
+    current_workspace_is_initial_target: true
+    preserve_existing_local_files: true
+    remote_repository_creation: "forbidden_before_H3_approval"
+    registrar_access: "forbidden_before_H4_approval"
+    branch_only: false
+    branch_policy_after_local_git_initialisation: "Use narrow local branches when practical."
+    pull_request_required: "After the remote repository is created; not required for the pre-remote local build."
+    destructive_actions: false
+    production_dns_access: false
+    evidence_required: true
+  state_files:
+    programme_state: "migration/programme-state.yaml"
+    task_graph: "migration/task-graph.yaml"
+    decisions: "docs/adr/"
+    risks: "migration/risk-register.yaml"
+    url_ledger: "migration/url-ledger.csv"
+    asset_ledger: "migration/asset-ledger.csv"
+    review_queue: "migration/manual-review-queue.csv"
+  core_loop:
+    - "Load mission, constraints, state files, ledgers, and unresolved decisions."
+    - "Inspect the current folder and determine whether the local site must be built fresh or rebuilt without overwriting useful existing work."
+    - "Select the highest-priority unblocked task."
+    - "Spawn the smallest qualified agent or batch of agents."
+    - "Require structured outputs and evidence."
+    - "Validate outputs against schemas and acceptance criteria."
+    - "Integrate only non-conflicting accepted artifacts into the local workspace; use the staging branch after local Git is initialised."
+    - "Update ledgers, task graph, decisions, risks, and programme state."
+    - "Repeat until all release gates pass or execution reaches a human approval gate."
+  task_priority:
+    order:
+      - "data loss or security risk"
+      - "blocking architecture decisions"
+      - "source discovery completeness"
+      - "content and asset preservation"
+      - "route preservation"
+      - "build correctness"
+      - "accessibility and SEO"
+      - "visual fidelity"
+      - "performance optimisation"
+      - "editor convenience"
+  dynamic_spawn_rules:
+    - condition: "More than 20 article URLs remain unprocessed."
+      action: "Spawn article migration agents in deterministic batches of 10."
+    - condition: "More than 100 unique assets remain."
+      action: "Spawn asset agents by MIME family and source directory."
+    - condition: "A content transform has confidence below 0.92."
+      action: "Send it to the manual review queue; do not auto-approve."
+    - condition: "Two agents modify the same file."
+      action: "Stop automatic integration and assign an integration agent."
+    - condition: "A new external service is proposed."
+      action: "Require an ADR covering cost, privacy, lock-in, security, and fallback."
+    - condition: "A source URL returns an error."
+      action: "Retry with bounded backoff, then inspect navigation, web archive eligibility, and internal references before classifying it."
+  concurrency:
+    maximum_parallel_agents: 8
+    maximum_parallel_repository_writers: 2
+    single_writer_paths:
+      - "src/content.config.ts"
+      - "src/styles/tokens.css"
+      - "astro.config.mjs"
+      - "package.json"
+      - ".github/workflows/"
+      - "migration/programme-state.yaml"
+  retry_policy:
+    transient_failures: 3
+    code_failures: 2
+    content_failures: 1
+    rule: "A retry must change the diagnosis or method; blind repetition is forbidden."
+  merge_policy:
+    - "Before remote creation, accepted work is integrated locally with file backups and recorded evidence."
+    - "After local Git is initialised, each agent works on an isolated local branch or worktree where practical."
+    - "A remote branch and pull request are required only after the candidate repository is created."
+    - "Each change set has a narrow scope."
+    - "Generated migration outputs and authored application code are committed separately."
+    - "All checks must pass before integration."
+    - "The orchestrator records source and target commit SHAs."
+
+agent_contract:
+  required_input:
+    - "task_id"
+    - "objective"
+    - "authoritative inputs"
+    - "allowed paths"
+    - "forbidden paths"
+    - "acceptance criteria"
+    - "dependencies"
+    - "expected output schema"
+  required_output:
+    status:
+      values: ["completed", "blocked", "needs_review", "failed"]
+    summary: "Maximum 250 words."
+    files_created: "path_array"
+    files_modified: "path_array"
+    evidence: "source_and_test_reference_array"
+    tests_run: "command_and_result_array"
+    unresolved_items: "issue_array"
+    confidence: "decimal_0_to_1"
+    next_recommended_task: "string_or_null"
+  behavioural_rules:
+    - "Do not modify files outside allowed paths."
+    - "Do not conceal failed tests."
+    - "Do not use unstated assumptions when source evidence is available."
+    - "Do not mark a task complete when acceptance criteria are only partially met."
+    - "Do not include hidden reasoning; provide concise evidence and decisions."
+    - "Write deterministic scripts rather than one-off manual transformations when more than three items share a pattern."
+
+agents:
+  source_discovery_agent:
+    objective: "Produce a complete, deduplicated graph of public source URLs."
+    allowed_tools:
+      - "HTTP client"
+      - "HTML parser"
+      - "browser automation"
+      - "sitemap and RSS parser"
+    outputs:
+      - "migration/source-manifest.json"
+      - "migration/url-ledger.csv"
+      - "migration/reports/discovery-report.md"
+    acceptance:
+      - "All fixed seeds are present."
+      - "Pagination and previous-next traversal are represented."
+      - "No same-origin public link remains unclassified."
+      - "Graph closure is documented."
+  source_snapshot_agent:
+    objective: "Create a reproducible source backup before transformation."
+    outputs:
+      - "raw HTML"
+      - "metadata"
+      - "source screenshots"
+      - "hash manifest"
+    acceptance:
+      - "Every migratable HTML URL has a raw snapshot and SHA-256."
+      - "Every distinct template has desktop and mobile screenshots."
+  squarespace_extraction_agent:
+    objective: "Extract semantic content and metadata from Squarespace markup."
+    outputs:
+      - "normalised intermediate JSON per URL"
+      - "selector diagnostics"
+    acceptance:
+      - "Navigation and footer chrome are excluded from body content."
+      - "Headings, paragraphs, lists, media, links, dates, and captions retain source order."
+  content_architect_agent:
+    objective: "Maintain schemas, validation, collection boundaries, and migration mappings."
+    exclusive_paths:
+      - "src/content.config.ts"
+      - "docs/content-model.md"
+    acceptance:
+      - "Every source page type maps to one target schema."
+      - "Schemas reject incomplete publishable content."
+  article_migration_agent:
+    objective: "Transform a deterministic batch of source articles into validated Markdown or MDX."
+    batch_size: 10
+    outputs:
+      - "src/content/articles/**"
+      - "migration/content-diff/**"
+    acceptance:
+      - "Normalised text parity is at least 99.5 percent unless an exception is documented."
+      - "Media order and captions match the source."
+      - "All internal links resolve or enter the redirect ledger."
+  workshop_structuring_agent:
+    objective: "Split the large workshop catalogue into structured workshop records and a generated catalogue page."
+    acceptance:
+      - "Every visible workshop offer is represented."
+      - "Duration, price, travel cost, group size, audience, programme, and goals are captured when present."
+      - "Unknown values remain null; they are not inferred."
+  asset_migration_agent:
+    objective: "Download, hash, deduplicate, register, and optimise source assets."
+    acceptance:
+      - "Every referenced same-origin asset is downloaded or explicitly excluded."
+      - "No broken content references."
+      - "Original binary remains available."
+      - "Alt and caption metadata are preserved."
+  design_forensics_agent:
+    objective: "Extract measurable tokens, components, and interaction patterns from all design-source repositories."
+    outputs:
+      - "docs/design-forensics.md"
+      - "docs/design-token-evidence.yaml"
+      - "migration/screenshots/design-sources/"
+    acceptance:
+      - "Every listed design source is inspected."
+      - "Consensus tokens and deviations are documented."
+      - "No token is selected solely from one outlier project."
+  design_system_agent:
+    objective: "Implement the canonical tokens and reusable components."
+    exclusive_paths:
+      - "src/styles/tokens.css"
+      - "src/components/"
+    acceptance:
+      - "No unexplained raw brand colours outside token definitions."
+      - "Components meet keyboard, focus, responsive, and reduced-motion requirements."
+  information_architecture_agent:
+    objective: "Map source navigation and collections to the target route and navigation model."
+    outputs:
+      - "docs/information-architecture.md"
+      - "src/content/settings/navigation.yaml"
+      - "src/content/settings/redirects.yaml"
+    acceptance:
+      - "Every source route has a target action."
+      - "Dutch and English navigation remain distinct and coherent."
+  frontend_architect_agent:
+    objective: "Scaffold and integrate the Astro static site."
+    exclusive_paths:
+      - "astro.config.mjs"
+      - "src/layouts/"
+      - "src/pages/"
+    acceptance:
+      - "Static build succeeds."
+      - "Base URL and custom-domain configuration are correct."
+      - "No unnecessary site-wide client hydration."
+  cms_architect_agent:
+    objective: "Build the custom schema-driven CMS Studio and secure publishing workflow."
+    outputs:
+      - "src/pages/admin/**"
+      - "src/cms/**"
+      - "docs/cms-operations.md"
+    acceptance:
+      - "Draft editing and preview work without production writes."
+      - "Publishing cannot expose credentials."
+      - "Every publish action creates a reviewable Git change."
+      - "Workshop and project fields have dedicated structured controls."
+  seo_agent:
+    objective: "Preserve discoverability, canonical metadata, social metadata, feeds, and structured data."
+    acceptance:
+      - "All indexable pages have unique titles and descriptions."
+      - "Canonical and hreflang links are valid."
+      - "Sitemap and RSS output validate."
+      - "Structured data contains only supported truthful claims."
+  accessibility_agent:
+    objective: "Audit and repair WCAG 2.2 AA issues."
+    authority: "May block release."
+    acceptance:
+      - "Zero critical or serious automated accessibility violations."
+      - "Manual keyboard and zoom checks pass."
+  visual_regression_agent:
+    objective: "Compare source and target content hierarchy while enforcing the new design system."
+    rule: >-
+      This is not pixel cloning. Flag missing content, incorrect hierarchy,
+      broken media, layout regressions, and unintended design inconsistency.
+    acceptance:
+      - "All high-value pages have approved desktop, tablet, and mobile captures."
+  link_and_route_agent:
+    objective: "Validate route parity, internal links, external links, fragments, downloads, and redirects."
+    acceptance:
+      - "Zero broken internal links."
+      - "Zero unresolved source routes."
+      - "External failures are reported separately and do not silently block migration."
+  performance_agent:
+    objective: "Control payload, rendering, image, font, and caching costs."
+    acceptance:
+      - "No blocking third-party font dependency."
+      - "Images have intrinsic dimensions."
+      - "Critical pages meet the configured Lighthouse budgets in CI."
+  privacy_security_agent:
+    objective: "Audit secrets, dependencies, forms, embeds, CSP, and data flows."
+    authority: "May block release."
+    acceptance:
+      - "No client-side secrets."
+      - "No unexplained personal-data processor."
+      - "External scripts and embeds are inventoried."
+      - "CMS publishing flow follows least privilege."
+  deployment_agent:
+    objective: "After local approval, implement GitHub Pages Actions deployment for RobbeW/aiindeklas and prepare custom-domain files without activating them early."
+    preconditions:
+      - "The local build and migration preview pass P7."
+      - "H3 explicitly authorises remote repository creation and public project Pages publication."
+    exclusive_paths:
+      - ".github/workflows/deploy-pages.yml"
+      - "public/CNAME"
+    acceptance:
+      - "Preview build artifact is reproducible."
+      - "Project Pages output works from /aiindeklas/."
+      - "Custom-domain output works from /."
+      - "Pages deployment uses explicit minimal permissions."
+      - "Custom domain remains human-approved."
+      - "public/CNAME is not activated before H4."
+  release_manager_agent:
+    objective: "Coordinate acceptance, backup, cutover, monitoring, and rollback."
+    authority:
+      - "May prepare production release."
+      - "May not change DNS autonomously."
+    acceptance:
+      - "All release gates have evidence."
+      - "Rollback instructions have been tested on staging."
+  documentation_agent:
+    objective: "Write operational documentation for the owner and future agentic coders."
+    outputs:
+      - "README.md"
+      - "docs/content-authoring.md"
+      - "docs/cms-operations.md"
+      - "docs/deployment.md"
+      - "docs/rollback.md"
+      - "docs/architecture.md"
+
+workflow:
+  phases:
+    - id: "P0"
+      name: "Local workspace build or rebuild"
+      dependencies: []
+      actions:
+        - "Inspect every existing file in the current folder and classify the workspace as a fresh build or a rebuild."
+        - "Back up or otherwise preserve any useful existing local application files before changing them."
+        - "Initialise a local Git repository when one is absent, but do not create or configure a remote."
+        - "Create programme state, task graph, source crawl storage, risk register, and decision log locally."
+        - "Create or repair the minimal local Astro static application and make its production build succeed in this folder."
+        - "Run the site locally at http://localhost:4321 and record baseline evidence."
+        - "Record publicly observable DNS, canonical host, and certificate state without accessing the registrar account."
+        - "Do not create a GitHub repository, configure a remote, publish Pages, access the registrar, or change DNS."
+      gate:
+        - "No production changes."
+        - "A reproducible local production build succeeds from the current folder."
+        - "Any pre-existing local work has a preservation record."
+        - "Local version history is available without a GitHub dependency."
+        - "Source backup location exists."
+        - "No remote repository or registrar dependency has been introduced."
+    - id: "P1"
+      name: "Complete source discovery"
+      dependencies: ["P0"]
+      actions:
+        - "Run source discovery until graph closure."
+        - "Inspect collection pagination and older-post links."
+        - "Classify URLs and assets."
+      gate:
+        - "100 percent of discovered URLs have a ledger record."
+        - "All navigation seeds and article pagination routes are represented."
+    - id: "P2"
+      name: "Source snapshot"
+      dependencies: ["P1"]
+      actions:
+        - "Archive HTML, metadata, media references, and screenshots."
+        - "Hash all snapshots."
+      gate:
+        - "100 percent of migratable source pages have a raw snapshot."
+    - id: "P3"
+      name: "Content and design modelling"
+      dependencies: ["P2"]
+      actions:
+        - "Finalise typed content schemas."
+        - "Extract design consensus from all project repositories."
+        - "Create information architecture and route map."
+        - "Write ADRs for framework, CMS publishing mode, contact form, analytics, and external services."
+      gate:
+        - "Schemas validate representative examples."
+        - "Route map accounts for every source route."
+        - "Canonical tokens are approved."
+    - id: "P4"
+      name: "Local application integration"
+      dependencies: ["P3"]
+      actions:
+        - "Refine the P0 Astro baseline using the approved content and design models."
+        - "Implement base layouts, tokens, navigation, footer, SEO helpers, and locale routing."
+        - "Implement base-aware routing for / locally, /aiindeklas/ on project Pages, and / on the future custom domain."
+        - "Add local validation and production-build commands; prepare CI configuration without requiring a remote."
+      gate:
+        - "The integrated application builds and serves locally without a remote repository."
+        - "A simulated /aiindeklas/ production build has no broken internal asset or route prefixes."
+        - "Accessibility baseline passes."
+    - id: "P5"
+      name: "Automated content migration"
+      dependencies: ["P4"]
+      actions:
+        - "Extract and transform fixed pages."
+        - "Batch articles."
+        - "Structure workshops."
+        - "Create project catalogue entries."
+        - "Migrate assets."
+      gate:
+        - "All source content has migration_status other than not_started."
+        - "No publishable content fails schema validation."
+    - id: "P6"
+      name: "CMS Studio"
+      dependencies: ["P4", "P5"]
+      actions:
+        - "Implement collection browser and schema-driven forms."
+        - "Implement draft preview."
+        - "Implement safe pull-request or patch publishing."
+        - "Document content authoring."
+      gate:
+        - "A new draft article can be created, previewed, validated, and proposed through Git."
+        - "A workshop can be edited without raw YAML manipulation."
+    - id: "P7"
+      name: "Parity and quality repair"
+      dependencies: ["P5", "P6"]
+      actions:
+        - "Run content, media, route, link, SEO, accessibility, performance, and visual checks."
+        - "Resolve or explicitly approve every exception."
+      gate:
+        - "All release quality gates pass."
+    - id: "P8"
+      name: "Owner review"
+      dependencies: ["P7"]
+      actions:
+        - "Serve or export a local staging preview from the current folder."
+        - "Provide route inventory, unresolved exceptions, and screenshot set."
+        - "Freeze migration content during final source delta scan."
+      gate:
+        - "Human approval recorded."
+        - "No unreviewed content exceptions."
+        - "H3 records whether RobbeW/aiindeklas may now be created and published at https://robbew.github.io/aiindeklas/."
+    - id: "P9"
+      name: "Optional GitHub project Pages preview and release preparation"
+      dependencies: ["P8"]
+      human_approval_required: true
+      actions:
+        - "Re-crawl source for changes since snapshot."
+        - "Migrate deltas."
+        - "Only after H3 approval, create or connect the RobbeW/aiindeklas repository and establish reviewed branch protection and pull-request workflows."
+        - "Publish the candidate site to https://robbew.github.io/aiindeklas/ with the /aiindeklas/ base path."
+        - "Tag release candidate."
+        - "Prepare, but do not activate, custom-domain configuration."
+      gate:
+        - "Release candidate matches latest source."
+        - "The project Pages preview works at /aiindeklas/ and does not change robbewulgaert.be."
+        - "The project Pages preview emits noindex, nofollow until production cutover."
+        - "Rollback package exists."
+    - id: "P10"
+      name: "DNS cutover"
+      dependencies: ["P9"]
+      human_approval_required: true
+      actions:
+        - "Configure the GitHub Pages custom domain."
+        - "Identify and access the registrar only through an authorised human-controlled channel."
+        - "Lower DNS TTL only if supported and operationally justified."
+        - "Verify custom domain ownership."
+        - "Apply current official GitHub-recommended DNS records through the registrar."
+        - "Retain both apex and www coverage, using the selected canonical host."
+        - "Enable and verify HTTPS."
+      gate:
+        - "Canonical host resolves to the new site."
+        - "Apex and www redirect correctly."
+        - "TLS is valid."
+        - "Critical route smoke tests pass."
+    - id: "P11"
+      name: "Post-launch verification"
+      dependencies: ["P10"]
+      actions:
+        - "Run full route and link checks against production."
+        - "Inspect crawlability, canonical tags, sitemap, RSS, and structured data."
+        - "Monitor 404 reports and external form delivery."
+        - "Keep Squarespace source and rollback instructions until the retention period expires."
+      gate:
+        - "No critical production defects."
+        - "No unresolved legacy route losses."
+
+quality_gates:
+  discovery:
+    source_url_accounting: "100%"
+    unclassified_same_origin_urls: 0
+  content:
+    normalised_text_parity_minimum: 0.995
+    missing_headings: 0
+    missing_lists: 0
+    unexplained_missing_media: 0
+    unpublished_manual_review_items: 0
+  assets:
+    referenced_same_origin_assets_accounted_for: "100%"
+    broken_internal_asset_references: 0
+    missing_informative_alt_text: 0
+  routes:
+    source_routes_accounted_for: "100%"
+    broken_internal_links: 0
+    broken_fragment_links: 0
+    redirect_chains_maximum: 1
+  accessibility:
+    critical_axe_violations: 0
+    serious_axe_violations: 0
+    manual_keyboard_check: "pass"
+    zoom_200_percent: "pass"
+    reduced_motion: "pass"
+  seo:
+    missing_canonical_tags: 0
+    duplicate_titles: 0
+    duplicate_meta_descriptions: 0
+    invalid_hreflang_pairs: 0
+    sitemap_validation: "pass"
+    rss_validation: "pass"
+  performance:
+    lighthouse_mobile_targets:
+      performance: 90
+      accessibility: 95
+      best_practices: 95
+      seo: 95
+    rule: "Targets may be waived only through a documented ADR with measured cause."
+  security:
+    detected_secrets: 0
+    high_severity_dependency_findings: 0
+    undocumented_external_scripts: 0
+  build:
+    schema_validation: "pass"
+    type_check: "pass"
+    lint: "pass"
+    unit_tests: "pass"
+    e2e_smoke_tests: "pass"
+    production_build: "pass"
+
+test_matrix:
+  viewport_profiles:
+    - id: "mobile_small"
+      width: 320
+      height: 700
+    - id: "mobile_standard"
+      width: 390
+      height: 844
+    - id: "tablet"
+      width: 768
+      height: 1024
+    - id: "laptop"
+      width: 1366
+      height: 768
+    - id: "desktop"
+      width: 1920
+      height: 1080
+    - id: "smartboard"
+      width: 1920
+      height: 1080
+      scale_check: "large-distance readability"
+  browsers:
+    required:
+      - "Chromium"
+      - "Firefox"
+      - "WebKit"
+    project_tool_note: "WebSerial project tools may remain Chromium-specific, but the main website must not be."
+  representative_routes:
+    - "/"
+    - "/boek"
+    - "/onderwijs"
+    - "/onderwijs/workshops-en-nascholingen"
+    - "/contact"
+    - "/about"
+    - "/education"
+    - "/projects"
+    - "one short article"
+    - "one long article"
+    - "one image-heavy article"
+    - "one workshop detail"
+    - "/404"
+
+github_actions:
+  activation: "Configurations may be prepared locally, but workflows are not required to run until H3 approves and RobbeW/aiindeklas exists."
+  validate_workflow:
+    triggers:
+      - "pull_request"
+      - "workflow_dispatch"
+    jobs:
+      - "install with frozen lockfile"
+      - "schema validation"
+      - "type check"
+      - "lint"
+      - "unit tests"
+      - "production build"
+      - "internal link and fragment check"
+      - "HTML validation"
+      - "accessibility smoke tests"
+      - "SEO output checks"
+      - "secret scan"
+  visual_workflow:
+    triggers:
+      - "pull_request when layout, component, style, or content files change"
+    jobs:
+      - "build preview"
+      - "capture representative routes"
+      - "compare approved baselines"
+      - "upload report artifact"
+  deploy_workflow:
+    triggers:
+      - "push to main"
+      - "workflow_dispatch"
+    permissions:
+      contents: "read"
+      pages: "write"
+      id_token: "write"
+    environment: "github-pages"
+    official_actions:
+      configure_pages: "actions/configure-pages"
+      upload_artifact: "actions/upload-pages-artifact"
+      deploy_pages: "actions/deploy-pages"
+    supply_chain_rule: >-
+      Pin third-party actions to reviewed commit SHAs. Official GitHub Pages
+      actions may follow the current supported major only after dependency review.
+  scheduled_checks:
+    cadence: "weekly"
+    jobs:
+      - "external link check"
+      - "dependency audit"
+      - "production smoke test"
+      - "sitemap and RSS validation"
+
+deployment:
+  sequence:
+    - id: "local"
+      required_first: true
+      origin: "http://localhost:4321"
+      base_path: "/"
+      remote_repository_required: false
+      registrar_required: false
+    - id: "github_project_pages_preview"
+      required_first: false
+      repository: "RobbeW/aiindeklas"
+      repository_url: "https://github.com/RobbeW/aiindeklas"
+      public_url: "https://robbew.github.io/aiindeklas/"
+      base_path: "/aiindeklas/"
+      activation: "H3 approval"
+      registrar_required: false
+    - id: "production_custom_domain"
+      required_first: false
+      public_url: "https://www.robbewulgaert.be"
+      base_path: "/"
+      activation: "H4 approval"
+      registrar_required: true
+  github_pages:
+    repository_status: "postponed_until_H3"
+    candidate_repository: "RobbeW/aiindeklas"
+    candidate_project_url: "https://robbew.github.io/aiindeklas/"
+    source: "GitHub Actions"
+    artifact: "dist"
+    custom_domain_file: "public/CNAME"
+    cname_value: "www.robbewulgaert.be"
+    cname_activation: "H4 only; omit CNAME from the project Pages preview artifact before approval."
+    custom_domain_verification_required: true
+    https_required: true
+  domain_strategy:
+    canonical_host: "www.robbewulgaert.be"
+    ownership: "Retain robbewulgaert.be; no domain transfer is planned."
+    registrar_access: "Postponed until H4."
+    apex_behaviour: "Redirect to www through correct GitHub Pages DNS configuration."
+    rules:
+      - "Read current official GitHub Pages DNS instructions at execution time."
+      - "Do not hard-code stale IP addresses in this cookbook."
+      - "Verify the domain before attaching it to the repository."
+      - "Remove obsolete Squarespace DNS records only after the new records are validated."
+      - "Do not use registrar HTTP forwarding as the primary hosting mechanism."
+  cache_strategy:
+    html: "short cache with revalidation"
+    hashed_assets: "long immutable cache"
+    service_worker: "not required unless an offline use case is approved"
+
+rollback:
+  triggers:
+    - "Critical content loss."
+    - "Widespread 404 responses."
+    - "TLS or domain failure that cannot be repaired immediately."
+    - "Broken contact path."
+    - "Security incident."
+  preparation:
+    - "Preserve a manifest or backup of useful files found in the local workspace before the P0 build or rebuild."
+    - "Record the original Squarespace DNS records."
+    - "Keep Squarespace subscription and site active through the stabilisation window."
+    - "Tag the last known good release."
+    - "Store the complete source crawl and asset archive outside the deployment artifact."
+    - "Test redeploying the last known good GitHub Pages artifact."
+  procedure:
+    - "Stop further production deployments."
+    - "Revert to the last known good repository tag when the defect is in the build."
+    - "Restore the recorded Squarespace DNS records when the defect is in the platform cutover."
+    - "Verify apex, www, TLS, home page, contact, education index, and three historical articles."
+    - "Record the incident and required corrective actions."
+  retention:
+    source_snapshot_minimum_days: 365
+    squarespace_overlap_recommended_days: 30
+    rule: "Do not cancel Squarespace before production stability and backup verification."
+
+risk_register_seed:
+  - id: "R001"
+    risk: "Incomplete discovery of older paginated articles."
+    severity: "critical"
+    mitigation: "Use pagination, previous-next graph traversal, feeds, sitemap, and graph closure."
+  - id: "R002"
+    risk: "Squarespace image variants or CDN URLs are missed."
+    severity: "high"
+    mitigation: "Parse src, srcset, data-src, JSON payloads, CSS backgrounds, and gallery metadata."
+  - id: "R003"
+    risk: "Long workshop page is flattened into unmaintainable prose."
+    severity: "high"
+    mitigation: "Extract each offering into a typed workshop record."
+  - id: "R004"
+    risk: "Legacy URLs lose search ranking or inbound links."
+    severity: "critical"
+    mitigation: "Preserve exact routes; generate static redirect stubs only where unavoidable."
+  - id: "R005"
+    risk: "Custom CMS exposes a GitHub credential."
+    severity: "critical"
+    mitigation: "Use PR-based GitHub auth, local credentials, or a separate OAuth bridge; never frontend secrets."
+  - id: "R006"
+    risk: "Contact form stops working after static migration."
+    severity: "high"
+    mitigation: "Select and test a replacement form architecture before cutover."
+  - id: "R007"
+    risk: "Visual merger creates inconsistent tokens from project-specific overrides."
+    severity: "medium"
+    mitigation: "Use consensus tokens and explicit theme overrides."
+  - id: "R008"
+    risk: "Agentic coders make conflicting repository writes."
+    severity: "high"
+    mitigation: "Isolated branches, single-writer paths, deterministic batches, and integration agent."
+  - id: "R009"
+    risk: "Source changes during migration."
+    severity: "high"
+    mitigation: "Record source hashes and run a final delta crawl before release."
+  - id: "R010"
+    risk: "Third-party embeds create privacy or availability problems."
+    severity: "medium"
+    mitigation: "Inventory embeds, use consent-aware loading, and provide direct-link fallbacks."
+  - id: "R011"
+    risk: "Apex or www DNS configuration breaks existing project URLs."
+    severity: "high"
+    mitigation: "Model user-site versus project-site domain behaviour and test all nine project URLs before cutover."
+  - id: "R012"
+    risk: "Generated copy silently changes the author's established voice."
+    severity: "high"
+    mitigation: "Treat source prose as immutable; put editorial proposals in a separate review artifact."
+  - id: "R013"
+    risk: "The project Pages preview works at /aiindeklas/ but links or assets fail when the custom domain uses /."
+    severity: "high"
+    mitigation: "Use shared base-path helpers and test both /aiindeklas/ and / build profiles before publication."
+  - id: "R014"
+    risk: "A local rebuild overwrites useful files already present in the workspace."
+    severity: "high"
+    mitigation: "Inventory and preserve existing files before scaffolding, then apply narrow non-destructive changes."
+
+decision_records_required:
+  - id: "ADR-001"
+    topic: "Static site generator and content collection architecture"
+  - id: "ADR-002"
+    topic: "CMS authentication and publishing mode"
+  - id: "ADR-003"
+    topic: "Contact form replacement"
+  - id: "ADR-004"
+    topic: "Canonical domain: www versus apex"
+  - id: "ADR-005"
+    topic: "Analytics and privacy"
+  - id: "ADR-006"
+    topic: "Image optimisation and original asset retention"
+  - id: "ADR-007"
+    topic: "URL preservation and redirect stubs"
+  - id: "ADR-008"
+    topic: "Shared design package across project repositories"
+  - id: "ADR-009"
+    topic: "Multilingual content and translation pairing"
+  - id: "ADR-010"
+    topic: "External embeds and consent policy"
+
+human_approval_gates:
+  - id: "H1"
+    moment: "After source inventory"
+    decision: "Approve exclusions and inaccessible pages."
+  - id: "H2"
+    moment: "After architecture and design prototype"
+    decision: "Approve information architecture, design system, CMS publishing mode, and contact solution."
+  - id: "H3"
+    moment: "After local migration preview"
+    decision: "Approve content and visual parity exceptions and separately authorise creation of RobbeW/aiindeklas plus publication at https://robbew.github.io/aiindeklas/."
+  - id: "H4"
+    moment: "Before production DNS change"
+    decision: "Approve custom-domain cutover."
+  - id: "H5"
+    moment: "Before Squarespace cancellation"
+    decision: "Approve decommissioning after stabilisation."
+
+orchestrator_commands:
+  initialise:
+    expected_effect:
+      - "Inspect and preserve useful existing files in the current workspace."
+      - "Initialise local Git when missing without creating or configuring a remote."
+      - "Create programme state, task graph, risk register, ADR directory, and source-preservation directories locally."
+      - "Build or rebuild the minimal Astro site in the current folder and prove that the local production build succeeds."
+      - "Do not create a GitHub repository, configure a remote, access a registrar, publish Pages, or change DNS."
+      - "Do not migrate or overwrite authoritative source content before discovery and snapshot evidence exists."
+  crawl:
+    expected_effect:
+      - "Discover, snapshot, classify, and hash source content."
+  analyse_design:
+    expected_effect:
+      - "Inspect every listed project source and produce token evidence."
+  scaffold:
+    preconditions:
+      - "P3 gate passed."
+    expected_effect:
+      - "Refine the local static site with the design system, schemas, base-aware routing, and locally runnable validation."
+  migrate:
+    preconditions:
+      - "P4 gate passed."
+    expected_effect:
+      - "Run deterministic content and asset migration batches."
+  build_cms:
+    preconditions:
+      - "Representative migrated records validate."
+    expected_effect:
+      - "Create CMS Studio and pull-request publishing."
+  validate:
+    expected_effect:
+      - "Run all quality gates and produce a release-readiness report."
+  release_candidate:
+    preconditions:
+      - "All automated gates pass."
+      - "H3 authorises remote repository creation and project Pages publication."
+    expected_effect:
+      - "Create or connect RobbeW/aiindeklas, publish the tagged /aiindeklas/ preview, and produce the owner review package."
+  cutover:
+    preconditions:
+      - "H4 approval recorded."
+    expected_effect:
+      - "Prepare exact DNS instructions and execute only through an authorised human-controlled channel."
+
+reporting:
+  cadence:
+    during_execution: "After each phase and whenever a release-blocking issue is found."
+  phase_report_schema:
+    phase_id: "string"
+    status: "complete|blocked|needs_review"
+    source_commit: "sha_or_null"
+    target_commit: "sha_or_null"
+    completed_tasks: "task_id_array"
+    produced_artifacts: "path_array"
+    gate_results: "check_result_array"
+    risks_added_or_changed: "risk_id_array"
+    manual_decisions_required: "decision_array"
+    next_unblocked_phase: "string_or_null"
+  final_report:
+    path: "migration/reports/final-migration-report.md"
+    required_sections:
+      - "Executive result"
+      - "Complete source URL accounting"
+      - "Content and asset parity"
+      - "Design system implementation"
+      - "CMS operations"
+      - "Accessibility, SEO, security, and performance results"
+      - "DNS and deployment state"
+      - "Known exceptions"
+      - "Rollback procedure"
+      - "Squarespace decommissioning checklist"
+
+deliverables:
+  source_preservation:
+    - "Complete URL manifest"
+    - "Raw HTML archive"
+    - "Source screenshots"
+    - "Asset archive and ledger"
+    - "Source metadata and hashes"
+  application:
+    - "Astro static website"
+    - "Canonical design system"
+    - "Typed content collections"
+    - "Locale-aware routing"
+    - "Custom CMS Studio"
+    - "Search, sitemap, RSS, SEO, and structured data"
+    - "Contact replacement"
+  automation:
+    - "Migration scripts"
+    - "Validation scripts"
+    - "GitHub Actions workflows"
+    - "Visual regression baselines"
+  operations:
+    - "Authoring guide"
+    - "CMS guide"
+    - "Deployment guide"
+    - "DNS cutover guide"
+    - "Rollback guide"
+    - "Final migration report"
+
+completion_rule: >-
+  The orchestrator may declare the programme complete only when every source URL
+  is accounted for, every release quality gate passes or has a recorded human
+  waiver, the production domain serves the new site over HTTPS, the CMS publish
+  workflow is documented and tested, and the rollback package is intact.
