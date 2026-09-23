@@ -60,7 +60,7 @@ def find_node() -> Path:
             return candidate.resolve()
 
     raise FileNotFoundError(
-        "Node.js was not found. Install Node.js 22.12 or newer, or set "
+        "Node.js was not found. Install Node.js 22.13 or newer, or set "
         "NODE_BINARY to the Node executable."
     )
 
