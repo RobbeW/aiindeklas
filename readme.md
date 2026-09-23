@@ -2,4 +2,4 @@
 
 Leermiddelen over AI, programmeren en digitale vaardigheden voor het onderwijs.
 
-De website van Robbe Wulgaert staat in [`website/`](website/).
+
