@@ -1,0 +1,10 @@
+kind: "site"
+schema_version: "1.0.0"
+name: "Robbe Wulgaert"
+default_locale: "nl-BE"
+supported_locales:
+  - "nl-BE"
+  - "en"
+canonical_origin: "https://www.robbewulgaert.be"
+# Confirmed on the archived sales-terms page during P5 extraction.
+contact_email: "robbe.wulgaert@gmail.com"

@@ -1,0 +1,29 @@
+kind: "redirects"
+schema_version: "1.0.0"
+redirects:
+  - source_path: "/contact-english"
+    target_path: "/contactinfo"
+    status: 308
+    implementation: "static_redirect_stub"
+    decision_gate: "H1"
+  - source_path: "/english"
+    target_path: "/about"
+    status: 308
+    implementation: "static_redirect_stub"
+    decision_gate: "H2"
+excluded_routes:
+  decision_gate: "H1"
+  reason: "Photography and videography work is dated and outside the migration focus."
+  paths:
+    - "/fotografie"
+    - "/fotografie/j-s"
+    - "/fotografie/tk-russell-heartbeat-session"
+    - "/videografie-1"
+    - "/videografie/covid-yasmina-jongbloet"
+    - "/videografie/hout-op-maat"
+    - "/videografie/jakobistan-fietspad"
+    - "/videografie/mathias-vercammen-quartet-herbakker-eeklo"
+    - "/videografie/matthias-de-smet-hongyu-chen"
+    - "/videografie/promotievideos-montage"
+    - "/videografie/wielerkampen-cartouche"
+    - "/info"

@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "profile": "project",
+  "site": "https://robbew.github.io/",
+  "base": "/aiindeklas/",
+  "html_files": 14,
+  "internal_urls_checked": 169,
+  "indexable_pages": 0,
+  "noindex_pages": 14,
+  "generated_system_outputs": 2,
+  "errors": [],
+  "status": "passed"
+}

@@ -1,0 +1,16 @@
+node_modules/
+__pycache__/
+dist/
+.astro/
+.pnpm-store/
+/favicon.png
+/.p18-chrome-profile/
+.agents/
+*.log
+.env
+.env.*
+!.env.example
+migration/raw-html/*
+!migration/raw-html/.gitkeep
+migration/raw-assets/original/*
+!migration/raw-assets/original/.gitkeep

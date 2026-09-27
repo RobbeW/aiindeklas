@@ -1,0 +1,28 @@
+---
+import PageHero from "./PageHero.astro";
+import PreviewNotice from "./PreviewNotice.astro";
+import WorkshopFinder from "./WorkshopFinder.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { shouldIndexPath } from "../lib/route-policy";
+
+interface Workshop {
+  id: string;
+  title: string;
+  slug: string;
+  [key: string]: unknown;
+}
+interface Props { workshops: Workshop[]; }
+const { workshops } = Astro.props;
+---
+
+<SiteLayout title="Workshops en nascholingen — Robbe Wulgaert" description="Ontdek keynotes en workshops voor onderwijs, AI-geletterdheid en vakspecifieke professionalisering." lang="nl-BE" canonicalPath="/onderwijs/workshops-en-nascholingen" noindex={!shouldIndexPath("/onderwijs/workshops-en-nascholingen", import.meta.env.PUBLIC_INDEXING_ENABLED === "true")}>
+  <main id="main-content" tabindex="-1" data-content-collection="workshops" data-workshop-count={workshops.length}>
+    <PageHero eyebrow="Nascholingen" title="Workshops en nascholingen" lead="Keynotes en workshops voor onderwijsprofessionals. Vind een sessie die bij je vraag past of bekijk het volledige aanbod." />
+    <WorkshopFinder workshops={workshops} />
+    <section class="section shell preview-only"><PreviewNotice lang="nl-BE" /></section>
+  </main>
+</SiteLayout>
+
+<style>
+  .preview-only { padding-top: 0; }
+</style>

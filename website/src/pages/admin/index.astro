@@ -1,0 +1,230 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { withBase } from "../../lib/routing";
+
+const contentEndpoint = withBase("/admin/content.json");
+const siteHome = withBase("/");
+---
+
+<BaseLayout
+  title="Robbe CMS Studio"
+  description="Lokale, schema-gestuurde contenteditor voor de website van Robbe Wulgaert."
+  lang="nl-BE"
+  canonicalPath="/admin"
+  noindex={true}
+>
+  <header class="studio-header">
+    <div>
+      <p class="studio-kicker">Lokale werkruimte</p>
+      <h1>Robbe CMS Studio</h1>
+    </div>
+    <a class="studio-home" href={siteHome}>Bekijk website</a>
+  </header>
+
+  <main id="main-content" tabindex="-1" class="studio" data-cms-studio data-content-endpoint={contentEndpoint}>
+    <noscript>
+      <p class="studio-message studio-message--error">De CMS Studio heeft JavaScript nodig om lokale patchbundels te maken.</p>
+    </noscript>
+
+    <section class="studio-intro" aria-labelledby="studio-intro-heading">
+      <div>
+        <p class="studio-kicker">Veilig publiceren</p>
+        <h2 id="studio-intro-heading">Bewerk hier; beoordeel en commit daarna met Git.</h2>
+      </div>
+      <p>Deze Studio schrijft nooit rechtstreeks naar GitHub. Exporteer een gecontroleerde patchbundel en pas die lokaal toe.</p>
+    </section>
+
+    <div class="studio-toolbar" aria-label="CMS-acties">
+      <button type="button" class="studio-button studio-button--primary" data-action="new-article">Nieuw artikel</button>
+      <button type="button" class="studio-button" data-action="duplicate" disabled>Dupliceer artikel</button>
+      <button type="button" class="studio-button" data-action="validate" disabled>Valideer</button>
+      <button type="button" class="studio-button studio-button--export" data-action="export" disabled>Exporteer patch</button>
+      <span class="studio-dirty" data-dirty hidden>Niet-geëxporteerde wijzigingen</span>
+    </div>
+
+    <div class="studio-grid">
+      <aside class="studio-browser" aria-labelledby="browser-heading">
+        <div class="studio-panel-heading">
+          <div>
+            <p class="studio-kicker">Collecties</p>
+            <h2 id="browser-heading">Inhoud</h2>
+          </div>
+          <span class="studio-count" data-result-count>…</span>
+        </div>
+
+        <div class="studio-tabs" role="tablist" aria-label="Collectie">
+          <button type="button" role="tab" aria-selected="true" data-collection="articles">Artikels</button>
+          <button type="button" role="tab" aria-selected="false" data-collection="workshops">Workshops</button>
+        </div>
+
+        <div class="studio-filters">
+          <label>
+            <span>Zoeken</span>
+            <input type="search" data-filter="query" placeholder="Titel, tag of samenvatting" />
+          </label>
+          <div class="studio-filter-row">
+            <label>
+              <span>Taal</span>
+              <select data-filter="locale">
+                <option value="">Alle talen</option>
+                <option value="nl-BE">Nederlands</option>
+                <option value="en">English</option>
+              </select>
+            </label>
+            <label>
+              <span>Status</span>
+              <select data-filter="status">
+                <option value="">Alle statussen</option>
+                <option value="draft">Concept</option>
+                <option value="review">Te beoordelen</option>
+                <option value="published">Gepubliceerd</option>
+                <option value="archived">Gearchiveerd</option>
+              </select>
+            </label>
+          </div>
+          <div class="studio-filter-row">
+            <label>
+              <span>Jaar</span>
+              <select data-filter="year"><option value="">Alle jaren</option></select>
+            </label>
+            <label>
+              <span>Volgorde</span>
+              <select data-filter="sort">
+                <option value="newest">Nieuwste eerst</option>
+                <option value="oldest">Oudste eerst</option>
+                <option value="title">Titel A–Z</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <nav aria-label="Contentrecords" class="studio-records">
+          <p class="studio-loading" data-loading>Contentindex laden…</p>
+          <ul data-record-list></ul>
+        </nav>
+      </aside>
+
+      <section class="studio-editor" aria-labelledby="editor-heading">
+        <div class="studio-panel-heading">
+          <div>
+            <p class="studio-kicker">Schemaformulier</p>
+            <h2 id="editor-heading" data-editor-heading>Kies een item</h2>
+          </div>
+          <span class="studio-status" data-record-status></span>
+        </div>
+        <div class="studio-empty" data-editor-empty>
+          <p>Kies links een artikel of workshop, of maak een nieuw artikel.</p>
+        </div>
+        <form data-editor-form hidden novalidate></form>
+      </section>
+
+      <aside class="studio-preview" aria-labelledby="preview-heading">
+        <div class="studio-panel-heading">
+          <div>
+            <p class="studio-kicker">Conceptweergave</p>
+            <h2 id="preview-heading">Voorbeeld</h2>
+          </div>
+        </div>
+        <div class="studio-preview-frame" data-preview>
+          <p>Selecteer content om het voorbeeld te openen.</p>
+        </div>
+        <div class="studio-validation" data-validation aria-live="polite"></div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="../../scripts/cms-studio.ts"></script>
+</BaseLayout>
+
+<style>
+  :global(body) { background: #efedf5; }
+  .studio-header {
+    position: sticky;
+    z-index: 20;
+    top: 0;
+    display: flex;
+    min-height: 5.4rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--color-line);
+    background: rgba(255, 255, 255, 0.94);
+    padding: 0.9rem clamp(1rem, 3vw, 2rem);
+    backdrop-filter: blur(16px);
+  }
+  .studio-header h1 { margin: 0; color: var(--color-ink); font-size: clamp(1.25rem, 2vw, 1.7rem); }
+  .studio-kicker { margin: 0 0 0.2rem; color: var(--color-brand); font-size: 0.72rem; font-weight: 900; letter-spacing: 0.09em; text-transform: uppercase; }
+  .studio-home { border-radius: var(--radius-pill); color: white; background: var(--color-ink); padding: 0.7rem 1rem; font-weight: 800; text-decoration: none; }
+  .studio { width: min(calc(100% - 2rem), 108rem); margin-inline: auto; padding-block: 1.25rem 3rem; }
+  .studio-intro { display: flex; align-items: end; justify-content: space-between; gap: 2rem; border-radius: var(--radius-panel); color: white; background: var(--color-ink); padding: clamp(1.2rem, 3vw, 2rem); }
+  .studio-intro h2 { max-width: 22ch; margin: 0; font-size: clamp(1.4rem, 3vw, 2.35rem); line-height: 1.05; }
+  .studio-intro > p { max-width: 42rem; margin: 0; color: #e2d8f5; }
+  .studio-intro .studio-kicker { color: var(--color-accent); }
+  .studio-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem; padding-block: 1rem; }
+  .studio-button { min-height: 2.8rem; border: 1px solid var(--color-line); border-radius: var(--radius-pill); color: var(--color-ink); background: white; padding: 0.55rem 1rem; font-weight: 850; cursor: pointer; }
+  .studio-button:hover:not(:disabled) { border-color: var(--color-brand); transform: translateY(-1px); }
+  .studio-button:disabled { cursor: not-allowed; opacity: 0.45; }
+  .studio-button--primary { border-color: var(--color-brand); color: white; background: var(--color-brand); }
+  .studio-button--export { margin-left: auto; border-color: var(--color-ink); color: white; background: var(--color-ink); }
+  .studio-dirty { color: #8b4800; font-size: 0.83rem; font-weight: 800; }
+  .studio-grid { display: grid; grid-template-columns: minmax(17rem, 0.72fr) minmax(24rem, 1.45fr) minmax(20rem, 1fr); gap: 1rem; align-items: start; }
+  .studio-browser, .studio-editor, .studio-preview { min-width: 0; border: 1px solid var(--color-line); border-radius: var(--radius-panel); background: white; box-shadow: var(--shadow-card); }
+  .studio-browser, .studio-preview { position: sticky; top: 6.5rem; max-height: calc(100vh - 8rem); overflow: auto; }
+  .studio-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--color-line); padding: 1.1rem 1.2rem; }
+  .studio-panel-heading h2 { margin: 0; color: var(--color-ink); font-size: 1.2rem; }
+  .studio-count, .studio-status { border-radius: var(--radius-pill); color: var(--color-brand-dark); background: var(--color-brand-soft); padding: 0.3rem 0.65rem; font-size: 0.75rem; font-weight: 850; }
+  .studio-tabs { display: grid; grid-template-columns: 1fr 1fr; padding: 0.8rem 1rem 0; }
+  .studio-tabs button { border: 0; border-bottom: 3px solid transparent; color: var(--color-muted); background: transparent; padding: 0.7rem; font-weight: 850; cursor: pointer; }
+  .studio-tabs button[aria-selected="true"] { border-color: var(--color-brand); color: var(--color-brand-dark); }
+  .studio-filters { display: grid; gap: 0.7rem; border-bottom: 1px solid var(--color-line); padding: 1rem; }
+  .studio-filter-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+  .studio label { display: grid; gap: 0.32rem; color: var(--color-ink); font-size: 0.78rem; font-weight: 850; }
+  .studio input, .studio select, .studio textarea { width: 100%; border: 1px solid #cfc7dc; border-radius: var(--radius-sm); color: var(--color-text); background: white; padding: 0.68rem 0.75rem; }
+  .studio textarea { min-height: 6.5rem; resize: vertical; line-height: 1.45; }
+  .studio input:focus, .studio select:focus, .studio textarea:focus { border-color: var(--color-brand); }
+  .studio-records { min-height: 12rem; }
+  .studio-records ul { display: grid; gap: 0.25rem; margin: 0; padding: 0.65rem; list-style: none; }
+  .studio-records button { width: 100%; border: 1px solid transparent; border-radius: 12px; color: var(--color-text); background: transparent; padding: 0.75rem; text-align: left; cursor: pointer; }
+  .studio-records button:hover { background: var(--color-brand-soft); }
+  .studio-records button[aria-current="true"] { border-color: #c8b4ff; background: var(--color-brand-soft); }
+  .studio-record-title { display: block; color: var(--color-ink); font-weight: 850; line-height: 1.25; }
+  .studio-record-meta { display: block; margin-top: 0.25rem; color: var(--color-muted); font-size: 0.72rem; }
+  .studio-loading, .studio-empty { margin: 0; padding: 1.25rem; color: var(--color-muted); }
+  .studio-editor form { display: grid; gap: 1rem; padding: 1.2rem; }
+  .studio-form-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 0.9rem; border: 0; border-top: 1px solid var(--color-line); margin: 0; padding: 1.2rem 0 0; }
+  .studio-form-section:first-child { border-top: 0; padding-top: 0; }
+  .studio-form-section legend { grid-column: 1 / -1; color: var(--color-brand-dark); padding: 0 0.5rem 0 0; font-size: 0.8rem; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; }
+  .studio-field--wide { grid-column: 1 / -1; }
+  .studio-checkbox { display: flex !important; min-height: 2.8rem; grid-template-columns: auto 1fr !important; align-items: center; align-self: end; }
+  .studio-checkbox input { width: auto; }
+  .studio-help { margin: 0; color: var(--color-muted); font-size: 0.75rem; font-weight: 500; }
+  .studio-preview-frame { min-height: 20rem; padding: 1.2rem; }
+  .studio-preview-frame h1 { margin: 0 0 0.8rem; color: var(--color-ink); font-size: 1.8rem; line-height: 1.05; }
+  .studio-preview-frame h2 { margin-top: 1.7rem; color: var(--color-ink); font-size: 1.3rem; }
+  .studio-preview-frame p, .studio-preview-frame li { overflow-wrap: anywhere; }
+  .studio-preview-meta { color: var(--color-brand); font-size: 0.75rem; font-weight: 900; text-transform: uppercase; }
+  .studio-preview-lead { color: var(--color-muted); font-size: 1.05rem; }
+  .studio-validation { border-top: 1px solid var(--color-line); padding: 1rem 1.2rem; }
+  .studio-validation:empty { display: none; }
+  .studio-validation ul { margin-bottom: 0; padding-left: 1.2rem; }
+  .studio-validation--ok { color: #00643f; background: #effcf6; }
+  .studio-validation--error, .studio-message--error { color: #84003f; background: #fff0f6; }
+  .studio-message { border-radius: var(--radius-sm); padding: 1rem; }
+  @media (max-width: 92rem) {
+    .studio-grid { grid-template-columns: minmax(17rem, 0.8fr) minmax(25rem, 1.4fr); }
+    .studio-preview { position: static; max-height: none; grid-column: 1 / -1; }
+  }
+  @media (max-width: 52rem) {
+    .studio-intro { display: grid; }
+    .studio-grid { grid-template-columns: 1fr; }
+    .studio-browser, .studio-preview { position: static; max-height: none; }
+    .studio-button--export { margin-left: 0; }
+  }
+  @media (max-width: 38rem) {
+    .studio { width: min(calc(100% - 1rem), 108rem); }
+    .studio-header { align-items: flex-start; }
+    .studio-home { font-size: 0.78rem; }
+    .studio-form-section, .studio-filter-row { grid-template-columns: 1fr; }
+    .studio-field--wide { grid-column: auto; }
+  }
+</style>

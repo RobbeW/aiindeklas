@@ -1,0 +1,61 @@
+---
+import PageHero from "./PageHero.astro";
+import PreviewNotice from "./PreviewNotice.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import type { PrototypePage } from "../data/prototype-pages";
+
+interface Props { page: PrototypePage; }
+const { page } = Astro.props;
+---
+
+<SiteLayout
+  title={`${page.title} — Robbe Wulgaert`}
+  description={page.description}
+  lang={page.lang}
+  canonicalPath={page.canonicalPath ?? page.path}
+  alternatePath={page.alternatePath}
+  hasDirectTranslation={page.hasDirectTranslation}
+>
+  <main id="main-content" tabindex="-1">
+    <PageHero eyebrow={page.eyebrow} title={page.title} lead={page.description} />
+    <section class="section shell" aria-labelledby="integration-heading">
+      <PreviewNotice lang={page.lang} />
+      <div class="section-intro">
+        <h2 id="integration-heading" class="section-heading">
+          {page.lang === "en" ? "The page structure is ready" : "De paginastructuur staat klaar"}
+        </h2>
+        <p class="section-lead">
+          {page.lang === "en"
+            ? "These cards exercise the approved responsive component system. Source-verified content replaces this integration copy in P5."
+            : "Deze kaarten testen het goedgekeurde responsieve componentsysteem. In P5 komt hier de geverifieerde broninhoud."}
+        </p>
+      </div>
+      <div class="card-grid">
+        {page.cards.map((card, index) => (
+          <article class="info-card">
+            <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</SiteLayout>
+
+<style>
+  .section-intro { margin-top: clamp(3rem, 7vw, 5rem); }
+  .card-grid { margin-top: 2.5rem; }
+
+  .info-card {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    padding: clamp(1.3rem, 3vw, 2rem);
+    box-shadow: var(--shadow-card);
+  }
+
+  .info-card > span { color: var(--color-brand); font-weight: 900; }
+  .info-card h3 { margin: 1rem 0 0; color: var(--color-ink); font-size: 1.3rem; }
+  .info-card p { margin-bottom: 0; color: var(--color-muted); }
+</style>

@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "profile": "github-pages-project",
+  "deployment_url": null,
+  "base": "/aiindeklas/",
+  "smoke_kind": "local_artifact",
+  "checked_routes": 23,
+  "checked_assets": 3,
+  "case_collision_pairs": 17,
+  "canonicalized_case_collision_pairs": [
+    {
+      "canonical_path": "/education/tag/AI",
+      "alias_path": "/education/tag/ai"
+    },
+    {
+      "canonical_path": "/education/tag/Education",
+      "alias_path": "/education/tag/education"
+    },
+    {
+      "canonical_path": "/education/tag/Greek",
+      "alias_path": "/education/tag/greek"
+    },
+    {
+      "canonical_path": "/education/tag/Grieks",
+      "alias_path": "/education/tag/grieks"
+    },
+    {
+      "canonical_path": "/education/tag/Onderwijs",
+      "alias_path": "/education/tag/onderwijs"
+    },
+    {
+      "canonical_path": "/education/tag/Pythia",
+      "alias_path": "/education/tag/pythia"
+    },
+    {
+      "canonical_path": "/education/tag/Taal",
+      "alias_path": "/education/tag/taal"
+    },
+    {
+      "canonical_path": "/education/tag/VR",
+      "alias_path": "/education/tag/vr"
+    },
+    {
+      "canonical_path": "/onderwijs/tag/AI",
+      "alias_path": "/onderwijs/tag/ai"
+    },
+    {
+      "canonical_path": "/onderwijs/tag/Education",
+      "alias_path": "/onderwijs/tag/education"
+    },
+    {
+      "canonical_path": "/onderwijs/tag/Gaming",
+      "alias_path": "/onderwijs/tag/gaming"
+    },
+    {
+      "canonical_path": "/onderwijs/tag/Greek",
+      "alias_path": "/onderwijs/tag/greek"
+    },
+    {
+      "canonical_path": "/onderwijs/tag/Grieks",
+      "alias_path": "/onderwijs/tag/grieks"
+    },
+    {
+      "canonical_path": "/onderwijs/tag/Onderwijs",
+      "alias_path": "/onderwijs/tag/onderwijs"
+    },
+    {
+      "canonical_path": "/onderwijs/tag/Pythia",
+      "alias_path": "/onderwijs/tag/pythia"
+    },
+    {
+      "canonical_path": "/onderwijs/tag/Taal",
+      "alias_path": "/onderwijs/tag/taal"
+    },
+    {
+      "canonical_path": "/onderwijs/tag/VR",
+      "alias_path": "/onderwijs/tag/vr"
+    }
+  ],
+  "unresolved_case_collision_pairs": [],
+  "case_sensitive_route_verification": false,
+  "noindex_review_gate_preserved": true,
+  "status": "passed",
+  "failures": []
+}

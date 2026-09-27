@@ -1,0 +1,177 @@
+{
+  "schema": "website-migration.p08-validation/v1",
+  "passed": true,
+  "counts": {
+    "candidates": 847,
+    "downloaded": 829,
+    "deferred_native_videos": 18,
+    "owner_table_rows": 18,
+    "output_path_records": 829,
+    "source_markdown_files": 155,
+    "video_articles_checked": 12,
+    "multi_video_articles_checked": 2,
+    "duplicate_groups": 70,
+    "unique_output_paths": 743,
+    "delivered_bytes": 251649069,
+    "oversized_unique_outputs": 21,
+    "outputs_over_5_mib": 12,
+    "alt_review_required": 753,
+    "rights_review_required": 829
+  },
+  "video_mapping": [
+    {
+      "record_id": "source-article-b50706e9c312c70a",
+      "source_snapshot": "migration/raw-html/education-ai-and-greek-epigraphy-with-a-robot-b50706e9c312.html",
+      "expected_ids": [
+        "media-b2118cf16d22283a"
+      ],
+      "actual_ids": [
+        "media-b2118cf16d22283a"
+      ],
+      "ordered_match": true
+    },
+    {
+      "record_id": "source-article-4b4e9fe874d91655",
+      "source_snapshot": "migration/raw-html/education-ai-for-education-awards-4b4e9fe874d9.html",
+      "expected_ids": [
+        "media-8360687d51721032"
+      ],
+      "actual_ids": [
+        "media-8360687d51721032"
+      ],
+      "ordered_match": true
+    },
+    {
+      "record_id": "source-article-6a936d0012098eb9",
+      "source_snapshot": "migration/raw-html/education-ithaca-teaching-history-journal-6a936d001209.html",
+      "expected_ids": [
+        "media-83a1055eabf20e0b"
+      ],
+      "actual_ids": [
+        "media-83a1055eabf20e0b"
+      ],
+      "ordered_match": true
+    },
+    {
+      "record_id": "source-article-eda7055ae9b9b3e1",
+      "source_snapshot": "migration/raw-html/onderwijs-ai-en-grieks-epigrafie-met-een-robot-eda7055ae9b9.html",
+      "expected_ids": [
+        "media-acb4b9584ab05464"
+      ],
+      "actual_ids": [
+        "media-acb4b9584ab05464"
+      ],
+      "ordered_match": true
+    },
+    {
+      "record_id": "source-article-2dcf90c9b3c7fbf1",
+      "source_snapshot": "migration/raw-html/onderwijs-ai-for-education-awards-tweemaal-prijs-2dcf90c9b3c7.html",
+      "expected_ids": [
+        "media-8360687d51721032"
+      ],
+      "actual_ids": [
+        "media-8360687d51721032"
+      ],
+      "ordered_match": true
+    },
+    {
+      "record_id": "source-article-11d2cc656f873bc2",
+      "source_snapshot": "migration/raw-html/onderwijs-ai-geletterdheid-waarom-moeten-wij-dit-kennen-11d2cc656f87.html",
+      "expected_ids": [
+        "media-d5d9f1396511c999"
+      ],
+      "actual_ids": [
+        "media-d5d9f1396511c999"
+      ],
+      "ordered_match": true
+    },
+    {
+      "record_id": "source-article-cd4e29a424e704c8",
+      "source_snapshot": "migration/raw-html/onderwijs-breng-de-romeinse-keizers-tot-leven-cd4e29a424e7.html",
+      "expected_ids": [
+        "media-1ccd4b00f2d824af",
+        "media-59f8a27dbe6a61df",
+        "media-f015ca41cd50a729",
+        "media-06d1c4f726849f8a",
+        "media-ab8cd31ef8162035",
+        "media-de802c1310b44b55",
+        "media-a16887d3f052e971"
+      ],
+      "actual_ids": [
+        "media-1ccd4b00f2d824af",
+        "media-59f8a27dbe6a61df",
+        "media-f015ca41cd50a729",
+        "media-06d1c4f726849f8a",
+        "media-ab8cd31ef8162035",
+        "media-de802c1310b44b55",
+        "media-a16887d3f052e971"
+      ],
+      "ordered_match": true
+    },
+    {
+      "record_id": "source-article-46932d3b9dd87c29",
+      "source_snapshot": "migration/raw-html/onderwijs-het-digitale-dilemma-46932d3b9dd8.html",
+      "expected_ids": [
+        "media-644bf912113e4828"
+      ],
+      "actual_ids": [
+        "media-644bf912113e4828"
+      ],
+      "ordered_match": true
+    },
+    {
+      "record_id": "source-article-53a1f21158085814",
+      "source_snapshot": "migration/raw-html/onderwijs-in-dialoog-met-ai-53a1f2115808.html",
+      "expected_ids": [
+        "media-d907dd16c6aa8822"
+      ],
+      "actual_ids": [
+        "media-d907dd16c6aa8822"
+      ],
+      "ordered_match": true
+    },
+    {
+      "record_id": "source-article-92bcff719816e650",
+      "source_snapshot": "migration/raw-html/onderwijs-ithaca-teaching-history-journal-92bcff719816.html",
+      "expected_ids": [
+        "media-500dda1cb747cb1a"
+      ],
+      "actual_ids": [
+        "media-500dda1cb747cb1a"
+      ],
+      "ordered_match": true
+    },
+    {
+      "record_id": "source-article-b0a8e3a574de2d65",
+      "source_snapshot": "migration/raw-html/onderwijs-latijnse-wordle-b0a8e3a574de.html",
+      "expected_ids": [
+        "media-e55deffd22c8e408",
+        "media-bff3485d66cd5df7"
+      ],
+      "actual_ids": [
+        "media-e55deffd22c8e408",
+        "media-bff3485d66cd5df7"
+      ],
+      "ordered_match": true
+    },
+    {
+      "record_id": "source-article-b72e341262ab474a",
+      "source_snapshot": "migration/raw-html/onderwijs-project-robothand-b72e341262ab.html",
+      "expected_ids": [
+        "media-b6fecc6bd90ff4db"
+      ],
+      "actual_ids": [
+        "media-b6fecc6bd90ff4db"
+      ],
+      "ordered_match": true
+    }
+  ],
+  "built": {
+    "html_files": 365,
+    "media_references_checked": 2050,
+    "deferred_video_url_hits": 0,
+    "visible_deferral_strings": 0,
+    "base": "/aiindeklas/"
+  },
+  "problems": []
+}

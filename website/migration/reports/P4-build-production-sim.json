@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "profile": "production-sim",
+  "site": "https://www.robbewulgaert.be/",
+  "base": "/",
+  "html_files": 14,
+  "internal_urls_checked": 169,
+  "indexable_pages": 8,
+  "noindex_pages": 6,
+  "generated_system_outputs": 2,
+  "errors": [],
+  "status": "passed"
+}

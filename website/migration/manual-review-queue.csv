@@ -1,0 +1,17 @@
+id,url,observed_result,classification,retry_evidence,recommended_action,human_decision
+H1-001,https://www.robbewulgaert.be/contact-english,HTTP 404,contact_page,Three crawl passes,Redirect the legacy route to /contactinfo and do not invent content,approved_redirect_to_contactinfo
+H1-002,https://www.robbewulgaert.be/education/tag/%23VlaanderenLeest,HTTP 429,tag_archive,Bounded backoff exhausted,Exclude the raw archive snapshot and derive any target tag view from migrated articles,approved_derive_from_articles
+H1-003,https://www.robbewulgaert.be/education/tag/latin,HTTP 429,tag_archive,Bounded backoff exhausted,Exclude the raw archive snapshot and derive any target tag view from migrated articles,approved_derive_from_articles
+H1-004,https://www.robbewulgaert.be/fotografie,HTTP 404,project_portfolio,Three crawl passes,Exclude because photography work is dated and outside the migration focus,approved_out_of_scope
+H1-005,https://www.robbewulgaert.be/fotografie/j-s,HTTP 404,fixed_page,Three crawl passes,Exclude because photography work is dated and outside the migration focus,approved_out_of_scope
+H1-006,https://www.robbewulgaert.be/fotografie/tk-russell-heartbeat-session,HTTP 404,fixed_page,Three crawl passes,Exclude because photography work is dated and outside the migration focus,approved_out_of_scope
+H1-007,https://www.robbewulgaert.be/info,Fetch terminated,fixed_page,Three changed-method crawl passes,Exclude as inaccessible because the owner approved proceeding,approved_inaccessible_exclusion
+H1-008,"https://www.robbewulgaert.be/onderwijs?author=6026af1f0584116c943938d2&offset=1666788262501&reversePaginate=true",Fetch terminated,article_index,Three changed-method crawl passes,Exclude this noncanonical traversal URL because adjacent pagination and RSS cover the article graph,approved_noncanonical_exclusion
+H1-009,https://www.robbewulgaert.be/videografie-1,HTTP 404,project_portfolio,Three crawl passes,Exclude because videography work is dated and outside the migration focus,approved_out_of_scope
+H1-010,https://www.robbewulgaert.be/videografie/covid-yasmina-jongbloet,HTTP 404,project_detail,Three crawl passes,Exclude because videography work is dated and outside the migration focus,approved_out_of_scope
+H1-011,https://www.robbewulgaert.be/videografie/hout-op-maat,HTTP 404,project_detail,Three crawl passes,Exclude because videography work is dated and outside the migration focus,approved_out_of_scope
+H1-012,https://www.robbewulgaert.be/videografie/jakobistan-fietspad,HTTP 404,project_detail,Three crawl passes,Exclude because videography work is dated and outside the migration focus,approved_out_of_scope
+H1-013,https://www.robbewulgaert.be/videografie/mathias-vercammen-quartet-herbakker-eeklo,HTTP 404,project_detail,Three crawl passes,Exclude because videography work is dated and outside the migration focus,approved_out_of_scope
+H1-014,https://www.robbewulgaert.be/videografie/matthias-de-smet-hongyu-chen,HTTP 404,project_detail,Three crawl passes,Exclude because videography work is dated and outside the migration focus,approved_out_of_scope
+H1-015,https://www.robbewulgaert.be/videografie/promotievideos-montage,HTTP 404,project_detail,Three crawl passes,Exclude because videography work is dated and outside the migration focus,approved_out_of_scope
+H1-016,https://www.robbewulgaert.be/videografie/wielerkampen-cartouche,HTTP 404,project_detail,Three crawl passes,Exclude because videography work is dated and outside the migration focus,approved_out_of_scope

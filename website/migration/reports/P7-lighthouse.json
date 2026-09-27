@@ -1,0 +1,228 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-07-20T08:14:46.815Z",
+  "form_factor": "mobile",
+  "thresholds": {
+    "performance": 0.9,
+    "accessibility": 0.95,
+    "best-practices": 0.95,
+    "seo": 0.95
+  },
+  "results": [
+    {
+      "route": "/",
+      "url": "http://127.0.0.1:65109/",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "failing_audits": [
+        {
+          "id": "cache-insight",
+          "title": "Use efficient cache lifetimes",
+          "score": 0.5,
+          "details": [
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "document-latency-insight",
+          "title": "Document request latency",
+          "score": 0.5,
+          "details": []
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "score": 0.5,
+          "details": [
+            {
+              "node": {
+                "selector": "div.shell > p > a > img",
+                "snippet": "<img alt=\"Robbe Wulgaert in een klaslokaal, foto Elka Pannier voor De Standaard\" loading=\"lazy\" decoding=\"async\" width=\"1440\" height=\"1080\" src=\"/_astro/3290f5e6aa83d70048bd23ab5b5c8eef400b4b963b0de7770cc6f23cb8b9bcfa-w…\" srcset=\"\">",
+                "label": "Robbe Wulgaert in een klaslokaal, foto Elka Pannier voor De Standaard"
+              }
+            }
+          ]
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": [
+            {},
+            {
+              "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to."
+            },
+            {
+              "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4."
+            }
+          ]
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": [
+            {}
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/onderwijs",
+      "url": "http://127.0.0.1:65109/onderwijs",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "failing_audits": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "score": 0.95,
+          "details": []
+        },
+        {
+          "id": "cache-insight",
+          "title": "Use efficient cache lifetimes",
+          "score": 0.5,
+          "details": [
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "document-latency-insight",
+          "title": "Document request latency",
+          "score": 0.5,
+          "details": []
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "score": 0.5,
+          "details": [
+            {
+              "node": {
+                "selector": "div.listing-grid > article#source-article-4933c56e4308c387 > a.listing-image > img",
+                "snippet": "<img src=\"http://127.0.0.1:65109/_astro/11d7ae41b574eaf8e78f2013d276775152f97176119c…\" srcset=\"/_astro/11d7ae41b574eaf8e78f2013d276775152f97176119ccfebbcc160f9c5729e0a-w…\" alt=\"\" sizes=\"(max-width: 42rem) 100vw, 32vw\" loading=\"lazy\" decoding=\"async\" data-astro-cid-3mzh7x42=\"true\" width=\"1353\" height=\"793\">",
+                "label": "div.listing-grid > article#source-article-4933c56e4308c387 > a.listing-image > img"
+              }
+            }
+          ]
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": [
+            {},
+            {
+              "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to."
+            },
+            {
+              "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4."
+            }
+          ]
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": [
+            {},
+            {}
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/onderwijs/ai-geletterdheid-waarom-moeten-wij-dit-kennen",
+      "url": "http://127.0.0.1:65109/onderwijs/ai-geletterdheid-waarom-moeten-wij-dit-kennen",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best-practices": 1,
+        "seo": 1
+      },
+      "failing_audits": [
+        {
+          "id": "cache-insight",
+          "title": "Use efficient cache lifetimes",
+          "score": 0.5,
+          "details": [
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "document-latency-insight",
+          "title": "Document request latency",
+          "score": 0.5,
+          "details": []
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "score": 0.5,
+          "details": [
+            {
+              "node": {
+                "selector": "section.section > div.prose > p > img",
+                "snippet": "<img alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"1600\" height=\"1067\" src=\"/_astro/0daa7631f870bded9626c62cc8d7347530bfe288a83598a4373d64361e8afde2-w…\" srcset=\"\">",
+                "label": "section.section > div.prose > p > img"
+              }
+            },
+            {
+              "node": {
+                "selector": "section.section > div.prose > p > img",
+                "snippet": "<img alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"1000\" height=\"1416\" src=\"/_astro/f5dfc454dc5a01570a7f895e18f7865ca4fdda04b5a73950e912ff6c9422bd9c-w…\" srcset=\"\">",
+                "label": "section.section > div.prose > p > img"
+              }
+            }
+          ]
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree",
+          "score": 0,
+          "details": [
+            {},
+            {
+              "description": "[preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints help the browser establish a connection earlier in the page load, saving time when the first request for that origin is made. The following are the origins that the page preconnected to."
+            },
+            {
+              "description": "Add [preconnect](https://developer.chrome.com/docs/lighthouse/performance/uses-rel-preconnect/) hints to your most important origins, but try to use no more than 4."
+            }
+          ]
+        },
+        {
+          "id": "render-blocking-insight",
+          "title": "Render-blocking requests",
+          "score": 0,
+          "details": [
+            {},
+            {}
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "status": "passed"
+}

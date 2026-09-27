@@ -1,0 +1,880 @@
+version: '1.0'
+language: nl
+name: Client onboarding en workshop finder
+purpose: 'Bezoekers via een korte beslisboom naar bestaande, gepubliceerde keynotes en nascholingen leiden. De website presenteert drie inhoudelijke hoofdcategorieën. Persona, duurtijd en groepsgrootte verfijnen de aanbeveling, maar creëren nooit nieuwe workshops.
+
+  '
+source_scope:
+  analysed_pages:
+  - id: workshops_en_nascholingen
+    path: /onderwijs/workshops-en-nascholingen
+    role: Enige bron voor bookable_offers.
+  - id: onderwijs
+    path: /onderwijs
+    role: Bron voor supporting_projects en inhoudelijke positionering.
+  - id: boek
+    path: /boek
+    role: Ondersteunende inhoudelijke positionering; geen bookable_offer.
+  research_date: '2026-09-23'
+guardrails:
+- Alleen items die op de huidige pagina Workshops en Nascholingen staan mogen als bookable_offer worden aanbevolen.
+- Projecten en artikels op /onderwijs zijn supporting_content, tenzij dezelfde titel of sessie ook expliciet als nascholing is gepubliceerd.
+- Een project wordt nooit automatisch omgezet in een workshop.
+- Onbekende maximale groepsgroottes worden als null bewaard en mogen niet worden verzonnen.
+- Bij tegenstrijdige duurtijden op de huidige website wordt het conflict expliciet bewaard.
+- Prijs maakt geen deel uit van de finder; de CTA leidt naar een contactformulier.
+- Categorie gaat over inhoud, niet over presentatievorm. Een keynotevariant kan dus inhoudelijk onder AI-geletterdheid of vakspecifiek vallen.
+categories:
+  keynote_inspiratie:
+    label: Keynotes & inspiratie
+    customer_question: Ik zoek een breed kader dat mijn publiek aan het denken zet.
+    role_in_offer: Breedste en meest conceptuele ingang.
+    flagship_offer_id: kennis_in_tijden_van_ai
+    bookable_offer_ids:
+    - kennis_in_tijden_van_ai
+    - ai_in_de_klas_van_lesmateriaal_tot_leerlijn
+  ai_geletterdheid_onderwijspraktijk:
+    label: AI-geletterdheid & onderwijspraktijk
+    customer_question: Ik wil praktisch en kritisch met AI aan de slag in onderwijs.
+    role_in_offer: Algemene professionalisering voor onderwijsprofessionals, niet vakspecifiek.
+    flagship_offer_id: putting_the_chat_in_chatgpt
+    bookable_offer_ids:
+    - putting_the_chat_in_chatgpt
+    - chatgpt_vergiftigd_geschenk
+    planned_consolidation:
+      status: future_information_architecture
+      note: 'De gebruiker wil ChatGPT: Een (Vergiftigd) Geschenk voor Leraar en Leerling? op termijn inhoudelijk samenbrengen met Putting the chat in ChatGPT. Dit YAML-bestand houdt beide huidige gepubliceerde sessies apart, zodat de huidige website niet verkeerd wordt voorgesteld.
+
+        '
+      merge_candidate_id: chatgpt_vergiftigd_geschenk
+      primary_future_offer_id: putting_the_chat_in_chatgpt
+      user_proposed_future_label: Putting the chat in ChatGPT en andere taalmodellen
+      published_title_remains: Putting the chat in ChatGPT
+  vakspecifieke_professionalisering:
+    label: Vakspecifieke professionalisering
+    customer_question: Ik zoek een sessie die aansluit bij een concreet vak- of technologiedomein.
+    role_in_offer: Verdieping binnen een vakgebied of technische leerlijn.
+    subcategories:
+      talen:
+        label: Talen & schrijven
+        bookable_offer_ids:
+        - schrijftaken_zonder_aiaiai
+        - ai_en_taaltechnologie
+      klassieke_talen:
+        label: Klassieke talen
+        bookable_offer_ids:
+        - ai_en_latijn_breng_tacitus_tot_leven
+        - latijnse_inscripties_en_ai
+        - grieks_en_ai_een_knap_duo
+        - minecraft_en_klassieke_talen
+      computationeel_denken_programmeren:
+        label: Computationeel denken & programmeren
+        bookable_offer_ids:
+        - python_in_de_klas
+      stem_digitale_technologie:
+        label: STEM & digitale technologie
+        bookable_offer_ids:
+        - ai_in_de_klas_van_a_tot_zwerfvuil
+      geschiedenis:
+        label: Geschiedenis
+        bookable_offer_ids: []
+        note: 'Er staan wel relevante projecten op /onderwijs, maar momenteel geen afzonderlijke geschiedenisnascholing op de gepubliceerde nascholingenpagina.
+
+          '
+personas:
+  schoolleider_beleid:
+    label: Schoolleider / beleidsteam
+    intent: Een sessie kiezen voor een schoolteam of bredere schoolontwikkeling.
+    ranking_preferences:
+    - kennis_in_tijden_van_ai
+    - ai_in_de_klas_van_lesmateriaal_tot_leerlijn
+    - putting_the_chat_in_chatgpt
+    note: Persona beïnvloedt ranking, maar sluit vakspecifieke sessies niet uit.
+  eventorganisator:
+    label: Eventorganisator / studiedagcoördinator
+    intent: Een sessie kiezen die past bij programma, publiek, tijdslot en groepsgrootte.
+    ranking_preferences:
+    - kennis_in_tijden_van_ai
+    - ai_in_de_klas_van_lesmateriaal_tot_leerlijn
+    - ai_in_de_klas_van_a_tot_zwerfvuil
+  leerkracht_vakgroep:
+    label: Leerkracht / vakgroep
+    intent: Een concrete professionalisering vinden voor eigen klas- of vakpraktijk.
+    ranking_preferences:
+    - putting_the_chat_in_chatgpt
+    - subject_match_first
+onboarding_questions:
+  q1_persona:
+    order: 1
+    prompt: Wie ben je?
+    type: single_select
+    required: true
+    options:
+    - id: schoolleider_beleid
+      label: Schoolleider / beleidsteam
+    - id: eventorganisator
+      label: Eventorganisator / studiedagcoördinator
+    - id: leerkracht_vakgroep
+      label: Leerkracht / vakgroep
+  q2_need:
+    order: 2
+    prompt: Waar ben je naar op zoek?
+    type: single_select
+    required: true
+    options:
+    - id: breed_kader
+      label: Een keynote of breed inspirerend kader
+      route_to_category: keynote_inspiratie
+    - id: praktisch_ai
+      label: Praktisch en kritisch werken met AI
+      route_to_category: ai_geletterdheid_onderwijspraktijk
+    - id: vakspecifiek
+      label: Een vakspecifieke workshop
+      route_to_category: vakspecifieke_professionalisering
+  q2b_subject:
+    order: 2.1
+    show_if:
+      q2_need: vakspecifiek
+    prompt: Binnen welk domein wil je werken?
+    type: single_select
+    required_when_visible: true
+    options:
+    - id: talen
+      label: Talen & schrijven
+    - id: klassieke_talen
+      label: Klassieke talen
+    - id: computationeel_denken_programmeren
+      label: Computationeel denken & programmeren
+    - id: stem_digitale_technologie
+      label: STEM & digitale technologie
+    - id: geschiedenis
+      label: Geschiedenis
+      result_behavior: 'Toon alleen supporting_projects en meld dat er momenteel geen afzonderlijke geschiedenisnascholing in het gepubliceerde nascholingsaanbod staat.
+
+        '
+  q3_duration:
+    order: 3
+    prompt: Hoeveel tijd heb je ter beschikking?
+    type: single_select
+    required: true
+    options:
+    - id: ongeveer_90_min
+      label: Ongeveer 90 minuten
+      target_minutes:
+        min: 75
+        max: 105
+    - id: ongeveer_2_uur
+      label: Ongeveer 2 uur
+      target_minutes:
+        min: 105
+        max: 135
+    - id: dagdeel
+      label: Een dagdeel (ongeveer 2,5–3 uur)
+      target_minutes:
+        min: 135
+        max: 195
+    - id: volledige_dag
+      label: Een volledige dag
+      target_minutes:
+        min: 270
+        max: 390
+    - id: flexibel
+      label: Ik ben flexibel
+      target_minutes: null
+  q4_group_size:
+    order: 4
+    prompt: Hoe groot is de groep?
+    type: single_select
+    required: true
+    options:
+    - id: tot_15
+      label: Tot 15 deelnemers
+      min: 1
+      max: 15
+    - id: '16_30'
+      label: 16–30 deelnemers
+      min: 16
+      max: 30
+    - id: '31_100'
+      label: 31–100 deelnemers
+      min: 31
+      max: 100
+    - id: meer_dan_100
+      label: Meer dan 100 deelnemers
+      min: 101
+      max: null
+      note: 'Geen huidige sessie publiceert expliciet een maximum boven 100. Geef daarom geen harde automatische match; stuur door naar contact.
+
+        '
+recommendation_logic:
+  hard_filters:
+  - q2_need bepaalt de primaire category.
+  - q2b_subject bepaalt de subcategory wanneer vakspecifiek is gekozen.
+  - Een expliciete gepubliceerde maximumgroepsgrootte mag niet worden overschreden.
+  soft_filters:
+  - 'Duurtijd: exacte of dichtstbijzijnde gepubliceerde variant krijgt voorrang.'
+  - 'Persona: verhoogt relevantiescore maar sluit andere inhoud niet automatisch uit.'
+  - Als groepsgrootte onbekend is, toon 'groepsgrootte te bevestigen' in plaats van te gokken.
+  scoring:
+    category_match: 50
+    subject_match: 30
+    duration_match: 10
+    group_size_match: 7
+    persona_match: 3
+  result_limit: 3
+  result_order:
+  - beste_match
+  - alternatief
+  - eventuele_verdieping
+  no_match_behavior: 'Toon geen verzonnen alternatief. Toon relevante supporting_projects indien beschikbaar en leid naar het contactformulier met de geselecteerde voorkeuren ingevuld.
+
+    '
+bookable_offers:
+  kennis_in_tijden_van_ai:
+    published_title: Kennis in tijden van AI
+    primary_category: keynote_inspiratie
+    subcategory: null
+    published_formats:
+    - type: keynote
+      duration_minutes: 90
+      max_group_size: 100
+    published_audience:
+    - leerkrachten
+    - directieleden
+    - ouderverenigingen
+    - alle stakeholders binnen het leerproces
+    topic_tags:
+    - kennisvorming
+    - leren
+    - leerstrategieën
+    - LLM-gebruik door leerlingen
+    - scaffolding
+    - AI en leerwinst
+    - schoolbeleid
+    - evaluatiepraktijk
+    finder_role: Flagship en eerste keuze voor keynote/breed kader.
+    source_page: workshops_en_nascholingen
+    published: true
+  putting_the_chat_in_chatgpt:
+    published_title: Putting the chat in ChatGPT
+    primary_category: ai_geletterdheid_onderwijspraktijk
+    subcategory: null
+    published_formats:
+    - type: workshop
+      duration_minutes: 150
+      max_group_size: 30
+      laptop_required: true
+    published_audience:
+    - leerkrachten secundair onderwijs
+    topic_tags:
+    - grote taalmodellen
+    - GPT
+    - prompting
+    - context
+    - lesmateriaal
+    - toetsopgaven
+    - schrijfopdrachten
+    - formatieve feedback
+    - AI-assistenten
+    - AI-tutors
+    - leerwinst
+    finder_role: Flagship voor praktisch en kritisch werken met generatieve AI.
+    source_page: workshops_en_nascholingen
+    published: true
+  schrijftaken_zonder_aiaiai:
+    published_title: Schrijftaken zonder AIAIAI
+    primary_category: vakspecifieke_professionalisering
+    subcategory: talen
+    published_formats:
+    - type: workshop
+      duration_minutes_for_routing: 120
+      max_group_size: 30
+      laptop_required: true
+      online_available: true
+    published_audience:
+    - leerkrachten secundair onderwijs met achtergrond in taalonderwijs
+    prerequisites:
+    - idealiter reeds ervaring met GPT-technologie
+    topic_tags:
+    - schrijfopdrachten
+    - formatieve feedback
+    - evaluatiematrix
+    - AI-assistent
+    - prompting
+    - leerdoelen
+    - AI-geletterdheid binnen taalonderwijs
+    data_quality:
+      duration_conflict: true
+      heading_duration_minutes: 90
+      practical_info_duration_minutes: 120
+      routing_choice: Gebruik 120 minuten totdat de website is gecorrigeerd.
+    source_page: workshops_en_nascholingen
+    published: true
+  ai_in_de_klas_van_lesmateriaal_tot_leerlijn:
+    published_title: AI in de Klas - van lesmateriaal tot leerlijn
+    primary_category: keynote_inspiratie
+    subcategory: null
+    published_formats:
+    - type: keynote
+      duration_minutes: 90
+      max_group_size: 100
+      laptop_required: false
+    - type: workshop
+      duration_minutes: 150
+      max_group_size: 30
+      laptop_required: true
+    published_audience:
+    - directie
+    - ICT-coördinatie
+    - leerkrachten
+    topic_tags:
+    - AI-geletterdheid
+    - competentieprofielen
+    - Europese Commissie
+    - UNESCO
+    - AI-lesmateriaal
+    - leerlijn
+    - generatieve AI
+    - schoolafspraken
+    - curriculum
+    finder_role: Keynote voor een breed onderwijs- en beleidsmatig publiek, met focus op AI-geletterdheid, competenties, lesmateriaal en leerlijnen.
+    source_page: workshops_en_nascholingen
+    published: true
+    finder_exposed_formats:
+    - keynote
+    catalogue_note: De huidige website publiceert zowel een keynote- als workshopvariant. In de nieuwe onboarding/finder wordt deze sessie uitsluitend onder 'Keynotes & inspiratie' aangeboden.
+  chatgpt_vergiftigd_geschenk:
+    published_title: 'ChatGPT: Een (Vergiftigd) Geschenk voor Leraar en Leerling?'
+    primary_category: ai_geletterdheid_onderwijspraktijk
+    subcategory: null
+    published_formats:
+    - type: workshop
+      duration_minutes: 150
+      max_group_size: null
+    published_audience:
+    - leraren
+    - directeurs
+    - graadcoördinatoren
+    - leerlingenbegeleiders
+    - pedagogische ICT-coördinatoren
+    topic_tags:
+    - algemene AI-inleiding
+    - GPT
+    - ChatGPT
+    - Microsoft Copilot
+    - Google Gemini
+    - lesmateriaal
+    - gewenst en ongewenst gebruik
+    - plagiaatdetectie
+    - hallucinaties
+    - ecologie
+    - privacy
+    - afsprakenkader
+    lifecycle:
+      current_status: published
+      future_status: merge_candidate
+      merge_with: putting_the_chat_in_chatgpt
+    finder_role: 'Huidige sessie blijft in de databank zolang ze gepubliceerd is, maar kan in de toekomstige UI lager worden gerankt wanneer de inhoud wordt samengevoegd.
+
+      '
+    source_page: workshops_en_nascholingen
+    published: true
+  ai_en_taaltechnologie:
+    published_title: 'AI en taaltechnologie: hoe ga je er effectief mee aan de slag in je taalles?'
+    primary_category: vakspecifieke_professionalisering
+    subcategory: talen
+    published_formats:
+    - type: workshop
+      duration_minutes_for_routing: 300
+      max_group_size: null
+      laptop_required: true
+    published_audience:
+    - leerkrachten secundair en hoger onderwijs tweede en derde graad
+    - docenten taalredactie en taaltechnologie
+    - leerkrachten moderne vreemde talen
+    - pedagogisch ICT-coördinatoren met talige achtergrond
+    topic_tags:
+    - taaltechnologie
+    - GPT
+    - formatieve feedback
+    - AI-tutor
+    - sentimentanalyse
+    - NLP
+    - transcriptie
+    - speech-to-text
+    - text-to-speech
+    - stemklonen
+    - uitspraak
+    data_quality:
+      duration_conflict: true
+      heading_claim: 2 x 3 uur
+      practical_info_claim: tweemaal 2.5 uur
+      routing_choice: Gebruik 300 minuten totdat de website is gecorrigeerd.
+    source_page: workshops_en_nascholingen
+    published: true
+  ai_in_de_klas_van_a_tot_zwerfvuil:
+    published_title: 'AI in de Klas: Van A tot Zwerfvuil'
+    primary_category: vakspecifieke_professionalisering
+    subcategory: stem_digitale_technologie
+    published_formats:
+    - type: verkorte keynote
+      duration_minutes: 90
+      max_group_size: null
+    - type: lange workshop
+      duration_minutes: 180
+      max_group_size: null
+    published_audience:
+    - docenten technische en praktijkvakken
+    - secundair onderwijs eerste, tweede en derde graad
+    topic_tags:
+    - machine learning
+    - supervised learning
+    - beeldherkenning
+    - afbeeldingsclassificatie
+    - afbeeldingsdetectie
+    - Micro:bit
+    - Arduino
+    - AI-model trainen
+    data_quality:
+      format_note: 'De pagina noemt de sessie bovenaan een workshop van 1.5 uur, maar beschrijft praktisch een verkorte keynote van 1.5 uur en een lange versie van 3 uur.
+
+        '
+    source_page: workshops_en_nascholingen
+    published: true
+  python_in_de_klas:
+    published_title: Python in de Klas
+    primary_category: vakspecifieke_professionalisering
+    subcategory: computationeel_denken_programmeren
+    published_formats:
+    - type: workshop
+      duration_minutes: 90
+      max_group_size: null
+    published_audience:
+    - docenten secundair onderwijs
+    - docenten hoger onderwijs
+    - docenten wiskunde tweede en derde graad
+    topic_tags:
+    - computationeel denken
+    - programmeren
+    - Python
+    - leerlijnen
+    - lesmateriaal
+    - Dodona
+    source_page: workshops_en_nascholingen
+    published: true
+  ai_en_latijn_breng_tacitus_tot_leven:
+    published_title: AI en Latijn - Breng Tacitus Tot Leven
+    primary_category: vakspecifieke_professionalisering
+    subcategory: klassieke_talen
+    published_formats:
+    - type: workshop
+      duration_minutes: 120
+      max_group_size: null
+      online_available: true
+    published_audience:
+    - leerkrachten Klassieke Talen tweede of derde graad secundair onderwijs
+    topic_tags:
+    - Latijn
+    - Tacitus
+    - deepfakes
+    - AI-geletterdheid
+    - uitspraak
+    - Python
+    - privacy
+    - misbruik
+    source_page: workshops_en_nascholingen
+    published: true
+  latijnse_inscripties_en_ai:
+    published_title: Latijnse Inscripties en AI - op tocht met Aeneas
+    primary_category: vakspecifieke_professionalisering
+    subcategory: klassieke_talen
+    published_formats:
+    - type: workshop_online
+      duration_minutes: 120
+      max_group_size: null
+    - type: workshop_fysiek
+      duration_minutes: 150
+      max_group_size: null
+    published_audience:
+    - leerkrachten klassieke talen Latijn tweede en derde graad secundair onderwijs
+    topic_tags:
+    - Latijn
+    - epigrafie
+    - Aeneas
+    - AI-model
+    - restauratie
+    - contextualisering
+    - mens-machine samenwerking
+    - kritische evaluatie van AI-output
+    source_page: workshops_en_nascholingen
+    published: true
+  grieks_en_ai_een_knap_duo:
+    published_title: Grieks en AI - een knap duo
+    primary_category: vakspecifieke_professionalisering
+    subcategory: klassieke_talen
+    published_formats:
+    - type: workshop_online
+      duration_minutes: 90
+      max_group_size: null
+    - type: workshop_fysiek
+      duration_minutes: 120
+      max_group_size: null
+    published_audience:
+    - leerkrachten Klassieke Talen tweede of derde graad secundair onderwijs
+    topic_tags:
+    - Oudgrieks
+    - epigrafie
+    - AI
+    - Ithaca
+    - inscripties herstellen
+    - kritische beoordeling
+    - AI-geletterdheid
+    source_page: workshops_en_nascholingen
+    published: true
+  minecraft_en_klassieke_talen:
+    published_title: Minecraft & Klassieke Talen
+    primary_category: vakspecifieke_professionalisering
+    subcategory: klassieke_talen
+    published_formats:
+    - type: workshop
+      duration_minutes: 120
+      max_group_size: null
+    published_audience:
+    - leerkrachten derde graad lager onderwijs
+    - leerkrachten Latijn eerste graad secundair onderwijs
+    topic_tags:
+    - Minecraft
+    - Latijn
+    - Oudgrieks
+    - Romeinse cultuur
+    - Akropolis
+    - edtech
+    - lesmateriaal
+    source_page: workshops_en_nascholingen
+    published: true
+supporting_projects:
+  project_fijnstof:
+    published_title: Project Fijnstof
+    primary_category: vakspecifieke_professionalisering
+    subcategory: stem_digitale_technologie
+    topic_tags:
+    - Arduino
+    - luchtkwaliteit
+    - sensoren
+    - data
+    - onderzoekend leren
+    - computationeel denken
+    related_bookable_offers:
+    - python_in_de_klas
+    bookable_offer: false
+  project_slimme_vuilnisbak:
+    published_title: Project Slimme Vuilnisbak
+    primary_category: vakspecifieke_professionalisering
+    subcategory: stem_digitale_technologie
+    topic_tags:
+    - AI
+    - beeldclassificatie
+    - supervised learning
+    - Arduino
+    - Micro:bit
+    - datasets
+    - labels
+    related_bookable_offers:
+    - ai_in_de_klas_van_a_tot_zwerfvuil
+    bookable_offer: false
+  project_wind:
+    published_title: Project Wind
+    primary_category: vakspecifieke_professionalisering
+    subcategory: stem_digitale_technologie
+    topic_tags:
+    - Micro:bit
+    - energie
+    - meten
+    - data
+    - STEAM
+    related_bookable_offers: []
+    bookable_offer: false
+  project_robothand:
+    published_title: Project Robothand
+    primary_category: vakspecifieke_professionalisering
+    subcategory: stem_digitale_technologie
+    topic_tags:
+    - Arduino
+    - sensoren
+    - servo's
+    - fysieke computing
+    - programmeren
+    related_bookable_offers: []
+    bookable_offer: false
+  python_in_delphi:
+    published_title: Python in Delphi
+    primary_category: vakspecifieke_professionalisering
+    subcategory: computationeel_denken_programmeren
+    topic_tags:
+    - Python
+    - programmeren
+    - browser
+    - oefeningen
+    - testcases
+    related_bookable_offers:
+    - python_in_de_klas
+    bookable_offer: false
+  blockly_in_de_klas:
+    published_title: Blockly in de Klas
+    primary_category: vakspecifieke_professionalisering
+    subcategory: computationeel_denken_programmeren
+    topic_tags:
+    - Blockly
+    - computationeel denken
+    - algoritmes
+    - visueel programmeren
+    related_bookable_offers:
+    - python_in_de_klas
+    bookable_offer: false
+  html_in_de_klas:
+    published_title: HTML in de Klas
+    primary_category: vakspecifieke_professionalisering
+    subcategory: computationeel_denken_programmeren
+    topic_tags:
+    - HTML
+    - webontwikkeling
+    - digitale vaardigheden
+    related_bookable_offers:
+    - python_in_de_klas
+    bookable_offer: false
+  javascript_in_de_klas_versie_2:
+    published_title: JavaScript in de Klas versie 2.0
+    primary_category: vakspecifieke_professionalisering
+    subcategory: computationeel_denken_programmeren
+    topic_tags:
+    - JavaScript
+    - computationeel denken
+    - programmeren
+    - browser
+    related_bookable_offers:
+    - python_in_de_klas
+    bookable_offer: false
+  recensies_jongerentaal_taaltechnologie:
+    published_title: Recensies, jongerentaal en taaltechnologie
+    primary_category: vakspecifieke_professionalisering
+    subcategory: talen
+    topic_tags:
+    - taaltechnologie
+    - sentimentanalyse
+    - AI-geletterdheid
+    - taalonderwijs
+    related_bookable_offers:
+    - ai_en_taaltechnologie
+    bookable_offer: false
+  ai_geletterdheid_waarom_moeten_wij_dit_kennen:
+    published_title: 'AI-geletterdheid: waarom moeten wij dit kennen?'
+    primary_category: ai_geletterdheid_onderwijspraktijk
+    subcategory: null
+    topic_tags:
+    - AI-geletterdheid
+    - onderwijs
+    related_bookable_offers:
+    - putting_the_chat_in_chatgpt
+    - ai_in_de_klas_van_lesmateriaal_tot_leerlijn
+    - chatgpt_vergiftigd_geschenk
+    bookable_offer: false
+  schrijftaken_zonder_aiaiai_project:
+    published_title: Schrijftaken zonder AIAIAI
+    primary_category: vakspecifieke_professionalisering
+    subcategory: talen
+    topic_tags:
+    - schrijfvaardigheid
+    - AI
+    - scaffolding
+    - leerdoelen
+    - evaluatie
+    - formatieve feedback
+    related_bookable_offers:
+    - schrijftaken_zonder_aiaiai
+    bookable_offer: false
+  javascript_in_de_klas:
+    published_title: JavaScript in de Klas
+    primary_category: vakspecifieke_professionalisering
+    subcategory: computationeel_denken_programmeren
+    topic_tags:
+    - JavaScript
+    - programmeren
+    - computationeel denken
+    related_bookable_offers:
+    - python_in_de_klas
+    bookable_offer: false
+  voorspel_het_verleden_aeneas:
+    published_title: Voorspel het verleden - Aeneas
+    primary_category: vakspecifieke_professionalisering
+    subcategory: klassieke_talen
+    topic_tags:
+    - Latijn
+    - epigrafie
+    - Aeneas
+    - AI-geletterdheid
+    - mens-machine samenwerking
+    related_bookable_offers:
+    - latijnse_inscripties_en_ai
+    bookable_offer: false
+  in_dialoog_met_ai:
+    published_title: In dialoog met AI
+    primary_category: vakspecifieke_professionalisering
+    subcategory: talen
+    topic_tags:
+    - stemklonen
+    - spraak
+    - uitspraak
+    - taalonderwijs
+    - AI-geletterdheid
+    related_bookable_offers:
+    - ai_en_taaltechnologie
+    bookable_offer: false
+  ai_act_van_verplichting_naar_ambitie:
+    published_title: 'AI Act: van verplichting naar ambitie'
+    primary_category: ai_geletterdheid_onderwijspraktijk
+    subcategory: null
+    topic_tags:
+    - AI Act
+    - AI-geletterdheid
+    - regelgeving
+    - kritisch AI-gebruik
+    related_bookable_offers:
+    - ai_in_de_klas_van_lesmateriaal_tot_leerlijn
+    - putting_the_chat_in_chatgpt
+    bookable_offer: false
+  handvat_voor_lesmateriaal:
+    published_title: Handvat voor Lesmateriaal
+    primary_category: ai_geletterdheid_onderwijspraktijk
+    subcategory: null
+    topic_tags:
+    - leerdoelen
+    - didactiek
+    - AI-gebruik
+    - scaffolding
+    - evaluatie
+    - AI-beleid
+    related_bookable_offers:
+    - kennis_in_tijden_van_ai
+    - ai_in_de_klas_van_lesmateriaal_tot_leerlijn
+    bookable_offer: false
+  hey_siri_kloon_mijn_stem:
+    published_title: Hey Siri … Kloon mijn stem
+    primary_category: vakspecifieke_professionalisering
+    subcategory: talen
+    topic_tags:
+    - stemklonen
+    - speech-to-text
+    - text-to-speech
+    - uitspraak
+    - taaltechnologie
+    - ethiek
+    related_bookable_offers:
+    - ai_en_taaltechnologie
+    bookable_offer: false
+  avontuur_op_de_akropolis:
+    published_title: Avontuur op de Akropolis (vernieuwd)
+    primary_category: vakspecifieke_professionalisering
+    subcategory: klassieke_talen
+    topic_tags:
+    - Oudgrieks
+    - Akropolis
+    - Minecraft
+    - edtech
+    related_bookable_offers:
+    - minecraft_en_klassieke_talen
+    bookable_offer: false
+  webinar_ai_met_klasse:
+    published_title: Webinar AI met KLASSE
+    primary_category: ai_geletterdheid_onderwijspraktijk
+    subcategory: null
+    topic_tags:
+    - AI in de klas
+    - onderwijs
+    related_bookable_offers:
+    - kennis_in_tijden_van_ai
+    - ai_in_de_klas_van_lesmateriaal_tot_leerlijn
+    bookable_offer: false
+    evidence_note: De huidige projectpagina bevat slechts een korte beschrijving; categorisering bewust breed gehouden.
+  interview_met_de_geschiedenis:
+    published_title: Interview met de Geschiedenis
+    primary_category: vakspecifieke_professionalisering
+    subcategory: geschiedenis
+    topic_tags:
+    - geschiedenis
+    - historische figuren
+    - bronnenonderzoek
+    - prompting
+    - interviewvaardigheden
+    - transcriptie
+    - AI-geletterdheid
+    related_bookable_offers: []
+    bookable_offer: false
+book_positioning:
+  published_title: 'AI in de klas: Praktische gids voor onderwijsprofessionals'
+  primary_category: ai_geletterdheid_onderwijspraktijk
+  secondary_category: vakspecifieke_professionalisering
+  role: 'Onderbouwt de brede AI-geletterdheidspositie én toont vakspecifieke integratie. Het boek is geen bookable_offer en mag dus niet als sessie in de finder verschijnen.
+
+    '
+  topic_tags:
+  - AI-competenties
+  - lesmateriaal
+  - leerlijnen
+  - didactiek
+  - diverse vakgebieden
+  - vooroordelen en valkuilen
+  - leerwinst
+result_page:
+  max_recommendations: 3
+  card_fields:
+  - published_title
+  - why_this_matches
+  - primary_category
+  - subcategory
+  - available_formats
+  - duration
+  - group_size_or_confirmation_needed
+  - target_audience
+  - topic_tags
+  - learning_goals_summary
+  - practical_information
+  supporting_content:
+    show_related_projects: true
+    max_projects: 3
+    label: Bekijk ook relevant lesmateriaal en projecten
+  pricing:
+    show_public_price: false
+  primary_cta:
+    label: Bespreek deze sessie
+    action: open_prefilled_contact_form
+contact_form:
+  prefill_from_finder:
+  - persona
+  - need
+  - subject
+  - duration
+  - group_size
+  - recommended_offer_id
+  additional_fields:
+  - id: organisation
+    label: School of organisatie
+  - id: preferred_date
+    label: Gewenste datum of periode
+    required: false
+  - id: context
+    label: Extra context of vragen
+    required: false
+implementation_notes:
+- 'Houd de drie categorieën zichtbaar voor bezoekers, maar bewaar formats (keynote/workshop/online/fysiek) als metadata onder het aanbod.
+
+  '
+- '''Kennis in tijden van AI'' is de enige flagship in Keynotes & inspiratie, conform de gewenste toekomstige positionering.
+
+  '
+- '''Putting the chat in ChatGPT'' is de flagship voor algemene, praktische AI-professionalisering. De oudere ChatGPT-intro blijft zolang ze op de site staat als bestaand catalogue-item, maar is gemarkeerd als merge_candidate.
+
+  '
+- 'Vakspecifieke projecten zoals Blockly, Fijnstof, Robothand en Interview met de Geschiedenis mogen als inhoudelijke voorbeelden verschijnen, maar niet als boekbare sessies tenzij ze later expliciet aan de nascholingenpagina worden toegevoegd.
+
+  '
+- '''AI in de Klas - van lesmateriaal tot leerlijn'' wordt in de nieuwe finder uitsluitend als keynote gepositioneerd onder ''Keynotes & inspiratie''. De workshopvariant blijft enkel als historische/gepubliceerde metadata bewaard.'

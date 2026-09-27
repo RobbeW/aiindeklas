@@ -1,0 +1,67 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import PrivacyNotice from "../components/PrivacyNotice.astro";
+import type { SiteLocale } from "../lib/routing";
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: SiteLocale;
+  canonicalPath?: string;
+  noindex?: boolean;
+  alternatePath?: string | null;
+  hasDirectTranslation?: boolean;
+  image?: string | null;
+  ogType?: "website" | "article";
+  publishedAt?: string | null;
+  modifiedAt?: string | null;
+  sourceHome?: boolean;
+}
+
+const {
+  title,
+  description,
+  lang = "nl-BE",
+  canonicalPath,
+  noindex = false,
+  alternatePath = null,
+  hasDirectTranslation = false,
+  image = null,
+  ogType = "website",
+  publishedAt = null,
+  modifiedAt = null,
+  sourceHome = false
+} = Astro.props;
+
+const translationLinks = hasDirectTranslation && alternatePath
+  ? [{ lang, path: canonicalPath ?? Astro.url.pathname }, { lang: lang === "en" ? "nl-BE" as const : "en" as const, path: alternatePath }]
+  : [];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  lang={lang}
+  canonicalPath={canonicalPath}
+  noindex={noindex}
+  translationLinks={translationLinks}
+  image={image}
+  ogType={ogType}
+  publishedAt={publishedAt}
+  modifiedAt={modifiedAt}
+>
+  <slot name="head" slot="head" />
+  <div class="site-frame">
+    <SiteHeader
+      lang={lang}
+      currentPath={canonicalPath ?? Astro.url.pathname}
+      alternatePath={alternatePath}
+      hasDirectTranslation={hasDirectTranslation}
+    />
+    <div class="site-content"><slot /></div>
+    <SiteFooter lang={lang} sourceHome={sourceHome} />
+    <PrivacyNotice lang={lang} />
+  </div>
+</BaseLayout>

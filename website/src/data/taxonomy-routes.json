@@ -1,0 +1,3259 @@
+[
+  {
+    "path": "/education/tag/%23VlaanderenLeest",
+    "locale": "en",
+    "type": "tag",
+    "label": "#VlaanderenLeest",
+    "articles": [
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "http_error"
+  },
+  {
+    "path": "/education/tag/3D",
+    "locale": "en",
+    "type": "tag",
+    "label": "3D",
+    "articles": [
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Abelardus",
+    "locale": "en",
+    "type": "tag",
+    "label": "Abelardus",
+    "articles": [
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/ai",
+    "locale": "en",
+    "type": "tag",
+    "label": "ai",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-for-education-awards",
+      "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "/education/ithaca-teaching-history-journal",
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/onderwijs/ai-for-education-awards-tweemaal-prijs",
+      "/onderwijs/ai-wij-robots-herkennen-onze-emotie",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/het-digitale-dilemma",
+      "/onderwijs/interview-met-de-geschiedenis",
+      "/onderwijs/ithaca-teaching-history-journal",
+      "/onderwijs/moeten-robots-auteursrechten-krijgen",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/social-media",
+      "/onderwijs/taalalgoritmes-en-sentimentsanalyse"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/AI",
+    "locale": "en",
+    "type": "tag",
+    "label": "AI",
+    "articles": [
+      "/education/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5",
+      "/education/ai-art-beethovenai-cahsr",
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/education/ai-art-thanos-snap-photobomb-begone",
+      "/education/ai-as-matchmaker",
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/education/ai-in-the-classroom",
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/education/bring-greek-myths-to-life",
+      "/education/hey-siri-clone-my-voice",
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso",
+      "/onderwijs/ai-art-thanos-snap-weg-met-de-photobomb",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/ai-taal-auteur-of-ai-teur",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken",
+      "/onderwijs/hey-siri-kloon-mijn-stem",
+      "/onderwijs/over-zonnedraken-en-zeerovers",
+      "/onderwijs/podcast-de-leraar-denkt-over-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/AI+in",
+    "locale": "en",
+    "type": "tag",
+    "label": "AI in",
+    "articles": [
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/AI+in+de+klas",
+    "locale": "en",
+    "type": "tag",
+    "label": "AI in de klas",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-art-thanos-snap-photobomb-begone",
+      "/education/ai-in-the-classroom",
+      "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "/education/bring-greek-myths-to-life",
+      "/onderwijs/ai-art-thanos-snap-weg-met-de-photobomb",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/ai-wij-robots-herkennen-onze-emotie",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/het-digitale-dilemma",
+      "/onderwijs/interview-met-de-geschiedenis",
+      "/onderwijs/latijnse-wordle",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/social-media",
+      "/onderwijs/taalalgoritmes-en-sentimentsanalyse",
+      "/onderwijs/taaltechnologie-op-de-redactie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/AI+in+het+onderwijs",
+    "locale": "en",
+    "type": "tag",
+    "label": "AI in het onderwijs",
+    "articles": [
+      "/education/ai-for-education-awards",
+      "/onderwijs/ai-for-education-awards-tweemaal-prijs",
+      "/onderwijs/het-digitale-dilemma"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/ai+in+the+classroom",
+    "locale": "en",
+    "type": "tag",
+    "label": "ai in the classroom",
+    "articles": [
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/AIKEA",
+    "locale": "en",
+    "type": "tag",
+    "label": "AIKEA",
+    "articles": [
+      "/education/ai-design-aikea",
+      "/onderwijs/ai-design-aikea"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Art",
+    "locale": "en",
+    "type": "tag",
+    "label": "Art",
+    "articles": [
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/education/ai-art-thanos-snap-photobomb-begone",
+      "/education/ai-design-aikea",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso",
+      "/onderwijs/ai-art-thanos-snap-weg-met-de-photobomb",
+      "/onderwijs/ai-design-aikea"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/artifici%C3%ABle+intelligentie",
+    "locale": "en",
+    "type": "tag",
+    "label": "artificiële intelligentie",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-art-beethovenai-cahsr",
+      "/education/ai-art-thanos-snap-photobomb-begone",
+      "/education/ai-design-aikea",
+      "/education/ai-for-education-awards",
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/education/ai-in-the-classroom",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "/education/bring-greek-myths-to-life",
+      "/education/chatgpt-in-the-classroom",
+      "/education/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto-5jfsh",
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/ai-art-beethovenai",
+      "/onderwijs/ai-art-thanos-snap-weg-met-de-photobomb",
+      "/onderwijs/ai-design-aikea",
+      "/onderwijs/ai-for-education-awards-tweemaal-prijs",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/ai-wij-robots-herkennen-onze-emotie",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/chatgpt-in-de-klas",
+      "/onderwijs/het-digitale-dilemma",
+      "/onderwijs/interview-met-de-geschiedenis",
+      "/onderwijs/ithaca-teaching-history-journal",
+      "/onderwijs/moeten-robots-auteursrechten-krijgen",
+      "/onderwijs/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/over-zonnedraken-en-zeerovers",
+      "/onderwijs/podcast-de-leraar-denkt-over-ai",
+      "/onderwijs/social-media"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/artificial+intelligence",
+    "locale": "en",
+    "type": "tag",
+    "label": "artificial intelligence",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5",
+      "/education/ai-art-beethovenai-cahsr",
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/education/ai-art-thanos-snap-photobomb-begone",
+      "/education/ai-as-matchmaker",
+      "/education/ai-design-aikea",
+      "/education/ai-for-education-awards",
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/education/ai-in-the-classroom",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "/education/bring-greek-myths-to-life",
+      "/education/chatgpt-in-the-classroom",
+      "/education/hey-siri-clone-my-voice",
+      "/education/ithaca-teaching-history-journal",
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso",
+      "/onderwijs/ai-art-thanos-snap-weg-met-de-photobomb",
+      "/onderwijs/ai-design-aikea",
+      "/onderwijs/ai-for-education-awards-tweemaal-prijs",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/ai-taal-auteur-of-ai-teur",
+      "/onderwijs/ai-wij-robots-herkennen-onze-emotie",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/chatgpt-in-de-klas",
+      "/onderwijs/het-digitale-dilemma",
+      "/onderwijs/hey-siri-kloon-mijn-stem",
+      "/onderwijs/interview-met-de-geschiedenis",
+      "/onderwijs/ithaca-teaching-history-journal",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/over-zonnedraken-en-zeerovers",
+      "/onderwijs/podcast-de-leraar-denkt-over-ai",
+      "/onderwijs/social-media"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/bag+of+words",
+    "locale": "en",
+    "type": "tag",
+    "label": "bag of words",
+    "articles": [
+      "/education/ai-as-matchmaker",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/beethoven",
+    "locale": "en",
+    "type": "tag",
+    "label": "beethoven",
+    "articles": [
+      "/education/ai-art-beethovenai-cahsr",
+      "/onderwijs/ai-art-beethovenai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Brussel",
+    "locale": "en",
+    "type": "tag",
+    "label": "Brussel",
+    "articles": [
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/ChatGPT",
+    "locale": "en",
+    "type": "tag",
+    "label": "ChatGPT",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-design-aikea",
+      "/education/chatgpt-in-the-classroom",
+      "/onderwijs/ai-design-aikea",
+      "/onderwijs/chatgpt-in-de-klas",
+      "/onderwijs/het-digitale-dilemma",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/social-media",
+      "/onderwijs/taaltechnologie-op-de-redactie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/classical+studies",
+    "locale": "en",
+    "type": "tag",
+    "label": "classical studies",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/CLIP",
+    "locale": "en",
+    "type": "tag",
+    "label": "CLIP",
+    "articles": [
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/coding",
+    "locale": "en",
+    "type": "tag",
+    "label": "coding",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/course-computational-thinking-javascript",
+      "/education/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto-5jfsh",
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/education/python-in-the-classroom",
+      "/education/wall-of-game",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/moeten-robots-auteursrechten-krijgen",
+      "/onderwijs/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai",
+      "/onderwijs/python-in-de-klas",
+      "/onderwijs/super-marcus",
+      "/onderwijs/wall-of-game"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/computational+thinking",
+    "locale": "en",
+    "type": "tag",
+    "label": "computational thinking",
+    "articles": [
+      "/education/course-computational-thinking",
+      "/education/course-computational-thinking-javascript",
+      "/education/python-in-the-classroom",
+      "/onderwijs/lessenreeks-computationeel-denken"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/computationeel+denken",
+    "locale": "en",
+    "type": "tag",
+    "label": "computationeel denken",
+    "articles": [
+      "/education/course-computational-thinking",
+      "/education/python-in-the-classroom",
+      "/onderwijs/lessenreeks-computationeel-denken",
+      "/onderwijs/lessenreeks-computationeel-denken-javascript"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Dag+van+de+klassieke+talen",
+    "locale": "en",
+    "type": "tag",
+    "label": "Dag van de klassieke talen",
+    "articles": [
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/bring-greek-myths-to-life",
+      "/education/greek-minecraft-acropolis-adventure",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur",
+      "/onderwijs/latijnse-wordle"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/dag+van+het+latijn",
+    "locale": "en",
+    "type": "tag",
+    "label": "dag van het latijn",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Dag+van+Klassieke+Talen",
+    "locale": "en",
+    "type": "tag",
+    "label": "Dag van Klassieke Talen",
+    "articles": [
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/bring-greek-myths-to-life",
+      "/education/greek-minecraft-acropolis-adventure",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/DALL-E",
+    "locale": "en",
+    "type": "tag",
+    "label": "DALL-E",
+    "articles": [
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/education/ai-design-aikea",
+      "/education/bring-greek-myths-to-life",
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso",
+      "/onderwijs/ai-design-aikea",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Deepfake",
+    "locale": "en",
+    "type": "tag",
+    "label": "Deepfake",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Deepfake+keizers",
+    "locale": "en",
+    "type": "tag",
+    "label": "Deepfake keizers",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Deepfake+Latijn",
+    "locale": "en",
+    "type": "tag",
+    "label": "Deepfake Latijn",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/deepfakes",
+    "locale": "en",
+    "type": "tag",
+    "label": "deepfakes",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/deepmind",
+    "locale": "en",
+    "type": "tag",
+    "label": "deepmind",
+    "articles": [
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Design",
+    "locale": "en",
+    "type": "tag",
+    "label": "Design",
+    "articles": [
+      "/education/ai-design-aikea",
+      "/onderwijs/ai-design-aikea"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/design+thinking",
+    "locale": "en",
+    "type": "tag",
+    "label": "design thinking",
+    "articles": [
+      "/education/design-thinking-project-2030-mjjjl",
+      "/onderwijs/design-thinking-project-2030"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Dimidia+dies+diversa+docet",
+    "locale": "en",
+    "type": "tag",
+    "label": "Dimidia dies diversa docet",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/dungeons+and+dragons",
+    "locale": "en",
+    "type": "tag",
+    "label": "dungeons and dragons",
+    "articles": [
+      "/education/ai-adventure",
+      "/onderwijs/op-avontuur-met-een-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/edtech",
+    "locale": "en",
+    "type": "tag",
+    "label": "edtech",
+    "articles": [
+      "/education/greek-minecraft-acropolis-adventure",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/education",
+    "locale": "en",
+    "type": "tag",
+    "label": "education",
+    "articles": [
+      "/education/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5",
+      "/education/ai-as-matchmaker",
+      "/education/ai-for-education-awards",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/bring-greek-myths-to-life",
+      "/education/course-computational-thinking",
+      "/education/course-computational-thinking-javascript",
+      "/education/design-thinking-project-2030-mjjjl",
+      "/education/digital-storytelling-in-vr-2egfz",
+      "/education/greek-minecraft-acropolis-adventure",
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/education/wall-of-game",
+      "/onderwijs/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/design-thinking-project-2030",
+      "/onderwijs/digital-storytelling-in-vr",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur",
+      "/onderwijs/het-digitale-dilemma",
+      "/onderwijs/lessenreeks-computationeel-denken",
+      "/onderwijs/moeten-robots-auteursrechten-krijgen",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai",
+      "/onderwijs/podcast-de-leraar-denkt-over-ai",
+      "/onderwijs/taalalgoritmes-en-sentimentsanalyse"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Education",
+    "locale": "en",
+    "type": "tag",
+    "label": "Education",
+    "articles": [
+      "/education/hey-siri-clone-my-voice",
+      "/onderwijs/hey-siri-kloon-mijn-stem"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/emoties",
+    "locale": "en",
+    "type": "tag",
+    "label": "emoties",
+    "articles": [
+      "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "/onderwijs/ai-wij-robots-herkennen-onze-emotie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/fotografie",
+    "locale": "en",
+    "type": "tag",
+    "label": "fotografie",
+    "articles": [
+      "/education/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto-5jfsh",
+      "/onderwijs/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/game+design",
+    "locale": "en",
+    "type": "tag",
+    "label": "game design",
+    "articles": [
+      "/education/wall-of-game"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/gamification",
+    "locale": "en",
+    "type": "tag",
+    "label": "gamification",
+    "articles": [
+      "/education/greek-minecraft-acropolis-adventure",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/gaming",
+    "locale": "en",
+    "type": "tag",
+    "label": "gaming",
+    "articles": [
+      "/education/greek-minecraft-acropolis-adventure",
+      "/education/wall-of-game",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/GAN",
+    "locale": "en",
+    "type": "tag",
+    "label": "GAN",
+    "articles": [
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Gent",
+    "locale": "en",
+    "type": "tag",
+    "label": "Gent",
+    "articles": [
+      "/education/hey-siri-clone-my-voice",
+      "/onderwijs/hey-siri-kloon-mijn-stem"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/gezichtsherkenning",
+    "locale": "en",
+    "type": "tag",
+    "label": "gezichtsherkenning",
+    "articles": [
+      "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "/onderwijs/ai-wij-robots-herkennen-onze-emotie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Ghent",
+    "locale": "en",
+    "type": "tag",
+    "label": "Ghent",
+    "articles": [
+      "/education/hey-siri-clone-my-voice",
+      "/onderwijs/hey-siri-kloon-mijn-stem"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Google",
+    "locale": "en",
+    "type": "tag",
+    "label": "Google",
+    "articles": [
+      "/education/hey-siri-clone-my-voice",
+      "/onderwijs/hey-siri-kloon-mijn-stem"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/GPT",
+    "locale": "en",
+    "type": "tag",
+    "label": "GPT",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/education/chatgpt-in-the-classroom",
+      "/onderwijs/ai-taal-auteur-of-ai-teur",
+      "/onderwijs/chatgpt-in-de-klas",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/taaltechnologie-op-de-redactie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/GPT-2",
+    "locale": "en",
+    "type": "tag",
+    "label": "GPT-2",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur",
+      "/onderwijs/op-avontuur-met-een-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/GPT-3",
+    "locale": "en",
+    "type": "tag",
+    "label": "GPT-3",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-design-aikea",
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/education/chatgpt-in-the-classroom",
+      "/onderwijs/ai-design-aikea",
+      "/onderwijs/ai-taal-auteur-of-ai-teur",
+      "/onderwijs/chatgpt-in-de-klas",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/taaltechnologie-op-de-redactie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/greek",
+    "locale": "en",
+    "type": "tag",
+    "label": "greek",
+    "articles": [
+      "/education/ai-for-education-awards",
+      "/education/bring-greek-myths-to-life",
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Greek",
+    "locale": "en",
+    "type": "tag",
+    "label": "Greek",
+    "articles": [
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/grieks",
+    "locale": "en",
+    "type": "tag",
+    "label": "grieks",
+    "articles": [
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Grieks",
+    "locale": "en",
+    "type": "tag",
+    "label": "Grieks",
+    "articles": [
+      "/education/ai-for-education-awards",
+      "/education/bring-greek-myths-to-life",
+      "/education/greek-minecraft-acropolis-adventure",
+      "/onderwijs/ai-for-education-awards-tweemaal-prijs",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Harry+Potter",
+    "locale": "en",
+    "type": "tag",
+    "label": "Harry Potter",
+    "articles": [
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/IKEA",
+    "locale": "en",
+    "type": "tag",
+    "label": "IKEA",
+    "articles": [
+      "/education/ai-design-aikea",
+      "/onderwijs/ai-design-aikea"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/inkleuren",
+    "locale": "en",
+    "type": "tag",
+    "label": "inkleuren",
+    "articles": [
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/ithaca",
+    "locale": "en",
+    "type": "tag",
+    "label": "ithaca",
+    "articles": [
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/javascript",
+    "locale": "en",
+    "type": "tag",
+    "label": "javascript",
+    "articles": [
+      "/education/course-computational-thinking-javascript",
+      "/onderwijs/lessenreeks-computationeel-denken-javascript",
+      "/onderwijs/wall-of-game"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Jeroen+De+Gussem",
+    "locale": "en",
+    "type": "tag",
+    "label": "Jeroen De Gussem",
+    "articles": [
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Julius+Caesar",
+    "locale": "en",
+    "type": "tag",
+    "label": "Julius Caesar",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Keizers",
+    "locale": "en",
+    "type": "tag",
+    "label": "Keizers",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/kunst",
+    "locale": "en",
+    "type": "tag",
+    "label": "kunst",
+    "articles": [
+      "/education/ai-in-the-classroom",
+      "/education/bring-greek-myths-to-life",
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/latijn",
+    "locale": "en",
+    "type": "tag",
+    "label": "latijn",
+    "articles": [
+      "/education/ai-in-the-classroom",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/latijnse-wordle",
+      "/onderwijs/super-marcus"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/latin",
+    "locale": "en",
+    "type": "tag",
+    "label": "latin",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-and-greek-epigraphy-with-a-robot",
+      "/education/ai-assessment-scale",
+      "/education/ai-in-the-classroom",
+      "/education/ai-in-the-classroom-deepfaking-a-deputy-prime-minister",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/ai-latin-bring-tacitus-to-life",
+      "/education/bring-greek-myths-to-life",
+      "/education/chatgpt-in-the-classroom",
+      "/education/course-computational-thinking",
+      "/education/discover-latin-with-minecraft",
+      "/education/greek-minecraft-acropolis-adventure",
+      "/education/ithaca-teaching-history-journal",
+      "/education/latin-and-game-design",
+      "/education/predicting-the-past-aeneas",
+      "/education/python-in-the-classroom",
+      "/education/roma-aeterna-lx2z7",
+      "/education/wall-of-game",
+      "/education/workshops-and-teacher-training",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "http_error"
+  },
+  {
+    "path": "/education/tag/lexicon",
+    "locale": "en",
+    "type": "tag",
+    "label": "lexicon",
+    "articles": [
+      "/education/ai-as-matchmaker",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Lord+of+the+Rings",
+    "locale": "en",
+    "type": "tag",
+    "label": "Lord of the Rings",
+    "articles": [
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/matchmaking",
+    "locale": "en",
+    "type": "tag",
+    "label": "matchmaking",
+    "articles": [
+      "/education/ai-as-matchmaker",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/minecraft",
+    "locale": "en",
+    "type": "tag",
+    "label": "minecraft",
+    "articles": [
+      "/education/greek-minecraft-acropolis-adventure",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/muziek",
+    "locale": "en",
+    "type": "tag",
+    "label": "muziek",
+    "articles": [
+      "/education/ai-art-beethovenai-cahsr",
+      "/onderwijs/ai-art-beethovenai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/myths",
+    "locale": "en",
+    "type": "tag",
+    "label": "myths",
+    "articles": [
+      "/education/bring-greek-myths-to-life"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/natural+language+processor",
+    "locale": "en",
+    "type": "tag",
+    "label": "natural language processor",
+    "articles": [
+      "/education/ai-as-matchmaker",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/NLP",
+    "locale": "en",
+    "type": "tag",
+    "label": "NLP",
+    "articles": [
+      "/education/ai-as-matchmaker",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken",
+      "/onderwijs/taalalgoritmes-en-sentimentsanalyse"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/onderwijs",
+    "locale": "en",
+    "type": "tag",
+    "label": "onderwijs",
+    "articles": [
+      "/education/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5",
+      "/education/ai-art-beethovenai-cahsr",
+      "/education/ai-as-matchmaker",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/bring-greek-myths-to-life",
+      "/education/chatgpt-in-the-classroom",
+      "/education/course-computational-thinking",
+      "/education/design-thinking-project-2030-mjjjl",
+      "/education/digital-storytelling-in-vr-2egfz",
+      "/education/greek-minecraft-acropolis-adventure",
+      "/education/hey-siri-clone-my-voice",
+      "/education/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto-5jfsh",
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/education/wall-of-game",
+      "/onderwijs/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde",
+      "/onderwijs/ai-art-beethovenai",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/chatgpt-in-de-klas",
+      "/onderwijs/design-thinking-project-2030",
+      "/onderwijs/digital-storytelling-in-vr",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur",
+      "/onderwijs/het-digitale-dilemma",
+      "/onderwijs/hey-siri-kloon-mijn-stem",
+      "/onderwijs/lessenreeks-computationeel-denken",
+      "/onderwijs/moeten-robots-auteursrechten-krijgen",
+      "/onderwijs/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai",
+      "/onderwijs/podcast-de-leraar-denkt-over-ai",
+      "/onderwijs/super-marcus",
+      "/onderwijs/taalalgoritmes-en-sentimentsanalyse"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Onderwijs",
+    "locale": "en",
+    "type": "tag",
+    "label": "Onderwijs",
+    "articles": [
+      "/education/digital-storytelling-in-virtual-reality-g4mbc",
+      "/onderwijs/digital-storytelling-in-virtual-reality"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/oudgrieks",
+    "locale": "en",
+    "type": "tag",
+    "label": "oudgrieks",
+    "articles": [
+      "/education/ai-for-education-awards",
+      "/education/bring-greek-myths-to-life",
+      "/education/greek-minecraft-acropolis-adventure",
+      "/onderwijs/ai-for-education-awards-tweemaal-prijs",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/privacy",
+    "locale": "en",
+    "type": "tag",
+    "label": "privacy",
+    "articles": [
+      "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "/onderwijs/ai-wij-robots-herkennen-onze-emotie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/programmeren",
+    "locale": "en",
+    "type": "tag",
+    "label": "programmeren",
+    "articles": [
+      "/education/ai-art-beethovenai-cahsr",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto-5jfsh",
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/education/python-in-the-classroom",
+      "/education/wall-of-game",
+      "/onderwijs/ai-art-beethovenai",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/lessenreeks-computationeel-denken-javascript",
+      "/onderwijs/moeten-robots-auteursrechten-krijgen",
+      "/onderwijs/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai",
+      "/onderwijs/python-in-de-klas",
+      "/onderwijs/super-marcus",
+      "/onderwijs/wall-of-game"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/prompting",
+    "locale": "en",
+    "type": "tag",
+    "label": "prompting",
+    "articles": [
+      "/education/ai-adventure",
+      "/onderwijs/op-avontuur-met-een-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/pythia",
+    "locale": "en",
+    "type": "tag",
+    "label": "pythia",
+    "articles": [
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Pythia",
+    "locale": "en",
+    "type": "tag",
+    "label": "Pythia",
+    "articles": [
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/python",
+    "locale": "en",
+    "type": "tag",
+    "label": "python",
+    "articles": [
+      "/education/ai-art-beethovenai-cahsr",
+      "/education/ai-in-the-classroom",
+      "/education/bring-greek-myths-to-life",
+      "/education/ithaca-teaching-history-journal",
+      "/education/python-in-the-classroom",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/ithaca-teaching-history-journal",
+      "/onderwijs/python-in-de-klas",
+      "/onderwijs/taaltechnologie-op-de-redactie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/python+in+the+classroom",
+    "locale": "en",
+    "type": "tag",
+    "label": "python in the classroom",
+    "articles": [
+      "/education/python-in-the-classroom"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Romeinen",
+    "locale": "en",
+    "type": "tag",
+    "label": "Romeinen",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Romeinse+Keizers",
+    "locale": "en",
+    "type": "tag",
+    "label": "Romeinse Keizers",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Rowling",
+    "locale": "en",
+    "type": "tag",
+    "label": "Rowling",
+    "articles": [
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Siri",
+    "locale": "en",
+    "type": "tag",
+    "label": "Siri",
+    "articles": [
+      "/education/hey-siri-clone-my-voice",
+      "/onderwijs/hey-siri-kloon-mijn-stem"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Stable+Diffusion",
+    "locale": "en",
+    "type": "tag",
+    "label": "Stable Diffusion",
+    "articles": [
+      "/education/ai-design-aikea",
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/ai-design-aikea",
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/STEaM",
+    "locale": "en",
+    "type": "tag",
+    "label": "STEaM",
+    "articles": [
+      "/education/digital-storytelling-in-vr-2egfz",
+      "/onderwijs/digital-storytelling-in-vr"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/STEM",
+    "locale": "en",
+    "type": "tag",
+    "label": "STEM",
+    "articles": [
+      "/education/digital-storytelling-in-vr-2egfz",
+      "/onderwijs/digital-storytelling-in-vr"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/taal",
+    "locale": "en",
+    "type": "tag",
+    "label": "taal",
+    "articles": [
+      "/education/ai-in-the-classroom",
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Taal",
+    "locale": "en",
+    "type": "tag",
+    "label": "Taal",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/latijnse-wordle",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/taalalgoritmes",
+    "locale": "en",
+    "type": "tag",
+    "label": "taalalgoritmes",
+    "articles": [
+      "/education/ai-adventure",
+      "/onderwijs/interview-met-de-geschiedenis",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/taalalgoritmes-en-sentimentsanalyse"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Thanos",
+    "locale": "en",
+    "type": "tag",
+    "label": "Thanos",
+    "articles": [
+      "/education/ai-art-thanos-snap-photobomb-begone",
+      "/onderwijs/ai-art-thanos-snap-weg-met-de-photobomb"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/thea+sommershield",
+    "locale": "en",
+    "type": "tag",
+    "label": "thea sommershield",
+    "articles": [
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Thomas+Gils",
+    "locale": "en",
+    "type": "tag",
+    "label": "Thomas Gils",
+    "articles": [
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/tim+whitmarsh",
+    "locale": "en",
+    "type": "tag",
+    "label": "tim whitmarsh",
+    "articles": [
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/tinder",
+    "locale": "en",
+    "type": "tag",
+    "label": "tinder",
+    "articles": [
+      "/education/ai-as-matchmaker",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Tolkien",
+    "locale": "en",
+    "type": "tag",
+    "label": "Tolkien",
+    "articles": [
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Van+Eyck",
+    "locale": "en",
+    "type": "tag",
+    "label": "Van Eyck",
+    "articles": [
+      "/education/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5",
+      "/onderwijs/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Van+Gogh",
+    "locale": "en",
+    "type": "tag",
+    "label": "Van Gogh",
+    "articles": [
+      "/education/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5",
+      "/onderwijs/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/virtual+reality",
+    "locale": "en",
+    "type": "tag",
+    "label": "virtual reality",
+    "articles": [
+      "/education/design-thinking-project-2030-mjjjl",
+      "/education/digital-storytelling-in-virtual-reality-g4mbc",
+      "/education/digital-storytelling-in-vr-2egfz",
+      "/onderwijs/design-thinking-project-2030",
+      "/onderwijs/digital-storytelling-in-virtual-reality",
+      "/onderwijs/digital-storytelling-in-vr"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Vlaanderen+Leest",
+    "locale": "en",
+    "type": "tag",
+    "label": "Vlaanderen Leest",
+    "articles": [
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/VQGAN",
+    "locale": "en",
+    "type": "tag",
+    "label": "VQGAN",
+    "articles": [
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/vr",
+    "locale": "en",
+    "type": "tag",
+    "label": "vr",
+    "articles": [
+      "/education/design-thinking-project-2030-mjjjl",
+      "/onderwijs/design-thinking-project-2030"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/VR",
+    "locale": "en",
+    "type": "tag",
+    "label": "VR",
+    "articles": [
+      "/education/digital-storytelling-in-virtual-reality-g4mbc",
+      "/education/digital-storytelling-in-vr-2egfz",
+      "/onderwijs/digital-storytelling-in-virtual-reality",
+      "/onderwijs/digital-storytelling-in-vr"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/Wereldboekendag",
+    "locale": "en",
+    "type": "tag",
+    "label": "Wereldboekendag",
+    "articles": [
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/education/tag/yannis+assael",
+    "locale": "en",
+    "type": "tag",
+    "label": "yannis assael",
+    "articles": [
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/category/coding",
+    "locale": "nl-BE",
+    "type": "category",
+    "label": "coding",
+    "articles": [],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/category/education",
+    "locale": "nl-BE",
+    "type": "category",
+    "label": "education",
+    "articles": [],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/category/Gent",
+    "locale": "nl-BE",
+    "type": "category",
+    "label": "Gent",
+    "articles": [],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/category/Geschiedenis",
+    "locale": "nl-BE",
+    "type": "category",
+    "label": "Geschiedenis",
+    "articles": [],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/category/Ghent",
+    "locale": "nl-BE",
+    "type": "category",
+    "label": "Ghent",
+    "articles": [],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/category/latin",
+    "locale": "nl-BE",
+    "type": "category",
+    "label": "latin",
+    "articles": [],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/category/onderwijs",
+    "locale": "nl-BE",
+    "type": "category",
+    "label": "onderwijs",
+    "articles": [],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/category/super+marcus",
+    "locale": "nl-BE",
+    "type": "category",
+    "label": "super marcus",
+    "articles": [],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/%23VlaanderenLeest",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "#VlaanderenLeest",
+    "articles": [
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/%23vlaanderenleestdag",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "#vlaanderenleestdag",
+    "articles": [
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/3D",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "3D",
+    "articles": [
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Abelardus",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Abelardus",
+    "articles": [
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/ai",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "ai",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-for-education-awards",
+      "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "/education/ithaca-teaching-history-journal",
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/onderwijs/ai-for-education-awards-tweemaal-prijs",
+      "/onderwijs/ai-wij-robots-herkennen-onze-emotie",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/het-digitale-dilemma",
+      "/onderwijs/interview-met-de-geschiedenis",
+      "/onderwijs/ithaca-teaching-history-journal",
+      "/onderwijs/moeten-robots-auteursrechten-krijgen",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/social-media",
+      "/onderwijs/taalalgoritmes-en-sentimentsanalyse"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/AI",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "AI",
+    "articles": [
+      "/education/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5",
+      "/education/ai-art-beethovenai-cahsr",
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/education/ai-art-thanos-snap-photobomb-begone",
+      "/education/ai-as-matchmaker",
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/education/ai-in-the-classroom",
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/education/bring-greek-myths-to-life",
+      "/education/hey-siri-clone-my-voice",
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso",
+      "/onderwijs/ai-art-thanos-snap-weg-met-de-photobomb",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/ai-taal-auteur-of-ai-teur",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken",
+      "/onderwijs/hey-siri-kloon-mijn-stem",
+      "/onderwijs/over-zonnedraken-en-zeerovers",
+      "/onderwijs/podcast-de-leraar-denkt-over-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/AI+in",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "AI in",
+    "articles": [
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/AI+in+de+klas",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "AI in de klas",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-art-thanos-snap-photobomb-begone",
+      "/education/ai-in-the-classroom",
+      "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "/education/bring-greek-myths-to-life",
+      "/onderwijs/ai-art-thanos-snap-weg-met-de-photobomb",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/ai-wij-robots-herkennen-onze-emotie",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/het-digitale-dilemma",
+      "/onderwijs/interview-met-de-geschiedenis",
+      "/onderwijs/latijnse-wordle",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/social-media",
+      "/onderwijs/taalalgoritmes-en-sentimentsanalyse",
+      "/onderwijs/taaltechnologie-op-de-redactie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/AI+in+het+onderwijs",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "AI in het onderwijs",
+    "articles": [
+      "/education/ai-for-education-awards",
+      "/onderwijs/ai-for-education-awards-tweemaal-prijs",
+      "/onderwijs/het-digitale-dilemma"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/ai+in+the+classroom",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "ai in the classroom",
+    "articles": [
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/AIKEA",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "AIKEA",
+    "articles": [
+      "/education/ai-design-aikea",
+      "/onderwijs/ai-design-aikea"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Art",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Art",
+    "articles": [
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/education/ai-art-thanos-snap-photobomb-begone",
+      "/education/ai-design-aikea",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso",
+      "/onderwijs/ai-art-thanos-snap-weg-met-de-photobomb",
+      "/onderwijs/ai-design-aikea"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/artifici%C3%ABle+intelligentie",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "artificiële intelligentie",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-art-beethovenai-cahsr",
+      "/education/ai-art-thanos-snap-photobomb-begone",
+      "/education/ai-design-aikea",
+      "/education/ai-for-education-awards",
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/education/ai-in-the-classroom",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "/education/bring-greek-myths-to-life",
+      "/education/chatgpt-in-the-classroom",
+      "/education/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto-5jfsh",
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/ai-art-beethovenai",
+      "/onderwijs/ai-art-thanos-snap-weg-met-de-photobomb",
+      "/onderwijs/ai-design-aikea",
+      "/onderwijs/ai-for-education-awards-tweemaal-prijs",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/ai-wij-robots-herkennen-onze-emotie",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/chatgpt-in-de-klas",
+      "/onderwijs/het-digitale-dilemma",
+      "/onderwijs/interview-met-de-geschiedenis",
+      "/onderwijs/ithaca-teaching-history-journal",
+      "/onderwijs/moeten-robots-auteursrechten-krijgen",
+      "/onderwijs/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/over-zonnedraken-en-zeerovers",
+      "/onderwijs/podcast-de-leraar-denkt-over-ai",
+      "/onderwijs/social-media"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/artificial+intelligence",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "artificial intelligence",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5",
+      "/education/ai-art-beethovenai-cahsr",
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/education/ai-art-thanos-snap-photobomb-begone",
+      "/education/ai-as-matchmaker",
+      "/education/ai-design-aikea",
+      "/education/ai-for-education-awards",
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/education/ai-in-the-classroom",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "/education/bring-greek-myths-to-life",
+      "/education/chatgpt-in-the-classroom",
+      "/education/hey-siri-clone-my-voice",
+      "/education/ithaca-teaching-history-journal",
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso",
+      "/onderwijs/ai-art-thanos-snap-weg-met-de-photobomb",
+      "/onderwijs/ai-design-aikea",
+      "/onderwijs/ai-for-education-awards-tweemaal-prijs",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/ai-taal-auteur-of-ai-teur",
+      "/onderwijs/ai-wij-robots-herkennen-onze-emotie",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/chatgpt-in-de-klas",
+      "/onderwijs/het-digitale-dilemma",
+      "/onderwijs/hey-siri-kloon-mijn-stem",
+      "/onderwijs/interview-met-de-geschiedenis",
+      "/onderwijs/ithaca-teaching-history-journal",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/over-zonnedraken-en-zeerovers",
+      "/onderwijs/podcast-de-leraar-denkt-over-ai",
+      "/onderwijs/social-media"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/bag+of+words",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "bag of words",
+    "articles": [
+      "/education/ai-as-matchmaker",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/beethoven",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "beethoven",
+    "articles": [
+      "/education/ai-art-beethovenai-cahsr",
+      "/onderwijs/ai-art-beethovenai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Brussel",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Brussel",
+    "articles": [
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/ChatGPT",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "ChatGPT",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-design-aikea",
+      "/education/chatgpt-in-the-classroom",
+      "/onderwijs/ai-design-aikea",
+      "/onderwijs/chatgpt-in-de-klas",
+      "/onderwijs/het-digitale-dilemma",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/social-media",
+      "/onderwijs/taaltechnologie-op-de-redactie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/ChatGPT+in+de+klas",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "ChatGPT in de klas",
+    "articles": [
+      "/onderwijs/het-digitale-dilemma"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/CLIP",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "CLIP",
+    "articles": [
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/coding",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "coding",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/course-computational-thinking-javascript",
+      "/education/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto-5jfsh",
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/education/python-in-the-classroom",
+      "/education/wall-of-game",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/moeten-robots-auteursrechten-krijgen",
+      "/onderwijs/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai",
+      "/onderwijs/python-in-de-klas",
+      "/onderwijs/super-marcus",
+      "/onderwijs/wall-of-game"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/computational+thinking",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "computational thinking",
+    "articles": [
+      "/education/course-computational-thinking",
+      "/education/course-computational-thinking-javascript",
+      "/education/python-in-the-classroom",
+      "/onderwijs/lessenreeks-computationeel-denken"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/computationeel+denken",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "computationeel denken",
+    "articles": [
+      "/education/course-computational-thinking",
+      "/education/python-in-the-classroom",
+      "/onderwijs/lessenreeks-computationeel-denken",
+      "/onderwijs/lessenreeks-computationeel-denken-javascript"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Dag+van+de+klassieke+talen",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Dag van de klassieke talen",
+    "articles": [
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/bring-greek-myths-to-life",
+      "/education/greek-minecraft-acropolis-adventure",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur",
+      "/onderwijs/latijnse-wordle"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/dag+van+het+latijn",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "dag van het latijn",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Dag+van+Klassieke+Talen",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Dag van Klassieke Talen",
+    "articles": [
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/bring-greek-myths-to-life",
+      "/education/greek-minecraft-acropolis-adventure",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/DALL-E",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "DALL-E",
+    "articles": [
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/education/ai-design-aikea",
+      "/education/bring-greek-myths-to-life",
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso",
+      "/onderwijs/ai-design-aikea",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Deepfake",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Deepfake",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Deepfake+keizers",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Deepfake keizers",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Deepfake+Latijn",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Deepfake Latijn",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/deepfakes",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "deepfakes",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/deepmind",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "deepmind",
+    "articles": [
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Design",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Design",
+    "articles": [
+      "/education/ai-design-aikea",
+      "/onderwijs/ai-design-aikea"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/design+thinking",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "design thinking",
+    "articles": [
+      "/education/design-thinking-project-2030-mjjjl",
+      "/onderwijs/design-thinking-project-2030"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Digitale+Dilemma",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Digitale Dilemma",
+    "articles": [
+      "/onderwijs/het-digitale-dilemma"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Dimidia+dies+diversa+docet",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Dimidia dies diversa docet",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/dungeons+and+dragons",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "dungeons and dragons",
+    "articles": [
+      "/education/ai-adventure",
+      "/onderwijs/op-avontuur-met-een-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/edtech",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "edtech",
+    "articles": [
+      "/education/greek-minecraft-acropolis-adventure",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/education",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "education",
+    "articles": [
+      "/education/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5",
+      "/education/ai-as-matchmaker",
+      "/education/ai-for-education-awards",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/bring-greek-myths-to-life",
+      "/education/course-computational-thinking",
+      "/education/course-computational-thinking-javascript",
+      "/education/design-thinking-project-2030-mjjjl",
+      "/education/digital-storytelling-in-vr-2egfz",
+      "/education/greek-minecraft-acropolis-adventure",
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/education/wall-of-game",
+      "/onderwijs/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/design-thinking-project-2030",
+      "/onderwijs/digital-storytelling-in-vr",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur",
+      "/onderwijs/het-digitale-dilemma",
+      "/onderwijs/lessenreeks-computationeel-denken",
+      "/onderwijs/moeten-robots-auteursrechten-krijgen",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai",
+      "/onderwijs/podcast-de-leraar-denkt-over-ai",
+      "/onderwijs/taalalgoritmes-en-sentimentsanalyse"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Education",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Education",
+    "articles": [
+      "/education/hey-siri-clone-my-voice",
+      "/onderwijs/hey-siri-kloon-mijn-stem"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/emoties",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "emoties",
+    "articles": [
+      "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "/onderwijs/ai-wij-robots-herkennen-onze-emotie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/EU+DigComp",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "EU DigComp",
+    "articles": [
+      "/onderwijs/social-media"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/fotografie",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "fotografie",
+    "articles": [
+      "/education/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto-5jfsh",
+      "/onderwijs/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/games",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "games",
+    "articles": [
+      "/onderwijs/wall-of-game"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/gamification",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "gamification",
+    "articles": [
+      "/education/greek-minecraft-acropolis-adventure",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/gaming",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "gaming",
+    "articles": [
+      "/education/greek-minecraft-acropolis-adventure",
+      "/education/wall-of-game",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Gaming",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Gaming",
+    "articles": [
+      "/onderwijs/wall-of-game"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/GAN",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "GAN",
+    "articles": [
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Gent",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Gent",
+    "articles": [
+      "/education/hey-siri-clone-my-voice",
+      "/onderwijs/hey-siri-kloon-mijn-stem"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/geschiedenis",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "geschiedenis",
+    "articles": [
+      "/onderwijs/super-marcus"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/gezichtsherkenning",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "gezichtsherkenning",
+    "articles": [
+      "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "/onderwijs/ai-wij-robots-herkennen-onze-emotie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Ghent",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Ghent",
+    "articles": [
+      "/education/hey-siri-clone-my-voice",
+      "/onderwijs/hey-siri-kloon-mijn-stem"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Google",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Google",
+    "articles": [
+      "/education/hey-siri-clone-my-voice",
+      "/onderwijs/hey-siri-kloon-mijn-stem"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/GPT",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "GPT",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/education/chatgpt-in-the-classroom",
+      "/onderwijs/ai-taal-auteur-of-ai-teur",
+      "/onderwijs/chatgpt-in-de-klas",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/taaltechnologie-op-de-redactie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/GPT-2",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "GPT-2",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur",
+      "/onderwijs/op-avontuur-met-een-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/GPT-3",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "GPT-3",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-design-aikea",
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/education/chatgpt-in-the-classroom",
+      "/onderwijs/ai-design-aikea",
+      "/onderwijs/ai-taal-auteur-of-ai-teur",
+      "/onderwijs/chatgpt-in-de-klas",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/taaltechnologie-op-de-redactie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/GPT4",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "GPT4",
+    "articles": [
+      "/onderwijs/social-media"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/greek",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "greek",
+    "articles": [
+      "/education/ai-for-education-awards",
+      "/education/bring-greek-myths-to-life",
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Greek",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Greek",
+    "articles": [
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/grieks",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "grieks",
+    "articles": [
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Grieks",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Grieks",
+    "articles": [
+      "/education/ai-for-education-awards",
+      "/education/bring-greek-myths-to-life",
+      "/education/greek-minecraft-acropolis-adventure",
+      "/onderwijs/ai-for-education-awards-tweemaal-prijs",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Harry+Potter",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Harry Potter",
+    "articles": [
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/IKEA",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "IKEA",
+    "articles": [
+      "/education/ai-design-aikea",
+      "/onderwijs/ai-design-aikea"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/inkleuren",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "inkleuren",
+    "articles": [
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/ithaca",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "ithaca",
+    "articles": [
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/javascript",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "javascript",
+    "articles": [
+      "/education/course-computational-thinking-javascript",
+      "/onderwijs/lessenreeks-computationeel-denken-javascript",
+      "/onderwijs/wall-of-game"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Jeroen+De+Gussem",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Jeroen De Gussem",
+    "articles": [
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Julius+Caesar",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Julius Caesar",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Keizers",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Keizers",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/kunst",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "kunst",
+    "articles": [
+      "/education/ai-in-the-classroom",
+      "/education/bring-greek-myths-to-life",
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/latijn",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "latijn",
+    "articles": [
+      "/education/ai-in-the-classroom",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/latijnse-wordle",
+      "/onderwijs/super-marcus"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/latin",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "latin",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/ai-and-greek-epigraphy-with-a-robot",
+      "/education/ai-assessment-scale",
+      "/education/ai-in-the-classroom",
+      "/education/ai-in-the-classroom-deepfaking-a-deputy-prime-minister",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/ai-latin-bring-tacitus-to-life",
+      "/education/bring-greek-myths-to-life",
+      "/education/chatgpt-in-the-classroom",
+      "/education/course-computational-thinking",
+      "/education/discover-latin-with-minecraft",
+      "/education/greek-minecraft-acropolis-adventure",
+      "/education/ithaca-teaching-history-journal",
+      "/education/latin-and-game-design",
+      "/education/predicting-the-past-aeneas",
+      "/education/python-in-the-classroom",
+      "/education/roma-aeterna-lx2z7",
+      "/education/wall-of-game",
+      "/education/workshops-and-teacher-training",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/lexicon",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "lexicon",
+    "articles": [
+      "/education/ai-as-matchmaker",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Lord+of+the+Rings",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Lord of the Rings",
+    "articles": [
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/matchmaking",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "matchmaking",
+    "articles": [
+      "/education/ai-as-matchmaker",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/minecraft",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "minecraft",
+    "articles": [
+      "/education/greek-minecraft-acropolis-adventure",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/moderne+talen",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "moderne talen",
+    "articles": [
+      "/onderwijs/taaltechnologie-op-de-redactie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/muziek",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "muziek",
+    "articles": [
+      "/education/ai-art-beethovenai-cahsr",
+      "/onderwijs/ai-art-beethovenai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/natural+language+processor",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "natural language processor",
+    "articles": [
+      "/education/ai-as-matchmaker",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/NLP",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "NLP",
+    "articles": [
+      "/education/ai-as-matchmaker",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken",
+      "/onderwijs/taalalgoritmes-en-sentimentsanalyse"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/onderwijs",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "onderwijs",
+    "articles": [
+      "/education/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5",
+      "/education/ai-art-beethovenai-cahsr",
+      "/education/ai-as-matchmaker",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/bring-greek-myths-to-life",
+      "/education/chatgpt-in-the-classroom",
+      "/education/course-computational-thinking",
+      "/education/design-thinking-project-2030-mjjjl",
+      "/education/digital-storytelling-in-vr-2egfz",
+      "/education/greek-minecraft-acropolis-adventure",
+      "/education/hey-siri-clone-my-voice",
+      "/education/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto-5jfsh",
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/education/wall-of-game",
+      "/onderwijs/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde",
+      "/onderwijs/ai-art-beethovenai",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/chatgpt-in-de-klas",
+      "/onderwijs/design-thinking-project-2030",
+      "/onderwijs/digital-storytelling-in-vr",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur",
+      "/onderwijs/het-digitale-dilemma",
+      "/onderwijs/hey-siri-kloon-mijn-stem",
+      "/onderwijs/lessenreeks-computationeel-denken",
+      "/onderwijs/moeten-robots-auteursrechten-krijgen",
+      "/onderwijs/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai",
+      "/onderwijs/podcast-de-leraar-denkt-over-ai",
+      "/onderwijs/super-marcus",
+      "/onderwijs/taalalgoritmes-en-sentimentsanalyse"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Onderwijs",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Onderwijs",
+    "articles": [
+      "/education/digital-storytelling-in-virtual-reality-g4mbc",
+      "/onderwijs/digital-storytelling-in-virtual-reality"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/oudgrieks",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "oudgrieks",
+    "articles": [
+      "/education/ai-for-education-awards",
+      "/education/bring-greek-myths-to-life",
+      "/education/greek-minecraft-acropolis-adventure",
+      "/onderwijs/ai-for-education-awards-tweemaal-prijs",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "/onderwijs/grieks-minecraft-akropolis-avontuur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/privacy",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "privacy",
+    "articles": [
+      "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "/onderwijs/ai-wij-robots-herkennen-onze-emotie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/programmeren",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "programmeren",
+    "articles": [
+      "/education/ai-art-beethovenai-cahsr",
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/education/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto-5jfsh",
+      "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "/education/python-in-the-classroom",
+      "/education/wall-of-game",
+      "/onderwijs/ai-art-beethovenai",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/lessenreeks-computationeel-denken-javascript",
+      "/onderwijs/moeten-robots-auteursrechten-krijgen",
+      "/onderwijs/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto",
+      "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai",
+      "/onderwijs/python-in-de-klas",
+      "/onderwijs/super-marcus",
+      "/onderwijs/wall-of-game"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/prompting",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "prompting",
+    "articles": [
+      "/education/ai-adventure",
+      "/onderwijs/op-avontuur-met-een-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/pythia",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "pythia",
+    "articles": [
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Pythia",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Pythia",
+    "articles": [
+      "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/python",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "python",
+    "articles": [
+      "/education/ai-art-beethovenai-cahsr",
+      "/education/ai-in-the-classroom",
+      "/education/bring-greek-myths-to-life",
+      "/education/ithaca-teaching-history-journal",
+      "/education/python-in-the-classroom",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/ithaca-teaching-history-journal",
+      "/onderwijs/python-in-de-klas",
+      "/onderwijs/taaltechnologie-op-de-redactie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/python+in+de+klas",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "python in de klas",
+    "articles": [
+      "/onderwijs/python-in-de-klas",
+      "/onderwijs/taaltechnologie-op-de-redactie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/rinke+vanhoeck",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "rinke vanhoeck",
+    "articles": [
+      "/onderwijs/podcast-de-leraar-denkt-over-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Romeinen",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Romeinen",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Romeinse+Keizers",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Romeinse Keizers",
+    "articles": [
+      "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "/onderwijs/breng-de-romeinse-keizers-tot-leven"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Rowling",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Rowling",
+    "articles": [
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/sentimentsanalyse",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "sentimentsanalyse",
+    "articles": [
+      "/onderwijs/social-media",
+      "/onderwijs/taalalgoritmes-en-sentimentsanalyse"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Siri",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Siri",
+    "articles": [
+      "/education/hey-siri-clone-my-voice",
+      "/onderwijs/hey-siri-kloon-mijn-stem"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Stable+Diffusion",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Stable Diffusion",
+    "articles": [
+      "/education/ai-design-aikea",
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/ai-design-aikea",
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/STEaM",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "STEaM",
+    "articles": [
+      "/education/digital-storytelling-in-vr-2egfz",
+      "/onderwijs/digital-storytelling-in-vr"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/STEM",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "STEM",
+    "articles": [
+      "/education/digital-storytelling-in-vr-2egfz",
+      "/onderwijs/digital-storytelling-in-vr"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/super+marcus",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "super marcus",
+    "articles": [
+      "/onderwijs/super-marcus"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/taal",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "taal",
+    "articles": [
+      "/education/ai-in-the-classroom",
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Taal",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Taal",
+    "articles": [
+      "/education/ai-adventure",
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/latijnse-wordle",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/taalalgoritmes",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "taalalgoritmes",
+    "articles": [
+      "/education/ai-adventure",
+      "/onderwijs/interview-met-de-geschiedenis",
+      "/onderwijs/op-avontuur-met-een-ai",
+      "/onderwijs/taalalgoritmes-en-sentimentsanalyse"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/taaltechnologie",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "taaltechnologie",
+    "articles": [
+      "/onderwijs/interview-met-de-geschiedenis",
+      "/onderwijs/latijnse-wordle",
+      "/onderwijs/taalalgoritmes-en-sentimentsanalyse",
+      "/onderwijs/taaltechnologie-op-de-redactie"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/teacher+tapp",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "teacher tapp",
+    "articles": [
+      "/onderwijs/podcast-de-leraar-denkt-over-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/teacher+tapp+vlaanderen",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "teacher tapp vlaanderen",
+    "articles": [
+      "/onderwijs/podcast-de-leraar-denkt-over-ai"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Thanos",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Thanos",
+    "articles": [
+      "/education/ai-art-thanos-snap-photobomb-begone",
+      "/onderwijs/ai-art-thanos-snap-weg-met-de-photobomb"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/thea+sommershield",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "thea sommershield",
+    "articles": [
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Thomas+Gils",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Thomas Gils",
+    "articles": [
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Tim+Verheyden",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Tim Verheyden",
+    "articles": [
+      "/onderwijs/het-digitale-dilemma"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/tim+whitmarsh",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "tim whitmarsh",
+    "articles": [
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/tinder",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "tinder",
+    "articles": [
+      "/education/ai-as-matchmaker",
+      "/onderwijs/ai-wij-tinder-voor-groepswerken"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Tolkien",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Tolkien",
+    "articles": [
+      "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "/onderwijs/ai-taal-auteur-of-ai-teur"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Unesco",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Unesco",
+    "articles": [
+      "/onderwijs/social-media"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Van+Eyck",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Van Eyck",
+    "articles": [
+      "/education/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5",
+      "/onderwijs/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Van+Gogh",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Van Gogh",
+    "articles": [
+      "/education/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5",
+      "/onderwijs/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/virtual+reality",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "virtual reality",
+    "articles": [
+      "/education/design-thinking-project-2030-mjjjl",
+      "/education/digital-storytelling-in-virtual-reality-g4mbc",
+      "/education/digital-storytelling-in-vr-2egfz",
+      "/onderwijs/design-thinking-project-2030",
+      "/onderwijs/digital-storytelling-in-virtual-reality",
+      "/onderwijs/digital-storytelling-in-vr"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Vlaanderen+Leest",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Vlaanderen Leest",
+    "articles": [
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Vlaanderenleestdag",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Vlaanderenleestdag",
+    "articles": [
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/VQGAN",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "VQGAN",
+    "articles": [
+      "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/vr",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "vr",
+    "articles": [
+      "/education/design-thinking-project-2030-mjjjl",
+      "/onderwijs/design-thinking-project-2030"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/VR",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "VR",
+    "articles": [
+      "/education/digital-storytelling-in-virtual-reality-g4mbc",
+      "/education/digital-storytelling-in-vr-2egfz",
+      "/onderwijs/digital-storytelling-in-virtual-reality",
+      "/onderwijs/digital-storytelling-in-vr"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/VRT",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "VRT",
+    "articles": [
+      "/onderwijs/het-digitale-dilemma"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/Wereldboekendag",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "Wereldboekendag",
+    "articles": [
+      "/education/sun-dragons-and-sea-robbers",
+      "/onderwijs/over-zonnedraken-en-zeerovers"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/wordle",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "wordle",
+    "articles": [
+      "/onderwijs/latijnse-wordle"
+    ],
+    "source_status": "snapshotted"
+  },
+  {
+    "path": "/onderwijs/tag/yannis+assael",
+    "locale": "nl-BE",
+    "type": "tag",
+    "label": "yannis assael",
+    "articles": [
+      "/education/ithaca-teaching-history-journal",
+      "/onderwijs/ithaca-teaching-history-journal"
+    ],
+    "source_status": "snapshotted"
+  }
+]

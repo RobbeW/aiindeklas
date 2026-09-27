@@ -1,0 +1,20 @@
+---
+import { getEntry, render } from "astro:content";
+import HomePage from "../components/HomePage.astro";
+import { toDocumentViewModel } from "../lib/content-view";
+import { getCollection } from "astro:content";
+import type { ImageMetadata } from "astro";
+
+const homeEntry = await getEntry("pages", "source-page-home");
+if (!homeEntry) throw new Error("The validated home content entry is missing");
+const [mediaEntries] = await Promise.all([getCollection("media")]);
+const migratedImages = import.meta.glob<{ default: ImageMetadata }>("../assets/migrated/**/*.{avif,gif,jpeg,jpg,png,webp}", { eager: true });
+const imageId = homeEntry.data.hero ?? homeEntry.data.seo.image;
+const imageRecord = imageId ? mediaEntries.find((entry) => entry.id === (typeof imageId === "string" ? imageId : imageId.id)) : null;
+const imageImport = imageRecord?.data.output_path.replace(/^src\/assets\//, "../assets/");
+const socialImage = imageImport && migratedImages[imageImport] ? migratedImages[imageImport].default : null;
+const homeView = toDocumentViewModel(homeEntry, socialImage);
+const { Content } = await render(homeEntry);
+---
+
+<HomePage content={homeView}><Content /></HomePage>
