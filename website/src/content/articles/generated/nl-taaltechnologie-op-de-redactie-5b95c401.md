@@ -1009,4 +1009,4 @@ In dit lesmateriaal, en het proces dat we samen met de leerlingen doorlopen, ste
 
 **Wil je hier zelf mee aan de slag in jouw klaslokaal? Super! Jongeren laten kennismaken met taalalgoritmen en taaltechnologie, zeker binnen een richting met focus op de moderne talen, is een belangrijk onderdeel. Via de knop hieronder kan je aansluiten bij de Discord Community waar je dit en ander lesmateriaal kan vinden!**
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contact" target="_blank" rel="noreferrer">Naar de contact en Discord!</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contact">Naar de contact en Discord!</a></div>

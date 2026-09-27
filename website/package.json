@@ -59,6 +59,9 @@
     "p18:browser": "node scripts/p18-browser-smoke.mjs",
     "p19:validate": "node scripts/validate-p19-finder.mjs",
     "p19:browser": "node scripts/p19-browser-smoke.mjs",
+    "p20:validate": "node --test tests/unit/shadcn-foundation.test.mjs",
+    "p26:validate": "node scripts/validate-p26-links.mjs",
+    "p28:qa": "node scripts/p28-release-qa.mjs",
     "quality": "pnpm generate:route-map && pnpm validate:content && pnpm test && pnpm check",
     "quality:local": "pnpm verify:snapshots && pnpm quality:p4",
     "quality:p4": "pnpm quality && pnpm build:root && pnpm build:project",
@@ -67,19 +70,31 @@
     "quality:p7": "pnpm verify:snapshots && pnpm validate:content && pnpm test && pnpm check && pnpm build:project && pnpm build:root && pnpm validate:cms && pnpm validate:p7 && pnpm lighthouse:p7"
   },
   "dependencies": {
+    "@astrojs/react": "4.4.2",
     "@astrojs/check": "0.9.9",
     "@astrojs/markdown-remark": "7.2.1",
     "@astrojs/mdx": "7.0.3",
     "@astrojs/rss": "4.0.19",
+    "@radix-ui/react-accordion": "1.2.12",
+    "@radix-ui/react-aspect-ratio": "1.1.7",
+    "@radix-ui/react-dialog": "1.1.15",
+    "@radix-ui/react-slot": "1.2.3",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
     "astro": "7.0.9",
     "cheerio": "1.2.0",
     "sharp": "0.35.3",
     "turndown": "7.2.4",
+    "tailwind-merge": "3.3.1",
     "typescript": "6.0.3",
     "yaml": "2.9.0",
     "zod": "4.4.3"
   },
   "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
     "chrome-launcher": "^1.2.1",
     "lighthouse": "^13.4.0"
   }

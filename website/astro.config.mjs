@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
 import { unified } from "@astrojs/markdown-remark";
 import rehypeBasePath from "./scripts/rehype-base-path.mjs";
 import rehypeWorkshopHeadingIds from "./scripts/rehype-workshop-heading-ids.mjs";
@@ -12,6 +13,7 @@ const base = normaliseBase(process.env.PUBLIC_BASE_PATH);
 const site = process.env.SITE_URL ?? "http://localhost:4321";
 
 export default defineConfig({
+  integrations: [react()],
   site,
   base,
   output: "static",

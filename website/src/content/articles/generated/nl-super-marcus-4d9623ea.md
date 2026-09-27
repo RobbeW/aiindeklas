@@ -84,13 +84,9 @@ Dit project bestaat uit een zevental lessen. Deze zijn ook beschikbaar als video
 
 ### Speel de Super Marcus game!
 
-Klik op de afbeelding om de game te starten!
-
-[
-
 ![](../../../assets/migrated/fe/fe1b049b39b8ea52d20806b64b7fee7ffd21e31ab43671513153e5134962c390-w1171.webp)
 
-](https://robbew.github.io/Super_Marcus/)
+[Speel Super Marcus](https://robbew.github.io/Super_Marcus/)
 
 ### Vragen, opmerkingen …
 

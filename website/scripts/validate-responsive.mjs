@@ -112,7 +112,7 @@ try {
   }
   const detailEvidence = [];
   const detailTargets = [
-    { name: "workshop-detail", route: "/onderwijs/workshops-en-nascholingen", selector: "#detail-ai-en-latijn-breng-tacitus-tot-leven" },
+    { name: "workshop-experience", route: "/onderwijs/workshops-en-nascholingen", selector: "[data-workshop-experience]" },
     { name: "image-heavy-article", route: "/onderwijs/avontuuropdeakropolis", selector: ".prose img" }
   ];
   for (const targetSpec of detailTargets) {
@@ -142,10 +142,11 @@ try {
 } finally {
   if (socket) socket.close();
   if (chrome) {
+    await killChromeTree(chrome.pid);
     try { chrome.kill(); }
     catch (error) { console.warn(`Chrome exited, but its temporary profile cleanup was blocked: ${error.message}`); }
-    await killChromeTree(chrome.process?.pid ?? chrome.pid);
   }
   server.closeAllConnections();
   await new Promise((resolve) => server.close(resolve));
 }
+process.exit(process.exitCode ?? 0);

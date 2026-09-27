@@ -1017,14 +1017,14 @@ Devlies, E. (2024). AI Goeie afspraken maken goeie vrienden. \[PowerPointpresent
 
 Dhondt, K. (2024). Illustraties gemaakt voor Sint-Lievenscollege in opdracht van Dorothée Degrave, Dieter Vanderfaeillie, & Robbe Wulgaert.
 
-European Commission. (2024). AI Act: The first-ever legal framework on AI. Retrieved from [https://ec.europa.eu/ai-act](https://ec.europa.eu/ai-act)
+European Commission. (2024). AI Act: The first-ever legal framework on AI. Retrieved from the [EU AI Act](https://ec.europa.eu/ai-act)
 
-Furze, L. (2024a). AI Assessment Scale (AIAS) translations from around the world. Retrieved from [https://leonfurze.com/aias-translations/](https://leonfurze.com/aias-translations/)
+Furze, L. (2024a). AI Assessment Scale (AIAS) translations from around the world. Retrieved from [AI Assessment Scale translations](https://leonfurze.com/aias-translations/)
 
-Furze, L. (2024b, August 28). Updating the AI Assessment Scale. Retrieved from [https://leonfurze.com/2024/08/28/updating-the-ai-assessment-scale/](https://leonfurze.com/2024/08/28/updating-the-ai-assessment-scale/)
+Furze, L. (2024b, August 28). Updating the AI Assessment Scale. Retrieved from [AI Assessment Scale update](https://leonfurze.com/2024/08/28/updating-the-ai-assessment-scale/)
 
-Miao, F., & Shiohira, K. (2024). AI competency framework for students. UNESCO.[https://unesdoc.unesco.org/ark:/48223/pf0000391105](https://unesdoc.unesco.org/ark:/48223/pf0000391105)
+Miao, F., & Shiohira, K. (2024). AI competency framework for students. [UNESCO student framework](https://unesdoc.unesco.org/ark:/48223/pf0000391105)
 
-Miao, F., & Cukurova, M. (2024). AI competency framework for teachers. UNESCO. [https://unesdoc.unesco.org/ark:/48223/pf0000391104](https://unesdoc.unesco.org/ark:/48223/pf0000391104)
+Miao, F., & Cukurova, M. (2024). AI competency framework for teachers. [UNESCO teacher framework](https://unesdoc.unesco.org/ark:/48223/pf0000391104)
 
-Wulgaert, R. (n.d.). AI in de klas. Borgerhoff & Lamberigts. Retrieved from [https://www.borgerhoff-lamberigts.be/owl-press/shop/boeken/ai-in-de-klas](https://www.borgerhoff-lamberigts.be/owl-press/shop/boeken/ai-in-de-klas)
+Wulgaert, R. (n.d.). AI in de klas. Borgerhoff & Lamberigts. Retrieved from the [publisher page](https://www.borgerhoff-lamberigts.be/owl-press/shop/boeken/ai-in-de-klas)

@@ -76,15 +76,11 @@ Om aan de slag te gaan met dit project heb je nodig:
 
 -   [het boekje met de uitgebreide uitleg voor de leerkracht](https://sintlievenscollege-my.sharepoint.com/:b:/g/personal/robbe_wulgaert_sintlievenscollege_be/EQuqWk2V2HVFsvUXgYCe4msBenQ3oFSYqO2pQ-ahFqT-FQ?e=qQzTWJ)
 
-Voor dit project heb je geen speciaal programma of specifieke installatie nodig. De game is te spelen door te surfen naar [nicolaiklimii.be](http://nicolaiklimii.be/) of via de QR-code op de DVD-hoes! Je kan de game ook hieronder testen. Opgelet: je hebt het boekje met de opgaves nodig.
-
-[
+Voor dit project heb je geen speciaal programma of specifieke installatie nodig. De game is te spelen via de [projectwebsite](http://nicolaiklimii.be/) of via de QR-code op de DVD-hoes! Je kan de game ook hieronder testen. Opgelet: je hebt het boekje met de opgaves nodig.
 
 ![](../../../assets/migrated/73/7352d58d4ba5c2aa32d029a2ad26d50aa73064a1fd925c6e53e6b7994497fa2c-w842.webp)
 
-](https://www.nicolaiklimii.be/)
-
-Klik op de afbeelding om de game te starten!
+[Start de game](https://www.nicolaiklimii.be/)
 
 ### Hoe kwam dit project tot stand?
 

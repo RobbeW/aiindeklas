@@ -155,29 +155,29 @@ Ultimately, we hope these efforts support historians in conducting more accurate
 
 -   Assael, Y.,\* Sommerschield, T.,\* Cooley, A., Shillingford, B., Pavlopoulos, J., Suresh, P., Herms, B., Grayston, J., Maynard, B., Dietrich N., Wulgaert, R., Prag, J., Mullen, A., Mohamed, S. (2025). “Contextualising ancient texts with generative neural networks”. In Nature **add issue, pages and OA link once release confirmed**
 
--   Assael, Y.,\* Sommerschield, T.,\* Shillingford, B., Bordbar, M., Pavlopoulos, J., Chatzipanagiotou, M., Androutsopoulos, I., Prag, J., de Freitas, N. (2022). “Restoring and attributing ancient texts with deep neural networks”. In Nature, 603(7900): 280–283. [https://www.nature.com/articles/s41586-022-04448-z](https://www.nature.com/articles/s41586-022-04448-z)
+-   Assael, Y.,\* Sommerschield, T.,\* Shillingford, B., Bordbar, M., Pavlopoulos, J., Chatzipanagiotou, M., Androutsopoulos, I., Prag, J., de Freitas, N. (2022). “Restoring and attributing ancient texts with deep neural networks”. In Nature, 603(7900): 280–283. [Nature article](https://www.nature.com/articles/s41586-022-04448-z)
 
 -   Booms, D. (2016). Latin Inscriptions (Getty Publications - British Museum Press).
 
 -   Cooley, A. (2012). The Cambridge Manual of Latin Epigraphy (Cambridge University Press).
 
--   European Commission, European Education and Culture Executive Agency, (2023). AI report: by the European Digital Education Hub’s Squad on artificial intelligence in education, Publications Office of the European Union. [https://data.europa. eu/doi/10.2797/828281](https://data.europa.eu/doi/10.2797/828281)
+-   European Commission, European Education and Culture Executive Agency, (2023). AI report: by the European Digital Education Hub’s Squad on artificial intelligence in education, Publications Office of the European Union. [AI report](https://data.europa.eu/doi/10.2797/828281)
 
 -   Liddel, P. (2025). Greek Inscriptions (Getty Publications - British Museum Press).
 
--   Miao, F., & Shiohira, K. (2024). AI competency framework for students. UNESCO. [https://doi.org/10.54675/JKJB9835](https://doi.org/10.54675/JKJB9835)
+-   Miao, F., & Shiohira, K. (2024). AI competency framework for students. UNESCO. [DOI](https://doi.org/10.54675/JKJB9835)
 
--   Miao, F., & Cukurova, M. (2024). AI competency framework for teachers. UNESCO. [https://doi.org/10.54675/ZJTE2084](https://doi.org/10.54675/ZJTE2084)
+-   Miao, F., & Cukurova, M. (2024). AI competency framework for teachers. UNESCO. [DOI](https://doi.org/10.54675/ZJTE2084)
 
--   OECD (2025). Empowering learners for the age of AI: An AI literacy framework for primary and secondary education (Review draft). OECD. Paris. [https://ailiteracyframework.org](https://ailiteracyframework.org/)
+-   OECD (2025). Empowering learners for the age of AI: An AI literacy framework for primary and secondary education (Review draft). OECD. Paris. [AI Literacy Framework](https://ailiteracyframework.org/)
 
--   Urbanová, D. (2017). Latin curse texts: Mediterranean tradition and local diversity. Acta Antiqua Academiae Scientiarum Hungaricae, 57(1), 57–82. [https://doi.org/10.1556/068.2017.57.1.5](https://doi.org/10.1556/068.2017.57.1.5)
+-   Urbanová, D. (2017). Latin curse texts: Mediterranean tradition and local diversity. Acta Antiqua Academiae Scientiarum Hungaricae, 57(1), 57–82. [DOI](https://doi.org/10.1556/068.2017.57.1.5)
 
 -   Wulgaert, R. (2023). "Ithaca AI meets ancient Greek: Muses and robots in the classroom". In Teaching History, 57(3), 16–20.
 
--   Wulgaert, R. (2023). AI & Greek – Ithaca syllabus. [https://www.robbewulgaert.be/education/ai-and-greek-epigraphy-with-a-robot](/education/ai-and-greek-epigraphy-with-a-robot)
+-   Wulgaert, R. (2023). [AI & Greek – Ithaca syllabus](/education/ai-and-greek-epigraphy-with-a-robot)
 
--   Wulgaert, R. (2025). AI & Latin Aeneas - syllabus. [https://www.robbewulgaert.be/education/predicting-the-past-aeneas](/education/predicting-the-past-aeneas)
+-   Wulgaert, R. (2025). [AI & Latin Aeneas syllabus](/education/predicting-the-past-aeneas)
 
 ![](../../../assets/migrated/6a/6a23c0e5cab88fa884cdab084b36236a8d9f9b7ba85670d3256037a81e565c67-w1600.webp)
 
@@ -187,6 +187,6 @@ This teaching material is a starting point, a work in progress, and needs to be 
 
 <div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contactinfo">Contact Info</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://raw.githubusercontent.com/RobbeW/aiindeklas/51addd68030611e73b88fe4f1cc437cdfdaefa59/aeneas/syllabus/ENG_Syllabus_Epigraphy%20_Aenaes.pdf" target="_blank" rel="noreferrer">Download the syllabus</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://raw.githubusercontent.com/RobbeW/aiindeklas/51addd68030611e73b88fe4f1cc437cdfdaefa59/aeneas/syllabus/ENG_Syllabus_Epigraphy%20_Aenaes.pdf">Download the syllabus</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://colab.research.google.com/drive/1ivwPXCT6Oa_XQ2Vg6s8XbpftfFUe3k72?usp=sharing" target="_blank" rel="noreferrer">Use the Notebook</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://colab.research.google.com/drive/1ivwPXCT6Oa_XQ2Vg6s8XbpftfFUe3k72?usp=sharing">Use the Notebook</a></div>

@@ -3,6 +3,13 @@ import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 import YAML from "yaml";
+import {
+  excludedRouteReasons,
+  normalizeRoute,
+  productionRouteContract,
+  productionSitemapPaths,
+  routeKey
+} from "../src/lib/route-policy.ts";
 
 const workspace = fileURLToPath(new URL("../", import.meta.url));
 const seoManifest = YAML.parse(await readFile(resolve(workspace, "../docs/implementation/manifests/seo-geo.yaml"), "utf8"));
@@ -28,6 +35,15 @@ export const outputFileForLogicalPath = (logicalPath, outputDirectory) => {
   if (/\.[a-z0-9]+$/i.test(relativePath)) return join(outputDirectory, relativePath);
   return join(outputDirectory, `${relativePath}.html`);
 };
+
+export const logicalRouteFromHtmlLabel = (label) => normalizeRoute(
+  label === "index.html" ? "/" : `/${label.replaceAll("\\", "/").replace(/\.html$/, "")}`
+);
+
+export const setDifferences = (expected, actual) => ({
+  missing: [...expected].filter((value) => !actual.has(value)).sort(),
+  extra: [...actual].filter((value) => !expected.has(value)).sort()
+});
 
 const srcsetUrls = (value) => value
   .split(",")
@@ -116,6 +132,18 @@ export const validateBuiltSite = async ({
   let internalUrls = 0;
   let indexablePages = 0;
   let noindexPages = 0;
+  const declaredPublicRoutes = productionRouteContract();
+  const expectedIndexableRoutes = productionSitemapPaths();
+  const expectedBuiltByKey = new Map(declaredPublicRoutes.map((route) => [routeKey(route), route]));
+  for (const route of Object.keys(excludedRouteReasons)) expectedBuiltByKey.set(routeKey(route), route);
+  const expectedIndexableKeys = new Set(expectedIndexableRoutes.map(routeKey));
+  const builtRoutesByKey = new Map();
+  const duplicateRoutes = [];
+  const indexStateViolations = [];
+  const canonicalViolations = [];
+  const indexableCanonicals = new Set();
+  const prohibitedCopy = [];
+  const prohibited = /Local build preview|Lokale bouwpreview|Source content requires review|Broninhoud ter controle|live verification before release|nog niet gepubliceerd/i;
 
   const validateUrl = async (rawUrl, label, kind) => {
     if (!rawUrl || rawUrl.startsWith("#") || /^(mailto:|tel:|data:|blob:)/i.test(rawUrl)) return;
@@ -163,6 +191,15 @@ export const validateBuiltSite = async ({
     const isNoindex = robots.includes("noindex");
     if (isNoindex) noindexPages += 1;
     else indexablePages += 1;
+    const logicalRoute = logicalRouteFromHtmlLabel(label);
+    const logicalKey = routeKey(logicalRoute);
+    if (builtRoutesByKey.has(logicalKey)) duplicateRoutes.push(logicalRoute);
+    else builtRoutesByKey.set(logicalKey, logicalRoute);
+    const shouldBeIndexable = expectIndexing && expectedIndexableKeys.has(logicalKey);
+    if (isNoindex === shouldBeIndexable) {
+      indexStateViolations.push(`${logicalRoute}: expected ${shouldBeIndexable ? "index" : "noindex"}`);
+    }
+    if (expectIndexing && prohibited.test($("body").text())) prohibitedCopy.push(label);
 
     if (!new Set(["nl-BE", "en"]).has(lang)) errors.push(`${label}: invalid or missing html lang`);
     if ($("h1").length !== 1) errors.push(`${label}: expected exactly one h1, found ${$("h1").length}`);
@@ -176,7 +213,7 @@ export const validateBuiltSite = async ({
         errors.push(`${label}: header must use the source text wordmark without an invented badge`);
       }
       const socialLinks = $("footer.site-footer a[target='_blank']").toArray();
-      if (socialLinks.length !== 6) errors.push(`${label}: expected all six source social links in the footer`);
+      if (socialLinks.length !== 4) errors.push(`${label}: expected exactly four global social links in the footer`);
       for (const element of socialLinks) {
         const rel = new Set(($(element).attr("rel") ?? "").split(/\s+/));
         if (!$(element).text().trim() || !$(element).attr("aria-label") || !rel.has("noopener") || !rel.has("noreferrer")) {
@@ -195,16 +232,30 @@ export const validateBuiltSite = async ({
     if ($('a.skip-link[href="#main-content"]').length !== 1) errors.push(`${label}: missing skip link`);
     if (!$('meta[name="description"]').attr("content")?.trim()) errors.push(`${label}: missing description`);
     if (!expectIndexing && !isNoindex) errors.push(`${label}: preview must remain noindex`);
-    if (expectIndexing && ["404.html", "contact-english.html", "english.html"].includes(label) && !isNoindex) {
-      errors.push(`${label}: system/redirect output must remain noindex`);
-    }
     if (!$('link[rel="canonical"]').attr("href")) errors.push(`${label}: missing canonical`);
     if (!$("title").text().trim()) errors.push(`${label}: missing title`);
 
     const ids = $("[id]").toArray().map((element) => $(element).attr("id"));
     if (new Set(ids).size !== ids.length) errors.push(`${label}: duplicate id attribute`);
     const canonicalHref = $("link[rel=canonical]").attr("href");
-    const currentPath = canonicalHref ? logicalPathFromDeployed(new URL(canonicalHref).pathname, normalisedBase) : null;
+    let canonicalUrl = null;
+    let currentPath = null;
+    if (canonicalHref) {
+      try {
+        canonicalUrl = new URL(canonicalHref);
+        let decodedCanonicalPath = canonicalUrl.pathname;
+        try { decodedCanonicalPath = decodeURI(decodedCanonicalPath); } catch { /* Diagnostic below retains encoded path. */ }
+        currentPath = logicalPathFromDeployed(decodedCanonicalPath, normalisedBase);
+        if (canonicalUrl.origin !== origin.origin) canonicalViolations.push(`${logicalRoute}: expected origin ${origin.origin}, found ${canonicalUrl.origin}`);
+        if (currentPath === null) canonicalViolations.push(`${logicalRoute}: canonical escapes configured base (${canonicalHref})`);
+        if (shouldBeIndexable && currentPath !== null && routeKey(currentPath) !== logicalKey) {
+          canonicalViolations.push(`${logicalRoute}: indexable canonical path is ${currentPath}`);
+        }
+        if (shouldBeIndexable) indexableCanonicals.add(canonicalUrl.href);
+      } catch {
+        canonicalViolations.push(`${logicalRoute}: invalid canonical ${canonicalHref}`);
+      }
+    }
     const navLinks = $("#primary-navigation .navigation-list a").toArray().map((element) => ({
       href: $(element).attr("href"),
       path: $(element).attr("href") ? logicalPathFromDeployed(new URL($(element).attr("href"), origin).pathname, normalisedBase) : null
@@ -222,6 +273,21 @@ export const validateBuiltSite = async ({
     for (const { url, kind } of urlsFromHtml(source)) await validateUrl(url, label, kind);
   }
 
+  const unknownRoutes = [...builtRoutesByKey.entries()]
+    .filter(([key]) => !expectedBuiltByKey.has(key)).map(([, route]) => route).sort();
+  const missingRoutes = [...expectedBuiltByKey.entries()]
+    .filter(([key]) => !builtRoutesByKey.has(key)).map(([, route]) => route).sort();
+  if (unknownRoutes.length) errors.push(`route inventory: unknown outputs ${unknownRoutes.join(", ")}`);
+  if (missingRoutes.length) errors.push(`route inventory: missing outputs ${missingRoutes.join(", ")}`);
+  if (duplicateRoutes.length) errors.push(`route inventory: duplicate outputs ${duplicateRoutes.join(", ")}`);
+  if (indexStateViolations.length) errors.push(`index state violations: ${indexStateViolations.join(", ")}`);
+  if (canonicalViolations.length) errors.push(`canonical violations: ${canonicalViolations.join(", ")}`);
+  const expectedIndexablePages = expectIndexing ? expectedIndexableRoutes.length : 0;
+  const expectedExcludedPages = expectIndexing ? Object.keys(excludedRouteReasons).length : expectedBuiltByKey.size;
+  if (indexablePages !== expectedIndexablePages || noindexPages !== expectedExcludedPages) {
+    errors.push(`index count drift: expected ${expectedIndexablePages} indexable/${expectedExcludedPages} noindex, found ${indexablePages}/${noindexPages}`);
+  }
+
   for (const file of cssFiles) {
     const label = relative(outputDirectory, file).replaceAll("\\", "/");
     for (const url of cssUrls(await readFile(file, "utf8"))) await validateUrl(url, label, "stylesheet asset");
@@ -229,6 +295,9 @@ export const validateBuiltSite = async ({
 
   const robotsPath = join(outputDirectory, "robots.txt");
   const sitemapPath = join(outputDirectory, "sitemap.xml");
+  let sitemapLocations = [];
+  let sitemapMissingUrls = [];
+  let sitemapExtraUrls = [];
   if (!await exists(robotsPath)) errors.push("robots.txt: missing generated output");
   if (!await exists(sitemapPath)) errors.push("sitemap.xml: missing generated output");
   if (await exists(robotsPath)) {
@@ -240,11 +309,20 @@ export const validateBuiltSite = async ({
   if (await exists(sitemapPath)) {
     const sitemap = await readFile(sitemapPath, "utf8");
     const $xml = load(sitemap, { xmlMode: true });
-    const locations = $xml("loc").toArray().map((element) => $xml(element).text().trim());
-    if (expectIndexing && indexablePages > 0 && locations.length === 0) errors.push("sitemap.xml: no locations found in indexable production profile");
-    for (const location of locations) await validateUrl(location, "sitemap.xml", "location");
+    sitemapLocations = $xml("loc").toArray().map((element) => $xml(element).text().trim());
+    for (const location of sitemapLocations) await validateUrl(location, "sitemap.xml", "location");
+    const actualSitemapUrls = new Set(sitemapLocations);
+    const expectedSitemapUrls = expectIndexing ? indexableCanonicals : new Set();
+    ({ missing: sitemapMissingUrls, extra: sitemapExtraUrls } = setDifferences(expectedSitemapUrls, actualSitemapUrls));
+    if (actualSitemapUrls.size !== sitemapLocations.length) errors.push("sitemap.xml: duplicate locations found");
+    if (sitemapMissingUrls.length || sitemapExtraUrls.length) {
+      errors.push(`sitemap.xml: parity mismatch (${sitemapMissingUrls.length} missing, ${sitemapExtraUrls.length} extra)`);
+    }
   }
-  if (expectIndexing && indexablePages === 0) errors.push("production simulation: no indexable page exists");
+  if (expectIndexing && prohibitedCopy.length) errors.push(`production output contains prohibited internal copy: ${prohibitedCopy.join(", ")}`);
+
+  const excludedRoutes = Object.entries(excludedRouteReasons)
+    .map(([path, reason]) => ({ path, reason })).sort((a, b) => a.path.localeCompare(b.path));
 
   const report = {
     schema_version: "1.0.0",
@@ -255,6 +333,19 @@ export const validateBuiltSite = async ({
     internal_urls_checked: internalUrls,
     indexable_pages: indexablePages,
     noindex_pages: noindexPages,
+    declared_public_routes: declaredPublicRoutes.length,
+    expected_indexable_pages: expectedIndexablePages,
+    expected_excluded_pages: expectedExcludedPages,
+    unknown_routes: unknownRoutes,
+    missing_routes: missingRoutes,
+    duplicate_routes: duplicateRoutes,
+    index_state_violations: indexStateViolations,
+    excluded_routes: excludedRoutes,
+    canonical_violations: canonicalViolations,
+    prohibited_copy_findings: prohibitedCopy,
+    sitemap_url_count: sitemapLocations.length,
+    sitemap_missing_urls: sitemapMissingUrls,
+    sitemap_extra_urls: sitemapExtraUrls,
     generated_system_outputs: 2,
     errors,
     status: errors.length === 0 ? "passed" : "failed"

@@ -94,9 +94,9 @@ Als Ithaca alleen wordt gebruikt, kan het 62 procent nauwkeurigheid bereiken bij
 
 Voor een meer diepgaande verkenning van het mechanisme van het Ithaca AI-model, inclusief de behandeling van inputs en de specifieke kenmerken van transformatortechnologie (de 'T' in 'ChatGPT' betekent ook transformatortechnologie), raadpleeg het onderzoeksartikel dat is geschreven door de onderzoekers die Pythia (de oorspronkelijke versie van Ithaca) hebben bedacht, Yannis Assael en Thea Sommerschield en anderen.\[ii\]
 
-\[i\] Ithaca, https://ithaca.deepmind.com/ (geraadpleegd op 28 juli 2023).
+\[i\] Ithaca, [Ithaca](https://ithaca.deepmind.com/) (geraadpleegd op 28 juli 2023).
 
-\[ii\] Y. Assael, T. Sommerschield, B. Shillingford, et al. 'Restoring and attributing ancient texts using deep neural networks', Nature 603 (2022), 280-283. https://doi.org/10.1038/s41586-022-04448-z
+\[ii\] Y. Assael, T. Sommerschield, B. Shillingford, et al. 'Restoring and attributing ancient texts using deep neural networks', Nature 603 (2022), 280-283. [DOI](https://doi.org/10.1038/s41586-022-04448-z)
 
 ### Ithaca toepassen op ons onderwijsproject
 
@@ -156,7 +156,7 @@ Vervolgens gaan we dieper in op de implementatie van deze AI-modellen in de klas
 
 Deze aanpak dient meerdere doelen. Niet alleen laat het de veelzijdigheid van AI-modellen zien, waardoor hun toepassing verder reikt dan traditionele bèta- en techniekcursussen om leerlingen met een taalkundige interesse te boeien, maar het presenteert ook een evenwichtig verhaal. Door de nadruk te leggen op het samenwerkingspotentieel tussen menselijke intelligentie en AI, gaan we in tegen het discours dat technologische vooruitgang uitsluitend ziet als een bedreiging voor menselijke werkgelegenheid.
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://colab.research.google.com/drive/1D2DBWPBbQm4aix7I3R7_fM702sFkcjDU?usp=sharing" target="_blank" rel="noreferrer">Test Ithaca</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://colab.research.google.com/drive/1D2DBWPBbQm4aix7I3R7_fM702sFkcjDU?usp=sharing">Test Ithaca</a></div>
 
 <p>Bekijk de syllabus</p>
 
@@ -170,8 +170,8 @@ Deze materialen werden ontwikkeld door Robbe Wulgaert (Sint-Lievenscollege) en N
 
 Dit artikel werd geschreven in juli 2023 door Robbe Wulgaert, docent computerwetenschappen en AI in Gent, België.
 
-_\[1\] Ithaca, https://ithaca.deepmind.com/ (geraadpleegd op 28 juli 2023)._
+_\[1\] Ithaca, [Ithaca](https://ithaca.deepmind.com/) (geraadpleegd op 28 juli 2023)._
 
-_\[2\] Y. Assael, T. Sommerschield, B. Shillingford, et al. 'Restoring and attributing ancient texts using deep neural networks', Nature 603 (2022), 280-283. https://doi.org/10.1038/s41586-022-04448-z_
+_\[2\] Y. Assael, T. Sommerschield, B. Shillingford, et al. 'Restoring and attributing ancient texts using deep neural networks', Nature 603 (2022), 280-283. [DOI](https://doi.org/10.1038/s41586-022-04448-z)_
 
 _\[3\] Voor meer details over de camee, zie T. Whitmarsh, 'Less Care, More Stress: A Rhythmic Poem from the Roman Empire', The Cambridge Classical Journal 67 (2021): 135-163, doi:10.1017/S1750270521000051_

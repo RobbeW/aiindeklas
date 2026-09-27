@@ -25,4 +25,4 @@ navigation: []
 call_to_actions: []
 ---
 
-Browse the migrated English articles below.
+Browse articles about teaching, technology and creative projects in education.

@@ -54,12 +54,17 @@ try {
   if (dependency.source_facts.external_video_embeds.embedly_wrapper_instances !== dependency.source_facts.external_video_embeds.providers.reduce((sum, provider) => sum + provider.instances, 0)) problems.push("Embedly provider wrapper instance totals do not reconcile.");
   if (dependency.source_facts.native_video.p08_deferred_candidate_count !== 18 || dependency.source_facts.native_video.p08_deferred_ids.length !== 18) problems.push("P09 must reference all 18 P08 native-video deferrals without changing them.");
   const migrationSource = await fs.readFile(path.join(ROOT, "scripts/migrate-content.mjs"), "utf8");
+  const contactFormSource = await fs.readFile(path.join(ROOT, "src/components/ContactEmailForm.astro"), "utf8");
+  if (!/Heb je een vraag over een nascholing, lesmateriaal of een project\? Laat hieronder kort weten waarmee ik kan helpen\./.test(contactFormSource)) problems.push("Contact form must lead with the approved user task.");
   if (!migrationSource.includes("replaceContactFormCopy") || !migrationSource.includes("providerLabelForUrl")) problems.push("Content regeneration path must preserve the P09 contact and provider-label decisions.");
 
   const readContent = async (relative) => fs.readFile(path.join(contentRoot, relative), "utf8");
   for (const [route, file] of [["/contact", "pages/generated/contact.md"], ["/contactinfo", "pages/generated/contactinfo.md"]]) {
     const markdown = await readContent(file);
-    if (!/formulier hierboven|form above/i.test(markdown)) problems.push(`${route}: source content must explain how to use the contact form.`);
+    const expectedContent = route === "/contact"
+      ? /Discord[\s\S]*Koffiefonds/i
+      : /collaborate on education, learning materials, a workshop or a technology project/i;
+    if (!expectedContent.test(markdown)) problems.push(`${route}: approved secondary contact content is missing.`);
     if (markdown.includes("mailto:robbe.wulgaert@gmail.com")) problems.push(`${route}: source content must not publish a direct mailto address.`);
     if (/via het formulier op deze webpagina|contact me with this tool/i.test(markdown)) problems.push(`${route}: source content contains stale copy promising form submission.`);
   }

@@ -8,6 +8,7 @@ const adminHtml = await readDist("admin.html");
 const admin = load(adminHtml);
 const content = JSON.parse(await readDist("admin/content.json"));
 const onderwijs = load(await readDist("onderwijs.html"));
+const onderwijsArchive = load(await readDist("onderwijs/archief.html"));
 
 const errors = [];
 if (admin("[data-cms-studio]").length !== 1) errors.push("CMS Studio root is missing");
@@ -24,12 +25,23 @@ if (content.media.length !== 829) errors.push("CMS media selector inventory is i
 if (content.records.some((record) => !/^src\/content\/(articles|workshops)\//.test(record.file))) errors.push("CMS contains an unsafe target path");
 
 const cards = onderwijs("article.listing-card").length;
+const archiveCards = onderwijsArchive("article.listing-card").length;
 const thumbnails = onderwijs("article.listing-card img").length;
+const archiveThumbnails = onderwijsArchive("article.listing-card img").length;
 if (onderwijs("h1").first().text().trim() !== "Onderwijs") errors.push("Onderwijs listing title is incorrect");
-if (cards !== 78) errors.push(`Expected 78 Dutch onderwijs cards, found ${cards}`);
+if (cards !== 6) errors.push(`Expected 6 curated Dutch onderwijs cards, found ${cards}`);
+if (onderwijs("a.theme-link").length !== 5) errors.push("Onderwijs gateway must expose five grounded themes");
+if (onderwijs("a[href$='/onderwijs/archief']").length !== 1) errors.push("Onderwijs archive link is missing or duplicated");
+if (archiveCards !== 78) errors.push(`Expected 78 Dutch onderwijs archive cards, found ${archiveCards}`);
+for (const [label, page] of [["gateway", onderwijs], ["archive", onderwijsArchive]]) {
+  const invalidCards = page("article.listing-card").toArray().filter((card) => page(card).find("a.listing-card-link").length !== 1 || page(card).find("a").length !== 1);
+  if (invalidCards.length) errors.push(`${label}: ${invalidCards.length} cards do not expose exactly one link`);
+}
 if (thumbnails === 0) errors.push("Onderwijs cards still have no thumbnails");
-if (onderwijs("article.listing-card img:not([loading='lazy'])").length) errors.push("A thumbnail is missing lazy loading");
-if (basePrefix !== null && onderwijs("article.listing-card img").toArray().some((image) => !onderwijs(image).attr("src")?.startsWith(`${basePrefix}/_astro/`))) {
+if (archiveThumbnails === 0) errors.push("Onderwijs archive cards have no thumbnails");
+if (onderwijs("article.listing-card img:not([loading='lazy'])").length || onderwijsArchive("article.listing-card img:not([loading='lazy'])").length) errors.push("A thumbnail is missing lazy loading");
+const allImages = [...onderwijs("article.listing-card img").toArray().map((image) => onderwijs(image)), ...onderwijsArchive("article.listing-card img").toArray().map((image) => onderwijsArchive(image))];
+if (basePrefix !== null && allImages.some((image) => !image.attr("src")?.startsWith(`${basePrefix}/_astro/`))) {
   errors.push("A thumbnail is not base aware");
 }
 
@@ -40,6 +52,8 @@ console.log(JSON.stringify({
   articles: 124,
   workshops: 12,
   media_options: content.media.length,
-  onderwijs_cards: cards,
-  onderwijs_thumbnails: thumbnails
+  onderwijs_curated_cards: cards,
+  onderwijs_archive_cards: archiveCards,
+  onderwijs_thumbnails: thumbnails,
+  onderwijs_archive_thumbnails: archiveThumbnails
 }, null, 2));

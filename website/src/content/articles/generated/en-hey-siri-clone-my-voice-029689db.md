@@ -50,11 +50,9 @@ It only takes ten minutes. You read a script carefully with a microphone or you 
 
 ### Your own smart assistant or chatbot
 
-[
-
 ![](../../../assets/migrated/97/9763db22140a55bfcaec706759ad458e363e21330b7d1d79f06b81419cfc120f-w1200.webp)
 
-](https://www.google.com/url?cd=vfe&psig=AOvVaw0PZHDB1UlfveJoS1gDQBvk&sa=i&source=images&url=https%3A%2F%2Fwww.theverge.com%2F2016%2F11%2F3%2F13504658%2Fgoogle-home-review-speaker-assistant-amazon-echo-competitor&ust=1633026155510000&ved=0CAsQjRxqFwoTCOiG7NHmpPMCFQAAAAAdAAAAABAb)
+[Image source](https://www.google.com/url?cd=vfe&psig=AOvVaw0PZHDB1UlfveJoS1gDQBvk&sa=i&source=images&url=https%3A%2F%2Fwww.theverge.com%2F2016%2F11%2F3%2F13504658%2Fgoogle-home-review-speaker-assistant-amazon-echo-competitor&ust=1633026155510000&ved=0CAsQjRxqFwoTCOiG7NHmpPMCFQAAAAAdAAAAABAb)
 
 You may already know Siri, Google, Cortana or Alexa. Digital voice assistants that help us play music, switch lights on and off, set timers in the kitchen... You can set them up with a whole selection of voices in various languages.
 

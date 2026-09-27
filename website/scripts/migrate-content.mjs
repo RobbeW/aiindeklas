@@ -125,8 +125,8 @@ turndown.addRule("squarespace-button", {
     const size = normaliseSpace(node.getAttribute("data-button-size")) || "medium";
     const href = escapeHtml(anchor.getAttribute("href"));
     const label = escapeHtml(normaliseSpace(anchor.textContent));
-    const newWindow = anchor.getAttribute("target") === "_blank";
-    const target = newWindow ? ' target="_blank" rel="noreferrer"' : "";
+    // Generated editorial links always stay in the same tab.
+    const target = "";
     migratedButtonCount += 1;
     return `\n\n<div class="content-button-row content-button-row--${alignment}"><a class="content-button content-button--${type} content-button--${size}" href="${href}"${target}>${label}</a></div>\n\n`;
   }
@@ -358,7 +358,52 @@ const toMarkdown = ($, scope, context) => {
     .trim();
 };
 
+const p26VisibleLinkLabels = new Map([
+  ["https://ec.europa.eu/ai-act", "EU AI Act"],
+  ["https://leonfurze.com/aias-translations/", "AI Assessment Scale translations"],
+  ["https://leonfurze.com/2024/08/28/updating-the-ai-assessment-scale/", "AI Assessment Scale update"],
+  ["https://unesdoc.unesco.org/ark:/48223/pf0000391105", "UNESCO student framework"],
+  ["https://unesdoc.unesco.org/ark:/48223/pf0000391104", "UNESCO teacher framework"],
+  ["https://www.borgerhoff-lamberigts.be/owl-press/shop/boeken/ai-in-de-klas", "publisher page"],
+  ["https://www.nature.com/articles/s41586-022-04448-z", "Nature article"],
+  ["https://www.nature.com/articles/s41586-025-09292-5", "Nature article"],
+  ["https://doi.org/10.54675/JKJB9835", "DOI"],
+  ["https://doi.org/10.54675/ZJTE2084", "DOI"],
+  ["https://ailiteracyframework.org", "AI Literacy Framework"],
+  ["https://doi.org/10.1556/068.2017.57.1.5", "DOI"],
+  ["https://doi.org/10.48550/arXiv.2304.02819", "DOI"],
+  ["https://doi.org/10.48550/arXiv.2403.19148", "DOI"],
+  ["https://doi.org/10.48550/arXiv.2303.11156", "DOI"],
+  ["https://doi.org/10.1016/j.rmal.2023.100068", "DOI"],
+  ["https://screenrant.com/who-voices-darth-vader-in-obi-wan-kenobi/", "ScreenRant article"],
+  ["https://www.nieuwsblad.be/cnt/dmf20180213_03355605", "Nieuwsblad article"],
+  ["https://www.vrt.be/vrtnws/nl/2024/01/16/deepfake-reclame-game/", "VRT NWS article"]
+]);
+const cleanP26Body = (body) => {
+  let cleaned = body;
+  for (const [href, label] of p26VisibleLinkLabels) {
+    cleaned = cleaned
+      .replaceAll(`[${href}](${href})`, `[${label}](${href})`)
+      .replaceAll(`[_${href}_](${href})`, `[_${label}_](${href})`)
+      .replaceAll(`[**${href}**](${href})`, `[**${label}**](${href})`);
+  }
+  return cleaned
+    .replace(/\[\s*\n\s*(!\[[^\]]*\]\([^)]+\))\s*\n\s*\]\((https?:\/\/[^)]+)\)/g, "$1\n\n[Open linked resource]($2)")
+    .replaceAll("[https://www.nieuwsblad.be/cnt/dmf20180213\\_03355605](https://www.nieuwsblad.be/cnt/dmf20180213_03355605)", "[Nieuwsblad article](https://www.nieuwsblad.be/cnt/dmf20180213_03355605)")
+    .replaceAll("[https://www.robbewulgaert.be/education/ai-and-greek-epigraphy-with-a-robot](/education/ai-and-greek-epigraphy-with-a-robot)", "[AI & Greek – Ithaca syllabus](/education/ai-and-greek-epigraphy-with-a-robot)")
+    .replaceAll("[https://www.robbewulgaert.be/education/predicting-the-past-aeneas](/education/predicting-the-past-aeneas)", "[AI & Latin Aeneas syllabus](/education/predicting-the-past-aeneas)")
+    .replaceAll("[https://ithaca.deepmind.com/](https://ithaca.deepmind.com/)", "[Ithaca](https://ithaca.deepmind.com/)")
+    .replaceAll("https://doi.org/10.1038/s41586-022-04448-z", "[DOI](https://doi.org/10.1038/s41586-022-04448-z)")
+    .replaceAll("[DOI]([DOI](https://doi.org/10.1038/s41586-022-04448-z))", "[DOI](https://doi.org/10.1038/s41586-022-04448-z)")
+    .replaceAll("[the Nature study]([DOI](https://doi.org/10.1038/s41586-022-04448-z))", "[the Nature study](https://doi.org/10.1038/s41586-022-04448-z)")
+    .replace(/Free to use via\*\*\s*\[\*\*www\.pythonindeklas\.be\*\*\]\((https:\/\/dodona\.ugent\.be\/nl\/courses\/2641\/)\)\[\*\*!\*\*\]\(\1\)/g, "Free to use via the [Python in de Klas course]($1).")
+    .replaceAll("www.pythonindeklas.be", "the Python in de Klas website")
+    .replace(/\[https:\/\/data\.europa\.\s*eu\/doi\/10\.2797\/828281\]\((https:\/\/data\.europa\.eu\/doi\/10\.2797\/828281)\)/g, "[AI-rapport van de Europese Unie]($1)")
+    .replaceAll("https://data.europa. eu/doi/10.2797/828281", "[AI-rapport van de Europese Unie](https://data.europa.eu/doi/10.2797/828281)")
+    .replaceAll("www.robbewulgaert.be", "de website van Robbe Wulgaert");
+};
 const frontmatterDocument = (data, body) => {
+  body = cleanP26Body(body);
   const yaml = stringifyYaml(data, {
     lineWidth: 0,
     defaultStringType: "QUOTE_DOUBLE",
@@ -573,8 +618,8 @@ for (const [pathname, template] of pageDefinitions) {
   }
   if (["/onderwijs", "/education"].includes(pathname)) {
     body = locale === "en"
-      ? "Browse the migrated English articles below."
-      : "Bekijk hieronder de gemigreerde Nederlandstalige artikels.";
+      ? "Browse articles about teaching, technology and creative projects in education."
+      : "Hier vind je lesmateriaal, projecten en artikels over artificiële intelligentie, computationeel denken en programmeren in het onderwijs.";
   }
   const ogAsset = registerAsset({
     raw: $("meta[property='og:image']").attr("content"),
@@ -648,7 +693,8 @@ for (const sourceRecord of actualArticleRecords.sort((a, b) => a.url.localeCompa
   const id = `source-article-${shortHash(source)}`;
   const filename = `${locale === "en" ? "en" : "nl"}-${slug}-${shortHash(source).slice(0, 8)}.md`;
   const outputFile = path.join(GENERATED_ROOTS.articles, filename);
-  const description = $("meta[name='description']").attr("content") ?? null;
+  const description = ($("meta[name='description']").attr("content") ?? null)
+    ?.replaceAll("www.pythonindeklas.be", "Python in de Klas");
   const body = suppressDeferredNativeVideoLinks(toMarkdown($, $(".blog-item-content").first(), { contentId: id, source, outputFile }));
   if (!body) throw new Error(`Blank article body for ${source}`);
   articleSearch.set(pathname, `${title}\n${body}`.toLocaleLowerCase(locale === "en" ? "en" : "nl"));

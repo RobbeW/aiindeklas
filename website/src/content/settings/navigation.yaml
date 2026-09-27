@@ -4,14 +4,12 @@ locales:
   nl-BE:
     label: "Nederlands"
     items:
-      - label: "Over"
-        path: "/"
-      - label: "Boek"
-        path: "/boek"
       - label: "Onderwijs"
         path: "/onderwijs"
       - label: "Nascholingen"
         path: "/onderwijs/workshops-en-nascholingen"
+      - label: "Boek"
+        path: "/boek"
       - label: "Contact"
         path: "/contact"
   en:

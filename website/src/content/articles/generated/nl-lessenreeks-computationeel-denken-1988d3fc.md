@@ -122,6 +122,6 @@ Wil je hier zelf mee aan de slag in jouw klaslokaal? Super! De toekomst zal stee
 
 <div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/onderwijs/workshops-en-nascholingen">Info workshops</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://raw.githubusercontent.com/RobbeW/aiindeklas/main/computationeel_denken/Syllabus_Computationeel_Denken_PRINT.pdf" target="_blank" rel="noreferrer">Download het lesmateriaal</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://raw.githubusercontent.com/RobbeW/aiindeklas/main/computationeel_denken/Syllabus_Computationeel_Denken_PRINT.pdf">Download het lesmateriaal</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://raw.githubusercontent.com/RobbeW/aiindeklas/main/computationeel_denken/Affiches_Computationeel_Denken.pdf" target="_blank" rel="noreferrer">Download de affiches</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://raw.githubusercontent.com/RobbeW/aiindeklas/main/computationeel_denken/Affiches_Computationeel_Denken.pdf">Download de affiches</a></div>

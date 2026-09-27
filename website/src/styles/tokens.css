@@ -53,4 +53,9 @@
   --motion-slow: 520ms;
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  /* shadcn-compatible semantic aliases mapped to the established brand palette */
+  --background: var(--bg); --foreground: var(--ink); --primary: var(--brand-purple);
+  --primary-foreground: var(--card); --secondary: var(--color-brand-soft);
+  --secondary-foreground: var(--ink); --muted-foreground: var(--muted);
+  --border-subtle: var(--border); --ring: var(--brand-purple);
 }

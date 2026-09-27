@@ -178,4 +178,4 @@ Wil je hier zelf mee aan de slag in jouw klaslokaal? Super! Jongeren helpen kiez
 
 <div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://education.minecraft.net/en-us/get-started/download">Download Minecraft Education Edition</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://sintlievenscollege-my.sharepoint.com/:u:/g/personal/robbe_wulgaert_sintlievenscollege_be/ER6fdtcoLGBHl_TkvOGdiaIBhuXHjjvp8CHxrDxvLoWFLg?download=1" target="_blank" rel="noreferrer">Download de werelden!</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://sintlievenscollege-my.sharepoint.com/:u:/g/personal/robbe_wulgaert_sintlievenscollege_be/ER6fdtcoLGBHl_TkvOGdiaIBhuXHjjvp8CHxrDxvLoWFLg?download=1">Download de werelden!</a></div>

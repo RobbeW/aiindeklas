@@ -6,7 +6,7 @@ import { load as loadHtml } from "cheerio";
 import { parse as parseYaml } from "yaml";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
-const manifestPath = path.resolve(root, "../docs/implementation/manifests/content.yaml");
+const manifestPath = path.resolve(root, "../../docs/implementation/manifests/content.yaml");
 const sourceManifestPath = path.join(root, "migration/source-manifest.json");
 const articleRoot = path.join(root, "src/content/articles/generated");
 const errors = [];
@@ -127,7 +127,7 @@ for (const record of articles) {
   if (sourceEntry && sourceEntry.sha256 !== record.source_artifacts?.source_html_sha256) fail(record, "source manifest SHA-256 differs from content inventory");
   if (frontmatter.source_html_sha256 !== record.source_artifacts?.source_html_sha256) fail(record, "frontmatter SHA-256 differs from content inventory");
   try {
-    const snapshot = await readFile(path.join(root, ...snapshotRelative.split("/")));
+    const snapshot = await readFile(path.join(root, "..", "..", "legacy_migration", ...snapshotRelative.split("/")));
     const actualHash = sha256(snapshot);
     if (actualHash !== record.source_artifacts?.source_html_sha256) fail(record, `source snapshot SHA-256 mismatch (${actualHash})`);
     const $source = loadHtml(snapshot.toString("utf8"));

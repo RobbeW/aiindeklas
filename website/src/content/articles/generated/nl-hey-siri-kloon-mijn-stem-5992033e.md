@@ -52,11 +52,9 @@ Het duurt maar een tiental minuten. Je leest een script zorgvuldig voor met een 
 
 ### Jouw eigen slimme assistent of chatbot
 
-[
-
 ![The Verge Google Home.jpg](../../../assets/migrated/97/9763db22140a55bfcaec706759ad458e363e21330b7d1d79f06b81419cfc120f-w1200.webp)
 
-](https://www.google.com/url?cd=vfe&psig=AOvVaw0PZHDB1UlfveJoS1gDQBvk&sa=i&source=images&url=https%3A%2F%2Fwww.theverge.com%2F2016%2F11%2F3%2F13504658%2Fgoogle-home-review-speaker-assistant-amazon-echo-competitor&ust=1633026155510000&ved=0CAsQjRxqFwoTCOiG7NHmpPMCFQAAAAAdAAAAABAb)
+[Bron afbeelding](https://www.google.com/url?cd=vfe&psig=AOvVaw0PZHDB1UlfveJoS1gDQBvk&sa=i&source=images&url=https%3A%2F%2Fwww.theverge.com%2F2016%2F11%2F3%2F13504658%2Fgoogle-home-review-speaker-assistant-amazon-echo-competitor&ust=1633026155510000&ved=0CAsQjRxqFwoTCOiG7NHmpPMCFQAAAAAdAAAAABAb)
 
 Siri, Google, Cortana of Alexa ken je misschien al wel. Digitale spraakassistenten die ons helpen bij het afspelen van muziek, aan- en uitschakelen van lampen, timers zetten in de keuken ... Je kan ze instellen met een hele selectie aan stemmen in diverse talen.
 

@@ -108,6 +108,6 @@ _Eén, twee, drie, hand in hand springen ze vooruit. ‘BRORR,’ horen de kinde
 
 <div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contact">Neem hier contact op!</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://sintlievenscollege-my.sharepoint.com/:b:/g/personal/robbe_wulgaert_sintlievenscollege_be/EVS8-h3RgYlIpfkTjdd7IpcBXJt2VwgAq1XW921R6WQv6A?e=BW11Tl" target="_blank" rel="noreferrer">Lees het volledige boek!</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://sintlievenscollege-my.sharepoint.com/:b:/g/personal/robbe_wulgaert_sintlievenscollege_be/EVS8-h3RgYlIpfkTjdd7IpcBXJt2VwgAq1XW921R6WQv6A?e=BW11Tl">Lees het volledige boek!</a></div>
 
 * * *

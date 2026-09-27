@@ -21,6 +21,9 @@ type ListingProps = {
   cards: ListingCard[];
   alternatePath?: string | null;
   introEntry?: CollectionEntry<"pages"> | null;
+  thematicLinks?: Array<{ label: string; href: string }>;
+  archiveHref?: string | null;
+  countLabel?: string;
 };
 type WorkshopProps = { kind: "workshops"; workshops: Array<{ data: CollectionEntry<"workshops">["data"]; html: string }> };
 type RouteProps = { kind: "content"; entry: BodyEntry; socialImage: ImageMetadata | null; alternatePath?: string | null } | ListingProps | WorkshopProps;
@@ -47,7 +50,7 @@ export const getStaticPaths = async () => {
   const articlesByPath = new Map(articleEntries.flatMap((entry) => entry.data.seo.canonical_path ? [[entry.data.seo.canonical_path, entry] as const] : []));
   const descriptionFor = (entry: CollectionEntry<"articles">) =>
     toDocumentViewModel(entry).description;
-  const listingPaths = new Set(["/onderwijs", "/education", "/projects"]);
+  const listingPaths = new Set(["/onderwijs", "/onderwijs/archief", "/education", "/projects"]);
 
   const contentRoutes = [
     ...pageEntries.filter(({ data }) => data.seo.canonical_path && data.seo.canonical_path !== "/" && !listingPaths.has(data.seo.canonical_path)),
@@ -78,15 +81,33 @@ export const getStaticPaths = async () => {
       meta: entry.data.published_at ? new Date(entry.data.published_at).toLocaleDateString(locale) : null,
       image: imageFor(entry)
     }));
+  const recentArticleCards = (locale: SiteLocale, limit = 6) => articleCards(locale).slice(0, limit);
 
   const listingRoutes: Array<{ params: { path: string }; props: ListingProps | WorkshopProps }> = [
     {
       params: { path: "onderwijs" },
       props: {
         kind: "listing", title: pagesByPath.get("/onderwijs")!.data.title,
-        description: pagesByPath.get("/onderwijs")!.data.seo.description ?? "Artikels over onderwijs en technologie.",
+        description: pagesByPath.get("/onderwijs")!.data.excerpt!,
         locale: "nl-BE", canonicalPath: "/onderwijs", eyebrow: "Onderwijs",
-        cards: articleCards("nl-BE"), alternatePath: "/education", introEntry: pagesByPath.get("/onderwijs")
+        cards: recentArticleCards("nl-BE"), alternatePath: "/education", introEntry: null, countLabel: "recente artikels",
+        archiveHref: "/onderwijs/archief",
+        thematicLinks: [
+          { label: "AI-geletterdheid & leren", href: "/onderwijs/tag/AI+in+de+klas" },
+          { label: "Talen & AI", href: "/onderwijs/tag/taaltechnologie" },
+          { label: "Klassieke talen", href: "/onderwijs/tag/latijn" },
+          { label: "Computationeel denken & programmeren", href: "/onderwijs/tag/computationeel+denken" },
+          { label: "STEM & digitale technologie", href: "/onderwijs/tag/STEM" }
+        ]
+      }
+    },
+    {
+      params: { path: "onderwijs/archief" },
+      props: {
+        kind: "listing", title: "Onderwijsarchief", seoTitle: "Onderwijsarchief",
+        description: "Alle Nederlandstalige artikels over onderwijs en technologie, chronologisch verzameld.",
+        locale: "nl-BE", canonicalPath: "/onderwijs/archief", eyebrow: "Onderwijsarchief",
+        cards: articleCards("nl-BE"), introEntry: null, countLabel: "alle artikels"
       }
     },
     {
@@ -139,8 +160,8 @@ export const getStaticPaths = async () => {
       title: taxonomy.label,
       seoTitle: `${taxonomy.type === "tag" ? "Tag" : "Category"}: ${taxonomy.label} — ${taxonomy.locale === "en" ? "Education" : "Onderwijs"}`,
       description: taxonomy.locale === "en"
-        ? `Articles in the source ${taxonomy.type} archive “${taxonomy.label}”.`
-        : `Artikels in het bronarchief ${taxonomy.type} “${taxonomy.label}”.`,
+        ? `Articles about ${taxonomy.type} “${taxonomy.label}”.`
+        : `Artikels over ${taxonomy.type} “${taxonomy.label}”.`,
       locale: taxonomy.locale as SiteLocale,
       canonicalPath: taxonomy.path,
       eyebrow: taxonomy.type === "tag" ? "Tag" : "Category",
@@ -184,5 +205,8 @@ const socialImage = view?.socialImage ? (await getImage({ src: view.socialImage 
         eyebrow={route.eyebrow}
         cards={route.cards}
         alternatePath={route.alternatePath}
+        thematicLinks={route.thematicLinks}
+        archiveHref={route.archiveHref}
+        countLabel={route.countLabel}
       >{Intro && <Intro />}</RouteListingPage>
     : null}

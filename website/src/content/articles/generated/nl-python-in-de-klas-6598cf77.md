@@ -12,7 +12,7 @@ created_at: "2023-06-01T21:00:49+02:00"
 updated_at: "2025-04-20T13:51:52+02:00"
 published_at: "2023-06-01T21:00:49+02:00"
 author: "robbe-wulgaert"
-excerpt: "Onze samenleving, maar ook onze school en klas, wordt steeds meer digitaal. Daar hoort vaak een programmeertaal bij, zoals Python! Maar hoe breng jij Python in de klas? Daar kan ik jou bij helpen! Meer dan 80 oefeningen, autocorrecties, 20 uitgewerkte lesvideo’s … allemaal samengevat in één overzichtelijke lessenreeks! Free to use via www.pythonindeklas.be!"
+excerpt: "Onze samenleving, maar ook onze school en klas, wordt steeds meer digitaal. Daar hoort vaak een programmeertaal bij, zoals Python! Maar hoe breng jij Python in de klas? Daar kan ik jou bij helpen! Meer dan 80 oefeningen, autocorrecties, 20 uitgewerkte lesvideo’s … allemaal samengevat in één overzichtelijke lessenreeks! Free to use via Python in de Klas!"
 hero: null
 seo:
   title: "Python in de Klas"

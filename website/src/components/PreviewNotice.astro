@@ -1,9 +1,10 @@
 ---
 interface Props { lang?: "nl-BE" | "en"; }
 const { lang = "nl-BE" } = Astro.props;
+const isPreview = import.meta.env.PUBLIC_INDEXING_ENABLED !== "true";
 ---
 
-<aside class="preview-notice" aria-label={lang === "en" ? "Migration status" : "Migratiestatus"}>
+{isPreview && <aside class="preview-notice" aria-label={lang === "en" ? "Preview status" : "Previewstatus"}>
   <span class="notice-dot" aria-hidden="true"></span>
   <p>
     <strong>{lang === "en" ? "Local build preview" : "Lokale bouwpreview"}</strong>
@@ -11,7 +12,7 @@ const { lang = "nl-BE" } = Astro.props;
       ? " — migrated source copy and media are available locally for review and are not published yet."
       : " — gemigreerde bronteksten en media staan lokaal klaar voor controle en zijn nog niet gepubliceerd."}
   </p>
-</aside>
+</aside>}
 
 <style>
   .preview-notice {

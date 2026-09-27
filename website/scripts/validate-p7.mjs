@@ -138,12 +138,16 @@ for (const labels of duplicateValues("canonical")) errors.push(`duplicate canoni
 const homeSource = await readFile(join(DIST, "index.html"), "utf8");
 const home = load(homeSource);
 const homeActions = home("main a.content-button").toArray().map((element) => normalise(home(element).text()));
-const requiredActions = ["Meer info over mijn boek!", "Aanbod nascholingen", "Mijn lesmateriaal", "Neem contact op!"];
+const requiredActions = ["Aanbod nascholingen", "Onderwijs en lesmateriaal", "Boek: AI in de klas"];
 if (normalise(home("main h1").text()) !== "Hoi, ik ben Robbe!") errors.push("home: source heading is not preserved");
 if (!normalise(home("main").text()).includes("Ik ben leraar programmeren, artificiële intelligentie en Design Thinking in Gent.")) {
   errors.push("home: original Dutch introduction is missing");
 }
 if (home("main img").length !== 2) errors.push(`home: expected 2 source images, found ${home("main img").length}`);
+if (homeActions.length !== 3) errors.push(`home: expected exactly 3 content actions, found ${homeActions.length}`);
+if (home("main a.content-button.content-button--primary").length !== 1) errors.push("home: expected exactly one primary content action");
+if (home("main a.content-button[href='/contact'], main a.content-button[href='/contactinfo']").length) errors.push("home: contact CTA must remain a shell utility");
+if (home("main a:has(img)").length) errors.push("home: source images must not be linked");
 for (const label of requiredActions) if (!homeActions.includes(label)) errors.push(`home: missing source action ${label}`);
 if (/Technologie begrijpelijk maken|Eén plek, drie duidelijke ingangen|Gedeelde ontwerpgrammatica/.test(home("main").text())) {
   errors.push("home: superseded P4 prototype copy is still rendered");
@@ -178,7 +182,10 @@ const taxonomy = JSON.parse(await readFile(resolve(ROOT, "src/data/taxonomy-rout
 const contentInventory = JSON.parse(await readFile(resolve(ROOT, "migration/reports/P5-content-inventory.json"), "utf8"));
 const authorSource = await readFile(resolve(ROOT, "src/content/authors/robbe-wulgaert.md"), "utf8");
 const unrenderedAuthorButtons = authorSource.match(/<a class="content-button\b/g)?.length ?? 0;
-const renderedSourceButtonMinimum = contentInventory.counts.source_buttons - unrenderedAuthorButtons;
+// P24 deliberately removes two redundant homepage buttons while preserving their
+// destinations in the approved three-action hierarchy checked above.
+const approvedRemovedHomeButtons = 2;
+const renderedSourceButtonMinimum = contentInventory.counts.source_buttons - unrenderedAuthorButtons - approvedRemovedHomeButtons;
 if (contentButtonCount < renderedSourceButtonMinimum) {
   errors.push(`content: expected at least ${renderedSourceButtonMinimum} migrated buttons, found ${contentButtonCount}`);
 }

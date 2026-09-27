@@ -8,9 +8,8 @@ const isEnglish = lang === "en";
 const copy = isEnglish
   ? {
       legend: "Send a message",
-      intro: "Fill in the fields below. The button opens a prefilled email in your default email app; nothing is sent by this website.",
+      intro: "Do you have a question about a workshop, teaching material or a project? Briefly tell me how I can help.",
       name: "Name",
-      email: "Email address",
       subject: "Subject",
       message: "Message",
       namePlaceholder: "Your name",
@@ -25,9 +24,8 @@ const copy = isEnglish
     }
   : {
       legend: "Stuur een bericht",
-      intro: "Vul de velden hieronder in. De knop opent een vooraf ingevulde e-mail in je standaard mailprogramma; deze website verstuurt niets.",
+      intro: "Heb je een vraag over een nascholing, lesmateriaal of een project? Laat hieronder kort weten waarmee ik kan helpen.",
       name: "Naam",
-      email: "E-mailadres",
       subject: "Onderwerp",
       message: "Bericht",
       namePlaceholder: "Je naam",
@@ -50,11 +48,6 @@ const copy = isEnglish
     <div class="contact-email-form__field">
       <label for={`contact-name-${lang}`}>{copy.name}</label>
       <input id={`contact-name-${lang}`} name="name" type="text" autocomplete="name" placeholder={copy.namePlaceholder} required />
-    </div>
-
-    <div class="contact-email-form__field">
-      <label for={`contact-email-${lang}`}>{copy.email}</label>
-      <input id={`contact-email-${lang}`} name="email" type="email" autocomplete="email" placeholder="naam@voorbeeld.be" required />
     </div>
 
     <div class="contact-email-form__field">
@@ -83,6 +76,7 @@ const copy = isEnglish
       </div>
     </div>
 
+    <p class="contact-email-form__note">{isEnglish ? "The button opens a prefilled email in your default mail app; this website sends nothing." : "De knop opent een vooraf ingevulde e-mail in je standaard mailprogramma; deze website verstuurt niets."}</p>
     <button class="button button--primary" type="submit">{copy.submit}</button>
     <noscript><p class="contact-email-form__noscript">{copy.noScript}</p></noscript>
   </fieldset>
@@ -114,13 +108,12 @@ const copy = isEnglish
       const recipient = form.dataset.recipient ?? "robbe.wulgaert@gmail.com";
       const isEnglish = form.dataset.language === "en";
       const name = String(values.get("name") ?? "").trim();
-      const email = String(values.get("email") ?? "").trim();
       const subject = String(values.get("subject") ?? "").trim() || "Contact via robbewulgaert.be";
       const message = String(values.get("message") ?? "").trim();
       const organisation = String(values.get("organisation") ?? "").trim();
       const preferredDate = String(values.get("preferred_date") ?? "").trim();
       const context = String(values.get("context") ?? "").trim();
-      const body = [`${isEnglish ? "Name" : "Naam"}: ${name}`, `E-mail: ${email}`,
+      const body = [`${isEnglish ? "Name" : "Naam"}: ${name}`,
         ...(organisation ? [`${isEnglish ? "Organisation" : "Organisatie"}: ${organisation}`] : []),
         ...(preferredDate ? [`${isEnglish ? "Preferred date" : "Gewenste datum"}: ${preferredDate}`] : []),
         "", message, ...(context ? ["", `${isEnglish ? "Additional context" : "Extra context"}: ${context}`] : [])].join("\n");
@@ -134,6 +127,7 @@ const copy = isEnglish
   fieldset { display: grid; gap: 1rem; border: 1px solid var(--color-line); border-radius: var(--radius-card); background: var(--color-surface); padding: clamp(1rem, 3vw, 1.75rem); }
   legend { color: var(--color-ink); padding-inline: 0.4rem; font-size: 1.45rem; font-weight: 850; }
   .contact-email-form__intro { margin: 0; color: var(--color-muted); }
+  .contact-email-form__note { margin: 0; color: var(--color-muted); font-size: 0.95rem; }
   .contact-email-form__field { display: grid; gap: 0.4rem; }
   .contact-email-form__workshop { display: grid; gap: 1rem; border-top: 1px solid var(--color-line); padding-top: 1rem; }
   .contact-email-form__workshop[hidden] { display: none; }

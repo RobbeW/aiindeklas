@@ -5,6 +5,7 @@ import ContactEmailForm from "./ContactEmailForm.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import type { DocumentViewModel } from "../lib/content-view";
 import { fitDescription } from "../lib/content-view";
+import { shouldIndexRoute } from "../lib/discoverability";
 
 interface Props {
   view: DocumentViewModel;
@@ -20,6 +21,8 @@ const seoTitle = view.collection === "articles"
 const seoDescription = view.collection === "articles"
   ? fitDescription(`${view.title} (${articleSection}): ${view.description}`)
   : fitDescription(view.description);
+const isPreview = import.meta.env.PUBLIC_INDEXING_ENABLED !== "true";
+const noindex = !shouldIndexRoute({ status: view.status, migration_status: view.migrationStatus, seo: { noindex: view.noindex, canonical_path: view.canonicalPath } }, !isPreview);
 ---
 
 <SiteLayout
@@ -27,7 +30,7 @@ const seoDescription = view.collection === "articles"
   description={seoDescription}
   lang={view.locale}
   canonicalPath={view.canonicalPath}
-  noindex={view.noindex}
+  noindex={noindex}
   alternatePath={alternatePath}
   hasDirectTranslation={Boolean(alternatePath)}
   ogType={view.collection === "articles" ? "article" : "website"}
@@ -37,13 +40,14 @@ const seoDescription = view.collection === "articles"
 >
   <main id="main-content" tabindex="-1" data-content-collection={view.collection} data-content-id={view.id}>
     <PageHero
-      eyebrow={view.collection === "pages" ? view.locale === "en" ? "Page" : "Pagina" : view.collection}
+      eyebrow={view.collection === "articles" ? articleSection : undefined}
       title={view.title}
-      lead={view.description}
+      lead={view.collection === "articles" ? undefined : view.description}
+      compact={view.collection === "articles" || view.collection === "pages"}
     />
     <section class="section shell content-grid" aria-labelledby="content-heading">
       {view.status !== "published" && <PreviewNotice lang={view.locale} />}
-      {(["/boek", "/contact", "/contactinfo", "/verkoopsvoorwaarden"].includes(view.canonicalPath)) && (
+      {isPreview && (["/boek", "/contact", "/contactinfo", "/verkoopsvoorwaarden"].includes(view.canonicalPath)) && (
         <aside class="business-review" data-verification="pending-live-verification-before-release" aria-label="Informatie ter controle">
           <strong>{view.locale === "en" ? "Source content requires review" : "Broninhoud ter controle"}</strong>
           <p>{view.locale === "en" ? "This page requires live verification before release. Its content is not confirmed as current." : "Deze pagina vereist live verificatie vóór publicatie. De inhoud is niet als actueel bevestigd."}</p>

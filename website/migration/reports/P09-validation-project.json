@@ -4,11 +4,11 @@
   "base": "/aiindeklas/",
   "passed": true,
   "counts": {
-    "html_files": 365,
+    "html_files": 366,
     "iframes": 0,
     "embeds_and_objects": 0,
     "external_scripts": 0,
-    "provider_links": 519,
+    "provider_links": 520,
     "unlabeled_provider_links": 0,
     "source_markdown_files": 155,
     "labelled_provider_links": 158,

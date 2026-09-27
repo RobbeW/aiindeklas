@@ -16,8 +16,8 @@ test("global shell settings preserve the accepted routes and source facts", asyn
   const social = parse(socialSource);
 
   assert.deepEqual(navigation.locales["nl-BE"].items.map(({ label, path }) => [label, path]), [
-    ["Over", "/"], ["Boek", "/boek"], ["Onderwijs", "/onderwijs"],
-    ["Nascholingen", "/onderwijs/workshops-en-nascholingen"], ["Contact", "/contact"]
+    ["Onderwijs", "/onderwijs"], ["Nascholingen", "/onderwijs/workshops-en-nascholingen"],
+    ["Boek", "/boek"], ["Contact", "/contact"]
   ]);
   assert.deepEqual(navigation.locales.en.items.map(({ label, path }) => [label, path]), [
     ["About", "/about"], ["Contact Info", "/contactinfo"], ["Education", "/education"], ["Projects", "/projects"]
@@ -32,6 +32,19 @@ test("global shell settings preserve the accepted routes and source facts", asyn
     "https://discord.gg/U77FKEQfC6",
     "https://buymeacoffee.com/aiindeklas"
   ]);
+});
+
+test("privacy is concise, non-blocking and preview notices are production-gated", async () => {
+  const [privacy, preview, contentPage] = await Promise.all([
+    read("../../src/components/PrivacyNotice.astro"),
+    read("../../src/components/PreviewNotice.astro"),
+    read("../../src/components/ContentPage.astro")
+  ]);
+  assert.match(privacy, /geen cookies, analytics of andere tracking tools/);
+  assert.doesNotMatch(privacy, /localStorage|data-privacy-dismiss|position: fixed/);
+  assert.match(preview, /PUBLIC_INDEXING_ENABLED !== "true"/);
+  assert.match(contentPage, /isPreview\s*=\s*import\.meta\.env\.PUBLIC_INDEXING_ENABLED !== "true"/);
+  assert.match(contentPage, /isPreview && \(\["\/boek"/);
 });
 
 test("mobile shell supports progressive enhancement and keyboard dismissal", async () => {

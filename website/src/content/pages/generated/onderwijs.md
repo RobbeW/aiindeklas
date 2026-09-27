@@ -12,7 +12,7 @@ created_at: null
 updated_at: null
 published_at: null
 author: "robbe-wulgaert"
-excerpt: "Verken het lesmateriaal over computationeel denken en artificiële intelligentie! Deze leermaterialen zijn ontworpen om een ​​compleet overzicht te geven van deze toonaangevende technologieën, zodat je hun principes en toepassingen kunt begrijpen. Met dit lesmateriaal ontwikkel je de vaardigheden en kennis om deze tools te begrijpen en zelf in te zetten in de klas!"
+excerpt: "Hier vind je lesmateriaal, projecten en artikels over artificiële intelligentie, computationeel denken en programmeren in het onderwijs."
 hero: null
 seo:
   title: "Onderwijs"
@@ -25,4 +25,4 @@ navigation: []
 call_to_actions: []
 ---
 
-Bekijk hieronder de gemigreerde Nederlandstalige artikels.
+Hier vind je lesmateriaal, projecten en artikels over artificiële intelligentie, computationeel denken en programmeren in het onderwijs.

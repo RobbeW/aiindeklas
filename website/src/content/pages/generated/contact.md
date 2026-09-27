@@ -25,18 +25,14 @@ navigation: []
 call_to_actions: []
 ---
 
-**Je hebt een specifieke vraag:**
-
-Vul het formulier hierboven in. De knop opent een vooraf ingevulde e-mail in je standaard mailprogramma.
-
 **Je wilt lesmateriaal gebruiken:**
 
-Je kan ook aansluiten bij onze community op Discord. Daar kan lesmateriaal downloaden, AI-modellen vinden, didactische tips uitwisselen … en veel meer!
+Je kan ook aansluiten bij onze community op Discord. Daar kan je lesmateriaal downloaden, AI-modellen vinden, didactische tips uitwisselen … en veel meer!
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://discord.gg/U77FKEQfC6" target="_blank" rel="noreferrer">Sluit aan bij de Discord Community</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--secondary content-button--medium" href="https://discord.gg/U77FKEQfC6">Sluit aan bij de Discord Community</a></div>
 
 **Je wilt me trakteren op koffie:**
 
 Ik ben nogal een koffieslurper. Je kan er geld op inzetten dat het lesmateriaal dat je van mij gebruikt, gemaakt is bij Zohran in de Gentse zaak Koffeine. Steun je me een _‘jatte kaffee’_?
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://buymeacoffee.com/aiindeklas" target="_blank" rel="noreferrer">Steun mijn Koffiefonds</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--secondary content-button--medium" href="https://buymeacoffee.com/aiindeklas">Steun mijn Koffiefonds</a></div>

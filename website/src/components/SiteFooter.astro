@@ -17,8 +17,8 @@ if (!socialEntry || socialEntry.data.kind !== "social") throw new Error("Social 
       <p class="footer-name">Robbe Wulgaert</p>
       <p class="footer-registration">{footerEntry.data.business_registration}</p>
     </div>
-    <nav aria-label={lang === "en" ? "Footer navigation" : "Voetnavigatie"}>
-      <ul class="footer-links">
+    <nav class="footer-nav" aria-label={lang === "en" ? "Footer navigation" : "Voetnavigatie"}>
+      <div class="footer-group"><h2>{lang === "en" ? "Utility and legal" : "Praktisch"}</h2><ul class="footer-links">
         {footerEntry.data.locales[lang].links.map((link) => (
           <li>
             <a href={withBase(link.path)} hreflang={link.destination_locale} lang={link.destination_locale}>
@@ -26,15 +26,17 @@ if (!socialEntry || socialEntry.data.kind !== "social") throw new Error("Social 
             </a>
           </li>
         ))}
-        {socialEntry.data.links.map((link) => (
+        <li><a href="#privacy-notice">{lang === "en" ? "Privacy" : "Privacy"}</a></li>
+      </ul></div>
+      <div class="footer-group"><h2>{lang === "en" ? "Follow along" : "Volg mee"}</h2><ul class="footer-links">
+        {socialEntry.data.links.slice(0, 4).map((link) => (
           <li><a href={link.url} target="_blank" rel="me noopener noreferrer" aria-label={`${link.platform} — ${link.label}`}>{link.platform}</a></li>
         ))}
-      </ul>
+      </ul></div>
     </nav>
   </div>
   <div class="shell footer-bottom">
     <small>© {new Date().getFullYear()} {footerEntry.data.copyright_name}</small>
-    <button type="button" class="privacy-open" data-privacy-open aria-controls="privacy-notice" aria-expanded="true">{lang === "en" ? "Privacy and cookies" : "Privacy en cookies"}</button>
   </div>
 </footer>
 
@@ -63,9 +65,10 @@ if (!socialEntry || socialEntry.data.kind !== "social") throw new Error("Social 
     list-style: none;
   }
 
+  .footer-group h2 { margin: 0 0 0.65rem; color: inherit; font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  .footer-group + .footer-group { margin-top: 1.25rem; }
+
   .site-footer a { color: var(--color-on-brand); text-underline-offset: 0.25em; }
-  .privacy-open { border: 0; padding: 0; color: inherit; background: transparent; font: inherit; text-decoration: underline; text-underline-offset: 0.25em; cursor: pointer; }
-  .privacy-open:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
 
   .footer-bottom {
     display: flex;

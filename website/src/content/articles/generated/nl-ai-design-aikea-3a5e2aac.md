@@ -127,6 +127,6 @@ Om dit zelf uit te voeren in de klas heb je volgende zaken nodig:
 
 Wil je hier zelf mee aan de slag in jouw klaslokaal? Super! De toekomst zal steeds meer en meer digitaal zijn. Een toekomst waar artificiële intelligentie een heel belangrijke rol in zal spelen, in allerlei facetten van ons leven. Dat we jongeren hierop moeten voorbereiden en motiveren, spreekt voor zich. Mocht je na het lezen van bovenstaand artikel nog enkele vragen hebben, dan wil ik jou daar gerust bij helpen! Via de knoppen hieronder kan je mij een bericht sturen of informatie krijgen over een nascholing of workshop. Ik antwoord veelal binnen de 48 uur!
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/onderwijs/workshops-en-nascholingen" target="_blank" rel="noreferrer">Nascholing of uitleg!</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/onderwijs/workshops-en-nascholingen">Nascholing of uitleg!</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contact" target="_blank" rel="noreferrer">Stel een vraag!</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contact">Stel een vraag!</a></div>

@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import { parse as parseYaml } from "yaml";
 
 const root = fileURLToPath(new URL("../../", import.meta.url));
-const manifestPath = path.resolve(root, "../docs/implementation/manifests/content.yaml");
+const manifestPath = path.resolve(root, "../../docs/implementation/manifests/content.yaml");
 
 test("article integrity verification reconciles records, suppresses deferred videos, and keeps the Ithaca exception non-clickable", async () => {
   execFileSync(process.execPath, ["scripts/validate-articles.mjs"], { cwd: root, stdio: "pipe" });
@@ -41,7 +41,7 @@ test("verified Aeneas syllabus URLs remain exact in both transformed records", a
   ]);
   for (const [id, url] of expected) {
     const record = manifest.content_records.articles.find((article) => article.id === id);
-    const frontmatter = parseYaml((await readFile(path.resolve(root, "..", record.source_path), "utf8")).match(/^---\r?\n([\s\S]*?)\r?\n---/)[1]);
+    const frontmatter = parseYaml((await readFile(path.resolve(root, "..", "..", record.source_path), "utf8")).match(/^---\r?\n([\s\S]*?)\r?\n---/)[1]);
     assert.equal(frontmatter.downloads[0].url, url);
   }
 });

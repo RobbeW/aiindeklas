@@ -1,19 +1,21 @@
 ---
 interface Props {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
-  lead: string;
+  lead?: string;
   tone?: "brand" | "light";
+  compact?: boolean;
 }
 
-const { title, lead, tone = "light" } = Astro.props;
+const { eyebrow, title, lead, tone = "light", compact = false } = Astro.props;
 ---
 
-<section class:list={["page-hero", `page-hero--${tone}`]} aria-labelledby="page-title">
+<section class:list={["page-hero", `page-hero--${tone}`, { "page-hero--compact": compact }]} aria-labelledby="page-title">
   <div class="shell page-hero-grid">
     <div>
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
       <h1 id="page-title">{title}</h1>
-      <p class="lead">{lead}</p>
+      {lead && <p class="lead">{lead}</p>}
       <div class="hero-actions"><slot name="actions" /></div>
     </div>
     <div class="hero-aside"><slot name="aside" /></div>
@@ -25,6 +27,13 @@ const { title, lead, tone = "light" } = Astro.props;
     overflow: clip;
     padding-block: clamp(4.5rem, 10vw, 8rem);
   }
+
+  .page-hero--compact { padding-block: clamp(2.75rem, 6vw, 4.5rem); }
+  .page-hero--compact.page-hero--light { border-bottom: 1px solid var(--color-line); background: var(--color-background); }
+  .page-hero--compact h1 { max-width: 24ch; font-size: clamp(2.35rem, 6vw, 4.25rem); line-height: 1; }
+  .page-hero--compact .lead { font-size: 1.12rem; margin-top: 1rem; }
+  .eyebrow { margin: 0 0 .75rem; color: var(--color-brand); font-size: .8rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+  .page-hero--brand .eyebrow { color: inherit; opacity: .8; }
 
   .page-hero--brand {
     position: relative;
