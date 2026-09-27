@@ -21,7 +21,7 @@ interface Props { workshops: Workshop[]; }
 
 const { workshops } = Astro.props;
 const catalogueBrief = parse(readFileSync(resolve(process.cwd(), "docs/client_onboarding_workshop_finder.yaml"), "utf8"));
-const designBrief = parse(readFileSync(resolve(process.cwd(), "../../docs/workshop_onboarding_shadcn_prompt.yaml"), "utf8"));
+const designBrief = parse(readFileSync(resolve(process.cwd(), "../docs/workshop_onboarding_shadcn_prompt.yaml"), "utf8"));
 const [articles, projects, media] = await Promise.all([
   getCollection("articles"),
   getCollection("projects"),

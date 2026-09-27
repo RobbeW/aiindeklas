@@ -16,7 +16,7 @@ const readRecords = async (path) => Promise.all((await readdir(resolve(root, pat
   }));
 
 const brief = await readYaml("docs/client_onboarding_workshop_finder.yaml");
-const design = await readYaml("../../docs/workshop_onboarding_shadcn_prompt.yaml");
+const design = await readYaml("../docs/workshop_onboarding_shadcn_prompt.yaml");
 const [workshops, projects, articles] = await Promise.all([
   readRecords("src/content/workshops/generated"),
   readRecords("src/content/projects/generated"),

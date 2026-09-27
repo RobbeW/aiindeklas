@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { test } from "node:test";
 
@@ -8,9 +8,14 @@ const source = (path) => readFile(resolve(root, path), "utf8");
 
 test("P22 consumes the P21 catalogue instead of rebuilding it", async () => {
   const finder = await source("src/components/WorkshopFinder.astro");
+  const catalogueValidator = await source("scripts/validate-p21-catalogue.mjs");
   const experience = await source("src/components/workshop/WorkshopExperience.tsx");
   assert.match(finder, /buildWorkshopCatalogue/);
   assert.match(finder, /catalogueBrief[\s\S]*designBrief[\s\S]*verifiedRoutes/);
+  assert.match(finder, /\.\.\/docs\/workshop_onboarding_shadcn_prompt\.yaml/);
+  assert.doesNotMatch(finder, /\.\.\/\.\.\/docs\/workshop_onboarding_shadcn_prompt\.yaml/);
+  assert.match(catalogueValidator, /\.\.\/docs\/workshop_onboarding_shadcn_prompt\.yaml/);
+  await access(resolve(root, "../docs/workshop_onboarding_shadcn_prompt.yaml"));
   assert.doesNotMatch(finder, /Object\.entries\(.*bookable_offers/);
   assert.match(experience, /rankWorkshopOffers/);
   assert.doesNotMatch(experience, /recommendWorkshops/);

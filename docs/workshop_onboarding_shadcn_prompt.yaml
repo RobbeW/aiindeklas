@@ -1,0 +1,582 @@
+task:
+  name: "Rebuild workshop onboarding with shadcn/ui"
+  objective: >
+    Rebuild the existing workshop/keynote onboarding around native shadcn/ui
+    components. Use progressive disclosure, large visual choices, compact
+    recommendation cards, responsive workshop detail overlays, and a minimal
+    full-catalogue view. Preserve the existing workshop catalogue and editorial
+    mappings. Do not invent workshops, keynotes, durations, audiences, group
+    sizes, learning goals, article links, or images.
+
+source_of_truth:
+  catalogue:
+    instruction: >
+      Locate the existing workshop/keynote catalogue data in the project and use it
+      as the only source for bookable sessions. If the project contains the previously
+      created workshop-finder/onboarding YAML, treat its catalogue records and category
+      mappings as the source of truth unless the current published website is newer.
+  editorial_content:
+    instruction: >
+      Existing /onderwijs projects and articles may be linked as supporting content,
+      but never become bookable workshops unless explicitly present in the published
+      workshop catalogue.
+  images:
+    instruction: >
+      Reuse existing workshop images or migrated Squarespace image assets/URLs.
+      Do not generate replacement images and do not invent image URLs.
+
+shadcn_strategy:
+  first_action:
+    - "Inspect the repository to determine whether shadcn/ui is already installed."
+    - "Identify which shadcn foundation the project uses: Base UI, React Aria, or Radix."
+    - "Do not mix component foundations in one implementation."
+    - "Reuse the project's existing shadcn style, CSS variables, radius, typography, and icon conventions."
+  required_components:
+    - component: "Questionnaire"
+      role: "Core multi-step onboarding state and navigation."
+    - component: "Card"
+      role: "Onboarding shell, recommendation cards, and catalogue thumbnails."
+    - component: "Accordion"
+      role: "Progressive disclosure inside workshop detail."
+    - component: "Dialog"
+      role: "Workshop detail on desktop."
+    - component: "Drawer"
+      role: "Workshop detail on mobile."
+    - component: "AspectRatio"
+      role: "Consistent workshop/card imagery."
+    - component: "Badge"
+      role: "Short metadata such as category, format, and duration."
+    - component: "Button"
+      role: "Catalogue actions, close/back-to-results actions, and form actions."
+  optional_components:
+    - component: "Separator"
+      use_only_if: "A subtle structural divider is actually needed."
+    - component: "Skeleton"
+      use_only_if: "Images or catalogue data load asynchronously and visible loading states are needed."
+  explicitly_avoid:
+    - component: "ButtonGroup"
+      reason: >
+        Persona/need/duration/group-size choices represent selection state, not a set
+        of independent actions. Use QuestionnaireChoice/native radio semantics instead.
+    - component: "ToggleGroup"
+      reason: "The onboarding is sequential single-choice input, not persistent toggle state."
+    - component: "Tabs"
+      reason: >
+        Tabs would add another navigation model inside an already sequential flow and
+        are not needed for workshop detail because Accordion provides better progressive disclosure.
+    - component: "Carousel"
+      reason: "The user needs scanability and comparison, not sequential browsing."
+    - component: "HoverCard"
+      reason: "Important workshop information must not depend on hover."
+    - component: "Sheet"
+      reason: >
+        Use the official Dialog + Drawer responsive pattern for workshop detail instead
+        of maintaining a separate third overlay primitive.
+    - component: "ScrollArea"
+      reason: >
+        Prefer native/document scrolling and the scrollable Dialog/Drawer patterns.
+        Add ScrollArea only if the existing implementation genuinely requires custom
+        contained scrolling.
+
+information_architecture:
+  categories:
+    - id: "keynotes_inspiratie"
+      label: "Keynotes & inspiratie"
+      flagship: "Kennis in tijden van AI"
+    - id: "ai_geletterdheid_onderwijspraktijk"
+      label: "AI-geletterdheid & onderwijspraktijk"
+      flagship: "Putting the chat in ChatGPT"
+    - id: "vakspecifieke_professionalisering"
+      label: "Vakspecifieke professionalisering"
+      subcategories:
+        - "Talen & schrijven"
+        - "Klassieke talen"
+        - "Computationeel denken & programmeren"
+        - "STEM & digitale technologie"
+  important_positioning:
+    - >
+      "AI in de Klas - van lesmateriaal tot leerlijn" is presented in the new finder
+      under Keynotes & inspiratie as a keynote-oriented offer, even if older catalogue
+      metadata also records a workshop variant.
+    - >
+      Keep current published catalogue titles intact unless the existing project data
+      explicitly marks a title as renamed/merged.
+
+onboarding:
+  shell:
+    component: "Card"
+    composition:
+      - "Card"
+      - "CardHeader"
+      - "QuestionnaireProgress"
+      - "CardContent"
+      - "Questionnaire"
+      - "QuestionnaireActions where needed"
+    visual_rules:
+      - "Use one bounded onboarding card/container rather than a full-page form."
+      - "Keep the active question visually dominant."
+      - "Keep progress small and secondary."
+      - "Do not show future questions before they become active."
+
+  engine:
+    component: "Questionnaire"
+    responsibilities:
+      - "Own ordered questions."
+      - "Own active step."
+      - "Own answers."
+      - "Own progress."
+      - "Own previous/next navigation."
+      - "Support conditional subject-domain question."
+      - "Expose controlled state to the host so recommendations can be calculated."
+    state:
+      controlled: true
+      persist_during_session: true
+      preserve_when_backtracking: true
+      reset_only_on_explicit_restart: true
+    navigation:
+      previous:
+        component: "QuestionnairePrevious"
+        label: "Terug"
+        placement: "top-left or left side of the persistent action row"
+        show_from_step: 2
+      next:
+        behaviour: >
+          For single-choice steps, advance immediately after a deliberate choice only
+          if this does not make the UI feel abrupt. Otherwise use QuestionnaireNext.
+        preferred: >
+          Use a short selection confirmation state (approximately one visual beat)
+          before advancing; do not require a redundant Next click unless usability
+          testing shows it is clearer.
+      progress:
+        component: "QuestionnaireProgress"
+        presentation: "compact"
+        example_label: "Stap 2 van 4"
+
+  choice_component:
+    component: "QuestionnaireChoice"
+    style: "large descriptive choice card"
+    semantics: "single-choice radio"
+    layout:
+      desktop: "2–3 columns where content remains readable"
+      tablet: "2 columns"
+      mobile: "1 column"
+    anatomy:
+      title: "short, visually prominent"
+      description: "one concise sentence"
+      optional_icon: >
+        Use only existing Lucide/project icon conventions. Icons are secondary and
+        must never be required to understand the choice.
+    interaction:
+      - "Entire visual card is clickable."
+      - "Strong hover state on pointer devices."
+      - "Strong focus-visible state for keyboard users."
+      - "Selected state must use more than colour alone."
+      - "No hover-only information."
+
+  questions:
+    - id: "persona"
+      prompt: "Wie ben je?"
+      required: true
+      choices:
+        - value: "schoolleider_beleid"
+          label: "Schoolleider / beleidsteam"
+          description: "Voor professionalisering, studiedagen en schoolbrede keuzes."
+        - value: "eventorganisator"
+          label: "Eventorganisator"
+          description: "Voor keynotes, congressen, studiedagen en grotere publieken."
+        - value: "leerkracht_vakgroep"
+          label: "Leerkracht / vakgroep"
+          description: "Voor concrete klaspraktijk of vakspecifieke verdieping."
+
+    - id: "need"
+      prompt: "Waar ben je naar op zoek?"
+      required: true
+      choices:
+        - value: "breed_kader"
+          label: "Keynote & inspiratie"
+          description: "Een breed kader over AI, kennis, leren en onderwijs."
+          route_to: "keynotes_inspiratie"
+        - value: "praktisch_ai"
+          label: "AI in de onderwijspraktijk"
+          description: "Praktisch, kritisch en verantwoord werken met generatieve AI."
+          route_to: "ai_geletterdheid_onderwijspraktijk"
+        - value: "vakspecifiek"
+          label: "Vakspecifieke professionalisering"
+          description: "Verdieping binnen een concreet vak- of technologiedomein."
+          route_to: "vakspecifieke_professionalisering"
+
+    - id: "subject"
+      prompt: "Binnen welk domein wil je werken?"
+      conditional:
+        enabled_when:
+          need: "vakspecifiek"
+      choices_from_existing_catalogue_only: true
+      expected_choices:
+        - "Talen & schrijven"
+        - "Klassieke talen"
+        - "Computationeel denken & programmeren"
+        - "STEM & digitale technologie"
+
+    - id: "duration"
+      prompt: "Hoeveel tijd heb je ter beschikking?"
+      required: true
+      choice_generation: >
+        Derive human-readable duration bands from existing catalogue durations.
+        Include a flexible option. Never invent a workshop duration.
+
+    - id: "group_size"
+      prompt: "Hoe groot is de groep?"
+      required: true
+      choice_generation: >
+        Use broad group ranges. Respect published maxima. If an offer has no
+        published maximum, keep compatibility as 'te bevestigen' rather than inventing one.
+
+recommendation_view:
+  transition_from_questionnaire:
+    behaviour: >
+      Replace the active questionnaire content with the recommendation view while
+      retaining the completed onboarding state. Provide an explicit 'Pas keuzes aan'
+      action that returns to the questionnaire without clearing answers.
+  header:
+    title: "Dit past het best bij je vraag"
+    support_text: "Keep to one short sentence or omit entirely."
+  grid:
+    desktop: "up to 3 columns"
+    tablet: "2 columns"
+    mobile: "1 column"
+    max_primary_recommendations: 3
+
+  card:
+    component: "Card"
+    clickable: true
+    image:
+      component: "AspectRatio"
+      preferred_ratio: "16/9"
+      rules:
+        - "Use existing workshop image."
+        - "Use object-cover."
+        - "Do not distort images."
+        - "If no verified image exists, use the site's existing neutral fallback treatment."
+    header:
+      components:
+        - "CardHeader"
+        - "CardTitle"
+        - "CardDescription"
+        - "CardAction when a badge belongs in the header"
+    metadata:
+      component: "Badge"
+      maximum_visible_badges: 2
+      priority:
+        - "format/category"
+        - "duration"
+      rule: "Do not turn every metadata field into a badge."
+    visible_text:
+      - "title"
+      - "category or subject"
+      - "duration"
+      - "one short reason this result matches"
+    hidden_here:
+      - "full description"
+      - "learning goals"
+      - "doelgroep"
+      - "full practical information"
+      - "related article links"
+      - "pricing"
+
+workshop_detail:
+  responsive_pattern:
+    desktop:
+      component: "Dialog"
+    mobile:
+      component: "Drawer"
+    implementation: >
+      Follow the shadcn responsive Dialog pattern: render Dialog at desktop breakpoints
+      and Drawer on mobile while sharing one WorkshopDetailContent component.
+  content_structure:
+    media:
+      component: "AspectRatio"
+      optional: true
+      use: "existing workshop image when it improves recognition"
+    header:
+      - "title"
+      - "one short introduction"
+      - "maximum two Badge metadata items"
+    accordions:
+      component: "Accordion"
+      type: "single"
+      collapsible: true
+      default_open: null
+      sections:
+        - id: "inhoud_leerdoelen"
+          label: "Inhoud & leerdoelen"
+        - id: "doelgroep"
+          label: "Doelgroep"
+        - id: "praktische_info"
+          label: "Praktische info"
+        - id: "verder_lezen"
+          label: "Verder lezen"
+          conditional: "only when at least one verified supporting article/project exists"
+      rules:
+        - "Keep all accordion items closed when the detail opens."
+        - "Use only verified existing content."
+        - "Prefer short paragraphs and bullets."
+        - "Do not duplicate header metadata inside accordion content unless context requires it."
+    footer:
+      sticky_on_long_content: true
+      primary_cta:
+        component: "Button"
+        label: "Bespreek deze sessie"
+        action: "open/prefill contact flow"
+      secondary_cta:
+        component: "Button"
+        variant: "ghost"
+        label: "Sluiten"
+
+full_catalogue:
+  entry:
+    component: "Button"
+    label: "Bekijk het volledige aanbod"
+    variant: "outline"
+    placement: "below recommendation grid"
+  interaction_model:
+    type: "in-page mode switch"
+    reason: >
+      Do not place the entire catalogue inside a Dialog, because each workshop itself
+      opens in a Dialog/Drawer. Avoid nested modal interaction.
+    state:
+      recommendation_mode: "shows personalised recommendation cards"
+      catalogue_mode: "shows all catalogue thumbnail cards"
+    return_action:
+      component: "Button"
+      variant: "ghost"
+      label: "Terug naar mijn aanbevelingen"
+      preserves_onboarding_answers: true
+  catalogue_grid:
+    desktop: "3–4 columns depending on container width"
+    tablet: "2–3 columns"
+    mobile: "1–2 columns only if titles remain readable"
+  thumbnail_card:
+    component: "Card"
+    clickable: true
+    size: "small where supported"
+    image:
+      component: "AspectRatio"
+      preferred_ratio: "16/9"
+    visible:
+      - "existing image"
+      - "title"
+      - "optional single Badge category label"
+    hidden:
+      - "description"
+      - "learning goals"
+      - "doelgroep"
+      - "practical information"
+      - "article links"
+      - "pricing"
+    click_action: "open the same responsive WorkshopDetail Dialog/Drawer used by recommendations"
+
+related_content:
+  placement: "Workshop detail > Verder lezen accordion only"
+  maximum_items: 2
+  verification_required: true
+  link_rendering:
+    semantic_element: "anchor"
+    visual_style: "shadcn buttonVariants"
+    note: >
+      Related articles are navigation links, not actions. Render semantic <a> links
+      styled with buttonVariants rather than using Button as a link when the selected
+      shadcn foundation requires semantic distinction.
+  presentation:
+    - "Short descriptive button label."
+    - "Optional one-line article description only when needed."
+    - "Never show raw URLs."
+    - "No article links on compact cards or catalogue thumbnails."
+  existing_candidate_relationships:
+    - workshop: "Schrijftaken zonder AIAIAI"
+      articles:
+        - "Schrijftaken zonder AIAIAI"
+    - workshop: "AI en taaltechnologie: hoe ga je er effectief mee aan de slag in je taalles?"
+      articles:
+        - "Recensies, jongerentaal en taaltechnologie"
+        - "In dialoog met AI"
+    - workshop: "AI in de Klas: Van A tot Zwerfvuil"
+      articles:
+        - "Project Slimme Vuilnisbak"
+    - workshop: "Latijnse Inscripties en AI - op tocht met Aeneas"
+      articles:
+        - "Voorspel het verleden - Aeneas"
+    - workshop: "Minecraft & Klassieke Talen"
+      articles:
+        - "Avontuur op de Akropolis (vernieuwd)"
+    - workshop: "Putting the chat in ChatGPT"
+      articles:
+        - "AI-geletterdheid: waarom moeten wij dit kennen?"
+        - "AI Act: van verplichting naar ambitie"
+    - workshop: "AI in de Klas - van lesmateriaal tot leerlijn"
+      articles:
+        - "Handvat voor Lesmateriaal"
+        - "AI-geletterdheid: waarom moeten wij dit kennen?"
+    - workshop: "Kennis in tijden van AI"
+      articles:
+        - "Handvat voor Lesmateriaal"
+  rule: >
+    Treat these as candidates only. Verify that every article and URL still exists
+    before implementation. Omit any unverified mapping.
+
+contact_handoff:
+  trigger: "Bespreek deze sessie"
+  preserve:
+    - "persona"
+    - "need"
+    - "subject when applicable"
+    - "duration preference"
+    - "group-size preference"
+    - "selected workshop"
+  rule: >
+    Onboarding contains no personal data fields. Ask for identity/contact details
+    only after the visitor intentionally enters the contact flow.
+
+visual_system:
+  source: "existing website design tokens first, shadcn tokens second"
+  rules:
+    - "Do not make the page look like the shadcn documentation demo."
+    - "Use shadcn as the interaction/component foundation, not as a replacement brand."
+    - "Map existing brand colours to shadcn CSS variables/tokens where appropriate."
+    - "Preserve existing website typography."
+    - "Keep borders subtle."
+    - "Use whitespace rather than extra separators."
+    - "Use consistent radii across Questionnaire choices, Cards, Dialog, Drawer, and Accordions."
+    - "Keep motion restrained and fast."
+    - "Respect prefers-reduced-motion."
+
+text_density:
+  principles:
+    - "Choice cards: title + one sentence."
+    - "Recommendation cards: title + metadata + one match sentence."
+    - "Catalogue thumbnails: image + title, optionally one category badge."
+    - "Detailed text exists only inside workshop detail."
+    - "Secondary detailed text is further hidden in Accordions."
+  limits:
+    choice_description_sentences: 1
+    recommendation_reason_sentences: 1
+    badges_per_card: 2
+    related_links_per_workshop: 2
+
+accessibility:
+  rely_on_shadcn_primitives_for:
+    - "Questionnaire fieldset/legend semantics."
+    - "Native radio behaviour for fixed single choices."
+    - "Questionnaire progress semantics."
+    - "Accordion expanded-state semantics."
+    - "Dialog/Drawer focus handling."
+  additional_requirements:
+    - "Visible focus states must survive brand styling."
+    - "Do not remove accessible labels."
+    - "Do not rely on colour alone."
+    - "Workshop Card click target must remain keyboard operable."
+    - "Images require useful alt text."
+    - "Reduced-motion preference must be respected."
+    - "After closing workshop detail, return focus to the triggering card."
+
+responsive_rules:
+  desktop:
+    workshop_detail: "Dialog"
+    recommendation_columns: 3
+    onboarding_choices: "2–3 columns"
+  mobile:
+    workshop_detail: "Drawer"
+    recommendation_columns: 1
+    onboarding_choices: "1 column"
+    notes:
+      - "Do not shrink choice descriptions to unreadable sizes."
+      - "Keep primary CTA reachable without excessive scrolling."
+  breakpoint_logic:
+    instruction: >
+      Reuse the project's existing breakpoint or media-query hook. Do not add a second
+      incompatible responsive system just for the Dialog/Drawer switch.
+
+recommendation_logic:
+  separation_of_concerns:
+    - "Questionnaire collects preferences."
+    - "Recommendation engine scores/filter existing catalogue data."
+    - "Card/Dialog components render results."
+    - "Do not embed scoring logic inside UI components."
+  ranking:
+    primary:
+      - "category/need match"
+      - "subject match when applicable"
+    secondary:
+      - "duration fit"
+      - "published group-size compatibility"
+      - "persona relevance"
+  no_match:
+    behaviour: >
+      Do not fabricate a product. Show a concise Empty state or contact CTA and
+      provide the full-catalogue option.
+
+implementation_plan:
+  - "Audit current project stack, shadcn installation, and component foundation."
+  - "Install only missing required shadcn components."
+  - "Normalize existing catalogue data into one source consumed by finder and catalogue."
+  - "Build controlled Questionnaire onboarding."
+  - "Style QuestionnaireChoice as large visual selection cards."
+  - "Implement recommendation engine separately from UI."
+  - "Build reusable WorkshopCard."
+  - "Build shared WorkshopDetailContent."
+  - "Wrap WorkshopDetailContent in Dialog desktop / Drawer mobile."
+  - "Build in-page full-catalogue mode using compact Card thumbnails."
+  - "Verify and add maximum two related Onderwijs links per workshop."
+  - "Prefill contact handoff."
+  - "Run keyboard, mobile, reduced-motion, and responsive QA."
+
+acceptance_criteria:
+  onboarding:
+    - "Uses shadcn Questionnaire as the core flow."
+    - "Only one active question is shown."
+    - "Previous navigation preserves answers."
+    - "Subject question appears only for vakspecifieke professionalisering."
+    - "Choices are large descriptive QuestionnaireChoice cards."
+    - "Progress is shown with QuestionnaireProgress."
+  results:
+    - "Shows up to three strong relevant recommendations by default."
+    - "Recommendation Cards remain compact."
+    - "No text overflow at supported breakpoints."
+    - "No pricing is shown."
+  detail:
+    - "Desktop uses Dialog."
+    - "Mobile uses Drawer."
+    - "Both render one shared detail-content component."
+    - "Secondary information uses Accordion."
+    - "Maximum two related content links appear in Verder lezen."
+  catalogue:
+    - "Full catalogue uses an in-page mode, not a nested modal."
+    - "Catalogue cards are primarily image + title."
+    - "The same workshop detail component opens from recommendations and catalogue."
+  semantics:
+    - "Links are links and actions are buttons."
+    - "No ButtonGroup is used for questionnaire choices."
+    - "No hover-only essential content."
+  integrity:
+    - "No invented workshops."
+    - "No invented article links."
+    - "No invented images."
+    - "No invented duration or audience limits."
+    - "Current catalogue/category mapping is preserved."
+  qa:
+    - "Keyboard-only flow works."
+    - "Focus returns correctly after detail closes."
+    - "Reduced motion works."
+    - "Mobile Drawer content is usable."
+    - "Backtracking does not lose selections."
+    - "Full-catalogue mode can return to personalised recommendations."
+
+deliverables:
+  - "Updated onboarding implementation."
+  - "shadcn Questionnaire configuration."
+  - "Reusable WorkshopCard component."
+  - "Responsive WorkshopDetail Dialog/Drawer."
+  - "Accordion-based detail content."
+  - "Full catalogue grid."
+  - "Verified related-content mapping."
+  - "Contact-form handoff with preserved onboarding state."
+  - "Implementation report listing files changed and any unverifiable source data."
