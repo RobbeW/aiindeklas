@@ -17,7 +17,9 @@ await walk(artifact);
 
 const problems = [];
 let htmlPages = 0;
-let pagesWithNotice = 0;
+let pagesWithPrivacyInformation = 0;
+let pagesWithConsentControls = 0;
+let pagesWithPrivacyPreferenceStorage = 0;
 let automaticExternalResources = 0;
 const selectors = [
   ["script[src]", "src"], ["iframe[src]", "src"], ["embed[src]", "src"],
@@ -44,11 +46,22 @@ for (const file of files) {
     const html = await readFile(file, "utf8");
     const $ = load(html);
     if ($("footer.site-footer").length) {
-      pagesWithNotice++;
-      if ($("[data-privacy-notice]").length !== 1 || $("[data-privacy-dismiss]").length !== 1 || $("[data-privacy-open][aria-controls='privacy-notice']").length !== 1) {
-        problems.push(`${label}: privacy notice or reopening control is missing`);
+      const privacyInformation = $("#privacy-notice.privacy-notice");
+      if (privacyInformation.length !== 1) problems.push(`${label}: concise inline privacy information is missing`);
+      else {
+        pagesWithPrivacyInformation++;
+        const copy = privacyInformation.text().replace(/\s+/g, " ").trim();
+        if (!/(?:geen cookies, analytics|no cookies, analytics)/i.test(copy)) problems.push(`${label}: inline privacy information is incomplete`);
       }
-      if (!html.includes("rw-privacy-notice-v1")) problems.push(`${label}: privacy notice preference script is missing`);
+      const consentControls = $("[data-privacy-dismiss], [data-privacy-open], [aria-controls='privacy-notice']");
+      if (consentControls.length) {
+        pagesWithConsentControls++;
+        problems.push(`${label}: unnecessary privacy consent or dismissal control is present`);
+      }
+      if (html.includes("rw-privacy-notice-v1")) {
+        pagesWithPrivacyPreferenceStorage++;
+        problems.push(`${label}: unnecessary privacy preference storage is present`);
+      }
     }
     for (const [selector, attribute] of selectors) {
       $(selector).each((_, element) => checkResource($(element).attr(attribute), label));
@@ -68,10 +81,12 @@ for (const file of files) {
 }
 
 const report = {
-  schema: "website-migration.p18-privacy-audit/v1",
+  schema: "website-migration.p18-privacy-audit/v2",
   artifact: relative(siteRoot, artifact).replaceAll("\\", "/"),
   html_pages: htmlPages,
-  pages_with_notice: pagesWithNotice,
+  pages_with_privacy_information: pagesWithPrivacyInformation,
+  pages_with_consent_controls: pagesWithConsentControls,
+  pages_with_privacy_preference_storage: pagesWithPrivacyPreferenceStorage,
   automatic_external_resources: automaticExternalResources,
   passed: problems.length === 0,
   problems

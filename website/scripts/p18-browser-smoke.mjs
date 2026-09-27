@@ -67,17 +67,16 @@ try {
   await send("Network.enable");
 
   await navigate("contact.html");
-  await evaluate("localStorage.removeItem('rw-privacy-notice-v1')");
-  await send("Page.reload");
-  await new Promise((resolve) => setTimeout(resolve, 300));
-  for (let attempt = 0; attempt < 100 && !await evaluate("document.readyState === 'complete'"); attempt++) await new Promise((resolve) => setTimeout(resolve, 100));
-  const firstVisible = await evaluate("!document.querySelector('[data-privacy-notice]').hidden");
-  const dismissal = await evaluate("(() => { document.querySelector('[data-privacy-dismiss]').click(); return {hidden: document.querySelector('[data-privacy-notice]').hidden, stored: localStorage.getItem('rw-privacy-notice-v1'), expanded: document.querySelector('[data-privacy-open]').getAttribute('aria-expanded')}; })()");
-  await send("Page.reload");
-  await new Promise((resolve) => setTimeout(resolve, 300));
-  for (let attempt = 0; attempt < 100 && !await evaluate("document.readyState === 'complete'"); attempt++) await new Promise((resolve) => setTimeout(resolve, 100));
-  const persisted = await evaluate("document.querySelector('[data-privacy-notice]').hidden");
-  const reopened = await evaluate("(() => { document.querySelector('[data-privacy-open]').click(); return {visible: !document.querySelector('[data-privacy-notice]').hidden, expanded: document.querySelector('[data-privacy-open]').getAttribute('aria-expanded')}; })()");
+  const privacy = await evaluate(`(() => {
+    const notice = document.querySelector('#privacy-notice.privacy-notice');
+    return {
+      present: !!notice,
+      position: notice ? getComputedStyle(notice).position : null,
+      concise: notice?.textContent.includes('geen cookies, analytics of andere tracking tools') ?? false,
+      consentControls: document.querySelectorAll('[data-privacy-dismiss], [data-privacy-open], [aria-controls="privacy-notice"]').length,
+      preferenceStorage: document.documentElement.innerHTML.includes('rw-privacy-notice-v1')
+    };
+  })()`);
 
   const appChecks = [];
   for (const path of ["knn/index.html", "supervised_learning/index.html"]) {
@@ -99,17 +98,16 @@ try {
     appChecks.push({ path, initialRequests, initialControls, requestsAfterAction: providerRequests.slice(), loadedControls });
   }
   const problems = [];
-  if (!firstVisible) problems.push("First visit did not show the privacy notice.");
-  if (!dismissal.hidden || dismissal.stored !== "dismissed" || dismissal.expanded !== "false") problems.push("Privacy dismissal did not persist and update its control.");
-  if (!persisted) problems.push("Privacy dismissal was lost after reload.");
-  if (!reopened.visible || reopened.expanded !== "true") problems.push("Footer control did not reopen the privacy notice.");
+  if (!privacy.present || !privacy.concise) problems.push("Concise inline privacy information is missing.");
+  if (["fixed", "sticky"].includes(privacy.position)) problems.push("Privacy information blocks or follows the viewport.");
+  if (privacy.consentControls || privacy.preferenceStorage) problems.push("Unnecessary privacy consent state is present.");
   for (const app of appChecks) {
     if (app.initialRequests.length) problems.push(`${app.path} requested an external provider before visitor action.`);
     if (!app.initialControls.button || !app.initialControls.runDisabled || !app.initialControls.exportDisabled) problems.push(`${app.path} did not guard provider-dependent controls.`);
     if (!app.requestsAfterAction.length) problems.push(`${app.path} did not request its external libraries after visitor action.`);
     if (verifyLoadedLibraries && (!app.loadedControls?.editor || !app.loadedControls?.runEnabled || !app.loadedControls?.exportEnabled)) problems.push(`${app.path} did not finish loading its external libraries.`);
   }
-  const report = { firstVisible, dismissal, persisted, reopened, appChecks, passed: problems.length === 0, problems };
+  const report = { privacy, appChecks, passed: problems.length === 0, problems };
   console.log(JSON.stringify(report, null, 2));
   if (problems.length) process.exitCode = 1;
   completed = true;
