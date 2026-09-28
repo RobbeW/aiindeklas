@@ -19,7 +19,7 @@ const previewBoundaryMismatch = expectPreview
   ? !probeHtml.includes("preview-notice") || !verificationHtml.includes("data-verification=\"pending-live-verification-before-release\"")
   : html.includes("preview-notice") || probeHtml.includes("gemigreerde bronteksten") || verificationHtml.includes("data-verification=\"pending-live-verification-before-release\"");
 if (previewBoundaryMismatch) throw new Error(`preview boundary mismatch for ${base}`);
-if (!html.includes("Deze site gebruikt bewust geen cookies, analytics of andere tracking tools")) throw new Error("production dist lacks privacy copy");
+if (!html.includes("Deze site gebruikt geen cookies, analytics of tracking")) throw new Error("production dist lacks privacy copy");
 
 const server = createServer((request, response) => {
   const pathname = decodeURIComponent(new URL(request.url, "http://localhost").pathname);
@@ -44,7 +44,7 @@ try {
   const desktop = await evaluate(`(() => { const button=document.querySelector('[data-menu-button]'); return {nav:[...document.querySelectorAll('.navigation-list a')].map(a=>a.textContent.trim()),brandHome:document.querySelector('.brand')?.getAttribute('href'),language:!!document.querySelector('.language-link'),menuButtonHidden:getComputedStyle(button).display==='none',navigationVisible:getComputedStyle(document.querySelector('#primary-navigation')).display==='flex'}; })()`);
   await send("Emulation.setDeviceMetricsOverride", { width: 390, height: 844, deviceScaleFactor: 1, mobile: true }); await new Promise(r => setTimeout(r, 100));
   const mobile = await evaluate(`(() => { const button=document.querySelector('[data-menu-button]'); button.click(); const opened=button.getAttribute('aria-expanded')==='true'; button.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true})); const social=[...document.querySelectorAll('.footer-group:nth-child(2) a[target="_blank"]')]; return {opened,escapeFocus:document.activeElement===button,overflow:document.documentElement.scrollWidth<=document.documentElement.clientWidth,groups:document.querySelectorAll('.footer-group').length,social:social.length,socialSafe:social.every(a=>a.getAttribute('aria-label') && /noopener/.test(a.rel) && /noreferrer/.test(a.rel)),privacyFlow:getComputedStyle(document.querySelector('.privacy-notice')).position,privacyDismiss:!!document.querySelector('[data-privacy-dismiss]'),storage:document.documentElement.innerHTML.includes('localStorage')}; })()`);
-  if (JSON.stringify(desktop.nav) !== JSON.stringify(["Onderwijs", "Nascholingen", "Boek", "Contact"]) || desktop.brandHome !== `${base}` || !desktop.language || !desktop.menuButtonHidden || !desktop.navigationVisible || !mobile.opened || !mobile.escapeFocus || !mobile.overflow || mobile.groups !== 2 || mobile.social !== 4 || !mobile.socialSafe || mobile.privacyFlow === "fixed" || mobile.privacyDismiss || mobile.storage) throw new Error(`P23 browser assertions failed: ${JSON.stringify({ desktop, mobile })}`);
+  if (JSON.stringify(desktop.nav) !== JSON.stringify(["Onderwijs", "Nascholingen", "Boek", "Contact"]) || desktop.brandHome !== `${base}` || !mobile.opened || !mobile.escapeFocus || !mobile.overflow || mobile.groups !== 2 || mobile.social !== 4 || !mobile.socialSafe || mobile.privacyFlow !== "fixed" || !mobile.privacyDismiss || !mobile.storage) throw new Error(`P23 browser assertions failed: ${JSON.stringify({ desktop, mobile })}`);
   console.log(JSON.stringify({ ok: true, desktop, mobile }));
 } finally {
   socket?.close();

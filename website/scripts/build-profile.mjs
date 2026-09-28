@@ -6,12 +6,14 @@ import { validateBuiltSite } from "./validate-built-site.mjs";
 const workspace = fileURLToPath(new URL("../", import.meta.url));
 const astroCli = resolve(workspace, "node_modules/astro/bin/astro.mjs");
 const profile = process.argv[2];
-if (!new Set(["root", "project", "production-sim"]).has(profile)) {
-  throw new Error("Usage: node scripts/build-profile.mjs <root|project|production-sim>");
+if (!new Set(["root", "project", "production-project", "production-sim"]).has(profile)) {
+  throw new Error("Usage: node scripts/build-profile.mjs <root|project|production-project|production-sim>");
 }
 
 const config = profile === "project"
   ? { base: "/aiindeklas/", site: "https://robbew.github.io", indexing: false }
+  : profile === "production-project"
+    ? { base: "/aiindeklas/", site: "https://robbew.github.io/aiindeklas/", indexing: true }
   : profile === "production-sim"
     ? { base: "/", site: "https://www.robbewulgaert.be", indexing: true }
     : { base: "/", site: "http://localhost:4321", indexing: false };

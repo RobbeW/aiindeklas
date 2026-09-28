@@ -436,6 +436,17 @@ const applyConfirmedWorkshopDuration = (data, body) => {
   const normalizedBody = normalizeHours(body).replaceAll(decisionNote, "").replaceAll(alternateDecisionNote, "").trim();
   return `${decisionNote}\n\n${normalizedBody}`;
 };
+const WORKSHOP_PRICE_ON_REQUEST = "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden.";
+const normalizeWorkshopPractical = (detail) => {
+  if (!detail || !/praktische|prijslijst/i.test(detail.heading)) return detail;
+  const html = String(detail.html ?? "")
+    .replace(/<p>\s*<strong>\s*(?:Kostprijs|Prijs|Prijslijst)[\s\S]*?<\/p>\s*(?:<ul>[\s\S]*?<\/ul>)?/i, "")
+    .replace(/<p>\s*<strong>\s*(?:Verplaatsingskosten|Reiskosten)[\s\S]*?<\/p>\s*(?:<ul>[\s\S]*?<\/ul>)?/i, "");
+  const cleanHtml = `${html.trim()}<p>${WORKSHOP_PRICE_ON_REQUEST}</p>`;
+  const text = normaliseSpace(load(cleanHtml).root().text());
+  return { ...detail, html: cleanHtml, text };
+};
+const normalizeWorkshopBody = (body) => body.replace(/^##\s+(?:Prijslijst|Praktische informatie)\s*$[\s\S]*?(?=^##\s|(?![\s\S]))/gim, `## Praktische informatie\n\n${WORKSHOP_PRICE_ON_REQUEST}\n\n`);
 const extractWorkshopSourceDetails = ($, items, index, { contentId, source, outputFile }) => {
   const end = workshopAccordionStarts[index + 1] ?? 56;
   return items.slice(workshopAccordionStarts[index], end).map((el) => {
@@ -458,7 +469,7 @@ const extractWorkshopSourceDetails = ($, items, index, { contentId, source, outp
   });
 };
 
-// Isolated, repeatable P07 repair path: touches only the 12 generated workshop
+// Isolated, repeatable P07 repair path: touches only the active generated workshop
 // records and deliberately bypasses the destructive full migration path below.
 if (process.argv.includes("--p07-workshops-only")) {
   const source = recordByPath.get("/onderwijs/workshops-en-nascholingen");
@@ -467,17 +478,20 @@ if (process.argv.includes("--p07-workshops-only")) {
   const root = $(".blog-item-content").first();
   const expected = [
     "Kennis in tijden van AI", "Putting the chat in ChatGPT", "Schrijftaken zonder AIAIAI",
-    "AI in de Klas - van lesmateriaal tot leerlijn", "ChatGPT: Een (Vergiftigd) Geschenk voor Leraar en Leerling?",
+    "AI in de Klas - van lesmateriaal tot leerlijn",
     "AI en taaltechnologie: hoe ga je er effectief mee aan de slag in je taalles?", "AI in de Klas: Van A tot Zwerfvuil",
     "Python in de Klas", "AI en Latijn - Breng Tacitus Tot Leven", "Latijnse Inscripties en AI - op tocht met Aeneas",
-    "Grieks en AI - een knap duo", "Minecraft & Klassieke Talen"
+    "Minecraft & Klassieke Talen"
   ];
+  const retired = new Set(["ChatGPT: Een (Vergiftigd) Geschenk voor Leraar en Leerling?", "Grieks en AI - een knap duo"]);
   const allItems = root.find(".accordion-item").toArray();
   const items = allItems.slice(0, 56);
   const names = root.find("h3").map((_, el) => normaliseSpace($(el).text())).get().filter((x) => x && x !== "In de media");
-  if (JSON.stringify(names) !== JSON.stringify(expected) || allItems.length !== 59 || items.length !== 56) throw new Error("P07 source workshop/accordion order mismatch");
+  const activeNames = names.filter((name) => !retired.has(name));
+  if (JSON.stringify(activeNames) !== JSON.stringify(expected) || allItems.length !== 59 || items.length !== 56) throw new Error("P07 source workshop/accordion order mismatch");
   for (let index = 0; index < expected.length; index += 1) {
     const title = expected[index];
+    const sourceIndex = names.indexOf(title);
     const slug = slugify(title);
     const file = path.join(GENERATED_ROOTS.workshops, `${slug}-${shortHash(title).slice(0, 8)}.md`);
     const original = await readFile(file, "utf8");
@@ -485,20 +499,20 @@ if (process.argv.includes("--p07-workshops-only")) {
     if (!match) throw new Error(`${file}: invalid existing workshop document`);
     const data = parseYaml(match[1]);
     if (data.title !== title || data.id !== `source-workshop-${slug}-${shortHash(title).slice(0, 8)}`) throw new Error(`${file}: source title/id mismatch`);
-    const sourceDetails = extractWorkshopSourceDetails($, items, index, { contentId: data.id, source: source.url, outputFile: file });
+    const sourceDetails = extractWorkshopSourceDetails($, items, sourceIndex, { contentId: data.id, source: source.url, outputFile: file }).map(normalizeWorkshopPractical);
     const section = (prefix) => sourceDetails.find((detail) => detail.heading.toLocaleLowerCase("nl").startsWith(prefix.toLocaleLowerCase("nl")))?.text ?? "";
-    const practicalSource = section("Praktische");
+    const practicalSource = sourceDetails.find((detail) => /praktische|prijslijst/i.test(detail.heading))?.text ?? "";
     const goalsSource = section("Doelen");
     data.programme = section("Programma");
     data.goals = { knowledge: goalsSource ? [goalsSource] : [], skills: [], attitudes: [] };
     data.target_audience = section("Doelgroep");
     data.location_notes = practicalSource;
-    data.price = { amount_eur: null, includes_vat: /incl\.\s*BTW/i.test(practicalSource) ? true : null, display: practicalSource };
-    data.travel_cost = { amount_per_km_eur: null, public_transport_policy: null, display: practicalSource };
+    data.price = { amount_eur: null, includes_vat: null, display: WORKSHOP_PRICE_ON_REQUEST };
+    data.travel_cost = { amount_per_km_eur: null, public_transport_policy: null, display: WORKSHOP_PRICE_ON_REQUEST };
     data.group_size = { minimum: null, maximum: null, display: practicalSource };
     data.delivery_modes = [...new Set([/online/i.test(practicalSource) && "online", /fysiek|op locatie|individuele school/i.test(practicalSource) && "on_site", /CNO/i.test(practicalSource) && "cno"].filter(Boolean))];
     data.source_details = sourceDetails;
-    const body = applyConfirmedWorkshopDuration(data, match[2]);
+    const body = normalizeWorkshopBody(applyConfirmedWorkshopDuration(data, match[2]));
     await writeFile(file, frontmatterDocument(data, body));
     console.log(`${title}: ${sourceDetails.length} source accordion sections`);
   }
@@ -554,6 +568,7 @@ const pageDefinitions = [
   ["/verkoopsvoorwaarden", "generic"]
 ];
 const pageTitleOverrides = new Map([
+  ["/contact", "Contact"],
   ["/onderwijs", "Onderwijs"],
   ["/education", "Education"],
   ["/projects", "Projects"]
@@ -594,7 +609,14 @@ for (const [pathname, template] of pageDefinitions) {
       .replace("Copyright: Elka Pannier (De Standaard)", "Robbe Wulgaert in een klaslokaal, foto Elka Pannier voor De Standaard")
       .replace("[**_AI inde klas_** _-_ **_Praktischegidsvooronderwijsprofessionals_**]", "[**_AI in de klas – Praktische gids voor onderwijsprofessionals_**]")
       .replace(/!\[\]\(([^)]+948800[^)]+)\)/, "![Robbe Wulgaert toont het boek AI in de klas]($1)");
+    body = body
+      .replace(/content-button--secondary/g, "content-button--primary")
+      .replace(/content-button--text/g, "content-button--primary")
+      .replace(/(<div class="content-button-row content-button-row--center">)(<a class="content-button content-button--primary content-button--medium" href="\/onderwijs\/workshops-en-nascholingen")/g, '<div class="content-button-row content-button-row--center home-action home-action--workshops">$2')
+      .replace(/(<div class="content-button-row content-button-row--center">)(<a class="content-button content-button--primary content-button--medium" href="\/onderwijs")/g, '<div class="content-button-row content-button-row--center home-action home-action--education">$2')
+      .replace(/(<div class="content-button-row content-button-row--center">)(<a class="content-button content-button--primary content-button--medium" href="\/boek")/g, '<div class="content-button-row content-button-row--center home-action home-action--book">$2');
   }
+  if (pathname === "/boek") body = body.replace(/Bestel(?: \/ reserveer hier!| of reserveer het boek)?/, "Bestel het boek").replace(/AI-comptenties/g, "AI-competenties");
   if (pathname === "/about") {
     description = "Teacher, author and researcher working on programming, artificial intelligence, Design Thinking and AI literacy in education.";
     body = body
@@ -606,7 +628,9 @@ for (const [pathname, template] of pageDefinitions) {
   }
   if (pathname === "/contact") {
     description = "Neem contact op met Robbe over onderwijs, lesmateriaal, workshops en projecten.";
-    body = replaceContactFormCopy(body.replace(/fotograf\w*|videograf\w*|cameraman/gi, "onderwijsprojecten")).trim();
+    body = replaceContactFormCopy(body.replace(/fotograf\w*|videograf\w*|cameraman/gi, "onderwijsprojecten"))
+      .replace(/content-button content-button--secondary content-button--medium/g, "button button--primary")
+      .trim();
   }
   if (pathname === "/contactinfo") {
     description = "Get in contact with Robbe about education, learning materials, workshops and technology projects.";
@@ -821,21 +845,23 @@ const $workshops = load(workshopHtml);
 const workshopRoot = $workshops(".blog-item-content").first();
 const workshopBlocks = workshopRoot.find(".sqs-html-content").toArray();
 // Squarespace accordion components are siblings of `.sqs-html-content`, not descendants.
-// Keep their source order paired with the 12 h3 offering titles recorded in P07.
+// Keep their source order paired with the active h3 offering titles recorded in P07.
 const allWorkshopAccordionItems = workshopRoot.find(".accordion-item").toArray();
 const workshopAccordionItems = allWorkshopAccordionItems.slice(0, 56);
 const accordionOfferingTitles = [
   "Kennis in tijden van AI", "Putting the chat in ChatGPT", "Schrijftaken zonder AIAIAI",
-  "AI in de Klas - van lesmateriaal tot leerlijn", "ChatGPT: Een (Vergiftigd) Geschenk voor Leraar en Leerling?",
+  "AI in de Klas - van lesmateriaal tot leerlijn",
   "AI en taaltechnologie: hoe ga je er effectief mee aan de slag in je taalles?", "AI in de Klas: Van A tot Zwerfvuil",
   "Python in de Klas", "AI en Latijn - Breng Tacitus Tot Leven", "Latijnse Inscripties en AI - op tocht met Aeneas",
-  "Grieks en AI - een knap duo", "Minecraft & Klassieke Talen"
+  "Minecraft & Klassieke Talen"
 ];
 if (allWorkshopAccordionItems.length !== 59 || workshopAccordionItems.length !== 56) throw new Error(`Expected 56 offering and 3 general accordion items, found ${workshopAccordionItems.length} and ${allWorkshopAccordionItems.length - workshopAccordionItems.length}`);
-const offeringNames = workshopRoot.find("h3").map((_, element) => normaliseSpace($workshops(element).text()))
+const retiredOfferingTitles = new Set(["ChatGPT: Een (Vergiftigd) Geschenk voor Leraar en Leerling?", "Grieks en AI - een knap duo"]);
+const sourceOfferingNames = workshopRoot.find("h3").map((_, element) => normaliseSpace($workshops(element).text()))
   .get().filter((title) => title && title !== "In de media");
-if (offeringNames.length !== 12) throw new Error(`Expected 12 workshops, found ${offeringNames.length}`);
-const offeringStarts = offeringNames.map((title) => workshopBlocks.findIndex((block) =>
+const offeringNames = sourceOfferingNames.filter((title) => !retiredOfferingTitles.has(title));
+if (offeringNames.length !== 10) throw new Error(`Expected 10 active workshops, found ${offeringNames.length}`);
+const sourceOfferingStarts = sourceOfferingNames.map((title) => workshopBlocks.findIndex((block) =>
   $workshops(block).find("h3").toArray().some((heading) => normaliseSpace($workshops(heading).text()) === title)
 ));
 if (JSON.stringify(offeringNames) !== JSON.stringify(accordionOfferingTitles)) {
@@ -845,8 +871,9 @@ if (JSON.stringify(offeringNames) !== JSON.stringify(accordionOfferingTitles)) {
 const workshopRecords = [];
 for (let index = 0; index < offeringNames.length; index += 1) {
   const title = offeringNames[index];
-  const start = offeringStarts[index];
-  const end = offeringStarts[index + 1] === undefined ? workshopBlocks.length : offeringStarts[index + 1];
+  const sourceIndex = sourceOfferingNames.indexOf(title);
+  const start = sourceOfferingStarts[sourceIndex];
+  const end = sourceOfferingStarts[sourceIndex + 1] === undefined ? workshopBlocks.length : sourceOfferingStarts[sourceIndex + 1];
   const selected = workshopBlocks.slice(start, end);
   const wrapperHtml = `<div>${selected.map((block) => $workshops.html(block)).join("\n")}</div>`;
   const $entry = load(wrapperHtml);
@@ -876,7 +903,7 @@ for (let index = 0; index < offeringNames.length; index += 1) {
   const goalsText = sectionText("Doelen");
   const targetAudience = sectionText("Doelgroep");
   const practical = sectionText("Praktische");
-  const sourceDetails = extractWorkshopSourceDetails($workshops, workshopAccordionItems, index, {
+  const sourceDetails = extractWorkshopSourceDetails($workshops, workshopAccordionItems, sourceIndex, {
     contentId: id, source: workshopSource.url, outputFile
   });
   const detailText = (prefix) => sourceDetails.find((detail) => detail.heading.toLocaleLowerCase("nl").startsWith(prefix.toLocaleLowerCase("nl")))?.text ?? "";

@@ -3,8 +3,8 @@
   "profile": "project",
   "site": "https://robbew.github.io",
   "base": "/aiindeklas/",
-  "rendered_html_files": 365,
-  "internal_links_checked": 5235,
+  "rendered_html_files": 366,
+  "internal_links_checked": 4007,
   "genuine_broken_links": 0,
   "genuine_broken_link_examples": [],
   "links_to_accepted_case_collisions": 0,
@@ -12,29 +12,29 @@
   "noncanonical_internal_html_targets": 0,
   "canonical_mismatches": 0,
   "redirect_canonical_mismatches": 3,
-  "accepted_case_collision_canonical_mismatches": 17,
+  "accepted_case_collision_canonical_mismatches": 0,
   "encoded_filename_canonical_mappings": 2,
   "canonical_mismatch_examples": [],
-  "sitemap_locations": 0,
-  "sitemap_locations_matching_indexable_canonicals": 0,
+  "sitemap_locations": 356,
+  "sitemap_locations_matching_indexable_canonicals": 356,
   "sitemap_set_matches_indexable_canonicals": true,
-  "indexable_canonicals": 0,
+  "indexable_canonicals": 356,
   "feed_items": {
     "nl": {
-      "items": 0,
+      "items": 78,
       "channel_link": "https://robbew.github.io/aiindeklas"
     },
     "en": {
-      "items": 0,
+      "items": 46,
       "channel_link": "https://robbew.github.io/aiindeklas"
     }
   },
   "feed_channel_base_matches": true,
   "feed_items_while_noindex": false,
   "robots": {
-    "disallows_all": true,
-    "allows_root": false,
-    "expected_allow": false,
+    "disallows_all": false,
+    "allows_root": true,
+    "expected_allow": true,
     "posture_matches": true,
     "sitemap_url": "https://robbew.github.io/aiindeklas/sitemap.xml",
     "sitemap_url_matches": true
@@ -65,6 +65,6 @@
     "/onderwijs/tag/taal",
     "/onderwijs/tag/vr"
   ],
-  "accepted_exception_counts_match": true,
-  "status": "passed"
+  "accepted_exception_counts_match": false,
+  "status": "findings"
 }

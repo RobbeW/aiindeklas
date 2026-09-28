@@ -34,17 +34,24 @@ test("global shell settings preserve the accepted routes and source facts", asyn
   ]);
 });
 
-test("privacy is concise, non-blocking and preview notices are production-gated", async () => {
-  const [privacy, preview, contentPage] = await Promise.all([
+test("privacy is concise and production identity has no preview chrome", async () => {
+  const [privacy, contentPage, pageHero, baseLayout, routePage, workshopPage] = await Promise.all([
     read("../../src/components/PrivacyNotice.astro"),
-    read("../../src/components/PreviewNotice.astro"),
-    read("../../src/components/ContentPage.astro")
+    read("../../src/components/ContentPage.astro"),
+    read("../../src/components/PageHero.astro"),
+    read("../../src/layouts/BaseLayout.astro"),
+    read("../../src/pages/[...path].astro"),
+    read("../../src/components/WorkshopCollectionPage.astro")
   ]);
-  assert.match(privacy, /geen cookies, analytics of andere tracking tools/);
-  assert.doesNotMatch(privacy, /localStorage|data-privacy-dismiss|position: fixed/);
-  assert.match(preview, /PUBLIC_INDEXING_ENABLED !== "true"/);
+  assert.match(privacy, /geen cookies, analytics of tracking/);
+  assert.match(privacy, /localStorage|data-privacy-dismiss|position: fixed/);
   assert.match(contentPage, /isPreview\s*=\s*import\.meta\.env\.PUBLIC_INDEXING_ENABLED !== "true"/);
-  assert.match(contentPage, /isPreview && \(\["\/boek"/);
+  assert.doesNotMatch(contentPage, /PreviewNotice|live verification|live verificatie|pending-live-verification/);
+  assert.doesNotMatch(pageHero, /eyebrow|eyebrow\?/);
+  assert.doesNotMatch(routePage, /eyebrow=/);
+  assert.doesNotMatch(workshopPage, /eyebrow=/);
+  assert.match(baseLayout, /withBase\("\/favicon\.png"\)/);
+  assert.match(baseLayout, /type="image\/png"/);
 });
 
 test("mobile shell supports progressive enhancement and keyboard dismissal", async () => {

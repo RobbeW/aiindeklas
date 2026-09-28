@@ -222,9 +222,9 @@ Het lesmateriaal '**_Artificiële Intelligentie en Latijn: Hoe Agrippina tot lev
 
 Heeft u interesse om deze CNO-nascholing op uw school te organiseren? Dat is zeker mogelijk. Voor meer informatie over het aanbod en de organisatie van deze nascholing kunt u de onderstaande link raadplegen.
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://cno.uantwerpen.be/nl/opleiding/artificiele-intelligentie-en-latijn-hoe-agrippina-tot-leven-komt-78396">Nascholing CNO</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://cno.uantwerpen.be/nl/opleiding/artificiele-intelligentie-en-latijn-hoe-agrippina-tot-leven-komt-78396" target="_blank" rel="noreferrer">Nascholing CNO</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/onderwijs/workshops-en-nascholingen">Info over nascholingen</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/onderwijs/workshops-en-nascholingen" target="_blank" rel="noreferrer">Info over nascholingen</a></div>
 
 ## Ik wil dit in mijn klas!
 

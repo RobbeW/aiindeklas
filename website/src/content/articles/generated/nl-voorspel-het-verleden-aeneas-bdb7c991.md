@@ -161,29 +161,29 @@ We hopen dat deze inspanningen historici en classici ondersteunen om nauwkeurige
 
 ### Bronnen
 
--   Assael, Y.,\* Sommerschield, T.,\* Cooley, A., Shillingford, B., Pavlopoulos, J., Suresh, P., Herms, B., Grayston, J., Maynard, B., Dietrich N., Wulgaert, R., Prag, J., Mullen, A., Mohamed, S. (2025). “Contextualising ancient texts with generative neural networks”. In Nature [Nature article](https://www.nature.com/articles/s41586-025-09292-5)
+-   Assael, Y.,\* Sommerschield, T.,\* Cooley, A., Shillingford, B., Pavlopoulos, J., Suresh, P., Herms, B., Grayston, J., Maynard, B., Dietrich N., Wulgaert, R., Prag, J., Mullen, A., Mohamed, S. (2025). “Contextualising ancient texts with generative neural networks”. In Nature [https://www.nature.com/articles/s41586-025-09292-5](https://www.nature.com/articles/s41586-025-09292-5)
 
--   Assael, Y.,\* Sommerschield, T.,\* Shillingford, B., Bordbar, M., Pavlopoulos, J., Chatzipanagiotou, M., Androutsopoulos, I., Prag, J., de Freitas, N. (2022). “Restoring and attributing ancient texts with deep neural networks”. In Nature, 603(7900): 280–283. [Nature article](https://www.nature.com/articles/s41586-022-04448-z)
+-   Assael, Y.,\* Sommerschield, T.,\* Shillingford, B., Bordbar, M., Pavlopoulos, J., Chatzipanagiotou, M., Androutsopoulos, I., Prag, J., de Freitas, N. (2022). “Restoring and attributing ancient texts with deep neural networks”. In Nature, 603(7900): 280–283. https://www.nature.com/articles/s41586-022-04448-z
 
 -   Booms, D. (2016). Latin Inscriptions (Getty Publications - British Museum Press).
 
 -   Cooley, A. (2012). The Cambridge Manual of Latin Epigraphy (Cambridge University Press).
 
--   European Commission, European Education and Culture Executive Agency, (2023). AI report: by the European Digital Education Hub’s Squad on artificial intelligence in education, Publications Office of the European Union. [AI-rapport van de Europese Unie](https://data.europa.eu/doi/10.2797/828281)
+-   European Commission, European Education and Culture Executive Agency, (2023). AI report: by the European Digital Education Hub’s Squad on artificial intelligence in education, Publications Office of the European Union. https://data.europa. eu/doi/10.2797/828281
 
 -   Liddel, P. (2025). Greek Inscriptions (Getty Publications - British Museum Press).
 
--   Miao, F., & Shiohira, K. (2024). AI competency framework for students. UNESCO. [DOI](https://doi.org/10.54675/JKJB9835)
+-   Miao, F., & Shiohira, K. (2024). AI competency framework for students. UNESCO. [https://doi.org/10.54675/JKJB9835](https://doi.org/10.54675/JKJB9835)
 
--   Miao, F., & Cukurova, M. (2024). AI competency framework for teachers. UNESCO. [DOI](https://doi.org/10.54675/ZJTE2084)
+-   Miao, F., & Cukurova, M. (2024). AI competency framework for teachers. UNESCO. [https://doi.org/10.54675/ZJTE2084](https://doi.org/10.54675/ZJTE2084)
 
--   OECD (2025). Empowering learners for the age of AI: An AI literacy framework for primary and secondary education (Review draft). OECD. Paris. [AI Literacy Framework](https://ailiteracyframework.org/)
+-   OECD (2025). Empowering learners for the age of AI: An AI literacy framework for primary and secondary education (Review draft). OECD. Paris. [https://ailiteracyframework.org](https://ailiteracyframework.org/)
 
--   Urbanová, D. (2017). Latin curse texts: Mediterranean tradition and local diversity. Acta Antiqua Academiae Scientiarum Hungaricae, 57(1), 57–82. [DOI](https://doi.org/10.1556/068.2017.57.1.5)
+-   Urbanová, D. (2017). Latin curse texts: Mediterranean tradition and local diversity. Acta Antiqua Academiae Scientiarum Hungaricae, 57(1), 57–82. [https://doi.org/10.1556/068.2017.57.1.5](https://doi.org/10.1556/068.2017.57.1.5)
 
 -   Wulgaert, R. (2023). "Ithaca AI meets ancient Greek: Muses and robots in the classroom". In Teaching History, 57(3), 16–20.
 
--   Wulgaert, R. (2023). [AI & Greek – Ithaca syllabus](/education/ai-and-greek-epigraphy-with-a-robot)
+-   Wulgaert, R. (2023). AI & Greek – Ithaca syllabus - [https://www.robbewulgaert.be/education/ai-and-greek-epigraphy-with-a-robot](/education/ai-and-greek-epigraphy-with-a-robot)
 
 -   Wulgaert, R. (2025). AI & Latin Aeneas - syllabus
 
@@ -199,10 +199,10 @@ Artificiële intelligentie is niet meer weg te denken uit onze samenleving. Maar
 
 3) Ben je op zoek naar een **nascholing** om jou vertrouwd te maken met dit lesmateriaal en de achterliggende AI-technieken? Dan ben je bij het CNO van de Universiteit Antwerpen aan het juiste adres!
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://raw.githubusercontent.com/RobbeW/aiindeklas/main/aeneas/syllabus/NL_Syllabus_Epigrafie_Aenaes.pdf">Download de syllabus</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://raw.githubusercontent.com/RobbeW/aiindeklas/main/aeneas/syllabus/NL_Syllabus_Epigrafie_Aenaes.pdf" target="_blank" rel="noreferrer">Download de syllabus</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://colab.research.google.com/drive/1mA1FlXihaMdSh2iuXFvaZ4EQ6iJ5LUhI?usp=sharing">Naar de Notebook</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://colab.research.google.com/drive/1mA1FlXihaMdSh2iuXFvaZ4EQ6iJ5LUhI?usp=sharing" target="_blank" rel="noreferrer">Naar de Notebook</a></div>
 
 <div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contactinfo">Schrijf mee aan dit verhaal!</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://www.uacno.be/25LAT018A">Is er een nascholing? Ja hoor!</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://www.uacno.be/25LAT018A" target="_blank" rel="noreferrer">Is er een nascholing? Ja hoor!</a></div>

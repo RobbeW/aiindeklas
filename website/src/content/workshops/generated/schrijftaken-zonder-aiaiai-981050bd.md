@@ -35,19 +35,19 @@ prerequisites: []
 delivery_modes:
   - "online"
   - "on_site"
-location_notes: "Duurtijd:Deze nascholing duurt 2 uur. Locatie:Deze nascholing kan georganiseerd worden op een individuele school.Deze nascholing kan ook online gegeven worden met en zonder lesopname. Prijs:300 euro (exclusief verplaatsingskosten)350 euro voor webinar mét lesopname. verplaatsingskosten: 0.42 euro per kmGroepsgrootte:maximaal 30 deelnemers"
+location_notes: "Duurtijd:Deze nascholing duurt 2 uur. Locatie:Deze nascholing kan georganiseerd worden op een individuele school.Deze nascholing kan ook online gegeven worden met en zonder lesopname. Groepsgrootte:maximaal 30 deelnemersPrijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 price:
   amount_eur: null
   includes_vat: null
-  display: "Duurtijd:Deze nascholing duurt 2 uur. Locatie:Deze nascholing kan georganiseerd worden op een individuele school.Deze nascholing kan ook online gegeven worden met en zonder lesopname. Prijs:300 euro (exclusief verplaatsingskosten)350 euro voor webinar mét lesopname. verplaatsingskosten: 0.42 euro per kmGroepsgrootte:maximaal 30 deelnemers"
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 travel_cost:
   amount_per_km_eur: null
   public_transport_policy: null
-  display: "Duurtijd:Deze nascholing duurt 2 uur. Locatie:Deze nascholing kan georganiseerd worden op een individuele school.Deze nascholing kan ook online gegeven worden met en zonder lesopname. Prijs:300 euro (exclusief verplaatsingskosten)350 euro voor webinar mét lesopname. verplaatsingskosten: 0.42 euro per kmGroepsgrootte:maximaal 30 deelnemers"
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 group_size:
   minimum: null
   maximum: null
-  display: "Duurtijd:Deze nascholing duurt 2 uur. Locatie:Deze nascholing kan georganiseerd worden op een individuele school.Deze nascholing kan ook online gegeven worden met en zonder lesopname. Prijs:300 euro (exclusief verplaatsingskosten)350 euro voor webinar mét lesopname. verplaatsingskosten: 0.42 euro per kmGroepsgrootte:maximaal 30 deelnemers"
+  display: "Duurtijd:Deze nascholing duurt 2 uur. Locatie:Deze nascholing kan georganiseerd worden op een individuele school.Deze nascholing kan ook online gegeven worden met en zonder lesopname. Groepsgrootte:maximaal 30 deelnemersPrijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 booking_cta:
   label: "Neem contact op"
   href: "/contact"
@@ -66,8 +66,8 @@ source_details:
     text: "Deze sessie kan gevolgd worden door leerkrachten uit het secundair onderwijs die aan de slag wensen te gaan met GPT-technologie en een achtergrond hebben in taalonderwijs. Deelnemers hebben idealiter reeds ervaring met GPT-technologie. Deze sessie is van het type 'workshop'. Dat betekent dat er praktijkopdrachten zijn waarbij de laptop nodig is."
     volatile: false
   - heading: "Praktische informatie"
-    html: "<p><strong>Duurtijd</strong>:</p><ul><li><p>Deze nascholing duurt 2 uur. </p></li></ul><p><strong>Locatie</strong>:</p><ul><li><p>Deze nascholing kan georganiseerd worden op een individuele school.</p></li><li><p>Deze nascholing kan ook online gegeven worden met en zonder lesopname. </p></li></ul><p><strong>Prijs:</strong></p><ul><li><p>300 euro (exclusief verplaatsingskosten)</p></li><li><p>350 euro voor webinar mét lesopname. </p></li><li><p>verplaatsingskosten: 0.42 euro per km</p></li></ul><p><strong>Groepsgrootte:</strong></p><ul><li><p>maximaal 30 deelnemers</p></li></ul>"
-    text: "Duurtijd:Deze nascholing duurt 2 uur. Locatie:Deze nascholing kan georganiseerd worden op een individuele school.Deze nascholing kan ook online gegeven worden met en zonder lesopname. Prijs:300 euro (exclusief verplaatsingskosten)350 euro voor webinar mét lesopname. verplaatsingskosten: 0.42 euro per kmGroepsgrootte:maximaal 30 deelnemers"
+    html: "<p><strong>Duurtijd</strong>:</p><ul><li><p>Deze nascholing duurt 2 uur. </p></li></ul><p><strong>Locatie</strong>:</p><ul><li><p>Deze nascholing kan georganiseerd worden op een individuele school.</p></li><li><p>Deze nascholing kan ook online gegeven worden met en zonder lesopname. </p></li></ul><p><strong>Groepsgrootte:</strong></p><ul><li><p>maximaal 30 deelnemers</p></li></ul><p>Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden.</p>"
+    text: "Duurtijd:Deze nascholing duurt 2 uur. Locatie:Deze nascholing kan georganiseerd worden op een individuele school.Deze nascholing kan ook online gegeven worden met en zonder lesopname. Groepsgrootte:maximaal 30 deelnemersPrijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
     volatile: true
 ---
 

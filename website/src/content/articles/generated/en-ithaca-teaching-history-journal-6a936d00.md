@@ -97,9 +97,9 @@ When used alone, Ithaca can achieve 62 per cent accuracy in restoring damaged in
 
 For a more in-depth exploration of the mechanics of the Ithaca AI model, including the handling of inputs and the specifics of transformer technology (the 'T' in 'ChatGPT' also signifies transformer technology), consult the research paper written by the researchers who conceived of Pythia (the original version of Ithaca), Yannis Assael and Thea Sommerschield and others.[\[ii\]](applewebdata://4C98FF7B-8B53-4896-9B29-7BCFAEBD694B#_edn2)
 
-[_\[i\]_](applewebdata://4C98FF7B-8B53-4896-9B29-7BCFAEBD694B#_ednref1) _[Ithaca](https://ithaca.deepmind.com/), accessed 28 July 2023._
+[_\[i\]_](applewebdata://4C98FF7B-8B53-4896-9B29-7BCFAEBD694B#_ednref1) _Ithaca,_ [_https://ithaca.deepmind.com/_](https://ithaca.deepmind.com/) _(accessed 28 July 2023)._
 
-[_\[ii\]_](applewebdata://4C98FF7B-8B53-4896-9B29-7BCFAEBD694B#_ednref2) _Y. Assael, T. Sommerschield, B. Shillingford, et al. ‘Restoring and attributing ancient texts using deep neural networks’, Nature 603 (2022), 280–283. [the Nature study](https://doi.org/10.1038/s41586-022-04448-z)
+[_\[ii\]_](applewebdata://4C98FF7B-8B53-4896-9B29-7BCFAEBD694B#_ednref2) _Y. Assael, T. Sommerschield, B. Shillingford, et al. ‘Restoring and attributing ancient texts using deep neural networks’, Nature 603 (2022), 280–283. https://doi.org/10.1038/s41586-022-04448-z_
 
 ### **Applying Ithaca to our education project**
 
@@ -159,9 +159,9 @@ Next, we delve into the implementation of these AI models within the classroom e
 
 This approach serves multiple purposes. Not only does it demonstrate the versatility of AI models, extending their application beyond traditional STEM courses to captivate students with a linguistic interest, but it also presents a balanced narrative. By emphasising the collaborative potential between human intelligence and AI, we counter the discourse that views technological advancements solely as a threat to human employment.
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://colab.research.google.com/drive/1CybfwDPofZi2puqS1idNYSdkCDkVsXEW?usp=sharing">Test Ithaca</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://colab.research.google.com/drive/1CybfwDPofZi2puqS1idNYSdkCDkVsXEW?usp=sharing" target="_blank" rel="noreferrer">Test Ithaca</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://sintlievenscollege-my.sharepoint.com/:b:/g/personal/robbe_wulgaert_sintlievenscollege_be/ET5Wt0V6hD5ClgkzcSE22bABGgRwZg5LyZB0hFgKWTz5Jw?e=PduG34">Check the syllabus</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://sintlievenscollege-my.sharepoint.com/:b:/g/personal/robbe_wulgaert_sintlievenscollege_be/ET5Wt0V6hD5ClgkzcSE22bABGgRwZg5LyZB0hFgKWTz5Jw?e=PduG34" target="_blank" rel="noreferrer">Check the syllabus</a></div>
 
 <div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contactinfo">Contact Robbe</a></div>
 
@@ -173,8 +173,8 @@ _These materials were developed by Robbe Wulgaert (Sint-Lievenscollege) and Noor
 
 This article was written in July 2023 by Robbe Wulgaert, computer science and AI educator in Ghent, Belgium.
 
-\[1\] [Ithaca](https://ithaca.deepmind.com/) (accessed 28 July 2023).
+\[1\] Ithaca, [https://ithaca.deepmind.com/](https://ithaca.deepmind.com/) (accessed 28 July 2023).
 
-\[2\] Y. Assael, T. Sommerschield, B. Shillingford, et al. ‘Restoring and attributing ancient texts using deep neural networks’, Nature 603 (2022), 280–283. [DOI](https://doi.org/10.1038/s41586-022-04448-z)
+\[2\] Y. Assael, T. Sommerschield, B. Shillingford, et al. ‘Restoring and attributing ancient texts using deep neural networks’, Nature 603 (2022), 280–283. https://doi.org/10.1038/s41586-022-04448-z
 
 \[3\] For further details about the cameo, see T. Whitmarsh, ‘Less Care, More Stress: A Rhythmic Poem from the Roman Empire’, The Cambridge Classical Journal 67 (2021): 135-163, doi:10.1017/S1750270521000051

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "profile": "github-pages-project",
+  "profile": "production-project",
   "deployment_url": null,
   "base": "/aiindeklas/",
   "smoke_kind": "local_artifact",
@@ -79,7 +79,7 @@
   ],
   "unresolved_case_collision_pairs": [],
   "case_sensitive_route_verification": false,
-  "noindex_review_gate_preserved": true,
+  "expected_index_state": "indexable",
   "status": "passed",
   "failures": []
 }

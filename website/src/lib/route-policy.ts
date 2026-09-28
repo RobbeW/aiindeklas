@@ -14,6 +14,9 @@ export const excludedRouteReasons: Readonly<Record<string, string>> = Object.fre
   "/onderwijs/workshops-en-nascholingen": "pending workshop pricing and claim verification"
 });
 
+export const participantRoutePaths = (paths: readonly string[]) => new Set(paths.map((path) => routeKey(normalizeRoute(path))));
+export const isParticipantRoute = (route: string, inventory: ReadonlySet<string> = new Set()) => inventory.has(routeKey(normalizeRoute(route)));
+
 export const parseCsv = (source: string): Array<Record<string, string>> => {
   const rows: string[][] = [];
   let row: string[] = [];
@@ -64,6 +67,18 @@ export const productionRouteContract = () => {
   paths.set(routeKey("/onderwijs/archief"), "/onderwijs/archief");
   contractCache = [...paths.values()].sort((a, b) => a.localeCompare(b, "en"));
   return [...contractCache];
+};
+
+/** Routes emitted from the participant-pages collection. They are built outputs,
+ * but never part of the public/indexable route contract. */
+export const participantContentRoutes = () => {
+  const directory = path.resolve(process.cwd(), "src/content/participant-pages");
+  if (!fs.existsSync(directory)) return [];
+  return fs.readdirSync(directory).filter((file) => file.endsWith(".md")).flatMap((file) => {
+    const source = fs.readFileSync(path.join(directory, file), "utf8");
+    const match = source.match(/^route_path:\s*["']?([^\s"']+)["']?/m);
+    return match?.[1] ? [normalizeRoute(match[1])] : [];
+  });
 };
 
 export const productionSitemapPaths = () => productionRouteContract()

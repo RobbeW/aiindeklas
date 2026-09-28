@@ -27,6 +27,4 @@ call_to_actions: []
 
 Would you like to collaborate on education, learning materials, a workshop or a technology project?
 
-## Contact
-
 Use the form above. The button opens a prefilled email in your default mail app.

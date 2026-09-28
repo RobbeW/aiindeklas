@@ -3,8 +3,8 @@
   "artifact": "../_site",
   "html_pages": 367,
   "pages_with_privacy_information": 362,
-  "pages_with_consent_controls": 0,
-  "pages_with_privacy_preference_storage": 0,
+  "pages_with_consent_controls": 362,
+  "pages_with_privacy_preference_storage": 362,
   "automatic_external_resources": 0,
   "passed": true,
   "problems": []

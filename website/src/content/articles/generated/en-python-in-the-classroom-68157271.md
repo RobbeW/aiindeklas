@@ -12,7 +12,7 @@ created_at: "2023-07-24T13:09:02+02:00"
 updated_at: "2023-07-24T13:09:52+02:00"
 published_at: "2023-07-24T13:09:02+02:00"
 author: "robbe-wulgaert"
-excerpt: "Our society, as well as our school and classroom, is becoming increasingly digital. This often involves a programming language, such as Python! But how do you bring Python into the classroom? That's where I can help you! More than 80 exercises, auto-corrections, 20 elaborate lesson videos ... all summarised in one clear lesson series! Free to use via Python in de Klas!"
+excerpt: "Our society, as well as our school and classroom, is becoming increasingly digital. This often involves a programming language, such as Python! But how do you bring Python into the classroom? That's where I can help you! More than 80 exercises, auto-corrections, 20 elaborate lesson videos ... all summarised in one clear lesson series! Free to use via www.pythonindeklas.be!"
 hero: null
 seo:
   title: "Python in the Classroom"
@@ -47,7 +47,7 @@ citations:
     url: "https://youtube.com/playlist?list=PL7qul8TV_7p5mZ_LFp_KHUVn1WglOU-is"
 ---
 
-**Our society is increasingly influenced and controlled by computer systems, apps and algorithms. Countless problems, now and in the future, are solved through those powerful computers. We also feel this digitalisation at school and in the classroom. But if you want to help think about and work on this digital future, it is best to learn how to think computationally! Learn to design your own algorithms and translate them into programming languages such as Python! But how do you bring that into the classroom? I can help you with that! More than 80 exercises, auto-corrections, 20 elaborate teaching videos ... all summarised in one clear lesson series I published on the open source platform Dodona (Ghent University). Free to use via the [Python in de Klas course](https://dodona.ugent.be/nl/courses/2641/).
+**Our society is increasingly influenced and controlled by computer systems, apps and algorithms. Countless problems, now and in the future, are solved through those powerful computers. We also feel this digitalisation at school and in the classroom. But if you want to help think about and work on this digital future, it is best to learn how to think computationally! Learn to design your own algorithms and translate them into programming languages such as Python! But how do you bring that into the classroom? I can help you with that! More than 80 exercises, auto-corrections, 20 elaborate teaching videos ... all summarised in one clear lesson series I published on the open source platform Dodona (Ghent University). Free to use via** [**www.pythonindeklas.be**](https://dodona.ugent.be/nl/courses/2641/)[**!**](https://dodona.ugent.be/nl/courses/2641/)
 
 ![](../../../assets/migrated/50/5011bb13e08d473d91142b3dbc36ab36781a025ef395e7ce285a07cf89845f5a-w1280.webp)
 
@@ -267,7 +267,7 @@ This lesson series was developed in view of the curriculum objectives and tables
 
 ### **I want this in my classroom! What should I do?**
 
-**Want to get started with this yourself in your classroom? Super! Introducing young people to computational thinking, programming and maths concepts is important in an increasingly digital society. That definitely includes exploring-and delving into-Python. Feel free to help you with that! You can find the exercises via the button below or on the [Python in de Klas course page](https://dodona.ugent.be/nl/courses/2641/)!**
+**Want to get started with this yourself in your classroom? Super! Introducing young people to computational thinking, programming and maths concepts is important in an increasingly digital society. That definitely includes exploring-and delving into-Python. Feel free to help you with that! You can find the exercises via the button below or at www.pythonindeklas.be!**
 
 <div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://dodona.ugent.be/nl/courses/2641/">Dodona course!</a></div>
 

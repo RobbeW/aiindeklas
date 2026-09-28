@@ -1,6 +1,5 @@
 ---
 import PageHero from "./PageHero.astro";
-import PreviewNotice from "./PreviewNotice.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { withBase, type SiteLocale } from "../lib/routing";
 import type { ImageMetadata } from "astro";
@@ -23,12 +22,12 @@ interface Props {
   description: string;
   locale: SiteLocale;
   canonicalPath: string;
-  eyebrow: string;
   cards: ListingCard[];
   alternatePath?: string | null;
   thematicLinks?: Array<{ label: string; href: string }>;
   archiveHref?: string | null;
   countLabel?: string;
+  heroImage?: ImageMetadata;
 }
 
 const {
@@ -37,12 +36,12 @@ const {
   description,
   locale,
   canonicalPath,
-  eyebrow,
   cards,
   alternatePath = null,
   thematicLinks = [],
   archiveHref = null,
-  countLabel = locale === "en" ? "entries" : "items"
+  countLabel = locale === "en" ? "entries" : "items",
+  heroImage
 } = Astro.props;
 const hrefFor = (card: ListingCard) => card.external ? card.href : withBase(card.href);
 ---
@@ -57,9 +56,8 @@ const hrefFor = (card: ListingCard) => card.external ? card.href : withBase(card
   hasDirectTranslation={Boolean(alternatePath)}
 >
   <main id="main-content" tabindex="-1">
-    <PageHero eyebrow={eyebrow} title={title} lead={description} compact />
+    <PageHero title={title} lead={description} compact image={heroImage} />
     <section class="section shell listing-layout" aria-labelledby="listing-heading">
-      <PreviewNotice lang={locale} />
       <div class="intro prose"><slot /></div>
       {thematicLinks.length > 0 && <nav class="theme-links" aria-label={locale === "en" ? "Explore topics" : "Thema's ontdekken"}>
         <h2 class="section-heading">{locale === "en" ? "Explore by topic" : "Ontdek per thema"}</h2>
@@ -69,7 +67,7 @@ const hrefFor = (card: ListingCard) => card.external ? card.href : withBase(card
         <h2 id="listing-heading" class="section-heading">
           {cards.length} {countLabel}
         </h2>
-        {archiveHref && <a href={withBase(archiveHref)}>{locale === "en" ? "Complete archive" : "Volledig archief"}</a>}
+        {archiveHref && <a class="content-button content-button--primary" href={withBase(archiveHref)}>{locale === "en" ? "Complete archive" : "Volledig archief"}</a>}
       </div>
       {cards.length > 0 ? (
         <div class="listing-grid">

@@ -9,6 +9,8 @@ import taxonomyRoutes from "../data/taxonomy-routes.json";
 import { toDocumentViewModel } from "../lib/content-view";
 import type { SiteLocale } from "../lib/routing";
 import { canonicalTaxonomyRoutes } from "../lib/taxonomy-routes.mjs";
+import onderwijsHero from "../assets/hero-images/hero_onderwijs.webp";
+import ParticipantPage from "../components/ParticipantPage.astro";
 
 type BodyEntry = CollectionEntry<"pages"> | CollectionEntry<"articles">;
 type ListingProps = {
@@ -18,24 +20,25 @@ type ListingProps = {
   description: string;
   locale: SiteLocale;
   canonicalPath: string;
-  eyebrow: string;
   cards: ListingCard[];
   alternatePath?: string | null;
   introEntry?: CollectionEntry<"pages"> | null;
   thematicLinks?: Array<{ label: string; href: string }>;
   archiveHref?: string | null;
   countLabel?: string;
+  heroImage?: ImageMetadata;
 };
 type WorkshopProps = { kind: "workshops"; workshops: Array<{ data: CollectionEntry<"workshops">["data"]; html: string }> };
-type RouteProps = { kind: "content"; entry: BodyEntry; socialImage: ImageMetadata | null; alternatePath?: string | null } | ListingProps | WorkshopProps;
+type RouteProps = { kind: "content"; entry: BodyEntry; socialImage: ImageMetadata | null; alternatePath?: string | null } | ListingProps | WorkshopProps | ParticipantProps;
+type ParticipantProps = { kind: "participant"; entry: CollectionEntry<"participantPages"> };
 
 export const getStaticPaths = async () => {
-  const [pageEntries, articleEntries, workshopEntries, projectEntries, mediaEntries] = await Promise.all([
+  const [pageEntries, articleEntries, workshopEntries, projectEntries, mediaEntries, participantEntries] = await Promise.all([
     getCollection("pages"),
     getCollection("articles"),
     getCollection("workshops"),
     getCollection("projects"),
-    getCollection("media")
+    getCollection("media"), getCollection("participantPages")
   ]);
   const migratedImages = import.meta.glob<{ default: ImageMetadata }>("../assets/migrated/**/*.{avif,gif,jpeg,jpg,png,webp}", { eager: true });
   const mediaById = new Map(mediaEntries.map((entry) => [entry.id, entry]));
@@ -90,9 +93,10 @@ export const getStaticPaths = async () => {
       props: {
         kind: "listing", title: pagesByPath.get("/onderwijs")!.data.title,
         description: pagesByPath.get("/onderwijs")!.data.excerpt!,
-        locale: "nl-BE", canonicalPath: "/onderwijs", eyebrow: "Onderwijs",
+        locale: "nl-BE", canonicalPath: "/onderwijs",
         cards: recentArticleCards("nl-BE"), alternatePath: "/education", introEntry: null, countLabel: "recente artikels",
         archiveHref: "/onderwijs/archief",
+        heroImage: onderwijsHero,
         thematicLinks: [
           { label: "AI-geletterdheid & leren", href: "/onderwijs/tag/AI+in+de+klas" },
           { label: "Talen & AI", href: "/onderwijs/tag/taaltechnologie" },
@@ -107,7 +111,7 @@ export const getStaticPaths = async () => {
       props: {
         kind: "listing", title: "Onderwijsarchief", seoTitle: "Onderwijsarchief",
         description: "Alle Nederlandstalige artikels over onderwijs en technologie, chronologisch verzameld.",
-        locale: "nl-BE", canonicalPath: "/onderwijs/archief", eyebrow: "Onderwijsarchief",
+        locale: "nl-BE", canonicalPath: "/onderwijs/archief",
         cards: articleCards("nl-BE"), introEntry: null, countLabel: "alle artikels"
       }
     },
@@ -116,7 +120,7 @@ export const getStaticPaths = async () => {
       props: {
         kind: "listing", title: pagesByPath.get("/education")!.data.title,
         description: pagesByPath.get("/education")!.data.seo.description ?? "Articles about education and technology.",
-        locale: "en", canonicalPath: "/education", eyebrow: "Education",
+        locale: "en", canonicalPath: "/education",
         cards: articleCards("en"), alternatePath: "/onderwijs", introEntry: pagesByPath.get("/education")
       }
     },
@@ -140,7 +144,7 @@ export const getStaticPaths = async () => {
       props: {
         kind: "listing", title: pagesByPath.get("/projects")!.data.title,
         description: pagesByPath.get("/projects")!.data.seo.description ?? "Educational projects by Robbe Wulgaert.",
-        locale: "en", canonicalPath: "/projects", eyebrow: "Project catalogue",
+        locale: "en", canonicalPath: "/projects",
         cards: projectEntries.map((entry) => ({
           id: entry.data.slug,
           title: entry.data.title,
@@ -165,7 +169,6 @@ export const getStaticPaths = async () => {
         : `Artikels over ${taxonomy.type} “${taxonomy.label}”.`,
       locale: taxonomy.locale as SiteLocale,
       canonicalPath: taxonomy.path,
-      eyebrow: taxonomy.type === "tag" ? "Tag" : "Category",
       cards: taxonomy.articles.flatMap((pathname) => {
         const entry = articlesByPath.get(pathname);
         return entry ? [{
@@ -180,7 +183,14 @@ export const getStaticPaths = async () => {
     }
   }));
 
-  return [...contentRoutes, ...listingRoutes, ...taxonomyListings];
+  const participantRoutes = participantEntries.map((entry) => ({
+    params: { path: entry.data.route_path.slice(1) }, props: { kind: "participant" as const, entry }
+  }));
+  const participantPaths = new Set(participantEntries.map((entry) => entry.data.route_path));
+  if (participantPaths.size !== participantEntries.length) throw new Error("Duplicate participant route_path");
+  const emitted = new Set([...contentRoutes.map((route) => `/${route.params.path}`), ...listingRoutes.map((route) => `/${route.params.path}`), ...taxonomyListings.map((route) => `/${route.params.path}`)] .map((path) => path.toLocaleLowerCase("en-US")));
+  for (const route of participantPaths) if (emitted.has(route.toLocaleLowerCase("en-US"))) throw new Error(`Participant route collides with emitted route: ${route}`);
+  return [...contentRoutes, ...listingRoutes, ...taxonomyListings, ...participantRoutes];
 };
 
 const route = Astro.props as RouteProps;
@@ -196,6 +206,8 @@ const socialImage = view?.socialImage ? (await getImage({ src: view.socialImage 
   ? <ContentPage view={view} socialImage={socialImage} alternatePath={route.alternatePath}><Content /></ContentPage>
   : route.kind === "workshops"
     ? <WorkshopCollectionPage workshops={route.workshops.map(({ data, html }) => ({ ...data, sourceDetails: data.source_details, html }))} />
+  : route.kind === "participant"
+    ? <ParticipantPage entry={route.entry} />
   : route.kind === "listing"
     ? <RouteListingPage
         title={route.title}
@@ -203,11 +215,11 @@ const socialImage = view?.socialImage ? (await getImage({ src: view.socialImage 
         description={route.description}
         locale={route.locale}
         canonicalPath={route.canonicalPath}
-        eyebrow={route.eyebrow}
         cards={route.cards}
         alternatePath={route.alternatePath}
         thematicLinks={route.thematicLinks}
         archiveHref={route.archiveHref}
         countLabel={route.countLabel}
+        heroImage={route.heroImage}
       >{Intro && <Intro />}</RouteListingPage>
     : null}

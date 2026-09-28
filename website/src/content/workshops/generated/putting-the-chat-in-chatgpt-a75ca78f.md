@@ -35,19 +35,19 @@ prerequisites: []
 delivery_modes:
   - "on_site"
   - "cno"
-location_notes: "Duurtijd:Deze nascholing duurt 2.5 uur en wordt ook ingericht via het CNO en de Universiteit Antwerpen. Locatie:Deze nascholing kan ook georganiseerd worden op een individuele school.Prijs:450 euro (exclusief verplaatsingskosten)verplaatsingskosten: 0.42 euro per kmGroepsgrootte:maximaal 30 deelnemers"
+location_notes: "Duurtijd:Deze nascholing duurt 2.5 uur en wordt ook ingericht via het CNO en de Universiteit Antwerpen. Locatie:Deze nascholing kan ook georganiseerd worden op een individuele school.Groepsgrootte:maximaal 30 deelnemersPrijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 price:
   amount_eur: null
   includes_vat: null
-  display: "Duurtijd:Deze nascholing duurt 2.5 uur en wordt ook ingericht via het CNO en de Universiteit Antwerpen. Locatie:Deze nascholing kan ook georganiseerd worden op een individuele school.Prijs:450 euro (exclusief verplaatsingskosten)verplaatsingskosten: 0.42 euro per kmGroepsgrootte:maximaal 30 deelnemers"
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 travel_cost:
   amount_per_km_eur: null
   public_transport_policy: null
-  display: "Duurtijd:Deze nascholing duurt 2.5 uur en wordt ook ingericht via het CNO en de Universiteit Antwerpen. Locatie:Deze nascholing kan ook georganiseerd worden op een individuele school.Prijs:450 euro (exclusief verplaatsingskosten)verplaatsingskosten: 0.42 euro per kmGroepsgrootte:maximaal 30 deelnemers"
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 group_size:
   minimum: null
   maximum: null
-  display: "Duurtijd:Deze nascholing duurt 2.5 uur en wordt ook ingericht via het CNO en de Universiteit Antwerpen. Locatie:Deze nascholing kan ook georganiseerd worden op een individuele school.Prijs:450 euro (exclusief verplaatsingskosten)verplaatsingskosten: 0.42 euro per kmGroepsgrootte:maximaal 30 deelnemers"
+  display: "Duurtijd:Deze nascholing duurt 2.5 uur en wordt ook ingericht via het CNO en de Universiteit Antwerpen. Locatie:Deze nascholing kan ook georganiseerd worden op een individuele school.Groepsgrootte:maximaal 30 deelnemersPrijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 booking_cta:
   label: "Neem contact op"
   href: "/contact"
@@ -66,8 +66,8 @@ source_details:
     text: "Leerkrachten secundair onderwijs die aan de slag wensen te gaan met GPT-technologie. Er is geen vakspecifiek profiel verbonden aan deze sessie. Als deelnemer moet je wel voldoende bekwaam zijn met het gebruik van een tekstverwerker en een webbrowser.Deze sessie is van het type 'workshop'. Dat betekent dat er praktijkopdrachten zijn waarbij de laptop nodig is."
     volatile: false
   - heading: "Praktische informatie"
-    html: "<p><strong>Duurtijd</strong>:</p><ul><li><p>Deze nascholing duurt 2.5 uur en wordt ook ingericht via het CNO en de Universiteit Antwerpen. </p></li></ul><p><strong>Locatie</strong>:</p><ul><li><p>Deze nascholing kan ook georganiseerd worden op een individuele school.</p></li></ul><p><strong>Prijs:</strong></p><ul><li><p>450 euro (exclusief verplaatsingskosten)</p></li><li><p>verplaatsingskosten: 0.42 euro per km</p></li></ul><p><strong>Groepsgrootte:</strong></p><ul><li><p>maximaal 30 deelnemers</p></li></ul>"
-    text: "Duurtijd:Deze nascholing duurt 2.5 uur en wordt ook ingericht via het CNO en de Universiteit Antwerpen. Locatie:Deze nascholing kan ook georganiseerd worden op een individuele school.Prijs:450 euro (exclusief verplaatsingskosten)verplaatsingskosten: 0.42 euro per kmGroepsgrootte:maximaal 30 deelnemers"
+    html: "<p><strong>Duurtijd</strong>:</p><ul><li><p>Deze nascholing duurt 2.5 uur en wordt ook ingericht via het CNO en de Universiteit Antwerpen. </p></li></ul><p><strong>Locatie</strong>:</p><ul><li><p>Deze nascholing kan ook georganiseerd worden op een individuele school.</p></li></ul><p><strong>Groepsgrootte:</strong></p><ul><li><p>maximaal 30 deelnemers</p></li></ul><p>Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden.</p>"
+    text: "Duurtijd:Deze nascholing duurt 2.5 uur en wordt ook ingericht via het CNO en de Universiteit Antwerpen. Locatie:Deze nascholing kan ook georganiseerd worden op een individuele school.Groepsgrootte:maximaal 30 deelnemersPrijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
     volatile: true
 ---
 

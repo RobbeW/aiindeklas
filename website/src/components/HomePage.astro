@@ -43,6 +43,15 @@ const socialImage = content.socialImage ? (await getImage({ src: content.socialI
     gap: 1.4rem;
   }
 
+  :global(html), :global(body) { overflow-x: clip; }
+  .source-home :global(.home-block) { min-width: 0; hyphens: none; }
+  .source-home :global(.home-block--work), .source-home :global(.home-block--education) { max-width: 48rem; }
+  .source-home :global(.home-block--hero) { display: grid; gap: 1.4rem; }
+  .source-home :global(.home-block--book) { display: grid; gap: 1.4rem; }
+  .source-home :global(.home-action) { margin-block: 0; }
+  .source-home :global(.home-actions) { display: grid; gap: .75rem; }
+  .source-home :global(.home-actions .content-button) { width: 100%; }
+
   .source-home :global(h1) {
     max-width: none;
     margin: 0;
@@ -70,13 +79,13 @@ const socialImage = content.socialImage ? (await getImage({ src: content.socialI
     border-radius: 0;
   }
 
-  .source-home :global(p:nth-of-type(1) img) {
+  .source-home :global(.home-block--hero img) {
     aspect-ratio: 4 / 3;
     object-fit: cover;
     object-position: center;
   }
 
-  .source-home :global(p:nth-of-type(5) img) {
+  .source-home :global(.home-block--book img) {
     aspect-ratio: 4 / 5;
     object-fit: cover;
     object-position: 50% center;
@@ -86,23 +95,16 @@ const socialImage = content.socialImage ? (await getImage({ src: content.socialI
 
   @media (min-width: 56rem) {
     .source-home {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      column-gap: clamp(1rem, 2vw, 2.5rem);
-      row-gap: 1.4rem;
-      align-items: start;
+      gap: clamp(2rem, 4vw, 4rem);
     }
 
-    .source-home :global(h1) { grid-column: 1; grid-row: 1; align-self: end; }
-    .source-home :global(p:nth-of-type(1)) { grid-column: 2; grid-row: 1; }
-    .source-home :global(p:nth-of-type(2)) { grid-column: 2; grid-row: 2; }
-    .source-home :global(p:nth-of-type(3)) { grid-column: 1; grid-row: 3; }
-    .source-home :global(p:nth-of-type(4)) { grid-column: 1; grid-row: 4; }
-    .source-home :global(p:nth-of-type(5)) { grid-column: 1; grid-row: 5 / span 3; }
-    .source-home :global(.content-button-row:nth-of-type(1)) { grid-column: 2; grid-row: 3; }
-    .source-home :global(.content-button-row:nth-of-type(2)) { grid-column: 2; grid-row: 4; }
-    .source-home :global(.content-button-row:nth-of-type(3)) { grid-column: 2; grid-row: 5; }
+    .source-home :global(.home-block--hero) { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; }
+    .source-home :global(.home-block--hero h1) { align-self: end; }
+    .source-home :global(.home-block--book) { grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); align-items: start; }
+    .source-home :global(.home-block--book .home-actions) { grid-column: 2; align-self: start; }
+    .source-home :global(.home-block--book img) { grid-row: 1 / span 3; }
 
-    .source-home :global(p:nth-of-type(5) img) { aspect-ratio: 0.72; }
+    .source-home :global(.home-block--book img) { aspect-ratio: 0.72; }
   }
 
 </style>

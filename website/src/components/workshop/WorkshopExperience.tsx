@@ -78,7 +78,7 @@ export function WorkshopDetailContent({ offer, categoryLabel, answers, contactLi
 }) {
   const content = sectionHtml(offer, ["programma", "doelen"]);
   const audience = sectionHtml(offer, ["doelgroep"]);
-  const practical = sectionHtml(offer, ["praktische informatie"]);
+  const practical = sectionHtml(offer, ["praktische informatie", "prijslijst"]);
   const format = offer.selectedFormat ?? offer.formats[0];
   return <div ref={containerRef} className="workshop-detail" tabIndex={-1}>
     <DialogHeader>
@@ -101,7 +101,10 @@ export function WorkshopDetailContent({ offer, categoryLabel, answers, contactLi
       </AccordionItem>
       <AccordionItem value="praktische-info">
         <AccordionTrigger>Praktische info</AccordionTrigger>
-        <AccordionContent><RichSection html={practical} fallback={[offer.source.duration_display, offer.source.location_notes].filter(Boolean).join(" ")} /></AccordionContent>
+        <AccordionContent>
+          <RichSection html={practical} fallback={[offer.source.duration_display, offer.source.location_notes].filter(Boolean).join(" ")} />
+          <a className={`${buttonVariants({ variant: "default" })} workshop-detail__contact`} href={contactLink(offer, answers)}>Bespreek deze sessie</a>
+        </AccordionContent>
       </AccordionItem>
       {offer.related.length > 0 ? <AccordionItem value="verder-lezen">
         <AccordionTrigger>Verder lezen</AccordionTrigger>
@@ -110,7 +113,6 @@ export function WorkshopDetailContent({ offer, categoryLabel, answers, contactLi
       </AccordionItem> : null}
     </Accordion>
     <DialogFooter className="workshop-detail__footer">
-      <a className={buttonVariants()} href={contactLink(offer, answers)}>Bespreek deze sessie</a>
       <Button variant="ghost" onClick={close}>Sluiten</Button>
     </DialogFooter>
   </div>;

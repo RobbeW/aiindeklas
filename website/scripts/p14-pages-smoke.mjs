@@ -9,7 +9,8 @@ const args = process.argv.slice(2);
 const argValue = (name) => { const index = args.indexOf(name); return index < 0 ? null : args[index + 1] ?? null; };
 const localDir = argValue("--local");
 const deployedUrl = argValue("--url");
-if (Boolean(localDir) === Boolean(deployedUrl)) throw new Error("Usage: pnpm p14:smoke -- --local dist | --url https://<owner>.github.io/aiindeklas/");
+const expectIndexable = args.includes("--expect-indexable");
+if (Boolean(localDir) === Boolean(deployedUrl)) throw new Error("Usage: pnpm p14:smoke -- --local dist | --url https://<owner>.github.io/aiindeklas/ [--expect-indexable]");
 
 const taxonomyRoutes = JSON.parse(await readFile(resolve(root, "src/data/taxonomy-routes.json"), "utf8"));
 const canonicalTaxonomyPaths = new Set(canonicalTaxonomyRoutes(taxonomyRoutes).map(({ path }) => path));
@@ -52,7 +53,9 @@ if (localDir) {
   }
   const index = await readRoute("/");
   if (index) {
-    if (!/<meta\b(?=[^>]*\bname=["']robots["'])(?=[^>]*\bcontent=["'][^"']*noindex)/i.test(index)) deployedFailures.push("preview homepage does not retain noindex");
+    const noindex = /<meta\b(?=[^>]*\bname=["']robots["'])(?=[^>]*\bcontent=["'][^"']*noindex)/i.test(index);
+    if (expectIndexable && noindex) deployedFailures.push("production homepage unexpectedly contains noindex");
+    if (!expectIndexable && !noindex) deployedFailures.push("preview homepage does not retain noindex");
     if (!/<link\b(?=[^>]*\brel=["']canonical["'])(?=[^>]*\bhref=["'][^"']*\/aiindeklas\/)/i.test(index)) deployedFailures.push("project canonical is missing /aiindeklas/ prefix");
     for (const asset of assetPath(index)) {
       const pathname = new URL(asset, "https://local.invalid").pathname;
@@ -81,7 +84,11 @@ if (localDir) {
     const { response, body } = await get(path);
     checkedRoutes++;
     if (!response.ok) deployedFailures.push(`${path} returned HTTP ${response.status}`);
-    if (path === "/" && !/<meta\b(?=[^>]*\bname=["']robots["'])(?=[^>]*\bcontent=["'][^"']*noindex)/i.test(body)) deployedFailures.push("deployed preview homepage does not retain noindex");
+    if (path === "/") {
+      const noindex = /<meta\b(?=[^>]*\bname=["']robots["'])(?=[^>]*\bcontent=["'][^"']*noindex)/i.test(body);
+      if (expectIndexable && noindex) deployedFailures.push("deployed production homepage unexpectedly contains noindex");
+      if (!expectIndexable && !noindex) deployedFailures.push("deployed preview homepage does not retain noindex");
+    }
   }
   const { body: homepage } = await get("/");
   for (const asset of assetPath(homepage)) {
@@ -100,7 +107,7 @@ if (localDir) {
 
 const report = {
   schema_version: "1.0.0",
-  profile: "github-pages-project",
+  profile: expectIndexable ? "production-project" : "github-pages-project-preview",
   deployment_url: deployedUrl ?? null,
   base: basePath,
   smoke_kind: deployedUrl ? "deployed_http" : "local_artifact",
@@ -110,7 +117,7 @@ const report = {
   canonicalized_case_collision_pairs: collisionPairs,
   unresolved_case_collision_pairs: [],
   case_sensitive_route_verification: caseSensitiveVerification,
-  noindex_review_gate_preserved: true,
+  expected_index_state: expectIndexable ? "indexable" : "noindex",
   status: deployedFailures.length ? "failed" : "passed",
   failures: deployedFailures
 };

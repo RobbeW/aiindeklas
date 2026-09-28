@@ -34,19 +34,19 @@ target_audience: "Deze workshop richt zich specifiek op docenten technische en p
 prerequisites: []
 delivery_modes:
   - "on_site"
-location_notes: "Locatie:Deze keynote wordt ingericht op locatie, dus ter plekke op jouw school.Deze workshop kan ook digitaal aangeboden worden.Duurtijd:De verkorte keynote duurt 1.5 uur.De lange versie duurt 3 uur. Kostprijs:300 euro (exclusief verplaatsingskosten) voor de verkorte versie. 450 euro voor de lange versie."
+location_notes: "Locatie:Deze keynote wordt ingericht op locatie, dus ter plekke op jouw school.Deze workshop kan ook digitaal aangeboden worden.Duurtijd:De verkorte keynote duurt 1.5 uur.De lange versie duurt 3 uur. Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 price:
   amount_eur: null
   includes_vat: null
-  display: "Locatie:Deze keynote wordt ingericht op locatie, dus ter plekke op jouw school.Deze workshop kan ook digitaal aangeboden worden.Duurtijd:De verkorte keynote duurt 1.5 uur.De lange versie duurt 3 uur. Kostprijs:300 euro (exclusief verplaatsingskosten) voor de verkorte versie. 450 euro voor de lange versie."
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 travel_cost:
   amount_per_km_eur: null
   public_transport_policy: null
-  display: "Locatie:Deze keynote wordt ingericht op locatie, dus ter plekke op jouw school.Deze workshop kan ook digitaal aangeboden worden.Duurtijd:De verkorte keynote duurt 1.5 uur.De lange versie duurt 3 uur. Kostprijs:300 euro (exclusief verplaatsingskosten) voor de verkorte versie. 450 euro voor de lange versie."
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 group_size:
   minimum: null
   maximum: null
-  display: "Locatie:Deze keynote wordt ingericht op locatie, dus ter plekke op jouw school.Deze workshop kan ook digitaal aangeboden worden.Duurtijd:De verkorte keynote duurt 1.5 uur.De lange versie duurt 3 uur. Kostprijs:300 euro (exclusief verplaatsingskosten) voor de verkorte versie. 450 euro voor de lange versie."
+  display: "Locatie:Deze keynote wordt ingericht op locatie, dus ter plekke op jouw school.Deze workshop kan ook digitaal aangeboden worden.Duurtijd:De verkorte keynote duurt 1.5 uur.De lange versie duurt 3 uur. Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 booking_cta:
   label: "Neem contact op"
   href: "/contact"
@@ -65,8 +65,8 @@ source_details:
     text: "Deze workshop richt zich specifiek op docenten technische en praktijkvakken uit de eerste, tweede en derde graad van het secundair onderwijs. De toepassingen rond de AI-detectie richten zich vooral op de tweede en derde graad van de dubbele finaliteit. Er is geen vakspecifieke voorkennis vereist voor deelname aan deze workshop, maar basiskennis over programmeren en de Arduino kunnen je een meerwaarde opleveren. Vaardigheden in het werken met een computer, browser, mappen binnen de verkenner … zijn wel zeker aangewezen."
     volatile: false
   - heading: "Praktische Informatie"
-    html: "<p><strong>Locatie</strong>:</p><ul><li><p>Deze keynote wordt ingericht op locatie, dus ter plekke op jouw school.</p></li><li><p>Deze workshop kan ook digitaal aangeboden worden.</p></li></ul><p><strong>Duurtijd</strong>:</p><ul><li><p>De verkorte keynote duurt 1.5 uur.</p></li><li><p>De lange versie duurt 3 uur. </p></li></ul><p><strong>Kostprijs</strong>:</p><ul><li><p>300 euro (exclusief verplaatsingskosten) voor de verkorte versie. </p></li><li><p>450 euro voor de lange versie. </p></li></ul>"
-    text: "Locatie:Deze keynote wordt ingericht op locatie, dus ter plekke op jouw school.Deze workshop kan ook digitaal aangeboden worden.Duurtijd:De verkorte keynote duurt 1.5 uur.De lange versie duurt 3 uur. Kostprijs:300 euro (exclusief verplaatsingskosten) voor de verkorte versie. 450 euro voor de lange versie."
+    html: "<p><strong>Locatie</strong>:</p><ul><li><p>Deze keynote wordt ingericht op locatie, dus ter plekke op jouw school.</p></li><li><p>Deze workshop kan ook digitaal aangeboden worden.</p></li></ul><p><strong>Duurtijd</strong>:</p><ul><li><p>De verkorte keynote duurt 1.5 uur.</p></li><li><p>De lange versie duurt 3 uur. </p></li></ul><p>Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden.</p>"
+    text: "Locatie:Deze keynote wordt ingericht op locatie, dus ter plekke op jouw school.Deze workshop kan ook digitaal aangeboden worden.Duurtijd:De verkorte keynote duurt 1.5 uur.De lange versie duurt 3 uur. Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
     volatile: true
   - heading: "Feedback Deelnemers"
     html: "<p>De deelnemers op de ICT Praktijkdag gaven deze nascholing een score van 4.65/5. </p><p>Enkele voorbeelden van hun feedback:</p><ul><li><p><em>Heel interessant en effectief hands-on. </em></p></li><li><p><em>Je krijgt effectief een werkende module aangereikt om toe te passen in je eigen klasomgeving. </em></p></li><li><p><em>Heel goed gestructureerd en opgebouwd.</em> </p></li></ul>"

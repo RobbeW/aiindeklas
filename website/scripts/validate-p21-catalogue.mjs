@@ -34,7 +34,8 @@ const catalogue = buildWorkshopCatalogue({
   verifiedRoutes,
 });
 const choice = { persona: "schoolleider_beleid", need: "breed_kader", duration: "ongeveer_90_min", groupSize: "tot_15" };
-assert.equal(catalogue.offers.length, 12, "published catalogue integrity");
+assert.equal(catalogue.offers.length, 10, "published catalogue integrity");
+assert.ok(!catalogue.offers.some((offer) => ["chatgpt_vergiftigd_geschenk", "grieks_en_ai_een_knap_duo"].includes(offer.id)), "retired offers must not be active");
 assert.ok(catalogue.offers.every((offer) => offer.source.title === offer.title), "every offer must resolve to an existing workshop record");
 assert.ok(catalogue.offers.every((offer) => offer.route === "/onderwijs/workshops-en-nascholingen"), "offer routes must use verified canonical paths");
 assert.ok(catalogue.offers.every((offer) => Object.hasOwn(brief.bookable_offers, offer.id)), "only declared bookable-offer records may become offers");
@@ -45,8 +46,6 @@ assert.equal(rankWorkshopOffers(catalogue, { ...choice, groupSize: "meer_dan_100
 const conflict = catalogue.offers.find((o) => o.id === "ai_en_taaltechnologie");
 assert.equal(conflict.durationConflict, true, "duration conflict preserved");
 assert.ok(conflict.durationEvidence?.routing_choice, "duration conflict evidence preserved");
-const unknownCapacity = catalogue.offers.find((o) => o.id === "chatgpt_vergiftigd_geschenk");
-assert.equal(unknownCapacity.formats[0].unknownCapacity, true, "unknown capacity remains explicit");
 assert.ok(rankWorkshopOffers(catalogue, { ...choice, need: "praktisch_ai", duration: "flexibel" }, brief).length <= 3, "maximum three");
 const related = catalogue.relatedFor(catalogue.offers.find((offer) => offer.id === "putting_the_chat_in_chatgpt"));
 assert.equal(related.length, 2, "verified related content is capped at two");

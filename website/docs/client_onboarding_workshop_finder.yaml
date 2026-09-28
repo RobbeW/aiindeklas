@@ -40,16 +40,6 @@ categories:
     flagship_offer_id: putting_the_chat_in_chatgpt
     bookable_offer_ids:
     - putting_the_chat_in_chatgpt
-    - chatgpt_vergiftigd_geschenk
-    planned_consolidation:
-      status: future_information_architecture
-      note: 'De gebruiker wil ChatGPT: Een (Vergiftigd) Geschenk voor Leraar en Leerling? op termijn inhoudelijk samenbrengen met Putting the chat in ChatGPT. Dit YAML-bestand houdt beide huidige gepubliceerde sessies apart, zodat de huidige website niet verkeerd wordt voorgesteld.
-
-        '
-      merge_candidate_id: chatgpt_vergiftigd_geschenk
-      primary_future_offer_id: putting_the_chat_in_chatgpt
-      user_proposed_future_label: Putting the chat in ChatGPT en andere taalmodellen
-      published_title_remains: Putting the chat in ChatGPT
   vakspecifieke_professionalisering:
     label: Vakspecifieke professionalisering
     customer_question: Ik zoek een sessie die aansluit bij een concreet vak- of technologiedomein.
@@ -65,7 +55,6 @@ categories:
         bookable_offer_ids:
         - ai_en_latijn_breng_tacitus_tot_leven
         - latijnse_inscripties_en_ai
-        - grieks_en_ai_een_knap_duo
         - minecraft_en_klassieke_talen
       computationeel_denken_programmeren:
         label: Computationeel denken & programmeren
@@ -343,42 +332,6 @@ bookable_offers:
     finder_exposed_formats:
     - keynote
     catalogue_note: De huidige website publiceert zowel een keynote- als workshopvariant. In de nieuwe onboarding/finder wordt deze sessie uitsluitend onder 'Keynotes & inspiratie' aangeboden.
-  chatgpt_vergiftigd_geschenk:
-    published_title: 'ChatGPT: Een (Vergiftigd) Geschenk voor Leraar en Leerling?'
-    primary_category: ai_geletterdheid_onderwijspraktijk
-    subcategory: null
-    published_formats:
-    - type: workshop
-      duration_minutes: 150
-      max_group_size: null
-    published_audience:
-    - leraren
-    - directeurs
-    - graadcoördinatoren
-    - leerlingenbegeleiders
-    - pedagogische ICT-coördinatoren
-    topic_tags:
-    - algemene AI-inleiding
-    - GPT
-    - ChatGPT
-    - Microsoft Copilot
-    - Google Gemini
-    - lesmateriaal
-    - gewenst en ongewenst gebruik
-    - plagiaatdetectie
-    - hallucinaties
-    - ecologie
-    - privacy
-    - afsprakenkader
-    lifecycle:
-      current_status: published
-      future_status: merge_candidate
-      merge_with: putting_the_chat_in_chatgpt
-    finder_role: 'Huidige sessie blijft in de databank zolang ze gepubliceerd is, maar kan in de toekomstige UI lager worden gerankt wanneer de inhoud wordt samengevoegd.
-
-      '
-    source_page: workshops_en_nascholingen
-    published: true
   ai_en_taaltechnologie:
     published_title: 'AI en taaltechnologie: hoe ga je er effectief mee aan de slag in je taalles?'
     primary_category: vakspecifieke_professionalisering
@@ -506,29 +459,6 @@ bookable_offers:
     - contextualisering
     - mens-machine samenwerking
     - kritische evaluatie van AI-output
-    source_page: workshops_en_nascholingen
-    published: true
-  grieks_en_ai_een_knap_duo:
-    published_title: Grieks en AI - een knap duo
-    primary_category: vakspecifieke_professionalisering
-    subcategory: klassieke_talen
-    published_formats:
-    - type: workshop_online
-      duration_minutes: 90
-      max_group_size: null
-    - type: workshop_fysiek
-      duration_minutes: 120
-      max_group_size: null
-    published_audience:
-    - leerkrachten Klassieke Talen tweede of derde graad secundair onderwijs
-    topic_tags:
-    - Oudgrieks
-    - epigrafie
-    - AI
-    - Ithaca
-    - inscripties herstellen
-    - kritische beoordeling
-    - AI-geletterdheid
     source_page: workshops_en_nascholingen
     published: true
   minecraft_en_klassieke_talen:
@@ -676,7 +606,6 @@ supporting_projects:
     related_bookable_offers:
     - putting_the_chat_in_chatgpt
     - ai_in_de_klas_van_lesmateriaal_tot_leerlijn
-    - chatgpt_vergiftigd_geschenk
     bookable_offer: false
   schrijftaken_zonder_aiaiai_project:
     published_title: Schrijftaken zonder AIAIAI

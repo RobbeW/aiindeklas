@@ -25,20 +25,36 @@ navigation: []
 call_to_actions: []
 ---
 
+<section class="home-block home-block--hero">
+
 # Hoi, ik ben Robbe!
 
 ![Robbe Wulgaert in een klaslokaal, foto Elka Pannier voor De Standaard](../../../assets/migrated/32/3290f5e6aa83d70048bd23ab5b5c8eef400b4b963b0de7770cc6f23cb8b9bcfa-w1440.webp)
+
+</section>
+
+<section class="home-block home-block--work">
 
 Meer over mijn werk voor [Het Digitale Dilemma bij VRT MAX](https://www.vrt.be/vrtmax/a-z/het-digitale-dilemma/1/het-digitale-dilemma-s1a2/).
 
 Ik ben leraar programmeren, artificiële intelligentie en Design Thinking in Gent. Meestal sta ik voor de klas op het Sint-Lievenscollege, geef ik les bij het Centrum Nascholing Onderwijs van de Universiteit Antwerpen of ben ik druk aan het schrijven als AI-onderzoeker in een Gentse koffiebar. Daarnaast ben ik auteur van het boek **_AI in de klas – Praktische gids voor onderwijsprofessionals_** en van het onderzoek [_‘_**_Contextualizing ancient texts with generative neural networks’._**](https://www.nature.com/articles/s41586-025-09292-5)
 
+</section>
+
+<section class="home-block home-block--education">
+
 Ben je gepassioneerd door of nieuwsgierig naar onderwijs over programmeren, computationeel denken en AI-geletterdheid? Op mijn website vind je tal van voorbeelden van concreet lesmateriaal, dat ik ook graag in boekvorm of persoonlijk bij jou op school of in jouw organisatie toelicht.
+</section>
+
+<section class="home-block home-block--book">
 
 ![Robbe Wulgaert toont het boek AI in de klas](../../../assets/migrated/94/948800dfa795d005b45ec86d50b11d3c1d11c84a33985eeba7eb986d0a7f5ab0-w1600.webp)
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/onderwijs/workshops-en-nascholingen">Aanbod nascholingen</a></div>
+<div class="home-actions">
+<div class="content-button-row content-button-row--center home-action home-action--workshops"><a class="content-button content-button--primary content-button--medium" href="/onderwijs/workshops-en-nascholingen">Aanbod nascholingen</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--secondary content-button--medium" href="/onderwijs">Onderwijs en lesmateriaal</a></div>
+<div class="content-button-row content-button-row--center home-action home-action--education"><a class="content-button content-button--primary content-button--medium" href="/onderwijs">Onderwijs en lesmateriaal</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--text content-button--medium" href="/boek">Boek: AI in de klas</a></div>
+<div class="content-button-row content-button-row--center home-action home-action--book"><a class="content-button content-button--primary content-button--medium" href="/boek">Boek: AI in de klas</a></div>
+</div>
+</section>

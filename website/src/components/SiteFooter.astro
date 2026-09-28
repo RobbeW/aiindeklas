@@ -26,7 +26,7 @@ if (!socialEntry || socialEntry.data.kind !== "social") throw new Error("Social 
             </a>
           </li>
         ))}
-        <li><a href="#privacy-notice">{lang === "en" ? "Privacy" : "Privacy"}</a></li>
+        <li><a href="#privacy-notice" data-privacy-open aria-controls="privacy-notice" aria-expanded="false">{lang === "en" ? "Privacy" : "Privacy"}</a></li>
       </ul></div>
       <div class="footer-group"><h2>{lang === "en" ? "Follow along" : "Volg mee"}</h2><ul class="footer-links">
         {socialEntry.data.links.slice(0, 4).map((link) => (
@@ -53,6 +53,11 @@ if (!socialEntry || socialEntry.data.kind !== "social") throw new Error("Social 
     gap: 2.5rem;
   }
 
+  .footer-nav {
+    display: grid;
+    gap: 2rem;
+  }
+
   .footer-name { margin: 0; font-size: 1.25rem; font-weight: 900; }
   .footer-registration { max-width: 34rem; color: var(--color-on-dark-muted); overflow-wrap: anywhere; }
 
@@ -66,7 +71,7 @@ if (!socialEntry || socialEntry.data.kind !== "social") throw new Error("Social 
   }
 
   .footer-group h2 { margin: 0 0 0.65rem; color: inherit; font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; }
-  .footer-group + .footer-group { margin-top: 1.25rem; }
+  .footer-group + .footer-group { margin-top: 0; }
 
   .site-footer a { color: var(--color-on-brand); text-underline-offset: 0.25em; }
 
@@ -93,7 +98,11 @@ if (!socialEntry || socialEntry.data.kind !== "social") throw new Error("Social 
   .source-home-footer .footer-bottom { border-top-color: var(--color-line); }
 
   @media (min-width: 48rem) {
-    .footer-grid { grid-template-columns: 1.4fr 1fr; align-items: end; }
-    .footer-links { justify-content: flex-end; }
+    .footer-grid { grid-template-columns: minmax(12rem, 1.15fr) minmax(0, 1.85fr); align-items: start; }
+    .footer-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  }
+
+  @media (max-width: 47.99rem) {
+    .footer-nav { grid-template-columns: 1fr; }
   }
 </style>

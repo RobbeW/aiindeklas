@@ -155,4 +155,4 @@ Accessibility is an important element within this project. The supplies needed t
 
 Want to work on this yourself in your classroom? Super! Introducing young people to history, language and culture is important. That certainly includes exploring the subject of Greek. Feel free to help you with that!
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contactinfo">Get in touch!</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contactinfo" target="_blank" rel="noreferrer">Get in touch!</a></div>

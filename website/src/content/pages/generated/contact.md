@@ -1,6 +1,6 @@
 ---
 id: "source-page-contact"
-title: "Contact | Ontdek meer, neem contact op!"
+title: "Contact"
 slug: "contact"
 locale: "nl-BE"
 translation_key: "contact"
@@ -15,7 +15,7 @@ author: "robbe-wulgaert"
 excerpt: "Neem contact op met Robbe over onderwijs, lesmateriaal, workshops en projecten."
 hero: null
 seo:
-  title: "Contact | Ontdek meer, neem contact op!"
+  title: "Contact"
   description: "Neem contact op met Robbe over onderwijs, lesmateriaal, workshops en projecten."
   canonical_path: "/contact"
   image: null
@@ -29,10 +29,10 @@ call_to_actions: []
 
 Je kan ook aansluiten bij onze community op Discord. Daar kan je lesmateriaal downloaden, AI-modellen vinden, didactische tips uitwisselen … en veel meer!
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--secondary content-button--medium" href="https://discord.gg/U77FKEQfC6">Sluit aan bij de Discord Community</a></div>
+<div class="content-button-row content-button-row--center"><a class="button button--primary" href="https://discord.gg/U77FKEQfC6">Sluit aan bij de Discord Community</a></div>
 
 **Je wilt me trakteren op koffie:**
 
 Ik ben nogal een koffieslurper. Je kan er geld op inzetten dat het lesmateriaal dat je van mij gebruikt, gemaakt is bij Zohran in de Gentse zaak Koffeine. Steun je me een _‘jatte kaffee’_?
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--secondary content-button--medium" href="https://buymeacoffee.com/aiindeklas">Steun mijn Koffiefonds</a></div>
+<div class="content-button-row content-button-row--center"><a class="button button--primary" href="https://buymeacoffee.com/aiindeklas">Steun mijn Koffiefonds</a></div>

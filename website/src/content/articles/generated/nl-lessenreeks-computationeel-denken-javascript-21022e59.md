@@ -133,6 +133,6 @@ Wil je hier zelf mee aan de slag in jouw klaslokaal? Super! De toekomst zal stee
 
 <div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/onderwijs/workshops-en-nascholingen">Info workshops</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://github.com/RobbeW/Programmeren-in-Javascript/blob/5e9e932962d29f4308f935a765532b014c0c4baa/Syllabus%20JavaScript%202024-2025.pdf">Download het lesmateriaal</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://github.com/RobbeW/Programmeren-in-Javascript/blob/5e9e932962d29f4308f935a765532b014c0c4baa/Syllabus%20JavaScript%202024-2025.pdf" target="_blank" rel="noreferrer">Download het lesmateriaal</a></div>
 
 <div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://dodona.ugent.be/nl/courses/1781/">Bekijk de Dodona-cursus</a></div>

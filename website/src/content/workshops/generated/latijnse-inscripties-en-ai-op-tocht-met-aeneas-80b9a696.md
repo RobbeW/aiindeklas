@@ -35,20 +35,19 @@ prerequisites: []
 delivery_modes:
   - "online"
   - "on_site"
-  - "cno"
-location_notes: "Duurtijd:Deze nascholing duurt ongeveer 2 uur (online) of 2.5 uur (offline) en wordt ook herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:Deze nascholing kan georganiseerd worden op een individuele school of online worden aangeboden.Prijs:66 euro per deelnemer via het CNO;400 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+location_notes: "Duurtijd:Deze nascholing duurt ongeveer 2 uur (online) of 2.5 uur (offline) en wordt ook herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:Deze nascholing kan georganiseerd worden op een individuele school of online worden aangeboden.Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 price:
   amount_eur: null
   includes_vat: null
-  display: "Duurtijd:Deze nascholing duurt ongeveer 2 uur (online) of 2.5 uur (offline) en wordt ook herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:Deze nascholing kan georganiseerd worden op een individuele school of online worden aangeboden.Prijs:66 euro per deelnemer via het CNO;400 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 travel_cost:
   amount_per_km_eur: null
   public_transport_policy: null
-  display: "Duurtijd:Deze nascholing duurt ongeveer 2 uur (online) of 2.5 uur (offline) en wordt ook herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:Deze nascholing kan georganiseerd worden op een individuele school of online worden aangeboden.Prijs:66 euro per deelnemer via het CNO;400 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 group_size:
   minimum: null
   maximum: null
-  display: "Duurtijd:Deze nascholing duurt ongeveer 2 uur (online) of 2.5 uur (offline) en wordt ook herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:Deze nascholing kan georganiseerd worden op een individuele school of online worden aangeboden.Prijs:66 euro per deelnemer via het CNO;400 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+  display: "Duurtijd:Deze nascholing duurt ongeveer 2 uur (online) of 2.5 uur (offline) en wordt ook herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:Deze nascholing kan georganiseerd worden op een individuele school of online worden aangeboden.Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 booking_cta:
   label: "Neem contact op"
   href: "/contact"
@@ -67,8 +66,8 @@ source_details:
     text: "Deze sessie richt zich tot leerkrachten klassieke talen Latijn uit de tweede en derde graad van het secundair onderwijs.Voor leerkrachten Grieks is er een specifieke (online) sessie waarin we de werking van ons AI-model Ithaca verkennen."
     volatile: false
   - heading: "Praktische Informatie"
-    html: "<p><strong>Duurtijd:</strong></p><ul><li><p>Deze nascholing duurt ongeveer 2 uur (online) of 2.5 uur (offline) en wordt ook herhaaldelijk ingericht via het <a href=\"https://cno.uantwerpen.be/nl/opleiding/artificiele-intelligentie-en-griekse-epigrafie-een-knap-duo-78397?filter=15_41_85\" rel=\"noreferrer\">Centrum Nascholing Onderwijs van de Universiteit Antwerpen.</a></p></li></ul><p><strong>Locatie:</strong></p><ul><li><p>Deze nascholing kan georganiseerd worden op een individuele school of online worden aangeboden.</p></li></ul><p><strong>Prijs:</strong></p><ul><li><p>66 euro per deelnemer via het CNO;</p></li><li><p>400 euro (exclusief verplaatsingskosten) indien ingericht op locatie.</p></li></ul>"
-    text: "Duurtijd:Deze nascholing duurt ongeveer 2 uur (online) of 2.5 uur (offline) en wordt ook herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:Deze nascholing kan georganiseerd worden op een individuele school of online worden aangeboden.Prijs:66 euro per deelnemer via het CNO;400 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+    html: "<p><strong>Duurtijd:</strong></p><ul><li><p>Deze nascholing duurt ongeveer 2 uur (online) of 2.5 uur (offline) en wordt ook herhaaldelijk ingericht via het <a href=\"https://cno.uantwerpen.be/nl/opleiding/artificiele-intelligentie-en-griekse-epigrafie-een-knap-duo-78397?filter=15_41_85\" rel=\"noreferrer\">Centrum Nascholing Onderwijs van de Universiteit Antwerpen.</a></p></li></ul><p><strong>Locatie:</strong></p><ul><li><p>Deze nascholing kan georganiseerd worden op een individuele school of online worden aangeboden.</p></li></ul><p>Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden.</p>"
+    text: "Duurtijd:Deze nascholing duurt ongeveer 2 uur (online) of 2.5 uur (offline) en wordt ook herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:Deze nascholing kan georganiseerd worden op een individuele school of online worden aangeboden.Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
     volatile: true
 ---
 

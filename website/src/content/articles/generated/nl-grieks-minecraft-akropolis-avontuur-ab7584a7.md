@@ -168,6 +168,6 @@ Toegankelijkheid is een belangrijk element binnen dit project. De benodigdheden 
 
 Wil je hier zelf mee aan de slag in jouw klaslokaal? Super! Jongeren laten kennismaken met geschiedenis, taal en cultuur is belangrijk. Daar hoort het verkennen van het vak Grieks zeker bij. Ik wil jou daar gerust bij helpen!
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://education.minecraft.net/en-us/get-started/download">Download Minecraft Education Edition</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://education.minecraft.net/en-us/get-started/download" target="_blank" rel="noreferrer">Download Minecraft Education Edition</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://sintlievenscollege-my.sharepoint.com/:u:/g/personal/robbe_wulgaert_sintlievenscollege_be/EWJO7HvbqyZHqx7MIC1z9pUBqzKOW_PlHaW7JNxp4GPXUw?download=1">Download het lesmateriaal</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://sintlievenscollege-my.sharepoint.com/:u:/g/personal/robbe_wulgaert_sintlievenscollege_be/EWJO7HvbqyZHqx7MIC1z9pUBqzKOW_PlHaW7JNxp4GPXUw?download=1" target="_blank" rel="noreferrer">Download het lesmateriaal</a></div>

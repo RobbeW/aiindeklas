@@ -3,13 +3,13 @@
   "profile": "project",
   "site": "https://robbew.github.io/",
   "base": "/aiindeklas/",
-  "html_files": 366,
-  "internal_urls_checked": 11393,
+  "html_files": 368,
+  "internal_urls_checked": 11457,
   "indexable_pages": 0,
-  "noindex_pages": 366,
-  "declared_public_routes": 361,
+  "noindex_pages": 368,
+  "declared_public_routes": 363,
   "expected_indexable_pages": 0,
-  "expected_excluded_pages": 366,
+  "expected_excluded_pages": 368,
   "unknown_routes": [],
   "missing_routes": [],
   "duplicate_routes": [],
@@ -50,6 +50,10 @@
     {
       "path": "/over",
       "reason": "legacy home alias canonical /"
+    },
+    {
+      "path": "/participant",
+      "reason": "unlisted participant resources (all descendants are noindex)"
     },
     {
       "path": "/verkoopsvoorwaarden",

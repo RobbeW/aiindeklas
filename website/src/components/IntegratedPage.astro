@@ -1,6 +1,5 @@
 ---
 import PageHero from "./PageHero.astro";
-import PreviewNotice from "./PreviewNotice.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import type { PrototypePage } from "../data/prototype-pages";
 
@@ -17,9 +16,8 @@ const { page } = Astro.props;
   hasDirectTranslation={page.hasDirectTranslation}
 >
   <main id="main-content" tabindex="-1">
-    <PageHero eyebrow={page.eyebrow} title={page.title} lead={page.description} />
+    <PageHero title={page.title} lead={page.description} />
     <section class="section shell" aria-labelledby="integration-heading">
-      <PreviewNotice lang={page.lang} />
       <div class="section-intro">
         <h2 id="integration-heading" class="section-heading">
           {page.lang === "en" ? "The page structure is ready" : "De paginastructuur staat klaar"}

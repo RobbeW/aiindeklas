@@ -51,7 +51,7 @@ const feedPath = lang === "en" ? "/education/rss.xml" : "/onderwijs/rss.xml";
     <meta name="robots" content={robots} />
     <meta name="theme-color" content="#5200ff" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" href={withBase("/favicon.svg")} type="image/svg+xml" />
+    <link rel="icon" href={withBase("/favicon.png")} type="image/png" />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" type="application/rss+xml" title={lang === "en" ? "Education articles" : "Onderwijsartikels"} href={new URL(withBase(feedPath), Astro.site)} />
     {translationLinks.map((translation) => (

@@ -71,11 +71,15 @@ To get started with this project you need:
 
 -   the booklet with the detailed explanation for the teacher
 
-For this project you do not need any special program or installation. You can play the game on the project website or by using the QR code on the DVD cover! You can also test the game below. Attention: you also need the booklet with the exercises.
+For this project you do not need any special program or installation. You can play the game by surfing to nicolaiklimii.be or by using the QR code on the DVD cover! You can also test the game below. Attention: you also need the booklet with the exercises.
+
+[
 
 ![](../../../assets/migrated/73/7352d58d4ba5c2aa32d029a2ad26d50aa73064a1fd925c6e53e6b7994497fa2c-w842.webp)
 
-[Launch the game](https://arcade.makecode.com/71281-79818-98742-55458)
+](https://arcade.makecode.com/71281-79818-98742-55458)
+
+Click the image above to launch the game
 
 ### How did we develop this project?
 

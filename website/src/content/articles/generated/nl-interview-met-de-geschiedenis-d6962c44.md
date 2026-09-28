@@ -544,7 +544,7 @@ Om aan de slag te gaan met deze lesmaterialen en -aanpak heb je volgende zaken n
 
 ### Ik wil hiermee aan de slag in de klas!
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contact">Sluit je aan bij onze Discord Community!</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contact" target="_blank" rel="noreferrer">Sluit je aan bij onze Discord Community!</a></div>
 
 ### Meer informatie over AI in ons onderwijs en veel meer vind je in:
 

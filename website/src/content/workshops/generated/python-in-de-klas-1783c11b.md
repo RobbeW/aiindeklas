@@ -36,19 +36,19 @@ delivery_modes:
   - "online"
   - "on_site"
   - "cno"
-location_notes: "Locatie: Deze workshop kan worden ingericht op locatie of online.Deze workshop wordt ook periodiek ingericht via bv. RTC Oost-Vlaanderen en het CNO van de Universiteit Antwerpen.Duurtijd:De workshop duurt 90 minuten. Kostprijs: 250 euro (exclusief verplaatsingskosten)"
+location_notes: "Locatie: Deze workshop kan worden ingericht op locatie of online.Deze workshop wordt ook periodiek ingericht via bv. RTC Oost-Vlaanderen en het CNO van de Universiteit Antwerpen.Duurtijd:De workshop duurt 90 minuten. Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 price:
   amount_eur: null
   includes_vat: null
-  display: "Locatie: Deze workshop kan worden ingericht op locatie of online.Deze workshop wordt ook periodiek ingericht via bv. RTC Oost-Vlaanderen en het CNO van de Universiteit Antwerpen.Duurtijd:De workshop duurt 90 minuten. Kostprijs: 250 euro (exclusief verplaatsingskosten)"
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 travel_cost:
   amount_per_km_eur: null
   public_transport_policy: null
-  display: "Locatie: Deze workshop kan worden ingericht op locatie of online.Deze workshop wordt ook periodiek ingericht via bv. RTC Oost-Vlaanderen en het CNO van de Universiteit Antwerpen.Duurtijd:De workshop duurt 90 minuten. Kostprijs: 250 euro (exclusief verplaatsingskosten)"
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 group_size:
   minimum: null
   maximum: null
-  display: "Locatie: Deze workshop kan worden ingericht op locatie of online.Deze workshop wordt ook periodiek ingericht via bv. RTC Oost-Vlaanderen en het CNO van de Universiteit Antwerpen.Duurtijd:De workshop duurt 90 minuten. Kostprijs: 250 euro (exclusief verplaatsingskosten)"
+  display: "Locatie: Deze workshop kan worden ingericht op locatie of online.Deze workshop wordt ook periodiek ingericht via bv. RTC Oost-Vlaanderen en het CNO van de Universiteit Antwerpen.Duurtijd:De workshop duurt 90 minuten. Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 booking_cta:
   label: "Neem contact op"
   href: "/contact"
@@ -67,8 +67,8 @@ source_details:
     text: "Deze workshop richt zich tot docenten uit het secundair en hoger onderwijs die aan de slag gaan met computationeel denken en programmeren. Ook docenten wiskunde tweede en derde graad zijn zeker welkom! Enige affiniteit met werken met computers, de browser en computationeel denken is aanbevolen."
     volatile: false
   - heading: "Praktische Informatie"
-    html: "<p><strong>Locatie</strong>: </p><ul><li><p>Deze workshop kan worden ingericht op locatie of online.</p></li><li><p>Deze workshop wordt ook periodiek ingericht via bv. RTC Oost-Vlaanderen en het CNO van de Universiteit Antwerpen.</p></li></ul><p><strong>Duurtijd</strong>:</p><ul><li><p>De workshop duurt 90 minuten. </p></li></ul><p><strong>Kostprijs</strong>: </p><ul><li><p>250 euro (exclusief verplaatsingskosten)</p></li></ul>"
-    text: "Locatie: Deze workshop kan worden ingericht op locatie of online.Deze workshop wordt ook periodiek ingericht via bv. RTC Oost-Vlaanderen en het CNO van de Universiteit Antwerpen.Duurtijd:De workshop duurt 90 minuten. Kostprijs: 250 euro (exclusief verplaatsingskosten)"
+    html: "<p><strong>Locatie</strong>: </p><ul><li><p>Deze workshop kan worden ingericht op locatie of online.</p></li><li><p>Deze workshop wordt ook periodiek ingericht via bv. RTC Oost-Vlaanderen en het CNO van de Universiteit Antwerpen.</p></li></ul><p><strong>Duurtijd</strong>:</p><ul><li><p>De workshop duurt 90 minuten. </p></li></ul><p>Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden.</p>"
+    text: "Locatie: Deze workshop kan worden ingericht op locatie of online.Deze workshop wordt ook periodiek ingericht via bv. RTC Oost-Vlaanderen en het CNO van de Universiteit Antwerpen.Duurtijd:De workshop duurt 90 minuten. Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
     volatile: true
   - heading: "Feedback Deelnemers"
     html: "<p>De deelnemers gaven deze nascholing een score van 4.4/5.</p><p>Enkele voorbeelden van hun feedback:</p><ul><li><p><em>De informatie werd zeer duidelijk overgebracht en was zeer gericht. Leerkracht gaf goed les en had duidelijk veel kennis van zaken.</em></p></li><li><p><em>Vele materiaal dat we krijgen (van nul beginnen zou onmogelijk vol te houden zijn) en feit dat vragen stellen onbeperkt kon</em></p></li><li><p><em>Je kreeg echte hands-on tools die onmiddellijk inzetbaar zijn in de klaspraktijk.</em></p></li></ul>"

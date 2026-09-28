@@ -22,12 +22,12 @@ const valid = (overrides = {}) => ({
 
 test("repository representative content passes cross-entry validation", async () => {
   const result = await validateRepositoryContent();
-  assert.equal(result.documents, 155);
+  assert.equal(result.documents, 153);
   assert.deepEqual(result.collections, {
     authors: 1,
     pages: 9,
     articles: 124,
-    workshops: 12,
+    workshops: 10,
     projects: 9
   });
   assert.equal(result.paired_translations, 3);

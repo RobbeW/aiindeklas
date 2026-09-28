@@ -47,6 +47,6 @@ Ontdek hoe AI ons onderwijs steeds meer beïnvloedt en hoe je deze technologie k
 
 Ik ben leerkracht informaticawetenschappen en AI aan het Sint-Lievenscollege in Gent en gastdocent aan de Universiteit Antwerpen. Ik deel mijn ervaring via praktische toepassingen en concrete lessen en ben bekend van mijn bijdragen aan podcasts en VRT-programma’s over AI in ons onderwijs.
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://www.borgerhoff-lamberigts.be/owl-press/shop/boeken/ai-in-de-klas?variant=179580">Bestel of reserveer het boek</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://www.borgerhoff-lamberigts.be/owl-press/shop/boeken/ai-in-de-klas?variant=179580">Bestel het boek</a></div>
 
 <div class="content-button-row content-button-row--center"><a class="content-button content-button--secondary content-button--medium" href="/contact">Contacteer de auteur</a></div>

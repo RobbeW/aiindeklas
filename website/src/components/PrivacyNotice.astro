@@ -6,22 +6,76 @@ const { lang } = Astro.props;
 const english = lang === "en";
 ---
 
-<section id="privacy-notice" class="privacy-notice" aria-labelledby="privacy-notice-title">
+<section id="privacy-notice" class="privacy-notice" aria-labelledby="privacy-notice-title" data-privacy-notice>
   <div class="privacy-notice__inner shell">
     <div>
       <h2 id="privacy-notice-title">{english ? "Privacy and cookies" : "Privacy en cookies"}</h2>
       <p>{english
-        ? "This site deliberately uses no cookies, analytics or other tracking tools. I value your online privacy. Enjoy!"
-        : "Deze site gebruikt bewust geen cookies, analytics of andere tracking tools. Ik waardeer jouw online privacy. Enjoy!"}</p>
+        ? "This site uses no cookies, analytics or tracking. A small preference remembers that you have read this message; it stays in your browser only. Teaching tools may ask separately before loading external libraries."
+        : "Deze site gebruikt geen cookies, analytics of tracking. Een kleine voorkeur onthoudt alleen dat je dit bericht hebt gelezen; die blijft enkel in jouw browser. Lesapps vragen apart toestemming voordat ze externe bibliotheken laden."}</p>
     </div>
+    <button type="button" class="privacy-notice__dismiss" data-privacy-dismiss>{english ? "Got it" : "Begrepen"}</button>
   </div>
 </section>
 
+<script is:inline>
+  (() => {
+    const key = "rw-privacy-notice-v1";
+    const notice = document.querySelector("[data-privacy-notice]");
+    if (!notice) return;
+    const dismiss = notice.querySelector("[data-privacy-dismiss]");
+    let opener = null;
+    const setHidden = (hidden) => {
+      notice.hidden = hidden;
+      document.querySelectorAll("[data-privacy-open]").forEach((control) => control.setAttribute("aria-expanded", String(!hidden)));
+      if (!hidden && opener) dismiss?.focus({ preventScroll: true });
+      if (hidden && opener) { opener.focus({ preventScroll: true }); opener = null; }
+    };
+    document.querySelectorAll("[data-privacy-open]").forEach((control) => control.setAttribute("aria-expanded", "true"));
+    try { if (localStorage.getItem(key) === "acknowledged") setHidden(true); } catch {}
+    dismiss?.addEventListener("click", () => {
+      try { localStorage.setItem(key, "acknowledged"); } catch {}
+      setHidden(true);
+    });
+    document.querySelectorAll("[data-privacy-open]").forEach((control) => {
+      control.addEventListener("click", (event) => {
+        event.preventDefault();
+        opener = control;
+        setHidden(false);
+      });
+    });
+    notice.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") { setHidden(true); }
+    });
+  })();
+</script>
+
 <style>
   .privacy-notice {
+    position: fixed;
+    z-index: 20;
+    inset: auto 0 0;
+    width: 100%;
     border-top: 1px solid var(--color-line);
     background: var(--color-surface);
-    box-shadow: none;
+    box-shadow: 0 -0.5rem 1.5rem rgb(21 18 28 / 12%);
+  }
+  .privacy-notice[hidden] { display: none; }
+  .privacy-notice__dismiss {
+    min-block-size: 2.75rem;
+    padding: 0.65rem 1rem;
+    border: 1px solid var(--color-brand-dark);
+    border-radius: 999px;
+    background: var(--color-brand-dark);
+    color: var(--color-on-brand);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .privacy-notice__dismiss:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .privacy-notice:not([hidden]) { animation: privacy-in 180ms ease-out; }
+    @keyframes privacy-in { from { transform: translateY(100%); } to { transform: translateY(0); } }
   }
   .privacy-notice__inner {
     display: flex;

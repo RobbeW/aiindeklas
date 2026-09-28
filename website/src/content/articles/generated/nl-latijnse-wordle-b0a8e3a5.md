@@ -98,12 +98,12 @@ Uiteraard is het leren van nieuwe woorden slechts het halve werk; het begrijpen 
 
 **Benieuwd naar meer van onze lesmaterialen over klassieke talen, Minecraft, en artificiële intelligentie? Bekijk dan de onderstaande links voor meer informatie en inspiratie!**
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://latijnwordle.netlify.app/">Speel de game!</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://latijnwordle.netlify.app/" target="_blank" rel="noreferrer">Speel de game!</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/onderwijs/grieks-minecraft-akropolis-avontuur">Minecraft en Klassieke Talen</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/onderwijs/grieks-minecraft-akropolis-avontuur" target="_blank" rel="noreferrer">Minecraft en Klassieke Talen</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/onderwijs/ithaca-teaching-history-journal">Grieks en AI - Epigrafie</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/onderwijs/ithaca-teaching-history-journal" target="_blank" rel="noreferrer">Grieks en AI - Epigrafie</a></div>
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/onderwijs/ai-en-latijn-breng-tacitus-tot-leven">Latijn en AI - Tacitus</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/onderwijs/ai-en-latijn-breng-tacitus-tot-leven" target="_blank" rel="noreferrer">Latijn en AI - Tacitus</a></div>
 
 <div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contact">Ik heb een vraag!</a></div>

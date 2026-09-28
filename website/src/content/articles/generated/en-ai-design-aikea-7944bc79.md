@@ -123,4 +123,4 @@ To execute this yourself in class you will need the following items:
 
 Want to work on this yourself in your classroom? Super! The future will be more and more digital. A future in which artificial intelligence will play a very important role, in many facets of our lives. That we need to prepare and motivate young people for this goes without saying. Should you still have some questions after reading the above article, I am happy to help you with that! Through the buttons below you can send me a message or get information about a refresher course or workshop. I usually reply within 48 hours!
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contactinfo">Ask a question!</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="/contactinfo" target="_blank" rel="noreferrer">Ask a question!</a></div>

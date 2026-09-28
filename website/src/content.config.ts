@@ -37,6 +37,9 @@ const absoluteUrl = z.url();
 
 const mediaReference = reference("media");
 
+const participantAction = z.object({ label: z.string().min(1), href: z.string().min(1), style: z.enum(["primary", "secondary", "text"]).default("primary"), download: z.boolean().default(false) }).strict();
+const participantAccordion = z.object({ title: z.string().min(1), body: z.string().min(1) }).strict();
+
 const seo = z.object({
   title: z.string().min(1).max(70).nullable(),
   description: z.string().min(1).max(180).nullable(),
@@ -319,4 +322,23 @@ const media = defineCollection({
   }).strict()
 });
 
-export const collections = { pages, articles, workshops, projects, authors, settings, media };
+/** Deliberately unlisted: these entries are only emitted by the participant route. */
+const participantPages = defineCollection({
+  loader: markdown("participant-pages"),
+  schema: ({ image }) => {
+    const participantImage = z.object({ src: image(), alt: z.string(), caption: z.string().nullable().default(null) }).strict();
+    const participantBlock = z.discriminatedUnion("type", [
+      z.object({ type: z.literal("rich_text"), markdown: z.string().min(1) }).strict(),
+      z.object({ type: z.literal("actions"), items: z.array(participantAction).min(1) }).strict(),
+      z.object({ type: z.literal("image"), image: participantImage }).strict(),
+      z.object({ type: z.literal("accordion_group"), label: z.string().min(1), items: z.array(participantAccordion).min(1) }).strict()
+    ]);
+    return z.object({
+    id: z.string().min(1), slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/), route_path: z.string().regex(/^\/[a-z0-9]+(?:[\/_-][a-z0-9]+)*$/), title: z.string().min(1),
+    intro: z.string().min(1), locale, blocks: z.array(participantBlock).min(1),
+    courtesy_code_digest: sha256.nullable().default(null), courtesy_code_salt: z.string().min(16).nullable().default(null)
+    }).strict().superRefine((value, ctx) => { if ((value.courtesy_code_digest === null) !== (value.courtesy_code_salt === null)) ctx.addIssue({ code: "custom", path: ["courtesy_code_digest"], message: "courtesy code digest and salt must be supplied together" }); if (value.route_path === "/" || value.route_path.startsWith("/admin") || value.route_path === "/404") ctx.addIssue({ code: "custom", path: ["route_path"], message: "participant route collides with reserved site route" }); });
+  }
+});
+
+export const collections = { pages, articles, workshops, projects, authors, settings, media, participantPages };

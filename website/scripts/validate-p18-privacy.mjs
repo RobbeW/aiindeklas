@@ -53,15 +53,11 @@ for (const file of files) {
         const copy = privacyInformation.text().replace(/\s+/g, " ").trim();
         if (!/(?:geen cookies, analytics|no cookies, analytics)/i.test(copy)) problems.push(`${label}: inline privacy information is incomplete`);
       }
-      const consentControls = $("[data-privacy-dismiss], [data-privacy-open], [aria-controls='privacy-notice']");
-      if (consentControls.length) {
-        pagesWithConsentControls++;
-        problems.push(`${label}: unnecessary privacy consent or dismissal control is present`);
-      }
-      if (html.includes("rw-privacy-notice-v1")) {
-        pagesWithPrivacyPreferenceStorage++;
-        problems.push(`${label}: unnecessary privacy preference storage is present`);
-      }
+      const consentControls = $("[data-privacy-dismiss], [data-privacy-open]");
+      if (consentControls.length !== 2) problems.push(`${label}: privacy acknowledge/reopen controls are incomplete`);
+      else pagesWithConsentControls++;
+      if (!html.includes("rw-privacy-notice-v1")) problems.push(`${label}: privacy choice storage is missing`);
+      else pagesWithPrivacyPreferenceStorage++;
     }
     for (const [selector, attribute] of selectors) {
       $(selector).each((_, element) => checkResource($(element).attr(attribute), label));

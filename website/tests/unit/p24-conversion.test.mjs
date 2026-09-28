@@ -12,14 +12,16 @@ test("P24 homepage has one clear conversion hierarchy and no linked imagery", as
     read("src/components/HomePage.astro")
   ]);
   assert.equal((home.match(/class="content-button /g) ?? []).length, 3);
-  assert.equal((home.match(/content-button--primary/g) ?? []).length, 1);
-  assert.equal((home.match(/content-button--secondary/g) ?? []).length, 1);
-  assert.equal((home.match(/content-button--text/g) ?? []).length, 1);
+  assert.equal((home.match(/class="content-button content-button--primary content-button--medium/g) ?? []).length, 3);
+  assert.equal((home.match(/home-action--/g) ?? []).length, 3);
+  assert.match(home, /Aanbod nascholingen/);
+  assert.match(home, /Onderwijs en lesmateriaal/);
+  assert.match(home, /Boek: AI in de klas/);
   assert.equal((home.match(/href="\/boek"/g) ?? []).length, 1);
   assert.doesNotMatch(home, /href="\/contact"/);
   assert.doesNotMatch(home, /\[!\[/);
   assert.match(home, /Het Digitale Dilemma bij VRT MAX/);
-  assert.match(component, /p:nth-of-type\(5\) img/);
+  assert.match(component, /home-block--book img/);
   assert.doesNotMatch(component, /@media \(max-width: 55\.999rem\)[\s\S]*order:/);
 });
 
@@ -34,8 +36,8 @@ test("P24 contact is task-first and retains the workshop handoff without redunda
   for (const key of ["offer_id", "offer", "persona", "need", "subject_area", "duration", "group_size"]) assert.match(form, new RegExp(`\\["${key}"`));
   assert.match(form, /data-workshop-context/);
   assert.doesNotMatch(contact, /Heb je een vraag over|mailprogramma/);
-  assert.equal((contact.match(/content-button--secondary/g) ?? []).length, 2);
-  assert.doesNotMatch(contact, /content-button--primary/);
+  assert.equal((contact.match(/class="button button--primary"/g) ?? []).length, 2);
+  assert.doesNotMatch(contact, /content-button--secondary|content-button--primary/);
   assert.match(contact, /discord\.gg\/U77FKEQfC6/);
   assert.match(contact, /buymeacoffee\.com\/aiindeklas/);
 });

@@ -1,4 +1,5 @@
 @import "./tokens.css";
+@import "./participant.css";
 
 *,
 *::before,
@@ -86,7 +87,7 @@ a { color: var(--color-brand-dark); }
 
 main p:not(.eyebrow, .listing-meta, .error-code) {
   text-align: start;
-  hyphens: auto;
+  hyphens: none;
   overflow-wrap: break-word;
 }
 

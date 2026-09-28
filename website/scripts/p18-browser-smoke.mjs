@@ -67,16 +67,22 @@ try {
   await send("Network.enable");
 
   await navigate("contact.html");
-  const privacy = await evaluate(`(() => {
-    const notice = document.querySelector('#privacy-notice.privacy-notice');
-    return {
-      present: !!notice,
-      position: notice ? getComputedStyle(notice).position : null,
-      concise: notice?.textContent.includes('geen cookies, analytics of andere tracking tools') ?? false,
-      consentControls: document.querySelectorAll('[data-privacy-dismiss], [data-privacy-open], [aria-controls="privacy-notice"]').length,
-      preferenceStorage: document.documentElement.innerHTML.includes('rw-privacy-notice-v1')
-    };
+  await evaluate(`(() => {
+    localStorage.removeItem('rw-privacy-notice-v1'); location.reload(); return true;
   })()`);
+  await new Promise((resolve) => setTimeout(resolve, 250));
+  const initial = await evaluate(`(() => { const n=document.querySelector('#privacy-notice'); const o=document.querySelector('[data-privacy-open]'); return {visible:!!n && !n.hidden, position:n ? getComputedStyle(n).position : null, concise:n?.textContent.includes('geen cookies, analytics of tracking') ?? false, expanded:o?.getAttribute('aria-expanded'), overflow:document.documentElement.scrollWidth<=document.documentElement.clientWidth, motion:n ? getComputedStyle(n).animationName : null}; })()`);
+  await send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "reduce" }] });
+  const reducedMotion = await evaluate("getComputedStyle(document.querySelector('#privacy-notice')).animationName");
+  await send("Emulation.setEmulatedMedia", { features: [] });
+  await evaluate("document.querySelector('[data-privacy-dismiss]').click()");
+  const dismissed = await evaluate("(() => { return {hidden:document.querySelector('#privacy-notice').hidden, storage:localStorage.getItem('rw-privacy-notice-v1'), expanded:document.querySelector('[data-privacy-open]').getAttribute('aria-expanded')}; })()");
+  await navigate("contact.html");
+  const persisted = await evaluate("document.querySelector('#privacy-notice').hidden");
+  await evaluate("document.querySelector('[data-privacy-open]').click()");
+  const reopened = await evaluate("(() => { return {visible:!document.querySelector('#privacy-notice').hidden, focus:document.activeElement.matches('[data-privacy-dismiss]'), expanded:document.querySelector('[data-privacy-open]').getAttribute('aria-expanded')}; })()");
+  await evaluate("document.querySelector('#privacy-notice').dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}))");
+  const escaped = await evaluate("(() => { return {hidden:document.querySelector('#privacy-notice').hidden, focus:document.activeElement.matches('[data-privacy-open]'), expanded:document.querySelector('[data-privacy-open]').getAttribute('aria-expanded')}; })()");
 
   const appChecks = [];
   for (const path of ["knn/index.html", "supervised_learning/index.html"]) {
@@ -98,16 +104,16 @@ try {
     appChecks.push({ path, initialRequests, initialControls, requestsAfterAction: providerRequests.slice(), loadedControls });
   }
   const problems = [];
-  if (!privacy.present || !privacy.concise) problems.push("Concise inline privacy information is missing.");
-  if (["fixed", "sticky"].includes(privacy.position)) problems.push("Privacy information blocks or follows the viewport.");
-  if (privacy.consentControls || privacy.preferenceStorage) problems.push("Unnecessary privacy consent state is present.");
+  if (!initial.visible || initial.position !== "fixed" || !initial.concise || initial.expanded !== "true" || !initial.overflow || reducedMotion !== "none") problems.push("Initial privacy notice contract failed.");
+  if (!dismissed.hidden || dismissed.storage !== "acknowledged" || dismissed.expanded !== "false" || !persisted) problems.push("Privacy acknowledgement did not persist.");
+  if (!reopened.visible || !reopened.focus || reopened.expanded !== "true" || !escaped.hidden || !escaped.focus || escaped.expanded !== "false") problems.push("Privacy reopen/Escape focus contract failed.");
   for (const app of appChecks) {
     if (app.initialRequests.length) problems.push(`${app.path} requested an external provider before visitor action.`);
     if (!app.initialControls.button || !app.initialControls.runDisabled || !app.initialControls.exportDisabled) problems.push(`${app.path} did not guard provider-dependent controls.`);
     if (!app.requestsAfterAction.length) problems.push(`${app.path} did not request its external libraries after visitor action.`);
     if (verifyLoadedLibraries && (!app.loadedControls?.editor || !app.loadedControls?.runEnabled || !app.loadedControls?.exportEnabled)) problems.push(`${app.path} did not finish loading its external libraries.`);
   }
-  const report = { privacy, appChecks, passed: problems.length === 0, problems };
+  const report = { privacy: { initial, reducedMotion, dismissed, persisted, reopened, escaped }, appChecks, passed: problems.length === 0, problems };
   console.log(JSON.stringify(report, null, 2));
   if (problems.length) process.exitCode = 1;
   completed = true;

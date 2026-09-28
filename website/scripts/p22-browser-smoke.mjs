@@ -19,6 +19,7 @@ const server = createServer((request, response) => {
 });
 server.listen(0, "127.0.0.1");
 await once(server, "listening");
+const port = server.address().port;
 
 let chrome;
 let socket;
@@ -55,7 +56,7 @@ try {
     throw new Error(`Timed out waiting for ${label}`);
   };
   const navigate = async () => {
-    await send("Page.navigate", { url: `http://127.0.0.1:${server.address().port}/aiindeklas/onderwijs/workshops-en-nascholingen.html` });
+    await send("Page.navigate", { url: `http://localhost:${port}/aiindeklas/onderwijs/workshops-en-nascholingen.html` });
     await waitFor("document.readyState === 'complete' && !!document.querySelector('[data-workshop-experience] input[name=persona]')", "hydrated workshop experience");
   };
   const choose = async (name, value, nextText) => {
@@ -105,8 +106,11 @@ try {
     closedAccordions: [...document.querySelectorAll('[data-workshop-dialog] .ui-accordion__trigger')].every(node => node.getAttribute('aria-expanded') === 'false'),
     accordionStates: [...document.querySelectorAll('[data-workshop-dialog] .ui-accordion__trigger')].map(node => ({ expanded: node.getAttribute('aria-expanded'), state: node.dataset.state })),
     related: document.querySelectorAll('[data-workshop-dialog] .workshop-related a').length,
-    contact: document.querySelector('[data-workshop-dialog] a[href*="offer_id="]')?.getAttribute('href')
+    contact: null
   })`);
+  await evaluate(`[...document.querySelectorAll('[data-workshop-dialog] .ui-accordion__trigger')].find(node => /Praktische info/i.test(node.textContent))?.click()`);
+  await waitFor("!!document.querySelector('[data-workshop-dialog] a[href*=\\\"offer_id=\\\"]')", "workshop contact link");
+  desktopDetail.contact = await evaluate(`document.querySelector('[data-workshop-dialog] a[href*="offer_id="]')?.getAttribute('href')`);
   await evaluate(`[...document.querySelectorAll('[data-workshop-dialog] .ui-accordion__trigger')].find(node => node.textContent.includes('Verder lezen'))?.click()`);
   await waitFor("document.querySelectorAll('[data-workshop-dialog] .workshop-related a').length > 0", "verified related links");
   const verifiedRelated = await evaluate(`({ count: document.querySelectorAll('[data-workshop-dialog] .workshop-related a').length, based: [...document.querySelectorAll('[data-workshop-dialog] .workshop-related a')].every(link => link.getAttribute('href').startsWith('/aiindeklas/')) })`);
@@ -135,14 +139,15 @@ try {
   await pressKey("Escape", "Escape", 27);
 
   await send("Emulation.setDeviceMetricsOverride", { width: 1200, height: 900, deviceScaleFactor: 1, mobile: false });
-  await navigate();
+  await send("Page.reload", { ignoreCache: true });
+  await waitFor("document.readyState === 'complete' && !!document.querySelector('[data-workshop-experience] input[name=persona]')", "reloaded workshop experience");
   await choose("persona", "schoolleider_beleid", "Waar ben je naar op zoek?");
   await choose("need", "breed_kader", "Hoeveel tijd heb je ter beschikking?");
   await choose("duration", "ongeveer_90_min", "Hoe groot is de groep?");
   await evaluate(`document.querySelector('input[name=groupSize][value=meer_dan_100]').click()`);
   await waitFor("!!document.querySelector('[data-recommendations]')", "no-match results");
   const noMatch = await evaluate(`({ count: document.querySelectorAll('[data-recommendations] [data-offer-card]').length, contact: document.querySelector('[data-recommendations] a[href*="workshop_request=1"]')?.getAttribute('href'), hasSubject: document.querySelector('[data-recommendations] a[href*="subject_area="]') !== null })`);
-  await send("Page.navigate", { url: `http://127.0.0.1:${server.address().port}${desktopDetail.contact}` });
+  await send("Page.navigate", { url: `http://localhost:${port}${desktopDetail.contact}` });
   await waitFor("document.readyState === 'complete' && !!document.querySelector('[data-contact-email-form]')", "prefilled contact form");
   const contactPrefill = await evaluate(`(() => { const form=document.querySelector('[data-contact-email-form]'); return { subject: form.elements.subject.value, message: form.elements.message.value, contextVisible: !form.querySelector('[data-workshop-context]').hidden }; })()`);
 
@@ -154,7 +159,7 @@ try {
   if (verifiedRelated.count < 1 || verifiedRelated.count > 2 || !verifiedRelated.based) problems.push("Verified related-content rendering failed.");
   for (const key of ["persona=", "need=", "subject_area=", "duration=", "group_size=", "offer_id=", "offer="]) if (!desktopDetail.contact?.includes(key)) problems.push(`Contact handoff missing ${key}`);
   if (focusReturn !== triggerId) problems.push("Dialog focus did not return to its trigger.");
-  if (catalogue.count !== 12 || !catalogue.recommendationHidden) problems.push("Catalogue mode or retained recommendation switch failed.");
+  if (catalogue.count !== 10 || !catalogue.recommendationHidden) problems.push("Catalogue mode or retained recommendation switch failed.");
   if (!mobile.drawer || mobile.dialog || mobile.documentWidth > mobile.viewport + 1 || Number.parseFloat(mobile.reducedMotion) > .001) problems.push("Mobile drawer, overflow or reduced-motion check failed.");
   if (noMatch.count !== 0 || !noMatch.contact?.includes("workshop_request=1") || noMatch.hasSubject) problems.push("No-match contact path failed.");
   if (!contactPrefill.subject.includes("Schrijftaken zonder AIAIAI") || !contactPrefill.message.includes("Sessie-ID:") || !contactPrefill.message.includes("Domein:") || !contactPrefill.message.includes("Groepsgrootte:") || !contactPrefill.contextVisible) problems.push("Contact-page prefill failed.");
@@ -165,5 +170,5 @@ try {
   try { chrome?.kill(); } catch { /* Chrome can retain its temporary profile briefly. */ }
   server.closeAllConnections();
   server.close();
-  process.exit(process.exitCode ?? 0);
+  setTimeout(() => process.exit(process.exitCode ?? 0), 100).unref();
 }

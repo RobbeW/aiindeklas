@@ -92,11 +92,11 @@ _(beeld uit de VRT-aflevering)_
 
 Dit experiment hebben we natuurlijk niet verzonnen, maar is gebaseerd op enkele wetenschappelijke bronnen, namelijk:
 
--   Liang, W., Yuksekgonul, M., Mao, Y., Wu, E., & Zou, J. (2023). GPT detectors are biased against non-native English writers. _arXiv_. [DOI](https://doi.org/10.48550/arXiv.2304.02819)
+-   Liang, W., Yuksekgonul, M., Mao, Y., Wu, E., & Zou, J. (2023). GPT detectors are biased against non-native English writers. _arXiv_. [https://doi.org/10.48550/arXiv.2304.02819](https://doi.org/10.48550/arXiv.2304.02819)
 
--   Perkins, M., Roe, J., Vu, B. H., Postma, D., Hickerson, D., McGaughran, J., & Khuat, H. Q. (2023). GenAI detection tools, adversarial techniques and implications for inclusivity in higher education. _arXiv_. [DOI](https://doi.org/10.48550/arXiv.2403.19148)
+-   Perkins, M., Roe, J., Vu, B. H., Postma, D., Hickerson, D., McGaughran, J., & Khuat, H. Q. (2023). GenAI detection tools, adversarial techniques and implications for inclusivity in higher education. _arXiv_. [https://doi.org/10.48550/arXiv.2403.19148](https://doi.org/10.48550/arXiv.2403.19148)
 
--   Sadasivan, V. S., Kumar, A., Balasubramanian, S., Wang, W., & Feizi, S. (2023). Can AI-generated text be reliably detected? _arXiv_. [DOI](https://doi.org/10.48550/arXiv.2303.11156)
+-   Sadasivan, V. S., Kumar, A., Balasubramanian, S., Wang, W., & Feizi, S. (2023). Can AI-generated text be reliably detected? _arXiv_. [https://doi.org/10.48550/arXiv.2303.11156](https://doi.org/10.48550/arXiv.2303.11156)
 
 Bovenstaande bronnen onderzochten de **effectiviteit van GPT-detectoren**. Telkens kwamen ze tot een vergelijkbare conclusie, namelijk:
 
@@ -108,7 +108,7 @@ Bovenstaande bronnen onderzochten de **effectiviteit van GPT-detectoren**. Telke
 
 Bovenaan elke schrijfopdracht hadden we dus de percentages genoteerd van de twee favoriete detectoren van de docenten. Het zijn tevens twee detectoren die je terugvindt in de eerder vermelde onderzoeken. Verder gebruikten we nog een onderzoek om ons experiment op te baseren, namelijk:
 
--   Casal, J. E., & Kessler, M. (2023). Can linguists distinguish between ChatGPT/AI and human writing?: A study of research ethics and academic publishing. _Research Methods in Applied Linguistics, 2_(3), 100068. [DOI](https://doi.org/10.1016/j.rmal.2023.100068)
+-   Casal, J. E., & Kessler, M. (2023). Can linguists distinguish between ChatGPT/AI and human writing?: A study of research ethics and academic publishing. _Research Methods in Applied Linguistics, 2_(3), 100068. [https://doi.org/10.1016/j.rmal.2023.100068](https://doi.org/10.1016/j.rmal.2023.100068)
 
 In dit laatste onderzoek dienden 72 taalkundigen 4 abstracts te analyseren. Deze taalkundigen hadden als job om onderzoekspapers na te kijken alvorens deze gepubliceerd werden. Ze hadden dus ervaring binnen dit veld en fungeerden dus als experts. Elke taalkundige diende bij aanvang aan te geven hoe zeker ze waren van hun eigen kunnen. Hoeveel zelfvertrouwen ze dus hadden om de abstracts die geschreven werden door robots te kunnen onderscheiden van de menselijke auteurs. Ze geven zichzelf (voorzichtig) het voordeel van de twijfel.
 
@@ -166,7 +166,7 @@ Tijdens het schooljaar is de verleiding om een opdracht zonder toezicht door een
 
 Dit experiment komt voor in aflevering 2 van het eerste seizoen van ‘Het Digitale Dilemma’ (S01E02). Je kan deze aflevering bekijk via VRT MAX  en de knop hieronder: 
 
-<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://www.vrt.be/vrtmax/a-z/het-digitale-dilemma/1/het-digitale-dilemma-s1a2/">Bekijk de aflevering!</a></div>
+<div class="content-button-row content-button-row--center"><a class="content-button content-button--primary content-button--medium" href="https://www.vrt.be/vrtmax/a-z/het-digitale-dilemma/1/het-digitale-dilemma-s1a2/" target="_blank" rel="noreferrer">Bekijk de aflevering!</a></div>
 
 ### Meer informatie over AI in ons onderwijs en veel meer vind je in:
 

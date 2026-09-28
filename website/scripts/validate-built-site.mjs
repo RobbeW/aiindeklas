@@ -7,6 +7,7 @@ import {
   excludedRouteReasons,
   normalizeRoute,
   productionRouteContract,
+  participantContentRoutes,
   productionSitemapPaths,
   routeKey
 } from "../src/lib/route-policy.ts";
@@ -132,10 +133,11 @@ export const validateBuiltSite = async ({
   let internalUrls = 0;
   let indexablePages = 0;
   let noindexPages = 0;
-  const declaredPublicRoutes = productionRouteContract();
+  const declaredPublicRoutes = [...productionRouteContract(), ...participantContentRoutes()];
   const expectedIndexableRoutes = productionSitemapPaths();
   const expectedBuiltByKey = new Map(declaredPublicRoutes.map((route) => [routeKey(route), route]));
   for (const route of Object.keys(excludedRouteReasons)) expectedBuiltByKey.set(routeKey(route), route);
+  for (const route of participantContentRoutes()) expectedBuiltByKey.set(routeKey(route), route);
   const expectedIndexableKeys = new Set(expectedIndexableRoutes.map(routeKey));
   const builtRoutesByKey = new Map();
   const duplicateRoutes = [];
@@ -283,7 +285,7 @@ export const validateBuiltSite = async ({
   if (indexStateViolations.length) errors.push(`index state violations: ${indexStateViolations.join(", ")}`);
   if (canonicalViolations.length) errors.push(`canonical violations: ${canonicalViolations.join(", ")}`);
   const expectedIndexablePages = expectIndexing ? expectedIndexableRoutes.length : 0;
-  const expectedExcludedPages = expectIndexing ? Object.keys(excludedRouteReasons).length : expectedBuiltByKey.size;
+  const expectedExcludedPages = expectIndexing ? Object.keys(excludedRouteReasons).length + participantContentRoutes().length : expectedBuiltByKey.size;
   if (indexablePages !== expectedIndexablePages || noindexPages !== expectedExcludedPages) {
     errors.push(`index count drift: expected ${expectedIndexablePages} indexable/${expectedExcludedPages} noindex, found ${indexablePages}/${noindexPages}`);
   }

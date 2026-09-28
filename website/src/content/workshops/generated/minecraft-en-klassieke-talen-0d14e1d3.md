@@ -35,19 +35,19 @@ prerequisites: []
 delivery_modes:
   - "on_site"
   - "cno"
-location_notes: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen. (op aanvraag)Deze nascholing kan ook georganiseerd worden op een individuele school.Prijs:66 euro per deelnemer via het CNO;300 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+location_notes: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen. (op aanvraag)Deze nascholing kan ook georganiseerd worden op een individuele school.Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 price:
   amount_eur: null
   includes_vat: null
-  display: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen. (op aanvraag)Deze nascholing kan ook georganiseerd worden op een individuele school.Prijs:66 euro per deelnemer via het CNO;300 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 travel_cost:
   amount_per_km_eur: null
   public_transport_policy: null
-  display: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen. (op aanvraag)Deze nascholing kan ook georganiseerd worden op een individuele school.Prijs:66 euro per deelnemer via het CNO;300 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 group_size:
   minimum: null
   maximum: null
-  display: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen. (op aanvraag)Deze nascholing kan ook georganiseerd worden op een individuele school.Prijs:66 euro per deelnemer via het CNO;300 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+  display: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen. (op aanvraag)Deze nascholing kan ook georganiseerd worden op een individuele school.Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 booking_cta:
   label: "Neem contact op"
   href: "/contact"
@@ -66,8 +66,8 @@ source_details:
     text: "Leerkrachten derde graad lager onderwijs en leerkrachten Latijn eerste graad secundair onderwijs.Voorkennis: vakspecifieke voorkennis Latijn vereist, geen voorkennis Minecraft vereist."
     volatile: false
   - heading: "Praktische Informatie"
-    html: "<p><strong>Duurtijd:</strong></p><ul><li><p>Deze nascholing duurt 2  uur en wordt herhaaldelijk ingericht via het <a href=\"https://cno.uantwerpen.be/nl/opleiding/lesproject-roma-aeterna-verken-latijn-in-minecraft-79060?filter=\" rel=\"noreferrer\">Centrum Nascholing Onderwijs van de Universiteit Antwerpen.</a></p></li></ul><p><strong>Locatie:</strong></p><ul><li><p>CNO campus Boogkeers in Antwerpen. (op aanvraag)</p></li><li><p>Deze nascholing kan ook georganiseerd worden op een individuele school.</p></li></ul><p><strong>Prijs:</strong></p><ul><li><p>66 euro per deelnemer via het CNO;</p></li><li><p>300 euro (exclusief verplaatsingskosten) indien ingericht op locatie.</p></li></ul>"
-    text: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen. (op aanvraag)Deze nascholing kan ook georganiseerd worden op een individuele school.Prijs:66 euro per deelnemer via het CNO;300 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+    html: "<p><strong>Duurtijd:</strong></p><ul><li><p>Deze nascholing duurt 2  uur en wordt herhaaldelijk ingericht via het <a href=\"https://cno.uantwerpen.be/nl/opleiding/lesproject-roma-aeterna-verken-latijn-in-minecraft-79060?filter=\" rel=\"noreferrer\">Centrum Nascholing Onderwijs van de Universiteit Antwerpen.</a></p></li></ul><p><strong>Locatie:</strong></p><ul><li><p>CNO campus Boogkeers in Antwerpen. (op aanvraag)</p></li><li><p>Deze nascholing kan ook georganiseerd worden op een individuele school.</p></li></ul><p>Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden.</p>"
+    text: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen. (op aanvraag)Deze nascholing kan ook georganiseerd worden op een individuele school.Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
     volatile: true
   - heading: "Feedback Deelnemers"
     html: "<p>Er namen reeds meer dan 30 cursisten deel aan deze nascholing via de ‘De Dag van de Klassieke Talen’ en de sessies in Antwerpen. De deelnemers via het CNO gaven deze nascholing een score van 4.30/5. </p><p>Enkele voorbeelden van hun feedback:</p><ul><li><p><em>Handig uitgewerkt materiaal, genoeg tijd voor praktisch verkennen van de mogelijkheden, overzichtelijke uitleg met voorbeelden (niet te langdradig).</em></p></li><li><p><em>Zeer gedreven lesgever, deelde graag zijn materie, zinvolle klasideeën.</em></p></li><li><p><em>Onmiddellijk kant-en-klaar lesmateriaal.</em></p></li><li><p><em>Zeer interessante stof, gebruiksklaar.</em></p></li></ul>"
@@ -95,16 +95,6 @@ Heb je een vraag over een specifiek onderwerp, een project van mij en mijn leerl
 
 -   _een van mijn projecten bij jou in klas komen geven als gastleerkracht._
 
-## Prijslijst
+## Praktische informatie
 
-Prijzen zijn altijd inclusief BTW en exclusief verplaatsingskosten. Over de inhoud van de nascholing, precieze inhoud en prijs kan onderhandeld worden. Ik werk via offerte en factuur.
-
-Hieronder vind je mijn richtprijzen:
-
--   Digitale of fysieke workshop of nascholing (1 à 1.5 uur): 300 euro
-
--   Plenaire sessie of keynote: 300 euro
-
--   Digitale of fysieke workshop of nascholing (één dagdeel, 2.5 uur à 3 uur): 450 euro
-
--   Langere of meerdere sessies in sequentie: te bespreken!
+Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden.

@@ -34,19 +34,19 @@ target_audience: "Deze sessie is gericht op alle stakeholders binnen het leerpro
 prerequisites: []
 delivery_modes:
   - "on_site"
-location_notes: "Duurtijd:Deze nascholing duurt 1.5 uur. Locatie:Deze nascholing wordt ingericht op een individuele school. Prijs:350 euro (exclusief verplaatsingskosten, incl. BTW)verplaatsingskosten: 0.42 euro per km of openbaar vervoer. Groepsgrootte:maximaal 100 deelnemers"
+location_notes: "Duurtijd:Deze nascholing duurt 1.5 uur. Locatie:Deze nascholing wordt ingericht op een individuele school. Groepsgrootte:maximaal 100 deelnemersPrijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 price:
   amount_eur: null
-  includes_vat: true
-  display: "Duurtijd:Deze nascholing duurt 1.5 uur. Locatie:Deze nascholing wordt ingericht op een individuele school. Prijs:350 euro (exclusief verplaatsingskosten, incl. BTW)verplaatsingskosten: 0.42 euro per km of openbaar vervoer. Groepsgrootte:maximaal 100 deelnemers"
+  includes_vat: null
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 travel_cost:
   amount_per_km_eur: null
   public_transport_policy: null
-  display: "Duurtijd:Deze nascholing duurt 1.5 uur. Locatie:Deze nascholing wordt ingericht op een individuele school. Prijs:350 euro (exclusief verplaatsingskosten, incl. BTW)verplaatsingskosten: 0.42 euro per km of openbaar vervoer. Groepsgrootte:maximaal 100 deelnemers"
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 group_size:
   minimum: null
   maximum: null
-  display: "Duurtijd:Deze nascholing duurt 1.5 uur. Locatie:Deze nascholing wordt ingericht op een individuele school. Prijs:350 euro (exclusief verplaatsingskosten, incl. BTW)verplaatsingskosten: 0.42 euro per km of openbaar vervoer. Groepsgrootte:maximaal 100 deelnemers"
+  display: "Duurtijd:Deze nascholing duurt 1.5 uur. Locatie:Deze nascholing wordt ingericht op een individuele school. Groepsgrootte:maximaal 100 deelnemersPrijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 booking_cta:
   label: "Neem contact op"
   href: "/contact"
@@ -65,8 +65,8 @@ source_details:
     text: "Deze sessie is gericht op alle stakeholders binnen het leerproces. Leerkrachten, directieleden en ook ouderverenigingen. Want dat leerproces en de ondersteuning daarvan gebeurt in de klas en ook thuis."
     volatile: false
   - heading: "Praktische informatie"
-    html: "<p><strong>Duurtijd</strong>:</p><ul><li><p>Deze nascholing duurt 1.5 uur.  </p></li></ul><p><strong>Locatie</strong>:</p><ul><li><p>Deze nascholing wordt ingericht op een individuele school. </p></li></ul><p><strong>Prijs:</strong></p><ul><li><p>350 euro (exclusief verplaatsingskosten, incl. BTW)</p></li><li><p>verplaatsingskosten: 0.42 euro per km of openbaar vervoer. </p></li></ul><p><strong>Groepsgrootte:</strong></p><ul><li><p>maximaal 100 deelnemers</p></li></ul>"
-    text: "Duurtijd:Deze nascholing duurt 1.5 uur. Locatie:Deze nascholing wordt ingericht op een individuele school. Prijs:350 euro (exclusief verplaatsingskosten, incl. BTW)verplaatsingskosten: 0.42 euro per km of openbaar vervoer. Groepsgrootte:maximaal 100 deelnemers"
+    html: "<p><strong>Duurtijd</strong>:</p><ul><li><p>Deze nascholing duurt 1.5 uur.  </p></li></ul><p><strong>Locatie</strong>:</p><ul><li><p>Deze nascholing wordt ingericht op een individuele school. </p></li></ul><p><strong>Groepsgrootte:</strong></p><ul><li><p>maximaal 100 deelnemers</p></li></ul><p>Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden.</p>"
+    text: "Duurtijd:Deze nascholing duurt 1.5 uur. Locatie:Deze nascholing wordt ingericht op een individuele school. Groepsgrootte:maximaal 100 deelnemersPrijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
     volatile: true
 ---
 

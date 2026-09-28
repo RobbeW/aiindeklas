@@ -33,7 +33,7 @@ call_to_actions: []
 
 -   robbe.wulgaert@gmail.com
 
--   de website van Robbe Wulgaert
+-   www.robbewulgaert.be
 
 -   Garensteeg 2
 

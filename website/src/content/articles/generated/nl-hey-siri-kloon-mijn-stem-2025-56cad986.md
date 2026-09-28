@@ -58,7 +58,7 @@ Darth Vader is niet alleen iconisch vanwege zijn verschijning, maar vooral door 
 
 ![](../../../assets/migrated/f6/f6a8feb9799b76f441bf819e6c04fb9e6f36819d08869e1e6cef3170031ec2b1-w758.webp)
 
-Bron: [ScreenRant article](https://screenrant.com/who-voices-darth-vader-in-obi-wan-kenobi/)
+Bron: ScreenRant - [https://screenrant.com/who-voices-darth-vader-in-obi-wan-kenobi/](https://screenrant.com/who-voices-darth-vader-in-obi-wan-kenobi/)
 
 In 2024 overleed James Earl Jones, wat de rol van AI in het behoud van stemmen extra relevant maakt. Deze technologie maakt het mogelijk om iconische stemmen ook na iemands overlijden te blijven gebruiken. Tegelijk roept dit belangrijke ethische vragen op: van wie is een stem, mag en kan je die verkopen, en hoever mogen we gaan in het digitaal ‘verder leven’ van een artiest? 
 
@@ -180,7 +180,7 @@ Het was even schrikken toen Libelia Desplenter de telefoon opnam. Journalisten b
 
 ![](../../../assets/migrated/e5/e5879be1aeae61dcf30539d33ddf6c96da22251ead0c09b490e20b34bf876701-w659.webp)
 
-Bron: [Nieuwsblad article](https://www.nieuwsblad.be/cnt/dmf20180213_03355605)
+Bron: [https://www.nieuwsblad.be/cnt/dmf20180213\_03355605](https://www.nieuwsblad.be/cnt/dmf20180213_03355605)
 
 ### Hollywood
 
@@ -196,7 +196,7 @@ Sommige kregen misschien al eens een verdacht WhatsApp-bericht. “Hoi mam en p
 
 ![](../../../assets/migrated/40/402a01e2d14488020a8e05de96cdc13a08dac7e3c2c8861d56f0f9fd7f53fbb2-w1082.webp)
 
-Bron: [**VRT NWS article**](https://www.vrt.be/vrtnws/nl/2024/01/16/deepfake-reclame-game/)
+Bron: [**https://www.vrt.be/vrtnws/nl/2024/01/16/deepfake-reclame-game/**](https://www.vrt.be/vrtnws/nl/2024/01/16/deepfake-reclame-game/)
 
 ### **Afspraken met leerlingen**
 

@@ -36,19 +36,19 @@ delivery_modes:
   - "online"
   - "on_site"
   - "cno"
-location_notes: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen.Deze nascholing kan ook georganiseerd worden op een individuele school of online.Prijs:66 euro per deelnemer via het CNO;300 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+location_notes: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen.Deze nascholing kan ook georganiseerd worden op een individuele school of online.Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 price:
   amount_eur: null
   includes_vat: null
-  display: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen.Deze nascholing kan ook georganiseerd worden op een individuele school of online.Prijs:66 euro per deelnemer via het CNO;300 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 travel_cost:
   amount_per_km_eur: null
   public_transport_policy: null
-  display: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen.Deze nascholing kan ook georganiseerd worden op een individuele school of online.Prijs:66 euro per deelnemer via het CNO;300 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+  display: "Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 group_size:
   minimum: null
   maximum: null
-  display: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen.Deze nascholing kan ook georganiseerd worden op een individuele school of online.Prijs:66 euro per deelnemer via het CNO;300 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+  display: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen.Deze nascholing kan ook georganiseerd worden op een individuele school of online.Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
 booking_cta:
   label: "Neem contact op"
   href: "/contact"
@@ -67,8 +67,8 @@ source_details:
     text: "Leerkrachten Klassieke Talen uit de tweede of derde graad in het secundair onderwijs. Je hebt interesse in digitale leermiddelen en een alternatieve aanpak rond de uitspraak van Klassieke Talen. Voorkennis: enkel vakspecifieke (Latijn / Grieks) voorkennis is vereist. Er is geen specifieke voorkennis op vlak van programmeren vereist."
     volatile: false
   - heading: "Praktische Informatie"
-    html: "<p><strong>Duurtijd:</strong></p><ul><li><p>Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het <a href=\"https://cno.uantwerpen.be/nl/opleiding/artificiele-intelligentie-en-latijn-hoe-agrippina-tot-leven-komt-78396\" rel=\"noreferrer\">Centrum Nascholing Onderwijs van de Universiteit Antwerpen.</a></p></li></ul><p><strong>Locatie:</strong></p><ul><li><p>CNO campus Boogkeers in Antwerpen.</p></li><li><p>Deze nascholing kan ook georganiseerd worden op een individuele school of online.</p></li></ul><p><strong>Prijs:</strong></p><ul><li><p>66 euro per deelnemer via het CNO;</p></li><li><p>300 euro (exclusief verplaatsingskosten) indien ingericht op locatie.</p></li></ul>"
-    text: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen.Deze nascholing kan ook georganiseerd worden op een individuele school of online.Prijs:66 euro per deelnemer via het CNO;300 euro (exclusief verplaatsingskosten) indien ingericht op locatie."
+    html: "<p><strong>Duurtijd:</strong></p><ul><li><p>Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het <a href=\"https://cno.uantwerpen.be/nl/opleiding/artificiele-intelligentie-en-latijn-hoe-agrippina-tot-leven-komt-78396\" rel=\"noreferrer\">Centrum Nascholing Onderwijs van de Universiteit Antwerpen.</a></p></li></ul><p><strong>Locatie:</strong></p><ul><li><p>CNO campus Boogkeers in Antwerpen.</p></li><li><p>Deze nascholing kan ook georganiseerd worden op een individuele school of online.</p></li></ul><p>Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden.</p>"
+    text: "Duurtijd:Deze nascholing duurt 2 uur en wordt herhaaldelijk ingericht via het Centrum Nascholing Onderwijs van de Universiteit Antwerpen.Locatie:CNO campus Boogkeers in Antwerpen.Deze nascholing kan ook georganiseerd worden op een individuele school of online.Prijs op aanvraag. Inhoud workshop / keynote kan altijd besproken worden."
     volatile: true
   - heading: "Feedback Deelnemers"
     html: "<p>Er namen reeds meer dan 30 cursisten deel aan deze nascholing. De deelnemers via het CNO gaven deze nascholing een score van 4.47/5. </p><p>Enkele voorbeelden van hun feedback:</p><ul><li><p><em>De spreker, de bruikbaarheid. Beste nascholing in jaren!! </em></p></li><li><p><em>Vernieuwende inhoud, ongezien combinatie van oudheid en AI </em></p></li><li><p>Lesgever was zeer deskundig terzake, zowel qua theorie als praktijk. Het feit dat we uitgewerkt lesmateriaal mogen downloaden is een plus. Zeer heldere uitleg over het onderwerp. Een verademing tegenover soms vage bijscholingen. Dit was echt uitzonderlijk goed gegeven. Heb zelf ook 9 jaar voor CNO lesgegeven, ik weet hoe het is om voor een divers publiek te staan :-) </p></li><li><p><em>Expertise lesgever, theoretische omkadering, oog voor de toepassing </em></p></li><li><p><em>Het beschikbare AI-model, de haalbaarheid ervan en de ruimte voor toepassing. De heel duidelijke uiteenzetting konden we ook zeer waarderen. Dankjewel. </em></p></li><li><p><em>Een ontwikkeling die zeer goed van pas komt in ons vakgebied.</em></p></li></ul>"
