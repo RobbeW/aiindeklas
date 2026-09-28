@@ -32,19 +32,34 @@ const fetchPath = async (path) => {
   return { response, bytes: Buffer.from(await response.arrayBuffer()) };
 };
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
+const preservedHash = (bytes, path) => sha256(path.endsWith(".html")
+  ? Buffer.from(bytes.toString("utf8").replaceAll("\r\n", "\n"), "utf8")
+  : bytes);
 
 const homepage = await fetchPath("/");
 if (!homepage.response.ok) failures.push(`website homepage HTTP ${homepage.response.status}`);
 const homeHtml = homepage.bytes.toString("utf8");
-if (!hasMeta(homeHtml, "robots", "noindex")) failures.push("website homepage lost noindex review gate");
+const homepageIndexable = hasMeta(homeHtml, "robots", "index") && !hasMeta(homeHtml, "robots", "noindex");
+if (!homepageIndexable) failures.push("production website homepage is not indexable");
 if (!canonicalIncludes(homeHtml, projectBase)) failures.push("website canonical is missing the project prefix");
+
+const participant = await fetchPath("geschenk");
+if (!participant.response.ok) failures.push(`participant route /geschenk HTTP ${participant.response.status}`);
+const participantHtml = participant.bytes.toString("utf8");
+const participantNoindex = hasMeta(participantHtml, "robots", "noindex") && hasMeta(participantHtml, "robots", "nofollow");
+if (!participantNoindex) failures.push("participant route /geschenk lost noindex, nofollow");
+
+const sitemap = await fetchPath("sitemap.xml");
+if (!sitemap.response.ok) failures.push(`sitemap.xml HTTP ${sitemap.response.status}`);
+const participantAbsentFromSitemap = !sitemap.bytes.toString("utf8").includes("/geschenk");
+if (!participantAbsentFromSitemap) failures.push("participant route /geschenk leaked into sitemap.xml");
 
 const checked = [];
 for (const [deployedPath, sourcePath, hashSource] of preserved) {
   const { response, bytes } = await fetchPath(deployedPath);
   if (!response.ok) { failures.push(`preserved path ${deployedPath} returned HTTP ${response.status}`); continue; }
   const localBytes = await readFile(resolve(repoRoot, hashSource ?? sourcePath));
-  if (sha256(bytes) !== sha256(localBytes)) failures.push(`preserved bytes differ at ${deployedPath}`);
+  if (preservedHash(bytes, deployedPath) !== preservedHash(localBytes, deployedPath)) failures.push(`preserved bytes differ at ${deployedPath}`);
   checked.push(deployedPath);
 }
 const unknown = await fetchPath("p14-path-that-must-not-exist-4f4b63");
@@ -54,10 +69,12 @@ for (const privatePath of ["admin", "admin/content.json"]) {
   if (response.status !== 404) failures.push(`local authoring path ${privatePath} returned HTTP ${response.status}, expected 404`);
 }
 const report = {
-  schema_version: "1.0.0",
+  schema_version: "1.1.0",
   deployment_url: base.href,
   preserved_paths_checked: checked,
-  noindex_review_gate_preserved: hasMeta(homeHtml, "robots", "noindex"),
+  homepage_indexable: homepageIndexable,
+  participant_noindex_preserved: participantNoindex,
+  participant_absent_from_sitemap: participantAbsentFromSitemap,
   unknown_route_status: unknown.response.status,
   status: failures.length ? "failed" : "passed",
   failures
