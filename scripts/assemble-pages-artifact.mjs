@@ -11,6 +11,7 @@ const output = resolve(repoRoot, readArg("--output", "_site"));
 if (output !== resolve(repoRoot, "_site")) throw new Error("Artifact output must be the repository-local _site directory");
 if (dist === output || dist.startsWith(`${output}${sep}`)) throw new Error("Website build output cannot be inside the Pages artifact directory");
 await stat(join(dist, "index.html"));
+const gameDist = resolve(repoRoot, "zelflerende-games/dist");
 
 const preservedDirectories = ["aeneas", "computationeel_denken", "deepfakes", "sentimentsanalyse", "supervised_learning"];
 const digest = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -77,5 +78,28 @@ const report = {
   preserved_directory_file_counts: copied,
   knn_index_sha256: digest(await readFile(join(output, "knn", "index.html"))),
   status: "passed"
+};
+// The app is a project subpath; preserve the existing repository homepage and site content.
+const gameTarget = join(output, "zelflerende-games");
+try {
+  await stat(gameTarget);
+  throw new Error("Cannot preserve target content because website build already owns /zelflerende-games/");
+} catch (error) {
+  if (error?.code !== "ENOENT") throw error;
+}
+await cp(gameDist, gameTarget, { recursive: true, errorOnExist: true, force: false });
+const gameSourceFiles = await filesBelow(gameDist);
+for (const sourceFile of gameSourceFiles) {
+  const targetFile = join(gameTarget, relative(gameDist, sourceFile));
+  if (digest(await readFile(sourceFile)) !== digest(await readFile(targetFile))) {
+    throw new Error("Game file hash mismatch after copy: " + relative(gameDist, sourceFile));
+  }
+}
+report.zelflerende_games = {
+  destination: "zelflerende-games/",
+  file_count: gameSourceFiles.length,
+  sha256: Object.fromEntries(await Promise.all(gameSourceFiles.map(async (file) => [
+    relative(gameDist, file).split(sep).join("/"), digest(await readFile(file))
+  ])))
 };
 console.log(JSON.stringify(report, null, 2));
