@@ -1,0 +1,93 @@
+{
+  "titleLines": [
+    "Zelflerend",
+    "in de Klas"
+  ],
+  "intro": "Een kleine website om leerlingen te laten onderzoeken hoe een computer leert spelen. Eerst speel je zelf. Daarna doe je het voor, laat je de computer oefenen en kijk je wat er verandert. Met Flappy Bird en een zelfrijdende raceauto. Geen installatie, geen accounts. Gewoon openen, proberen, fouten maken en opnieuw beginnen.",
+  "steps": [
+    {
+      "title": "1. Speel zelf",
+      "body": "Probeer eerst zelf de vogel te besturen of rijd met de auto over het circuit. Wat zie jij voordat je een actie kiest?"
+    },
+    {
+      "title": "2. Doe het voor",
+      "body": "Geef voorbeelden van je keuzes. Kijk welke situaties je hebt getoond en welke nog ontbreken."
+    },
+    {
+      "title": "3. Oefen en vergelijk",
+      "body": "Laat de computer zelf proberen. Bekijk ook minder geslaagde pogingen en vergelijk dezelfde tests. Eén goede rit of hoge score zegt nog niet alles."
+    }
+  ],
+  "games": [
+    {
+      "id": "flappy",
+      "title": "Flappy Bird",
+      "body": "Wanneer flap je en wanneer wacht je? Leerlingen geven voorbeelden, laten de vogel zelf proberen en bekijken waar de keuzes anders lopen."
+    },
+    {
+      "id": "car",
+      "title": "Raceauto",
+      "body": "Rijd zelf, bouw met rechte stukken en bochten een eigen circuit en bekijk een hele groep auto’s op de baan. Welke komen het verst? En lukt dat ook op een ander circuit?"
+    }
+  ],
+  "path": [
+    {
+      "title": "Zelf spelen",
+      "body": "Eerst probeer je het zelf. Wanneer flap je, wacht je of stuur je bij?"
+    },
+    {
+      "title": "Voordoen",
+      "body": "Neem een paar pogingen op. Heb je ook de moeilijke situaties getoond?"
+    },
+    {
+      "title": "Zelf laten oefenen",
+      "body": "Laat de computer veel pogingen na elkaar doen. Kijk wat er verandert."
+    },
+    {
+      "title": "Vergelijken",
+      "body": "Test onder dezelfde omstandigheden. Wat gaat beter, wat niet en hoe komt dat?"
+    }
+  ],
+  "teacher": {
+    "intro": "Een compacte omgeving voor leerlingen van 13 tot 15 jaar. Je hoeft niet met code te beginnen: leerlingen spelen, geven voorbeelden en onderzoeken de uitkomsten.",
+    "points": [
+      "Begin met Flappy Bird: één knop is genoeg om te starten.",
+      "Een laptop met toetsenbord volstaat. Leerlingen hoeven geen code te schrijven.",
+      "Werk alleen of in duo’s. Wissel het spelen, voorspellen en bespreken af.",
+      "Werk blijft in de browser. Bewaar een bestand om op een ander toestel verder te gaan."
+    ],
+    "classroom": "Laat de klas eerst voorspellen wat er zal gebeuren. Leerlingen proberen daarna zelf, vergelijken pogingen en bespreken welke voorbeelden of tests ontbreken. Beoordeel hun uitleg en keuzes, niet of ze winnen."
+  },
+  "closing": {
+    "title": "Gewoon beginnen.",
+    "body": "Open het leerplatform, kies een spel en probeer het zelf. De vragen en uitleg staan bij de oefeningen."
+  },
+  "literacy": {
+    "title": "Wat oefenen leerlingen hiermee?",
+    "intro": "Met dit project werk je aan deze doelen uit het AI Literacy Framework van de OECD en de Europese Commissie:",
+    "goals": [
+      {
+        "title": "Uitleggen hoe het werkt.",
+        "body": "Welke informatie krijgt de computer? Hoe kiest hij een actie en waar loopt het mis?",
+        "competences": "Engage with AI 2 · Shape AI 1"
+      },
+      {
+        "title": "Voorbeelden bewust kiezen.",
+        "body": "Leerlingen onderzoeken hoe hun voorbeelden het gedrag veranderen en welke situaties nog ontbreken.",
+        "competences": "Shape AI 3"
+      },
+      {
+        "title": "Eerlijk testen.",
+        "body": "Spreek af wat een goede poging is. Vergelijk dezelfde tests en probeer ook een onbekend circuit.",
+        "competences": "Shape AI 2"
+      },
+      {
+        "title": "Zelf blijven beoordelen.",
+        "body": "Bekijk de resultaten en beslis wanneer je stopt, extra voorbeelden geeft of de aanpak bijstuurt.",
+        "competences": "Manage AI 4"
+      }
+    ],
+    "sourceLabel": "Bekijk het framework · OECD / Europese Unie, 2026",
+    "sourceUrl": "https://www.oecd.org/en/publications/empowering-learners-for-the-age-of-ai_65cd27d4-en.html"
+  }
+}

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#5200FF">
+  <link rel="icon" type="image/png" sizes="64x64" href="./favicon.png?v=ff7968036640">
+  <title>Leskaarten — AI in de Klas</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --kaart-paars: #5200FF;
+      --kaart-aqua: #3DFFD0;
+      --kaart-papier: #F8F7F3;
+      --kaart-inkt: #160033;
+      --kaart-rand: #d7d1e1;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--kaart-inkt);
+      background: var(--kaart-papier);
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 2rem 1rem 3rem; }
+    .leskaarten-pagina { max-width: 900px; margin: 0 auto; }
+    .leskaarten-kop { display: flex; align-items: start; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
+    .leskaarten-merk { margin: 0 0 .35rem; color: var(--kaart-paars); font-size: .82rem; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(1.8rem, 5vw, 2.7rem); line-height: 1.05; }
+    .leskaarten-inleiding { max-width: 64ch; margin: .65rem 0 0; line-height: 1.55; }
+    .leskaarten-acties { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .leskaarten-knop, .leskaarten-kaart a { display: inline-block; border: 2px solid var(--kaart-paars); border-radius: 12px; padding: .65rem .9rem; color: var(--kaart-paars); font: inherit; font-weight: 700; text-decoration: none; background: white; }
+    .leskaarten-knop:hover, .leskaarten-kaart a:hover { transform: translateY(-1px); }
+    .leskaarten-knop:focus-visible, .leskaarten-kaart a:focus-visible { outline: 3px solid var(--kaart-paars); outline-offset: 3px; }
+    .leskaarten-raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .leskaarten-kaart { display: flex; flex-direction: column; min-height: 350px; padding: 1.15rem; border: 1px solid var(--kaart-rand); border-top: 8px solid var(--kaart-paars); border-radius: 14px; background: white; }
+    .leskaarten-kaart:nth-child(2) { border-top-color: #087d68; }
+    .leskaarten-kaart:nth-child(3) { border-top-color: #7545d8; }
+    .leskaarten-kaart h2 { margin: .1rem 0 .55rem; font-size: 1.25rem; }
+    .leskaarten-kaart p { margin: 0 0 .85rem; line-height: 1.5; }
+    .leskaarten-vraag { padding-top: .7rem; border-top: 1px solid var(--kaart-rand); }
+    .leskaarten-vraag strong { display: block; margin-bottom: .2rem; }
+    .leskaarten-kaart a { margin-top: auto; align-self: start; }
+    .leskaarten-voet { margin-top: 1.2rem; font-size: .9rem; }
+    .leskaarten-voet a { color: var(--kaart-paars); }
+    @media (max-width: 700px) {
+      body { padding: 1.25rem .85rem 2rem; }
+      .leskaarten-kop { display: block; }
+      .leskaarten-acties { margin-top: 1rem; }
+      .leskaarten-raster { grid-template-columns: 1fr; }
+      .leskaarten-kaart { min-height: 0; }
+      .leskaarten-kaart a { margin-top: 1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .leskaarten-knop:hover, .leskaarten-kaart a:hover { transform: none; }
+    }
+    @media print {
+      @page { size: A4; margin: 14mm; }
+      body { padding: 0; background: white; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .leskaarten-pagina { max-width: none; }
+      .leskaarten-acties, .leskaarten-kaart a { display: none; }
+      .leskaarten-raster { grid-template-columns: 1fr; gap: .65rem; }
+      .leskaarten-kaart { min-height: 0; break-inside: avoid; padding: .8rem 1rem; }
+      .leskaarten-vraag { padding-top: .4rem; }
+      .leskaarten-voet { margin-top: .7rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="leskaarten-pagina">
+    <header class="leskaarten-kop">
+      <div>
+        <p class="leskaarten-merk">AI in de Klas</p>
+        <h1>Leskaarten: zelflerende games</h1>
+        <p class="leskaarten-inleiding">Voor leerlingen van 13–15 jaar. Speel, voorspel, probeer en bespreek wat je ziet. Fouten zijn ook iets om te onderzoeken.</p>
+      </div>
+      <div class="leskaarten-acties">
+        <button class="leskaarten-knop" type="button" onclick="window.print()">Print leskaarten</button>
+        <a class="leskaarten-knop" href="./#leerkrachten">Terug naar leerkrachten</a>
+      </div>
+    </header>
+
+    <section class="leskaarten-raster" aria-label="Drie leskaarten">
+      <article class="leskaarten-kaart">
+        <h2>1. Flappy: doe het voor</h2>
+        <p>Speel zelf en neem een paar pogingen op. Let op wanneer je flapt en wanneer je wacht. Train daarna de computer met jouw voorbeelden en bekijk hoe de vogel speelt.</p>
+        <p class="leskaarten-vraag"><strong>Voorspel</strong>Welke situatie zal voor de vogel moeilijk zijn?</p>
+        <p class="leskaarten-vraag"><strong>Probeer</strong>Neem ook een moeilijke poging op. Verandert dat hoe de vogel speelt?</p>
+        <p class="leskaarten-vraag"><strong>Bespreek</strong>Welke voorbeelden ontbraken misschien? Wat zegt één gelukte of mislukte poging?</p>
+        <a href="./?view=flappy&amp;step=play">Start met Flappy Bird</a>
+      </article>
+      <article class="leskaarten-kaart">
+        <h2>2. Laat de computer oefenen</h2>
+        <p>Ga verder met de vogel die jouw voorbeelden heeft geoefend. Laat de computer zelf een reeks pogingen doen. Test daarna opnieuw.</p>
+        <p class="leskaarten-vraag"><strong>Voorspel</strong>Zal de vogel na het oefenen beter spelen? Waaraan zou je dat zien?</p>
+        <p class="leskaarten-vraag"><strong>Probeer</strong>Vergelijk de vogel voor en na het oefenen. Gebruik dezelfde test en noteer ook wat niet beter ging.</p>
+        <p class="leskaarten-vraag"><strong>Bespreek</strong>Wat veranderde er? Wat weet je nog niet? Meer oefenen hoeft niet altijd te helpen.</p>
+        <a href="./?view=flappy&amp;step=practice">Laat de vogel oefenen</a>
+      </article>
+      <article class="leskaarten-kaart">
+        <h2>3. Raceauto: bouw een baan</h2>
+        <p>Maak een circuit met rechte stukken en bochten. Controleer of de route gesloten is. Laat daarna een groep auto’s rijden en bekijk welke het verst komen.</p>
+        <p class="leskaarten-vraag"><strong>Voorspel</strong>Welke bocht wordt lastig? Waarom denk je dat?</p>
+        <p class="leskaarten-vraag"><strong>Probeer</strong>Bekijk verschillende generaties. Verander daarna je circuit en test opnieuw.</p>
+        <p class="leskaarten-vraag"><strong>Bespreek</strong>Doet de beste auto het ook goed op een andere baan? Wat moet je testen om dat te weten?</p>
+        <a href="./?view=car&amp;step=edit">Bouw een circuit</a>
+      </article>
+    </section>
+
+    <footer class="leskaarten-voet">AI in de Klas · Robbe Wulgaert · <a href="./#leerkrachten">Terug naar de leerkrachtenpagina</a></footer>
+  </main>
+</body>
+</html>

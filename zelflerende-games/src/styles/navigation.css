@@ -1,0 +1,28 @@
+.navigation-control { display: flex; align-items: center; gap: 14px; margin: 6px 0 12px; }
+.navigation-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+.hamburger-icon { display: grid; gap: 4px; width: 19px; }
+.hamburger-icon i { display: block; height: 2px; width: 100%; background: currentColor; border-radius: 2px; }
+.navigation-current { color: var(--ink); font-weight: 650; font-size: 14px; }
+.navigation-drawer { position: fixed; margin: 0; padding: 20px; width: min(340px, calc(100vw - 24px)); max-height: calc(100dvh - 32px); overflow: auto; border: 1px solid var(--border); border-radius: 16px; background: var(--card); color: var(--ink); box-shadow: 0 16px 60px #16003330; }
+.navigation-drawer::backdrop { background: #16003355; }
+.drawer-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.drawer-header h2 { margin: 0; font-size: 22px; }
+.drawer-close { font-size: 26px; line-height: 1; padding: 6px; width: 44px; }
+.navigation-drawer nav { display: grid; gap: 8px; margin: 0; }
+.navigation-drawer nav button { text-align: left; width: 100%; }
+.navigation-drawer nav button[aria-current] { background: var(--brand-purple-dark); color: white; }
+.navigation-drawer nav button[aria-current]:hover { background: var(--brand-purple-dark); color: white; }
+.global-drawer { top: 16px; left: max(12px, calc((100vw - 1200px)/2 + 16px)); }
+.exercise-drawer { left: 0; top: 50%; transform: translateY(-50%); border-radius: 0 16px 16px 0; }
+.global-drawer[open] { animation: menu-enter var(--motion-medium) var(--ease-out); }
+.exercise-drawer[open] { animation: exercise-enter var(--motion-medium) var(--ease-out); }
+.exercise-toggle { position: fixed; z-index: 5; left: 0; top: 50%; transform: translateY(-50%); writing-mode: vertical-rl; min-height: 132px; width: 44px; padding: 16px 10px; border-radius: 0 12px 12px 0; box-shadow: 0 4px 16px #16003315; }
+.exercise-toggle:hover:not(:disabled) { transform: translateY(-50%); }
+.exercise-navigation { margin: 8px 0 12px; }
+.app-shell.has-exercises { padding-left: 60px; }
+@keyframes menu-enter { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes exercise-enter { from { opacity: 0; transform: translate(-100%, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .navigation-drawer[open] { animation: none; }
+  .exercise-toggle:hover:not(:disabled) { transform: translateY(-50%); }
+}

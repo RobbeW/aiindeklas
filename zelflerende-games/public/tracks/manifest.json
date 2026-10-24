@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "tracks": [
+    {
+      "id": "teaching-loop",
+      "file": "teaching-loop.json",
+      "role": "training"
+    },
+    {
+      "id": "long-loop",
+      "file": "long-loop.json",
+      "role": "validation"
+    },
+    {
+      "id": "unseen-bends",
+      "file": "unseen-bends.json",
+      "role": "final"
+    }
+  ]
+}

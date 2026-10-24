@@ -1,0 +1,42 @@
+{
+  "audience": "13–15 jaar, lichte programmeerervaring",
+  "phases": [
+    {
+      "id": "play",
+      "title": "Speel zelf",
+      "explanation": "Je bestuurt een vogel met één actie: flappen. De andere vogel kiest willekeurig en is nog niet getraind.",
+      "prediction": "Welke informatie gebruik jij om te beslissen wanneer je flapt?",
+      "reflection": "Wat zag jij voordat je actie nam? Heeft de computer dezelfde informatie?"
+    },
+    {
+      "id": "teach",
+      "title": "Geef voorbeelden",
+      "explanation": "De opname bewaart waarnemingen vóór jouw actie, met het label flap of wacht. Een model past zijn gewichten aan om die labels na te bootsen. Een aparte controleset geeft feedback en traint de gewichten niet.",
+      "prediction": "Wat verwacht je als bijna alle voorbeelden het label wachten hebben?",
+      "reflection": "Welke fouten of ontbrekende situaties zitten in je voorbeelden? Een lage trainingsfout is nog geen goede speelscore."
+    },
+    {
+      "id": "clone",
+      "title": "Test de imitatie",
+      "explanation": "Het bewaarde model kiest telkens een nieuwe actie uit de actuele waarneming. Het speelt jouw opname niet af. Tijdens deze test blijven de gewichten gelijk.",
+      "prediction": "Zal de imitatie ook andere openingen aankunnen?",
+      "reflection": "Welke testuitkomst ondersteunt je voorspelling? Wat vertelt één succesvolle of mislukte poging nog niet?"
+    },
+    {
+      "id": "practice",
+      "title": "Laat zelfstandig oefenen",
+      "explanation": "Met reinforcement learning probeert dezelfde agent zelf acties. Beloningen sturen nu de aanpassing van gewichten. Veel pogingen kunnen snel na elkaar draaien zonder elke stap te tekenen.",
+      "prediction": "Verwacht je dat de score bij elke poging hoger wordt? Waarom?",
+      "reflection": "Hoe verschillen menselijke demonstratietijd, machinepogingen en rekentijd? Sneller proberen betekent niet automatisch minder data of beter leren."
+    },
+    {
+      "id": "compare",
+      "title": "Vergelijk eerlijk",
+      "explanation": "Test de mens en de bevroren begin-, imitatie- en RL-modellen op dezelfde gereserveerde reeksen. Vergelijk meerdere pogingen en houd het oefenbudget bij.",
+      "prediction": "Welk resultaat zou jouw verklaring juist tegenspreken?",
+      "reflection": "Welke menselijke keuzes bepaalden voorbeelden, waarnemingen, beloning en succes? Noem één beperking en een gerichte verbetering."
+    }
+  ],
+  "languageNote": "AI verwerkt invoer en past parameters aan; dit is geen menselijk begrip.",
+  "assessment": "Beoordeel uitleg, controles en ontwerpkeuzes; winnen of motorsnelheid is geen beoordeling."
+}
