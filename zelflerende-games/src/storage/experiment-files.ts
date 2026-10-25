@@ -1,4 +1,5 @@
 import { validateEpisode } from '../data/dataset.ts';
+import { validateLessonNotes } from '../flappy/lesson-notes.ts';
 import { splitCarEpisodes } from '../car/recorder.ts';
 import { validateCircuit } from '../tracks/document.ts';
 import { buildRoute } from '../tracks/route.ts';
@@ -52,7 +53,7 @@ export function canonicalGameState(game:Game,value:unknown):FlappyLearningState|
   const postRl=p.postRl?bird(requireStage(p.postRl,'post_rl','Post-RL')):undefined;
   let practice:FlappyLearningState['practice'];if(p.practice){const x=validatePractice(p.practice,'flappy');practice={...x,stepsPerSecond:finite(object(p.practice).stepsPerSecond),cumulativeSteps:p.practice.cumulativeSteps===undefined?undefined:count(p.practice.cumulativeSteps),cumulativeElapsedMs:p.practice.cumulativeElapsedMs===undefined?undefined:finite(p.practice.cumulativeElapsedMs),history:[],scoreHistory:[]};}
   if(teach?.imitationIsStale&&(practice||postRl))throw new Error('Stale imitation cannot retain practice or post-RL progress');
-  return Object.freeze({teach,postRl,practice,human:rows(p.human??[],'flappy'),records:rows(p.records??[],'flappy')});
+  return Object.freeze({teach,postRl,practice,human:rows(p.human??[],'flappy'),records:rows(p.records??[],'flappy'),...(p.notes===undefined?{}:{notes:validateLessonNotes(p.notes)})});
  }
  const doc=validateCircuit(p.document);buildRoute(doc);const draft=p.draft?validateCircuit(p.draft):undefined;
  let teach:CarLearningState['teach'];if(p.teach){const t=object(p.teach);if(typeof t.stale!=='boolean')throw new Error('Invalid stale flag');teach={episodes:uniqueEpisodes(t.episodes,'car') as NonNullable<CarLearningState['teach']>['episodes'],initial:validateCarSnapshot(requireStage(t.initial,'initial','Initial teacher')),imitation:t.imitation?validateCarSnapshot(requireStage(t.imitation,'imitation','Imitation teacher')):undefined,stale:t.stale};}

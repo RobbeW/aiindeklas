@@ -5,7 +5,3 @@ export function disclose(root:HTMLElement,label:string,selectors:readonly string
  const details=document.createElement('details');details.className='context-help';const summary=document.createElement('summary');summary.textContent=label;details.append(summary,...nodes);
  (root.querySelector('section,main')??root).append(details);return details;
 }
-export function renderLessonPrompt(root:Element,phase:{explanation:string;prediction:string;reflection:string}){
- const details=document.createElement('details');details.className='context-help';const summary=document.createElement('summary');summary.textContent='Onderzoeksvraag';details.append(summary);
- for(const text of [`Voorspel: ${phase.prediction}`,`Bespreek: ${phase.reflection}`,phase.explanation]){const p=document.createElement('p');p.textContent=text;details.append(p);}root.replaceChildren(details);
-}

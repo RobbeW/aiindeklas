@@ -1,3 +1,0 @@
-export interface LessonArtifacts {readonly examples:number;readonly imitation:boolean;readonly stale:boolean;readonly rewardEpisodes:number;readonly comparisons:number;readonly generations?:number;}
-/** Artifact availability, never a fabricated learning score or forced unlock. */
-export function lessonProgress(a:LessonArtifacts){return Object.freeze([{id:'examples',label:'Complete voorbeelden',ready:a.examples>0},{id:'imitation',label:'Actuele imitatie',ready:a.imitation&&!a.stale},{id:'practice',label:'Beloningsupdates',ready:a.rewardEpisodes>0},{id:'compare',label:'Controlemetingen',ready:a.comparisons>0},...(a.generations===undefined?[]:[{id:'population',label:'Volledige generaties',ready:a.generations>0}])]);}

@@ -6,7 +6,20 @@ const WIDTH = PHYSICS.worldWidth;
 const HEIGHT = PHYSICS.worldHeight;
 const GROUND_Y = PHYSICS.groundY;
 const PURPLE = '#5200FF';
-interface FlappyArtwork { pipe: HTMLImageElement; ground: HTMLImageElement; birds: readonly HTMLImageElement[]; }
+interface FlappyArtwork { pipe: HTMLImageElement; ground: HTMLImageElement; birds: readonly CanvasImageSource[]; }
+export type BirdColour='red'|'blue'|'yellow'|'purple';
+/** Recolour only the two red body shades; keep eyes, outlines, wings and beak intact. */
+function colourArtwork(art:FlappyArtwork,colour:BirdColour):FlappyArtwork {
+  if(colour==='red')return art;
+  const colours={blue:[[44,116,230],[32,84,180]],yellow:[[250,211,50],[211,160,27]],purple:[[138,77,255],[91,43,195]]} as const;
+  return {...art,birds:art.birds.map(source=>{
+    const canvas=document.createElement('canvas');canvas.width=34;canvas.height=24;
+    const context=canvas.getContext('2d');if(!context)throw new Error('Vogelkleuren laden lukt niet.');
+    context.drawImage(source,0,0);const pixels=context.getImageData(0,0,34,24);
+    for(let i=0;i<pixels.data.length;i+=4){const r=pixels.data[i],g=pixels.data[i+1],b=pixels.data[i+2];const shade=r===252&&g===56&&b===0?0:r===211&&g===47&&b===0?1:-1;if(shade>=0){const rgb=colours[colour][shade as 0|1];pixels.data[i]=rgb[0];pixels.data[i+1]=rgb[1];pixels.data[i+2]=rgb[2];}}
+    context.putImageData(pixels,0,0);return canvas;
+  })};
+}
 async function loadArtwork(): Promise<FlappyArtwork> {
   const load = (name: string) => new Promise<HTMLImageElement>((resolve, reject) => {
     const image = new Image();
@@ -79,11 +92,12 @@ function drawBackdrop(context: CanvasRenderingContext2D, world: WorldState, art:
 /** Create a pure renderer for immutable Flappy world snapshots on a fixed 360×480 canvas. */
 export async function createFlappyRenderer(
   canvas: HTMLCanvasElement,
-): Promise<{ render(world: WorldState): void; dispose(): void }> {
+  options:{birdColour?:BirdColour}={},
+): Promise<{ render(world: WorldState): void; renderBird(canvas:HTMLCanvasElement,frame?:number):void; dispose(): void }> {
   const context = canvas.getContext('2d');
   if (!context) throw new Error('Flappy renderer needs a canvas with a 2D rendering context.');
 
-  const art = await loadArtwork();
+  const art = colourArtwork(await loadArtwork(),options.birdColour??'red');
   canvas.width = WIDTH;
   canvas.height = HEIGHT;
   context.imageSmoothingEnabled = false;
@@ -95,6 +109,11 @@ export async function createFlappyRenderer(
 
   let disposed = false;
   return {
+    renderBird(target:HTMLCanvasElement,frame=1):void {
+      target.width=34;target.height=24;const birdContext=target.getContext('2d');
+      if(!birdContext)throw new Error('Vogel laden lukt niet.');
+      birdContext.imageSmoothingEnabled=false;birdContext.drawImage(art.birds[frame%3]!,0,0);
+    },
     render(world: WorldState): void {
       if (disposed) throw new Error('Flappy renderer has been disposed.');
       if (!Number.isFinite(world.bird.y) || !Number.isFinite(world.bird.velocityY)) {

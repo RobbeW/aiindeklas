@@ -35,7 +35,7 @@ function terminalText(reason: string | undefined): string {
   switch (reason) {
     case "ceiling": return "De vogel raakte het plafond.";
     case "floor": return "De vogel raakte de grond.";
-    case "pipe_collision": return "De vogel raakte een pijp.";
+    case "pipe_collision": return "De vogel botste tegen een hindernis.";
     case "time_limit": return "De aflevering bereikte de tijdslimiet.";
     default: return "De aflevering is afgelopen.";
   }
@@ -56,8 +56,8 @@ export async function mountFlappyPlayView(
           <button id="pause" class="secondary" type="button" aria-label="Pauzeer aflevering" disabled>Pauzeer</button>
           <button id="restart" class="secondary" type="button" disabled>Opnieuw starten</button>
         </div>
-        <p id="episode-status" role="status" aria-live="polite" aria-atomic="true">Klaar om te starten. Zaad: ${FLAPPY_PLAY_SEED}.</p>
-        <p id="episode-score" aria-live="off">Score: 0 pijpen · 0 overleefde stappen</p>
+        <p id="episode-status" role="status" aria-live="polite" aria-atomic="true">Klaar om te starten. Seed: ${FLAPPY_PLAY_SEED}.</p>
+        <p id="episode-score" aria-live="off">Score: 0 · 0 overleefde stappen</p>
         <canvas id="flappy-canvas" tabindex="0" aria-label="Speelveld; selecteer dit veld voor toetsenbordinvoer"></canvas>
         <p id="input-help" class="muted">Toetsenbord: Spatie of ↑. Raak Flap aan om te springen.</p>
         <button id="flap" type="button" class="secondary" aria-label="Flap: laat de vogel omhoog gaan" disabled>Flap</button>
@@ -88,7 +88,7 @@ export async function mountFlappyPlayView(
   const input = createFlappyInput({ button: flapButton, canvas });
 
   const updateScore = (): void => {
-    score.textContent = `Score: ${environment.pipesPassed} pijpen · ${world.steps} overleefde stappen`;
+    score.textContent = `Score: ${environment.pipesPassed} · ${world.steps} overleefde stappen`;
   };
   const paint = (): void => {
     renderer?.render(world);
@@ -133,13 +133,13 @@ export async function mountFlappyPlayView(
       flapButton.disabled = true;
       pauseButton.disabled = true;
       startButton.disabled = true;
-      status.textContent = `${terminalText(result.reason)} Aflevering klaar. Score: ${result.result?.pipesPassed ?? 0} pijpen; ${result.result?.survivalSteps ?? world.steps} overleefde stappen. Kies Opnieuw starten voor dezelfde zaadwaarde.`;
+      status.textContent = `${terminalText(result.reason)} Aflevering klaar. Score: ${result.result?.pipesPassed ?? 0} · ${result.result?.survivalSteps ?? world.steps} overleefde stappen.`;
       paint();
       return;
     }
     paint();
     if (result.reward > 0.5) {
-      status.textContent = `Je liet een pijp achter je. Score: ${environment.pipesPassed} pijpen.`;
+      status.textContent = `Je passeerde een hindernis. Score: ${environment.pipesPassed}.`;
     }
   };
   const frame = (timestamp: number): void => {
@@ -167,7 +167,7 @@ export async function mountFlappyPlayView(
     pauseButton.textContent = "Pauzeer";
     pauseButton.setAttribute("aria-label", "Pauzeer aflevering");
     status.setAttribute("role", "status");
-    status.textContent = `Aflevering gestart met zaad ${FLAPPY_PLAY_SEED}.`;
+    status.textContent = `Aflevering gestart met seed ${FLAPPY_PLAY_SEED}.`;
     frameHandle = requestAnimationFrame(frame);
   };
   const onStart = (): void => {

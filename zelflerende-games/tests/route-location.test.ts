@@ -13,3 +13,8 @@ test('route changes preserve deployment path and unrelated parameters, clearing 
  assert.equal(routeUrl(current,'data'),'/aiindeklas/zelflerende-games/?view=data&theme=test#main');
  assert.equal(routeUrl(current,'home'),'/aiindeklas/zelflerende-games/?theme=test#main');
 });
+test('Flappy arena deep links work without adding a fifth reflection step',()=>{
+ assert.deepEqual(readRoute(new URL('https://example.test/tool/?view=flappy&step=arena&lesson=experiment')),{page:'flappy',step:'arena',lesson:'experiment'});
+ assert.deepEqual(readRoute(new URL('https://example.test/tool/?view=car&step=arena')),{page:'car',step:'play'});
+ assert.equal(routeUrl(new URL('https://example.test/aiindeklas/zelflerende-games/'),'flappy','arena','experiment'),'/aiindeklas/zelflerende-games/?view=flappy&step=arena&lesson=experiment');
+});

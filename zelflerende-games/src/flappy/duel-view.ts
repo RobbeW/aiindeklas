@@ -48,8 +48,7 @@ export async function mountFlappyDuelView(
     <main class="duel-page">
       <header class="duel-header">
         <p class="eyebrow">Flappy-uitdaging</p>
-        <h1>Kun jij de computer verslaan?</h1>
-        <p>Speel links. Jullie krijgen dezelfde openingen. De computer is niet getraind en kiest willekeurige acties.</p>
+        <h1>Kan jij een ongetraind AI-model verslaan?</h1>
       </header>
       <section class="card duel-stage" aria-label="Flappy-wedstrijd">
         <div class="toolbar" role="group" aria-label="Wedstrijdbediening">
@@ -63,12 +62,12 @@ export async function mountFlappyDuelView(
           <article class="card duel-panel" aria-labelledby="duel-player-heading" data-duel-side="player">
             <h2 id="duel-player-heading">Jij <span class="badge">Mens</span></h2>
             <canvas id="duel-player-canvas" tabindex="0" aria-label="Jouw speelveld. Selecteer dit veld voor toetsenbordinvoer."></canvas>
-            <p id="duel-player-summary" class="duel-side-summary" aria-live="off">Score: 0 pijpen · 0.0 s</p>
+            <p id="duel-player-summary" class="duel-side-summary" aria-live="off">Score: 0 · 0.0 s</p>
           </article>
           <article class="card duel-panel" aria-labelledby="duel-computer-heading" data-duel-side="computer">
             <h2 id="duel-computer-heading">Computer · niet getraind</h2>
             <canvas id="duel-computer-canvas" tabindex="-1" aria-label="Speelveld van de ongetrainde computer."></canvas>
-            <p id="duel-computer-summary" class="duel-side-summary" aria-live="off">Score: 0 pijpen · 0.0 s</p>
+            <p id="duel-computer-summary" class="duel-side-summary" aria-live="off">Score: 0 · 0.0 s</p>
           </article>
         </div>
         <p class="muted">Gebruik Spatie of ↑, of kies Flap. Een wedstrijd pauzeert zodra je dit venster verlaat.</p>
@@ -127,8 +126,8 @@ export async function mountFlappyDuelView(
     summary: HTMLElement,
   ): void => {
     summary.textContent = result === undefined
-      ? `Score: ${pipesPassed} pijpen · ${(worldSteps * PHYSICS.dt).toFixed(1)} s`
-      : `Klaar · ${result.pipesPassed} pijpen · ${(result.survivalSteps * PHYSICS.dt).toFixed(1)} s`;
+      ? `Score: ${pipesPassed} · ${(worldSteps * PHYSICS.dt).toFixed(1)} s`
+      : `Klaar · ${result.pipesPassed} · ${(result.survivalSteps * PHYSICS.dt).toFixed(1)} s`;
   };
   const showSnapshot = (next: DuelSnapshot): void => {
     if (next.playerWorld !== snapshot.playerWorld) playerRenderer?.render(next.playerWorld);
@@ -140,7 +139,7 @@ export async function mountFlappyDuelView(
     root.dataset.computerSteps = String(next.computerWorld.steps);
 
     if (next.completion) {
-      status.textContent = `${winnerMessage(next.completion.winner)} Jij: ${next.completion.player.pipesPassed} pijpen en ${(next.completion.player.survivalSteps * PHYSICS.dt).toFixed(1)} s. Computer: ${next.completion.computer.pipesPassed} pijpen en ${(next.completion.computer.survivalSteps * PHYSICS.dt).toFixed(1)} s.`;
+      status.textContent = `${winnerMessage(next.completion.winner)} Jij: ${next.completion.player.pipesPassed} punten en ${(next.completion.player.survivalSteps * PHYSICS.dt).toFixed(1)} s. Computer: ${next.completion.computer.pipesPassed} punten en ${(next.completion.computer.survivalSteps * PHYSICS.dt).toFixed(1)} s.`;
       pauseButton.disabled = true;
       pauseButton.textContent = "Pauzeer";
       flapButton.disabled = true;
@@ -166,6 +165,7 @@ export async function mountFlappyDuelView(
     status.setAttribute("role", "status");
     status.textContent = "De wedstrijd is gestart.";
     playerCanvas.focus({ preventScroll: true });
+    playerCanvas.scrollIntoView({ block: "center", behavior: "instant" });
     frameHandle = windowRef.requestAnimationFrame(frame);
   };
   const step = (action: 0 | 1, timestamp: number): void => {

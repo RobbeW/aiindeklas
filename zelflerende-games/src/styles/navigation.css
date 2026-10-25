@@ -12,6 +12,7 @@
 .navigation-drawer nav button { text-align: left; width: 100%; }
 .navigation-drawer nav button[aria-current] { background: var(--brand-purple-dark); color: white; }
 .navigation-drawer nav button[aria-current]:hover { background: var(--brand-purple-dark); color: white; }
+.navigation-drawer nav .menu-reset { margin-top:16px; border-color:var(--border); color:var(--muted); }
 .global-drawer { top: 16px; left: max(12px, calc((100vw - 1200px)/2 + 16px)); }
 .exercise-drawer { left: 0; top: 50%; transform: translateY(-50%); border-radius: 0 16px 16px 0; }
 .global-drawer[open] { animation: menu-enter var(--motion-medium) var(--ease-out); }
