@@ -1,0 +1,25 @@
+{
+  "flappy": {
+    "artwork": {
+      "source": "Sprites copied unchanged from the supplied FlappyBird/assets/sprites/ folder at the user’s request (2026-10-24).",
+      "files": [
+        "pipe-green.png",
+        "base.png",
+        "redbird-upflap.png",
+        "redbird-midflap.png",
+        "redbird-downflap.png"
+      ],
+      "note": "Recognizable Flappy Bird bird, green pipes and ground. Original artwork authorship/redistribution rights are not established by the supplied software MIT notice. Background skyline is code-native."
+    }
+  },
+  "legacySoftware": {
+    "source": "FlappyBird/ supplied source; historical copies preserved",
+    "copyright": "2025 Robbe Wulgaert",
+    "license": "MIT for covered software",
+    "notice": "licenses/flappy-source-MIT.txt",
+    "scope": "The software notice applies to covered software; it makes no claim about sprite-art rights."
+  },
+  "car": {
+    "artwork": "Code-native Canvas/SVG road, sensor and car shapes in this project; no copied car sprites."
+  }
+}

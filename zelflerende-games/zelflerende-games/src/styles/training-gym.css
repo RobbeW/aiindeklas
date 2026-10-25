@@ -1,0 +1,250 @@
+/* Compact, branded training dialog. Tokens come from the application theme. */
+dialog.training-gym {
+  --gym-lilac: #f1ebff;
+  --gym-line: #d8ccef;
+  box-sizing: border-box;
+  width: min(560px, calc(100vw - 32px));
+  max-width: 560px;
+  max-height: calc(100dvh - 32px);
+  padding: clamp(18px, 3.5vw, 28px);
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: var(--ink);
+  background: var(--bg);
+  box-shadow: 0 18px 56px #16003330;
+}
+
+dialog.training-gym[open] { display: block; }
+dialog.training-gym::backdrop { background: #16003388; }
+.training-gym, .training-gym * { box-sizing: border-box; }
+.training-gym .gym-kicker {
+  margin: 0 0 5px;
+  color: var(--brand-purple-dark);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.training-gym .gym-heading {
+  margin: 0;
+  color: var(--brand-purple-dark);
+  font-size: clamp(23px, 4vw, 30px);
+  line-height: 1.12;
+  letter-spacing: -.025em;
+}
+
+.training-gym .gym-scene {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 154px;
+  margin: 15px 0 10px;
+  overflow: hidden;
+  border: 1px solid var(--gym-line);
+  border-radius: 14px;
+  background:
+    radial-gradient(ellipse at 50% 90%, #e1d4ff 0, transparent 62%),
+    linear-gradient(180deg, #fff 0%, var(--gym-lilac) 100%);
+}
+.training-gym .gym-wall-label {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  padding: 4px 10px;
+  transform: translateX(-50%);
+  border: 1px solid #d8ccef;
+  border-radius: 8px;
+  color: var(--brand-purple-dark);
+  background: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .15em;
+}
+.training-gym .gym-floor {
+  position: absolute;
+  right: 0;
+  bottom: 18px;
+  left: 0;
+  height: 2px;
+  background: #b9a8db;
+}
+.training-gym .gym-mat {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  width: 176px;
+  height: 12px;
+  transform: translateX(-50%);
+  border: 1px solid #9c82cf;
+  border-radius: 5px;
+  background: #c5b0f4;
+}
+.training-gym .gym-lifter {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  width: 112px;
+  height: 112px;
+  transform: translateX(-50%);
+}
+.training-gym .gym-bird {
+  position: absolute;
+  bottom: 1px;
+  left: 12px;
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  transform-origin: 50% 90%;
+}
+.training-gym .gym-barbell {
+  position: absolute;
+  z-index: 1;
+  top: 2px;
+  left: 0;
+  width: 112px;
+  height: auto;
+  overflow: visible;
+  transform-origin: 50% 100%;
+}
+.training-gym .gym-metaphor {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: center;
+}
+.training-gym .gym-explanation {
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+}
+.training-gym .gym-explanation h3 {
+  margin: 0 0 8px;
+  color: var(--brand-purple-dark);
+  font-size: 15px;
+}
+.training-gym .gym-loop {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-left: 22px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.training-gym .gym-loop li::marker { color: var(--brand-purple); font-weight: 800; }
+.training-gym .gym-loop strong { margin-right: 4px; }
+.training-gym .gym-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 5px;
+}
+.training-gym progress {
+  display: block;
+  flex: 1;
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 99px;
+  accent-color: var(--brand-purple);
+  background: #e9e2f3;
+}
+.training-gym progress::-webkit-progress-bar { border-radius: 99px; background: #e9e2f3; }
+.training-gym progress::-webkit-progress-value { border-radius: 99px; background: var(--brand-purple); }
+.training-gym progress::-moz-progress-bar { border-radius: 99px; background: var(--brand-purple); }
+.training-gym .gym-count { min-width: 74px; color: var(--muted); font-size: 12px; text-align: right; }
+.training-gym .gym-status, .training-gym .gym-result-copy {
+  min-height: 1.4em;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.training-gym[data-state="error"] .gym-status { color: #9b1c31; }
+.training-gym[data-state="complete"] .gym-status { color: #17643d; }
+.training-gym .gym-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+.training-gym .gym-actions button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 9px 14px;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background-color var(--motion-fast) var(--ease-standard), color var(--motion-fast) var(--ease-standard), transform var(--motion-fast) var(--ease-standard);
+}
+.training-gym .gym-actions button:hover:not(:disabled) { transform: translateY(-1px); }
+.training-gym .gym-actions button:focus-visible { outline: 3px solid var(--brand-purple-dark); outline-offset: 3px; }
+.training-gym .gym-actions button.secondary {
+  border: 1px solid var(--brand-purple);
+  color: var(--brand-purple-dark);
+  background: var(--card);
+}
+.training-gym .gym-actions button:not(.secondary) {
+  border: 1px solid var(--brand-purple);
+  color: #fff;
+  background: var(--brand-purple);
+}
+.training-gym .gym-actions button:not(.secondary):hover:not(:disabled) { background: var(--brand-purple-dark); }
+.training-gym .gym-actions button:disabled { cursor: default; opacity: .58; }
+
+@keyframes gym-bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-4px) rotate(2deg); }
+}
+@keyframes gym-lift {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  48% { transform: rotate(-8deg) translateY(-11px); }
+  72% { transform: rotate(3deg) translateY(-5px); }
+}
+.training-gym[data-state="running"][data-animation="playing"] .gym-bird { animation: gym-bob 1.8s ease-in-out infinite; }
+.training-gym[data-state="running"][data-animation="playing"] .gym-barbell { animation: gym-lift 2.2s ease-in-out infinite; }
+
+@media (max-width: 560px) {
+  dialog.training-gym { width: calc(100vw - 20px); max-height: calc(100dvh - 20px); padding: 16px; }
+  .training-gym .gym-scene { height: 142px; margin-top: 12px; }
+  .training-gym .gym-explanation { padding: 12px; }
+  .training-gym .gym-actions { justify-content: stretch; }
+  .training-gym .gym-actions button { flex: 1 1 auto; }
+}
+@media (max-height: 650px) {
+  dialog.training-gym { padding-block: 14px; }
+  .training-gym .gym-scene { height: 126px; margin-block: 10px 7px; }
+  .training-gym .gym-lifter { transform: translateX(-50%) scale(.86); transform-origin: bottom center; }
+  .training-gym .gym-metaphor { margin-bottom: 9px; }
+  .training-gym .gym-explanation { padding-block: 10px; }
+  .training-gym .gym-actions { margin-top: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .training-gym *, .training-gym *::before, .training-gym *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.training-gym [hidden] { display: none !important; }
+/* Tiny raised wings connect the bird to its barbell. */
+.training-gym .gym-wall-label { left: 14px; transform: none; }
+.training-gym .gym-lifter::before,.training-gym .gym-lifter::after { content: ''; position: absolute; top: 17px; width: 6px; height: 44px; background: #d65a3b; border: 1px solid #703722; transform-origin: bottom center; }
+.training-gym .gym-lifter::before { left: 29px; transform: rotate(12deg); }
+.training-gym .gym-lifter::after { right: 29px; transform: rotate(-12deg); }
+.training-gym .gym-bird { z-index: 1; }
+.training-gym .gym-barbell { z-index: 2; }
+.training-gym .gym-lifter::before,.training-gym .gym-lifter::after { z-index: 0; }
+@keyframes gym-wing-left { 50% { transform: translateY(-4px) rotate(12deg) scaleY(1.16); } }
+@keyframes gym-wing-right { 50% { transform: translateY(-4px) rotate(-12deg) scaleY(1.16); } }
+.training-gym[data-state="running"][data-animation="playing"] .gym-barbell { animation-duration: 1.8s; }
+.training-gym[data-state="running"][data-animation="playing"] .gym-lifter::before { animation: gym-wing-left 1.8s ease-in-out infinite; }
+.training-gym[data-state="running"][data-animation="playing"] .gym-lifter::after { animation: gym-wing-right 1.8s ease-in-out infinite; }
