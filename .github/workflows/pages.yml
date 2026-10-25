@@ -44,6 +44,12 @@ jobs:
         working-directory: website
       - run: pnpm p14:smoke -- --local dist --expect-indexable
         working-directory: website
+      - run: npm ci
+        working-directory: zelflerende-games
+      - run: npm test
+        working-directory: zelflerende-games
+      - run: npm run build
+        working-directory: zelflerende-games
       - run: node scripts/assemble-pages-artifact.mjs
       - run: node scripts/validate-p18-privacy.mjs
         working-directory: website
