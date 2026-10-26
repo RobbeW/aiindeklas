@@ -1,4 +1,13 @@
 .flappy-lesson { max-width: 1280px; margin: auto; scroll-margin-top: 16px; }
+.app-shell:has(.flappy-lesson)>footer { display:none; }
+.lesson-illustration-host:empty,.lesson-reward-host:empty { display:none; }
+.compare-lineup { padding-left:24px; line-height:1.8; }
+.teach-data-stages { display:flex; gap:8px; list-style:none; padding:0; flex-wrap:wrap; }
+.teach-data-stages li { padding:8px 12px; border:1px solid var(--border); border-radius:10px; font-size:14px; }
+.teach-data-stages .is-done { background:#eee7ff; color:var(--brand-purple-dark); border-color:var(--brand-purple); }
+.teach-assessments:empty { display:none; }
+.teach-assessments p,.training-run-list li { padding:10px; background:var(--bg); border-radius:10px; margin:8px 0; }
+.training-run-list { list-style:none; padding:0; }
 .app-stage .flappy-lesson { grid-template-columns: auto minmax(0,1fr); gap: 16px; }
 .flappy-lesson .lesson-pages { display: flex; justify-content: end; gap: 8px; flex-wrap: wrap; align-items: center; }
 .flappy-lesson .lesson-pages button { padding: 10px 16px; }

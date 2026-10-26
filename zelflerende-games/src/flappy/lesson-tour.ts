@@ -10,13 +10,13 @@ export function flappyTourSteps(step:FlappyLessonStep):readonly ControlTourStep[
   teach:[
    {selector:'.record-toggle',title:'Neem je keuzes op',body:'Start een opname en speel zelf. Rond de poging af om je voorbeeld te bewaren. Daarna volgt een aparte testpoging.'},
    {selector:'#teach-canvas',title:'Doe verschillende situaties voor',body:'De opname bewaart wat de vogel kan waarnemen en of je flapte of wachtte. Wat gebeurt er als je alleen wachten voordoet?'},
-   {selector:'#train-button',title:'Train met je voorbeelden',body:'Deze knop wordt beschikbaar met een trainings- en controlevoorbeeld. Het model oefent om je opgenomen keuzes na te doen.'},
+   {selector:'#train-button',title:'Train met je voorbeelden',body:'Neem één poging op en train je AI-model. Verzamel daarna drie opnamen en vervolgens meer. Test telkens opnieuw.'},
    {selector:'#clone-button',title:'Test de imitatie',body:'Laat de imitatie een nieuwe reeks spelen. Tijdens deze test verandert het model niet.'}],
   practice:[
-   {selector:'#practice-budget',title:'Kies een oefenbudget',body:'Dit is het aantal pogingen dat de computer zelf mag doen. Een groter aantal is geen garantie op een betere score.'},
+   {selector:'#practice-budget',title:'Kies trainingsrondes',body:'In één ronde speelt iedere vogel één poging. Daarna leert het gedeelde AI-model van alle resultaten.'},
    {selector:'#practice-start',title:'Laat zelfstandig oefenen',body:'Je hebt eerst een getrainde imitatie nodig. Nu sturen beloningen de veranderingen aan het model.'},
    {selector:'#practice-pause',title:'Blijf zelf controleren',body:'Je kunt het oefenen pauzeren of stoppen. De rondleiding heeft lopende activiteiten gepauzeerd; hervat ze daarna zelf.'},
-   {selector:'.flock-canvas',title:'Bekijk het bewaarde model',body:'De twaalf vogels gebruiken hetzelfde vaste model. Ze maken losse pogingen, maar leren niet terwijl je kijkt.'}],
+   {selector:'.parallel-canvas',title:'Kijk hoe de vogels leren',body:'Alle vogels gebruiken hetzelfde AI-model. Na hun pogingen gaan beloningen en straffen terug naar het model. De volgende ronde gebruikt de aangepaste versie.'}],
   compare:[
    {selector:'#compare-run',title:'Gebruik dezelfde tests',body:'De bewaarde modellen krijgen dezelfde drie vaste testreeksen. Er wordt tijdens deze vergelijking niet getraind.'},
    {selector:'#human-start',title:'Speel ook zelf',body:'Jij krijgt diezelfde testpogingen. Je acties worden hier niet als trainingsvoorbeelden bewaard.'},

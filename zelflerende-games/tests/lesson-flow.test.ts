@@ -6,7 +6,7 @@ import { createExperiment,parseExperiment,serializeExperiment } from '../src/sto
 import { readRoute,routeUrl } from '../src/app/route-location.ts';
 
 test('lesson answers survive local experiment export/import; previous version-1 files still work',()=>{
- const notes={play:{prediction:'Ik kijk naar de opening.',reflection:'Mijn timing was laat.',nextTry:'Eerder flappen.'},teach:{prediction:'Ook wachten voordoen.',reflection:'Er ontbreken lage situaties.',nextTry:'Een ander voorbeeld.'}};
+ const notes={play:{prediction:'Ik kijk naar de opening.',goal:'Verder vliegen.',avoid:'Botsen.',reflection:'Mijn timing was laat.',nextTry:'Eerder flappen.'},teach:{prediction:'Ook wachten voordoen.',reflection:'Er ontbreken lage situaties.',nextTry:'Een ander voorbeeld.'}};
  const file=createExperiment('flappy',{human:[],notes});
  assert.deepEqual((parseExperiment(serializeExperiment(file),'flappy').payload as {notes:unknown}).notes,notes);
  assert.equal('notes' in createExperiment('flappy',{human:[]}).payload,false);

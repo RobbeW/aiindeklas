@@ -1,79 +1,40 @@
-import { mountFlappyFlockView } from './flock-view.ts';
-import { WORKLOADS,optionMarkup } from '../config/workload-presets.ts';
-import { PracticeSession } from '../learning/practice-session.ts';
-import type { PolicySnapshot } from '../learning/policy-snapshot.ts';
-import type { PracticeProgress,PracticeResult } from '../learning/practice-job.ts';
-import { FlappyEnvironment } from './environment.ts';
-import { createFlappyRenderer } from './renderer.ts';
-import { advanceFlappyFrame } from './play-view.ts';
-import { disclose } from '../ui/disclosure.ts';
-
-export interface PracticeViewOptions {readonly onReset?:()=>void;readonly onSnapshot?:(snapshot:PolicySnapshot,progress:PracticeProgress)=>void;}
-export async function mountFlappyPracticeView(root:HTMLElement,options:PracticeViewOptions={}) {
-  root.innerHTML=`<section class="card practice-workspace"><p class="mode-badge learning-mode">Leren · gewichten veranderen</p><h2>Laat het model oefenen</h2>
-    <p>Het model probeert zelf acties. Beloningen sturen het leren.</p>
-    <div class="practice-layout"><div class="practice-training"><p id="practice-origin">Nog geen imitatiemodel. Verzamel voorbeelden en train eerst.</p>
-    <div class="toolbar"><label>Pogingen <select id="practice-budget">${optionMarkup(WORKLOADS.practiceEpisodes,WORKLOADS.defaultPracticeEpisodes)}</select></label>
-    <button id="practice-reset-baseline" class="secondary" disabled>Herstel imitatie als startpunt</button><button id="practice-start" disabled>Start zelfstandig oefenen</button><button id="practice-pause" class="secondary" disabled>Pauzeer oefenen</button><button id="practice-cancel" class="secondary" disabled>Stop oefenen</button></div>
-    <p id="practice-status" role="status" aria-live="polite">Nog niet gestart.</p><progress id="practice-progress" max="32" value="0" aria-label="Voortgang van zelfstandig oefenen"></progress><p id="practice-counts" hidden></p><p id="practice-scores" hidden></p>
-    <label id="practice-replay-label">Bekijk een eerdere poging <select id="practice-replay" disabled><option>Geen pogingen</option></select></label>
-    <div class="toolbar"><button id="practice-watch" class="secondary" disabled>Bekijk poging</button><button id="replay-stop" class="secondary">Stop terugkijken</button></div>
-    <canvas id="practice-canvas" aria-label="Terugkijken van een voltooide oefenpoging"></canvas>
-    </div><div class="flock-host"></div></div></section>`;
-  const q=<T extends Element>(s:string)=>root.querySelector<T>(s)!;
-  const trainingRoot=root.querySelector<HTMLElement>('.practice-training')!;
-  const replayDetails=disclose(trainingRoot,'Bekijk een eerdere poging',['#practice-replay-label','#practice-watch','#replay-stop','#practice-canvas']);
-  const start=q<HTMLButtonElement>('#practice-start'),pause=q<HTMLButtonElement>('#practice-pause'),cancel=q<HTMLButtonElement>('#practice-cancel');
-  const budget=q<HTMLSelectElement>('#practice-budget'),replay=q<HTMLSelectElement>('#practice-replay'),watch=q<HTMLButtonElement>('#practice-watch');
-  const status=q<HTMLElement>('#practice-status'),canvas=q<HTMLCanvasElement>('#practice-canvas');
-  const renderer=await createFlappyRenderer(canvas);canvas.style.width='min(100%,265px)';canvas.hidden=true;
-  const session=new PracticeSession(()=>new Worker(new URL('../workers/practice.worker.ts',import.meta.url),{type:'module'}));
-  let source:PolicySnapshot|undefined,latest:PracticeProgress|undefined,result:PracticeResult|undefined;
-  let active=false,paused=false,disposed=false,epoch=0,raf:number|undefined;
-  let baseSteps=0,baseElapsedMs=0;
-  const stopReplay=()=>{if(raf!==undefined)cancelAnimationFrame(raf);raf=undefined;};
-  q<HTMLButtonElement>('#practice-reset-baseline').onclick=()=>options.onReset?.();
-  let flockView:Awaited<ReturnType<typeof mountFlappyFlockView>>|undefined;
-  const buttons=()=>{flockView?.refresh();q<HTMLButtonElement>('#practice-reset-baseline').disabled=active||!options.onReset;start.disabled=active||!source;pause.disabled=!active;cancel.disabled=!active;budget.disabled=active;watch.disabled=!latest?.history.length;replay.disabled=!latest?.history.length;};
-  const update=(p:PracticeProgress)=>{
-    const progress=q<HTMLProgressElement>('#practice-progress');progress.max=active?Math.max(Number(budget.value),p.episodes):Math.max(1,p.episodes);progress.value=p.episodes;if(!active)status.textContent=`${p.episodes} bewaarde pogingen. Je kunt verder oefenen.`;if(active&&!paused)status.textContent=`${p.episodes} van ${budget.value} pogingen klaar.`;
-    latest=Object.freeze({...p,cumulativeSteps:baseSteps+p.steps,cumulativeElapsedMs:baseElapsedMs+p.elapsedMs});options.onSnapshot?.(p.snapshot,latest);
-    q('#practice-counts').textContent=`${p.episodes} voltooide pogingen · ${p.steps} stappen · ${p.simulatedSeconds.toFixed(1)} s simulatietijd · ${(p.elapsedMs/1000).toFixed(2)} s actieve rekentijd · ${Math.round(p.stepsPerSecond)} stappen/s · ${p.trainedEpisodes} pogingen gebruikt voor updates`;
-    q('#practice-scores').textContent=`Score per poging: ${p.scoreHistory.map(s=>s.pipesPassed).join(', ')||'nog geen'}. Dit zijn trainingsresultaten, geen onafhankelijke test.`;
-    const selected=replay.value;
-    replay.replaceChildren(...p.history.map((h,i)=>{const o=document.createElement('option');o.value=String(i);o.textContent=`Poging ${p.episodes-p.history.length+i+1}: ${h.result.pipesPassed} punten, ${h.result.survivalSteps} stappen`;return o;}));
-    if([...replay.options].some(o=>o.value===selected))replay.value=selected;
-    buttons();
-  };
-  start.onclick=()=>{
-    if(!source||active)return;baseSteps=latest?.cumulativeSteps??latest?.steps??0;baseElapsedMs=latest?.cumulativeElapsedMs??latest?.elapsedMs??0;stopReplay();const token=++epoch;active=true;paused=false;result=undefined;buttons();
-    q<HTMLProgressElement>('#practice-progress').value=0;q<HTMLProgressElement>('#practice-progress').max=Number(budget.value);status.textContent='Het model oefent. Je kunt pauzeren of stoppen.';
-    const job=session.start({snapshot:source,episodeBudget:Number(budget.value),stepBudget:115200,environmentSeed:1100,actionSeed:17000},p=>{if(token===epoch&&!disposed)update(p);});
-    void job.promise.then(r=>{if(token===epoch&&!disposed){source=r.snapshot;result=r;update(r);status.textContent=`${r.episodes} pogingen klaar. Het model is bewaard; vergelijk nu het resultaat.`;}})
-      .catch(e=>{if(token===epoch&&!disposed){source=session.completedSnapshot??source;status.textContent=`Oefenen gestopt: ${e.message}. Het laatste volledig bijgewerkte model blijft bewaard.`;}})
-      .finally(()=>{if(token===epoch&&!disposed){active=false;paused=false;pause.textContent='Pauzeer oefenen';buttons();}});
-  };
-  pause.onclick=()=>{if(!active)return;paused=!paused;if(paused)session.pause();else session.resume();pause.textContent=paused?'Hervat oefenen':'Pauzeer oefenen';status.textContent=paused?'Oefenen gepauzeerd.':'Oefenen hervat.';};
-  cancel.onclick=()=>session.cancel();
-  watch.onclick=()=>{
-    const selected=latest?.history[Number(replay.value)];if(!selected)return;
-    if(replayDetails){replayDetails.open=true;replayDetails.scrollIntoView({block:'nearest',behavior:'smooth'});}
-    stopReplay();canvas.hidden=false;const env=new FlappyEnvironment();env.reset({seed:selected.seed});renderer.render(env.world);
-    let index=0,previous:number|undefined,accumulator=0;
-    const frame=(time:number)=>{const delta=previous===undefined?0:time-previous;previous=time;
-      const next=advanceFlappyFrame(delta,accumulator,()=>selected.actions[index]??0,()=>{if(index<selected.actions.length){env.step(selected.actions[index++]!);renderer.render(env.world);}});accumulator=next.accumulatorMs;
-      if(index<selected.actions.length&&!disposed)raf=requestAnimationFrame(frame);else{raf=undefined;status.textContent=`Terugkijken klaar. Score: ${selected.result.pipesPassed} punten. Er is niet getraind.`;}};
-    status.textContent='Terugkijken op speelsnelheid; gewichten blijven gelijk.';raf=requestAnimationFrame(frame);
-  };
-  q<HTMLButtonElement>('#replay-stop').onclick=()=>stopReplay();
-  const blur=()=>{stopReplay();if(active&&!paused){session.pause();paused=true;pause.textContent='Hervat oefenen';status.textContent='Gepauzeerd bij verlaten van het venster.';}};
-  window.addEventListener('blur',blur);
-  flockView=await mountFlappyFlockView(root.querySelector<HTMLElement>('.flock-host')!,{getSnapshot:()=>latest?.snapshot??source});
-  const env=new FlappyEnvironment();env.reset({seed:2000});renderer.render(env.world);buttons();
-  return {
-    setSource(snapshot:PolicySnapshot|undefined,force=false){if(force||source!==snapshot){epoch++;session.cancel();active=false;paused=false;source=snapshot;latest=undefined;result=undefined;stopReplay();canvas.hidden=true;replay.replaceChildren();baseSteps=0;baseElapsedMs=0;pause.textContent='Pauzeer oefenen';status.textContent=snapshot?'Klaar om te oefenen.':'Verzamel voorbeelden en train eerst een imitatie.';renderer.render(env.world);q('#practice-counts').textContent='';q('#practice-scores').textContent='';q<HTMLProgressElement>('#practice-progress').value=0;
-    q('#practice-origin').textContent=snapshot?`Startmodel: ${snapshot.stage==='imitation'?'jouw imitatie':'model na zelfstandig oefenen'}.`:'Nog geen imitatiemodel. Verzamel voorbeelden en train eerst.';buttons();}},
-    getResult:()=>result,getProgress:()=>latest,restoreProgress:(p:PracticeProgress)=>{if(!active){baseSteps=(p.cumulativeSteps??p.steps)-p.steps;baseElapsedMs=(p.cumulativeElapsedMs??p.elapsedMs)-p.elapsedMs;update(p);}},
-    dispose(){if(disposed)return;disposed=true;epoch++;stopReplay();flockView?.dispose();session.dispose();renderer.dispose();window.removeEventListener('blur',blur);root.replaceChildren();}
-  };
+import {WorkerJobClient,WorkerJobCancelledError} from '../core/worker-client.ts';
+import {type ParallelPracticeInput,type ParallelPracticeProgress,type ParallelPracticeResult} from '../learning/parallel-practice.ts';
+import type {PolicySnapshot} from '../learning/policy-snapshot.ts';
+import type {PracticeProgress} from '../learning/practice-job.ts';
+import {FlappyEnvironment} from './environment.ts';
+import {createFlappyFlockRenderer} from './renderer.ts';
+import {chipIcon} from './schematic-elements.ts';
+import '../styles/parallel-practice.css';
+export interface PracticeViewOptions{readonly onReset?:()=>void;readonly onSnapshot?:(snapshot:PolicySnapshot,progress:PracticeProgress)=>void;}
+export async function mountFlappyPracticeView(root:HTMLElement,options:PracticeViewOptions={}){
+ root.innerHTML=`<section class="card parallel-practice"><h1>Laat het model oefenen</h1><p>Nu gaan we het AI-model zelf laten oefenen en trainen.</p><div class="parallel-controls"><label>Vogels tegelijk<select id="practice-agents"><option>6</option><option selected>12</option><option>18</option><option>24</option></select></label><label>Trainingsrondes (epochs)<select id="practice-budget"><option>16</option><option selected>32</option><option>64</option></select></label><label>Snelheid<select id="practice-speed"><option value="1">1×</option><option value="4">4×</option><option value="16" selected>16×</option><option value="64">64×</option></select></label></div><p class="parallel-epoch">Eén trainingsronde: iedere vogel speelt één poging. Daarna leert hetzelfde AI-model van hun beloningen en straffen.</p><div class="toolbar"><button id="practice-start" disabled>Start zelfstandig oefenen</button><button id="practice-pause" class="secondary" disabled>Pauzeer oefenen</button><button id="practice-cancel" class="secondary" disabled>Stop oefenen</button><button id="practice-reset-baseline" class="secondary">Begin met jouw imitatie</button></div><p id="practice-origin" role="status"></p><div class="parallel-layout"><section class="parallel-game"><h2 class="parallel-flock-title">Twaalf vogels leren samen</h2><canvas class="parallel-canvas" role="img" aria-label="Vogels die echte trainingspogingen uitvoeren"></canvas><div class="parallel-agents" aria-label="Trainende vogels"></div></section><section class="parallel-feedback" aria-label="Van spelen naar leren"><div class="parallel-model">${chipIcon}<strong>Gedeeld AI-model</strong><p class="parallel-model-state">Jouw imitatie is het startpunt</p></div><p class="parallel-rewards">Beloning en straf uit de lopende ronde</p><span class="parallel-flow-arrow" aria-hidden="true">↓</span><p class="parallel-loop-state">Vogels spelen → beloning en straf → AI-model leert</p><div class="parallel-numbers"><p><strong class="parallel-rounds">0</strong> trainingsrondes</p><p><strong class="parallel-attempts">0</strong> voltooide pogingen</p><p><strong class="parallel-time">0,0 s</strong> trainingstijd</p></div><progress id="practice-progress" max="32" value="0" aria-label="Voltooide trainingsrondes"></progress><p id="practice-status" role="status" aria-live="polite">Kies het aantal vogels en trainingsrondes.</p></section></div></section>`;
+ const q=<T extends HTMLElement=HTMLElement>(s:string)=>root.querySelector<T>(s)!;
+ const start=q<HTMLButtonElement>('#practice-start'),pause=q<HTMLButtonElement>('#practice-pause'),stop=q<HTMLButtonElement>('#practice-cancel'),reset=q<HTMLButtonElement>('#practice-reset-baseline');
+ const agents=q<HTMLSelectElement>('#practice-agents'),rounds=q<HTMLSelectElement>('#practice-budget'),speed=q<HTMLSelectElement>('#practice-speed'),status=q('#practice-status'),progress=q<HTMLProgressElement>('#practice-progress');
+ const renderer=await createFlappyFlockRenderer(q<HTMLCanvasElement>('.parallel-canvas'));
+ const client=new WorkerJobClient<ParallelPracticeInput,ParallelPracticeProgress,ParallelPracticeResult>(()=>new Worker(new URL('../workers/parallel-practice.worker.ts',import.meta.url),{type:'module'}));
+ let source:PolicySnapshot|undefined,latest:PracticeProgress|undefined,result:ParallelPracticeResult|undefined,active=false,paused=false,disposed=false,epoch=0,baseSteps=0,baseElapsed=0;
+ let runs:NonNullable<PracticeProgress['trainingRuns']>=[];
+ const controls=()=>{start.disabled=active||!source;pause.disabled=!active;stop.disabled=!active;agents.disabled=rounds.disabled=speed.disabled=active;reset.disabled=active||!options.onReset;};
+ const idle=()=>{const env=new FlappyEnvironment();env.reset({seed:1100});renderer.render(Array.from({length:Number(agents.value)},(_,id)=>({id,world:env.world,done:false,pipesPassed:0})));q('.parallel-flock-title').textContent=`${agents.value} vogels leren samen`;q('.parallel-agents').replaceChildren(...Array.from({length:Number(agents.value)},(_,i)=>{const e=document.createElement('span');e.textContent=String(i+1);return e;}));};
+ const update=(p:ParallelPracticeProgress)=>{
+  if(disposed)return;latest={...p,cumulativeSteps:baseSteps+p.steps,cumulativeElapsedMs:baseElapsed+p.elapsedMs,trainingRuns:p.completedRounds?[...runs,{rounds:p.completedRounds,agents:p.agentCount,speed:Number(speed.value),elapsedMs:p.elapsedMs,attempts:p.trainedEpisodes,meanScore:p.roundHistory.reduce((n,r)=>n+r.meanScore,0)/Math.max(1,p.roundHistory.length)}].slice(-12):runs};source=p.snapshot;
+  if(p.birds.length){renderer.render(p.birds.map(b=>({...b,pipesPassed:b.score})));const markers=[...q('.parallel-agents').children];p.birds.forEach((b,i)=>{markers[i]?.classList.toggle('is-finished',b.done);markers[i]?.setAttribute('title',`Vogel ${i+1}: ${b.score} punten`);});}
+  q('.parallel-rewards').textContent=`Opgetelde beloning deze ronde: ${p.birds.reduce((sum,b)=>sum+b.totalReward,0).toFixed(2).replace('.',',')} · ${p.birds.filter(b=>b.done).length} vogels klaar`;
+  q('.parallel-model').classList.toggle('is-updating',p.phase==='updating');q('.parallel-model-state').textContent=p.phase==='updating'?'Beloningen en straffen veranderen het AI-model':`${p.updates} keer bijgewerkt`;
+  q('.parallel-loop-state').textContent=p.phase==='complete'?'Training afgerond':p.phase==='updating'?'Resultaten verzamelen → AI-model bijwerken':`Ronde ${p.round}: ${p.birds.filter(b=>!b.done).length} ${p.birds.filter(b=>!b.done).length===1?'vogel speelt':'vogels spelen'}`;
+  q('.parallel-rounds').textContent=String(p.completedRounds);q('.parallel-attempts').textContent=String(p.episodes);q('.parallel-time').textContent=`${(p.elapsedMs/1000).toFixed(1).replace('.',',')} s`;
+  progress.max=p.roundBudget;progress.value=p.completedRounds;
+  if(active&&!paused)status.textContent=p.phase==='updating'?'Het gedeelde AI-model leert van de afgelopen pogingen.':`${p.completedRounds} van ${p.roundBudget} trainingsrondes klaar.`;
+  options.onSnapshot?.(p.snapshot,latest);
+ };
+ const saveRun=()=>{if(!latest)return;runs=latest.trainingRuns??runs;options.onSnapshot?.(latest.snapshot,latest);};
+ start.onclick=()=>{if(!source||active)return;const token=++epoch;active=true;paused=false;baseSteps=latest?.cumulativeSteps??latest?.steps??0;baseElapsed=latest?.cumulativeElapsedMs??latest?.elapsedMs??0;idle();controls();status.textContent='De vogels beginnen. Hun resultaten trainen hetzelfde AI-model.';
+  const job=client.start({snapshot:source,roundBudget:Number(rounds.value),agentCount:Number(agents.value),speed:Number(speed.value),environmentSeed:1100+(source.trainingCounts.reinforcementEpisodes%700),actionSeed:17000+source.trainingCounts.reinforcementEpisodes},p=>{if(token===epoch&&!disposed)update(p);});
+  void job.promise.then(p=>{if(token!==epoch||disposed)return;result=p;update(p);saveRun();status.textContent=`${p.completedRounds} trainingsrondes klaar. Vergelijk je model met de andere spelers.`;}).catch(error=>{if(token===epoch&&!disposed){saveRun();q('.parallel-model').classList.remove('is-updating');q('.parallel-loop-state').textContent='Training gestopt';status.textContent=error instanceof WorkerJobCancelledError?'Gestopt. Het laatst bijgewerkte AI-model blijft bewaard.':'Het oefenen is onderbroken. Probeer opnieuw; het laatst bijgewerkte AI-model blijft bewaard.';}}).finally(()=>{if(token===epoch&&!disposed){active=false;paused=false;pause.textContent='Pauzeer oefenen';controls();}});
+ };
+ pause.onclick=()=>{if(!active)return;paused=!paused;if(paused)client.pause();else client.resume();pause.textContent=paused?'Hervat oefenen':'Pauzeer oefenen';status.textContent=paused?'De vogels en het leren staan op pauze.':'De vogels oefenen verder.';};stop.onclick=()=>client.cancel();reset.onclick=()=>options.onReset?.();agents.onchange=idle;
+ const blur=()=>{if(active&&!paused)pause.click();};const visibility=()=>{if(document.hidden)blur();};window.addEventListener('blur',blur);document.addEventListener('visibilitychange',visibility);idle();controls();
+ return{setSource(snapshot:PolicySnapshot|undefined,force=false){if(force||source!==snapshot){epoch++;client.cancel();source=snapshot;active=false;paused=false;latest=undefined;result=undefined;runs=[];baseSteps=baseElapsed=0;progress.value=0;progress.max=Number(rounds.value);q('.parallel-rounds').textContent='0';q('.parallel-attempts').textContent='0';q('.parallel-time').textContent='0,0 s';q('.parallel-model').classList.remove('is-updating');q('.parallel-model-state').textContent=snapshot?.stage==='post_rl'?'Je getrainde AI-model oefent verder':'Jouw imitatie is het startpunt';q('.parallel-rewards').textContent='Beloning en straf uit de lopende ronde';q('.parallel-loop-state').textContent='Vogels spelen → beloning en straf → AI-model leert';q('#practice-origin').textContent=snapshot?'We beginnen met jouw bewaarde AI-model.':'Train eerst je AI-model bij Doe het voor.';status.textContent='Kies het aantal vogels en trainingsrondes.';idle();controls();}},restoreProgress(p:PracticeProgress){if(!active){latest=p;source=p.snapshot;runs=p.trainingRuns??[];const lastRun=runs.at(-1);if(lastRun){agents.value=String(lastRun.agents);speed.value=String(lastRun.speed);idle();q('.parallel-rounds').textContent=String(lastRun.rounds);q('.parallel-model-state').textContent=`Bewaard na ${lastRun.rounds} trainingsrondes`;progress.max=lastRun.rounds;progress.value=lastRun.rounds;status.textContent='De vorige training is bewaard. Je kunt verder oefenen.';}q('.parallel-attempts').textContent=String(p.episodes);q('.parallel-time').textContent=`${(p.elapsedMs/1000).toFixed(1).replace('.',',')} s`;controls();}},getProgress:()=>latest,getResult:()=>result,dispose(){disposed=true;epoch++;client.dispose();renderer.dispose();window.removeEventListener('blur',blur);document.removeEventListener('visibilitychange',visibility);root.replaceChildren();}};
 }

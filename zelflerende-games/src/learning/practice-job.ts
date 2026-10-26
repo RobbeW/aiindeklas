@@ -14,6 +14,7 @@ export interface PracticeInput {
 }
 export interface AttemptReplay { readonly seed:number; readonly actions:readonly (0|1)[]; readonly result:RolloutEpisode['result']; }
 export interface PracticeProgress {
+  readonly trainingRuns?:readonly {rounds:number;agents:number;speed:number;elapsedMs:number;attempts:number;meanScore:number}[];
   readonly cumulativeSteps?:number;readonly cumulativeElapsedMs?:number;
   readonly episodes:number; readonly steps:number; readonly simulatedSeconds:number;
   readonly elapsedMs:number; readonly stepsPerSecond:number; readonly trainedEpisodes:number;

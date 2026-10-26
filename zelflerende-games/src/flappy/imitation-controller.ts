@@ -53,6 +53,7 @@ export function evaluateFrozenClone(snapshot: PolicySnapshot, seed = TEACH_CLONE
 }
 
 export interface ImitationControllerOptions {
+  readonly allowTrainingOnly?:boolean;
   readonly initialSnapshot?:PolicySnapshot;
   readonly imitationSnapshot?:PolicySnapshot;
   readonly createWorker?: () => WorkerPort;
@@ -84,18 +85,18 @@ export function createImitationController(options: ImitationControllerOptions = 
     async train(episodes, onProgress) {
       const token=++epoch;
       if (disposed) throw new Error('imitation controller is disposed');
-      if (episodes.length < 2) throw new Error('Verzamel minimaal één trainingsaflevering en één validatieaflevering.');
+      if (episodes.length < (options.allowTrainingOnly?1:2)) throw new Error('Neem eerst een volledige poging op.');
       const checked = episodes.map(validateEpisode);
       const training = checked.filter((episode) => episode.seed >= 1000 && episode.seed <= 1999);
       const validation = checked.filter((episode) => episode.seed >= 2000 && episode.seed <= 2099);
-      if (training.length === 0 || validation.length === 0) throw new Error('Verzamel een trainingsaflevering (1000–1999) én een validatieaflevering (2000–2099).');
+      if (training.length === 0 || (!options.allowTrainingOnly&&validation.length === 0)) throw new Error('Verzamel een trainingsaflevering (1000–1999) én een validatieaflevering (2000–2099).');
       const trainingBalance = classBalance(training.flatMap((episode) => episode.frames));
       const validationBalance = classBalance(validation.flatMap((episode) => episode.frames));
-      if (trainingBalance.flaps === 0 || trainingBalance.waits === 0 || validationBalance.flaps === 0 || validationBalance.waits === 0) {
+      if (!options.allowTrainingOnly&&(trainingBalance.flaps === 0 || trainingBalance.waits === 0 || validationBalance.flaps === 0 || validationBalance.waits === 0)) {
         throw new Error('Elke trainings- en validatiesplit heeft zowel flaps als wachten nodig.');
       }
       const input: ImitationJobInput = {
-        initialSnapshot, episodes: Object.freeze(checked), validationEpisodeIds: validation.map((episode) => episode.id),
+        initialSnapshot, episodes: Object.freeze(checked), validationEpisodeIds: validation.map((episode) => episode.id),allowTrainingOnly:options.allowTrainingOnly,
         updateBudget: TEACH_UPDATE_BUDGET, learningRate: TEACH_LEARNING_RATE, optimizer: 'adam', trainingSeed: 1222,
       };
       const job = workerJobs.start(input, onProgress);

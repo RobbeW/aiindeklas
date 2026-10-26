@@ -6,6 +6,7 @@ import { computeSupervisedBatchGradient, applyBoundedGradientDescent, DEFAULT_SU
 import { AdamOptimizer } from "./adam.ts";
 
 export interface ImitationJobInput {
+  readonly allowTrainingOnly?:boolean;
   readonly initialSnapshot: PolicySnapshot;
   readonly episodes: readonly DemonstrationEpisode[];
   /** Whole-episode holdout IDs; all remaining episodes are training data. */
@@ -23,14 +24,14 @@ export interface ImitationMetrics {
   readonly waitCount: number;
   readonly sampleCount: number;
 }
-export interface ImitationProgress { readonly completedUpdates: number; readonly updateBudget: number; readonly training: ImitationMetrics; readonly validation: ImitationMetrics }
+export interface ImitationProgress { readonly completedUpdates: number; readonly updateBudget: number; readonly training: ImitationMetrics; readonly validation?: ImitationMetrics }
 export interface ImitationJobResult {
   readonly optimizer: "sgd" | "adam";
   readonly snapshot: PolicySnapshot;
   readonly parameters: PolicySnapshot["parameters"];
   readonly actualUpdates: number;
   readonly training: ImitationMetrics;
-  readonly validation: ImitationMetrics;
+  readonly validation?: ImitationMetrics;
   readonly trainingEpisodeIds: readonly string[];
   readonly validationEpisodeIds: readonly string[];
   readonly trainingSeeds: readonly number[];
@@ -77,8 +78,8 @@ export async function runImitationJob(input: ImitationJobInput, hooks: Imitation
   const optimizerKind = input.optimizer ?? "sgd";
   if (optimizerKind !== "sgd" && optimizerKind !== "adam") throw new RangeError("optimizer must be sgd or adam");
   if (!Number.isFinite(learningRate) || learningRate <= 0 || learningRate > 0.01) throw new RangeError("learningRate must be finite and in (0, 0.01]");
-  if (!Array.isArray(input.episodes) || input.episodes.length < 2) throw new RangeError("imitation job needs training and validation episodes");
-  if (!Array.isArray(input.validationEpisodeIds) || input.validationEpisodeIds.length < 1 || input.validationEpisodeIds.length >= input.episodes.length) throw new RangeError("validation episode IDs must select a nonempty holdout");
+  if (!Array.isArray(input.episodes) || input.episodes.length < (input.allowTrainingOnly?1:2)) throw new RangeError("imitation job needs training and validation episodes");
+  if (!Array.isArray(input.validationEpisodeIds) || (!input.allowTrainingOnly&&input.validationEpisodeIds.length < 1) || input.validationEpisodeIds.length >= input.episodes.length) throw new RangeError("validation episode IDs must select a nonempty holdout");
   const episodes = input.episodes.map(validateEpisode);
   const ids = episodes.map((episode) => episode.id);
   const seeds = episodes.map((episode) => episode.seed);
@@ -96,13 +97,13 @@ export async function runImitationJob(input: ImitationJobInput, hooks: Imitation
   const allFrames = [...trainingFrames, ...validationFrames];
   if (!allFrames.length) throw new RangeError("imitation data is empty");
   const allFlaps = allFrames.reduce((sum, frame) => sum + frame.action, 0);
-  if (allFlaps === 0 || allFlaps === allFrames.length) throw new RangeError("complete dataset has a single action class");
+  if (!input.allowTrainingOnly&&(allFlaps === 0 || allFlaps === allFrames.length)) throw new RangeError("complete dataset has a single action class");
   const policy = restorePolicySnapshot(deepCopySnapshot(input.initialSnapshot));
   const provenance = [...input.initialSnapshot.datasetProvenance,
     ...trainingEpisodes.map((episode) => `training:${episode.source}:${episode.id}`),
     ...validationEpisodes.map((episode) => `validation:${episode.source}:${episode.id}`)];
   let latestTraining = metric(policy, trainingFrames);
-  let latestValidation = metric(policy, validationFrames);
+  let latestValidation = validationFrames.length?metric(policy, validationFrames):undefined;
   const adam = optimizerKind === "adam" ? new AdamOptimizer() : undefined;
   for (let completed = 0; completed < input.updateBudget; completed += 1) {
     if (hooks.isCancelled?.()) throw new ImitationJobCancelledError();
@@ -110,7 +111,7 @@ export async function runImitationJob(input: ImitationJobInput, hooks: Imitation
       await (hooks.yieldControl ?? defaultYield)();
       if (hooks.isCancelled?.()) throw new ImitationJobCancelledError();
     }
-    const batch = computeSupervisedBatchGradient(policy, trainingFrames);
+    const batch = computeSupervisedBatchGradient(policy, trainingFrames, {allowSingleClass: input.allowTrainingOnly});
     if (adam) {
       const result = adam.update(flattenPolicyParameters(policy.parameters), batch.gradient, learningRate);
       policy.setParameters(unflattenPolicyParameters(result.parameters));
@@ -118,7 +119,7 @@ export async function runImitationJob(input: ImitationJobInput, hooks: Imitation
       applyBoundedGradientDescent(policy, batch.gradient, { learningRate });
     }
     latestTraining = metric(policy, trainingFrames);
-    latestValidation = metric(policy, validationFrames);
+    latestValidation = validationFrames.length?metric(policy, validationFrames):undefined;
     hooks.onProgress?.(Object.freeze({ completedUpdates: completed + 1, updateBudget: input.updateBudget, training: latestTraining, validation: latestValidation }));
     await (hooks.yieldControl ?? defaultYield)();
   }

@@ -46,5 +46,5 @@ test('worked example runs real bounded supervised training with complete role-se
   assert.equal(result.snapshot.trainingCounts.supervisedUpdates, 250);
   assert.equal(result.snapshot.trainingCounts.reinforcementEpisodes, 0);
   assert.ok(Number.isFinite(result.training.loss));
-  assert.ok(Number.isFinite(result.validation.loss));
+  assert.ok(result.validation);assert.ok(Number.isFinite(result.validation.loss));
 });

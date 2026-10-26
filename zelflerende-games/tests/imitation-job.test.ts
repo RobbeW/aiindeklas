@@ -28,7 +28,7 @@ test("imitation job is deterministic, reports disjoint full episode metrics, and
   assert.equal(first.optimizer, "sgd");
   assert.equal(first.snapshot.supervisedOptimizer, "sgd");
   assert.equal(first.actualUpdates, 4);
-  assert.equal(first.training.sampleCount, 2); assert.equal(first.validation.sampleCount, 2);
+  assert.equal(first.training.sampleCount, 2); assert.equal(first.validation!.sampleCount, 2);
   assert.deepEqual(first.trainingEpisodeIds, ["train"]); assert.deepEqual(first.validationEpisodeIds, ["validation"]);
   assert.ok(first.snapshot.datasetProvenance.includes("training:synthetic_reference:train"));
   assert.ok(first.snapshot.datasetProvenance.includes("validation:synthetic_reference:validation"));
@@ -42,6 +42,17 @@ test("explicit Adam is deterministic and recorded in optimizer provenance", asyn
   assert.equal(first.optimizer, "adam");
   assert.equal(first.snapshot.supervisedOptimizer, "adam");
   assert.deepEqual(first.parameters, second.parameters);
+});
+
+test("explicit training-only mode learns from one recording without inventing control measurements", async () => {
+  const one = episode("first-human-attempt", 1000, [0, 0, 0]);
+  const result = await runImitationJob(input({ episodes: [one], validationEpisodeIds: [], allowTrainingOnly: true }));
+  assert.equal(result.validation, undefined);
+  assert.equal(result.training.sampleCount, 3);
+  assert.deepEqual(result.validationEpisodeIds, []);
+  assert.deepEqual(result.snapshot.trainingSeeds, [1000]);
+  assert.notDeepEqual(result.parameters, input().initialSnapshot.parameters);
+  await assert.rejects(runImitationJob(input({ episodes: [one], validationEpisodeIds: [] })));
 });
 
 test("rejects empty, corrupt, single-class, overlapping, and final-test data", async () => {

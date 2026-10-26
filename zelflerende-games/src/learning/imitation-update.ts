@@ -35,7 +35,7 @@ export interface SupervisedUpdateResult extends GradientApplicationResult {
   readonly sampleCount: number;
 }
 
-function validateFrames(frames: readonly DemonstrationFrame[]): { flapCount: number; waitCount: number } {
+function validateFrames(frames: readonly DemonstrationFrame[], allowSingleClass = false): { flapCount: number; waitCount: number } {
   if (!Array.isArray(frames) || frames.length === 0) throw new RangeError("supervised batch is empty");
   let flapCount = 0;
   for (const [index, frame] of frames.entries()) {
@@ -49,8 +49,8 @@ function validateFrames(frames: readonly DemonstrationFrame[]): { flapCount: num
     flapCount += frame.action;
   }
   const waitCount = frames.length - flapCount;
-  if (flapCount === 0) throw new RangeError("supervised batch has all_wait labels; both actions are required");
-  if (waitCount === 0) throw new RangeError("supervised batch has all_flap labels; both actions are required");
+  if (!allowSingleClass && flapCount === 0) throw new RangeError("supervised batch has all_wait labels; both actions are required");
+  if (!allowSingleClass && waitCount === 0) throw new RangeError("supervised batch has all_flap labels; both actions are required");
   return { flapCount, waitCount };
 }
 
@@ -62,8 +62,9 @@ function softplus(value: number): number {
 export function computeSupervisedBatchGradient(
   policy: BernoulliPolicy,
   frames: readonly DemonstrationFrame[],
+  options: {readonly allowSingleClass?: boolean} = {},
 ): SupervisedBatchGradient {
-  const { flapCount, waitCount } = validateFrames(frames);
+  const { flapCount, waitCount } = validateFrames(frames, options.allowSingleClass);
   const gradient = Array<number>(POLICY_PARAMETER_COUNT).fill(0);
   let totalLoss = 0;
   for (const frame of frames) {

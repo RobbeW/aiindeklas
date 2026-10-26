@@ -39,7 +39,7 @@ startButton.addEventListener("click", () => {
     status.textContent = "Worker started; synthetic recorder episodes generated on the main thread…";
     worker.addEventListener("message", (event: MessageEvent<WorkerEvent<ImitationProgress, ImitationJobResult>>) => {
       const message = event.data;
-      if (message.type === "progress") status.textContent = `Progress ${message.progress.completedUpdates}/${message.progress.updateBudget}; training BCE ${message.progress.training.loss.toFixed(4)}; validation BCE ${message.progress.validation.loss.toFixed(4)}\nMain-thread heartbeat: ${beats} (${Math.round(performance.now() - heartbeat)} ms since last beat)`;
+      if (message.type === "progress") status.textContent = `Progress ${message.progress.completedUpdates}/${message.progress.updateBudget}; training BCE ${message.progress.training.loss.toFixed(4)}; validation BCE ${message.progress.validation?.loss.toFixed(4)??'n.v.t.'}\nMain-thread heartbeat: ${beats} (${Math.round(performance.now() - heartbeat)} ms since last beat)`;
       else if (message.type === "complete") status.textContent = `Complete: ${message.result.actualUpdates} updates in ${Math.round(performance.now() - startedAt)} ms; training episodes ${message.result.trainingEpisodeIds.join(", ")}; validation episodes ${message.result.validationEpisodeIds.join(", ")}.\nMain-thread heartbeat continued: ${beats} beats.`;
       else status.textContent = `Worker error (${message.code ?? "error"}): ${message.message}`;
       if (message.type !== "progress") cleanup();

@@ -7,7 +7,6 @@ import { createFlappyRenderer } from './renderer.ts';
 import { FlappyEnvironment } from './environment.ts';
 import { DemonstrationRecorder } from './recorder.ts';
 import { advanceFlappyFrame } from './play-view.ts';
-import { generateReferencePair } from './reference-demonstrations.ts';
 import { createImitationController, FrozenCloneController, TEACH_CLONE_TEST_SEED, TEACH_INITIALIZATION_SEED, TEACH_LEARNING_RATE, TEACH_UPDATE_BUDGET, type CloneResult, type ImitationController } from './imitation-controller.ts';
 import type { ImitationProgress } from '../learning/imitation-job.ts';
 import { WorkerJobCancelledError } from '../core/worker-client.ts';
@@ -25,6 +24,7 @@ const styles = `
 `;
 
 export interface TeachState {
+  readonly assessments?:readonly {sessions:number;actions:number;score:number;survivalSteps:number}[];
   readonly initialSnapshot: PolicySnapshot;
   readonly imitationSnapshot?: PolicySnapshot;
   readonly episodes: readonly DemonstrationEpisode[];
@@ -57,7 +57,7 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
       <div class="teach__columns">
         <section class="teach__game" aria-labelledby="teach-game-title">
           <h2 id="teach-game-title">Jouw demonstratie</h2>
-          <p id="teach-role" class="badge">Volgende opname: training</p>
+          <p id="teach-role" class="badge" hidden>Volgende opname: training</p>
           <div class="teach__actions"><button id="teach-pause" class="secondary" type="button" disabled>Pauzeer</button><button id="teach-restart" class="secondary" type="button" disabled>Opnieuw starten</button></div>
           <p id="teach-score">Score: 0 · 0 stappen</p>
           <canvas id="teach-canvas" tabindex="0" aria-label="Flappy speelveld; selecteer voor Spatie of pijltje omhoog"></canvas>
@@ -67,19 +67,19 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
         <section class="teach__panel" aria-label="Oefen en train">
           <div id="dataset-mount"></div>
           <section class="card" aria-labelledby="train-title">
-            <h2 id="train-title">Train jouw imitatie</h2>
+            <h2 id="train-title">Train jouw AI-model</h2><div class="teach-data-progress"><strong>Hoeveel trainingsdata heb je?</strong><p id="teach-data-count"></p><ol class="teach-data-stages"><li>1 opname</li><li>3 opnamen</li><li>10 of meer opnamen</li></ol></div>
             <p id="teach-origin">Model: beginmodel · nog niet getraind.</p>
             <p id="train-loss" hidden></p><p id="train-count" hidden>Training: 0/250 updates · methode Adam · leersnelheid 0,01.</p>
             <progress id="train-progress" hidden class="teach__progress" max="250" value="0" aria-label="Voortgang van modeltraining"></progress>
-            <p id="train-status" class="teach__status" role="status" aria-live="polite">Maak één trainingsvoorbeeld en één controlevoorbeeld.</p>
-            <div class="teach__actions"><button id="train-button" type="button">Train model</button><button id="cancel-button" class="secondary" type="button" disabled>Annuleer training</button><button id="example-button" class="secondary" type="button">Gebruik synthetisch voorbeeld</button></div>
+            <p id="train-status" class="teach__status" role="status" aria-live="polite">Neem één volledige poging op. Train en test daarna je AI-model.</p>
+            <div class="teach__actions"><button id="train-button" type="button">Train model</button><button id="cancel-button" class="secondary" type="button" disabled>Annuleer training</button></div>
           </section>
           <section class="card" aria-labelledby="clone-title">
-            <h2 id="clone-title">Probeer mijn manier</h2>
+            <h2 id="clone-title">Test jouw AI-model</h2>
             <p>Test het model op nieuwe openingen.</p>
-            <button id="clone-button" type="button" disabled>Laat de imitatie proberen</button>
+            <button id="clone-button" type="button" disabled>Test jouw AI-model</button>
             <p id="clone-status" class="teach__status" role="status" aria-live="polite">Train eerst een model.</p>
-            <p id="clone-details" class="muted" hidden>Nog geen testresultaat.</p>
+            <div class="teach-assessments"></div><p id="clone-details" class="muted" hidden>Nog geen testresultaat.</p>
           </section>
         </section>
       </div>
@@ -95,7 +95,6 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
   const restart = required<HTMLButtonElement>('#teach-restart');
   const trainButton = required<HTMLButtonElement>('#train-button');
   const cancelButton = required<HTMLButtonElement>('#cancel-button');
-  const exampleButton = required<HTMLButtonElement>('#example-button');
   const cloneButton = required<HTMLButtonElement>('#clone-button');
   const trainStatus = required<HTMLElement>('#train-status');
   const cloneStatus = required<HTMLElement>('#clone-status');
@@ -108,13 +107,14 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
   let disposed = false;
   let initializing=true;
   let phase: Phase = 'ready';
-  let statusText = 'Maak één trainingsvoorbeeld en één controlevoorbeeld.';
+  let statusText = 'Neem één volledige poging op. Train en test daarna je AI-model.';
   let progress: ImitationProgress | undefined;
   let cloneResult: CloneResult | undefined;
   let trainedEpisodeSignature = '';
   let trainingEpoch = 0;
   let role: 'training' | 'validation' = 'training';
   let trainingNumber = 0;
+  let assessments=[...(options.restoreState?.assessments??[])];
   let validationNumber = 0;
   let roleForCurrent: 'training' | 'validation' | undefined;
   let currentSeed = 1000;
@@ -133,7 +133,7 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
 
   const episodeSignature = (): string => dataset.getEpisodes().map((episode) => `${episode.id}:${episode.seed}`).join('|');
   const getState = (): TeachState => Object.freeze({
-    initialSnapshot: controller.initialSnapshot,
+    assessments,initialSnapshot: controller.initialSnapshot,
     ...(controller.getImitationSnapshot() ? { imitationSnapshot: controller.getImitationSnapshot() } : {}),
     episodes: dataset.getEpisodes(), ...(cloneResult ? { cloneResult } : {}), imitationIsStale: !!controller.getImitationSnapshot() && trainedEpisodeSignature !== episodeSignature(), ...(roleForCurrent ? { recordingRole: roleForCurrent } : {}),
     status: statusText, ...(progress ? { progress } : {}),
@@ -147,21 +147,21 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
     const imitationIsStale = !!imitation && trainedEpisodeSignature !== episodeSignature();
     cloneButton.disabled = !imitation || imitationIsStale || phase === 'recording' || phase === 'paused' || phase === 'training' || phase === 'clone';
     if (imitationIsStale) cloneStatus.textContent = 'De dataset is gewijzigd sinds deze training. Train opnieuw voordat je de imitatie test.';
-    trainButton.disabled = phase === 'recording' || phase === 'paused' || phase === 'training' || phase === 'clone';
-    exampleButton.disabled = phase === 'recording' || phase === 'paused' || phase === 'training' || phase === 'clone';
+    trainButton.disabled = !episodes.some(e=>e.seed<2000)||phase === 'recording' || phase === 'paused' || phase === 'training' || phase === 'clone';
     cancelButton.disabled = phase !== 'training';
     pause.disabled = phase !== 'recording' && phase !== 'paused' && phase !== 'clone';
     restart.disabled = !roleForCurrent || (phase !== 'recording' && phase !== 'paused');
-    origin.textContent = imitation ? 'Model: imitatie · vaste gewichten tijdens de test.' : 'Model: beginmodel · nog niet getraind.';
+    origin.textContent = imitation ? 'Jouw AI-model is getraind.' : 'Model: beginmodel · nog niet getraind.';
     trainCount.textContent = imitation ? `Voorbeelden: ${imitation.datasetProvenance.length} · updates: ${imitation.trainingCounts.supervisedUpdates}/250 · methode: ${imitation.supervisedOptimizer ?? 'sgd'} · leersnelheid: 0,01.` : 'Training: 0/250 updates · methode Adam · leersnelheid 0,01.';
-    if (!imitation && episodes.length < 2 && phase !== 'training') trainStatus.textContent = 'Maak één trainingsvoorbeeld en één controlevoorbeeld.';
+    if (!imitation && episodes.length < 2 && phase !== 'training') trainStatus.textContent = 'Neem één volledige poging op. Train en test daarna je AI-model.';
+    const training=episodes.filter(e=>e.seed<2000);const actions=training.reduce((n,e)=>n+e.frames.length,0);required('#teach-data-count').textContent=`Opnamen: ${training.length} · keuzes: ${actions} · speltijd: ${training.reduce((n,e)=>n+e.durationSeconds,0).toFixed(1).replace('.',',')} s`;
+    [...root.querySelectorAll('.teach-data-stages li')].forEach((li,i)=>li.classList.toggle('is-done',training.length>=[1,3,10][i]!));
+    required('.teach-assessments').replaceChildren(...assessments.map(a=>{const row=el('p',`${a.sessions} ${a.sessions===1?'opname':'opnamen'} · ${a.actions} keuzes → ${a.score} punten`);return row;}));
     notify();
   };
   const assignNextRole = (): void => {
-    roleForCurrent = role;
-    if (role === 'training') currentSeed = 1000 + trainingNumber++;
-    else { currentSeed = 2000 + validationNumber++; if (currentSeed === TEACH_CLONE_TEST_SEED) currentSeed = 2000 + validationNumber++; }
-    role = role === 'training' ? 'validation' : 'training';
+    roleForCurrent='training';role='training';
+    const used=new Set(dataset.getEpisodes().map(e=>e.seed));while(used.has(1000+trainingNumber))trainingNumber++;currentSeed=1000+trainingNumber++;
   };
   const resetCurrent = (): void => { currentWorld.reset({ seed: currentSeed }); };
   const pauseForBlur = (): void => {
@@ -193,9 +193,10 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
           currentWorld = environment; score.textContent = `Score: ${environment.pipesPassed} · ${environment.world.steps} stappen`;
           if (transition.done) {
             stopFrame(); phase = 'ready'; pause.disabled = true; cloneResult = Object.freeze({ seed: TEACH_CLONE_TEST_SEED, pipesPassed: transition.result?.pipesPassed ?? 0, survivalSteps: transition.result?.survivalSteps ?? environment.world.steps, reason: transition.reason ?? 'unknown' });
-    cloneStatus.textContent = `Test klaar. Score: ${cloneResult.pipesPassed} punten. Model bleef gelijk.`;
+    const examples=dataset.getEpisodes().filter(e=>e.seed<2000);assessments=[...assessments,{sessions:examples.length,actions:examples.reduce((n,e)=>n+e.frames.length,0),score:cloneResult.pipesPassed,survivalSteps:cloneResult.survivalSteps}].slice(-30);
+    cloneStatus.textContent = `Test klaar. Score: ${cloneResult.pipesPassed} punten. Neem meer opnamen op, train opnieuw en vergelijk.`;
             required<HTMLElement>('#clone-details').textContent=`${cloneResult.pipesPassed} punten · ${cloneResult.survivalSteps} stappen · einde: ${cloneResult.reason} · testreeks ${TEACH_CLONE_TEST_SEED}.`;
-            trainStatus.textContent = 'Evaluatie klaar; de imitatie bleef bevroren.'; refresh();
+            trainStatus.textContent = 'Test klaar.'; refresh();
           }
         }
         renderer?.render(currentWorld.world);
@@ -204,7 +205,7 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
     } catch (error) { stopFrame(); phase = 'ready'; statusText = error instanceof Error ? error.message : String(error); trainStatus.setAttribute('role', 'alert'); trainStatus.textContent = statusText; refresh(); }
     if (phase === 'recording' || phase === 'clone') frameHandle = requestAnimationFrame(frame);
   };
-  const startLoop = (): void => { input.reset(); phase = roleForCurrent ? 'recording' : 'clone';required('#teach-game-title').textContent=phase==='clone'?'Bevroren imitatie · controlereeks 2005':'Jouw demonstratie'; lastTimestamp = undefined; accumulatorMs = 0; flap.disabled = phase !== 'recording'; pause.disabled = false; pause.textContent = 'Pauzeer'; canvas.focus({ preventScroll: true });canvas.scrollIntoView({block:'center',behavior:'auto'}); frameHandle = requestAnimationFrame(frame); };
+  const startLoop = (): void => { input.reset(); phase = roleForCurrent ? 'recording' : 'clone';required('#teach-game-title').textContent=phase==='clone'?'Test jouw AI-model':'Jouw demonstratie'; lastTimestamp = undefined; accumulatorMs = 0; flap.disabled = phase !== 'recording'; pause.disabled = false; pause.textContent = 'Pauzeer'; canvas.focus({ preventScroll: true });canvas.scrollIntoView({block:'center',behavior:'auto'}); frameHandle = requestAnimationFrame(frame); };
   const onRecordingChange = (recording: boolean): void => {
     if (recording) {
       if (phase !== 'ready') return;
@@ -215,12 +216,12 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
       statusText = 'Opname gestopt. Het onafgemaakte voorbeeld is verwijderd.'; trainStatus.textContent = statusText; refresh();
     }
   };
-  controller = createImitationController({ onStateChange: notify,initialSnapshot:options.restoreState?.initialSnapshot,imitationSnapshot:options.restoreState?.imitationSnapshot });
+  controller = createImitationController({ allowTrainingOnly:true,onStateChange: notify,initialSnapshot:options.restoreState?.initialSnapshot,imitationSnapshot:options.restoreState?.imitationSnapshot });
   dataset = mountDatasetView(datasetRoot, {
     onRecordingChange,
     onChange() {
       if(phase==='training'){trainingEpoch++;controller.cancel();phase='ready';statusText='Training gestopt omdat de voorbeelden veranderden. Train opnieuw.';trainStatus.textContent=statusText;gym.cancelled(statusText);}
-      cloneResult = undefined; cloneStatus.textContent = 'Dataset gewijzigd. Eerdere testscore is vervallen; train opnieuw om deze voorbeelden te gebruiken.'; refresh();
+      cloneResult = undefined; cloneStatus.textContent = 'Je voorbeelden zijn bewaard. Train en test het AI-model opnieuw.'; refresh();
     },
   });
   const recordButton=datasetRoot.querySelector<HTMLButtonElement>('.record-toggle')!;
@@ -233,7 +234,7 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
     trainingNumber=Math.max(0,...dataset.getEpisodes().filter(e=>e.seed>=1000&&e.seed<=1999).map(e=>e.seed-999));
     validationNumber=Math.max(0,...dataset.getEpisodes().filter(e=>e.seed>=2000&&e.seed<=2099).map(e=>e.seed-1999));
     cloneResult=options.restoreState.cloneResult;
-    const saved=options.restoreState.progress;if(saved)required('#train-loss').textContent=`Update ${saved.completedUpdates}/${saved.updateBudget} · verlies training ${saved.training.loss.toFixed(3)} · validatie ${saved.validation.loss.toFixed(3)}.`;
+    const saved=options.restoreState.progress;if(saved)required('#train-loss').textContent=`Update ${saved.completedUpdates}/${saved.updateBudget} · verlies training ${saved.training.loss.toFixed(3)} · validatie ${saved.validation?.loss.toFixed(3)??'niet gemeten'}.`;
     if(controller.getImitationSnapshot()){
       progressBar.value=Math.min(TEACH_UPDATE_BUDGET,controller.getImitationSnapshot()!.trainingCounts.supervisedUpdates);
       statusText=options.restoreState.imitationIsStale?'Voorbeelden gewijzigd. Train het model opnieuw.':'Imitatie klaar. Test het model op nieuwe openingen.';trainStatus.textContent=statusText;
@@ -253,20 +254,12 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
   trainButton.addEventListener('click', () => {
     const epoch=++trainingEpoch;const trainingSignature=episodeSignature();
     cloneResult = undefined; progress = undefined; progressBar.value = 0; phase = 'training'; statusText = 'Training gestart.';trainStatus.setAttribute('role','status');trainStatus.textContent = statusText;gym.start(TEACH_UPDATE_BUDGET);refresh();
-    void controller.train(dataset.getEpisodes(), (value) => { if(disposed||epoch!==trainingEpoch)return;progress = value; progressBar.value = value.completedUpdates;gym.progress(value.completedUpdates); required('#train-loss').textContent=`Update ${value.completedUpdates}/${value.updateBudget} · verlies training ${value.training.loss.toFixed(3)} · validatie ${value.validation.loss.toFixed(3)}.`;trainStatus.textContent = `Training… ${Math.round(value.completedUpdates/value.updateBudget*100)}%.`; notify(); }).then((result) => {
+    void controller.train(dataset.getEpisodes(), (value) => { if(disposed||epoch!==trainingEpoch)return;progress = value; progressBar.value = value.completedUpdates;gym.progress(value.completedUpdates); required('#train-loss').textContent=`Update ${value.completedUpdates}/${value.updateBudget} · verlies training ${value.training.loss.toFixed(3)} · validatie ${value.validation?.loss.toFixed(3)??'niet gemeten'}.`;trainStatus.textContent = `Training… ${Math.round(value.completedUpdates/value.updateBudget*100)}%.`; notify(); }).then((result) => {
       if(disposed||epoch!==trainingEpoch)return;
-      phase = 'ready'; trainedEpisodeSignature = trainingSignature; progressBar.value = result.actualUpdates; required('#train-loss').textContent=`${result.actualUpdates} updates · verlies training ${result.training.loss.toFixed(3)} · validatie ${result.validation.loss.toFixed(3)}.`;statusText = 'Training klaar. Test het model op nieuwe openingen.'; trainStatus.textContent = statusText; cloneStatus.textContent = 'Klaar om te testen.'; refresh();gym.complete(result.actualUpdates);
+      phase = 'ready'; trainedEpisodeSignature = trainingSignature; progressBar.value = result.actualUpdates; required('#train-loss').textContent=`${result.actualUpdates} updates · verlies training ${result.training.loss.toFixed(3)} · validatie ${result.validation?.loss.toFixed(3)??'niet gemeten'}.`;statusText = 'Training klaar. Test het model op nieuwe openingen.'; trainStatus.textContent = statusText; cloneStatus.textContent = 'Klaar om te testen.'; refresh();gym.complete(result.actualUpdates);
     }).catch((error: unknown) => { if(disposed||epoch!==trainingEpoch)return;phase = 'ready'; const cancelled = error instanceof WorkerJobCancelledError || (error instanceof Error && error.name === 'ImitationJobCancelledError'); statusText = cancelled ? (controller.getImitationSnapshot() ? 'Training geannuleerd. Het vorige opgeslagen model is behouden.' : 'Training geannuleerd. Je voorbeelden blijven bewaard; er is geen nieuw model opgeslagen.') : `Training mislukt: ${error instanceof Error ? error.message : String(error)}`; trainStatus.setAttribute('role', cancelled ? 'status' : 'alert'); trainStatus.textContent = statusText; refresh();if(cancelled)gym.cancelled(statusText);else gym.error(statusText); });
   });
   cancelButton.addEventListener('click', () => controller.cancel());
-  exampleButton.addEventListener('click', () => {
-    const episodes = dataset.getEpisodes();
-    const trainingSeed = Array.from({ length: 1000 }, (_, i) => 1000 + i).find((seed) => !episodes.some((episode) => episode.seed === seed));
-    const validationSeed = Array.from({ length: 100 }, (_, i) => 2000 + i).find((seed) => seed !== TEACH_CLONE_TEST_SEED && !episodes.some((episode) => episode.seed === seed));
-    if (trainingSeed === undefined || validationSeed === undefined) { trainStatus.textContent = 'Geen vrije voorbeeldreeks beschikbaar.'; return; }
-    try { for (const episode of generateReferencePair(trainingSeed, validationSeed)) dataset.addEpisode(episode); cloneResult = undefined; statusText = 'Synthetisch voorbeeld toegevoegd — geen leerlingdata. Train om het model te leren.'; trainStatus.textContent = statusText; refresh(); }
-    catch (error) { trainStatus.setAttribute('role', 'alert'); trainStatus.textContent = error instanceof Error ? error.message : String(error); }
-  });
   cloneButton.addEventListener('click', () => {
     const savedSnapshot = controller.getImitationSnapshot(); if (!savedSnapshot || phase !== 'ready') return;
     const snapshot = createPolicySnapshot(restorePolicySnapshot(savedSnapshot), savedSnapshot);

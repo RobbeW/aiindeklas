@@ -46,6 +46,16 @@ test('wrong-game, corrupt, incompatible and oversized imports preserve current s
  assert.equal(storage.getItem(experimentKey('flappy')),original);assert.equal(store.read('flappy')?.payload, saved.payload);
 });
 
+test('data-size assessments and parallel training comparisons survive export with bounded settings',()=>{
+ const assessments=[{sessions:1,actions:90,score:0,survivalSteps:41},{sessions:3,actions:300,score:1,survivalSteps:250}];
+ const trainingRuns=[{rounds:16,agents:12,speed:64,elapsedMs:1234,attempts:192,meanScore:1.25}];
+ const payload={teach:{initialSnapshot:createPolicySnapshot(new BernoulliPolicy(17),{stage:'initial'}),imitationSnapshot:birdSnapshot,episodes:[birdExample],imitationIsStale:false,assessments},practice:{episodes:192,trainedEpisodes:192,steps:12000,simulatedSeconds:200,elapsedMs:1234,stepsPerSecond:9724,snapshot:createPolicySnapshot(new BernoulliPolicy(19),{stage:'post_rl',trainingCounts:{supervisedUpdates:4,reinforcementEpisodes:192}}),history:[],scoreHistory:[],trainingRuns},human:[]};
+ const restored=parseExperiment(serializeExperiment(createExperiment('flappy',payload)),'flappy').payload as FlappyLearningState;
+ assert.deepEqual(restored.teach?.assessments,assessments);assert.deepEqual(restored.practice?.trainingRuns,trainingRuns);
+ for(const bad of [{...trainingRuns[0],agents:7},{...trainingRuns[0],rounds:65},{...trainingRuns[0],elapsedMs:-1}])assert.throws(()=>createExperiment('flappy',{...payload,practice:{...payload.practice,trainingRuns:[bad]}}));
+ assert.throws(()=>createExperiment('flappy',{...payload,teach:{...payload.teach,assessments:[{...assessments[0],sessions:-1}]}}));
+});
+
 test('rejects inconsistent snapshot stages, practice progress and evolution summaries',()=>{
  const birdInitial=createPolicySnapshot(new BernoulliPolicy(1),{stage:'initial'}),birdImitation=createPolicySnapshot(new BernoulliPolicy(2),{stage:'imitation'}),birdPost=createPolicySnapshot(new BernoulliPolicy(3),{stage:'post_rl',trainingCounts:{supervisedUpdates:0,reinforcementEpisodes:1}});
  const birdState={teach:{initialSnapshot:birdInitial,imitationSnapshot:birdImitation,episodes:[],imitationIsStale:false},practice:{episodes:1,trainedEpisodes:1,steps:60,simulatedSeconds:1,elapsedMs:5,stepsPerSecond:12000,snapshot:birdPost,history:[],scoreHistory:[]},human:[]};

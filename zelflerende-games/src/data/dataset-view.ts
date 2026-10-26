@@ -70,11 +70,8 @@ function formatTime(seconds: number): string {
 }
 
 function diagnostic(episodes: readonly DemonstrationEpisode[], recording: boolean, balance: DatasetSummary['balance']): string {
-  if (recording) return 'Opname loopt. Rond de poging af om die te bewaren.';
-  if (episodes.length === 0) return 'Nog geen voorbeelden. Start een opname.';
-  if (balance === 'all_wait') return 'Alle acties zijn wachten. Voeg demonstraties met flaps toe voor meer variatie.';
-  if (episodes.length < 2 || balance === 'all_flap') return 'Weinig variatie beschikbaar. Verzamel meer pogingen en wissel flappen en wachten af.';
-  return 'Bekijk je voorbeelden. Ontbreekt er een situatie?';
+  if(recording)return 'De computer kijkt mee. Speel je poging uit om je opname te bewaren.';
+  return episodes.length?'Train en test je AI-model. Neem daarna meer pogingen op.':'Start je eerste opname.';
 }
 
 /** Mount the reusable Dutch dataset collection panel into a supplied root. */

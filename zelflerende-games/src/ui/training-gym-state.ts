@@ -16,7 +16,7 @@ export function updateTrainingGym(state:TrainingGymState,event:TrainingGymEvent)
  if(event.type==='complete'){
   if(state.status!=='running')return state;
   if(event.completed!==state.budget)return{...state,status:'error',message:'De training is niet volledig afgerond. Bekijk de melding bij je voorbeelden.'};
-  return{...state,status:'complete',completed:event.completed,message:'Je AI-model is klaar. Kies Laat de imitatie proberen.'};
+  return{...state,status:'complete',completed:event.completed,message:'Je AI-model is klaar. Kies Test jouw AI-model.'};
  }
  return{...state,status:event.type,message:event.message};
 }
