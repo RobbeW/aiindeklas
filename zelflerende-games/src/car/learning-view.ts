@@ -2,7 +2,6 @@ import { renderLessonActions } from '../ui/lesson-actions.ts';
 import { mountNavigationDrawer } from '../ui/navigation-drawer.ts';
 import { loadReferenceTrack } from '../tracks/catalog.ts';
 import type { CircuitDocument } from '../tracks/document.ts';
-import { trackIdentity } from '../tracks/document.ts';
 import { buildRoute } from '../tracks/route.ts';
 import { mountCircuitWorkshop } from '../tracks/workshop-view.ts';
 import { mountGenerationView } from './generation-view.ts';
@@ -17,10 +16,10 @@ import { stableIdentity } from '../core/identity.ts';
 export interface CarLearningState {readonly document:CircuitDocument;readonly draft?:CircuitDocument;readonly teach?:CarTeachState;readonly practice?:CarPracticeProgress;readonly records:readonly EvaluationRecord[];readonly evolution?:EvolutionProgress;}
 export async function mountCarLearningView(root:HTMLElement,options:{state?:CarLearningState;initialStep?:string;onStepChange?:(step:string)=>void;onChange?:(state:CarLearningState)=>void}={}){
   let state:CarLearningState=options.state??{document:await loadReferenceTrack('teaching-loop'),records:[]},disposed=false;let active:{dispose():void}|undefined;
-  root.innerHTML='<main class="car-learning"><header class="card"><p class="eyebrow">AI in de klas</p><h1>Zelflerende raceauto</h1><details class="context-help"><summary>Circuitinformatie</summary><p class="car-current-track"></p></details></header><div class="exercise-menu"><nav aria-label="Stappen autorijden"></nav></div><div class="lesson-guidance"></div><div class="car-learning-stage"></div><nav class="lesson-actions" aria-label="Volgende oefening"></nav></main>';
-  const nav=root.querySelector('nav')!,stage=root.querySelector<HTMLElement>('.car-learning-stage')!,label=root.querySelector('.car-current-track')!;
+  root.innerHTML='<main class="car-learning"><header class="card"><p class="eyebrow">AI in de klas</p><h1>Zelflerende raceauto</h1></header><div class="exercise-menu"><nav aria-label="Stappen autorijden"></nav></div><div class="lesson-guidance"></div><div class="car-learning-stage"></div><nav class="lesson-actions" aria-label="Volgende oefening"></nav></main>';
+  const nav=root.querySelector('nav')!,stage=root.querySelector<HTMLElement>('.car-learning-stage')!;
   const menu=mountNavigationDrawer(root.querySelector<HTMLElement>('.exercise-menu')!,{label:'Open oefeningen',kind:'exercise'});
-  const publish=()=>{label.textContent=`Actief circuit: ${trackIdentity(state.document)}. Een ander circuit kiezen verandert geen modelgewichten.`;options.onChange?.(state);};
+  const publish=()=>{options.onChange?.(state);};
   const entries=[['play','1 · Rijd'],['teach','2 · Leer van voorbeelden'],['practice','3 · Zelf oefenen'],['edit','4 · Bouw circuit'],['population','5 · Evolueer'],['compare','6 · Vergelijk']] as const;
   const choose=(key:string)=>{if(disposed)return;active?.dispose();stage.replaceChildren();for(const b of nav.querySelectorAll('button')){if(b.dataset.step===key)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');}
     options.onStepChange?.(key);
