@@ -1,0 +1,9 @@
+.practice-gym .practice-gym-metrics {margin:8px 0;color:var(--ink);font-size:14px;font-weight:650}
+.practice-gym .gym-actions {justify-content:flex-start}
+.practice-gym .gym-loop strong {display:inline}
+.parallel-fast-note {padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--bg);line-height:1.5}
+.parallel-fast-note strong {display:block;color:var(--brand-purple-dark)}
+.parallel-practice .parallel-layout[hidden],.parallel-fast-note[hidden] {display:none!important}
+.parallel-fast-result {padding:20px;border:1px solid var(--border);border-radius:14px;background:var(--bg);margin-top:20px}
+.parallel-fast-result[hidden] {display:none!important}
+.parallel-fast-result p {margin:0 0 12px}

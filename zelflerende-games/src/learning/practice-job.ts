@@ -3,6 +3,7 @@ import { FlappyEnvironment } from '../flappy/environment.ts';
 import { createPolicySnapshot,restorePolicySnapshot,type PolicySnapshot } from './policy-snapshot.ts';
 import type { RolloutEpisode,RolloutStep } from './rollout.ts';
 import { updateReinforcementPolicy } from './rl-update.ts';
+import type { PracticeModelCheck } from './practice-check.ts';
 
 export interface PracticeInput {
   readonly snapshot:PolicySnapshot;
@@ -14,7 +15,8 @@ export interface PracticeInput {
 }
 export interface AttemptReplay { readonly seed:number; readonly actions:readonly (0|1)[]; readonly result:RolloutEpisode['result']; }
 export interface PracticeProgress {
-  readonly trainingRuns?:readonly {rounds:number;agents:number;speed:number;elapsedMs:number;attempts:number;meanScore:number}[];
+  readonly trainingRuns?:readonly {rounds:number;agents:number;speed:number;elapsedMs:number;attempts:number;meanScore:number;mode?:'live'|'fast';requestedRounds?:number;reason?:'round_budget'|'step_budget'|'time_budget'|'cancelled';modelCheck?:PracticeModelCheck}[];
+  readonly modelCheck?:PracticeModelCheck;
   readonly cumulativeSteps?:number;readonly cumulativeElapsedMs?:number;
   readonly episodes:number; readonly steps:number; readonly simulatedSeconds:number;
   readonly elapsedMs:number; readonly stepsPerSecond:number; readonly trainedEpisodes:number;

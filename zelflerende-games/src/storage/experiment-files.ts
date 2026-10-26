@@ -1,3 +1,5 @@
+import { MAX_PARALLEL_ROUNDS } from '../learning/parallel-practice-settings.ts';
+import { validatePracticeModelCheck } from '../learning/practice-check.ts';
 import { validateEpisode } from '../data/dataset.ts';
 import { validateLessonNotes } from '../flappy/lesson-notes.ts';
 import { splitCarEpisodes } from '../car/recorder.ts';
@@ -32,7 +34,19 @@ function evolutionProgress(value:unknown):EvolutionProgress|undefined{
  return Object.freeze({completedGenerations,evaluatedEpisodes,steps,elapsedMs,records:Object.freeze(records),...(champion?{champion}:{})});
 }
 function teachingAssessments(value:unknown){if(value===undefined)return undefined;if(!Array.isArray(value)||value.length>30)throw new Error('Invalid teaching assessments');return Object.freeze(value.map(item=>{const a=object(item);return Object.freeze({sessions:count(a.sessions),actions:count(a.actions),score:count(a.score),survivalSteps:count(a.survivalSteps)});}));}
-function trainingRuns(value:unknown){if(value===undefined)return undefined;if(!Array.isArray(value)||value.length>12)throw new Error('Invalid training runs');return Object.freeze(value.map(item=>{const a=object(item);if(![6,12,18,24].includes(a.agents)||![1,4,16,64].includes(a.speed)||count(a.rounds)>64)throw new Error('Invalid parallel practice settings');return Object.freeze({rounds:count(a.rounds),agents:count(a.agents),speed:count(a.speed),elapsedMs:finite(a.elapsedMs),attempts:count(a.attempts),meanScore:finite(a.meanScore)});}));}
+function trainingRuns(value:unknown){
+ if(value===undefined)return undefined;
+ if(!Array.isArray(value)||value.length>12)throw new Error('Invalid training runs');
+ return Object.freeze(value.map(item=>{
+  const a=object(item),rounds=count(a.rounds);
+  if(![6,12,18,24].includes(a.agents)||![1,4,16,64].includes(a.speed)||rounds>MAX_PARALLEL_ROUNDS)throw new Error('Invalid parallel practice settings');
+  const requested=a.requestedRounds===undefined?undefined:count(a.requestedRounds);
+  if(requested!==undefined&&(requested<rounds||requested<1||requested>MAX_PARALLEL_ROUNDS))throw new Error('Invalid requested practice rounds');
+  if(a.mode!==undefined&&!['live','fast'].includes(a.mode)||a.mode==='live'&&(requested??rounds)>=256)throw new Error('Invalid practice mode');
+  if(a.reason!==undefined&&!['round_budget','step_budget','time_budget','cancelled'].includes(a.reason))throw new Error('Invalid practice stop reason');
+  return Object.freeze({rounds,agents:count(a.agents),speed:count(a.speed),elapsedMs:finite(a.elapsedMs),attempts:count(a.attempts),meanScore:finite(a.meanScore),...(requested===undefined?{}:{requestedRounds:requested}),...(a.mode===undefined?{}:{mode:a.mode as 'live'|'fast'}),...(a.reason===undefined?{}:{reason:a.reason}),...(a.modelCheck===undefined?{}:{modelCheck:validatePracticeModelCheck(a.modelCheck)})});
+ }));
+}
 function requireStage<T extends {stage:string}>(value:unknown,stage:string,label:string):T{const s=object(value);if(s.stage!==stage)throw new Error(`${label} must use ${stage} snapshot`);return value as T;}
 function validatePractice(value:unknown,game:'flappy'):Omit<NonNullable<FlappyLearningState['practice']>,'history'|'scoreHistory'>;
 function validatePractice(value:unknown,game:'car'):Omit<NonNullable<CarLearningState['practice']>,'history'|'scores'>;
@@ -42,7 +56,7 @@ function validatePractice(value:unknown,game:Game){
  const rlCount=game==='car'?(snapshot as ReturnType<typeof validateCarSnapshot>).training.reinforcementEpisodes:(snapshot as PolicySnapshot).trainingCounts.reinforcementEpisodes;
  if(trained>episodes||steps<episodes||Math.abs(seconds-steps/60)>1e-9||!['imitation','post_rl'].includes(snapshot.stage)||trained>0&&snapshot.stage!=='post_rl'||rlCount<trained)throw new Error('Inconsistent practice counts, duration, or snapshot stage');
  if(x.cumulativeSteps!==undefined&&count(x.cumulativeSteps)<steps||x.cumulativeElapsedMs!==undefined&&finite(x.cumulativeElapsedMs)<elapsed)throw new Error('Cumulative practice totals are below current progress');
- return{episodes,trainedEpisodes:trained,steps,simulatedSeconds:seconds,elapsedMs:elapsed,snapshot,...(game==='flappy'&&x.trainingRuns!==undefined?{trainingRuns:trainingRuns(x.trainingRuns)}:{})};
+ return{episodes,trainedEpisodes:trained,steps,simulatedSeconds:seconds,elapsedMs:elapsed,snapshot,...(game==='flappy'&&x.trainingRuns!==undefined?{trainingRuns:trainingRuns(x.trainingRuns)}:{}),...(game==='flappy'&&x.modelCheck!==undefined?{modelCheck:validatePracticeModelCheck(x.modelCheck)}:{})};
 }
 function uniqueEpisodes(values:unknown,game:Game){if(!Array.isArray(values)||values.length>64)throw new Error('At most64 complete example episodes per experiment');if(game==='car'){const split=splitCarEpisodes(values);return Object.freeze([...split.training,...split.control]);}const episodes=values.map(validateEpisode);if(new Set(episodes.map(e=>e.id)).size!==episodes.length||new Set(episodes.map(e=>e.seed)).size!==episodes.length)throw new Error('Duplicate example identity/seed');if(episodes.some(e=>e.seed<1000||e.seed>2099))throw new Error('Invalid example namespace');return Object.freeze(episodes);}
 /** Stored practice counters/model are retained; action replays stay in memory only. */

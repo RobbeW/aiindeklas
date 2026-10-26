@@ -52,8 +52,19 @@ test('data-size assessments and parallel training comparisons survive export wit
  const payload={teach:{initialSnapshot:createPolicySnapshot(new BernoulliPolicy(17),{stage:'initial'}),imitationSnapshot:birdSnapshot,episodes:[birdExample],imitationIsStale:false,assessments},practice:{episodes:192,trainedEpisodes:192,steps:12000,simulatedSeconds:200,elapsedMs:1234,stepsPerSecond:9724,snapshot:createPolicySnapshot(new BernoulliPolicy(19),{stage:'post_rl',trainingCounts:{supervisedUpdates:4,reinforcementEpisodes:192}}),history:[],scoreHistory:[],trainingRuns},human:[]};
  const restored=parseExperiment(serializeExperiment(createExperiment('flappy',payload)),'flappy').payload as FlappyLearningState;
  assert.deepEqual(restored.teach?.assessments,assessments);assert.deepEqual(restored.practice?.trainingRuns,trainingRuns);
- for(const bad of [{...trainingRuns[0],agents:7},{...trainingRuns[0],rounds:65},{...trainingRuns[0],elapsedMs:-1}])assert.throws(()=>createExperiment('flappy',{...payload,practice:{...payload.practice,trainingRuns:[bad]}}));
+ for(const bad of [{...trainingRuns[0],agents:7},{...trainingRuns[0],rounds:1025},{...trainingRuns[0],elapsedMs:-1}])assert.throws(()=>createExperiment('flappy',{...payload,practice:{...payload.practice,trainingRuns:[bad]}}));
  assert.throws(()=>createExperiment('flappy',{...payload,teach:{...payload.teach,assessments:[{...assessments[0],sessions:-1}]}}));
+});
+
+test('long fast-training summaries roundtrip with requested budget and actual stop reason',()=>{
+ const run={rounds:1024,requestedRounds:1024,agents:12,speed:16,mode:'fast',elapsedMs:20000,attempts:12288,meanScore:0,reason:'round_budget'};
+ const progress={episodes:12288,trainedEpisodes:12288,steps:491520,simulatedSeconds:8192,elapsedMs:20000,stepsPerSecond:24576,snapshot:createPolicySnapshot(new BernoulliPolicy(19),{stage:'post_rl',trainingCounts:{supervisedUpdates:250,reinforcementEpisodes:12288}}),history:[],scoreHistory:[],trainingRuns:[run]};
+ const restored=parseExperiment(serializeExperiment(createExperiment('flappy',{human:[],practice:progress})),'flappy').payload as FlappyLearningState;
+ assert.deepEqual(restored.practice?.trainingRuns,[run]);
+ const interrupted={...run,rounds:81,reason:'time_budget'};
+ const partial=parseExperiment(serializeExperiment(createExperiment('flappy',{human:[],practice:{...progress,trainingRuns:[interrupted]}})),'flappy').payload as FlappyLearningState;
+ assert.deepEqual(partial.practice?.trainingRuns,[interrupted]);
+ for(const invalid of [{...run,requestedRounds:64},{...run,mode:'live'},{...run,reason:'pretend_complete'},{...run,rounds:1025,requestedRounds:1025}])assert.throws(()=>createExperiment('flappy',{human:[],practice:{...progress,trainingRuns:[invalid]}}));
 });
 
 test('rejects inconsistent snapshot stages, practice progress and evolution summaries',()=>{

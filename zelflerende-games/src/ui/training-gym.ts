@@ -1,12 +1,14 @@
 import { startTrainingGym,updateTrainingGym,type TrainingGymState,type TrainingGymEvent } from './training-gym-state.ts';
 import '../styles/training-gym.css';
 let gymNumber=0;
+export const trainingGymScene = () => `<div class="gym-scene" aria-hidden="true"><span class="gym-wall-label">FLAP GYM</span><div class="gym-floor"></div><div class="gym-mat"></div><div class="gym-lifter"><img class="gym-bird" src="${import.meta.env.BASE_URL}assets/flappy/redbird-midflap.png" alt="" width="88" height="62"><svg class="gym-barbell" viewBox="0 0 200 52"><rect x="16" y="22" width="168" height="8" rx="3" fill="#625B70"/><rect x="24" y="8" width="16" height="36" rx="3" fill="#3700B3"/><rect x="40" y="2" width="18" height="48" rx="3" fill="#5200FF"/><rect x="142" y="2" width="18" height="48" rx="3" fill="#5200FF"/><rect x="160" y="8" width="16" height="36" rx="3" fill="#3700B3"/></svg></div></div>`;
+
 /** Visualises an actual supervised job; no timer or simulated progress. */
 export function mountTrainingGym(trigger:HTMLButtonElement,onCancel:()=>void){
  const doc=trigger.ownerDocument,id=`training-gym-${++gymNumber}`,dialog=doc.createElement('dialog');
  dialog.className='training-gym';dialog.setAttribute('aria-labelledby',`${id}-title`);dialog.setAttribute('aria-describedby',`${id}-meaning`);
  dialog.innerHTML=`<p class="gym-kicker">Leren van voorbeelden</p><h2 class="gym-heading" id="${id}-title">Even naar de gym.</h2>
- <div class="gym-scene" aria-hidden="true"><span class="gym-wall-label">FLAP GYM</span><div class="gym-floor"></div><div class="gym-mat"></div><div class="gym-lifter"><img class="gym-bird" src="${import.meta.env.BASE_URL}assets/flappy/redbird-midflap.png" alt="" width="88" height="62"><svg class="gym-barbell" viewBox="0 0 200 52"><rect x="16" y="22" width="168" height="8" rx="3" fill="#625B70"/><rect x="24" y="8" width="16" height="36" rx="3" fill="#3700B3"/><rect x="40" y="2" width="18" height="48" rx="3" fill="#5200FF"/><rect x="142" y="2" width="18" height="48" rx="3" fill="#5200FF"/><rect x="160" y="8" width="16" height="36" rx="3" fill="#3700B3"/></svg></div></div>
+ ${trainingGymScene()}
  <p class="gym-metaphor" id="${id}-meaning">De ‘gewichten’ in het model zijn getallen die bepalen hoe het kiest.</p>
  <section class="gym-explanation"><h3>Dit herhaalt de computer in elke oefenronde:</h3><ol class="gym-loop"><li><strong>Bekijk je voorbeelden.</strong><span>De situatie vóór jouw actie hoort bij jouw keuze: flappen of wachten.</span></li><li><strong>Vergelijk de schattingen.</strong><span>Hoe goed past de geschatte kans op flappen bij wat jij deed?</span></li><li><strong>Pas de getallen aan.</strong><span>Kleine aanpassingen proberen het verschil te verkleinen. Daarna volgen dezelfde voorbeelden opnieuw.</span></li></ol></section>
  <div class="gym-progress-row"><progress class="gym-progress" aria-label="Voltooide oefenrondes" value="0" max="250"></progress><span class="gym-count" aria-live="off"></span></div>

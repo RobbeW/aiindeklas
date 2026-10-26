@@ -3,6 +3,7 @@ import { mountControlTour } from '../ui/control-tour.ts';
 import { mountFlappyDuelView } from './duel-view.ts';
 import { mountFlappyTeachView,type TeachState } from './teach-view.ts';
 import { mountFlappyPracticeView } from './practice-view.ts';
+import { practiceCheckText } from '../ui/practice-check-text.ts';
 import { mountModelMatchView } from './model-match-view.ts';
 import {mountLessonIllustration} from './lesson-illustrations.ts';
 import type { PolicySnapshot } from '../learning/policy-snapshot.ts';
@@ -69,7 +70,7 @@ export async function mountFlappyLearningView(root:HTMLElement,options:{state?:F
   }else if(page==='after'){
    const prediction=notes[tab]?.prediction;
    host.innerHTML=`<section class="card lesson-brief"><p class="eyebrow">${esc(tabs.find(([id])=>id===tab)![1])} · Terugblik</p><h1 tabindex="-1" class="lesson-screen-title">Wat heb je ontdekt?</h1>${tab==='compare'&&prediction?`<blockquote><strong>Je voorspelling</strong><p>${esc(prediction)}</p></blockquote>`:''}<div class="lesson-results-summary"></div><div class="lesson-answers"></div></section>`;
-   if(tab==='practice'&&practice?.trainingRuns?.length){const list=document.createElement('ul');list.className='training-run-list';for(const run of practice.trainingRuns){const li=document.createElement('li');li.textContent=`${run.rounds} rondes · ${run.agents} vogels · ${run.speed}× · ${(run.elapsedMs/1000).toFixed(1).replace('.',',')} s · gemiddelde oefenscore ${run.meanScore.toFixed(1).replace('.',',')} punten`;list.append(li);}host.querySelector('.lesson-results-summary')!.append(list);}
+   if(tab==='practice'&&practice?.trainingRuns?.length){const list=document.createElement('ul');list.className='training-run-list';for(const run of practice.trainingRuns){const li=document.createElement('li');li.textContent=`${run.rounds}${run.requestedRounds&&run.requestedRounds!==run.rounds?` van ${run.requestedRounds}`:''} rondes · ${run.agents} vogels · ${run.mode==='fast'?'snelle training':`${run.speed}×`} · ${(run.elapsedMs/1000).toFixed(1).replace('.',',')} s`;const score=document.createElement('p');score.textContent=run.modelCheck?practiceCheckText(run.modelCheck):`Gemiddelde score tijdens oefenen: ${run.meanScore.toFixed(1).replace('.',',')} punten. Geen test vóór en na deze training bewaard.`;li.append(score);list.append(li);}host.querySelector('.lesson-results-summary')!.append(list);}
    host.querySelector('.lesson-answers')!.append(answer('reflection',phase.reflection));
    if(tab==='play')host.querySelector('.lesson-answers')!.append(answer('nextTry',phase.nextTry??'Hoe presteerde het ongetrainde AI-model? Kan je dit verklaren?'));
    addAction('Terug naar het experiment','experiment',true);const next=tabs[tabs.findIndex(([id])=>id===tab)+1];if(next)addAction(`Volgende: ${next[1].replace(/^\d+ · /,'')}`,'before',false,next[0]);
@@ -85,7 +86,7 @@ export async function mountFlappyLearningView(root:HTMLElement,options:{state?:F
     else if(tab==='teach')view=await mountFlappyTeachView(experiment,{restoreState:teach,onStateChange:s=>{if(token===epoch&&!disposed)updateTeach(s);}});
     else if(tab==='practice'){
      let p:Awaited<ReturnType<typeof mountFlappyPracticeView>>;
-     p=await mountFlappyPracticeView(experiment,{onReset:()=>{postRl=undefined;practice=undefined;p.setSource(teach&&!teach.imitationIsStale?teach.imitationSnapshot:undefined,true);publish();},onSnapshot:(s,progress)=>{if(token===epoch&&!disposed){if(s.stage==='post_rl')postRl=s;practice=progress;publish();}}});
+     p=await mountFlappyPracticeView(experiment,{onTest:()=>void show('compare','experiment',true),onReset:()=>{postRl=undefined;practice=undefined;p.setSource(teach&&!teach.imitationIsStale?teach.imitationSnapshot:undefined,true);publish();},onSnapshot:(s,progress)=>{if(token===epoch&&!disposed){if(s.stage==='post_rl')postRl=s;practice=progress;publish();}}});
      p.setSource(postRl??(teach&&!teach.imitationIsStale?teach.imitationSnapshot:undefined));if(practice)p.restoreProgress(practice);view=p;
     }else view=await mountModelMatchView(experiment,{onGoTeach:()=>void show('teach','experiment',true),onGoPractice:()=>void show('practice','experiment',true),initial:teach?.initialSnapshot??createPolicySnapshot(new BernoulliPolicy(1222),{stage:'initial'}),imitation:teach&&!teach.imitationIsStale?teach.imitationSnapshot:undefined,postRl,
      demonstrationSeconds:teach?.episodes.filter(e=>e.seed<2000).reduce((n,e)=>n+e.durationSeconds,0)??0,practiceSteps:practice?.cumulativeSteps??practice?.steps,practiceElapsedMs:practice?.cumulativeElapsedMs??practice?.elapsedMs,humanRecords:human,modelRecords,

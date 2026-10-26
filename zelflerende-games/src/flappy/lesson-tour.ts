@@ -13,7 +13,7 @@ export function flappyTourSteps(step:FlappyLessonStep):readonly ControlTourStep[
    {selector:'#train-button',title:'Train met je voorbeelden',body:'Neem één poging op en train je AI-model. Verzamel daarna drie opnamen en vervolgens meer. Test telkens opnieuw.'},
    {selector:'#clone-button',title:'Test de imitatie',body:'Laat de imitatie een nieuwe reeks spelen. Tijdens deze test verandert het model niet.'}],
   practice:[
-   {selector:'#practice-budget',title:'Kies trainingsrondes',body:'In één ronde speelt iedere vogel één poging. Daarna leert het gedeelde AI-model van alle resultaten.'},
+   {selector:'#practice-budget',title:'Kies trainingsrondes',body:'In één ronde speelt iedere vogel één poging. Bij 256 of 1024 rondes gaat het live spelbeeld uit en rekent de computer sneller verder.'},
    {selector:'#practice-start',title:'Laat zelfstandig oefenen',body:'Je hebt eerst een getrainde imitatie nodig. Nu sturen beloningen de veranderingen aan het model.'},
    {selector:'#practice-pause',title:'Blijf zelf controleren',body:'Je kunt het oefenen pauzeren of stoppen. De rondleiding heeft lopende activiteiten gepauzeerd; hervat ze daarna zelf.'},
    {selector:'.parallel-canvas',title:'Kijk hoe de vogels leren',body:'Alle vogels gebruiken hetzelfde AI-model. Na hun pogingen gaan beloningen en straffen terug naar het model. De volgende ronde gebruikt de aangepaste versie.'}],

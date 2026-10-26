@@ -33,7 +33,7 @@
       "title": "Laat de computer zelf oefenen.",
       "explanation": "Zelf spelletjes spelen en alles voortonen voor de computer kost tijd. Zeker als je de enige speler bent waar de computer van kan leren. Maar wat als we de computer gewoon zelfstandig kunnen laten studeren? Dat kan veel sneller gaan! Daarvoor gaan we op zoek naar een beloning en een straf. Wat wil je wél bereiken in de game en wat wil je absoluut vermijden.",
       "prediction": "Hoe kan een computer beter worden in Mario Kart? Beschrijf de trainingsdata, beloning en straf. Hoe zou je met meerdere spelers tegelijk sneller kunnen oefenen?",
-      "reflection": "Wat veranderde aan de benodigde tijd en de prestaties toen je meer trainingsrondes (epochs) koos? Vergelijk bij hetzelfde aantal vogels en dezelfde snelheid.",
+      "reflection": "Wat veranderde aan de benodigde tijd en de prestaties toen je meer trainingsrondes (epochs) koos? Houd het aantal vogels en de weergave gelijk.",
       "nextTry": "Welke beloningsregel zou jij willen onderzoeken? Welk ongewenst gedrag kan die uitlokken?",
       "takeaway": "",
       "instructions": []
