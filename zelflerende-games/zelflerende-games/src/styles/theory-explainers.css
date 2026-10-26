@@ -1,0 +1,47 @@
+.theory-explainer { display:grid; gap:16px; margin:28px 0; padding:clamp(16px,3vw,24px); border:1px solid var(--border); border-radius:14px; background:var(--bg); color:var(--ink); }
+.theory-explainer header h2 { margin:4px 0 8px; font-size:clamp(22px,3.5vw,30px); line-height:1.15; }
+.theory-explainer header p { margin:0; font-size:15px; line-height:1.55; }
+.theory-explainer .td-kicker { margin-bottom:4px; color:var(--muted); font-size:13px; font-weight:700; }
+.theory-explainer figure { margin:0; }
+.theory-explainer .td-stage { padding:12px; border:1px solid var(--border); border-radius:12px; background:var(--card); }
+.theory-explainer .td-stage svg { display:block; width:100%; height:auto; }
+.theory-explainer figcaption,.theory-explainer .td-caption,.theory-explainer .td-source { margin:8px 0 0; font-size:14px; line-height:1.5; color:var(--muted); }
+.theory-explainer .td-source { font-weight:600; }
+.theory-explainer .td-controls,.theory-explainer .td-cards { display:flex; flex-wrap:wrap; gap:8px; }
+.theory-explainer button { min-height:44px; padding:10px 14px; border:1px solid var(--border); border-radius:12px; color:var(--ink); background:var(--card); font:600 14px/1.25 system-ui,sans-serif; cursor:pointer; }
+.theory-explainer button[aria-pressed="true"] { border-color:var(--brand-purple-dark); box-shadow:inset 0 0 0 1px var(--brand-purple-dark); background:#eee6ff; }
+.theory-explainer button:hover:not(:disabled) { background:#eee6ff; }
+.theory-explainer button:focus-visible,.theory-explainer summary:focus-visible { outline:3px solid var(--brand-purple-dark); outline-offset:3px; }
+.theory-explainer button:disabled { cursor:default; opacity:.55; }
+.theory-explainer .td-readout { border-block:1px solid var(--border); padding:12px 0; }
+.theory-explainer .td-readout h3 { margin:0 0 6px; font-size:17px; }
+.theory-explainer .td-readout p { margin:5px 0; font-size:15px; line-height:1.5; }
+.theory-explainer .td-detail { font-size:14px; }
+.theory-explainer .td-detail summary { width:fit-content; min-height:44px; padding:10px 0; cursor:pointer; font-weight:650; }
+.theory-explainer .td-detail p { font-size:14px; }
+.theory-explainer .td-observations { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.theory-explainer .td-observations div { display:flex; justify-content:space-between; gap:12px; padding:8px; background:var(--bg); border-radius:8px; }
+.theory-explainer dd { margin:0; font-variant-numeric:tabular-nums; }
+.theory-explainer .td-game-platform { padding:8px; }
+.theory-explainer .td-case { fill:#b7ac98; stroke:var(--ink); stroke-width:4; }
+.theory-explainer .td-screen { fill:#eef0df; }
+.theory-explainer .td-green { fill:#83bd51; stroke:#3b4e24; stroke-width:3; }
+.theory-explainer .td-ground { fill:#bfa77d; }
+.td-trays { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.theory-explainer .td-role-platform { min-width:0; min-height:110px; margin-bottom:10px; padding:12px 8px 16px; }
+.theory-explainer .td-role-platform .sch-label { margin-bottom:4px; }
+.theory-explainer .td-example-platform,.theory-explainer .td-model-platform,.theory-explainer .td-feedback-platform { display:flex; flex-direction:column; justify-content:center; }
+.theory-explainer .td-feedback-platform { gap:12px; }
+.td-feedback-example,.td-feedback-reward { display:flex; flex-direction:column; gap:4px; padding:8px; border-radius:8px; font-size:14px; }
+.td-feedback-example strong,.td-feedback-reward strong { font-size:14px; }
+.handoff-explainer[data-mode="examples"] .td-feedback-example,.handoff-explainer[data-mode="rewards"] .td-feedback-reward { color:var(--brand-purple-dark); background:#eee6ff; box-shadow:inset 0 0 0 1px var(--brand-purple-dark); }
+@media(max-width:600px) { .theory-explainer { padding:14px; gap:12px; } .theory-explainer button { flex:1 1 130px; } .theory-explainer .td-observations { grid-template-columns:1fr; } .td-trays { grid-template-columns:1fr; } .theory-explainer .td-role-platform { min-height:72px; margin-bottom:8px; } }
+@media(prefers-reduced-motion:reduce) { .theory-explainer * { animation:none!important; transition:none!important; } }
+
+.td-feedback-example,.td-feedback-reward { display:none; }
+.handoff-explainer[data-mode="examples"] .td-feedback-example,.handoff-explainer[data-mode="rewards"] .td-feedback-reward { display:flex; }
+.theory-explainer .td-role-platform.is-active { border-color:var(--brand-purple-dark); background:#eee6ff; box-shadow:inset 0 0 0 1px var(--brand-purple-dark); }
+.handoff-explainer .td-handoff-flow > .sch-arrow:last-of-type { transform:none; }
+@media(max-width:600px) { .handoff-explainer .td-handoff-flow > .sch-arrow:last-of-type { transform:rotate(90deg); } }
+
+.td-role-selected { display:block; min-height:28px; font-size:24px; line-height:1.2; color:var(--brand-purple-dark); }

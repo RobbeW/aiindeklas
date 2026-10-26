@@ -1,0 +1,16 @@
+/* Shared schematic layout: text remains upright, objects carry restrained isometric bases. */
+.sch-flow { display:grid; grid-template-columns:minmax(0,1fr) 32px minmax(0,1fr); align-items:start; gap:14px; margin:18px 0; }
+.sch-flow--three { grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr) 24px minmax(0,1fr); }
+.sch-object { min-width:0; text-align:center; }
+.sch-label { display:block; margin:0 0 12px; font:700 15px/1.4 system-ui,sans-serif; color:#25221d; }
+.sch-platform { position:relative; isolation:isolate; min-height:110px; padding:18px 14px 22px; margin-bottom:14px; border:1px solid #958b7a; border-radius:12px; background:#fffdf7; color:#25221d; }
+.sch-platform::after { content:''; position:absolute; z-index:-1; left:8px; right:-5px; bottom:-9px; height:22px; border:1px solid #958b7a; border-top:0; border-radius:0 0 8px 8px; background:#d9d1c2; transform:skewX(-20deg); }
+.sch-object.is-active .sch-platform { border-color:var(--brand-purple-dark); box-shadow:inset 0 0 0 1px var(--brand-purple-dark); background:#f0e9ff; }
+.sch-arrow { align-self:center; text-align:center; font:700 27px/1 system-ui,sans-serif; color:var(--brand-purple-dark); }
+.sch-object svg { width:100%; height:auto; display:block; }
+.sch-object .sch-big { display:block; font-size:28px; font-weight:750; line-height:1.3; }
+.sch-object .sch-small { display:block; font:14px/1.5 system-ui,sans-serif; margin-top:8px; }
+@media(max-width:600px) { .sch-flow,.sch-flow--three { grid-template-columns:minmax(0,1fr); gap:12px; } .sch-arrow { transform:rotate(90deg); margin:3px 0; } .sch-platform { min-height:88px; } }
+@media(prefers-reduced-motion:reduce) { .sch-flow * { animation:none!important; transition:none!important; } }
+
+.sch-platform .se-chip { width:120px; max-width:100%; height:86px; display:block; margin:auto; }

@@ -1,0 +1,148 @@
+/* One shared workspace: fit the activity before secondary explanations. */
+.app-shell .app-stage,.app-shell .app-stage * { min-width: 0; }
+.app-shell { position: relative; }
+.app-shell .global-navigation { margin: 0 0 8px; }
+.app-shell .saved-indicator { position: absolute; right: 18px; top: 18px; font-size: 12px; margin: 0; min-height: 0; }
+.saved-indicator::before { content: '●'; color: var(--brand-purple); margin-right: 6px; }
+.app-stage p { margin: 8px 0; line-height: 1.5; }
+.app-stage .card { padding: 16px; }
+.app-stage .toolbar { gap: 8px; margin: 10px 0; }
+.app-stage h1 { font-size: clamp(26px,3vw,34px); }
+.app-stage h2 { margin: 4px 0 8px; }
+.app-stage .learning-shell,.app-stage .car-learning { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 8px 16px; }
+.app-stage .car-learning > header { grid-column: 1/-1; padding: 8px 12px; }
+.app-stage .car-learning > header h1 { font-size: 21px; }
+.app-stage .exercise-menu { margin: 0; }
+.app-stage #lesson-prompt,.app-stage .car-lesson-prompt { margin: 0; align-self: center; }
+.app-stage #lesson-prompt .context-help,.app-stage .car-lesson-prompt .context-help { padding: 0; border: 0; }
+.app-stage #lesson-prompt:has(details[open]),.app-stage .car-lesson-prompt:has(details[open]) { grid-column: 1/-1; }
+.app-stage #learning-content,.app-stage .car-learning-stage,.app-stage .lesson-guidance,.app-stage .lesson-actions { grid-column: 1/-1; }
+.lesson-guidance:empty { display: none; }
+.lesson-actions { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin: 6px 0; }
+.lesson-actions:empty { display: none; }
+.app-stage .context-help { margin-top: 8px; padding: 8px 0; }
+.app-stage .car-play { display: grid; grid-template-columns: minmax(0,1fr) minmax(220px,280px); gap: 8px 16px; align-content: start; }
+.app-stage .car-play > :not(canvas) { grid-column: 2; margin: 0; }
+.app-stage .car-play > canvas { grid-column: 1; grid-row: 1 / span 12; align-self: start; margin: 0 auto; width: min(100%,58svh) !important; max-height: 58svh; object-fit: contain; }
+.app-stage .car-play .toolbar { align-content: start; }
+.app-stage .car-play .muted { font-size: 12px; }
+.app-stage .car-imitation > h2,.app-stage .car-teach > h2 { font-size: 20px; }
+.app-stage .car-teach { gap: 8px; padding: 8px; }
+.app-stage .car-teach > h2,.app-stage .car-teach > p { margin: 0; }
+.app-stage .car-teach__list { max-height: 250px; overflow: auto; padding: 4px; }
+.app-stage .teach__columns { grid-template-columns: minmax(240px,310px) minmax(0,1fr); gap: 16px; }
+.app-stage .teach__game { gap: 6px; }
+.app-stage .teach__game > h2 { display: none; }
+.app-stage .teach__game #teach-role { grid-row: 1; margin: 0; }
+.app-stage .teach__game canvas { grid-row: 2; width: min(100%,260px) !important; margin: auto; }
+.app-stage .teach__game .teach__actions { grid-row: 3; gap: 6px; }
+.app-stage .teach__game p { font-size: 13px; }
+.app-stage .teach__panel { gap: 8px; }
+.app-stage .teach__panel h2 { font-size: 19px; }
+.app-stage .teach__panel .card { padding: 12px; }
+.app-stage .dataset-view__list { max-height: 230px; overflow: auto; }
+.app-stage .duel-header { margin-bottom: 8px; }
+.app-stage .duel-header .eyebrow { display: none; }
+.app-stage .duel-header h1 { font-size: 27px; }
+.app-stage .duel-header p { font-size: 14px; }
+.app-stage .duel-stage { padding: 10px; }
+.app-stage .duel-panel { padding: 8px; }
+.app-stage .duel-panel canvas { width: min(100%,240px) !important; }
+.app-stage .duel-status { margin: 4px 0; }
+.app-stage .duel-stage > .muted { font-size: 12px; }
+.app-stage [style*="overflow-x:auto"],.app-stage [style*="overflow-x: auto"] { max-width: 100%; min-width: 0; }
+.app-stage .circuit-workspace { padding: 0; }
+.app-stage .tile-tool-icon { width: 26px; height: 26px; }
+.app-stage #tile-straight,.app-stage #tile-turn { display: inline-flex; align-items: center; gap: 8px; }
+.app-stage [aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--brand-aqua); }
+.app-stage .track-grid-scroll { max-height: 56svh; }
+.app-stage #track-grid { max-width: 660px; margin: auto; }
+.app-stage .circuit-files { margin-top: 8px; }
+.mode-badge { display: inline-flex; border-radius: 8px; padding: 5px 9px; font-size: 12px; font-weight: 700; }
+.learning-mode { background: var(--brand-purple); color: white; }
+.watching-mode { background: var(--brand-aqua); color: var(--ink); }
+.practice-layout { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 18px; align-items: start; }
+.app-stage .flock-panel { background: var(--bg); }
+.app-stage .flock-panel canvas { max-width: 245px; margin: auto; }
+.app-stage .flock-panel h3 { margin: 8px 0; }
+.app-stage .practice-training { padding: 8px 0; }
+.app-stage .delete-game,.app-stage .confirm-delete { color: #8b1733; border-color: #8b1733; background: var(--card); }
+.app-stage .delete-game { justify-self: start; margin-top: 16px; }
+.app-stage .storage-state { display: none; }
+.app-stage .game-home { padding: 24px 0; }
+.game-cards { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; margin: 24px 0; }
+.app-stage .game-card { padding: 0; overflow: hidden; display: grid; grid-template-rows: 160px 1fr; }
+.game-preview { position: relative; display: grid; place-items: center; }
+.flappy-preview { background: #70c5ce; }
+.flappy-preview img { image-rendering: pixelated; transform: translateX(-50px); }
+.preview-pipe { position: absolute; right: 20%; bottom: 0; height: 90px; width: 52px; background: url('../../public/assets/flappy/pipe-green.png') top / 52px auto; }
+.car-preview { background: var(--bg); }
+.car-preview svg { height: 140px; max-width: 100%; }
+.game-card-copy { padding: 20px; display: flex; flex-direction: column; align-items: start; gap: 8px; }
+.game-card-copy h2 { margin: 0; }
+.game-card-copy button { margin-top: auto; }
+@media(max-width:800px) {
+ .app-stage .car-play { grid-template-columns: minmax(0,1fr); }
+ .app-stage .car-play > :not(canvas) { grid-column: 1; }
+ .app-stage .car-play > canvas { grid-column: 1; grid-row: auto; order: -1; max-height: 50svh; }
+ .app-stage .teach__columns,.practice-layout { grid-template-columns: minmax(0,1fr); }
+ .app-stage .learning-shell,.app-stage .car-learning { column-gap: 8px; }
+ .app-stage .lesson-actions button { font-size: 13px; }
+}
+@media(max-width:600px) {
+ .app-shell .saved-indicator { position: static; font-size: 11px; margin: 2px 0 6px; }
+ .app-stage .game-cards { grid-template-columns: 1fr; }
+ .app-stage .game-home { padding: 8px 0; }
+ .app-stage .car-play .toolbar button { padding: 8px 10px; }
+ .app-stage .learning-shell,.app-stage .car-learning { grid-template-columns: minmax(0,1fr); }
+ .app-stage #lesson-prompt,.app-stage .car-lesson-prompt { grid-column: 1; }
+}
+.result-chart { border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin: 12px 0; background: var(--card); }
+.result-chart h3 { margin: 0 0 6px; font-size: 17px; }
+.result-chart > p { color: var(--muted); font-size: 13px; }
+.chart-rows { display: grid; gap: 12px; padding: 0; list-style: none; }
+.chart-row { display: grid; grid-template-columns: minmax(120px,.8fr) minmax(0,1.2fr); gap: 12px; font-size: 13px; }
+.chart-values { display: grid; gap: 6px; }
+.chart-value { display: grid; gap: 4px; }
+.chart-number { font-variant-numeric: tabular-nums; }
+.chart-track { display: block; height: 10px; background: var(--bg); position: relative; border-radius: 3px; }
+.chart-bar { display: block; position: absolute; height: 10px; border-radius: 3px; border: 1px solid #16003350; }
+.chart-zero { position: absolute; height: 14px; top: -2px; width: 1px; background: var(--muted); }
+@media(max-width:600px){.chart-row{grid-template-columns:minmax(0,1fr);gap:5px}}
+.confirmation-dialog { max-width: min(480px,calc(100vw - 32px)); padding: 24px; border: 1px solid var(--border); border-radius: 16px; color: var(--ink); background: var(--card); }
+.confirmation-dialog::backdrop { background: #16003355; }
+.confirmation-dialog h2 { margin-top: 0; }
+.confirmation-dialog .toolbar { justify-content: end; }
+.app-stage .danger { color:#8b1733;border-color:#8b1733;background:white; }
+.app-stage .editor-secondary { display: flex; gap: 20px; flex-wrap: wrap; }
+.app-stage #editor-selection { font-size: 12px; color: var(--muted); }
+.app-stage #editor-status:empty,.app-stage #editor-errors:empty { display: none; }
+.app-stage .track-grid-scroll { padding: 6px; }
+.evolution-layout { display: grid; grid-template-columns: minmax(220px,.75fr) minmax(0,1.25fr); gap: 20px; align-items: start; }
+.app-stage .evo-live-scene canvas { max-height: 52svh; object-fit: contain; margin: auto; }
+.app-stage .evo-live-scene h3 { margin: 4px 0; }
+@media(max-width:800px){.evolution-layout{grid-template-columns:minmax(0,1fr)}.app-stage .evo-live-scene{grid-row:1}}
+@media(min-width:1000px){
+ .app-stage .car-imitation { display: grid; grid-template-columns: minmax(0,1fr) 260px; gap: 10px 16px; align-items: start; }
+ .app-stage .car-imitation > h2,.app-stage .car-imitation > p:not(.car-fit-status),.app-stage .car-imitation > details,.app-stage .car-imitation > .car-clone { grid-column: 1/-1; }
+ .app-stage .car-imitation > .toolbar { grid-column: 2; grid-row: 3; margin-top: 0; }
+ .app-stage .car-imitation > .car-fit-status { grid-column: 2; grid-row: 4; }
+ .app-stage .car-imitation > .car-collector { grid-column: 1; grid-row: 3 / span 4; }
+ .app-stage .car-imitation .car-play { grid-template-columns: minmax(0,1fr) 190px; gap: 6px; padding: 8px; }
+ .app-stage .car-imitation .car-play button { font-size: 13px; padding: 8px 10px; }
+ .app-stage .car-imitation .car-play > p { font-size: 12px; }
+ .app-stage .car-imitation .car-teach > h2 { display: none; }
+ .app-stage .car-imitation .car-clone:empty { display: none; }
+}
+@media(min-width:1000px){.app-stage .car-imitation .car-play > canvas{width:min(100%,43svh)!important;max-height:43svh}}
+@media(max-width:999px){
+ .app-stage .car-imitation{display:flex;flex-direction:column;gap:8px}
+ .app-stage .car-imitation > h2,.app-stage .car-imitation > p:not(.car-fit-status){order:0}
+ .app-stage .car-imitation > .car-collector{order:1}
+ .app-stage .car-imitation > .toolbar{order:2}
+ .app-stage .car-imitation > .car-fit-status{order:3}
+ .app-stage .car-imitation > .car-clone{order:4}
+ .app-stage .car-imitation > details{order:5}
+}
+.app-stage .car-imitation .car-teach > h2{display:none}
+.app-stage .car-imitation .car-teach > p{font-size:12px}

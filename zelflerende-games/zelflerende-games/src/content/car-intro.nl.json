@@ -1,0 +1,49 @@
+{
+  "audience": "13–15 jaar, lichte programmeerervaring",
+  "phases": [
+    {
+      "id": "play",
+      "title": "1 · Rijd",
+      "explanation": "Bestuur een auto op een tegelcircuit. Jij ziet het hele veld; een model krijgt vijf afstanden en snelheid.",
+      "prediction": "Welke informatie gebruik jij om vóór een bocht te sturen?",
+      "reflection": "Welke informatie ontbreekt als de auto alleen afstanden en snelheid krijgt?"
+    },
+    {
+      "id": "teach",
+      "title": "2 · Leer van voorbeelden",
+      "explanation": "Menselijke opnamen koppelen waarnemingen aan acties. Een synthetisch oefenpaar bevat voorbeelden voor rechtdoor en rechts, gemaakt met voorkennis van de route; het is geen leerlingdata. Imitatie past gewichten aan op trainingsvoorbeelden; controlevoorbeelden trainen niet.",
+      "prediction": "Wat kan de imitatie leren als in de voorbeelden alleen rechtdoor en rechts voorkomen?",
+      "reflection": "Welke actie of bocht ontbreekt? Een laag verlies garandeert geen voltooide ronde."
+    },
+    {
+      "id": "practice",
+      "title": "3 · Zelf oefenen met beloningen",
+      "explanation": "Dezelfde agent probeert zelf acties en beloningen sturen verdere gewichtsaanpassing. Pogingen zijn episodes; alleen complete groepen leveren updates. Een poging is geen generatie.",
+      "prediction": "Verwacht je dat oefenen op dit circuit ook helpt op een andere bocht?",
+      "reflection": "Vergelijk pogingen, pogingen gebruikt voor updates, interacties, simulatietijd en rekentijd. Sneller simuleren bewijst geen lagere energie of betere besturing."
+    },
+    {
+      "id": "edit",
+      "title": "4 · Bouw circuit",
+      "explanation": "Plaats rechte stukken en bochten, draai ze in stappen van 90 graden en markeer een recht startstuk. Herstel aansluitingen en test pas als de route gesloten en geldig is.",
+      "prediction": "Welke tegel of startoriëntatie maakt jouw test anders?",
+      "reflection": "Draagt de besturing over naar jouw circuit? Noteer ook botsingen en ongeldige ontwerpen."
+    },
+    {
+      "id": "population",
+      "title": "5 · Evolueer",
+      "explanation": "Een populatie start zonder jouw voorbeelden. Een generatie beoordeelt alle auto’s en selecteert ouders voor de volgende. Deze vaste-topologie neuro-evolutie is geen NEAT.",
+      "prediction": "Wat gebeurt er als de beste auto nog geen ronde voltooit?",
+      "reflection": "Stagneert de fitness of het gemiddelde? Meer generaties garanderen geen overdracht naar nieuwe bochten."
+    },
+    {
+      "id": "compare",
+      "title": "6 · Vergelijk",
+      "explanation": "Test bevroren modellen onder dezelfde route, start en tijdslimiet. De langere lus is een controle; onbekende bochten zijn een afzonderlijke eenmalige eindtest.",
+      "prediction": "Welk resultaat zou jouw verklaring tegenspreken?",
+      "reflection": "In de gemeten eindtest botsten alle modellen op onbekende bochten. Wat zegt dit over de voorbeelden en testcircuits, en wat blijft onbekend?"
+    }
+  ],
+  "languageNote": "AI verwerkt invoer en past parameters aan; dit is geen menselijk begrip. Dit circuit is een vereenvoudigde simulatie, geen bewijs van veilig rijden op echte wegen.",
+  "assessment": "Beoordeel uitleg, eerlijke controles en ontwerpkeuzes; niet winnen, reactiesnelheid of beperking. Mislukte pogingen zijn geldige evidence."
+}

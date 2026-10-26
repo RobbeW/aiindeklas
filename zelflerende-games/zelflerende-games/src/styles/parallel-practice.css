@@ -1,0 +1,23 @@
+.parallel-practice { padding:clamp(16px,3vw,28px)!important; }
+.parallel-controls { display:flex; flex-wrap:wrap; gap:16px; margin:20px 0 12px; }
+.parallel-controls label { display:grid; gap:8px; font-weight:650; flex:1 1 170px; }
+.parallel-epoch { font-size:15px; color:var(--muted); max-width:75ch; }
+.parallel-layout { display:grid; grid-template-columns:minmax(260px,1fr) minmax(260px,.85fr); gap:28px; margin-top:24px; align-items:start; }
+.parallel-game { text-align:center; }
+.app-stage .parallel-practice .parallel-canvas { width:min(100%,440px)!important; margin:16px auto; }
+.parallel-agents { display:flex; flex-wrap:wrap; justify-content:center; gap:6px; }
+.parallel-agents span { display:grid; place-items:center; width:32px; height:32px; border:1px solid var(--brand-purple); background:#ece4ff; border-radius:50%; font-size:12px; }
+.parallel-agents .is-finished { background:var(--bg); color:var(--muted); border-color:var(--border); }
+.parallel-feedback { padding:24px; border:1px solid var(--border); border-radius:16px; background:var(--bg); text-align:center; }
+.parallel-model { display:grid; justify-items:center; gap:10px; background:var(--card); padding:20px; border-radius:14px; border:2px solid var(--border); }
+.parallel-model .se-chip { width:200px; max-width:100%; height:auto; }
+.parallel-model.is-updating { border-color:var(--brand-purple); box-shadow:0 0 0 5px #5200ff18; }
+.parallel-model.is-updating svg { animation:learning-pulse .4s alternate infinite; }
+.parallel-flow-arrow { display:block; font-size:28px; color:var(--brand-purple); margin:10px; }
+.parallel-numbers { display:flex; justify-content:center; flex-wrap:wrap; gap:14px; }
+.parallel-numbers p { display:grid; gap:5px; font-size:14px; }
+.parallel-numbers strong { font-size:26px; color:var(--brand-purple-dark); }
+.parallel-feedback progress { width:100%; margin-top:18px; }
+@keyframes learning-pulse { to{opacity:.5;transform:scale(1.02)} }
+@media(max-width:760px){.parallel-layout{grid-template-columns:minmax(0,1fr)}.parallel-feedback{padding:16px}}
+@media(prefers-reduced-motion:reduce){.parallel-practice *{animation:none!important;transition:none!important}}
