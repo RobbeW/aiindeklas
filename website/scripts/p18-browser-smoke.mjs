@@ -2,7 +2,8 @@ import { createReadStream, existsSync, statSync } from "node:fs";
 import { createServer } from "node:http";
 import { once } from "node:events";
 import { extname, join, resolve, sep } from "node:path";
-import { launch as launchChrome } from "chrome-launcher";
+import { launch as launchChrome, killAll as cleanupFailedChrome } from "chrome-launcher";
+import { launchChromeForSmoke } from "./pages-chrome-startup.mjs";
 
 const artifact = resolve(import.meta.dirname, "../../_site");
 const verifyLoadedLibraries = process.argv.includes("--verify-load");
@@ -28,7 +29,7 @@ let chrome;
 let socket;
 let completed = false;
 try {
-  chrome = await launchChrome({ chromeFlags: ["--headless=new", "--no-sandbox", "--disable-gpu"] });
+  chrome = await launchChromeForSmoke({ launch: launchChrome, cleanupFailed: cleanupFailedChrome });
   const target = await (await fetch(`http://127.0.0.1:${chrome.port}/json/new?about:blank`, { method: "PUT" })).json();
   socket = new WebSocket(target.webSocketDebuggerUrl);
   await once(socket, "open");

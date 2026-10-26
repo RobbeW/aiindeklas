@@ -2,7 +2,8 @@ import { createReadStream, existsSync, statSync } from "node:fs";
 import { createServer } from "node:http";
 import { once } from "node:events";
 import { extname, resolve, sep } from "node:path";
-import { launch as launchChrome } from "chrome-launcher";
+import { launch as launchChrome, killAll as cleanupFailedChrome } from "chrome-launcher";
+import { launchChromeForSmoke } from "./pages-chrome-startup.mjs";
 
 const site = resolve(import.meta.dirname, "../dist");
 const mime = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml", ".webp": "image/webp", ".woff2": "font/woff2" };
@@ -24,7 +25,7 @@ const port = server.address().port;
 let chrome;
 let socket;
 try {
-  chrome = await launchChrome({ chromeFlags: ["--headless=new", "--no-sandbox", "--disable-gpu"] });
+  chrome = await launchChromeForSmoke({ launch: launchChrome, cleanupFailed: cleanupFailedChrome });
   const target = await (await fetch(`http://127.0.0.1:${chrome.port}/json/new?about:blank`, { method: "PUT" })).json();
   socket = new WebSocket(target.webSocketDebuggerUrl);
   await once(socket, "open");

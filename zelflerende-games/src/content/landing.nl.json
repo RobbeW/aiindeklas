@@ -1,66 +1,69 @@
 {
   "titleLines": [
-    "Zelflerend",
-    "in de Klas"
+    "Kan jij een computer",
+    "leren spelen?"
   ],
-  "intro": "Een kleine website om leerlingen te laten onderzoeken hoe een computer leert spelen. Eerst speel je zelf. Daarna doe je het voor, laat je de computer oefenen en kijk je wat er verandert. Met Flappy Bird en een zelfrijdende raceauto. Geen installatie, geen accounts. Gewoon openen, proberen, fouten maken en opnieuw beginnen.",
-  "steps": [
-    {
-      "title": "1. Speel zelf",
-      "body": "Probeer eerst zelf de vogel te besturen of rijd met de auto over het circuit. Wat zie jij voordat je een actie kiest?"
-    },
-    {
-      "title": "2. Doe het voor",
-      "body": "Geef voorbeelden van je keuzes. Kijk welke situaties je hebt getoond en welke nog ontbreken."
-    },
-    {
-      "title": "3. Oefen en vergelijk",
-      "body": "Laat de computer zelf proberen. Bekijk ook minder geslaagde pogingen en vergelijk dezelfde tests. Eén goede rit of hoge score zegt nog niet alles."
-    }
-  ],
+  "intro": "Begin met Flappy Bird. Speel zelf, toon hoe jij het aanpakt en laat de computer verder oefenen. Stap daarna over naar de raceauto. Bouw een circuit en ontdek hoe verschillende AI-modellen het tegen elkaar opnemen.",
   "games": [
     {
       "id": "flappy",
       "title": "Flappy Bird",
-      "body": "Wanneer flap je en wanneer wacht je? Leerlingen geven voorbeelden, laten de vogel zelf proberen en bekijken waar de keuzes anders lopen."
+      "body": "Kan jij een ongetraind AI-model verslaan? Laat de computer daarna meekijken terwijl jij speelt. Verzamel voorbeelden, train jouw model en laat het verder oefenen met beloningen en straffen. Wie wint er als jullie opnieuw spelen?",
+      "note": "De vogels oefenen samen met één AI-model."
     },
     {
       "id": "car",
       "title": "Raceauto",
-      "body": "Rijd zelf, bouw met rechte stukken en bochten een eigen circuit en bekijk een hele groep auto’s op de baan. Welke komen het verst? En lukt dat ook op een ander circuit?"
+      "body": "Rijd zelf en bouw een eigen circuit met rechte stukken en bochten. Laat een groep auto’s racen en volg de generaties. De beste modellen vormen de basis voor nieuwe auto’s. Wat zou Darwin hiervan vinden?",
+      "note": "Elke auto heeft een eigen AI-model."
     }
   ],
   "path": [
     {
-      "title": "Zelf spelen",
-      "body": "Eerst probeer je het zelf. Wanneer flap je, wacht je of stuur je bij?"
+      "game": "Flappy Bird",
+      "title": "Speel zelf.",
+      "body": "Wanneer flap jij? Probeer een ongetraind AI-model te verslaan."
     },
     {
-      "title": "Voordoen",
-      "body": "Neem een paar pogingen op. Heb je ook de moeilijke situaties getoond?"
+      "game": "Flappy Bird",
+      "title": "Doe het voor.",
+      "body": "Laat de computer meekijken. Train en test met één opname, drie opnamen en daarna meer."
     },
     {
-      "title": "Zelf laten oefenen",
-      "body": "Laat de computer veel pogingen na elkaar doen. Kijk wat er verandert."
+      "game": "Flappy Bird",
+      "title": "Laat het zelf oefenen.",
+      "body": "Kies een beloning en een straf. Laat meerdere vogels tegelijk oefenen en versnel de training."
     },
     {
-      "title": "Vergelijken",
-      "body": "Test onder dezelfde omstandigheden. Wat gaat beter, wat niet en hoe komt dat?"
+      "game": "Flappy Bird",
+      "title": "Wie wint er nu?",
+      "body": "Speel tegen het startmodel, het model dat van jou leerde en het model dat zelf oefende."
+    },
+    {
+      "game": "Raceauto",
+      "title": "Bouw je circuit.",
+      "body": "Bestuur de auto en maak je eigen baan. Welke bochten maken het lastig?"
+    },
+    {
+      "game": "Raceauto",
+      "title": "Laat generaties racen.",
+      "body": "Elke auto rijdt met een eigen AI-model. De beste modellen blijven behouden en krijgen nakomelingen met kleine verschillen."
     }
   ],
   "teacher": {
-    "intro": "Een compacte omgeving voor leerlingen van 13 tot 15 jaar. Je hoeft niet met code te beginnen: leerlingen spelen, geven voorbeelden en onderzoeken de uitkomsten.",
+    "intro": "Voor leerlingen van 13 tot 15 jaar. Begin met één knop in Flappy Bird en bouw verder met de raceauto. Leerlingen spelen, voorspellen, trainen en vergelijken. Code schrijven hoeft niet.",
     "points": [
-      "Begin met Flappy Bird: één knop is genoeg om te starten.",
-      "Een laptop met toetsenbord volstaat. Leerlingen hoeven geen code te schrijven.",
-      "Werk alleen of in duo’s. Wissel het spelen, voorspellen en bespreken af.",
+      "Open de website op een laptop. Een toetsenbord volstaat voor de oefeningen.",
+      "Wissel spelen en bespreken af. Werk alleen of in duo’s.",
+      "Hoe veranderen de prestaties als je meer voorbeelden geeft? Hoe sturen beloningen het leren?",
+      "Waarom rijden niet alle auto’s hetzelfde? Wat verandert er van generatie tot generatie?",
       "Werk blijft in de browser. Bewaar een bestand om op een ander toestel verder te gaan."
     ],
-    "classroom": "Laat de klas eerst voorspellen wat er zal gebeuren. Leerlingen proberen daarna zelf, vergelijken pogingen en bespreken welke voorbeelden of tests ontbreken. Beoordeel hun uitleg en keuzes, niet of ze winnen."
+    "classroom": "Laat leerlingen eerst voorspellen wie zal winnen. Test daarna de verschillende modellen onder dezelfde omstandigheden. Bespreek wat ze zagen en waardoor het resultaat kan verschillen."
   },
   "closing": {
     "title": "Gewoon beginnen.",
-    "body": "Open het leerplatform, kies een spel en probeer het zelf. De vragen en uitleg staan bij de oefeningen."
+    "body": "Eén knop is genoeg om te beginnen. Kan jij een AI-model Flappy Bird aanleren?"
   },
   "literacy": {
     "title": "Wat oefenen leerlingen hiermee?",
@@ -68,22 +71,22 @@
     "goals": [
       {
         "title": "Uitleggen hoe het werkt.",
-        "body": "Welke informatie krijgt de computer? Hoe kiest hij een actie en waar loopt het mis?",
+        "body": "Leerlingen volgen hoe voorbeelden en beloningen een model veranderen en hoe bij de auto’s nieuwe generaties ontstaan.",
         "competences": "Engage with AI 2 · Shape AI 1"
       },
       {
         "title": "Voorbeelden bewust kiezen.",
-        "body": "Leerlingen onderzoeken hoe hun voorbeelden het gedrag veranderen en welke situaties nog ontbreken.",
+        "body": "Verzamel één, drie en meer opnamen. Train telkens opnieuw en onderzoek wat de hoeveelheid en de gekozen voorbeelden veranderen.",
         "competences": "Shape AI 3"
       },
       {
         "title": "Eerlijk testen.",
-        "body": "Spreek af wat een goede poging is. Vergelijk dezelfde tests en probeer ook een onbekend circuit.",
+        "body": "Vergelijk het startmodel, het model dat van jou leerde en het model dat zelf oefende met dezelfde openingen. Test de auto ook op een andere baan.",
         "competences": "Shape AI 2"
       },
       {
         "title": "Zelf blijven beoordelen.",
-        "body": "Bekijk de resultaten en beslis wanneer je stopt, extra voorbeelden geeft of de aanpak bijstuurt.",
+        "body": "Vergelijk de prestaties vóór en na het oefenen. Beslis of je extra voorbeelden, meer training of een andere beloning wilt proberen.",
         "competences": "Manage AI 4"
       }
     ],
