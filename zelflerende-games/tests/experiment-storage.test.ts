@@ -42,7 +42,7 @@ test('both games round-trip complete examples, snapshots, budgets, results and m
 test('wrong-game, corrupt, incompatible and oversized imports preserve current state and source keys',()=>{
  const storage=new MemoryStorage(),store=createExperimentStore(storage),saved=createExperiment('flappy',{human:[]});store.save(saved);const original=storage.getItem(experimentKey('flappy'));
  assert.throws(()=>parseExperiment(serializeExperiment(createExperiment('car',{document:carDoc,records:[]})),'flappy'));
- assert.throws(()=>parseExperiment('{bad json'));assert.throws(()=>parseExperiment(JSON.stringify({...saved,version:2}),'flappy'));assert.throws(()=>parseExperiment(' '.repeat(8*1024*1024+1)));
+ assert.throws(()=>parseExperiment('{bad json'));assert.throws(()=>parseExperiment(JSON.stringify({...saved,version:2}),'flappy'));assert.throws(()=>parseExperiment(' '.repeat(32*1024*1024+1)));
  assert.equal(storage.getItem(experimentKey('flappy')),original);assert.equal(store.read('flappy')?.payload, saved.payload);
 });
 
@@ -85,4 +85,55 @@ test('quota or unavailable storage falls back to memory and deletion is game-sco
  const unavailable=createExperimentStore(null);assert.equal(unavailable.save(bird),false);assert.equal(unavailable.read('flappy')?.version,1);
  const denied=new MemoryStorage(),deniedStore=createExperimentStore(denied);deniedStore.save(bird);denied.failRemove=true;assert.equal(deniedStore.remove('flappy'),false);assert.equal(deniedStore.read('flappy')?.payload,bird.payload);assert.ok(denied.values.has(experimentKey('flappy')));
  const corrupt=new MemoryStorage();corrupt.values.set(experimentKey('flappy'),'{"kind":"learning-experiment","version":77}');const corruptOriginal=corrupt.getItem(experimentKey('flappy')),corruptStore=createExperimentStore(corrupt);assert.equal(corruptStore.read('flappy'),undefined);assert.equal(corruptStore.save(bird),false);assert.equal(corrupt.getItem(experimentKey('flappy')),corruptOriginal);assert.equal(corruptStore.mode,'memory');
+});
+
+class DurableFixture {
+ readonly values=new Map<string,string|null>();fail=false;gate:Promise<void>|undefined;
+ async get(game:'flappy'|'car'){return this.values.get(game);}
+ async put(game:'flappy'|'car',value:string|null){if(this.gate)await this.gate;if(this.fail)throw new Error('QuotaExceededError');this.values.set(game,value);}
+}
+const tick=()=>new Promise<void>(resolve=>setImmediate(resolve));
+async function settled(store:{pending:boolean}){while(store.pending)await tick();}
+
+test('database migrates both games, preserves invalid originals and commits ordered writes and deletions',async()=>{
+ const {createDurableExperimentStore}=await import('../src/storage/database.ts');
+ const local=new MemoryStorage(),db=new DurableFixture(),bird=createExperiment('flappy',{human:[]}),car=createExperiment('car',{document:carDoc,records:[]});
+ local.setItem(experimentKey('flappy'),serializeExperiment(bird));local.setItem(experimentKey('car'),serializeExperiment(car));
+ const store=await createDurableExperimentStore(db,local);assert.equal(store.read('flappy')?.game,'flappy');assert.equal(store.read('car')?.game,'car');assert.ok(local.getItem(experimentKey('car')));assert.ok(db.values.get('flappy'));assert.ok(db.values.get('car'));
+ let release!:()=>void;db.gate=new Promise<void>(r=>{release=r;});let notices=0;store.subscribe(()=>notices++);store.save(bird);const removal=store.remove('flappy');assert.equal(store.pending,true);assert.equal(store.read('flappy')?.game,'flappy');release();assert.equal(await removal,true);await settled(store);assert.equal(local.getItem(experimentKey('flappy')),null);assert.equal(db.values.get('flappy'),null);assert.ok(notices>=3);
+ const reload=await createDurableExperimentStore(db,local);assert.equal(reload.read('flappy'),undefined);assert.equal(reload.read('car')?.game,'car');
+ const invalid=new MemoryStorage(),db2=new DurableFixture();invalid.setItem(experimentKey('flappy'),'{invalid');const bad=await createDurableExperimentStore(db2,invalid);assert.match(bad.error,/origineel blijft bewaard/);bad.save(bird);await settled(bad);assert.equal(invalid.getItem(experimentKey('flappy')),'{invalid');
+ const db3=new DurableFixture();db3.values.set('flappy','{invalid');const badDb=await createDurableExperimentStore(db3,null);badDb.save(bird);await settled(badDb);assert.equal(db3.values.get('flappy'),'{invalid');assert.ok(badDb.error);
+});
+
+test('database quota failure retains exportable latest state and retry survives reload',async()=>{
+ const {createDurableExperimentStore}=await import('../src/storage/database.ts');const db=new DurableFixture();const store=await createDurableExperimentStore(db,null);const bird=createExperiment('flappy',{human:[record]});db.fail=true;store.save(bird);await settled(store);assert.match(store.error,/QuotaExceededError/);assert.equal(parseExperiment(serializeExperiment(store.read('flappy')!)).game,'flappy');db.fail=false;store.retry();assert.equal(store.pending,true);await settled(store);assert.equal(store.error,'');assert.equal((await createDurableExperimentStore(db,null)).read('flappy')?.game,'flappy');
+});
+
+test('bounded 100-generation, 32-car, 8-track experiment fits compact export',async()=>{
+ const {scoreCarResult}=await import('../src/evolution/population-evaluation.ts');
+ const ids=Array.from({length:8},(_,i)=>`track-${i}`);const result={survivalSteps:60,totalReward:.4,terminationReason:'collision' as const,laps:0 as const,crashed:true,progressDistance:10,routeLength:40,progressFraction:.25,elapsedSimulatedSeconds:1};const fitness=scoreCarResult(result);
+ const records=Array.from({length:100},(_,generation)=>({generation,bestFitness:fitness,meanFitness:fitness,groupCount:32,agents:Array.from({length:32},(_,i)=>({id:`g${generation}-a${i}`,fitness,result,perTrack:ids.map(trackId=>({trackId,result,fitness}))}))}));
+ const steps=100*32*8*60;const evolution={completedGenerations:100,evaluatedEpisodes:100*32*8,steps,elapsedMs:100,trainingTrackIds:ids,records,champion:createCarSnapshot(new CarPolicy(31),'evolution',{generations:100,interactions:steps,trackIds:ids})};
+ const saved=createExperiment('car',{document:carDoc,records:[],evolution});const compact=serializeExperiment(saved),formatted=JSON.stringify(saved,null,2);console.log(`bounded fixture: compact ${Buffer.byteLength(compact)} bytes/${compact.length} chars; formatted ${Buffer.byteLength(formatted)} bytes/${formatted.length} chars`);assert.ok(Buffer.byteLength(compact)<32*1024*1024);assert.equal((parseExperiment(compact,'car').payload as CarLearningState).evolution?.records.length,100);
+ const quota=5*1024*1024;assert.throws(()=>{if(formatted.length*2>quota)throw new Error('QuotaExceededError');},/QuotaExceededError/);
+});
+
+test('one game success does not erase another game error and fallback avoids stale legacy after database use',async()=>{
+ const {createDurableExperimentStore,createFallbackExperimentStore}=await import('../src/storage/database.ts');const db=new DurableFixture(),store=await createDurableExperimentStore(db,null),bird=createExperiment('flappy',{human:[]}),car=createExperiment('car',{document:carDoc,records:[]});db.fail=true;store.save(bird);await settled(store);db.fail=false;store.save(car);await settled(store);assert.match(store.error,/QuotaExceededError/);store.retry();await settled(store);assert.equal(store.error,'');
+ const local=new MemoryStorage();local.setItem(experimentKey('flappy'),serializeExperiment(bird));local.setItem('ai-in-de-klas:v1:database','1');const fallback=createFallbackExperimentStore(local);assert.equal(fallback.read('flappy'),undefined);assert.equal(fallback.save(bird),false);assert.match(fallback.error,/Opslaan mislukt/);assert.ok(local.getItem(experimentKey('flappy')));
+});
+
+
+test('failed deletion retains exportable work, repeated delete removes durable and migrated copies only after commit',async()=>{
+ const {createDurableExperimentStore}=await import('../src/storage/database.ts');const db=new DurableFixture(),local=new MemoryStorage(),bird=createExperiment('flappy',{human:[]}),car=createExperiment('car',{document:carDoc,records:[]});
+ local.setItem(experimentKey('flappy'),serializeExperiment(bird));local.setItem(experimentKey('car'),serializeExperiment(car));const store=await createDurableExperimentStore(db,local);db.fail=true;assert.equal(await store.remove('flappy'),false);assert.equal(store.read('flappy')?.game,'flappy');assert.ok(db.values.get('flappy'));assert.ok(local.getItem(experimentKey('flappy')));
+ db.fail=false;assert.equal(await store.remove('flappy'),true);await settled(store);assert.equal(store.read('flappy'),undefined);assert.equal(db.values.get('flappy'),null);assert.equal(local.getItem(experimentKey('flappy')),null);assert.ok(local.getItem(experimentKey('car')));
+ const bad=new DurableFixture();bad.values.set('flappy','{invalid');const corrupt=await createDurableExperimentStore(bad,null);assert.equal(await corrupt.remove('flappy'),true);corrupt.save(bird);await settled(corrupt);assert.equal(corrupt.error,'');assert.ok(bad.values.get('flappy'));
+});
+
+test('a save queued after deletion remains newest; cleanup failure is explicit and exportable',async()=>{
+ const {createDurableExperimentStore}=await import('../src/storage/database.ts');const db=new DurableFixture(),local=new MemoryStorage(),old=createExperiment('flappy',{human:[]}),newer=createExperiment('flappy',{human:[record]});const store=await createDurableExperimentStore(db,local);store.save(old);await settled(store);
+ let release!:()=>void;db.gate=new Promise<void>(r=>release=r);const deletion=store.remove('flappy');store.save(newer);release();assert.equal(await deletion,false);await settled(store);assert.equal((store.read('flappy')!.payload as FlappyLearningState).human.length,1);assert.equal((parseExperiment(db.values.get('flappy')!).payload as FlappyLearningState).human.length,1);
+ local.setItem(experimentKey('flappy'),serializeExperiment(newer));local.failRemove=true;assert.equal(await store.remove('flappy'),false);assert.match(store.error,/Wissen mislukt/);assert.equal(store.read('flappy')?.game,'flappy');store.retry();await settled(store);assert.equal(store.read('flappy')?.game,'flappy');local.failRemove=false;assert.equal(await store.remove('flappy'),true);assert.equal(local.getItem(experimentKey('flappy')),null);
 });

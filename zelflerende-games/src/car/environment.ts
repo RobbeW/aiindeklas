@@ -2,7 +2,7 @@ import type { EnvironmentStep,EpisodeResult } from '../core/contracts.ts';
 import type { CircuitDocument } from '../tracks/document.ts';
 import { buildRoute,advanceRoute,initialProgress,type RouteProgress } from '../tracks/route.ts';
 import { CAR_CONFIG,type CarAction } from './config.ts';
-import { stepCar,type CarState } from './physics.ts';
+import { stepCar,type CarState,type CarPedals } from './physics.ts';
 import { sweptCarCollision } from './collision.ts';
 import { carObservation } from './sensors.ts';
 export interface CarEpisodeResult extends EpisodeResult {readonly laps:0|1;readonly crashed:boolean;readonly progressDistance:number;readonly routeLength:number;readonly progressFraction:number;readonly elapsedSimulatedSeconds:number;}
@@ -19,9 +19,9 @@ export class CarEnvironment {
     this.current=Object.freeze({car:Object.freeze({...this.route.spawn,heading:this.route.heading,speed:0}),steps:0,progress:initialProgress()});
     this.finished=undefined;this.reward=0;return this.getObservation();
   }
-  step(action:CarAction):EnvironmentStep<CarEpisodeResult>{
+  step(action:CarAction,pedals?:CarPedals):EnvironmentStep<CarEpisodeResult>{
     if(this.finished)throw new Error('Car episode terminal; reset before stepping');
-    const before=this.world,car=stepCar(before.car,action),steps=before.steps+1;
+    const before=this.world,car=stepCar(before.car,action,pedals),steps=before.steps+1;
     const collision=sweptCarCollision(this.route.road,before.car,car);
     const progress=collision?before.progress:advanceRoute(this.route,before.progress,before.car,car);
     let reward=collision?-1:.001+(progress.bestDistance-before.progress.bestDistance)/100+(progress.laps?5:0);

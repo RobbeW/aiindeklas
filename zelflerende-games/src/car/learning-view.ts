@@ -13,6 +13,7 @@ import { mountCarPlayView } from './play-view.ts';
 import { mountCarImitationView,type CarTeachState } from './imitation-view.ts';
 import { mountCarPracticeView } from './practice-view.ts';
 import type { CarPracticeProgress } from './practice-adapter.ts';
+import { mountCarRaceView } from './race-view.ts';
 import { mountCarComparisonView } from './comparison-view.ts';
 import type { EvaluationRecord } from '../evaluation/records.ts';
 import { stableIdentity } from '../core/identity.ts';
@@ -72,7 +73,14 @@ export async function mountCarLearningView(root:HTMLElement,options:{state?:CarL
     else if(step==='population')active=mountGenerationView(experiment,{document:state.document,documents:getTrainingDocuments(state.library!),progress:state.evolution,showIntro:false,onProgress:evolution=>{if(token===epoch&&!disposed){state={...state,evolution};publish();}}});
     else if(step==='teach')active=mountCarImitationView(experiment,{document:state.document,state:state.teach,onChange:teach=>{const changed=state.teach?.imitation&&stableIdentity(state.teach.imitation)!==stableIdentity(teach.imitation??null);state={...state,teach,practice:changed||teach.stale?undefined:state.practice};publish();}});
     else if(step==='practice')active=mountCarPracticeView(experiment,{document:state.document,source:state.teach?.stale?undefined:state.teach?.imitation,progress:state.teach?.stale?undefined:state.practice,onProgress:practice=>{state={...state,practice};publish();}});
-    else active=mountCarComparisonView(experiment,{models:[...new Map([...(state.evolution?.milestones??[]),state.evolution?.champion,...(!state.evolution?.champion?[state.teach?.initial,...(!state.teach?.stale?[state.teach?.imitation,state.practice?.snapshot]:[])]:[])].filter((s):s is NonNullable<typeof s>=>!!s).map(s=>[stableIdentity(s),s])).values()],records:state.records,onRecords:records=>{state={...state,records};publish();}});
+    else {
+     const models=[...new Map([...(state.evolution?.milestones??[]),state.evolution?.champion,...(!state.evolution?.champion?[state.teach?.initial,...(!state.teach?.stale?[state.teach?.imitation,state.practice?.snapshot]:[])]:[])].filter((s):s is NonNullable<typeof s>=>!!s).map(s=>[stableIdentity(s),s])).values()];
+     const raceHost=document.createElement('div'),details=document.createElement('details'),summary=document.createElement('summary'),measurements=document.createElement('div');details.className='context-help';summary.textContent='Bewaarde modellen vergelijken';details.append(summary,measurements);experiment.append(raceHost,details);
+     const race=mountCarRaceView(raceHost,{document:state.document,circuits:state.library!.entries.map(e=>({name:e.name,document:e.document})),model:state.evolution?.champion??(!state.teach?.stale?(state.practice?.snapshot??state.teach?.imitation):undefined),onTrain:()=>show('population','experiment',true)});
+     let comparison:ReturnType<typeof mountCarComparisonView>|undefined;
+     details.ontoggle=()=>{if(token!==epoch||disposed)return;if(details.open){race.pause();comparison??=mountCarComparisonView(measurements,{models,records:state.records,onRecords:records=>{state={...state,records};publish();}});}else{comparison?.dispose();comparison=undefined;}};
+     active={dispose(){details.ontoggle=null;comparison?.dispose();race.dispose();}};
+    }
    }catch(e){const p=document.createElement('p');p.setAttribute('role','alert');p.textContent=e instanceof Error?e.message:String(e);experiment.append(p);}
    const duplicate=experiment.querySelector('h2');if(duplicate?.textContent?.replace(/[.!?]+$/,'')===phase.title.replace(/[.!?]+$/,''))duplicate.hidden=true;
   }

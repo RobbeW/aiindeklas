@@ -1,0 +1,21 @@
+.car-race {display:grid;gap:14px}
+.car-race-header {display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.car-race-header h2,.car-race-header p {margin:0 0 8px}
+.race-setup {display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.race-setup[hidden],.car-race [hidden] {display:none!important}
+.race-setup label {display:grid;gap:7px;min-width:0}
+.race-seats {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;grid-column:1/-1}
+.race-seat {padding:12px;border:2px solid var(--racer-colour);border-radius:12px}
+.race-seat-state {font-size:.9rem}
+.race-join,.race-controls,.race-start {grid-column:1/-1;margin:0}
+.race-start {justify-self:start}
+.race-stage {position:relative;border:2px solid var(--border);border-radius:18px;background:#f8f7f3;overflow:hidden}
+.car-race .race-canvas {display:block!important;width:100%!important;max-width:none!important;height:auto!important;max-height:74vh;object-fit:contain;margin:auto;outline-offset:-5px}
+.race-overlay {position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:#f8f7f3dd;backdrop-filter:blur(4px);padding:20px}
+.race-overlay>div {max-width:480px}.race-count {font-size:clamp(2.5rem,8vw,6rem);color:#5200ff}
+.race-hud {display:flex;flex-wrap:wrap;gap:12px}.race-hud article {flex:1;min-width:140px;display:grid;gap:6px;border-left:6px solid var(--racer-colour);padding:10px 14px;border-radius:7px;background:#fff}
+.race-fairness {font-size:.9rem;margin:0}.race-ranking {list-style:none;padding:0;display:grid;gap:12px}
+.car-race:fullscreen {overflow:auto;padding:24px;background:#f8f7f3}.car-race:fullscreen .race-canvas {max-height:78vh}
+.race-seat-state {animation:race-arrive .35s ease-out}@keyframes race-arrive {from{opacity:.3;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.race-seat-state{animation:none}}
+@media(max-width:620px){.race-setup,.race-seats{grid-template-columns:1fr}.race-hud article{min-width:100px}.car-race:fullscreen{padding:10px}}

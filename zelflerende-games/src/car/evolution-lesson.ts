@@ -34,9 +34,10 @@ function network(index: number): string {
 }
 
 const childModels = [6, 7, 8].map((pattern, i) => `<div class="el__child-model">${network(pattern)}<span>Variant ${i + 1}</span></div>`).join('');
+const unselectedFlame = `<span class="el__not-selected"><svg viewBox="0 0 26 34" aria-hidden="true"><path d="M13 32C0 29 0 16 8 9L9 16C13 12 14 7 14 1C20 8 27 15 24 24C23 29 18 33 13 32Z" fill="#e95300" stroke="#fffdf7" stroke-width="2"/><path d="M13 29C6 27 8 22 13 17C14 21 19 23 17 27C16 29 14 30 13 29Z" fill="#ffdb36"/></svg><span>Niet gekozen</span></span>`;
 const pairs = Array.from({ length: 6 }, (_, i) => `<article class="el__pair" data-car="${i + 1}">
   <div class="el__car-view">${car(i)}<span>Auto ${i + 1}</span></div><span class="el__pair-arrow" aria-hidden="true">↔</span>
-  <div class="el__model">${network(i)}<span>AI-model ${i + 1}</span></div><span class="el__selected">Geselecteerd</span>
+  <div class="el__model">${network(i)}<span>AI-model ${i + 1}</span></div><span class="el__selected">Geselecteerd</span>${unselectedFlame}
 </article>`).join('');
 
 const phases = [

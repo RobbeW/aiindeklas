@@ -4,7 +4,7 @@ import type { SavedExperiment, Game } from './experiment-files.ts';
 type DataManagerOptions = {
   get: (game: Game) => SavedExperiment | undefined;
   onImport: (experiment: SavedExperiment) => void;
-  onDelete: (game: Game) => boolean;
+  onDelete: (game: Game) => boolean | Promise<boolean>;
   storageStatus: () => string;
 };
 
@@ -36,7 +36,7 @@ export function mountDataManagerView(root: HTMLElement, options: DataManagerOpti
     <p class="data-delete-status" role="status" aria-live="polite"></p>
   </section>`;
   let files: { dispose(): void } | undefined;
-  let pendingGame: Game | undefined;
+  let pendingGame: Game | undefined;let disposed=false,deleting=false;
   const select = root.querySelector<HTMLSelectElement>('.data-game')!;
   const status = root.querySelector<HTMLElement>('.data-delete-status')!;
   const confirmation = root.querySelector<HTMLElement>('.data-manager__confirmation')!;
@@ -75,6 +75,7 @@ export function mountDataManagerView(root: HTMLElement, options: DataManagerOpti
   };
   select.onchange = () => { closeConfirmation(false); status.textContent = ''; render(); };
   deleteButton.onclick = () => {
+    if(deleting)return;
     pendingGame = select.value as Game;
     root.querySelector('#delete-confirm-copy')!.textContent = `Hiermee verwijder je het opgeslagen ${gameName(pendingGame)}-experiment uit deze browser. Het andere spel blijft behouden. Deze actie kan niet ongedaan worden gemaakt.`;
     confirmation.hidden = false;
@@ -82,11 +83,14 @@ export function mountDataManagerView(root: HTMLElement, options: DataManagerOpti
     root.querySelector<HTMLButtonElement>('.cancel-delete')!.focus();
   };
   root.querySelector<HTMLButtonElement>('.cancel-delete')!.onclick = () => closeConfirmation();
-  root.querySelector<HTMLButtonElement>('.confirm-delete')!.onclick = () => {
+  root.querySelector<HTMLButtonElement>('.confirm-delete')!.onclick = async () => {
+    if(deleting)return;
     const game = pendingGame;
     if (!game || game !== select.value) { closeConfirmation(); return; }
     closeConfirmation(false);
-    if (options.onDelete(game)) {
+    deleting=true;files?.dispose();deleteButton.disabled=true;select.disabled=true;status.textContent='Experiment verwijderen…';
+    let removed=false;try{removed=await options.onDelete(game);}catch{/* Keep current work available after a failed transaction. */}deleting=false;if(disposed)return;deleteButton.disabled=false;select.disabled=false;render();
+    if (removed) {
       render();
       status.textContent = `${gameName(game)}-experiment gewist. Het andere spel en je gedownloade bestanden blijven bewaard.`;
     } else {
@@ -95,5 +99,5 @@ export function mountDataManagerView(root: HTMLElement, options: DataManagerOpti
   };
   confirmation.onkeydown=event=>{if(event.key==='Escape'){event.preventDefault();closeConfirmation();}};
   render();
-  return { dispose() { files?.dispose(); root.replaceChildren(); } };
+  return { dispose() { disposed=true;files?.dispose(); root.replaceChildren(); } };
 }

@@ -91,3 +91,7 @@
 .evolution-lesson .el__inheritance-key span:nth-child(1) { color:#16845B; }
 .evolution-lesson .el__inheritance-key span:nth-child(2) { color:#A32E62; }
 .evolution-lesson .el__inheritance-key span:nth-child(3) { color:#5200FF; }
+
+.evolution-lesson .el__not-selected {display:none;position:absolute;right:3px;top:3px;z-index:2;align-items:center;gap:3px;background:#fff7df;border:1px solid #b9b1a4;border-radius:7px;padding:2px 5px;color:#6d2e00;font-size:11px;font-weight:700}
+.evolution-lesson .el__not-selected svg {width:21px;height:27px}
+.evolution-lesson[data-phase="2"] .el__pair:not([data-car="2"]):not([data-car="5"]) .el__not-selected {display:inline-flex}

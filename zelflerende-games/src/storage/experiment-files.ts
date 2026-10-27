@@ -14,7 +14,7 @@ import type { FlappyLearningState } from '../flappy/learning-view.ts';
 import type { CarLearningState } from '../car/learning-view.ts';
 import { validateCarEvolutionProgress } from './car-evolution-progress.ts';
 import { trackIdentity } from '../tracks/document.ts';
-export const MAX_EXPERIMENT_BYTES=8*1024*1024;
+export const MAX_EXPERIMENT_BYTES=32*1024*1024;
 export type Game='flappy'|'car';
 export type SavedExperiment={readonly kind:'learning-experiment';readonly version:1;readonly game:Game;readonly savedAt:string;readonly payload:FlappyLearningState|CarLearningState;};
 const object=(v:unknown):Record<string,any>=>{if(!v||typeof v!=='object'||Array.isArray(v))throw new Error('Object required in experiment');return v as Record<string,any>;};
@@ -68,5 +68,5 @@ export function canonicalGameState(game:Game,value:unknown):FlappyLearningState|
 }
 export function validateExperiment(value:unknown,expectedGame?:Game):SavedExperiment{const e=object(value);if(e.kind!=='learning-experiment'||e.version!==1||!['flappy','car'].includes(e.game)||expectedGame&&e.game!==expectedGame||typeof e.savedAt!=='string'||!Number.isFinite(Date.parse(e.savedAt)))throw new Error('Incompatible experiment version/game');const game=e.game as Game;return Object.freeze({kind:'learning-experiment',version:1,game,savedAt:e.savedAt,payload:game==='car'?canonicalGameState('car',e.payload):canonicalGameState('flappy',e.payload)});}
 export function createExperiment(game:Game,payload:unknown):SavedExperiment{return validateExperiment({kind:'learning-experiment',version:1,game,savedAt:new Date().toISOString(),payload});}
-export function parseExperiment(text:string,expectedGame?:Game){if(new TextEncoder().encode(text).length>MAX_EXPERIMENT_BYTES)throw new Error('Experiment larger than8MiB');return validateExperiment(JSON.parse(text),expectedGame);}
-export function serializeExperiment(experiment:SavedExperiment){const text=JSON.stringify(validateExperiment(experiment),null,2);if(new TextEncoder().encode(text).length>MAX_EXPERIMENT_BYTES)throw new Error('Experiment larger than8MiB');return text;}
+export function parseExperiment(text:string,expectedGame?:Game){if(new TextEncoder().encode(text).length>MAX_EXPERIMENT_BYTES)throw new Error('Experiment larger than32MiB');return validateExperiment(JSON.parse(text),expectedGame);}
+export function serializeExperiment(experiment:SavedExperiment){const text=JSON.stringify(validateExperiment(experiment));if(new TextEncoder().encode(text).length>MAX_EXPERIMENT_BYTES)throw new Error('Experiment larger than32MiB');return text;}
