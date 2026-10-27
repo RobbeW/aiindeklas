@@ -14,7 +14,7 @@
     {
       "id": "car",
       "title": "Raceauto",
-      "body": "Rijd zelf en bouw een eigen circuit met rechte stukken en bochten. Laat een groep auto’s racen en volg de generaties. De beste modellen vormen de basis voor nieuwe auto’s. Wat zou Darwin hiervan vinden?",
+      "body": "Rijd zelf en bouw een eigen circuit met rechte stukken en bochten. Combineer aangeboden banen en je eigen circuits in een oefenreeks. Laat de auto’s racen: de beste modellen vormen de basis voor nieuwe generaties. Wat zou Darwin hiervan vinden?",
       "note": "Elke auto heeft een eigen AI-model."
     }
   ],
@@ -42,12 +42,12 @@
     {
       "game": "Raceauto",
       "title": "Bouw je circuit.",
-      "body": "Bestuur de auto en maak je eigen baan. Welke bochten maken het lastig?"
+      "body": "Bestuur de auto, bouw en bewaar je eigen baan. Combineer verschillende circuits in een oefenreeks."
     },
     {
       "game": "Raceauto",
       "title": "Laat generaties racen.",
-      "body": "Elke auto rijdt met een eigen AI-model. De beste modellen blijven behouden en krijgen nakomelingen met kleine verschillen."
+      "body": "Elke auto heeft een eigen AI-model en rijdt dezelfde oefenreeks. We bewaren het beste model en maken nieuwe varianten."
     }
   ],
   "teacher": {

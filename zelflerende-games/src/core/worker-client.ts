@@ -1,3 +1,4 @@
+import { CAR_MAX_PLAYBACK_SPEED } from '../config/workload-presets.ts';
 import type {
   CancelMessage,
   PauseMessage,
@@ -128,7 +129,7 @@ export class WorkerJobClient<Payload, Progress, Result> {
   }
 
   setSpeed(speed:number):void {
-    if(!Number.isFinite(speed)||speed<.5||speed>8)throw new RangeError("Visual speed must be .5..8");
+    if(!Number.isFinite(speed)||speed<.5||speed>CAR_MAX_PLAYBACK_SPEED)throw new RangeError("Visual speed must be .5..32");
     const active=this.active;if(!active)return;
     try{active.port.postMessage({type:"speed",jobId:active.id,speed});}catch(e){this.fail(active,asError(e));}
   }

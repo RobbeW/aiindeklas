@@ -5,6 +5,11 @@ export class TrackEditorState {
   constructor(document:CircuitDocument){this.current=validateCircuit(document);}
   get document(){return this.current;}get canUndo(){return this.past.length>0;}get canRedo(){return this.future.length>0;}
   replace(value:unknown){const next=validateCircuit(value);this.past.push(this.current);if(this.past.length>100)this.past.shift();this.current=next;this.future=[];return next;}
+  resize(width:number,height:number){
+    if(!Number.isInteger(width)||!Number.isInteger(height)||width<3||height<3||width>32||height>32)throw new Error('Grid dimensions must be 3..32');
+    if(this.current.cells.some(c=>c.x>=width||c.y>=height))throw new Error('Verkleinen kan niet: buiten het nieuwe raster staan nog tegels.');
+    return this.replace({...this.current,width,height});
+  }
   edit(edit:TrackEdit){
     let cells=[...this.current.cells],start=this.current.start;
     if(edit.type==='place'){

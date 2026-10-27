@@ -2,6 +2,8 @@ import { MAX_PARALLEL_ROUNDS } from '../learning/parallel-practice-settings.ts';
 import { validatePracticeModelCheck } from '../learning/practice-check.ts';
 import { validateEpisode } from '../data/dataset.ts';
 import { validateLessonNotes } from '../flappy/lesson-notes.ts';
+import { validateCarLessonNotes } from '../car/lesson-notes.ts';
+import { validateLibrary } from '../tracks/library.ts';
 import { splitCarEpisodes } from '../car/recorder.ts';
 import { validateCircuit } from '../tracks/document.ts';
 import { buildRoute } from '../tracks/route.ts';
@@ -10,7 +12,8 @@ import { validateCarSnapshot } from '../car/policy-adapter.ts';
 import { validateEvaluationRecord } from '../evaluation/records.ts';
 import type { FlappyLearningState } from '../flappy/learning-view.ts';
 import type { CarLearningState } from '../car/learning-view.ts';
-import type { EvolutionProgress,GenerationRecord } from '../evolution/generation-job.ts';
+import { validateCarEvolutionProgress } from './car-evolution-progress.ts';
+import { trackIdentity } from '../tracks/document.ts';
 export const MAX_EXPERIMENT_BYTES=8*1024*1024;
 export type Game='flappy'|'car';
 export type SavedExperiment={readonly kind:'learning-experiment';readonly version:1;readonly game:Game;readonly savedAt:string;readonly payload:FlappyLearningState|CarLearningState;};
@@ -19,20 +22,6 @@ const count=(v:unknown)=>{if(!Number.isSafeInteger(v)||(v as number)<0)throw new
 const finite=(v:unknown)=>{if(typeof v!=='number'||!Number.isFinite(v)||v<0)throw new Error('Invalid experiment duration');return v;};
 const bird=(v:unknown)=>{const s=v as PolicySnapshot;return createPolicySnapshot(restorePolicySnapshot(s),s);};
 const rows=(v:unknown,game:Game)=>{if(!Array.isArray(v)||v.length>500)throw new Error('Invalid or excessive evaluation rows');return Object.freeze(v.map(x=>{const row=validateEvaluationRecord(x);if(row.game!==game)throw new Error('Wrong-game evaluation');return row;}));};
-function evolutionProgress(value:unknown):EvolutionProgress|undefined{
- if(value===undefined)return undefined;const e=object(value);
- const completedGenerations=count(e.completedGenerations),evaluatedEpisodes=count(e.evaluatedEpisodes),steps=count(e.steps),elapsedMs=finite(e.elapsedMs);
- if(!Array.isArray(e.records)||e.records.length>20||completedGenerations!==e.records.length||evaluatedEpisodes>(e.records.length+1)*32)throw new Error('Invalid evolution progress/records');
- let completedAgentSteps=0,completedAgentCount=0;
- const records=e.records.map((raw,index)=>{const r=object(raw);if(r.generation!==index||typeof r.bestFitness!=='number'||!Number.isFinite(r.bestFitness)||typeof r.meanFitness!=='number'||!Number.isFinite(r.meanFitness)||!Number.isSafeInteger(r.groupCount)||r.groupCount<1||r.groupCount>32||!Array.isArray(r.agents)||r.agents.length<4||r.agents.length>32)throw new Error('Invalid evolution generation record');
-  const ids=new Set<string>();const agents=r.agents.map(rawAgent=>{const a=object(rawAgent),result=object(a.result);if(typeof a.id!=='string'||!a.id||ids.has(a.id)||typeof a.fitness!=='number'||!Number.isFinite(a.fitness)||!Number.isSafeInteger(result.survivalSteps)||result.survivalSteps<1||result.survivalSteps>1800||typeof result.totalReward!=='number'||!Number.isFinite(result.totalReward)||!['collision','lap_complete','time_limit'].includes(String(result.terminationReason))||!Number.isSafeInteger(result.laps)||![0,1].includes(result.laps)||typeof result.crashed!=='boolean'||result.crashed!==(result.terminationReason==='collision')||result.laps!==(result.terminationReason==='lap_complete'?1:0)||![result.progressDistance,result.routeLength,result.progressFraction,result.elapsedSimulatedSeconds].every(n=>typeof n==='number'&&Number.isFinite(n)&&n>=0)||result.routeLength<=0||result.progressDistance>result.routeLength+1e-7||result.progressFraction>1+1e-7||Math.abs(result.progressFraction-result.progressDistance/result.routeLength)>1e-8||Math.abs(result.elapsedSimulatedSeconds-result.survivalSteps/60)>1e-9||result.terminationReason==='time_limit'&&result.survivalSteps!==1800)throw new Error('Invalid evolution agent result');ids.add(a.id);completedAgentSteps+=result.survivalSteps;completedAgentCount++;return Object.freeze({id:a.id,fitness:a.fitness,result:Object.freeze({...result})});});
-  const scores=agents.map(a=>a.fitness),best=Math.max(...scores),mean=scores.reduce((sum,n)=>sum+n,0)/scores.length;if(Math.abs(best-r.bestFitness)>1e-9||Math.abs(mean-r.meanFitness)>1e-9)throw new Error('Evolution summary does not match agent fitness values');
-  return Object.freeze({generation:index,bestFitness:r.bestFitness,meanFitness:r.meanFitness,groupCount:r.groupCount,agents:Object.freeze(agents)} as GenerationRecord);
- });
- if(steps<completedAgentSteps||evaluatedEpisodes<completedAgentCount)throw new Error('Evolution totals are below completed generation results');
- const champion=e.champion===undefined?undefined:validateCarSnapshot(e.champion);if((completedGenerations>0)!==!!champion||champion&&(champion.stage!=='evolution'||champion.training.generations!==completedGenerations||champion.training.interactions!==steps))throw new Error('Evolution champion does not match progress');
- return Object.freeze({completedGenerations,evaluatedEpisodes,steps,elapsedMs,records:Object.freeze(records),...(champion?{champion}:{})});
-}
 function teachingAssessments(value:unknown){if(value===undefined)return undefined;if(!Array.isArray(value)||value.length>30)throw new Error('Invalid teaching assessments');return Object.freeze(value.map(item=>{const a=object(item);return Object.freeze({sessions:count(a.sessions),actions:count(a.actions),score:count(a.score),survivalSteps:count(a.survivalSteps)});}));}
 function trainingRuns(value:unknown){
  if(value===undefined)return undefined;
@@ -75,7 +64,7 @@ export function canonicalGameState(game:Game,value:unknown):FlappyLearningState|
  let teach:CarLearningState['teach'];if(p.teach){const t=object(p.teach);if(typeof t.stale!=='boolean')throw new Error('Invalid stale flag');teach={episodes:uniqueEpisodes(t.episodes,'car') as NonNullable<CarLearningState['teach']>['episodes'],initial:validateCarSnapshot(requireStage(t.initial,'initial','Initial teacher')),imitation:t.imitation?validateCarSnapshot(requireStage(t.imitation,'imitation','Imitation teacher')):undefined,stale:t.stale};}
  let practice:CarLearningState['practice'];if(p.practice){const x=validatePractice(p.practice,'car');practice={...x,history:[],scores:[]};}
  if(teach?.stale&&practice)throw new Error('Stale imitation cannot retain practice progress');
- return Object.freeze({document:doc,draft,teach,practice,records:rows(p.records??[],'car'),evolution:evolutionProgress(p.evolution)} as CarLearningState);
+ return Object.freeze({document:doc,draft,teach,practice,records:rows(p.records??[],'car'),evolution:validateCarEvolutionProgress(p.evolution,trackIdentity(doc)),...(p.library===undefined?{}:{library:validateLibrary(p.library)}),...(p.notes===undefined?{}:{notes:validateCarLessonNotes(p.notes)})} as CarLearningState);
 }
 export function validateExperiment(value:unknown,expectedGame?:Game):SavedExperiment{const e=object(value);if(e.kind!=='learning-experiment'||e.version!==1||!['flappy','car'].includes(e.game)||expectedGame&&e.game!==expectedGame||typeof e.savedAt!=='string'||!Number.isFinite(Date.parse(e.savedAt)))throw new Error('Incompatible experiment version/game');const game=e.game as Game;return Object.freeze({kind:'learning-experiment',version:1,game,savedAt:e.savedAt,payload:game==='car'?canonicalGameState('car',e.payload):canonicalGameState('flappy',e.payload)});}
 export function createExperiment(game:Game,payload:unknown):SavedExperiment{return validateExperiment({kind:'learning-experiment',version:1,game,savedAt:new Date().toISOString(),payload});}

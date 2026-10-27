@@ -72,3 +72,9 @@ test('partial generation counts complete agents without committing their generat
  assert.equal(result.evaluatedEpisodes,result.liveFrame!.agents.filter(a=>a.done).length);
  assert.ok(result.evaluatedEpisodes>0);
 });
+
+ test('16x and32x change pacing without changing worlds or selected models',async()=>{
+ const fast=await runEvolutionJob(input);
+ for(const visualSpeed of [16,32]){const clock=fakeTime();const live=await runEvolutionJob({...input,visualMode:true,visualSpeed},{now:clock.now,delay:clock.delay});assert.deepEqual(live.records,fast.records);assert.deepEqual(live.champion?.parameters,fast.champion?.parameters);assert.equal(live.steps,fast.steps);assert.ok(clock.time<5000);}
+ await assert.rejects(runEvolutionJob({...input,visualMode:true,visualSpeed:33}));
+ });

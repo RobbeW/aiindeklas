@@ -1,4 +1,5 @@
 /// <reference lib="webworker" />
+import { CAR_MAX_PLAYBACK_SPEED } from '../config/workload-presets.ts';
 import { runEvolutionJob,type EvolutionInput } from '../evolution/generation-job.ts';
 import type { WorkerCommand,WorkerEvent } from '../core/worker-protocol.ts';
 
@@ -22,6 +23,6 @@ scope.addEventListener('message',(event:MessageEvent<unknown>)=>{
   if(message.type==='pause')active.paused=true;
   else if(message.type==='resume')active.paused=false;
   else if(message.type==='cancel')active.cancelled=true;
-  else if(message.type==='speed'&&Number.isFinite(message.speed)&&message.speed>=.5&&message.speed<=8)active.speed=message.speed;
+  else if(message.type==='speed'&&Number.isFinite(message.speed)&&message.speed>=.5&&message.speed<=CAR_MAX_PLAYBACK_SPEED)active.speed=message.speed;
 });
 export {};

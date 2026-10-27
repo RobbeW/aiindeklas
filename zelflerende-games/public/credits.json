@@ -20,6 +20,15 @@
     "scope": "The software notice applies to covered software; it makes no claim about sprite-art rights."
   },
   "car": {
-    "artwork": "Code-native Canvas/SVG road, sensor and car shapes in this project; no copied car sprites."
+    "artwork": {
+      "source": "Sprites copied unchanged from Versie_2025_2026/sprites/ at the user’s request.",
+      "files": [
+        "car.png",
+        "roomba.png",
+        "tie_fighter.png",
+        "sus.png"
+      ],
+      "note": "Sprite artwork authorship and redistribution rights are not established. Road, sensors and Klasauto are code-native."
+    }
   }
 }

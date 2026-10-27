@@ -16,7 +16,7 @@ export function validateCircuit(value:unknown):CircuitDocument {
   if(!value||typeof value!=='object')throw new Error('Circuit document required');
   const d=value as CircuitDocument;
   if(d.version!==TRACK_VERSION)throw new Error('Unsupported circuit version');
-  if(!Number.isInteger(d.width)||!Number.isInteger(d.height)||d.width<3||d.height<3||d.width>20||d.height>20)throw new Error('Grid dimensions must be3..20');
+  if(!Number.isInteger(d.width)||!Number.isInteger(d.height)||d.width<3||d.height<3||d.width>32||d.height>32)throw new Error('Grid dimensions must be 3..32');
   if(!Array.isArray(d.cells)||d.cells.length>d.width*d.height)throw new Error('Invalid circuit cells');
   const seen=new Set<string>();const cells:Tile[]=[];
   for(const c of d.cells){

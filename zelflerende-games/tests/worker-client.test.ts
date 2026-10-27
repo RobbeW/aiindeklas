@@ -129,7 +129,9 @@ test('visual speed targets only the active worker and rejects invalid speeds',as
  client.setSpeed(2);assert.equal(ports.length,0);
  const job=client.start({seed:10});client.pause();client.setSpeed(.5);client.resume();client.setSpeed(8);
  assert.deepEqual(ports[0]!.sent.slice(1),[{type:'pause',jobId:job.jobId},{type:'speed',jobId:job.jobId,speed:.5},{type:'resume',jobId:job.jobId},{type:'speed',jobId:job.jobId,speed:8}]);
- for(const speed of [NaN,Infinity,0,9])assert.throws(()=>client.setSpeed(speed),RangeError);
+ for(const speed of [NaN,Infinity,0,33])assert.throws(()=>client.setSpeed(speed),RangeError);
  ports[0]!.emit({type:'complete',jobId:job.jobId,result:{score:1}});await job.promise;
  client.setSpeed(4);assert.equal(ports[0]!.sent.length,5);client.dispose();
 });
+
+ test('high car playback speeds are forwarded to the active worker',async()=>{const {client,ports}=setup();const job=client.start({seed:10});client.setSpeed(16);client.setSpeed(32);assert.deepEqual(ports[0]!.sent.slice(1),[{type:'speed',jobId:job.jobId,speed:16},{type:'speed',jobId:job.jobId,speed:32}]);ports[0]!.emit({type:'complete',jobId:job.jobId,result:{score:1}});await job.promise;client.dispose();});

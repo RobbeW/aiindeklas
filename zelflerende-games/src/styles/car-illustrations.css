@@ -1,0 +1,24 @@
+.car-illustration {margin:24px 0 0;padding:22px;background:#f3eddf;border:1px solid #b9b1a4;border-radius:14px;color:#25221d}
+.cl-scene {display:flex;align-items:center;justify-content:center;gap:14px;min-height:200px}
+.cl-panel {flex:1;min-width:0;display:grid;gap:8px;text-align:center}
+.cl-panel svg {width:100%;max-height:190px;display:block}
+.cl-panel strong,.cl-model strong,.cl-action strong {font-size:15px;line-height:1.4}
+.cl-arrow {font-size:26px;color:#716382;font-weight:bold}
+.cl-model {flex:0 1 150px;display:grid;gap:8px;border:1px solid #716382;background:#fffaf0;padding:12px;border-radius:10px;text-align:center;box-shadow:5px 6px 0 #d4cabb}
+.cl-model svg {width:100%;display:block}
+.cl-action {display:grid;gap:8px;text-align:center}.cl-action>span {font-size:52px;color:#5200ff}
+.cl-expanded {border:1px dashed #716382;padding:12px;background-image:linear-gradient(#71638215 1px,transparent 1px),linear-gradient(90deg,#71638215 1px,transparent 1px);background-size:22px 22px;border-radius:10px}
+.car-illustration figcaption {text-align:center;font-size:15px;line-height:1.6;margin:18px auto 0;max-width:64ch}
+.car-illustration .cl-pause {display:block;margin:18px auto 0;font-size:13px;padding:8px 12px}
+.cl-sensors {animation:car-sensors 2s ease-in-out infinite}
+.cl-paused .cl-sensors {animation-play-state:paused}
+@keyframes car-sensors {50%{opacity:.35}}
+@media(prefers-reduced-motion:reduce){.cl-sensors{animation:none}}
+@media(max-width:600px){.car-illustration{padding:16px}.cl-scene{flex-wrap:wrap;gap:12px}.cl-panel{flex-basis:100%}.cl-panel svg{max-height:160px}.cl-arrow{transform:rotate(90deg);flex-basis:100%;text-align:center}.cl-model{flex-basis:150px}.cl-action{flex-basis:100%}.cl-road{flex-basis:100%}}
+
+.cl-speed-label {font-size:14px;color:#625b70;line-height:1.4}
+.cl-decisions {display:grid;gap:8px;flex:0 0 108px;text-align:center}
+.cl-decisions strong {font-size:15px;margin-bottom:6px}
+.cl-decisions span {padding:8px 10px;background:#fffaf0;border:1px solid #b9b1a4;border-radius:8px;font-size:14px;color:#3700b3}
+.cl-road svg {max-height:230px}
+@media(max-width:600px){.cl-decisions{flex-basis:100%;grid-template-columns:repeat(3,minmax(0,1fr))}.cl-decisions strong{grid-column:1/-1}.cl-road svg{max-height:220px}}

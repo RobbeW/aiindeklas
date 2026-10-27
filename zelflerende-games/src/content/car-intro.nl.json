@@ -1,49 +1,12 @@
 {
-  "audience": "13–15 jaar, lichte programmeerervaring",
+  "audience": "13–15 jaar",
   "phases": [
-    {
-      "id": "play",
-      "title": "1 · Rijd",
-      "explanation": "Bestuur een auto op een tegelcircuit. Jij ziet het hele veld; een model krijgt vijf afstanden en snelheid.",
-      "prediction": "Welke informatie gebruik jij om vóór een bocht te sturen?",
-      "reflection": "Welke informatie ontbreekt als de auto alleen afstanden en snelheid krijgt?"
-    },
-    {
-      "id": "teach",
-      "title": "2 · Leer van voorbeelden",
-      "explanation": "Menselijke opnamen koppelen waarnemingen aan acties. Een synthetisch oefenpaar bevat voorbeelden voor rechtdoor en rechts, gemaakt met voorkennis van de route; het is geen leerlingdata. Imitatie past gewichten aan op trainingsvoorbeelden; controlevoorbeelden trainen niet.",
-      "prediction": "Wat kan de imitatie leren als in de voorbeelden alleen rechtdoor en rechts voorkomen?",
-      "reflection": "Welke actie of bocht ontbreekt? Een laag verlies garandeert geen voltooide ronde."
-    },
-    {
-      "id": "practice",
-      "title": "3 · Zelf oefenen met beloningen",
-      "explanation": "Dezelfde agent probeert zelf acties en beloningen sturen verdere gewichtsaanpassing. Pogingen zijn episodes; alleen complete groepen leveren updates. Een poging is geen generatie.",
-      "prediction": "Verwacht je dat oefenen op dit circuit ook helpt op een andere bocht?",
-      "reflection": "Vergelijk pogingen, pogingen gebruikt voor updates, interacties, simulatietijd en rekentijd. Sneller simuleren bewijst geen lagere energie of betere besturing."
-    },
-    {
-      "id": "edit",
-      "title": "4 · Bouw circuit",
-      "explanation": "Plaats rechte stukken en bochten, draai ze in stappen van 90 graden en markeer een recht startstuk. Herstel aansluitingen en test pas als de route gesloten en geldig is.",
-      "prediction": "Welke tegel of startoriëntatie maakt jouw test anders?",
-      "reflection": "Draagt de besturing over naar jouw circuit? Noteer ook botsingen en ongeldige ontwerpen."
-    },
-    {
-      "id": "population",
-      "title": "5 · Evolueer",
-      "explanation": "Een populatie start zonder jouw voorbeelden. Een generatie beoordeelt alle auto’s en selecteert ouders voor de volgende. Deze vaste-topologie neuro-evolutie is geen NEAT.",
-      "prediction": "Wat gebeurt er als de beste auto nog geen ronde voltooit?",
-      "reflection": "Stagneert de fitness of het gemiddelde? Meer generaties garanderen geen overdracht naar nieuwe bochten."
-    },
-    {
-      "id": "compare",
-      "title": "6 · Vergelijk",
-      "explanation": "Test bevroren modellen onder dezelfde route, start en tijdslimiet. De langere lus is een controle; onbekende bochten zijn een afzonderlijke eenmalige eindtest.",
-      "prediction": "Welk resultaat zou jouw verklaring tegenspreken?",
-      "reflection": "In de gemeten eindtest botsten alle modellen op onbekende bochten. Wat zegt dit over de voorbeelden en testcircuits, en wat blijft onbekend?"
-    }
-  ],
-  "languageNote": "AI verwerkt invoer en past parameters aan; dit is geen menselijk begrip. Dit circuit is een vereenvoudigde simulatie, geen bewijs van veilig rijden op echte wegen.",
-  "assessment": "Beoordeel uitleg, eerlijke controles en ontwerpkeuzes; niet winnen, reactiesnelheid of beperking. Mislukte pogingen zijn geldige evidence."
+    {"id":"play","title":"Kan jij deze auto besturen?","explanation":"Bij Flappy Bird koos je wanneer je flapte. Nu stuur je een auto door de bochten. Jij ziet het hele circuit. De auto meet de afstand tot de rand met vijf sensoren.","prediction":"Welke informatie helpt jou om op tijd te sturen?","reflection":"Welke bocht was lastig? Wat kon jij zien dat de sensoren niet zien?"},
+    {"id":"edit","title":"Bouw je circuit.","explanation":"Een rechte baan vraagt iets anders dan een scherpe bocht. Bouw met rechte stukken en bochten. Vergroot het raster als je meer ruimte nodig hebt.","prediction":"Welke bochten en rechte stukken wil jij de auto laten oefenen?","reflection":"Wat maakt jouw circuit anders dan het eerste circuit?"},
+    {"id":"tracks","title":"Kies je oefencircuits.","explanation":"Niet elke baan vraagt dezelfde aanpak. Stel een reeks samen met aangeboden circuits en je eigen banen. Elke auto rijdt straks dezelfde reeks.","prediction":"Wat verwacht je als een auto alleen op één circuit oefent?","reflection":"Welke verschillen zitten in jouw oefenreeks? Welke situatie ontbreekt nog?"},
+    {"id":"population","title":"Wat zou Darwin doen?","explanation":"Bij Flappy Bird oefenden de vogels met één AI-model. Hier heeft elke auto een eigen AI-model. Vooruitgang levert een betere score op; een botsing kost punten. We bewaren het beste model. Geselecteerde modellen geven hun aanpak met kleine verschillen door aan een nieuwe generatie.","prediction":"Welke aanpak zal volgens jou de meeste kans krijgen om door te gaan naar de volgende generatie?","reflection":"Vergelijk de eerste en laatste generatie. Wat veranderde aan de prestaties en hoeveel oefentijd kostte dat?"},
+    {"id":"compare","title":"Werkt het ook op een ander circuit?","explanation":"Een auto kan goed zijn op zijn oefenbanen en toch vastlopen in een nieuwe bocht. Test de bewaarde modellen op hetzelfde andere circuit. Rijd daarna zelf.","prediction":"Welke auto geef jij de meeste kans op een circuit waarop hij niet oefende? Waarom?","reflection":"Klopte je voorspelling? Wat zegt dit over oefenen op één of verschillende banen?"},
+    {"id":"teach","title":"Extra: leer van rijvoorbeelden.","explanation":"Wil je ook rijvoorbeelden opnemen? Dit extra gereedschap gebruikt dezelfde aanpak die je bij Flappy Bird onderzocht.","prediction":"Welke bochten wil je voordoen?","reflection":"Wat nam het model van je over?"},
+    {"id":"practice","title":"Extra: oefen verder met beloningen.","explanation":"Hier oefent één model verder na jouw rijvoorbeelden. Bij Evolueer vergelijken we verschillende modellen en maken we nieuwe generaties.","prediction":"Welke aanpak verwacht je dat het model zal verbeteren?","reflection":"Wat veranderde er aan het rijgedrag?"}
+  ]
 }

@@ -17,10 +17,10 @@ test('malformed, excessive or unrecognised answers reject the imported file',()=
  const answer='<script>do not run</script>';
  assert.equal(validateLessonNotes({play:{prediction:answer,reflection:'',nextTry:''}})?.play?.prediction,answer);
 });
-test('lesson subpages restore through deep links and are cleared when leaving Flappy',()=>{
+test('lesson subpages restore for both games and are cleared outside lessons',()=>{
  assert.deepEqual(readRoute(new URL('https://example.test/tool/?view=flappy&step=teach&lesson=after')),{page:'flappy',step:'teach',lesson:'after'});
  assert.deepEqual(readRoute(new URL('https://example.test/tool/?view=flappy&step=play&lesson=unknown')),{page:'flappy',step:'play'});
- assert.deepEqual(readRoute(new URL('https://example.test/tool/?view=car&step=play&lesson=after')),{page:'car',step:'play'});
+ assert.deepEqual(readRoute(new URL('https://example.test/tool/?view=car&step=play&lesson=after')),{page:'car',step:'play',lesson:'after'});
  const current=new URL('https://example.test/aiindeklas/zelflerende-games/?view=flappy&step=teach&lesson=after&theme=test');
  assert.equal(routeUrl(current,'flappy','practice','experiment'),'/aiindeklas/zelflerende-games/?view=flappy&step=practice&lesson=experiment&theme=test');
  assert.equal(routeUrl(current,'car','play'),'/aiindeklas/zelflerende-games/?view=car&step=play&theme=test');

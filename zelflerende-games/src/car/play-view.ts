@@ -3,6 +3,7 @@ import { CarEnvironment,type CarEpisodeResult } from './environment.ts';
 import type { CarAction } from './config.ts';
 import type { EnvironmentStep } from '../core/contracts.ts';
 import { advanceFixedFrame } from '../core/fixed-step.ts';
+import { mountVehicleChoice } from './vehicle-art.ts';
 import { createCarRenderer } from './renderer.ts';import { createCarInput } from '../input/car-input.ts';
 import { readGamepad } from '../input/gamepad.ts';import { updateInputStatus } from '../input/input-status-view.ts';
 export interface CarPlayOptions {
@@ -29,7 +30,7 @@ export function mountCarPlayView(root:HTMLElement,options:CarPlayOptions){
   let phase:'ready'|'running'|'paused'|'finished'='ready',disposed=false,raf:number|undefined,last:number|undefined,accumulator=0;
   const input=createCarInput({canvas,enabled:()=>phase==='running'&&!options.controller});
   const stop=()=>{if(raf!==undefined)cancelAnimationFrame(raf);raf=undefined;last=undefined;accumulator=0;input.reset();};
-  const render=()=>{renderer.render(env.world,q<HTMLInputElement>('#car-sensors').checked);q('#car-score').textContent=`${env.world.progress.laps} ronde · ${(env.world.progress.bestDistance/env.route.length*100).toFixed(1)}% route · ${(env.world.steps/60).toFixed(1)} s · snelheid ${Math.round(env.world.car.speed)} eenheden/s`;if(options.controller)q('#car-input-status').textContent='Automatische besturing.';else updateInputStatus(q('#car-input-status'),readGamepad());};
+  const render=()=>{renderer.render(env.world,q<HTMLInputElement>('#car-sensors').checked,env.completedResult);q('#car-score').textContent=`${env.world.progress.laps} ronde · ${(env.world.progress.bestDistance/env.route.length*100).toFixed(1)}% route · ${(env.world.steps/60).toFixed(1)} s · snelheid ${Math.round(env.world.car.speed)} eenheden/s`;if(options.controller)q('#car-input-status').textContent='Automatische besturing.';else updateInputStatus(q('#car-input-status'),readGamepad());};
   const fresh=()=>{stop();seed=options.getSeed?.()??1000;env.reset({seed});phase='ready';options.onEpisodeStart?.(seed);start.disabled=false;start.textContent='Start rijden';pause.disabled=true;pause.textContent='Pauzeer rijden';status.textContent='Klaar voor een nieuwe poging.';render();};
   const frame=(time:number)=>{if(phase!=='running'||disposed)return;const delta=last===undefined?0:time-last;last=time;
     let observation:readonly number[]=[];
@@ -44,6 +45,7 @@ export function mountCarPlayView(root:HTMLElement,options:CarPlayOptions){
   start.onclick=begin;pause.onclick=pauseRun;q<HTMLButtonElement>('#car-reset').onclick=fresh;q<HTMLInputElement>('#car-sensors').onchange=render;
   window.addEventListener('blur',pauseRun);const visibility=()=>{if(document.hidden)pauseRun();};document.addEventListener('visibilitychange',visibility);
   fresh();
+  const vehicleChoice=mountVehicleChoice(root.querySelector('.car-play')!,render);canvas.before(root.querySelector('.car-play')!.lastElementChild!);
   const initialPaint=requestAnimationFrame(()=>{if(!disposed)render();});
-  return{getEnvironment:()=>env,dispose(){disposed=true;cancelAnimationFrame(initialPaint);stop();input.dispose();renderer.dispose();window.removeEventListener('blur',pauseRun);document.removeEventListener('visibilitychange',visibility);root.replaceChildren();}};
+  return{getEnvironment:()=>env,dispose(){disposed=true;cancelAnimationFrame(initialPaint);stop();input.dispose();vehicleChoice.dispose();renderer.dispose();window.removeEventListener('blur',pauseRun);document.removeEventListener('visibilitychange',visibility);root.replaceChildren();}};
 }
