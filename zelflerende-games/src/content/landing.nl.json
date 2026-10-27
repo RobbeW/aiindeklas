@@ -3,19 +3,17 @@
     "Kan jij een computer",
     "leren spelen?"
   ],
-  "intro": "Begin met Flappy Bird. Speel zelf, toon hoe jij het aanpakt en laat de computer verder oefenen. Stap daarna over naar de raceauto. Bouw een circuit en ontdek hoe verschillende AI-modellen het tegen elkaar opnemen.",
+  "intro": "Leerlingen spelen, doen het voor en laten de computer oefenen. Met Flappy Bird en een raceauto onderzoeken ze hoe voorbeelden, beloningen en selectie de prestaties veranderen.",
   "games": [
     {
       "id": "flappy",
       "title": "Flappy Bird",
-      "body": "Kan jij een ongetraind AI-model verslaan? Laat de computer daarna meekijken terwijl jij speelt. Verzamel voorbeelden, train jouw model en laat het verder oefenen met beloningen en straffen. Wie wint er als jullie opnieuw spelen?",
-      "note": "De vogels oefenen samen met één AI-model."
+      "body": "Kan jij een ongetraind AI-model verslaan? Laat de computer daarna meekijken terwijl jij speelt. Verzamel voorbeelden, train jouw model en laat het verder oefenen met beloningen en straffen. Wie wint er als jullie opnieuw spelen?"
     },
     {
       "id": "car",
       "title": "Raceauto",
-      "body": "Rijd zelf en bouw een eigen circuit met rechte stukken en bochten. Combineer aangeboden banen en je eigen circuits in een oefenreeks. Laat de auto’s racen: de beste modellen vormen de basis voor nieuwe generaties. Wat zou Darwin hiervan vinden?",
-      "note": "Elke auto heeft een eigen AI-model."
+      "body": "Rijd zelf en bouw een eigen circuit met rechte stukken en bochten. Combineer aangeboden banen en je eigen circuits in een oefenreeks. Laat de auto’s racen: de beste modellen vormen de basis voor nieuwe generaties. Wat zou Darwin hiervan vinden?"
     }
   ],
   "path": [
@@ -47,7 +45,7 @@
     {
       "game": "Raceauto",
       "title": "Laat generaties racen.",
-      "body": "Elke auto heeft een eigen AI-model en rijdt dezelfde oefenreeks. We bewaren het beste model en maken nieuwe varianten."
+      "body": "Laat de auto’s dezelfde oefenreeks rijden. Selecteer de beste modellen en test hun nakomelingen op een andere baan."
     }
   ],
   "teacher": {
@@ -62,8 +60,7 @@
     "classroom": "Laat leerlingen eerst voorspellen wie zal winnen. Test daarna de verschillende modellen onder dezelfde omstandigheden. Bespreek wat ze zagen en waardoor het resultaat kan verschillen."
   },
   "closing": {
-    "title": "Gewoon beginnen.",
-    "body": "Eén knop is genoeg om te beginnen. Kan jij een AI-model Flappy Bird aanleren?"
+    "title": "Gewoon beginnen."
   },
   "literacy": {
     "title": "Wat oefenen leerlingen hiermee?",

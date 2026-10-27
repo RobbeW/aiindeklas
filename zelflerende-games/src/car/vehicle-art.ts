@@ -56,7 +56,7 @@ export function drawCollisionFlame(ctx:CanvasRenderingContext2D,x:number,y:numbe
   ctx.save();ctx.translate(x,y);ctx.beginPath();ctx.moveTo(0,10);ctx.bezierCurveTo(-12,7,-10,-3,-5,-8);ctx.lineTo(-4,-2);ctx.bezierCurveTo(-1,-5,0,-10,1,-14);ctx.bezierCurveTo(4,-8,11,-4,9,4);ctx.bezierCurveTo(8,8,4,10,0,10);ctx.fillStyle='#e95300';ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();ctx.fill();ctx.beginPath();ctx.moveTo(0,7);ctx.bezierCurveTo(-5,6,-4,1,0,-4);ctx.bezierCurveTo(1,0,5,2,4,5);ctx.bezierCurveTo(3,7,1,8,0,7);ctx.fillStyle='#ffdb36';ctx.fill();ctx.restore();
 }
 export function mountVehicleChoice(root:HTMLElement,onChange:()=>void){
-  const container=document.createElement('div');container.className='toolbar';
+  const container=document.createElement('div');container.className='toolbar vehicle-choice';
   const label=document.createElement('label');label.textContent='Uiterlijk van de auto';
   const select=document.createElement('select');for(const choice of VEHICLE_CHOICES){const option=document.createElement('option');option.value=choice.id;option.textContent=choice.label;select.append(option);}label.append(select);
   const preview=document.createElement('canvas');preview.width=64;preview.height=44;preview.setAttribute('aria-hidden','true');preview.style.width='64px';preview.style.height='44px';

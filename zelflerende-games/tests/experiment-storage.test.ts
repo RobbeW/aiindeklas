@@ -137,3 +137,13 @@ test('a save queued after deletion remains newest; cleanup failure is explicit a
  let release!:()=>void;db.gate=new Promise<void>(r=>release=r);const deletion=store.remove('flappy');store.save(newer);release();assert.equal(await deletion,false);await settled(store);assert.equal((store.read('flappy')!.payload as FlappyLearningState).human.length,1);assert.equal((parseExperiment(db.values.get('flappy')!).payload as FlappyLearningState).human.length,1);
  local.setItem(experimentKey('flappy'),serializeExperiment(newer));local.failRemove=true;assert.equal(await store.remove('flappy'),false);assert.match(store.error,/Wissen mislukt/);assert.equal(store.read('flappy')?.game,'flappy');store.retry();await settled(store);assert.equal(store.read('flappy')?.game,'flappy');local.failRemove=false;assert.equal(await store.remove('flappy'),true);assert.equal(local.getItem(experimentKey('flappy')),null);
 });
+
+test('legacy car snapshots, recordings and evaluation survive experiment import',()=>{
+ const recorder=new CarEpisodeRecorder(carDoc,'car-world-v1');recorder.start('old',1001);while(!recorder.completedEpisode)recorder.step(0);
+ const initial=createCarSnapshot(new CarPolicy(22,undefined,'car-world-v1'),'initial');
+ const imitation=createCarSnapshot(new CarPolicy(23,undefined,'car-world-v1'),'imitation',{supervisedUpdates:7});
+ const experiment=createExperiment('car',{document:carDoc,teach:{episodes:[recorder.completedEpisode],initial,imitation,stale:false},records:[carRecord]} as never);
+ const restored=parseExperiment(serializeExperiment(experiment),'car').payload as CarLearningState;
+ assert.deepEqual(restored.teach!.initial,initial);assert.deepEqual(restored.teach!.imitation,imitation);
+ assert.deepEqual(restored.teach!.episodes[0],recorder.completedEpisode);assert.equal(restored.records[0]!.configVersion,'car-world-v1');
+});

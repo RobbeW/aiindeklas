@@ -1,4 +1,4 @@
-import { CAR_CONFIG, type CarAction } from './config.ts';
+import { CAR_CONFIG, type CarWorldVersion, type CarAction } from './config.ts';
 import { CarEnvironment, type CarEpisodeResult } from './environment.ts';
 import { validateCircuit, trackIdentity, type CircuitDocument } from '../tracks/document.ts';
 import { assertTrainingTrack } from '../tracks/catalog.ts';
@@ -10,7 +10,7 @@ export type CarEpisodeSource = 'human' | 'synthetic_reference';
 export interface CarEpisodeFrame { readonly step:number; readonly observation:readonly number[]; readonly action:CarAction; }
 export interface CarEpisode {
   readonly version:typeof CAR_EPISODE_VERSION; readonly game:'car'; readonly id:string; readonly seed:number;
-  readonly worldVersion:typeof CAR_CONFIG.version; readonly observationVersion:typeof CAR_CONFIG.observationVersion;
+  readonly worldVersion:CarWorldVersion; readonly observationVersion:typeof CAR_CONFIG.observationVersion;
   readonly trackId:string; readonly trackIdentity:string; readonly circuit:CircuitDocument;
   readonly source:CarEpisodeSource; readonly frames:readonly CarEpisodeFrame[];
   readonly durationSeconds:number; readonly result:CarEpisodeResult;
@@ -19,7 +19,7 @@ const finite=(n:unknown):n is number=>typeof n==='number'&&Number.isFinite(n);
 export function validateCarEpisode(value:unknown):CarEpisode {
   if(!value||typeof value!=='object')throw new Error('Car episode required');
   const e=value as CarEpisode;
-  if(e.game!=='car'||e.version!==CAR_EPISODE_VERSION||e.worldVersion!==CAR_CONFIG.version||e.observationVersion!==CAR_CONFIG.observationVersion)throw new Error('Incompatible car episode or bird data');
+  if(e.game!=='car'||e.version!==CAR_EPISODE_VERSION||!['car-world-v1','car-world-v2'].includes(e.worldVersion)||e.observationVersion!==CAR_CONFIG.observationVersion)throw new Error('Incompatible car episode or bird data');
   if(typeof e.id!=='string'||!e.id.trim()||!Number.isSafeInteger(e.seed))throw new Error('Invalid episode identity or seed');
   if(e.source!=='human'&&e.source!=='synthetic_reference')throw new Error('Invalid car episode source');
   const circuit=validateCircuit(e.circuit), identity=trackIdentity(circuit);
@@ -47,7 +47,7 @@ export function splitCarEpisodes(episodes:readonly CarEpisode[]):{readonly train
 export class CarEpisodeRecorder {
   readonly environment:CarEnvironment; readonly circuit:CircuitDocument; readonly trackIdentity:string;
   private frames:CarEpisodeFrame[]=[]; private metadata:{id:string;seed:number;source:CarEpisodeSource}|undefined; private saved:CarEpisode|undefined;
-  constructor(document:CircuitDocument){this.circuit=validateCircuit(document);this.trackIdentity=trackIdentity(this.circuit);this.environment=new CarEnvironment(this.circuit);}
+  constructor(document:CircuitDocument,worldVersion?:CarWorldVersion){this.circuit=validateCircuit(document);this.trackIdentity=trackIdentity(this.circuit);this.environment=new CarEnvironment(this.circuit,worldVersion);}
   start(id:string,seed:number,source:CarEpisodeSource='human'){
     if(!id.trim()||!Number.isSafeInteger(seed)||!['human','synthetic_reference'].includes(source))throw new Error('Invalid car episode identity/source');
     this.environment.reset({seed});this.metadata={id,seed,source};this.frames=[];this.saved=undefined;
@@ -57,16 +57,16 @@ export class CarEpisodeRecorder {
     if(![0,1,2].includes(action))throw new Error('Invalid car action');
     const frame=Object.freeze({step:this.frames.length,observation:Object.freeze([...this.environment.getObservation()]),action});
     const transition=this.environment.step(action);this.frames.push(frame);
-    if(transition.done&&transition.result){const meta=this.metadata;this.saved=Object.freeze({version:CAR_EPISODE_VERSION,game:'car',...meta,worldVersion:CAR_CONFIG.version,observationVersion:CAR_CONFIG.observationVersion,trackId:this.trackIdentity,trackIdentity:this.trackIdentity,circuit:this.circuit,frames:Object.freeze([...this.frames]),durationSeconds:this.frames.length*CAR_CONFIG.dt,result:transition.result});validateCarEpisode(this.saved);}
+    if(transition.done&&transition.result){const meta=this.metadata;this.saved=Object.freeze({version:CAR_EPISODE_VERSION,game:'car',...meta,worldVersion:this.environment.config.version,observationVersion:CAR_CONFIG.observationVersion,trackId:this.trackIdentity,trackIdentity:this.trackIdentity,circuit:this.circuit,frames:Object.freeze([...this.frames]),durationSeconds:this.frames.length*CAR_CONFIG.dt,result:transition.result});validateCarEpisode(this.saved);}
     return transition;
   }
   get completedEpisode(){return this.saved;}
 }
 
 /** Privileged route-following worked example. Labels are provenance, never learned-policy output. */
-export function generateCarReferenceEpisode(document:CircuitDocument,seed:number,source:CarEpisodeSource='synthetic_reference'):CarEpisode {
+export function generateCarReferenceEpisode(document:CircuitDocument,seed:number,source:CarEpisodeSource='synthetic_reference',worldVersion?:CarWorldVersion):CarEpisode {
   if(source!=='synthetic_reference')throw new Error('Reference episodes must be labelled synthetic_reference');
-  const rec=new CarEpisodeRecorder(document);rec.start(`car-reference-${seed}-${rec.trackIdentity}`,seed,source);
+  const rec=new CarEpisodeRecorder(document,worldVersion);rec.start(`car-reference-${seed}-${rec.trackIdentity}`,seed,source);
   for(let i=0;i<1800;i++){const env=rec.environment, target=pointAtDistance(env.route,env.world.progress.bestDistance+25),car=env.world.car;
     const error=Math.atan2(Math.sin(Math.atan2(target.y-car.y,target.x-car.x)-car.heading),Math.cos(Math.atan2(target.y-car.y,target.x-car.x)-car.heading));
     const action:CarAction=error>.04?2:error<-.04?1:0;if(rec.step(action).done)break;

@@ -17,3 +17,11 @@ test('route reference follows actual car environment to one complete lap and rej
   const control=generateCarReferenceEpisode(doc,2000);assert.deepEqual(splitCarEpisodes([training,control]).training,[training]);assert.deepEqual(splitCarEpisodes([training,control]).control,[control]);
   const reserved=fixtureCircuit('long-loop');assert.throws(()=>generateCarReferenceEpisode(reserved,1001),/reserved|training/i);
 });
+
+test('legacy recorded episodes survive import and replay with their original physics',()=>{
+ const doc=teachingLoop(),episode=generateCarReferenceEpisode(doc,1001,'synthetic_reference','car-world-v1');
+ assert.equal(episode.frames.length,838);assert.equal(episode.worldVersion,'car-world-v1');
+ const imported=validateCarEpisode(structuredClone(episode));const replay=new CarEpisodeRecorder(doc,imported.worldVersion);replay.start(imported.id,imported.seed,imported.source);
+ for(const frame of imported.frames){assert.deepEqual(replay.environment.getObservation(),frame.observation);replay.step(frame.action);}
+ assert.deepEqual(replay.completedEpisode,imported);
+});

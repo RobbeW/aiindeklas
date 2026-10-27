@@ -1,3 +1,4 @@
+import { mountGameFullscreen } from '../ui/game-fullscreen.ts';
 import { createFlappyInput } from "../input/flappy-input.ts";
 import { advanceFlappyFrame } from "./play-view.ts";
 import { createFlappyRenderer } from "./renderer.ts";
@@ -89,6 +90,10 @@ export async function mountFlappyDuelView(
     style.remove();
     throw new Error("Flappy duel view could not create its required controls.");
   }
+
+  const game = root.querySelector<HTMLElement>('.duel-stage')!; game.classList.add('game-fullscreen');
+  const fullscreen = documentRef.createElement('button'); fullscreen.type = 'button'; fullscreen.className = 'secondary game-fullscreen-button'; game.querySelector('.toolbar')!.append(fullscreen);
+  const fullscreenControl = mountGameFullscreen(game, fullscreen, message => { status.textContent = message; });
 
   const session = new FlappyDuelSession();
   let snapshot: DuelSnapshot = session.snapshot;
@@ -286,6 +291,7 @@ export async function mountFlappyDuelView(
     dispose(): void {
       if (disposed) return;
       disposed = true;
+      fullscreenControl.dispose();
       stopFrame();
       input.dispose();
       startButton.removeEventListener("click", onStart);

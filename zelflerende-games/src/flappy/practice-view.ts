@@ -1,3 +1,4 @@
+import { mountGameFullscreen } from '../ui/game-fullscreen.ts';
 import {WorkerJobClient,WorkerJobCancelledError} from '../core/worker-client.ts';
 import {type ParallelPracticeInput,type ParallelPracticeProgress,type ParallelPracticeResult,PARALLEL_ROUND_OPTIONS,parallelPracticeMode} from '../learning/parallel-practice.ts';
 import type {PolicySnapshot} from '../learning/policy-snapshot.ts';
@@ -30,6 +31,7 @@ export async function mountFlappyPracticeView(root:HTMLElement,options:PracticeV
  const agents=q<HTMLSelectElement>('#practice-agents'),rounds=q<HTMLSelectElement>('#practice-budget'),speed=q<HTMLSelectElement>('#practice-speed'),status=q('#practice-status'),bar=q<HTMLProgressElement>('#practice-progress');
  const test=q<HTMLButtonElement>('.practice-test-model');
  const renderer=await createFlappyFlockRenderer(q<HTMLCanvasElement>('.parallel-canvas'));
+ const game=document.createElement('div');game.className='game-fullscreen';q('.parallel-practice').append(game);const fullscreen=document.createElement('button');fullscreen.type='button';fullscreen.className='secondary game-fullscreen-button';game.append(fullscreen,q('.parallel-practice > .toolbar'),q('#practice-origin'),q('.parallel-model-check'),q('.parallel-fast-note'),q('.parallel-fast-result'),q('.parallel-layout'));const fullscreenControl=mountGameFullscreen(game,fullscreen,message=>{status.textContent=message;});
  const client=new WorkerJobClient<ParallelPracticeInput,ParallelPracticeProgress,ParallelPracticeResult>(()=>new Worker(new URL('../workers/parallel-practice.worker.ts',import.meta.url),{type:'module'}));
  let source:PolicySnapshot|undefined,latest:PracticeProgress|undefined,result:ParallelPracticeResult|undefined,current:ParallelPracticeProgress|undefined;
  let active=false,paused=false,disposed=false,epoch=0,baseSteps=0,baseElapsed=0;
@@ -110,6 +112,6 @@ export async function mountFlappyPracticeView(root:HTMLElement,options:PracticeV
    q('.parallel-attempts').textContent=String(p.episodes);q('.parallel-time').textContent=`${seconds(p.elapsedMs)} s`;status.textContent='De vorige training is bewaard. Je kunt verder oefenen.';idle();
   },
   getProgress:()=>latest,getResult:()=>result,
-  dispose(){disposed=true;epoch++;client.dispose();gym.dispose();renderer.dispose();window.removeEventListener('blur',blur);document.removeEventListener('visibilitychange',visibility);root.replaceChildren();}
+  dispose(){fullscreenControl.dispose();disposed=true;epoch++;client.dispose();gym.dispose();renderer.dispose();window.removeEventListener('blur',blur);document.removeEventListener('visibilitychange',visibility);root.replaceChildren();}
  };
 }

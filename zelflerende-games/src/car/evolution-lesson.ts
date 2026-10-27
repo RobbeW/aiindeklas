@@ -48,7 +48,7 @@ const phases = [
 ];
 
 /** Drawing-only explanation of selection and inheritance; it does not measure learning. */
-export function mountEvolutionLesson(root: HTMLElement, options: { onContinue: () => void }): { setActive(active: boolean): void; dispose(): void } {
+export function mountEvolutionLesson(root: HTMLElement, options: { onContinue: () => void; manualTimeline?:boolean }): { setActive(active: boolean): void; setPhase(phase:number):void; dispose(): void } {
   const doc = root.ownerDocument;
   const win = doc.defaultView;
   const media = win?.matchMedia('(prefers-reduced-motion: reduce)');
@@ -79,7 +79,7 @@ export function mountEvolutionLesson(root: HTMLElement, options: { onContinue: (
   let onscreen = !(win && typeof win.IntersectionObserver === 'function');
   let disposed = false;
   let timer: number | undefined;
-  let playing = !reducedMotion;
+  let playing = !reducedMotion&&!options.manualTimeline;
   const stop = (): void => { if (timer !== undefined) win?.clearTimeout(timer); timer = undefined; view.dataset.animation = 'paused'; };
   const render = (manual = false): void => {
     view.dataset.phase = String(phase);
@@ -114,6 +114,7 @@ export function mountEvolutionLesson(root: HTMLElement, options: { onContinue: (
   observer?.observe(view);
   render(); schedule();
   return {
+    setPhase(next:number):void {if(!Number.isInteger(next)||next<0||next>=phases.length)throw new RangeError('Unknown explanation phase');if(disposed||phase===next)return;phase=next;render();},
     setActive(next: boolean): void { if (disposed || active === next) return; active = next; if (active) schedule(); else stop(); },
     dispose(): void {
       if (disposed) return;

@@ -64,3 +64,12 @@ test('rejects invalid observations, actions, and parameter values', () => {
   assert.throws(() => p.lossAndGradient([0, 0, 0, 0, 0, 0], 3));
   assert.throws(() => p.setParameters(Array(83).fill(Infinity)));
 });
+
+test('legacy snapshots retain their world and reject mismatched normalization',()=>{
+ const legacy=createCarSnapshot(new CarPolicy(8,undefined,'car-world-v1'),'imitation',{sources:['old'],supervisedUpdates:3});
+ const roundtrip=createCarSnapshot(restoreCarSnapshot(structuredClone(legacy)),legacy.stage,legacy.training);
+ assert.deepEqual(roundtrip,legacy);assert.equal(roundtrip.normalization.maxSpeed,55);
+ const current=createCarSnapshot(new CarPolicy(8),'initial');assert.equal(current.normalization.maxSpeed,90);
+ assert.throws(()=>validateCarSnapshot({...legacy,normalization:{rayRange:150,maxSpeed:90}}));
+ assert.throws(()=>validateCarSnapshot({...current,normalization:{rayRange:150,maxSpeed:55}}));
+});

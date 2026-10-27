@@ -1,11 +1,13 @@
 import './styles/base.css';
+import {mountShowFloor} from './demo/view.ts';
 import { mountAppRouter } from './app/router.ts';
 import { mountCircuitWorkshop } from './tracks/workshop-view.ts';
 const root=document.querySelector<HTMLElement>('#app');
 const ready=()=>{root?.removeAttribute('inert');root?.removeAttribute('aria-busy');document.querySelector('#loading-splash')?.remove();};
 async function start(){
  if(!root)return;
- if(new URLSearchParams(location.search).get('view')==='editor'){
+ if(new URLSearchParams(location.search).get('demo')==='1'){await mountShowFloor(root);}
+ else if(new URLSearchParams(location.search).get('view')==='editor'){
   const workshop=mountCircuitWorkshop(root),fixture=new URLSearchParams(location.search).get('fixture');
   if(fixture&&['teaching-loop','long-loop','unseen-bends'].includes(fixture)){
    const response=await fetch(`${import.meta.env.BASE_URL}tracks/${fixture}.json`);if(!response.ok)throw new Error('Circuitvoorbeeld ontbreekt');workshop.loadDocument(await response.json());

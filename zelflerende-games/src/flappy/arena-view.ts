@@ -1,3 +1,4 @@
+import { mountGameFullscreen } from '../ui/game-fullscreen.ts';
 import {ArenaControllers,type ArenaInputMode,type ArenaPad} from '../input/arena-controllers.ts';
 import {advanceFixedFrame} from '../core/fixed-step.ts';
 import type {PolicySnapshot} from '../learning/policy-snapshot.ts';
@@ -74,11 +75,9 @@ export async function mountFlappyArenaView(root:HTMLElement,options:{snapshot?:P
  };
  start.onclick=beginCountdown;resume.onclick=beginCountdown;pauseButton.onclick=()=>pause('De wedstrijd is gepauzeerd.');
  q<HTMLButtonElement>('.arena-new').onclick=()=>enterLobby(true);q<HTMLButtonElement>('.arena-rematch').onclick=()=>enterLobby(false);q<HTMLButtonElement>('.arena-keyboard').onclick=keyboardToggle;
- const fullscreen=q<HTMLButtonElement>('.arena-fullscreen');fullscreen.hidden=!document.fullscreenEnabled;
- fullscreen.onclick=()=>{void (document.fullscreenElement?document.exitFullscreen():arena.requestFullscreen()).catch(()=>tell('Volledig scherm lukt niet. Je kunt in dit venster verder spelen.'));};
- const onFullscreen=()=>{fullscreen.textContent=document.fullscreenElement===arena?'Verlaat volledig scherm':'Volledig scherm';};
+ const fullscreen=q<HTMLButtonElement>('.arena-fullscreen');const game=document.createElement('div');game.className='game-fullscreen';arena.append(game);game.append(fullscreen,q('.arena-toolbar'),q('.arena-results'),q('.arena-stage'),q('.arena-bottom'));const fullscreenControl=mountGameFullscreen(game,fullscreen,tell);
  const keydown=(e:KeyboardEvent)=>{
-  if(e.key==='Escape'&&(phase==='running'||phase==='countdown')){e.preventDefault();pause('De wedstrijd is gepauzeerd.');return;}
+  if(e.key==='Escape'&&(phase==='running'||phase==='countdown')){if(document.fullscreenElement!==game)e.preventDefault();pause('De wedstrijd is gepauzeerd.');return;}
   const key=e.key.toLowerCase();if(!keyboard||!keys.includes(key)||e.repeat)return;
   if((e.target as HTMLElement)?.matches('input,textarea,select'))return;held.add(key);tapped.add(key);e.preventDefault();
  };
@@ -119,12 +118,12 @@ export async function mountFlappyArenaView(root:HTMLElement,options:{snapshot?:P
   }catch(error){if(session.snapshot.phase==='running')session.pause();phase='paused';arena.dataset.phase=phase;overlay.hidden=false;count.textContent='Spelen lukt niet';pauseDetail.textContent=error instanceof Error?error.message:String(error);resume.hidden=true;pauseButton.hidden=true;tell('Spelen lukt niet. Ga terug naar een andere oefening en probeer opnieuw.');return;}
   frame=requestAnimationFrame(tick);
  };
- window.addEventListener('keydown',keydown);window.addEventListener('keyup',keyup);window.addEventListener('blur',onBlur);document.addEventListener('visibilitychange',onVisibility);document.addEventListener('fullscreenchange',onFullscreen);
+ window.addEventListener('keydown',keydown);window.addEventListener('keyup',keyup);window.addEventListener('blur',onBlur);document.addEventListener('visibilitychange',onVisibility);
  try{
   const loadedRenderers=await Promise.allSettled(panels.map((p,i)=>createFlappyRenderer(p.querySelector<HTMLCanvasElement>('.arena-canvas')!,{birdColour:colours[i]})));
   renderers=loadedRenderers.flatMap(result=>result.status==='fulfilled'?[result.value]:[]);
   const failed=loadedRenderers.find(r=>r.status==='rejected');if(failed?.status==='rejected')throw failed.reason;
   loaded=true;panels.forEach((panel,i)=>panel.querySelector('.arena-canvas')!.setAttribute('aria-label',`Speelveld ${names[ids[i]!]}`));panels[3]!.classList.add('is-ready','is-joined');showSeats();paint();tell('Pak een controller en druk op A om mee te doen.');frame=requestAnimationFrame(tick);
- }catch(e){renderers.forEach(r=>r.dispose());window.removeEventListener('keydown',keydown);window.removeEventListener('keyup',keyup);window.removeEventListener('blur',onBlur);document.removeEventListener('visibilitychange',onVisibility);document.removeEventListener('fullscreenchange',onFullscreen);throw e;}
- return{dispose(){disposed=true;cancelAnimationFrame(frame);renderers.forEach(r=>r.dispose());window.removeEventListener('keydown',keydown);window.removeEventListener('keyup',keyup);window.removeEventListener('blur',onBlur);document.removeEventListener('visibilitychange',onVisibility);document.removeEventListener('fullscreenchange',onFullscreen);if(document.fullscreenElement===arena)void document.exitFullscreen().catch(()=>{});root.replaceChildren();}};
+ }catch(e){fullscreenControl.dispose();renderers.forEach(r=>r.dispose());window.removeEventListener('keydown',keydown);window.removeEventListener('keyup',keyup);window.removeEventListener('blur',onBlur);document.removeEventListener('visibilitychange',onVisibility);throw e;}
+ return{dispose(){disposed=true;cancelAnimationFrame(frame);renderers.forEach(r=>r.dispose());window.removeEventListener('keydown',keydown);window.removeEventListener('keyup',keyup);window.removeEventListener('blur',onBlur);document.removeEventListener('visibilitychange',onVisibility);fullscreenControl.dispose();root.replaceChildren();}};
 }

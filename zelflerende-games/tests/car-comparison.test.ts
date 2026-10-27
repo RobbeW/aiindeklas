@@ -3,6 +3,9 @@ import assert from 'node:assert/strict';
 import { teachingLoop, fixtureCircuit } from './fixtures/circuits.ts';
 import { compareCarLearning } from '../src/car/evolution-comparison.ts';
 import { CarPolicy, createCarSnapshot } from '../src/car/policy-adapter.ts';
+import { evaluateCar } from '../src/car/comparison-adapter.ts';
+import { CarEnvironment } from '../src/car/environment.ts';
+import { restoreCarSnapshot } from '../src/car/policy-adapter.ts';
 import { validateEvaluationRecord } from '../src/evaluation/records.ts';
 
 const model = (stage: 'imitation' | 'post_rl' | 'evolution', budget = {}) =>
@@ -46,4 +49,14 @@ test('allows a reserved final circuit only when both call and route explicitly o
   assert.equal(records[0]!.mode, 'final');
   assert.equal(records[0]!.seed, 3000);
   assert.equal(validateEvaluationRecord(records[0]).sequenceId, records[0]!.sequenceId);
+});
+
+test('evaluation uses the saved model world and records its actual version',()=>{
+ for(const version of ['car-world-v1','car-world-v2'] as const){
+  const snapshot=createCarSnapshot(new CarPolicy(77,undefined,version),'imitation');
+  const record=evaluateCar(snapshot,teachingLoop());const env=new CarEnvironment(teachingLoop(),version),policy=restoreCarSnapshot(snapshot);
+  env.reset({seed:2005});while(!env.completedResult)env.step(policy.action(env.getObservation()));
+  assert.equal(record.configVersion,version);assert.equal(record.result.survivalSteps,env.completedResult.survivalSteps);
+  assert.equal(record.result.totalReward,env.completedResult.totalReward);
+ }
 });

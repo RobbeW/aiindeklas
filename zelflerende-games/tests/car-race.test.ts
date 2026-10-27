@@ -36,3 +36,13 @@ test('held join buttons are not recycled and a disconnected controller never dri
  assert.equal(input.ready([pad(0,false,'other-device')]),false);assert.deepEqual(input.controls(new Set(),[pad(0,false,'other-device')]),[still]);
  const before=[...input.bindings];input.poll([null,pad(1,true)],false);assert.deepEqual(input.bindings,before);
 });
+
+test('race uses the model profile for every independent racer',()=>{
+ for(const version of ['car-world-v1','car-world-v2'] as const){
+  const snapshot=createCarSnapshot(new CarPolicy(29,undefined,version),'evolution',{generations:1});
+  const race=new CarRaceSession(teachingLoop(),snapshot,1);race.start();race.step([go]);
+  const expected=version==='car-world-v1'?20/60:1;
+  assert.equal(race.racers[0]!.world.car.speed,expected);assert.equal(race.racers[1]!.world.car.speed,expected);
+  assert.deepEqual(race.model,snapshot);
+ }
+});

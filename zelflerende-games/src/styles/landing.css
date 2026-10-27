@@ -1,5 +1,5 @@
 .app-shell.is-landing { max-width: none; padding: 0; }
-.app-shell.is-landing > .app-navigation,.app-shell.is-landing > .app-storage,.app-shell.is-landing > footer { display: none; }
+.app-shell.is-landing > .app-navigation,.app-shell.is-landing > .toolbar,.app-shell.is-landing > footer { display: none; }
 .landing-page { color: var(--ink); background: var(--bg); font-family: system-ui,-apple-system,"Segoe UI",sans-serif; }
 .landing-page a { text-decoration: none; }
 .landing-page a:focus-visible,.landing-page button:focus-visible { outline: 3px solid var(--brand-purple-dark); outline-offset: 4px; }
@@ -47,7 +47,6 @@
 .landing-page .lp-preview-route { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 0 12px 14px; }
 .landing-page .lp-preview-route span { padding: 6px 9px; background: #ffffff10; border-radius: 8px; color: #e2ddea; font-size: 12px; }
 .landing-page .lp-preview-route span:first-child { color: var(--ink); background: var(--brand-aqua); }
-.landing-page .lp-preview figcaption { text-align: center; margin: 12px 0 0; font-size: 12px; color: #c4bacf; }
 .landing-page .lp-kicker { margin: 0 0 10px; text-transform: uppercase; font-size: 12px; letter-spacing: .12em; font-weight: 750; color: var(--brand-purple-dark); }
 .landing-page .lp-section h2 { margin: 0 0 14px; font-size: clamp(29px,3.8vw,44px); line-height: 1.08; letter-spacing: -.03em; color: var(--brand-purple-dark); }
 .landing-page .lp-section h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.25; letter-spacing: -.015em; }
@@ -84,7 +83,6 @@
 .landing-page .lp-last-section { padding-top: 16px; }
 .landing-page .lp-closing { background: var(--brand-purple-dark); color: white; padding: 36px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; gap: 28px; }
 .landing-page .lp-closing h2 { color: white; font-size: 32px; }
-.landing-page .lp-closing p { margin: 0; max-width: 650px; font-size: 16px; line-height: 1.6; }
 .landing-page .lp-closing .lp-button { flex-shrink: 0; }
 .landing-page .lp-footer { max-width: 1180px; margin: auto; padding: 30px 22px 40px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .landing-page .lp-footer strong { font-size: 16px; }
@@ -137,11 +135,9 @@
 @media(prefers-reduced-motion:reduce){.landing-page .lp-button{transition:none}.landing-page .lp-button:hover{transform:none}}
 
 .landing-page .lp-hero-copy > .lp-kicker { margin: 0 0 18px; color: var(--brand-purple-dark); font-size: 12px; }
-.landing-page .lp-hero-copy > .lp-practical { margin-top: 18px; font-size: 14px; }
 .landing-page .lp-bird-scene .lp-bird-0 { top: 30%; left: 14%; opacity: .45; }
 .landing-page .lp-bird-scene .lp-bird-1 { top: 48%; left: 25%; }
 .landing-page .lp-bird-scene .lp-bird-2 { top: 62%; left: 8%; opacity: .65; }
-.landing-page .lp-game-copy .lp-model-note { color: var(--brand-purple-dark); font-weight: 700; padding-left: 12px; border-left: 3px solid var(--brand-purple); }
 .landing-page .lp-path li { border-radius: 0 0 12px 12px; border-right: 0; }
 .landing-page .lp-anchor { display: block; scroll-margin-top: 100px; }
 @media (max-width:600px) {

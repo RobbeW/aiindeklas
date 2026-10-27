@@ -19,7 +19,7 @@ export class CarRaceSession {
   this.model=validateCarSnapshot(model);
   if(this.model.stage==='initial')throw new Error('Train an AI model before racing');
   this.policy=restoreCarSnapshot(this.model);
-  this.environments=Array.from({length:humans+1},()=>{const env=new CarEnvironment(document);env.reset({seed:2005});return env;});
+  this.environments=Array.from({length:humans+1},()=>{const env=new CarEnvironment(document,this.model.worldVersion);env.reset({seed:2005});return env;});
  }
  get phase(){return this.phaseValue;}
  get elapsedSteps(){return this.ticks;}

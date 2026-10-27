@@ -10,7 +10,7 @@ export function mountLivePopulationView(root:HTMLElement,document:CircuitDocumen
  root.innerHTML='<h3>Live populatie</h3><p class="live-count"></p><canvas aria-label="Alle auto’s van de huidige generatie. De leider heeft een aquakleurige ring."></canvas>';
  const canvas=root.querySelector('canvas')!,count=root.querySelector('.live-count')!;
  canvas.width=document.width*100;canvas.height=document.height*100;
- canvas.style.width=`min(100%, ${70*document.width/document.height}vh, 800px)`;canvas.style.height='auto';
+ canvas.style.width=`min(100%, ${70*document.width/document.height}vh)`;canvas.style.height='auto';
  const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Canvas2D unavailable');
  const id=trackIdentity(document);
  let lastFrame:PopulationFrame|undefined;

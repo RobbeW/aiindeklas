@@ -25,7 +25,7 @@ export function validateEvaluationRecord(value:unknown):EvaluationRecord {
     !Number.isSafeInteger(r.attempt)||r.attempt<1||
     [r.modelId,r.sequenceId,r.configVersion,r.observationVersion].some(s=>typeof s!=='string'||!s.trim()))throw new Error('Invalid evaluation provenance/version');
   const low=r.mode==='final'?3000:2000;if(r.seed<low||r.seed>low+99)throw new Error('Evaluation seed namespace mismatch');
-  if(r.game==='car'&&(r.configVersion!=='car-world-v1'||r.observationVersion!=='car-observation-v1'))throw new Error('Incompatible car evaluation versions or lap metrics');
+  if(r.game==='car'&&(!['car-world-v1','car-world-v2'].includes(r.configVersion)||r.observationVersion!=='car-observation-v1'))throw new Error('Incompatible car evaluation versions or lap metrics');
   if(r.actionSeed!==undefined&&!Number.isSafeInteger(r.actionSeed))throw new Error('Invalid evaluation action seed');
   if(r.game==='flappy'&&(r.configVersion!==FLAPPY_WORLD_CONFIG_VERSION||r.observationVersion!==FLAPPY_OBSERVATION_VERSION))throw new Error('Incompatible Flappy evaluation versions');
   if(!r.budget||[r.budget.demonstrationSeconds,r.budget.supervisedUpdates,r.budget.trainingEpisodes,r.budget.interactions,r.budget.wallTimeMs,...(r.budget.generations===undefined?[]:[r.budget.generations])].some(n=>!Number.isFinite(n)||n<0))throw new Error('Invalid evaluation budget');

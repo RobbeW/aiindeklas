@@ -5,7 +5,7 @@ import { stepCar } from '../src/car/physics.ts';
 import { readCarGamepad } from '../src/input/car-gamepad.ts';
 import { createCarInput } from '../src/input/car-input.ts';
 
-test('legacy acceleration is unchanged; manual pedals coast, accelerate and stop without reversing',()=>{
+test('automatic throttle follows the current profile; manual pedals coast, accelerate and stop without reversing',()=>{
   const initial={x:10,y:20,heading:.3,speed:12};
   for(const action of [0,1,2] as const){
     const speed=Math.min(CAR_CONFIG.maxSpeed,initial.speed+CAR_CONFIG.acceleration*CAR_CONFIG.dt);

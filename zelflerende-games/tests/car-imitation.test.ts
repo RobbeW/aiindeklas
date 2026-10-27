@@ -22,7 +22,7 @@ const baseline = () => createCarSnapshot(new CarPolicy(77), 'initial');
 test('trains bounded Adam imitation from a complete teaching and long-loop probe pair', async () => {
   const training = generateCarReferenceEpisode(teachingLoop(), 1001);
   const control = drive(fixtureCircuit('long-loop'), 2005, 'long-loop-2005');
-  assert.equal(training.frames.length, 838);
+  assert.equal(training.frames.length, 506);
   assert.equal(training.result.terminationReason, 'lap_complete');
   assert.equal(control.seed, 2005);
   const parts = splitCarEpisodes([training, control]);
@@ -62,4 +62,14 @@ test('rejects empty splits, reserved training tracks, final data, and invalid bu
   await assert.rejects(runCarImitationJob({ initialSnapshot: baseline(), episodes: [training], updateBudget: 1 }), /nonempty/i);
   await assert.rejects(runCarImitationJob({ initialSnapshot: baseline(), episodes: [training, control], updateBudget: 0 }), /updateBudget/i);
   await assert.rejects(runCarImitationJob({ initialSnapshot: baseline(), episodes: [training, control, { ...control, id: 'final', seed: 3005 }] as never, updateBudget: 1 }), /namespace|seed/i);
+});
+
+test('legacy imitation preserves world and rejects mixed examples',async()=>{
+ const training=generateCarReferenceEpisode(teachingLoop(),1004,'synthetic_reference','car-world-v1');
+ const control=generateCarReferenceEpisode(teachingLoop(),2004,'synthetic_reference','car-world-v1');
+ const initial=createCarSnapshot(new CarPolicy(77,undefined,'car-world-v1'),'initial');
+ const result=await runCarImitationJob({initialSnapshot:initial,episodes:[training,control],updateBudget:1});
+ assert.equal(result.snapshot.worldVersion,'car-world-v1');assert.equal(result.snapshot.normalization.maxSpeed,55);
+ const newer=generateCarReferenceEpisode(teachingLoop(),2005);
+ await assert.rejects(runCarImitationJob({initialSnapshot:initial,episodes:[training,newer],updateBudget:1}),/mix world/);
 });

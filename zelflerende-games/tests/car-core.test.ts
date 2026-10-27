@@ -27,15 +27,32 @@ test('ordered forward gates complete one lap; reverse finish and skipped route d
 test('fixed-step car motion, speed/yaw limits and render scheduling are controller independent',()=>{
   const initial={x:0,y:0,heading:0,speed:0};let car=initial;
   for(let i=0;i<300;i++)car=stepCar(car,0);
-  assert.equal(car.speed,55);assert.equal(car.heading,0);
+  assert.equal(car.speed,90);assert.equal(car.heading,0);
   const traces=[30,60,120].map(rate=>{let s=initial,acc=0,steps=0;for(let frame=0;frame<rate*2;frame++){acc+=60/rate;while(acc>=1){s=stepCar(s,steps<60?0:2);steps++;acc--;}}return s;});
   assert.deepEqual(traces[0],traces[1]);assert.deepEqual(traces[1],traces[2]);
   assert.throws(()=>stepCar(initial,3 as 0),/action/);
 });
 test('normalized six sensors and high-speed swept collision use analytic road geometry',()=>{
-  const r=buildRoute(teachingLoop()),car={...r.spawn,heading:r.heading,speed:55};const obs=carObservation(r.road,car);
+  const r=buildRoute(teachingLoop()),car={...r.spawn,heading:r.heading,speed:90};const obs=carObservation(r.road,car);
   assert.equal(obs.length,6);assert.equal(obs[5],1);assert.ok(obs.every(v=>v>=0&&v<=1));
   assert.equal(carCollides(r.road,car),false);
   const near={x:150,y:71.8,heading:Math.PI/2,speed:55};const next=stepCar(near,0);
   assert.equal(sweptCarCollision(r.road,near,next),true);
+});
+
+test('both world profiles preserve acceleration, bounds, steering and normalized speed',()=>{
+ const start={x:0,y:0,heading:0,speed:0};let fast=start,old=start;
+ for(let i=0;i<90;i++){fast=stepCar(fast,0);old=stepCar(old,0,undefined,'car-world-v1');}
+ assert.equal(fast.speed,90);assert.ok(Math.abs(old.speed-30)<1e-10);
+ for(let i=0;i<100;i++)old=stepCar(old,0,undefined,'car-world-v1');
+ assert.equal(old.speed,55);assert.ok(Math.abs(stepCar(start,2,undefined,'car-world-v1').heading-1.2/60)<1e-12);
+ assert.ok(Math.abs(stepCar(start,2).heading-2/60)<1e-12);
+ assert.equal(stepCar(fast,0,{throttle:0,brake:0}).speed,90);
+ assert.equal(stepCar(fast,0,{throttle:0,brake:1}).speed,88);
+ assert.equal(stepCar(start,0,{throttle:0,brake:1}).speed,0);
+ for(const p of [{throttle:NaN,brake:0},{throttle:2,brake:0},{throttle:0,brake:-1}])assert.throws(()=>stepCar(start,0,p),/pedals/);
+ const road=buildRoute(teachingLoop()).road;
+ assert.equal(carObservation(road,{...start,speed:90})[5],1);
+ assert.equal(carObservation(road,{...start,speed:55},'car-world-v1')[5],1);
+ const near={x:150,y:71.8,heading:Math.PI/2,speed:90};assert.equal(sweptCarCollision(road,near,stepCar(near,2)),true);
 });

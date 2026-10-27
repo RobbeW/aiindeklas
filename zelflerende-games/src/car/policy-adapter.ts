@@ -1,6 +1,6 @@
 import type { Observation, RandomSource } from "../core/contracts.ts";
 import { createSeededRandom } from "../core/random.ts";
-import { CAR_CONFIG } from "./config.ts";
+import { CAR_CONFIG, getCarConfig, type CarWorldVersion } from "./config.ts";
 
 export const CAR_POLICY_VERSION = "car-softmax-6-8-3-v1" as const;
 export const CAR_POLICY_SCHEMA_VERSION = 1 as const;
@@ -29,11 +29,11 @@ export interface CarSnapshot {
   readonly kind: "car-policy";
   readonly schemaVersion: 1;
   readonly policyVersion: typeof CAR_POLICY_VERSION;
-  readonly worldVersion: typeof CAR_CONFIG.version;
+  readonly worldVersion: CarWorldVersion;
   readonly observationVersion: typeof CAR_CONFIG.observationVersion;
   readonly inputCount: 6;
   readonly actionCount: 3;
-  readonly normalization: Readonly<{ rayRange: 150; maxSpeed: 55 }>;
+  readonly normalization: Readonly<{ rayRange: 150; maxSpeed: 55 | 90 }>;
   readonly initializationSeed: number;
   readonly stage: CarTrainingStage;
   readonly parameters: readonly number[];
@@ -81,7 +81,9 @@ function evaluate(parameters: readonly number[], obs: Observation) {
 export class CarPolicy {
   private current: number[];
   readonly initializationSeed: number;
-  constructor(seed: number, parameters: readonly number[] = initialParameters(seed)) {
+  readonly worldVersion: CarWorldVersion;
+  constructor(seed: number, parameters: readonly number[] = initialParameters(seed), worldVersion: CarWorldVersion = CAR_CONFIG.version) {
+    this.worldVersion = getCarConfig(worldVersion).version;
     if (!Number.isSafeInteger(seed)) throw new RangeError("initialization seed must be a finite safe integer");
     this.initializationSeed = seed;
     this.current = copyFlat(parameters);
@@ -139,24 +141,24 @@ function copyTraining(training: Partial<CarTrainingMetadata> = {}): CarTrainingM
 }
 export function createCarSnapshot(policy: CarPolicy, stage: CarTrainingStage, training: Partial<CarTrainingMetadata> = {}): CarSnapshot {
   if (!(policy instanceof CarPolicy) || !["initial", "imitation", "post_rl", "evolution"].includes(stage)) throw new RangeError("invalid car policy or stage");
-  return Object.freeze({ kind: "car-policy", schemaVersion: 1, policyVersion: CAR_POLICY_VERSION, worldVersion: CAR_CONFIG.version,
+  return Object.freeze({ kind: "car-policy", schemaVersion: 1, policyVersion: CAR_POLICY_VERSION, worldVersion: policy.worldVersion,
     observationVersion: CAR_CONFIG.observationVersion, inputCount: 6, actionCount: 3,
-    normalization: Object.freeze({ rayRange: 150, maxSpeed: 55 }), initializationSeed: policy.initializationSeed,
+    normalization: Object.freeze({ rayRange: 150 as const, maxSpeed: getCarConfig(policy.worldVersion).maxSpeed }), initializationSeed: policy.initializationSeed,
     stage, parameters: Object.freeze(copyFlat(policy.parameters)), training: copyTraining(training) });
 }
 export function validateCarSnapshot(value: unknown): CarSnapshot {
   if (!value || typeof value !== "object") throw new RangeError("car snapshot must be an object");
   const s = value as Record<string, unknown>;
-  if (s.kind !== "car-policy" || s.schemaVersion !== 1 || s.policyVersion !== CAR_POLICY_VERSION || s.worldVersion !== CAR_CONFIG.version ||
+  if (s.kind !== "car-policy" || s.schemaVersion !== 1 || s.policyVersion !== CAR_POLICY_VERSION || (s.worldVersion !== 'car-world-v1' && s.worldVersion !== 'car-world-v2') ||
       s.observationVersion !== CAR_CONFIG.observationVersion || s.inputCount !== 6 || s.actionCount !== 3 ||
-      !s.normalization || typeof s.normalization !== 'object' || (s.normalization as Record<string,unknown>).rayRange !== 150 || (s.normalization as Record<string,unknown>).maxSpeed !== 55 || !Number.isSafeInteger(s.initializationSeed) ||
+      !s.normalization || typeof s.normalization !== 'object' || (s.normalization as Record<string,unknown>).rayRange !== 150 || (s.normalization as Record<string,unknown>).maxSpeed !== getCarConfig(s.worldVersion as CarWorldVersion).maxSpeed || !Number.isSafeInteger(s.initializationSeed) ||
       !["initial", "imitation", "post_rl", "evolution"].includes(String(s.stage))) throw new RangeError("snapshot kind, schema, policy, dimensions, or versions do not match car runtime");
   if (!s.training || typeof s.training !== "object") throw new RangeError("Car training metadata required");
   const t=s.training as Record<string,unknown>;
   for(const key of Object.keys(TRAINING_DEFAULTS)) if(!(key in t)) throw new RangeError(`Missing car training field ${key}`);
-  return createCarSnapshot(new CarPolicy(s.initializationSeed as number,s.parameters as readonly number[]),s.stage as CarTrainingStage,s.training as CarTrainingMetadata);
+  return createCarSnapshot(new CarPolicy(s.initializationSeed as number,s.parameters as readonly number[],s.worldVersion as CarWorldVersion),s.stage as CarTrainingStage,s.training as CarTrainingMetadata);
 }
 export function restoreCarSnapshot(value: unknown): CarPolicy {
   const s = validateCarSnapshot(value);
-  return new CarPolicy(s.initializationSeed, s.parameters);
+  return new CarPolicy(s.initializationSeed, s.parameters, s.worldVersion);
 }

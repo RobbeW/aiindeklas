@@ -29,12 +29,12 @@
 .flappy-lesson .lesson-experiment-tools p { font-size: 13px; color: var(--muted); }
 /* Draw a larger scene; the simulation's dimensions and fixed steps stay unchanged. */
 .app-stage .flappy-lesson .duel-page { max-width: none; }
-.app-stage .flappy-lesson .duel-panel canvas { width: min(100%,380px) !important; }
+.app-stage .flappy-lesson .duel-panel canvas { width: min(100%,calc((100svh - 220px)*.75)) !important; }
 .app-stage .flappy-lesson .duel-fields { gap: 24px; }
 .app-stage .flappy-lesson .duel-header p { max-width: 760px; }
 .app-stage .flappy-lesson .teach__columns { grid-template-columns: minmax(300px,.95fr) minmax(0,1fr); gap: 24px; }
-.app-stage .flappy-lesson .teach__game canvas { width: min(100%,380px) !important; }
-.app-stage .flappy-lesson .flock-panel canvas,.app-stage .flappy-lesson #practice-canvas,.app-stage .flappy-lesson #human-canvas { width: min(100%,380px) !important; max-width: 380px; margin-inline: auto; }
+.app-stage .flappy-lesson .teach__game canvas { width: min(100%,calc((100svh - 220px)*.75)) !important; }
+.app-stage .flappy-lesson .flock-panel canvas,.app-stage .flappy-lesson #practice-canvas,.app-stage .flappy-lesson #human-canvas { width: min(100%,calc((100svh - 220px)*.75)) !important; max-width: none; margin-inline: auto; }
 .app-stage .flappy-lesson .practice-layout { grid-template-columns: minmax(240px,.8fr) minmax(0,1.2fr); }
 .control-tour { position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; border: 0; margin: 0; padding: 0; background: transparent; color: var(--ink); overflow: hidden; }
 .control-tour::backdrop { background: #16003335; }

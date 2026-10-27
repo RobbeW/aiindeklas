@@ -56,6 +56,7 @@ export async function runCarImitationJob(input: CarImitationJobInput, hooks: Car
   if (!Array.isArray(input.episodes)) throw new TypeError('episodes must be an array');
   // Validate copied data too: worker structured cloning removes frozen state and prototypes.
   const copied = input.episodes.map(value => validateCarEpisode(value));
+  if (copied.some(e => e.worldVersion !== baseline.worldVersion)) throw new Error('Car imitation cannot mix world versions');
   const split = splitCarEpisodes(copied);
   if (!split.training.length || !split.control.length) throw new RangeError('Car imitation requires nonempty training and control splits');
   for (const episode of split.training) {

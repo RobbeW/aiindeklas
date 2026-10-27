@@ -35,3 +35,10 @@ test('pause time is excluded and cancellation in an incomplete batch cannot comm
  await assert.rejects(runCarPracticeJob({snapshot:base,document:teachingLoop(),episodeBudget:4,stepBudget:7200,environmentSeed:1000,actionSeed:4000},{isCancelled:()=>cancelled,yieldControl:async()=>{completed++;if(completed===1)cancelled=true;}}),/cancelled/);
  assert.deepEqual(base,before);
 });
+
+test('legacy reward practice replays with legacy physics and preserves the profile',async()=>{
+ const base=createCarSnapshot(new CarPolicy(1222,undefined,'car-world-v1'),'imitation');
+ const result=await runCarPracticeJob({snapshot:base,document:teachingLoop(),episodeBudget:4,stepBudget:7200,environmentSeed:1000,actionSeed:4000},{yieldControl:async()=>{}});
+ assert.equal(result.snapshot.worldVersion,'car-world-v1');assert.equal(result.snapshot.normalization.maxSpeed,55);
+ for(const r of result.history){const env=new CarEnvironment(teachingLoop(),'car-world-v1');env.reset({seed:r.seed});for(const step of r.steps){assert.deepEqual(env.getObservation(),step.observation);env.step(step.action);}assert.deepEqual(env.completedResult,r.result);}
+});

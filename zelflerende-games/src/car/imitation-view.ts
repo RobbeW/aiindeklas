@@ -19,7 +19,7 @@ export function mountCarImitationView(root:HTMLElement,options:{document:Circuit
   const publish=()=>{if(!disposed)options.onChange?.(state);};
   const controls=()=>{fit.disabled=running;pause.disabled=cancel.disabled=!running;watch.disabled=running||!state.imitation||state.stale;};
   const invalidate=()=>{epoch++;jobs.cancel();running=false;clone?.dispose();clone=undefined;state={...state,stale:!!state.imitation};status.textContent=state.stale?'Voorbeelden gewijzigd: train opnieuw voordat je deze kloon gebruikt.':'Voorbeelden bijgewerkt.';pause.textContent='Pauzeer training';controls();};
-  const collector=mountCarTeachView(q('.car-collector'),{document:options.document,onChange:episodes=>{state={...state,episodes};if(!restoring){invalidate();publish();}}});
+  const collector=mountCarTeachView(q('.car-collector'),{document:options.document,worldVersion:state.initial.worldVersion,onChange:episodes=>{state={...state,episodes};if(!restoring){invalidate();publish();}}});
   collector.setEpisodes(state.episodes);restoring=false;controls();if(state.imitation)status.textContent=state.stale?'Voorbeelden gewijzigd. Train de imitatie opnieuw.':'Imitatie klaar. Bekijk hoe die rijdt.';
   fit.onclick=()=>{try{const splits=splitCarEpisodes(state.episodes);if(!splits.training.length||!splits.control.length)throw new Error('Verzamel minimaal één trainingspoging en één controlepoging.');
     invalidate();const token=++epoch;running=true;controls();status.textContent='Imitatie leert van de trainingsvoorbeelden…';
@@ -28,6 +28,6 @@ export function mountCarImitationView(root:HTMLElement,options:{document:Circuit
   }catch(e){status.textContent=e instanceof Error?e.message:String(e);}};
   cancel.onclick=()=>{epoch++;jobs.cancel();running=false;status.textContent='Training gestopt. Onvoltooide training wordt niet bewaard.';pause.textContent='Pauzeer training';controls();};
   pause.onclick=()=>{if(pause.textContent==='Pauzeer training'){jobs.pause();pause.textContent='Hervat training';}else{jobs.resume();pause.textContent='Pauzeer training';}};
-  watch.onclick=()=>{if(!state.imitation||state.stale)return;clone?.dispose();const policy=restoreCarSnapshot(state.imitation);clone=mountCarPlayView(q('.car-clone'),{document:options.document,getSeed:()=>2005,controller:o=>policy.action(o),controllerLabel:`Imitatie · test op hetzelfde circuit`});q('.car-clone').scrollIntoView({block:'start'});};
+  watch.onclick=()=>{if(!state.imitation||state.stale)return;clone?.dispose();const policy=restoreCarSnapshot(state.imitation);clone=mountCarPlayView(q('.car-clone'),{document:options.document,worldVersion:state.imitation.worldVersion,getSeed:()=>2005,controller:o=>policy.action(o),controllerLabel:`Imitatie · test op hetzelfde circuit`});q('.car-clone').scrollIntoView({block:'start'});};
   return{getState:()=>state,dispose(){disposed=true;epoch++;jobs.dispose();collector.dispose();clone?.dispose();root.replaceChildren();}};
 }

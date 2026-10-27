@@ -1,3 +1,4 @@
+import { mountGameFullscreen } from '../ui/game-fullscreen.ts';
 import { mountTrainingGym } from '../ui/training-gym.ts';
 import { mountDatasetView, type DatasetView } from '../data/dataset-view.ts';
 import type { DemonstrationEpisode } from '../data/demonstrations.ts';
@@ -224,6 +225,9 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
       cloneResult = undefined; cloneStatus.textContent = 'Je voorbeelden zijn bewaard. Train en test het AI-model opnieuw.'; refresh();
     },
   });
+  const game = required<HTMLElement>('.teach__game'); game.classList.add('game-fullscreen');
+  const fullscreen = el('button'); fullscreen.type='button'; fullscreen.className='secondary game-fullscreen-button'; required('.teach__actions').append(fullscreen);
+  const fullscreenControl=mountGameFullscreen(game,fullscreen,message=>{score.textContent=message;});
   const recordButton=datasetRoot.querySelector<HTMLButtonElement>('.record-toggle')!;
   required('.teach__actions').prepend(recordButton);
   required('.teach__actions').append(flap);
@@ -273,6 +277,6 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
   catch (error) { trainStatus.setAttribute('role', 'alert'); trainStatus.textContent = error instanceof Error ? error.message : String(error); }
   return {
     getState,
-    dispose() { if (disposed) return; disposed = true;trainingEpoch++; phase = 'disposed';gym.dispose(); stopFrame(); input.dispose(); controller.dispose(); dataset.dispose(); renderer?.dispose(); window.removeEventListener('blur', pauseForBlur);document.removeEventListener('visibilitychange',visibilityChange); root.replaceChildren(); },
+    dispose() { if (disposed) return; disposed = true;fullscreenControl.dispose();trainingEpoch++; phase = 'disposed';gym.dispose(); stopFrame(); input.dispose(); controller.dispose(); dataset.dispose(); renderer?.dispose(); window.removeEventListener('blur', pauseForBlur);document.removeEventListener('visibilitychange',visibilityChange); root.replaceChildren(); },
   };
 }
