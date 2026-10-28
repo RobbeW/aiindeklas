@@ -1,0 +1,65 @@
+schema_version: "1.0.0"
+status: "accepted_at_H2"
+sources_inspected: 9
+confidence:
+  component_grammar: "high"
+  measured_family_behaviour: "high"
+  exact_canonical_token_values: "medium_high"
+  source_specific_drift: "medium"
+measured_consensus:
+  desktop_captures: 9
+  h1_per_source: 1
+  body_font: 'system-ui, -apple-system, "Segoe UI", Arial, sans-serif'
+  header_position: "sticky"
+  fast_motion: "150ms"
+  warm_body_background_sources: 7
+  layered_transparent_body_sources: 2
+tokens:
+  colour:
+    brand: "#5200FF"
+    brand_dark: "#3700B3"
+    accent: "#3DFFD0"
+    ink: "#160033"
+    text: "#1D1930"
+    muted: "#625B70"
+    background: "#F8F7F3"
+    surface: "#FFFFFF"
+    brand_soft: "#F7F3FF"
+    line: "#E2DDEA"
+    success: "#00A66A"
+    warning: "#FFB000"
+    danger: "#D0006F"
+  typography:
+    body: 'system-ui, -apple-system, "Segoe UI", Arial, sans-serif'
+    code: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+    hero: "clamp(2.45rem, 7vw, 5.8rem)"
+    section_title: "clamp(1.8rem, 4vw, 3.25rem)"
+    lead: "clamp(1.05rem, 2vw, 1.32rem)"
+    body_line_height: 1.55
+    heading_weight: 900
+  layout:
+    content_max: "1180px"
+    page_gutter: "clamp(18px, 3vw, 22px)"
+    section_space: "clamp(58px, 8vw, 82px)"
+  radius:
+    small: "10px"
+    brand: "14px"
+    card: "20px"
+    panel: "24px"
+    hero: "28px"
+    pill: "999px"
+  motion:
+    fast: "150ms"
+    medium: "260ms"
+    slow: "520ms"
+    standard_easing: "cubic-bezier(0.2, 0, 0, 1)"
+    exit_easing: "cubic-bezier(0.22, 1, 0.36, 1)"
+observed_unattributed_drift:
+  - "Aqua #03DDEF"
+  - "Fast transition 160ms"
+  - "Nearby alternative brand-dark purple"
+acceptance_rules:
+  - "Raw brand colours appear only in the token file or documented project themes."
+  - "Reduced motion disables nonessential transforms and reveals."
+  - "Focus remains visible on every surface."
+  - "Project-specific deviations require evidence and an explicit theme boundary."

@@ -1,0 +1,3486 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-07-20T08:13:43.420Z",
+  "page_records": 429,
+  "verified_snapshots": 413,
+  "approved_exceptions": 16,
+  "unresolved_exceptions": 0,
+  "missing_raw_paths": 0,
+  "missing_raw_files": 0,
+  "hash_mismatches": 0,
+  "orphan_raw_files": 37,
+  "gate_passed": true,
+  "orphan_files": [
+    "about-quot-5ddd1cc20144.html",
+    "contact-english-aeeb61373262.html",
+    "education-20predicting-the-past-aeneas-d09acbbcc737.html",
+    "education-22Sint-Lievenscollege-20viert-205-20jaar-20-Unicorns-20-22-20bij-20AVS-173c8f823074.html",
+    "education-Een-20-blade-20server-20met-20sterke-20hardware.-3d8b579f91f1.html",
+    "education-tag-23VlaanderenLeest-c301b10e2360.html",
+    "education-tag-latin-c269f476671c.html",
+    "fotografie-Blog-20Post-20Title-20One-c6ca9-ang5e-t99ak-9btr7-b6786266770e.html",
+    "fotografie-Blog-20Post-20Title-20One-c6ca9-ang5e-t99ak-9btr7-jsz46-563911144752.html",
+    "fotografie-Blog-20Post-20Title-20One-c6ca9-ang5e-t99ak-9btr7-jsz46-l35wb-53faf9a58497.html",
+    "fotografie-Blog-20Post-20Title-20One-c6ca9-ang5e-t99ak-9btr7-jsz46-l35wb-ajh2h-9656abc61d9a.html",
+    "fotografie-Blog-20Post-20Title-20One-c6ca9-ang5e-t99ak-9btr7-jsz46-l35wb-ajh2h-l5a4w-e67a39f63e36.html",
+    "fotografie-Blog-20Post-20Title-20One-c6ca9-ang5e-t99ak-9btr7-jsz46-l35wb-ajh2h-l5a4w-zgx26-16b597c5df68.html",
+    "fotografie-Blog-20Post-20Title-20One-c6ca9-ang5e-t99ak-9btr7-jsz46-l35wb-ajh2h-l5a4w-zgx26-m29gg-2ltye-7a1fc5c10a96.html",
+    "fotografie-Blog-20Post-20Title-20One-c6ca9-ang5e-t99ak-9btr7-jsz46-l35wb-ajh2h-l5a4w-zgx26-m29gg-2ltye-h5964-5c1d9fab28c6.html",
+    "fotografie-Blog-20Post-20Title-20One-c6ca9-ang5e-t99ak-9btr7-jsz46-l35wb-ajh2h-l5a4w-zgx26-m29gg-2ltye-h5964-5nc34-blj63-3527a1986acd.html",
+    "fotografie-Blog-20Post-20Title-20One-c6ca9-ang5e-t99ak-9btr7-jsz46-l35wb-ajh2h-l5a4w-zgx26-m29gg-2ltye-h5964-5nc34-blj63-7n94w-557103844205.html",
+    "fotografie-Blog-20Post-20Title-20One-c6ca9-ang5e-t99ak-9btr7-jsz46-l35wb-ajh2h-l5a4w-zgx26-m29gg-2ltye-h5964-5nc34-blj63-7n94w-cmlce-2834b11ac556.html",
+    "fotografie-Blog-20Post-20Title-20One-c6ca9-ang5e-t99ak-9btr7-jsz46-l35wb-ajh2h-l5a4w-zgx26-m29gg-2ltye-h5964-5nc34-e114f482c045.html",
+    "fotografie-Blog-20Post-20Title-20One-c6ca9-ang5e-t99ak-9btr7-jsz46-l35wb-ajh2h-l5a4w-zgx26-m29gg-85619cdcaa0f.html",
+    "fotografie-e489b1de92b3.html",
+    "fotografie-j-s-285416f7cbab.html",
+    "fotografie-tk-russell-heartbeat-session-e4146956bf30.html",
+    "info-0be28fec55df.html",
+    "onderwijs-5ae524ebe270.html",
+    "onderwijs-Een-20-blade-20server-20met-20sterke-20hardware.-16b2221b72f3.html",
+    "onderwijs-latijn-en-game-design-quot-gt-lt-strong-gt-Deze-048d14831dba.html",
+    "onderwijs-over-zonnedraken-en-zeerovers-quot-gt-Meer-890b4e92b7ee.html",
+    "onderwijs-super-marcus-quot-gt-lt-strong-gt-Deze-daba100e285d.html",
+    "videografie-1-e01bcd78062b.html",
+    "videografie-covid-yasmina-jongbloet-af69262af806.html",
+    "videografie-hout-op-maat-46b7d649fa8d.html",
+    "videografie-jakobistan-fietspad-e6cc67dd6b70.html",
+    "videografie-mathias-vercammen-quartet-herbakker-eeklo-7714630e76bc.html",
+    "videografie-matthias-de-smet-hongyu-chen-95b351d5ae9e.html",
+    "videografie-promotievideos-montage-046ed769285f.html",
+    "videografie-wielerkampen-cartouche-6205ca99391a.html"
+  ],
+  "results": [
+    {
+      "url": "https://www.robbewulgaert.be/",
+      "status": "verified",
+      "expected_sha256": "78a88f8d8800206dc36053e4e3cf631d73e8760be5e6681cf33e5a1f3a24f3fe",
+      "actual_sha256": "78a88f8d8800206dc36053e4e3cf631d73e8760be5e6681cf33e5a1f3a24f3fe",
+      "response_bytes": 149157,
+      "raw_path": "migration/raw-html/home-ae27e3fbba0c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/404",
+      "status": "verified",
+      "expected_sha256": "f0da5081a6e5a2f2b25db0d1bdf98f1855217e99fb955bd7b034fed4479c4a0d",
+      "actual_sha256": "f0da5081a6e5a2f2b25db0d1bdf98f1855217e99fb955bd7b034fed4479c4a0d",
+      "response_bytes": 114309,
+      "raw_path": "migration/raw-html/404-bc881d9072e8.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/about",
+      "status": "verified",
+      "expected_sha256": "cc333a1cdd71b766c25be236df10bb1eb3d5dce91784946c29f23ef9df86149e",
+      "actual_sha256": "cc333a1cdd71b766c25be236df10bb1eb3d5dce91784946c29f23ef9df86149e",
+      "response_bytes": 151980,
+      "raw_path": "migration/raw-html/about-66aec713fd34.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/boek",
+      "status": "verified",
+      "expected_sha256": "392e3667e8c7190c746493dd523011f820e5cdf845eb3e440e6e3054f00c8297",
+      "actual_sha256": "392e3667e8c7190c746493dd523011f820e5cdf845eb3e440e6e3054f00c8297",
+      "response_bytes": 139499,
+      "raw_path": "migration/raw-html/boek-c81322be6f3d.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/contact",
+      "status": "verified",
+      "expected_sha256": "734a2219da46895a4a0e48359e16b0f5202d7f70543639f051eb3f84638aa8dd",
+      "actual_sha256": "734a2219da46895a4a0e48359e16b0f5202d7f70543639f051eb3f84638aa8dd",
+      "response_bytes": 151489,
+      "raw_path": "migration/raw-html/contact-373096d04ebf.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/contact-english",
+      "status": "approved_exception",
+      "disposition": "redirect",
+      "expected_sha256": "8c1c44fba85fc969bef8013e0972dcdd7d156fda586b9cd5a0f9360eafb8ea93",
+      "actual_sha256": null,
+      "raw_path": "migration/raw-html/contact-english-aeeb61373262.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/contactinfo",
+      "status": "verified",
+      "expected_sha256": "6f08b7fec5f4f41b1a5527796e52e0cb9440d5fa0f949697058f71d683f2c499",
+      "actual_sha256": "6f08b7fec5f4f41b1a5527796e52e0cb9440d5fa0f949697058f71d683f2c499",
+      "response_bytes": 147319,
+      "raw_path": "migration/raw-html/contactinfo-8001c65d8993.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education",
+      "status": "verified",
+      "expected_sha256": "9519972c3983aa029890ab3e9dc54c5c5f41a5ffcd275c00efa4177d3c837934",
+      "actual_sha256": "9519972c3983aa029890ab3e9dc54c5c5f41a5ffcd275c00efa4177d3c837934",
+      "response_bytes": 180948,
+      "raw_path": "migration/raw-html/education-08b214d4a949.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education?author=6026af1f0584116c943938d2",
+      "status": "verified",
+      "expected_sha256": "3c2e82ca662b1ee12e9030691892ac1328b52868fead20df49086edf4cf0e4e4",
+      "actual_sha256": "3c2e82ca662b1ee12e9030691892ac1328b52868fead20df49086edf4cf0e4e4",
+      "response_bytes": 176578,
+      "raw_path": "migration/raw-html/education-595f9c779521.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education?author=6026af1f0584116c943938d2&offset=1635874424454&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "9a93de7e335d589759e5bcfdf954a76f6077ddf949ed7273e3c021a44fe95d96",
+      "actual_sha256": "9a93de7e335d589759e5bcfdf954a76f6077ddf949ed7273e3c021a44fe95d96",
+      "response_bytes": 177040,
+      "raw_path": "migration/raw-html/education-10c4524dace3.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education?author=6026af1f0584116c943938d2&offset=1635930633501",
+      "status": "verified",
+      "expected_sha256": "efc7dda20ed000ae0a9d19821b7de8831c699c546ba6f50e9bc3b3a16572acab",
+      "actual_sha256": "efc7dda20ed000ae0a9d19821b7de8831c699c546ba6f50e9bc3b3a16572acab",
+      "response_bytes": 132258,
+      "raw_path": "migration/raw-html/education-b9c6ea54a65c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education?author=6026af1f0584116c943938d2&offset=1653840034515&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "7bc31285b41e60f5b3d1a23a56ef0a04170e54c8b5cf4564e67affd7c03d26c4",
+      "actual_sha256": "7bc31285b41e60f5b3d1a23a56ef0a04170e54c8b5cf4564e67affd7c03d26c4",
+      "response_bytes": 176578,
+      "raw_path": "migration/raw-html/education-5e7f2ac84070.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education?author=6026af1f0584116c943938d2&offset=1654442992993",
+      "status": "verified",
+      "expected_sha256": "9c77b945caa5b260dc0de121e398ee76323e7eafbe7fdd047855e30f5f93b19c",
+      "actual_sha256": "9c77b945caa5b260dc0de121e398ee76323e7eafbe7fdd047855e30f5f93b19c",
+      "response_bytes": 177047,
+      "raw_path": "migration/raw-html/education-77c67e102f72.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education?author=6026af1f0584116c943938d2&offset=1753282800860&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "9af01fc666b2a0dc06db9895042ffa451fa54ca9efe6f3df06d34dd521796f92",
+      "actual_sha256": "9af01fc666b2a0dc06db9895042ffa451fa54ca9efe6f3df06d34dd521796f92",
+      "response_bytes": 118780,
+      "raw_path": "migration/raw-html/education-d654a103555c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education?format=rss",
+      "status": "verified",
+      "expected_sha256": "83fd463b228277b3924d83beeeded96074cbc54f95b22f48dd3668e4b0664eff",
+      "actual_sha256": "83fd463b228277b3924d83beeeded96074cbc54f95b22f48dd3668e4b0664eff",
+      "response_bytes": 747434,
+      "raw_path": "migration/raw-html/education-a1f0f16fb6a6.xml"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education?offset=1635874424454&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "e223daf86bcaf892484cea46ebcc7ea249ba2c83c5479db2b3a5f5d40029a35b",
+      "actual_sha256": "e223daf86bcaf892484cea46ebcc7ea249ba2c83c5479db2b3a5f5d40029a35b",
+      "response_bytes": 176976,
+      "raw_path": "migration/raw-html/education-807372b9f9dd.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education?offset=1635930633501",
+      "status": "verified",
+      "expected_sha256": "24245b48dcb5ac0dc8755d2b4c225051e32fe92e16a76259f78e28194dbc239c",
+      "actual_sha256": "24245b48dcb5ac0dc8755d2b4c225051e32fe92e16a76259f78e28194dbc239c",
+      "response_bytes": 157528,
+      "raw_path": "migration/raw-html/education-cb751fe0d0a7.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education?offset=1653840034515&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "208068f813358bb6f90018528193c8c53b122cb045ab35ac4a13eb3a1f0a819c",
+      "actual_sha256": "208068f813358bb6f90018528193c8c53b122cb045ab35ac4a13eb3a1f0a819c",
+      "response_bytes": 176546,
+      "raw_path": "migration/raw-html/education-df23493d5398.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education?offset=1654442992993",
+      "status": "verified",
+      "expected_sha256": "bce86e01a7c425559c96375de07e2e7a5fc7f7362fc4935574054e6225c884d0",
+      "actual_sha256": "bce86e01a7c425559c96375de07e2e7a5fc7f7362fc4935574054e6225c884d0",
+      "response_bytes": 193925,
+      "raw_path": "migration/raw-html/education-b9ac781ef596.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education?offset=1753282800860&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "6b3b95df8e587159965114878008899315ded6a29f768cadf9108c3636f44018",
+      "actual_sha256": "6b3b95df8e587159965114878008899315ded6a29f768cadf9108c3636f44018",
+      "response_bytes": 111870,
+      "raw_path": "migration/raw-html/education-78e6ab60d15e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/1-year-of-ai-in-the-classroom",
+      "status": "verified",
+      "expected_sha256": "bd4c4bba108423da7c374191e959aa9fcd29d90efcb0c3c2d6534ad6a526e15e",
+      "actual_sha256": "bd4c4bba108423da7c374191e959aa9fcd29d90efcb0c3c2d6534ad6a526e15e",
+      "response_bytes": 189453,
+      "raw_path": "migration/raw-html/education-1-year-of-ai-in-the-classroom-8a683bc387b8.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-adventure",
+      "status": "verified",
+      "expected_sha256": "383d35cf4a04a693f686eabc6efd1662ea832c1e08de6ca000735aa27d957f18",
+      "actual_sha256": "383d35cf4a04a693f686eabc6efd1662ea832c1e08de6ca000735aa27d957f18",
+      "response_bytes": 220327,
+      "raw_path": "migration/raw-html/education-ai-adventure-c287c8647f4f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5",
+      "status": "verified",
+      "expected_sha256": "51375558e56ba786a4fe3230e5e4ba0d36e87904b6f870ebb3ee77bf76fe765e",
+      "actual_sha256": "51375558e56ba786a4fe3230e5e4ba0d36e87904b6f870ebb3ee77bf76fe765e",
+      "response_bytes": 162672,
+      "raw_path": "migration/raw-html/education-ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5-e8de3d8554cb.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-and-greek-epigraphy-with-a-robot",
+      "status": "verified",
+      "expected_sha256": "22a3d4c486d7b11b8af8bdcaea011911c5007bbd9205d87581083caec726edac",
+      "actual_sha256": "22a3d4c486d7b11b8af8bdcaea011911c5007bbd9205d87581083caec726edac",
+      "response_bytes": 217555,
+      "raw_path": "migration/raw-html/education-ai-and-greek-epigraphy-with-a-robot-b50706e9c312.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-art-beethovenai-cahsr",
+      "status": "verified",
+      "expected_sha256": "c8657ee9da029ebcaa10edc3086a5dadc05ec0e76212cb4e66cebd0f8149791e",
+      "actual_sha256": "c8657ee9da029ebcaa10edc3086a5dadc05ec0e76212cb4e66cebd0f8149791e",
+      "response_bytes": 149163,
+      "raw_path": "migration/raw-html/education-ai-art-beethovenai-cahsr-dd380fca03d5.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "status": "verified",
+      "expected_sha256": "b9a50628e18fae0650496682b4077d27168ddb2c19718971f2c328cbbc8ff8e9",
+      "actual_sha256": "b9a50628e18fae0650496682b4077d27168ddb2c19718971f2c328cbbc8ff8e9",
+      "response_bytes": 179517,
+      "raw_path": "migration/raw-html/education-ai-art-ontketen-jouw-lyrische-picasso-dyj8h-af2ac38b4b02.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-art-thanos-snap-photobomb-begone",
+      "status": "verified",
+      "expected_sha256": "dc3b587ace167d01fb0f93c498b25654310fbba73c9c5b55420b0d0a0dcf84bd",
+      "actual_sha256": "dc3b587ace167d01fb0f93c498b25654310fbba73c9c5b55420b0d0a0dcf84bd",
+      "response_bytes": 151649,
+      "raw_path": "migration/raw-html/education-ai-art-thanos-snap-photobomb-begone-51fd527f3113.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-as-matchmaker",
+      "status": "verified",
+      "expected_sha256": "4e86bc37cd2f0015a57dccc042d2a7e87d31eb9b1dec7fb80488e7a8ea64ff3b",
+      "actual_sha256": "4e86bc37cd2f0015a57dccc042d2a7e87d31eb9b1dec7fb80488e7a8ea64ff3b",
+      "response_bytes": 165907,
+      "raw_path": "migration/raw-html/education-ai-as-matchmaker-70a5969ed006.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-assessment-scale",
+      "status": "verified",
+      "expected_sha256": "de0bf5cb05a4f9e915960d6145ef78d1bb7182f8d75945ef74d4b4a9ef23be2e",
+      "actual_sha256": "de0bf5cb05a4f9e915960d6145ef78d1bb7182f8d75945ef74d4b4a9ef23be2e",
+      "response_bytes": 364361,
+      "raw_path": "migration/raw-html/education-ai-assessment-scale-25bff6b7fa6f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-design-aikea",
+      "status": "verified",
+      "expected_sha256": "e8d2cd79b614831b7920fe52d608352e47fb161fe21b44d0afe39e110ffc2ee5",
+      "actual_sha256": "e8d2cd79b614831b7920fe52d608352e47fb161fe21b44d0afe39e110ffc2ee5",
+      "response_bytes": 177490,
+      "raw_path": "migration/raw-html/education-ai-design-aikea-7944bc799706.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-for-education-awards",
+      "status": "verified",
+      "expected_sha256": "ca7014d626b2d83f1016bb6179fef46dce25576d6b90119092fc1b272f4fd379",
+      "actual_sha256": "ca7014d626b2d83f1016bb6179fef46dce25576d6b90119092fc1b272f4fd379",
+      "response_bytes": 168107,
+      "raw_path": "migration/raw-html/education-ai-for-education-awards-4b4e9fe874d9.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "status": "verified",
+      "expected_sha256": "52f3be730941b197010a8ecc862cc5f9db8cf385d9b99cba46a5c67a45d61cbd",
+      "actual_sha256": "52f3be730941b197010a8ecc862cc5f9db8cf385d9b99cba46a5c67a45d61cbd",
+      "response_bytes": 171426,
+      "raw_path": "migration/raw-html/education-ai-greek-epigraphy-poetry-and-ai-with-pythia-6a22b90112d4.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-in-the-classroom",
+      "status": "verified",
+      "expected_sha256": "7cb3e2cae88d0f2654b7bb953cd89ff6e66c2e7ef2ea695202ebeddc82ec95fc",
+      "actual_sha256": "7cb3e2cae88d0f2654b7bb953cd89ff6e66c2e7ef2ea695202ebeddc82ec95fc",
+      "response_bytes": 159257,
+      "raw_path": "migration/raw-html/education-ai-in-the-classroom-961eda437a59.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-in-the-classroom-deepfaking-a-deputy-prime-minister",
+      "status": "verified",
+      "expected_sha256": "75ca6c78f33dd67194658be33c7af9386139bd62e6488bbea42c2de3912b490a",
+      "actual_sha256": "75ca6c78f33dd67194658be33c7af9386139bd62e6488bbea42c2de3912b490a",
+      "response_bytes": 167707,
+      "raw_path": "migration/raw-html/education-ai-in-the-classroom-deepfaking-a-deputy-prime-minister-b28f35a645c3.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "status": "verified",
+      "expected_sha256": "54eb248116abda8579c7d5b81fb2863fc3c7a2d2ec4de84081ca3e97949b367d",
+      "actual_sha256": "54eb248116abda8579c7d5b81fb2863fc3c7a2d2ec4de84081ca3e97949b367d",
+      "response_bytes": 154306,
+      "raw_path": "migration/raw-html/education-ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa-a4946882dc08.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-latin-bring-tacitus-to-life",
+      "status": "verified",
+      "expected_sha256": "6ad56c3dcf79236615d9b687be373480c4e34b7eb6844811c7aef9dbd8ac1a12",
+      "actual_sha256": "6ad56c3dcf79236615d9b687be373480c4e34b7eb6844811c7aef9dbd8ac1a12",
+      "response_bytes": 197473,
+      "raw_path": "migration/raw-html/education-ai-latin-bring-tacitus-to-life-940c616f97e0.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-sport-inform",
+      "status": "verified",
+      "expected_sha256": "3295936367a10e6759034c58c7d85be8c95396fa18a0612087eb5eb3a7161f9f",
+      "actual_sha256": "3295936367a10e6759034c58c7d85be8c95396fa18a0612087eb5eb3a7161f9f",
+      "response_bytes": 195649,
+      "raw_path": "migration/raw-html/education-ai-sport-inform-bc190d1903ba.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "status": "verified",
+      "expected_sha256": "877f9c85548a92012f4d98638a17c2681a4e2f77e74d331dc4112a0a846ad132",
+      "actual_sha256": "877f9c85548a92012f4d98638a17c2681a4e2f77e74d331dc4112a0a846ad132",
+      "response_bytes": 158768,
+      "raw_path": "migration/raw-html/education-ai-taal-auteur-of-ai-teur-ef7mx-e923f39a1f03.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "status": "verified",
+      "expected_sha256": "68bcf8bfeb92a4a82fb5c6cd7c4bf02e6eb652310b072d8e6079ca094ffa3f44",
+      "actual_sha256": "68bcf8bfeb92a4a82fb5c6cd7c4bf02e6eb652310b072d8e6079ca094ffa3f44",
+      "response_bytes": 168840,
+      "raw_path": "migration/raw-html/education-ai-wij-robots-herkennen-onze-emotie-smbe9-612be0bb50c0.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ai-wij-robots-herkennen-onze-wereld-bpsfs",
+      "status": "verified",
+      "expected_sha256": "71b327ba551b9a1dbe78b2856b09adc66ac833cf448909668ce4c42684588125",
+      "actual_sha256": "71b327ba551b9a1dbe78b2856b09adc66ac833cf448909668ce4c42684588125",
+      "response_bytes": 164175,
+      "raw_path": "migration/raw-html/education-ai-wij-robots-herkennen-onze-wereld-bpsfs-368d7f840ace.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/bring-greek-myths-to-life",
+      "status": "verified",
+      "expected_sha256": "79b3b58c30325548c94cdb9dc01ce83c0184770cba00553eef1901caad7d6df6",
+      "actual_sha256": "79b3b58c30325548c94cdb9dc01ce83c0184770cba00553eef1901caad7d6df6",
+      "response_bytes": 200442,
+      "raw_path": "migration/raw-html/education-bring-greek-myths-to-life-8b9c0c54f48d.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/build-your-own-smart-trash-can",
+      "status": "verified",
+      "expected_sha256": "457583d6cf1fb43e4f632487086463761b7257cce99dc8d594dcf146b06ff3b1",
+      "actual_sha256": "457583d6cf1fb43e4f632487086463761b7257cce99dc8d594dcf146b06ff3b1",
+      "response_bytes": 176069,
+      "raw_path": "migration/raw-html/education-build-your-own-smart-trash-can-1fd5a1a8e861.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/chatgpt-in-the-classroom",
+      "status": "verified",
+      "expected_sha256": "deb2b09810592a2d8613dd4be722f43d9eacf67312a2184235a8d54cf10e9d48",
+      "actual_sha256": "deb2b09810592a2d8613dd4be722f43d9eacf67312a2184235a8d54cf10e9d48",
+      "response_bytes": 231839,
+      "raw_path": "migration/raw-html/education-chatgpt-in-the-classroom-1684857a3b38.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/chimera",
+      "status": "verified",
+      "expected_sha256": "d181296f78ee7ef30f23130f60883582772d24753636bed0a850546930d43ff8",
+      "actual_sha256": "d181296f78ee7ef30f23130f60883582772d24753636bed0a850546930d43ff8",
+      "response_bytes": 231619,
+      "raw_path": "migration/raw-html/education-chimera-1fbc17743bd7.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/course-computational-thinking",
+      "status": "verified",
+      "expected_sha256": "db29fc2e3626cd045675c077307c0828cd67154d2be75cb734d56d90bd316159",
+      "actual_sha256": "db29fc2e3626cd045675c077307c0828cd67154d2be75cb734d56d90bd316159",
+      "response_bytes": 169242,
+      "raw_path": "migration/raw-html/education-course-computational-thinking-c263afdaae3e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/course-computational-thinking-javascript",
+      "status": "verified",
+      "expected_sha256": "ae410e914b43b96b9b1029192535aeefd0c3263427470a4da5e411b346303f5f",
+      "actual_sha256": "ae410e914b43b96b9b1029192535aeefd0c3263427470a4da5e411b346303f5f",
+      "response_bytes": 181700,
+      "raw_path": "migration/raw-html/education-course-computational-thinking-javascript-5354b2bb5ce6.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/define-value",
+      "status": "verified",
+      "expected_sha256": "0f18bcbfbed1d3cf3f8aa24027f5f1b1a4afa42e667847e644c913e4ab3d7bc3",
+      "actual_sha256": "0f18bcbfbed1d3cf3f8aa24027f5f1b1a4afa42e667847e644c913e4ab3d7bc3",
+      "response_bytes": 170321,
+      "raw_path": "migration/raw-html/education-define-value-193c4252b745.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/design-thinking-project-2030-mjjjl",
+      "status": "verified",
+      "expected_sha256": "b803b198083dd7dee8ba54c0d81249c1897248cd90316cfc71fe4f4698003627",
+      "actual_sha256": "b803b198083dd7dee8ba54c0d81249c1897248cd90316cfc71fe4f4698003627",
+      "response_bytes": 129666,
+      "raw_path": "migration/raw-html/education-design-thinking-project-2030-mjjjl-9a99a1ecde03.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/digital-storytelling-in-virtual-reality-g4mbc",
+      "status": "verified",
+      "expected_sha256": "6eadd2a83eb8a6772ad12fa326dc5f1a87b3b48620aa3bf86f07b2f41df6dffa",
+      "actual_sha256": "6eadd2a83eb8a6772ad12fa326dc5f1a87b3b48620aa3bf86f07b2f41df6dffa",
+      "response_bytes": 155036,
+      "raw_path": "migration/raw-html/education-digital-storytelling-in-virtual-reality-g4mbc-0770cb06ba00.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/digital-storytelling-in-vr-2egfz",
+      "status": "verified",
+      "expected_sha256": "4a6eb18d7f68e5bcf002481374a21880b2831dfc6a8db7cdd564a405c85c4c49",
+      "actual_sha256": "4a6eb18d7f68e5bcf002481374a21880b2831dfc6a8db7cdd564a405c85c4c49",
+      "response_bytes": 143737,
+      "raw_path": "migration/raw-html/education-digital-storytelling-in-vr-2egfz-97d199ecc65c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/discover-latin-with-minecraft",
+      "status": "verified",
+      "expected_sha256": "c05547b2ae440e2522642dcbcf673bd2fa67dd823ee65d0df6569ec8bd7c4ea4",
+      "actual_sha256": "c05547b2ae440e2522642dcbcf673bd2fa67dd823ee65d0df6569ec8bd7c4ea4",
+      "response_bytes": 172721,
+      "raw_path": "migration/raw-html/education-discover-latin-with-minecraft-d7d52f30e602.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/dive-into-history-with-ai",
+      "status": "verified",
+      "expected_sha256": "20e34506d6a248c86accd5e1f7ceb731ee40bc38cba59b3fe2d2540c41480050",
+      "actual_sha256": "20e34506d6a248c86accd5e1f7ceb731ee40bc38cba59b3fe2d2540c41480050",
+      "response_bytes": 150012,
+      "raw_path": "migration/raw-html/education-dive-into-history-with-ai-395ec97dcc10.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/greek-minecraft-acropolis-adventure",
+      "status": "verified",
+      "expected_sha256": "7e33ebf98f016eb87dea813b865c695470005dded8e920bd65f0ad7d9890376c",
+      "actual_sha256": "7e33ebf98f016eb87dea813b865c695470005dded8e920bd65f0ad7d9890376c",
+      "response_bytes": 187243,
+      "raw_path": "migration/raw-html/education-greek-minecraft-acropolis-adventure-3fdcbd94f258.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/hey-siri-clone-my-voice",
+      "status": "verified",
+      "expected_sha256": "405bd347da0ba5958eefb5d80c207d7f68f98be264bdd156f5c9bb17f1d2846e",
+      "actual_sha256": "405bd347da0ba5958eefb5d80c207d7f68f98be264bdd156f5c9bb17f1d2846e",
+      "response_bytes": 165074,
+      "raw_path": "migration/raw-html/education-hey-siri-clone-my-voice-029689dbb7ef.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/ithaca-teaching-history-journal",
+      "status": "verified",
+      "expected_sha256": "54f5aa4ae9ad44c43c441d8bf7e928f06bc457468dd128299d43a40dfe674558",
+      "actual_sha256": "54f5aa4ae9ad44c43c441d8bf7e928f06bc457468dd128299d43a40dfe674558",
+      "response_bytes": 199682,
+      "raw_path": "migration/raw-html/education-ithaca-teaching-history-journal-6a936d001209.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/latin-and-game-design",
+      "status": "verified",
+      "expected_sha256": "c982cb3038e665772db6aa0a4570008c14496e63e64314f4e45c7dd74c252c00",
+      "actual_sha256": "c982cb3038e665772db6aa0a4570008c14496e63e64314f4e45c7dd74c252c00",
+      "response_bytes": 203865,
+      "raw_path": "migration/raw-html/education-latin-and-game-design-1dc769b023e1.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto-5jfsh",
+      "status": "verified",
+      "expected_sha256": "f7310ce0109564bcc987017d8ba39c3c532093ec3da7b9103a92501073342515",
+      "actual_sha256": "f7310ce0109564bcc987017d8ba39c3c532093ec3da7b9103a92501073342515",
+      "response_bytes": 181855,
+      "raw_path": "migration/raw-html/education-onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto-5jfsh-504fe83bacc5.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "status": "verified",
+      "expected_sha256": "53af11c82b14d6f781a8029e79656dcecb943e362a369a957dbb3a64839e3f37",
+      "actual_sha256": "53af11c82b14d6f781a8029e79656dcecb943e362a369a957dbb3a64839e3f37",
+      "response_bytes": 164029,
+      "raw_path": "migration/raw-html/education-onderwijs-kleur-de-geschiedenis-met-ai-zwe6w-e7b9b88780af.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/open-an-ai-art-gallery",
+      "status": "verified",
+      "expected_sha256": "0bb8b917b2ed924f7e51eaff8e67be249841450462d620ac2a0098e92a99e151",
+      "actual_sha256": "0bb8b917b2ed924f7e51eaff8e67be249841450462d620ac2a0098e92a99e151",
+      "response_bytes": 144914,
+      "raw_path": "migration/raw-html/education-open-an-ai-art-gallery-f7ecb99ad89b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/predicting-the-past-aeneas",
+      "status": "verified",
+      "expected_sha256": "ae6d8ca7a2817ab444ea0060e8a7c52939d07fb9fbe0732107b423e015fdd865",
+      "actual_sha256": "ae6d8ca7a2817ab444ea0060e8a7c52939d07fb9fbe0732107b423e015fdd865",
+      "response_bytes": 576367,
+      "raw_path": "migration/raw-html/education-predicting-the-past-aeneas-c336ebbf300f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/python-in-the-classroom",
+      "status": "verified",
+      "expected_sha256": "03d7140816d2a2cb4c98be59ad71c8d8b14df3a9bb45f04e5b90ff34d3f99fce",
+      "actual_sha256": "03d7140816d2a2cb4c98be59ad71c8d8b14df3a9bb45f04e5b90ff34d3f99fce",
+      "response_bytes": 202166,
+      "raw_path": "migration/raw-html/education-python-in-the-classroom-68157271d1fa.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/roma-aeterna-lx2z7",
+      "status": "verified",
+      "expected_sha256": "b5a79f704a34b65a581b83cbd4e91902adf90087c2f78e25c8da7e1f231dfb34",
+      "actual_sha256": "b5a79f704a34b65a581b83cbd4e91902adf90087c2f78e25c8da7e1f231dfb34",
+      "response_bytes": 158967,
+      "raw_path": "migration/raw-html/education-roma-aeterna-lx2z7-e2508b4ab92a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/sun-dragons-and-sea-robbers",
+      "status": "verified",
+      "expected_sha256": "1b6ac9adcc248f85796725290db6250807c44d43354b90b1d9f9f73db317baec",
+      "actual_sha256": "1b6ac9adcc248f85796725290db6250807c44d43354b90b1d9f9f73db317baec",
+      "response_bytes": 174229,
+      "raw_path": "migration/raw-html/education-sun-dragons-and-sea-robbers-f9fb1503bb13.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/%23VlaanderenLeest",
+      "status": "approved_exception",
+      "disposition": "excluded_derived_from_articles",
+      "expected_sha256": "d9db5d91f3bfa6f9c9880bb486215a30a8f7ce37f28a6dd4d0d5aac5bc996a07",
+      "actual_sha256": null,
+      "raw_path": "migration/raw-html/education-tag-23VlaanderenLeest-c301b10e2360.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/3D",
+      "status": "verified",
+      "expected_sha256": "02224ab5431409269b9270564320e895e4f37a3b47dafa157511d7750efe92ce",
+      "actual_sha256": "02224ab5431409269b9270564320e895e4f37a3b47dafa157511d7750efe92ce",
+      "response_bytes": 118605,
+      "raw_path": "migration/raw-html/education-tag-3D-24a6cd1da484.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Abelardus",
+      "status": "verified",
+      "expected_sha256": "bf95b0d7cf5ea3d6d265b87ffee4686926173bb23c869e31e1c463e4bb278523",
+      "actual_sha256": "bf95b0d7cf5ea3d6d265b87ffee4686926173bb23c869e31e1c463e4bb278523",
+      "response_bytes": 119425,
+      "raw_path": "migration/raw-html/education-tag-Abelardus-984fefaf6d76.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/ai",
+      "status": "verified",
+      "expected_sha256": "20fd511578609c9386f1e2dd08a12cfad8f0c4da8f4e7f8f3239196055297400",
+      "actual_sha256": "20fd511578609c9386f1e2dd08a12cfad8f0c4da8f4e7f8f3239196055297400",
+      "response_bytes": 131040,
+      "raw_path": "migration/raw-html/education-tag-ai-08030cb14b59.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/AI",
+      "status": "verified",
+      "expected_sha256": "1b4ab02188190b476de72f83024158dbd2e710581f0b525a6309af9d5a22935f",
+      "actual_sha256": "1b4ab02188190b476de72f83024158dbd2e710581f0b525a6309af9d5a22935f",
+      "response_bytes": 146566,
+      "raw_path": "migration/raw-html/education-tag-AI-bbc47c0e4ea5.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/AI+in",
+      "status": "verified",
+      "expected_sha256": "c12c7a340107783ea5096742e661a14da1370c43d66d69ee84ed2ea7f78d1b2c",
+      "actual_sha256": "c12c7a340107783ea5096742e661a14da1370c43d66d69ee84ed2ea7f78d1b2c",
+      "response_bytes": 121226,
+      "raw_path": "migration/raw-html/education-tag-AI-in-0ebd6e46bf54.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/AI+in+de+klas",
+      "status": "verified",
+      "expected_sha256": "f2151f300e0e6f53e85133390df42f9b5e6dfdbbf3ad970c20b1925362d6e499",
+      "actual_sha256": "f2151f300e0e6f53e85133390df42f9b5e6dfdbbf3ad970c20b1925362d6e499",
+      "response_bytes": 139963,
+      "raw_path": "migration/raw-html/education-tag-AI-in-de-klas-fc3f921c56dd.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/AI+in+het+onderwijs",
+      "status": "verified",
+      "expected_sha256": "b2ef5314c14f98a27b20f98145ebbcc095c11f3bc621f0ec12d866f4e8c544c0",
+      "actual_sha256": "b2ef5314c14f98a27b20f98145ebbcc095c11f3bc621f0ec12d866f4e8c544c0",
+      "response_bytes": 115132,
+      "raw_path": "migration/raw-html/education-tag-AI-in-het-onderwijs-2825eae4730e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/ai+in+the+classroom",
+      "status": "verified",
+      "expected_sha256": "5aae68c1282f12c48298b49f8f508088c3392d992418ab6799fc173105c7ca81",
+      "actual_sha256": "5aae68c1282f12c48298b49f8f508088c3392d992418ab6799fc173105c7ca81",
+      "response_bytes": 115901,
+      "raw_path": "migration/raw-html/education-tag-ai-in-the-classroom-56667c3fb13e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/AIKEA",
+      "status": "verified",
+      "expected_sha256": "a441eb1fe85fe0295ceeff59119caf1eac7000cc97265a52d8645d17c48f8c53",
+      "actual_sha256": "a441eb1fe85fe0295ceeff59119caf1eac7000cc97265a52d8645d17c48f8c53",
+      "response_bytes": 128683,
+      "raw_path": "migration/raw-html/education-tag-AIKEA-53bc21af8932.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Art",
+      "status": "verified",
+      "expected_sha256": "a046dbf8ca770a333d5406360d8ef9a3ce4fdf63142c4183155b3a31bdb5dedf",
+      "actual_sha256": "a046dbf8ca770a333d5406360d8ef9a3ce4fdf63142c4183155b3a31bdb5dedf",
+      "response_bytes": 121116,
+      "raw_path": "migration/raw-html/education-tag-Art-019f9587f794.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/artifici%C3%ABle+intelligentie",
+      "status": "verified",
+      "expected_sha256": "3bca631a8cf83c73a5b231c5661aec04e41fbba85cbbb6dadd878e1541729eac",
+      "actual_sha256": "3bca631a8cf83c73a5b231c5661aec04e41fbba85cbbb6dadd878e1541729eac",
+      "response_bytes": 163520,
+      "raw_path": "migration/raw-html/education-tag-artifici-C3-ABle-intelligentie-c4bf59b6264b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/artificial+intelligence",
+      "status": "verified",
+      "expected_sha256": "3354b60484c226dbfb6c7157a9e1f396a1607d99aac42b2c4ce2939ee402739a",
+      "actual_sha256": "3354b60484c226dbfb6c7157a9e1f396a1607d99aac42b2c4ce2939ee402739a",
+      "response_bytes": 182278,
+      "raw_path": "migration/raw-html/education-tag-artificial-intelligence-66544ee3654e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/bag+of+words",
+      "status": "verified",
+      "expected_sha256": "90bd5e52eea83b3fbabefd2dae36687c089dfa0ac70a883f7cf92e62bd2d0d6a",
+      "actual_sha256": "90bd5e52eea83b3fbabefd2dae36687c089dfa0ac70a883f7cf92e62bd2d0d6a",
+      "response_bytes": 115441,
+      "raw_path": "migration/raw-html/education-tag-bag-of-words-6621d2024c1d.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/beethoven",
+      "status": "verified",
+      "expected_sha256": "dc4319e604c50d30214bf90339e6cb530458fa5d4165a2654b91ae5e38e65d57",
+      "actual_sha256": "dc4319e604c50d30214bf90339e6cb530458fa5d4165a2654b91ae5e38e65d57",
+      "response_bytes": 116496,
+      "raw_path": "migration/raw-html/education-tag-beethoven-d949595343ec.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Brussel",
+      "status": "verified",
+      "expected_sha256": "c1fb138e532e28eb28c9a0871296291360c5e7d35960babc4a402d11e1142f36",
+      "actual_sha256": "c1fb138e532e28eb28c9a0871296291360c5e7d35960babc4a402d11e1142f36",
+      "response_bytes": 144594,
+      "raw_path": "migration/raw-html/education-tag-Brussel-206ca8667a65.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/ChatGPT",
+      "status": "verified",
+      "expected_sha256": "19dda1b9877475d555925d575fd54733c5c07be0f3969238d341db2ac0178532",
+      "actual_sha256": "19dda1b9877475d555925d575fd54733c5c07be0f3969238d341db2ac0178532",
+      "response_bytes": 127205,
+      "raw_path": "migration/raw-html/education-tag-ChatGPT-1311ca3b4758.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/classical+studies",
+      "status": "verified",
+      "expected_sha256": "5d404397dc0dd48d74f8e002044fc78f9c9fcd1f24bfed5f45efe3f2f98a5ecf",
+      "actual_sha256": "5d404397dc0dd48d74f8e002044fc78f9c9fcd1f24bfed5f45efe3f2f98a5ecf",
+      "response_bytes": 118014,
+      "raw_path": "migration/raw-html/education-tag-classical-studies-dd837130422d.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/CLIP",
+      "status": "verified",
+      "expected_sha256": "092e9602dba3eb19d4f5677fc94d56150426102864a4f866fdb9c220d6993d1b",
+      "actual_sha256": "092e9602dba3eb19d4f5677fc94d56150426102864a4f866fdb9c220d6993d1b",
+      "response_bytes": 115057,
+      "raw_path": "migration/raw-html/education-tag-CLIP-06acb20dd076.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/coding",
+      "status": "verified",
+      "expected_sha256": "5bc52f2c6703ce21ff33faba4971646911f594cfbf98da8bb4de12298f5aa3cb",
+      "actual_sha256": "5bc52f2c6703ce21ff33faba4971646911f594cfbf98da8bb4de12298f5aa3cb",
+      "response_bytes": 134237,
+      "raw_path": "migration/raw-html/education-tag-coding-df93adb7d566.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/computational+thinking",
+      "status": "verified",
+      "expected_sha256": "5e765a36a5885ff4947656c112eac5aa8e7f74d3715eb59e9512dae076e5ed09",
+      "actual_sha256": "5e765a36a5885ff4947656c112eac5aa8e7f74d3715eb59e9512dae076e5ed09",
+      "response_bytes": 122269,
+      "raw_path": "migration/raw-html/education-tag-computational-thinking-f99cba012796.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/computationeel+denken",
+      "status": "verified",
+      "expected_sha256": "a4b4eafaca69df671e7df1130376944d3b9b1831db8014ff393a66de9724e645",
+      "actual_sha256": "a4b4eafaca69df671e7df1130376944d3b9b1831db8014ff393a66de9724e645",
+      "response_bytes": 120975,
+      "raw_path": "migration/raw-html/education-tag-computationeel-denken-1965497f3f5f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Dag+van+de+klassieke+talen",
+      "status": "verified",
+      "expected_sha256": "c9869456b6e84fa0c9c39d54d4d7e96ca04647a6b36e16d3c9d384b6d1c6b5b4",
+      "actual_sha256": "c9869456b6e84fa0c9c39d54d4d7e96ca04647a6b36e16d3c9d384b6d1c6b5b4",
+      "response_bytes": 131776,
+      "raw_path": "migration/raw-html/education-tag-Dag-van-de-klassieke-talen-00fb7e239e69.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/dag+van+het+latijn",
+      "status": "verified",
+      "expected_sha256": "dcbb35917de6e3b2327b39eaed90109be15fc77ba3c767309ced41d5a86b6b5a",
+      "actual_sha256": "dcbb35917de6e3b2327b39eaed90109be15fc77ba3c767309ced41d5a86b6b5a",
+      "response_bytes": 134743,
+      "raw_path": "migration/raw-html/education-tag-dag-van-het-latijn-ab430b8ba8e6.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Dag+van+Klassieke+Talen",
+      "status": "verified",
+      "expected_sha256": "ecc31576c46fe9c0cdffd5e5c1ab7b0846b6e0d4dc8545a3fc48838f96505b0a",
+      "actual_sha256": "ecc31576c46fe9c0cdffd5e5c1ab7b0846b6e0d4dc8545a3fc48838f96505b0a",
+      "response_bytes": 124839,
+      "raw_path": "migration/raw-html/education-tag-Dag-van-Klassieke-Talen-cf00f745b378.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/DALL-E",
+      "status": "verified",
+      "expected_sha256": "c1d92ff0c5ce81985c3481a74aaa8839d6625f3727c4376d4579ca454f9def55",
+      "actual_sha256": "c1d92ff0c5ce81985c3481a74aaa8839d6625f3727c4376d4579ca454f9def55",
+      "response_bytes": 124274,
+      "raw_path": "migration/raw-html/education-tag-DALL-E-193ae2a53f5a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Deepfake",
+      "status": "verified",
+      "expected_sha256": "d975ae8b2764c3266508dece84d555946d065402e4f07e20ee57768c63f70102",
+      "actual_sha256": "d975ae8b2764c3266508dece84d555946d065402e4f07e20ee57768c63f70102",
+      "response_bytes": 115203,
+      "raw_path": "migration/raw-html/education-tag-Deepfake-7a7f243db4ba.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Deepfake+keizers",
+      "status": "verified",
+      "expected_sha256": "7dd913619cd2f3d738a493886a6329cd5aa9fc2033afb57ed7716cb2ab31cbf7",
+      "actual_sha256": "7dd913619cd2f3d738a493886a6329cd5aa9fc2033afb57ed7716cb2ab31cbf7",
+      "response_bytes": 141855,
+      "raw_path": "migration/raw-html/education-tag-Deepfake-keizers-98fcf302281a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Deepfake+Latijn",
+      "status": "verified",
+      "expected_sha256": "72eee3c783b945b2696bb8ab0b9538300bb0a28f27cf4dd964561c40829a0a2b",
+      "actual_sha256": "72eee3c783b945b2696bb8ab0b9538300bb0a28f27cf4dd964561c40829a0a2b",
+      "response_bytes": 122176,
+      "raw_path": "migration/raw-html/education-tag-Deepfake-Latijn-9d86bba28c5d.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/deepfakes",
+      "status": "verified",
+      "expected_sha256": "72d3961105af9d18e0e4b80c57f856c637d264bc558994f739fa5e61513219e6",
+      "actual_sha256": "72d3961105af9d18e0e4b80c57f856c637d264bc558994f739fa5e61513219e6",
+      "response_bytes": 115212,
+      "raw_path": "migration/raw-html/education-tag-deepfakes-19b30a317172.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/deepmind",
+      "status": "verified",
+      "expected_sha256": "8d2db8425ffc337daad11588b92d29a48720bf499e9ad5812fd1f8a2170e21e7",
+      "actual_sha256": "8d2db8425ffc337daad11588b92d29a48720bf499e9ad5812fd1f8a2170e21e7",
+      "response_bytes": 115690,
+      "raw_path": "migration/raw-html/education-tag-deepmind-2df58d29f9ec.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Design",
+      "status": "verified",
+      "expected_sha256": "cab02990b1f29c803c834f6cf719ba0dda7f8352482f03c2b7f5c184ebf380fe",
+      "actual_sha256": "cab02990b1f29c803c834f6cf719ba0dda7f8352482f03c2b7f5c184ebf380fe",
+      "response_bytes": 114722,
+      "raw_path": "migration/raw-html/education-tag-Design-c866c6276fc1.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/design+thinking",
+      "status": "verified",
+      "expected_sha256": "ef63f60e2d1d6c5ce5f16c194735f500c77e66b275f2607176f491f45a6dd4fc",
+      "actual_sha256": "ef63f60e2d1d6c5ce5f16c194735f500c77e66b275f2607176f491f45a6dd4fc",
+      "response_bytes": 134628,
+      "raw_path": "migration/raw-html/education-tag-design-thinking-40f9b0566948.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Dimidia+dies+diversa+docet",
+      "status": "verified",
+      "expected_sha256": "33a025540875bb826d85bc01056073495f9b266e7ece9a772ff900fb1e4c0c32",
+      "actual_sha256": "33a025540875bb826d85bc01056073495f9b266e7ece9a772ff900fb1e4c0c32",
+      "response_bytes": 115365,
+      "raw_path": "migration/raw-html/education-tag-Dimidia-dies-diversa-docet-8ba501aa3881.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/dungeons+and+dragons",
+      "status": "verified",
+      "expected_sha256": "5e3fa6d43cfec827214b974f93e464b4343f96bbfd1b22ee2453bd5a9bc91366",
+      "actual_sha256": "5e3fa6d43cfec827214b974f93e464b4343f96bbfd1b22ee2453bd5a9bc91366",
+      "response_bytes": 114499,
+      "raw_path": "migration/raw-html/education-tag-dungeons-and-dragons-3b51c78de299.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/edtech",
+      "status": "verified",
+      "expected_sha256": "aaa5ea79fe3d23f2b13cee0b7f66d90a7491ad601115586c8f27a8ed6a94c122",
+      "actual_sha256": "aaa5ea79fe3d23f2b13cee0b7f66d90a7491ad601115586c8f27a8ed6a94c122",
+      "response_bytes": 117526,
+      "raw_path": "migration/raw-html/education-tag-edtech-709090099a66.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/education",
+      "status": "verified",
+      "expected_sha256": "82521d5844a7530d3309327ec8faf703bb44c692da00a2b5a74bc3cfb3558fe3",
+      "actual_sha256": "82521d5844a7530d3309327ec8faf703bb44c692da00a2b5a74bc3cfb3558fe3",
+      "response_bytes": 149980,
+      "raw_path": "migration/raw-html/education-tag-education-609f3bf439fc.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Education",
+      "status": "verified",
+      "expected_sha256": "1904b902834d4e69bd54f66990cde5ed29cb181fe2930511cd50dbeff65e2dd8",
+      "actual_sha256": "1904b902834d4e69bd54f66990cde5ed29cb181fe2930511cd50dbeff65e2dd8",
+      "response_bytes": 114958,
+      "raw_path": "migration/raw-html/education-tag-Education-b6c304c80686.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/emoties",
+      "status": "verified",
+      "expected_sha256": "e73606b356cc09b747dd53024fb089f4c7bb2ae9ba2706dff6f678d86b6286fb",
+      "actual_sha256": "e73606b356cc09b747dd53024fb089f4c7bb2ae9ba2706dff6f678d86b6286fb",
+      "response_bytes": 115070,
+      "raw_path": "migration/raw-html/education-tag-emoties-f44b4a088164.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/fotografie",
+      "status": "verified",
+      "expected_sha256": "4e9695ed17193dad1b0ea5af2f207efadbaca52a400b4cb036d55d6b4276a73e",
+      "actual_sha256": "4e9695ed17193dad1b0ea5af2f207efadbaca52a400b4cb036d55d6b4276a73e",
+      "response_bytes": 138013,
+      "raw_path": "migration/raw-html/education-tag-fotografie-7dcf8dc91cd6.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/game+design",
+      "status": "verified",
+      "expected_sha256": "ed777e7a5bdd85e0a93cb23fed9b8ac811729248ee9b1cceb831804b23f2630d",
+      "actual_sha256": "ed777e7a5bdd85e0a93cb23fed9b8ac811729248ee9b1cceb831804b23f2630d",
+      "response_bytes": 114648,
+      "raw_path": "migration/raw-html/education-tag-game-design-b728fb7b5b97.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/gamification",
+      "status": "verified",
+      "expected_sha256": "1eae0b996580f6eed6368d2c43841d880f78166926fc83420b69c1e727d03dc4",
+      "actual_sha256": "1eae0b996580f6eed6368d2c43841d880f78166926fc83420b69c1e727d03dc4",
+      "response_bytes": 114962,
+      "raw_path": "migration/raw-html/education-tag-gamification-133ac9809da8.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/gaming",
+      "status": "verified",
+      "expected_sha256": "8ebcc8583b0a21e742f03664365173baf52b0dc3cda7fce78efeb396b823af26",
+      "actual_sha256": "8ebcc8583b0a21e742f03664365173baf52b0dc3cda7fce78efeb396b823af26",
+      "response_bytes": 117915,
+      "raw_path": "migration/raw-html/education-tag-gaming-21e88a2ce7dc.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/GAN",
+      "status": "verified",
+      "expected_sha256": "b713784bbaa79a3e309458d9077cce06340b6c9f86e1fc5d5b5b528b112ce55a",
+      "actual_sha256": "b713784bbaa79a3e309458d9077cce06340b6c9f86e1fc5d5b5b528b112ce55a",
+      "response_bytes": 125163,
+      "raw_path": "migration/raw-html/education-tag-GAN-2440fc941ce6.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Gent",
+      "status": "verified",
+      "expected_sha256": "f8b50d354e578cc9e427a6ea881c0b8b661f87909ced6ea5af0b4b81f4b18a37",
+      "actual_sha256": "f8b50d354e578cc9e427a6ea881c0b8b661f87909ced6ea5af0b4b81f4b18a37",
+      "response_bytes": 114913,
+      "raw_path": "migration/raw-html/education-tag-Gent-8ba29e3984d3.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/gezichtsherkenning",
+      "status": "verified",
+      "expected_sha256": "0ca41aa117683cc922feca9bd0da3a4f9aaefb7a7839a50587cb67dc50fe330c",
+      "actual_sha256": "0ca41aa117683cc922feca9bd0da3a4f9aaefb7a7839a50587cb67dc50fe330c",
+      "response_bytes": 115281,
+      "raw_path": "migration/raw-html/education-tag-gezichtsherkenning-ae658ced8115.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Ghent",
+      "status": "verified",
+      "expected_sha256": "7678f415660d9b7cab8cf03d3c8b10cac83656857f00ffee00100de5a966bbc7",
+      "actual_sha256": "7678f415660d9b7cab8cf03d3c8b10cac83656857f00ffee00100de5a966bbc7",
+      "response_bytes": 121116,
+      "raw_path": "migration/raw-html/education-tag-Ghent-2bd6ff02f0dd.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Google",
+      "status": "verified",
+      "expected_sha256": "d3ce67908eb27e7eefbf4996a824b38d3412a00eb3190c5882ff6a27f6ca8cbb",
+      "actual_sha256": "d3ce67908eb27e7eefbf4996a824b38d3412a00eb3190c5882ff6a27f6ca8cbb",
+      "response_bytes": 115043,
+      "raw_path": "migration/raw-html/education-tag-Google-b455bc86679d.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/GPT",
+      "status": "verified",
+      "expected_sha256": "0089303871d306bf25e0debbcafeda67c5888b1055013bbed5a5a4a6797bebf5",
+      "actual_sha256": "0089303871d306bf25e0debbcafeda67c5888b1055013bbed5a5a4a6797bebf5",
+      "response_bytes": 120997,
+      "raw_path": "migration/raw-html/education-tag-GPT-ef80a317f3e2.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/GPT-2",
+      "status": "verified",
+      "expected_sha256": "4a9167d8e03d5b48fccdca3c7dfc5d8fb54af41908d421cdb29908b210d04213",
+      "actual_sha256": "4a9167d8e03d5b48fccdca3c7dfc5d8fb54af41908d421cdb29908b210d04213",
+      "response_bytes": 143290,
+      "raw_path": "migration/raw-html/education-tag-GPT-2-f2b28ed1e035.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/GPT-3",
+      "status": "verified",
+      "expected_sha256": "deaed5e802dd14d8590da803dbd51f4b498c3eee8b09eadae49d186b2ab2804f",
+      "actual_sha256": "deaed5e802dd14d8590da803dbd51f4b498c3eee8b09eadae49d186b2ab2804f",
+      "response_bytes": 130811,
+      "raw_path": "migration/raw-html/education-tag-GPT-3-821db01a561e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/greek",
+      "status": "verified",
+      "expected_sha256": "439e79c358fcda17e391a3d7ae2ace92d17bf3aa0afb643df8edef0fd3f37de7",
+      "actual_sha256": "439e79c358fcda17e391a3d7ae2ace92d17bf3aa0afb643df8edef0fd3f37de7",
+      "response_bytes": 128966,
+      "raw_path": "migration/raw-html/education-tag-greek-28d63d41382b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Greek",
+      "status": "verified",
+      "expected_sha256": "2f0f03ec988199a3e64e4e26f498f7f4843fa5e0a3063c1716941e48093ca21c",
+      "actual_sha256": "2f0f03ec988199a3e64e4e26f498f7f4843fa5e0a3063c1716941e48093ca21c",
+      "response_bytes": 133738,
+      "raw_path": "migration/raw-html/education-tag-Greek-bf9108c9a766.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/grieks",
+      "status": "verified",
+      "expected_sha256": "b7b4e17a13fb81842731b8fde90138163e7e37b643fff709b7386c6e3008a38f",
+      "actual_sha256": "b7b4e17a13fb81842731b8fde90138163e7e37b643fff709b7386c6e3008a38f",
+      "response_bytes": 115245,
+      "raw_path": "migration/raw-html/education-tag-grieks-f610b6b6527c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Grieks",
+      "status": "verified",
+      "expected_sha256": "f05c2a70e89507ac9c104e280929342fa14d007778395ad493aa52562af0d534",
+      "actual_sha256": "f05c2a70e89507ac9c104e280929342fa14d007778395ad493aa52562af0d534",
+      "response_bytes": 121797,
+      "raw_path": "migration/raw-html/education-tag-Grieks-3cf9c7ed6dac.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Harry+Potter",
+      "status": "verified",
+      "expected_sha256": "86ab333743f220d76a017b371825e18829dffa0655937362d1339fef2b95ea33",
+      "actual_sha256": "86ab333743f220d76a017b371825e18829dffa0655937362d1339fef2b95ea33",
+      "response_bytes": 119452,
+      "raw_path": "migration/raw-html/education-tag-Harry-Potter-6f1882ebebc9.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/IKEA",
+      "status": "verified",
+      "expected_sha256": "fb7d2b8ba87b55cc7efe93f1858de3cd06f502e57fa74daaff4aebcfd0689913",
+      "actual_sha256": "fb7d2b8ba87b55cc7efe93f1858de3cd06f502e57fa74daaff4aebcfd0689913",
+      "response_bytes": 132854,
+      "raw_path": "migration/raw-html/education-tag-IKEA-80fae4a8bc5c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/inkleuren",
+      "status": "verified",
+      "expected_sha256": "dbccb23af17bb6d2edabb352ee95fbf99e934408f516108818e13eefa87fe290",
+      "actual_sha256": "dbccb23af17bb6d2edabb352ee95fbf99e934408f516108818e13eefa87fe290",
+      "response_bytes": 115130,
+      "raw_path": "migration/raw-html/education-tag-inkleuren-781b0280468a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/ithaca",
+      "status": "verified",
+      "expected_sha256": "69e0c31d4b9fcfbc3218f8c6dbad004016e30efe5b51f222f27e822dd3642791",
+      "actual_sha256": "69e0c31d4b9fcfbc3218f8c6dbad004016e30efe5b51f222f27e822dd3642791",
+      "response_bytes": 120910,
+      "raw_path": "migration/raw-html/education-tag-ithaca-75f80d5b3340.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/javascript",
+      "status": "verified",
+      "expected_sha256": "96a66a3e03d5770f7918a60b8014f571642a1b7fbb29e7be58d504f2fb8ff072",
+      "actual_sha256": "96a66a3e03d5770f7918a60b8014f571642a1b7fbb29e7be58d504f2fb8ff072",
+      "response_bytes": 118761,
+      "raw_path": "migration/raw-html/education-tag-javascript-0248174196d9.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Jeroen+De+Gussem",
+      "status": "verified",
+      "expected_sha256": "706146dd031ac190d569c281712fc92b6bc104593c58e39080125b4bfa1d912e",
+      "actual_sha256": "706146dd031ac190d569c281712fc92b6bc104593c58e39080125b4bfa1d912e",
+      "response_bytes": 115198,
+      "raw_path": "migration/raw-html/education-tag-Jeroen-De-Gussem-b9e39b95c15e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Julius+Caesar",
+      "status": "verified",
+      "expected_sha256": "8899be2d9c22a17c4c30465a273df6dba9632533f874c6889c81cd1ba3b8644d",
+      "actual_sha256": "8899be2d9c22a17c4c30465a273df6dba9632533f874c6889c81cd1ba3b8644d",
+      "response_bytes": 115248,
+      "raw_path": "migration/raw-html/education-tag-Julius-Caesar-62399ef37da9.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Keizers",
+      "status": "verified",
+      "expected_sha256": "d0a5b3ac074babf6b9deb5a98767dcbe92c6c415ebe4de570ce210cc80ddc571",
+      "actual_sha256": "d0a5b3ac074babf6b9deb5a98767dcbe92c6c415ebe4de570ce210cc80ddc571",
+      "response_bytes": 115194,
+      "raw_path": "migration/raw-html/education-tag-Keizers-40b164314a54.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/kunst",
+      "status": "verified",
+      "expected_sha256": "9f6c299158f20ebff9b9cc2343e3f1dd3d7d621f06c21b68e56ed27d285efba3",
+      "actual_sha256": "9f6c299158f20ebff9b9cc2343e3f1dd3d7d621f06c21b68e56ed27d285efba3",
+      "response_bytes": 121654,
+      "raw_path": "migration/raw-html/education-tag-kunst-95cf31dee818.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/latijn",
+      "status": "verified",
+      "expected_sha256": "0ac006641f01606b53dca48a9f97f7fa4ddcf07bea1dd4c7b9546241bd93f618",
+      "actual_sha256": "0ac006641f01606b53dca48a9f97f7fa4ddcf07bea1dd4c7b9546241bd93f618",
+      "response_bytes": 118555,
+      "raw_path": "migration/raw-html/education-tag-latijn-3b8ec57ff0ef.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/latin",
+      "status": "approved_exception",
+      "disposition": "excluded_derived_from_articles",
+      "expected_sha256": "990031d9a9488f0b09276fffe879a6b509bca86dae2bd27ab969b3a81856f62b",
+      "actual_sha256": null,
+      "raw_path": "migration/raw-html/education-tag-latin-c269f476671c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/lexicon",
+      "status": "verified",
+      "expected_sha256": "8640e27b7a5920c7afe4f401039dd6468e552e7e497e6f8ee3f643c999e79fec",
+      "actual_sha256": "8640e27b7a5920c7afe4f401039dd6468e552e7e497e6f8ee3f643c999e79fec",
+      "response_bytes": 117662,
+      "raw_path": "migration/raw-html/education-tag-lexicon-ad398bcc5e8f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Lord+of+the+Rings",
+      "status": "verified",
+      "expected_sha256": "a82abc8246ec131019ca0d1f1101e21678af974f07ae07ee42705349f7c40afb",
+      "actual_sha256": "a82abc8246ec131019ca0d1f1101e21678af974f07ae07ee42705349f7c40afb",
+      "response_bytes": 115095,
+      "raw_path": "migration/raw-html/education-tag-Lord-of-the-Rings-9701b52c6048.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/matchmaking",
+      "status": "verified",
+      "expected_sha256": "abbbb19a6ad6f7eae425c0e105e74d337d9456a3d8d56a9d3884184a6bf57fe8",
+      "actual_sha256": "abbbb19a6ad6f7eae425c0e105e74d337d9456a3d8d56a9d3884184a6bf57fe8",
+      "response_bytes": 114968,
+      "raw_path": "migration/raw-html/education-tag-matchmaking-ca01d1c143eb.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/minecraft",
+      "status": "verified",
+      "expected_sha256": "b6326c8faab35edc0eeeb69d28cbde558fc5eb1d2b9e471ec7d9fce2056c38e6",
+      "actual_sha256": "b6326c8faab35edc0eeeb69d28cbde558fc5eb1d2b9e471ec7d9fce2056c38e6",
+      "response_bytes": 114823,
+      "raw_path": "migration/raw-html/education-tag-minecraft-3ee58944a99a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/muziek",
+      "status": "verified",
+      "expected_sha256": "9a4d56bc8389a1fa3d1cb3d34be9127225e620a80af11fe08b71ac011ea355e8",
+      "actual_sha256": "9a4d56bc8389a1fa3d1cb3d34be9127225e620a80af11fe08b71ac011ea355e8",
+      "response_bytes": 133175,
+      "raw_path": "migration/raw-html/education-tag-muziek-1667a377b91a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/myths",
+      "status": "verified",
+      "expected_sha256": "eb27fa682c990b41fcbd3c81e81ad768a9f7d101036b3b5da5c16ec1cd1a1441",
+      "actual_sha256": "eb27fa682c990b41fcbd3c81e81ad768a9f7d101036b3b5da5c16ec1cd1a1441",
+      "response_bytes": 126649,
+      "raw_path": "migration/raw-html/education-tag-myths-5b2a4c22d153.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/natural+language+processor",
+      "status": "verified",
+      "expected_sha256": "7883f1f5b96c09d312ca12e32f2b6ac7951836e8521f0036823db911d70dd61b",
+      "actual_sha256": "7883f1f5b96c09d312ca12e32f2b6ac7951836e8521f0036823db911d70dd61b",
+      "response_bytes": 115103,
+      "raw_path": "migration/raw-html/education-tag-natural-language-processor-e33fc70205c3.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/NLP",
+      "status": "verified",
+      "expected_sha256": "d1b13db1846a291199160b2539aa2374f51835d9c688a5fe6fb8a83aba757301",
+      "actual_sha256": "d1b13db1846a291199160b2539aa2374f51835d9c688a5fe6fb8a83aba757301",
+      "response_bytes": 118462,
+      "raw_path": "migration/raw-html/education-tag-NLP-002d349df55b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/onderwijs",
+      "status": "verified",
+      "expected_sha256": "c27409d6b7fcabcfdf797188f99b8f04261fa832ec7132dd087d832539031dc1",
+      "actual_sha256": "c27409d6b7fcabcfdf797188f99b8f04261fa832ec7132dd087d832539031dc1",
+      "response_bytes": 166184,
+      "raw_path": "migration/raw-html/education-tag-onderwijs-f192a87af8ff.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Onderwijs",
+      "status": "verified",
+      "expected_sha256": "75b384a21a8f192989d06fcff174261fc74de2ba73f2ac47c2a77eb209ab1942",
+      "actual_sha256": "75b384a21a8f192989d06fcff174261fc74de2ba73f2ac47c2a77eb209ab1942",
+      "response_bytes": 130737,
+      "raw_path": "migration/raw-html/education-tag-Onderwijs-da823fd4ba82.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/oudgrieks",
+      "status": "verified",
+      "expected_sha256": "9c838488fcc795a810fdf10044a7483c8d681f260dcab894d8568fe1bffb8b07",
+      "actual_sha256": "9c838488fcc795a810fdf10044a7483c8d681f260dcab894d8568fe1bffb8b07",
+      "response_bytes": 121824,
+      "raw_path": "migration/raw-html/education-tag-oudgrieks-565f2eba224d.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/privacy",
+      "status": "verified",
+      "expected_sha256": "7558e7dd8829b057736f9b756f9da082328d0bc574309c97df73994e1328713e",
+      "actual_sha256": "7558e7dd8829b057736f9b756f9da082328d0bc574309c97df73994e1328713e",
+      "response_bytes": 127334,
+      "raw_path": "migration/raw-html/education-tag-privacy-3cbec7280b9a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/programmeren",
+      "status": "verified",
+      "expected_sha256": "ce5c1703db510123e450f296a44a3e5d0d8e099df9c9f0b95319be9610406983",
+      "actual_sha256": "ce5c1703db510123e450f296a44a3e5d0d8e099df9c9f0b95319be9610406983",
+      "response_bytes": 132871,
+      "raw_path": "migration/raw-html/education-tag-programmeren-833039499adb.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/prompting",
+      "status": "verified",
+      "expected_sha256": "87c654271cc2d43de06c04e1e9e869faa4d9e70d366631f646b82582b23120d8",
+      "actual_sha256": "87c654271cc2d43de06c04e1e9e869faa4d9e70d366631f646b82582b23120d8",
+      "response_bytes": 138866,
+      "raw_path": "migration/raw-html/education-tag-prompting-dfeff2e9bdb5.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/pythia",
+      "status": "verified",
+      "expected_sha256": "7dd83a1eea7e3136a0ce98f42ce169249b138f949f3b4625d24c10f8be0c92cd",
+      "actual_sha256": "7dd83a1eea7e3136a0ce98f42ce169249b138f949f3b4625d24c10f8be0c92cd",
+      "response_bytes": 124254,
+      "raw_path": "migration/raw-html/education-tag-pythia-d0bf4a6271fc.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Pythia",
+      "status": "verified",
+      "expected_sha256": "913f18576251d1ae97f882bf7a093a7fc2881acf55234436840edcefe35c9206",
+      "actual_sha256": "913f18576251d1ae97f882bf7a093a7fc2881acf55234436840edcefe35c9206",
+      "response_bytes": 122879,
+      "raw_path": "migration/raw-html/education-tag-Pythia-0aac0e153223.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/python",
+      "status": "verified",
+      "expected_sha256": "68b4f76f900d44f933b80d0ae530c38c20b19b751785f98b63126e32b5102fbd",
+      "actual_sha256": "68b4f76f900d44f933b80d0ae530c38c20b19b751785f98b63126e32b5102fbd",
+      "response_bytes": 130539,
+      "raw_path": "migration/raw-html/education-tag-python-b3af57eda6da.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/python+in+the+classroom",
+      "status": "verified",
+      "expected_sha256": "928c46ce5c2f20b2caecfbf00b07c75380e0034a6ab7af9a956a93074a5f1a98",
+      "actual_sha256": "928c46ce5c2f20b2caecfbf00b07c75380e0034a6ab7af9a956a93074a5f1a98",
+      "response_bytes": 115831,
+      "raw_path": "migration/raw-html/education-tag-python-in-the-classroom-8b4e0dbd4f20.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Romeinen",
+      "status": "verified",
+      "expected_sha256": "e5d291908bd86dbc4c291826083d0507805360ca82fbc6e9208eacdb8537c0d5",
+      "actual_sha256": "e5d291908bd86dbc4c291826083d0507805360ca82fbc6e9208eacdb8537c0d5",
+      "response_bytes": 115203,
+      "raw_path": "migration/raw-html/education-tag-Romeinen-ab4014087f62.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Romeinse+Keizers",
+      "status": "verified",
+      "expected_sha256": "1174e8b64209fb9f7196ad68e218ee96b30f3e425028bda278de36cc6bc5ffa4",
+      "actual_sha256": "1174e8b64209fb9f7196ad68e218ee96b30f3e425028bda278de36cc6bc5ffa4",
+      "response_bytes": 128037,
+      "raw_path": "migration/raw-html/education-tag-Romeinse-Keizers-1f5c44ad4bdf.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Rowling",
+      "status": "verified",
+      "expected_sha256": "1b2fad26ee69d7562c91063ccd4fb4b8865f148663e750a6de23da9f7af3cc76",
+      "actual_sha256": "1b2fad26ee69d7562c91063ccd4fb4b8865f148663e750a6de23da9f7af3cc76",
+      "response_bytes": 115005,
+      "raw_path": "migration/raw-html/education-tag-Rowling-b2372cbce3e6.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Siri",
+      "status": "verified",
+      "expected_sha256": "4befdf517562a4f69130f97ecf9dc8560b07226d1f2e1f9ad044c074099384a9",
+      "actual_sha256": "4befdf517562a4f69130f97ecf9dc8560b07226d1f2e1f9ad044c074099384a9",
+      "response_bytes": 134363,
+      "raw_path": "migration/raw-html/education-tag-Siri-13e4bc5106a8.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Stable+Diffusion",
+      "status": "verified",
+      "expected_sha256": "fc5ad78370476a7248f3276b50f1ca902f1cbffb5e6ef8b21199b3e908516a81",
+      "actual_sha256": "fc5ad78370476a7248f3276b50f1ca902f1cbffb5e6ef8b21199b3e908516a81",
+      "response_bytes": 135079,
+      "raw_path": "migration/raw-html/education-tag-Stable-Diffusion-18c3e7a471ec.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/STEaM",
+      "status": "verified",
+      "expected_sha256": "1cbfe7398a29312e69a0202b56e12d679007e3efb4a61cf084a3c4475c849874",
+      "actual_sha256": "1cbfe7398a29312e69a0202b56e12d679007e3efb4a61cf084a3c4475c849874",
+      "response_bytes": 136113,
+      "raw_path": "migration/raw-html/education-tag-STEaM-97bc38141f47.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/STEM",
+      "status": "verified",
+      "expected_sha256": "c009cd8423eb377aeb2c94a38745ebfbd88c57452b6afd878a2a4df6f11f3526",
+      "actual_sha256": "c009cd8423eb377aeb2c94a38745ebfbd88c57452b6afd878a2a4df6f11f3526",
+      "response_bytes": 114982,
+      "raw_path": "migration/raw-html/education-tag-STEM-53306f6cdc61.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/taal",
+      "status": "verified",
+      "expected_sha256": "160428c443a81d7c41d58408bf82d114f2755b679519cd1664f4926943033274",
+      "actual_sha256": "160428c443a81d7c41d58408bf82d114f2755b679519cd1664f4926943033274",
+      "response_bytes": 126094,
+      "raw_path": "migration/raw-html/education-tag-taal-be67abdce2f1.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Taal",
+      "status": "verified",
+      "expected_sha256": "e22d11583b4f311eb004f4328cfc1d3296c8bffbdd7b5738875f5a8a86531b0f",
+      "actual_sha256": "e22d11583b4f311eb004f4328cfc1d3296c8bffbdd7b5738875f5a8a86531b0f",
+      "response_bytes": 117308,
+      "raw_path": "migration/raw-html/education-tag-Taal-39f5edf4f264.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/taalalgoritmes",
+      "status": "verified",
+      "expected_sha256": "0f9c59aedc2f8eb04bc0d3f9399330dba17c70b7d3067196d8002d24d0f9379e",
+      "actual_sha256": "0f9c59aedc2f8eb04bc0d3f9399330dba17c70b7d3067196d8002d24d0f9379e",
+      "response_bytes": 118011,
+      "raw_path": "migration/raw-html/education-tag-taalalgoritmes-2e11ab0beaed.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Thanos",
+      "status": "verified",
+      "expected_sha256": "4aa5988f1208cd03f3d25a5630b7307bd83d3dc3cf537f0694d3fca4bc9b1325",
+      "actual_sha256": "4aa5988f1208cd03f3d25a5630b7307bd83d3dc3cf537f0694d3fca4bc9b1325",
+      "response_bytes": 122072,
+      "raw_path": "migration/raw-html/education-tag-Thanos-0b8dda22ee09.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/thea+sommershield",
+      "status": "verified",
+      "expected_sha256": "3257d03053eb92e67584f52ea5259bb264c060e4c74ceab8d3a2be53677d3e92",
+      "actual_sha256": "3257d03053eb92e67584f52ea5259bb264c060e4c74ceab8d3a2be53677d3e92",
+      "response_bytes": 136057,
+      "raw_path": "migration/raw-html/education-tag-thea-sommershield-a688ce4972be.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Thomas+Gils",
+      "status": "verified",
+      "expected_sha256": "b8674e7370527526e685a1515936226bd6a3aa3c583e9303709eb7c55b0fe888",
+      "actual_sha256": "b8674e7370527526e685a1515936226bd6a3aa3c583e9303709eb7c55b0fe888",
+      "response_bytes": 135327,
+      "raw_path": "migration/raw-html/education-tag-Thomas-Gils-d9348c3e5734.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/tim+whitmarsh",
+      "status": "verified",
+      "expected_sha256": "21d6609e2f48ddbefc45e85ad52d08dc2551d5a1a2e57a25f6ced06fac23fcf9",
+      "actual_sha256": "21d6609e2f48ddbefc45e85ad52d08dc2551d5a1a2e57a25f6ced06fac23fcf9",
+      "response_bytes": 134349,
+      "raw_path": "migration/raw-html/education-tag-tim-whitmarsh-217edd32a91f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/tinder",
+      "status": "verified",
+      "expected_sha256": "0303323da0cabd0df356e818baa366dbd338e74e40410a3ec4b6dffff10ed091",
+      "actual_sha256": "0303323da0cabd0df356e818baa366dbd338e74e40410a3ec4b6dffff10ed091",
+      "response_bytes": 118489,
+      "raw_path": "migration/raw-html/education-tag-tinder-7f3b74faac98.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Tolkien",
+      "status": "verified",
+      "expected_sha256": "16ca35326e45623bd81abcd36fa3c4e53e31b6ae9e876cea59b7714b843fae09",
+      "actual_sha256": "16ca35326e45623bd81abcd36fa3c4e53e31b6ae9e876cea59b7714b843fae09",
+      "response_bytes": 115005,
+      "raw_path": "migration/raw-html/education-tag-Tolkien-5a42361d1871.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Van+Eyck",
+      "status": "verified",
+      "expected_sha256": "d6e1556306b7bbb4420326523ec6f98f90e98e7d42817f8a2c2aba3949ab556c",
+      "actual_sha256": "d6e1556306b7bbb4420326523ec6f98f90e98e7d42817f8a2c2aba3949ab556c",
+      "response_bytes": 115180,
+      "raw_path": "migration/raw-html/education-tag-Van-Eyck-f4dbf8808e79.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Van+Gogh",
+      "status": "verified",
+      "expected_sha256": "f29f503753ad0e0885a241192d72a2484a52c4831562ffc625962485a58b5093",
+      "actual_sha256": "f29f503753ad0e0885a241192d72a2484a52c4831562ffc625962485a58b5093",
+      "response_bytes": 115180,
+      "raw_path": "migration/raw-html/education-tag-Van-Gogh-bbb2f5861019.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/virtual+reality",
+      "status": "verified",
+      "expected_sha256": "c4096c2d8e3ccfc5989d62ab3b2778ad470878562f7a32e7f6776c74dec621fc",
+      "actual_sha256": "c4096c2d8e3ccfc5989d62ab3b2778ad470878562f7a32e7f6776c74dec621fc",
+      "response_bytes": 140044,
+      "raw_path": "migration/raw-html/education-tag-virtual-reality-9bc4b142b738.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Vlaanderen+Leest",
+      "status": "verified",
+      "expected_sha256": "e0c4ef415f203269be9fa09a77abe1a1e9d19c2ff63112db03d3d4ed2a24fd21",
+      "actual_sha256": "e0c4ef415f203269be9fa09a77abe1a1e9d19c2ff63112db03d3d4ed2a24fd21",
+      "response_bytes": 114415,
+      "raw_path": "migration/raw-html/education-tag-Vlaanderen-Leest-06113f407651.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/VQGAN",
+      "status": "verified",
+      "expected_sha256": "56020025a55494db59feaed457b1637ced1896e3f2f1176bf3f4a799cbd44973",
+      "actual_sha256": "56020025a55494db59feaed457b1637ced1896e3f2f1176bf3f4a799cbd44973",
+      "response_bytes": 137860,
+      "raw_path": "migration/raw-html/education-tag-VQGAN-100411383d0e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/vr",
+      "status": "verified",
+      "expected_sha256": "b4284a057998eba6c36850e48304966a7686ae996d5b6c8222ed819f4e48a93b",
+      "actual_sha256": "b4284a057998eba6c36850e48304966a7686ae996d5b6c8222ed819f4e48a93b",
+      "response_bytes": 115173,
+      "raw_path": "migration/raw-html/education-tag-vr-67d47cb9976f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/VR",
+      "status": "verified",
+      "expected_sha256": "9314bf5dfd149f5c38f36fe094aa66d148b4889401e380228e302dffceeada50",
+      "actual_sha256": "9314bf5dfd149f5c38f36fe094aa66d148b4889401e380228e302dffceeada50",
+      "response_bytes": 118196,
+      "raw_path": "migration/raw-html/education-tag-VR-19eeccec6d27.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/Wereldboekendag",
+      "status": "verified",
+      "expected_sha256": "3c11a87a55c06d981390e031d0de46c74762a859e37e6409ced862a7885e7c63",
+      "actual_sha256": "3c11a87a55c06d981390e031d0de46c74762a859e37e6409ced862a7885e7c63",
+      "response_bytes": 114406,
+      "raw_path": "migration/raw-html/education-tag-Wereldboekendag-1d76c064049b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/yannis+assael",
+      "status": "verified",
+      "expected_sha256": "e9e8ce5377faa11a52e5e052908c43c567b1651f3fcad41d3860687acb5683db",
+      "actual_sha256": "e9e8ce5377faa11a52e5e052908c43c567b1651f3fcad41d3860687acb5683db",
+      "response_bytes": 124317,
+      "raw_path": "migration/raw-html/education-tag-yannis-assael-8cf3e135a0fc.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/train-your-own-self-driving-car",
+      "status": "verified",
+      "expected_sha256": "57d176e6cc076ec3ce69fd95e340600a40e30253acc3e8e61692edb799d8fa1f",
+      "actual_sha256": "57d176e6cc076ec3ce69fd95e340600a40e30253acc3e8e61692edb799d8fa1f",
+      "response_bytes": 189345,
+      "raw_path": "migration/raw-html/education-train-your-own-self-driving-car-ac8fea25a65a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/wall-of-game",
+      "status": "verified",
+      "expected_sha256": "0a1aef3d5e687e6f54c61586c82e2cffd96f1084e50405eef70ae074ca43b49a",
+      "actual_sha256": "0a1aef3d5e687e6f54c61586c82e2cffd96f1084e50405eef70ae074ca43b49a",
+      "response_bytes": 153213,
+      "raw_path": "migration/raw-html/education-wall-of-game-8618b4cb65e3.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/workshops-and-teacher-training",
+      "status": "verified",
+      "expected_sha256": "e23a49658e31dc1dc3e540e811009b19c0de0ce585a15913e5745dcff0313bed",
+      "actual_sha256": "e23a49658e31dc1dc3e540e811009b19c0de0ce585a15913e5745dcff0313bed",
+      "response_bytes": 131977,
+      "raw_path": "migration/raw-html/education-workshops-and-teacher-training-7f32cf1e0576.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/english",
+      "status": "verified",
+      "expected_sha256": "cc333a1cdd71b766c25be236df10bb1eb3d5dce91784946c29f23ef9df86149e",
+      "actual_sha256": "cc333a1cdd71b766c25be236df10bb1eb3d5dce91784946c29f23ef9df86149e",
+      "response_bytes": 151980,
+      "raw_path": "migration/raw-html/english-a181d91faaa3.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/fotografie",
+      "status": "approved_exception",
+      "disposition": "excluded_out_of_scope",
+      "expected_sha256": "8c1c44fba85fc969bef8013e0972dcdd7d156fda586b9cd5a0f9360eafb8ea93",
+      "actual_sha256": null,
+      "raw_path": "migration/raw-html/fotografie-e489b1de92b3.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/fotografie/j-s",
+      "status": "approved_exception",
+      "disposition": "excluded_out_of_scope",
+      "expected_sha256": "8c1c44fba85fc969bef8013e0972dcdd7d156fda586b9cd5a0f9360eafb8ea93",
+      "actual_sha256": null,
+      "raw_path": "migration/raw-html/fotografie-j-s-285416f7cbab.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/fotografie/tk-russell-heartbeat-session",
+      "status": "approved_exception",
+      "disposition": "excluded_out_of_scope",
+      "expected_sha256": "8c1c44fba85fc969bef8013e0972dcdd7d156fda586b9cd5a0f9360eafb8ea93",
+      "actual_sha256": null,
+      "raw_path": "migration/raw-html/fotografie-tk-russell-heartbeat-session-e4146956bf30.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/info",
+      "status": "approved_exception",
+      "disposition": "excluded_inaccessible",
+      "expected_sha256": null,
+      "actual_sha256": null,
+      "raw_path": null
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs",
+      "status": "verified",
+      "expected_sha256": "2ff7539688b16f415f6ab1f95e155d862d7fefcceec6caa5a58a2727dc7bd3d6",
+      "actual_sha256": "2ff7539688b16f415f6ab1f95e155d862d7fefcceec6caa5a58a2727dc7bd3d6",
+      "response_bytes": 404777,
+      "raw_path": "migration/raw-html/onderwijs-ede74352adbd.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?author=6026af1f0584116c943938d2",
+      "status": "verified",
+      "expected_sha256": "5383c3e8d70f209df4570caad358f78f2999371a5ef6bf76131651365d9c8781",
+      "actual_sha256": "5383c3e8d70f209df4570caad358f78f2999371a5ef6bf76131651365d9c8781",
+      "response_bytes": 182552,
+      "raw_path": "migration/raw-html/onderwijs-1f1f4f8c9f99.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?author=6026af1f0584116c943938d2&offset=1635940308784&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "3e7a68d79e62a2f74902b1feb655f8a3232533755a869d1a5b1b93ba30b81be1",
+      "actual_sha256": "3e7a68d79e62a2f74902b1feb655f8a3232533755a869d1a5b1b93ba30b81be1",
+      "response_bytes": 179660,
+      "raw_path": "migration/raw-html/onderwijs-5edd12324a93.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?author=6026af1f0584116c943938d2&offset=1637533167704",
+      "status": "verified",
+      "expected_sha256": "d5505e65241263b438e6198430716cd39ee414eb8aef30485a45d2df5cebd1f6",
+      "actual_sha256": "d5505e65241263b438e6198430716cd39ee414eb8aef30485a45d2df5cebd1f6",
+      "response_bytes": 175009,
+      "raw_path": "migration/raw-html/onderwijs-8bc479a18077.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?author=6026af1f0584116c943938d2&offset=1666788262501&reversePaginate=true",
+      "status": "approved_exception",
+      "disposition": "excluded_noncanonical",
+      "expected_sha256": null,
+      "actual_sha256": null,
+      "raw_path": null
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?author=6026af1f0584116c943938d2&offset=1673424958467",
+      "status": "verified",
+      "expected_sha256": "f5499e733c2e29920ff967e34612aedd868cc8918498d73209ce2300d59ad75a",
+      "actual_sha256": "f5499e733c2e29920ff967e34612aedd868cc8918498d73209ce2300d59ad75a",
+      "response_bytes": 179579,
+      "raw_path": "migration/raw-html/onderwijs-07497c2737ab.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?author=6026af1f0584116c943938d2&offset=1723879686206&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "225a9cc484bce2c35a320538286c852cfb83c039b6ab43b68153037798d78711",
+      "actual_sha256": "225a9cc484bce2c35a320538286c852cfb83c039b6ab43b68153037798d78711",
+      "response_bytes": 200234,
+      "raw_path": "migration/raw-html/onderwijs-05a81972ea35.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?author=6026af1f0584116c943938d2&offset=1724320457027",
+      "status": "verified",
+      "expected_sha256": "21b16c88b127dd7556ec32baa58a4904b5ce661e40157d0382349e1da26214d6",
+      "actual_sha256": "21b16c88b127dd7556ec32baa58a4904b5ce661e40157d0382349e1da26214d6",
+      "response_bytes": 180393,
+      "raw_path": "migration/raw-html/onderwijs-aefcacfe6a3d.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?author=6026af1f0584116c943938d2&offset=1778955068319&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "5e454989339167e8dee17d58ee66a9970533a2b8989a0f500cb1ef768612a1ef",
+      "actual_sha256": "5e454989339167e8dee17d58ee66a9970533a2b8989a0f500cb1ef768612a1ef",
+      "response_bytes": 151389,
+      "raw_path": "migration/raw-html/onderwijs-db740a874105.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?format=rss",
+      "status": "verified",
+      "expected_sha256": "4ac4f7dafc341aba0efc01e55878ae6e303f03715f5ff04711fb11ce5afc114a",
+      "actual_sha256": "4ac4f7dafc341aba0efc01e55878ae6e303f03715f5ff04711fb11ce5afc114a",
+      "response_bytes": 793217,
+      "raw_path": "migration/raw-html/onderwijs-89db5e41f846.xml"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?offset=1623906000561&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "cad4f3e95d5fe8c2bd66466f5f386b94bb99775b1a2ac378f6dcf055eeebb4dc",
+      "actual_sha256": "cad4f3e95d5fe8c2bd66466f5f386b94bb99775b1a2ac378f6dcf055eeebb4dc",
+      "response_bytes": 210736,
+      "raw_path": "migration/raw-html/onderwijs-b6ec9098ba99.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?offset=1624898720256",
+      "status": "verified",
+      "expected_sha256": "77c4c273d435831011fa5907cdfc3b4726f3b65da34153d3974af437c1aba885",
+      "actual_sha256": "77c4c273d435831011fa5907cdfc3b4726f3b65da34153d3974af437c1aba885",
+      "response_bytes": 149288,
+      "raw_path": "migration/raw-html/onderwijs-be7744698a4f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?offset=1635940308784&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "d4663c204359d4e87a294449e86ac3d58a027232e932e522203bf3c60503d858",
+      "actual_sha256": "d4663c204359d4e87a294449e86ac3d58a027232e932e522203bf3c60503d858",
+      "response_bytes": 178636,
+      "raw_path": "migration/raw-html/onderwijs-afa491d74766.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?offset=1637533167704",
+      "status": "verified",
+      "expected_sha256": "7b5326619edf173fb7be60f2a4db185ab150beaac57e12e724571efa4756d407",
+      "actual_sha256": "7b5326619edf173fb7be60f2a4db185ab150beaac57e12e724571efa4756d407",
+      "response_bytes": 174977,
+      "raw_path": "migration/raw-html/onderwijs-a60a691298cc.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?offset=1654442387826&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "cea94547fe004c7d50253ab2192065c16bb3aa94dd34785747a88373be70f710",
+      "actual_sha256": "cea94547fe004c7d50253ab2192065c16bb3aa94dd34785747a88373be70f710",
+      "response_bytes": 185476,
+      "raw_path": "migration/raw-html/onderwijs-c7d5b67d4a13.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?offset=1655063165739",
+      "status": "verified",
+      "expected_sha256": "0c0a0d2b6829260f7f976ee930d2360c3772d8f1e885752a149538ac4fa34288",
+      "actual_sha256": "0c0a0d2b6829260f7f976ee930d2360c3772d8f1e885752a149538ac4fa34288",
+      "response_bytes": 188475,
+      "raw_path": "migration/raw-html/onderwijs-1029a8527424.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?offset=1666788262501&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "e54700610e817bc49eb83ec8a3413c558cca91209c483bedd8077d878b05af13",
+      "actual_sha256": "e54700610e817bc49eb83ec8a3413c558cca91209c483bedd8077d878b05af13",
+      "response_bytes": 178524,
+      "raw_path": "migration/raw-html/onderwijs-49292c1521de.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?offset=1673424958467",
+      "status": "verified",
+      "expected_sha256": "36337bab99bba8d8af49eedd1c4ad9eae888c5df142cc570e23b78d590bfec7c",
+      "actual_sha256": "36337bab99bba8d8af49eedd1c4ad9eae888c5df142cc570e23b78d590bfec7c",
+      "response_bytes": 192361,
+      "raw_path": "migration/raw-html/onderwijs-96cee9c533d2.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?offset=1696828030110&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "95e2925d96a1823ab6345a4d977a63477544756bc046c9dac89ffcea7a519798",
+      "actual_sha256": "95e2925d96a1823ab6345a4d977a63477544756bc046c9dac89ffcea7a519798",
+      "response_bytes": 204000,
+      "raw_path": "migration/raw-html/onderwijs-0d0cd790100a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?offset=1700501690492",
+      "status": "verified",
+      "expected_sha256": "e6640470729a3ba32fae78239332a95539ac52f627a8120845ba5105702b091b",
+      "actual_sha256": "e6640470729a3ba32fae78239332a95539ac52f627a8120845ba5105702b091b",
+      "response_bytes": 182056,
+      "raw_path": "migration/raw-html/onderwijs-213c1d6a0e97.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?offset=1723879686206&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "5a6515e98595c9a32e5b8cad2df1295c539fd5469e5a6ae3b1c300ac5a836e59",
+      "actual_sha256": "5a6515e98595c9a32e5b8cad2df1295c539fd5469e5a6ae3b1c300ac5a836e59",
+      "response_bytes": 178094,
+      "raw_path": "migration/raw-html/onderwijs-c2e285c85a49.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?offset=1724320457027",
+      "status": "verified",
+      "expected_sha256": "8278cddbe582c17da9faff0a6f3f1beb45b597e3a128efa8b6ddc3fca19641fc",
+      "actual_sha256": "8278cddbe582c17da9faff0a6f3f1beb45b597e3a128efa8b6ddc3fca19641fc",
+      "response_bytes": 180329,
+      "raw_path": "migration/raw-html/onderwijs-ba74af565a0f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?offset=1778955068319&reversePaginate=true",
+      "status": "verified",
+      "expected_sha256": "ab0352302316ecd6512d63f30f6f42360f3b3908e4c63d22e1ac35ec9ae105b1",
+      "actual_sha256": "ab0352302316ecd6512d63f30f6f42360f3b3908e4c63d22e1ac35ec9ae105b1",
+      "response_bytes": 121919,
+      "raw_path": "migration/raw-html/onderwijs-c8559471a8b2.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/1-jaar-ai-in-de-klas",
+      "status": "verified",
+      "expected_sha256": "8faa5e6489151de598760b89df55d2e8b9e9ae6ce3397a37dc86fb10ae0efed2",
+      "actual_sha256": "8faa5e6489151de598760b89df55d2e8b9e9ae6ce3397a37dc86fb10ae0efed2",
+      "response_bytes": 193867,
+      "raw_path": "migration/raw-html/onderwijs-1-jaar-ai-in-de-klas-5565b5acab0c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-act-van-verplichting-naar-ambitie",
+      "status": "verified",
+      "expected_sha256": "4b636bfb5787ed705cef924aeed68aa1c7651354e885480b0cf3807a63d153f8",
+      "actual_sha256": "4b636bfb5787ed705cef924aeed68aa1c7651354e885480b0cf3807a63d153f8",
+      "response_bytes": 154033,
+      "raw_path": "migration/raw-html/onderwijs-ai-act-van-verplichting-naar-ambitie-4a12353c7da3.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde",
+      "status": "verified",
+      "expected_sha256": "99a32a9fe314b61ea51143cd5fcc0fe7d1c7588d0790719199033628aac0111e",
+      "actual_sha256": "99a32a9fe314b61ea51143cd5fcc0fe7d1c7588d0790719199033628aac0111e",
+      "response_bytes": 149530,
+      "raw_path": "migration/raw-html/onderwijs-ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-42975a4f004e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-art-beethovenai",
+      "status": "verified",
+      "expected_sha256": "8109b4b483a9fc64a01bd9d19e47a4c818539c5beba32a03d62a71c578792827",
+      "actual_sha256": "8109b4b483a9fc64a01bd9d19e47a4c818539c5beba32a03d62a71c578792827",
+      "response_bytes": 147759,
+      "raw_path": "migration/raw-html/onderwijs-ai-art-beethovenai-9ba54ae01a87.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-art-ontketen-jouw-lyrische-picasso",
+      "status": "verified",
+      "expected_sha256": "e10390cf83b2040ad6908836b52531e236ae505a933d057c7b464241ef109220",
+      "actual_sha256": "e10390cf83b2040ad6908836b52531e236ae505a933d057c7b464241ef109220",
+      "response_bytes": 181251,
+      "raw_path": "migration/raw-html/onderwijs-ai-art-ontketen-jouw-lyrische-picasso-b3ab3cc700e8.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-art-thanos-snap-weg-met-de-photobomb",
+      "status": "verified",
+      "expected_sha256": "a7713f623c26f6231bb0ad999e9a693b002e279ed467b7749be0c80b5a21daaa",
+      "actual_sha256": "a7713f623c26f6231bb0ad999e9a693b002e279ed467b7749be0c80b5a21daaa",
+      "response_bytes": 153535,
+      "raw_path": "migration/raw-html/onderwijs-ai-art-thanos-snap-weg-met-de-photobomb-583d37381371.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-design-aikea",
+      "status": "verified",
+      "expected_sha256": "934e732894bbdd654076d70c6e44d5953cf631a768039aec474e0185fdf511fb",
+      "actual_sha256": "934e732894bbdd654076d70c6e44d5953cf631a768039aec474e0185fdf511fb",
+      "response_bytes": 346351,
+      "raw_path": "migration/raw-html/onderwijs-ai-design-aikea-3a5e2aac900a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-en-grieks-epigrafie-met-een-robot",
+      "status": "verified",
+      "expected_sha256": "7e54e63311206df5e7c8ad65d41959990d32351d0c2140abe49f105323428f50",
+      "actual_sha256": "7e54e63311206df5e7c8ad65d41959990d32351d0c2140abe49f105323428f50",
+      "response_bytes": 223478,
+      "raw_path": "migration/raw-html/onderwijs-ai-en-grieks-epigrafie-met-een-robot-eda7055ae9b9.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-en-latijn-breng-tacitus-tot-leven",
+      "status": "verified",
+      "expected_sha256": "c3601d12becbffd690996bfac866a12e15e1460b86740a7e4da3cebe9e8acb7f",
+      "actual_sha256": "c3601d12becbffd690996bfac866a12e15e1460b86740a7e4da3cebe9e8acb7f",
+      "response_bytes": 203071,
+      "raw_path": "migration/raw-html/onderwijs-ai-en-latijn-breng-tacitus-tot-leven-74f0e861f14a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-for-education-awards-tweemaal-prijs",
+      "status": "verified",
+      "expected_sha256": "2867f327f0231aee1602ce4b5153b8dded42ccad4b4dd7f4e0808b0d2bf11716",
+      "actual_sha256": "2867f327f0231aee1602ce4b5153b8dded42ccad4b4dd7f4e0808b0d2bf11716",
+      "response_bytes": 175967,
+      "raw_path": "migration/raw-html/onderwijs-ai-for-education-awards-tweemaal-prijs-2dcf90c9b3c7.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-geletterdheid-waarom-moeten-wij-dit-kennen",
+      "status": "verified",
+      "expected_sha256": "bcee56899021df481f5f4536d5f20cb3abbb238ae60503b24414ed6aa8f5390c",
+      "actual_sha256": "bcee56899021df481f5f4536d5f20cb3abbb238ae60503b24414ed6aa8f5390c",
+      "response_bytes": 170949,
+      "raw_path": "migration/raw-html/onderwijs-ai-geletterdheid-waarom-moeten-wij-dit-kennen-11d2cc656f87.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia",
+      "status": "verified",
+      "expected_sha256": "f3b82aead721375114fd81eda8fafaf04155208812bfaf8932a4ff84fa83953c",
+      "actual_sha256": "f3b82aead721375114fd81eda8fafaf04155208812bfaf8932a4ff84fa83953c",
+      "response_bytes": 172265,
+      "raw_path": "migration/raw-html/onderwijs-ai-grieks-epigrafie-poezie-en-ai-met-pythia-1fa38b522cd1.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-in-de-klas-vicepremier-op-bezoek",
+      "status": "verified",
+      "expected_sha256": "30f2ca7f1e4338a938aa33eb3365d64aaab6cc7216af026f3a250db4bc31507a",
+      "actual_sha256": "30f2ca7f1e4338a938aa33eb3365d64aaab6cc7216af026f3a250db4bc31507a",
+      "response_bytes": 171606,
+      "raw_path": "migration/raw-html/onderwijs-ai-in-de-klas-vicepremier-op-bezoek-f0c4fd5179b7.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "status": "verified",
+      "expected_sha256": "4597b3973c9693f9b7d670ff4f4cc868650d83c814ade0a98c38230856f37448",
+      "actual_sha256": "4597b3973c9693f9b7d670ff4f4cc868650d83c814ade0a98c38230856f37448",
+      "response_bytes": 167253,
+      "raw_path": "migration/raw-html/onderwijs-ai-in-de-klas-waarom-en-hoe-7650d2cce027.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "status": "verified",
+      "expected_sha256": "a8de1bfa803135b0c884769e6ae48687772363bf98a4fbf03809689c383514a8",
+      "actual_sha256": "a8de1bfa803135b0c884769e6ae48687772363bf98a4fbf03809689c383514a8",
+      "response_bytes": 152471,
+      "raw_path": "migration/raw-html/onderwijs-ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-afc99bf1c141.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-paasvakantie",
+      "status": "verified",
+      "expected_sha256": "70078dc3385cf259c367e7d5dd85c18a883adeef56fa99ac3e4d166694a14770",
+      "actual_sha256": "70078dc3385cf259c367e7d5dd85c18a883adeef56fa99ac3e4d166694a14770",
+      "response_bytes": 129097,
+      "raw_path": "migration/raw-html/onderwijs-ai-paasvakantie-e3e8f1e387e7.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-sport-inform",
+      "status": "verified",
+      "expected_sha256": "d8fd061712cd8cf2e140153d8437e520cd89ec0195057f9f986238294fb8ce37",
+      "actual_sha256": "d8fd061712cd8cf2e140153d8437e520cd89ec0195057f9f986238294fb8ce37",
+      "response_bytes": 221624,
+      "raw_path": "migration/raw-html/onderwijs-ai-sport-inform-31dcfcd88560.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-taal-auteur-of-ai-teur",
+      "status": "verified",
+      "expected_sha256": "4e0f400263df14577ee625344f49129c352898012d3f3fe2e65de4f479fae5ab",
+      "actual_sha256": "4e0f400263df14577ee625344f49129c352898012d3f3fe2e65de4f479fae5ab",
+      "response_bytes": 153365,
+      "raw_path": "migration/raw-html/onderwijs-ai-taal-auteur-of-ai-teur-ffd62e1d6fd7.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-wij-robots-herkennen-onze-emotie",
+      "status": "verified",
+      "expected_sha256": "9bc54c737352b3879055e5d51f9995d197baa5626228c78ac9fffa51132eff89",
+      "actual_sha256": "9bc54c737352b3879055e5d51f9995d197baa5626228c78ac9fffa51132eff89",
+      "response_bytes": 165049,
+      "raw_path": "migration/raw-html/onderwijs-ai-wij-robots-herkennen-onze-emotie-b60910d50742.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-wij-robots-herkennen-onze-wereld",
+      "status": "verified",
+      "expected_sha256": "d897ba55e681604b9824c5b503791271f6d9fc4c196286b0b537047c1b1727f7",
+      "actual_sha256": "d897ba55e681604b9824c5b503791271f6d9fc4c196286b0b537047c1b1727f7",
+      "response_bytes": 169728,
+      "raw_path": "migration/raw-html/onderwijs-ai-wij-robots-herkennen-onze-wereld-7ad125152afa.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ai-wij-tinder-voor-groepswerken",
+      "status": "verified",
+      "expected_sha256": "b4d5e32a265000581e84eeb22057ae385ea2c0ae72328a5000f171b3799a347a",
+      "actual_sha256": "b4d5e32a265000581e84eeb22057ae385ea2c0ae72328a5000f171b3799a347a",
+      "response_bytes": 168552,
+      "raw_path": "migration/raw-html/onderwijs-ai-wij-tinder-voor-groepswerken-5f48e2085e3e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/avontuuropdeakropolis",
+      "status": "verified",
+      "expected_sha256": "fc0f770524c9b61634856bc4ebfbffde4cc639ae35674073f778b34b0562de0f",
+      "actual_sha256": "fc0f770524c9b61634856bc4ebfbffde4cc639ae35674073f778b34b0562de0f",
+      "response_bytes": 210739,
+      "raw_path": "migration/raw-html/onderwijs-avontuuropdeakropolis-d7195fac228c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/blockly-in-de-klas",
+      "status": "verified",
+      "expected_sha256": "ad9fe6f7449dbe7476c531f072ef8bab579311aaac27bf856e22484b0b9cfbd5",
+      "actual_sha256": "ad9fe6f7449dbe7476c531f072ef8bab579311aaac27bf856e22484b0b9cfbd5",
+      "response_bytes": 201832,
+      "raw_path": "migration/raw-html/onderwijs-blockly-in-de-klas-7103668ece7f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/bouw-een-slimme-vuilnisbak",
+      "status": "verified",
+      "expected_sha256": "2a1ee6c8c6edf11b60aeb467e75aa2d42c74982d6a80dfc50d2c43bc6ae6a6da",
+      "actual_sha256": "2a1ee6c8c6edf11b60aeb467e75aa2d42c74982d6a80dfc50d2c43bc6ae6a6da",
+      "response_bytes": 195254,
+      "raw_path": "migration/raw-html/onderwijs-bouw-een-slimme-vuilnisbak-2b7454de4732.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "status": "verified",
+      "expected_sha256": "62a059ca50255d18a5f15e4fa984c53f35d80268fb326f1cdd0dc14ac409b501",
+      "actual_sha256": "62a059ca50255d18a5f15e4fa984c53f35d80268fb326f1cdd0dc14ac409b501",
+      "response_bytes": 236536,
+      "raw_path": "migration/raw-html/onderwijs-breng-de-romeinse-keizers-tot-leven-cd4e29a424e7.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "status": "verified",
+      "expected_sha256": "9c1b18ecd8156b86274b4d5de10599318cdf1d8d2b14adb865110ecdcf07adc8",
+      "actual_sha256": "9c1b18ecd8156b86274b4d5de10599318cdf1d8d2b14adb865110ecdcf07adc8",
+      "response_bytes": 193879,
+      "raw_path": "migration/raw-html/onderwijs-breng-griekse-mythes-tot-leven-met-ai-7063bbce46af.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/category/coding",
+      "status": "verified",
+      "expected_sha256": "7321581c22c0aeb13c886821a9ea1801ff0aac9f58a9fcd94fdf3750e6008bde",
+      "actual_sha256": "7321581c22c0aeb13c886821a9ea1801ff0aac9f58a9fcd94fdf3750e6008bde",
+      "response_bytes": 114421,
+      "raw_path": "migration/raw-html/onderwijs-category-coding-46eb07092782.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/category/education",
+      "status": "verified",
+      "expected_sha256": "9385dbe80a60380ad385ef8a3fe263e9501f40548ac4417f5691f629d7d3fc28",
+      "actual_sha256": "9385dbe80a60380ad385ef8a3fe263e9501f40548ac4417f5691f629d7d3fc28",
+      "response_bytes": 140550,
+      "raw_path": "migration/raw-html/onderwijs-category-education-73070e60e578.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/category/Gent",
+      "status": "verified",
+      "expected_sha256": "fbc3ac6721ab5415d0c7d32a00818cabd90df193f2c925f26ab017ac7e5632e1",
+      "actual_sha256": "fbc3ac6721ab5415d0c7d32a00818cabd90df193f2c925f26ab017ac7e5632e1",
+      "response_bytes": 126621,
+      "raw_path": "migration/raw-html/onderwijs-category-Gent-fa85716d9819.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/category/Geschiedenis",
+      "status": "verified",
+      "expected_sha256": "ef0f56607659a67c670035c846720e1fac74296f3a5701fa43dbd13be66889a8",
+      "actual_sha256": "ef0f56607659a67c670035c846720e1fac74296f3a5701fa43dbd13be66889a8",
+      "response_bytes": 118685,
+      "raw_path": "migration/raw-html/onderwijs-category-Geschiedenis-0f4b14bb68c1.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/category/Ghent",
+      "status": "verified",
+      "expected_sha256": "7eb08fe8a0a0b79ddd8aa75b042e8acf34055423fa6fc9d3c192a03113c8d0cf",
+      "actual_sha256": "7eb08fe8a0a0b79ddd8aa75b042e8acf34055423fa6fc9d3c192a03113c8d0cf",
+      "response_bytes": 114412,
+      "raw_path": "migration/raw-html/onderwijs-category-Ghent-f97ae69e1c45.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/category/latin",
+      "status": "verified",
+      "expected_sha256": "bfada79dbca8ec1b681aadefdbceca3f157725b7579445d5c65324914f6e9b83",
+      "actual_sha256": "bfada79dbca8ec1b681aadefdbceca3f157725b7579445d5c65324914f6e9b83",
+      "response_bytes": 110828,
+      "raw_path": "migration/raw-html/onderwijs-category-latin-2560540f8ee5.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/category/onderwijs",
+      "status": "verified",
+      "expected_sha256": "318692feef0b9f9fdcbcddbf2a48689ee47a0ffc9ce932c964771b1ad15fe1c7",
+      "actual_sha256": "318692feef0b9f9fdcbcddbf2a48689ee47a0ffc9ce932c964771b1ad15fe1c7",
+      "response_bytes": 112764,
+      "raw_path": "migration/raw-html/onderwijs-category-onderwijs-545969459a50.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/category/super+marcus",
+      "status": "verified",
+      "expected_sha256": "135222e65dad1ce952c6254b3ecf740ba0f191b9f821de7857380731c41013d4",
+      "actual_sha256": "135222e65dad1ce952c6254b3ecf740ba0f191b9f821de7857380731c41013d4",
+      "response_bytes": 138893,
+      "raw_path": "migration/raw-html/onderwijs-category-super-marcus-b205f1c7f54a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/chatgpt-in-de-klas",
+      "status": "verified",
+      "expected_sha256": "e12eea5091d0f07442bc42d5f18d5c6648f067b9397de09324fd4a2b4066fade",
+      "actual_sha256": "e12eea5091d0f07442bc42d5f18d5c6648f067b9397de09324fd4a2b4066fade",
+      "response_bytes": 229966,
+      "raw_path": "migration/raw-html/onderwijs-chatgpt-in-de-klas-e7fe4968131d.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/de-chimaera-het-fantastische-monster",
+      "status": "verified",
+      "expected_sha256": "c30db278a019e1b29fef0eca267e197820e1e872627a3cc0d2b0936cda14d17d",
+      "actual_sha256": "c30db278a019e1b29fef0eca267e197820e1e872627a3cc0d2b0936cda14d17d",
+      "response_bytes": 255385,
+      "raw_path": "migration/raw-html/onderwijs-de-chimaera-het-fantastische-monster-ec3050318599.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/define-value",
+      "status": "verified",
+      "expected_sha256": "c425e759861bdd41492048b319e40d71dbe786407472999d75c8ceed2065b2bd",
+      "actual_sha256": "c425e759861bdd41492048b319e40d71dbe786407472999d75c8ceed2065b2bd",
+      "response_bytes": 157877,
+      "raw_path": "migration/raw-html/onderwijs-define-value-5151f8f6c3a3.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/design-thinking-project-2030",
+      "status": "verified",
+      "expected_sha256": "e6be20246bf7ad79f9c24377199a1f68b0b04478cf8e1787c149c5f353eafb0e",
+      "actual_sha256": "e6be20246bf7ad79f9c24377199a1f68b0b04478cf8e1787c149c5f353eafb0e",
+      "response_bytes": 127878,
+      "raw_path": "migration/raw-html/onderwijs-design-thinking-project-2030-2c23a794324d.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/digital-storytelling-in-virtual-reality",
+      "status": "verified",
+      "expected_sha256": "c2f783527cd677729bd6460472d2de8aab482c965c32e68e3b70618abb94e3f8",
+      "actual_sha256": "c2f783527cd677729bd6460472d2de8aab482c965c32e68e3b70618abb94e3f8",
+      "response_bytes": 186496,
+      "raw_path": "migration/raw-html/onderwijs-digital-storytelling-in-virtual-reality-0004d3c56040.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/digital-storytelling-in-vr",
+      "status": "verified",
+      "expected_sha256": "a6a3029e17bdc395ae2720e7877841cc70bf0c49941c474336086c769751bddf",
+      "actual_sha256": "a6a3029e17bdc395ae2720e7877841cc70bf0c49941c474336086c769751bddf",
+      "response_bytes": 138995,
+      "raw_path": "migration/raw-html/onderwijs-digital-storytelling-in-vr-2ce286d49657.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/duik-met-ai-de-geschiedenis-in",
+      "status": "verified",
+      "expected_sha256": "079f7fe4b2383f79f76883d3e349766a7a1d3f6e54d2ad36245376ee0c589092",
+      "actual_sha256": "079f7fe4b2383f79f76883d3e349766a7a1d3f6e54d2ad36245376ee0c589092",
+      "response_bytes": 149093,
+      "raw_path": "migration/raw-html/onderwijs-duik-met-ai-de-geschiedenis-in-bb79d3fd1ba7.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/grieks-minecraft-akropolis-avontuur",
+      "status": "verified",
+      "expected_sha256": "b171208bea7fcd92bf82947c25bae1aa386a9d9426ba82263ae8c3f640b9a9fa",
+      "actual_sha256": "b171208bea7fcd92bf82947c25bae1aa386a9d9426ba82263ae8c3f640b9a9fa",
+      "response_bytes": 251890,
+      "raw_path": "migration/raw-html/onderwijs-grieks-minecraft-akropolis-avontuur-ab7584a7cb6b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/handvat-voor-lesmateriaal",
+      "status": "verified",
+      "expected_sha256": "990fe6dffc934b50418c4a865d883749e7ac3d0e1875bca2521f63e9c5b098a0",
+      "actual_sha256": "990fe6dffc934b50418c4a865d883749e7ac3d0e1875bca2521f63e9c5b098a0",
+      "response_bytes": 387717,
+      "raw_path": "migration/raw-html/onderwijs-handvat-voor-lesmateriaal-4f005cef0429.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/het-digitale-dilemma",
+      "status": "verified",
+      "expected_sha256": "8b78b6c27d06b3394bed7e49b9249607d4d8fdc39afc524c2571e0b33d76b60f",
+      "actual_sha256": "8b78b6c27d06b3394bed7e49b9249607d4d8fdc39afc524c2571e0b33d76b60f",
+      "response_bytes": 236150,
+      "raw_path": "migration/raw-html/onderwijs-het-digitale-dilemma-46932d3b9dd8.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/hey-siri-kloon-mijn-stem",
+      "status": "verified",
+      "expected_sha256": "de11dd181529a1503e134a436e421d482f8f3a36d788b26cc711d0e39ade7bbd",
+      "actual_sha256": "de11dd181529a1503e134a436e421d482f8f3a36d788b26cc711d0e39ade7bbd",
+      "response_bytes": 166785,
+      "raw_path": "migration/raw-html/onderwijs-hey-siri-kloon-mijn-stem-5992033e2208.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/hey-siri-kloon-mijn-stem-2025",
+      "status": "verified",
+      "expected_sha256": "2e6d33f7a54511fa27334858cfc931ff64835132ca59fabc336533e97ce672be",
+      "actual_sha256": "2e6d33f7a54511fa27334858cfc931ff64835132ca59fabc336533e97ce672be",
+      "response_bytes": 256665,
+      "raw_path": "migration/raw-html/onderwijs-hey-siri-kloon-mijn-stem-2025-56cad986d22c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/html-in-de-klas",
+      "status": "verified",
+      "expected_sha256": "a48c1909e1599925dde743848963edb66fff8c5e101a0081fb3073e19100e662",
+      "actual_sha256": "a48c1909e1599925dde743848963edb66fff8c5e101a0081fb3073e19100e662",
+      "response_bytes": 193371,
+      "raw_path": "migration/raw-html/onderwijs-html-in-de-klas-615026415989.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/in-dialoog-met-ai",
+      "status": "verified",
+      "expected_sha256": "0276f3d66b374de7c7cd4a56854762da5d38defb4ca0aaf1cf749ca7553e748d",
+      "actual_sha256": "0276f3d66b374de7c7cd4a56854762da5d38defb4ca0aaf1cf749ca7553e748d",
+      "response_bytes": 186126,
+      "raw_path": "migration/raw-html/onderwijs-in-dialoog-met-ai-53a1f2115808.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/interview-ai-op-een-college",
+      "status": "verified",
+      "expected_sha256": "be8a0b14e2ffd0ef6d7d91ee36e947842071ead3a1e4c7b04ce1724349d6163a",
+      "actual_sha256": "be8a0b14e2ffd0ef6d7d91ee36e947842071ead3a1e4c7b04ce1724349d6163a",
+      "response_bytes": 150680,
+      "raw_path": "migration/raw-html/onderwijs-interview-ai-op-een-college-6a6fdcaaf365.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/interview-met-de-geschiedenis",
+      "status": "verified",
+      "expected_sha256": "a3f964137e2fbee2346594bed5343fd02c4435b6606ab744949e3b52c7ce0a17",
+      "actual_sha256": "a3f964137e2fbee2346594bed5343fd02c4435b6606ab744949e3b52c7ce0a17",
+      "response_bytes": 382927,
+      "raw_path": "migration/raw-html/onderwijs-interview-met-de-geschiedenis-d6962c44f61d.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ithaca-teaching-history-journal",
+      "status": "verified",
+      "expected_sha256": "a2cb31210416439f6469ef76a8d0319801848bb20072ef4bebf5f1573346afd4",
+      "actual_sha256": "a2cb31210416439f6469ef76a8d0319801848bb20072ef4bebf5f1573346afd4",
+      "response_bytes": 206863,
+      "raw_path": "migration/raw-html/onderwijs-ithaca-teaching-history-journal-92bcff719816.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/javascript-en-computationeel-denken-in-de-browser",
+      "status": "verified",
+      "expected_sha256": "bbf5f41c79e2494c9f9c38f4af06adcdffd05f8538b4d8ab79ffb517f56dc6dd",
+      "actual_sha256": "bbf5f41c79e2494c9f9c38f4af06adcdffd05f8538b4d8ab79ffb517f56dc6dd",
+      "response_bytes": 207428,
+      "raw_path": "migration/raw-html/onderwijs-javascript-en-computationeel-denken-in-de-browser-4c80df670c54.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/javascript-in-de-klas-versie-20",
+      "status": "verified",
+      "expected_sha256": "db719878f1f8fb52f47ed8ad68af8540ee149c0dfdf6f07796cdcafbf3b10a12",
+      "actual_sha256": "db719878f1f8fb52f47ed8ad68af8540ee149c0dfdf6f07796cdcafbf3b10a12",
+      "response_bytes": 208519,
+      "raw_path": "migration/raw-html/onderwijs-javascript-in-de-klas-versie-20-850800fcfb4f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/latijn-en-game-design",
+      "status": "verified",
+      "expected_sha256": "95a9ed978cd29b6def50221b9ab0d1ec5e6d77ae62c62873ade7423a1d2fe392",
+      "actual_sha256": "95a9ed978cd29b6def50221b9ab0d1ec5e6d77ae62c62873ade7423a1d2fe392",
+      "response_bytes": 183568,
+      "raw_path": "migration/raw-html/onderwijs-latijn-en-game-design-68985f0ce8eb.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/latijnse-wordle",
+      "status": "verified",
+      "expected_sha256": "7ac8c961ddc6a5fce25764a10e764b407bdb913c1eb9adf0ee1977296df9a986",
+      "actual_sha256": "7ac8c961ddc6a5fce25764a10e764b407bdb913c1eb9adf0ee1977296df9a986",
+      "response_bytes": 165648,
+      "raw_path": "migration/raw-html/onderwijs-latijnse-wordle-b0a8e3a574de.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/lessenreeks-computationeel-denken",
+      "status": "verified",
+      "expected_sha256": "de5819e9bdb8cecb5a29f2415e0a5cd5518f9792056408b9b2cccd2c4a10c015",
+      "actual_sha256": "de5819e9bdb8cecb5a29f2415e0a5cd5518f9792056408b9b2cccd2c4a10c015",
+      "response_bytes": 172336,
+      "raw_path": "migration/raw-html/onderwijs-lessenreeks-computationeel-denken-1988d3fc7fc1.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/lessenreeks-computationeel-denken-javascript",
+      "status": "verified",
+      "expected_sha256": "d4a0b0fcc4d069b355ad8cd6c2a6718412d13726d3d8bb1843b836806a65a1c4",
+      "actual_sha256": "d4a0b0fcc4d069b355ad8cd6c2a6718412d13726d3d8bb1843b836806a65a1c4",
+      "response_bytes": 171373,
+      "raw_path": "migration/raw-html/onderwijs-lessenreeks-computationeel-denken-javascript-21022e595c73.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/moeten-robots-auteursrechten-krijgen",
+      "status": "verified",
+      "expected_sha256": "89e5d85cba40473269248b47d40c84451acc715874ba2562fc8318e58872af3e",
+      "actual_sha256": "89e5d85cba40473269248b47d40c84451acc715874ba2562fc8318e58872af3e",
+      "response_bytes": 156387,
+      "raw_path": "migration/raw-html/onderwijs-moeten-robots-auteursrechten-krijgen-8e2283e39fb0.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto",
+      "status": "verified",
+      "expected_sha256": "bfe6be8ebc43966560d11c8b50aca81e059e19fe7654a76f56c80815460eac44",
+      "actual_sha256": "bfe6be8ebc43966560d11c8b50aca81e059e19fe7654a76f56c80815460eac44",
+      "response_bytes": 169587,
+      "raw_path": "migration/raw-html/onderwijs-onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto-450a26c5bca6.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai",
+      "status": "verified",
+      "expected_sha256": "f7f702f71a37cc742ded802d97c1d5b1d60f80954e49bda25f10211445688add",
+      "actual_sha256": "f7f702f71a37cc742ded802d97c1d5b1d60f80954e49bda25f10211445688add",
+      "response_bytes": 150406,
+      "raw_path": "migration/raw-html/onderwijs-onderwijs-kleur-de-geschiedenis-met-ai-f5a1acc051d8.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/ontdek-latijn-met-minecraft",
+      "status": "verified",
+      "expected_sha256": "fac7aa714b3293f5c4fbde7381cd66e4bea1ed9a4cda939b21c3e6df9f8476c5",
+      "actual_sha256": "fac7aa714b3293f5c4fbde7381cd66e4bea1ed9a4cda939b21c3e6df9f8476c5",
+      "response_bytes": 180232,
+      "raw_path": "migration/raw-html/onderwijs-ontdek-latijn-met-minecraft-0db8a50c966c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/op-avontuur-met-een-ai",
+      "status": "verified",
+      "expected_sha256": "f06c1f70dbda7e4a67aa7558fbb8105007ab52120ab2cc7458a0178d4ac1a83f",
+      "actual_sha256": "f06c1f70dbda7e4a67aa7558fbb8105007ab52120ab2cc7458a0178d4ac1a83f",
+      "response_bytes": 219351,
+      "raw_path": "migration/raw-html/onderwijs-op-avontuur-met-een-ai-548d893d7854.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/open-een-ai-kunstgalerij",
+      "status": "verified",
+      "expected_sha256": "34ad5f28430b1beeb77e8a7c87d1639d2cde22db933e3656639e88736aee8b15",
+      "actual_sha256": "34ad5f28430b1beeb77e8a7c87d1639d2cde22db933e3656639e88736aee8b15",
+      "response_bytes": 153291,
+      "raw_path": "migration/raw-html/onderwijs-open-een-ai-kunstgalerij-4c8393a53b43.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/over-zonnedraken-en-zeerovers",
+      "status": "verified",
+      "expected_sha256": "f8226c631b10a43263c980499e4d29d31f766a455757319b922d599e7629e758",
+      "actual_sha256": "f8226c631b10a43263c980499e4d29d31f766a455757319b922d599e7629e758",
+      "response_bytes": 187681,
+      "raw_path": "migration/raw-html/onderwijs-over-zonnedraken-en-zeerovers-b0967b127382.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/podcast-de-leraar-denkt-over-ai",
+      "status": "verified",
+      "expected_sha256": "6c1aff5f052eb2be795bbb28dd4b5c39d674997dd0ea5444a98e9e901e2d2ae5",
+      "actual_sha256": "6c1aff5f052eb2be795bbb28dd4b5c39d674997dd0ea5444a98e9e901e2d2ae5",
+      "response_bytes": 132031,
+      "raw_path": "migration/raw-html/onderwijs-podcast-de-leraar-denkt-over-ai-5d66e16dfd9b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/project-delphi",
+      "status": "verified",
+      "expected_sha256": "5bf063922cb8fdcf5d15a034d5e68433984dd5efd8a05a79330cb367cdd6a997",
+      "actual_sha256": "5bf063922cb8fdcf5d15a034d5e68433984dd5efd8a05a79330cb367cdd6a997",
+      "response_bytes": 193862,
+      "raw_path": "migration/raw-html/onderwijs-project-delphi-f9c3244dd20b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/project-fijnstof",
+      "status": "verified",
+      "expected_sha256": "5e4ac68a8657b29e299ad4e3dd7f5da50aa03e6686cacf80954985c587d63e1a",
+      "actual_sha256": "5e4ac68a8657b29e299ad4e3dd7f5da50aa03e6686cacf80954985c587d63e1a",
+      "response_bytes": 188745,
+      "raw_path": "migration/raw-html/onderwijs-project-fijnstof-8e1516413c8f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/project-robothand",
+      "status": "verified",
+      "expected_sha256": "bbb8025c4422e6d14fcb2b9d55c25f29f7bf43d0d69f04a8a5802a52475dab5f",
+      "actual_sha256": "bbb8025c4422e6d14fcb2b9d55c25f29f7bf43d0d69f04a8a5802a52475dab5f",
+      "response_bytes": 251659,
+      "raw_path": "migration/raw-html/onderwijs-project-robothand-b72e341262ab.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/project-slimme-vuilnisbak",
+      "status": "verified",
+      "expected_sha256": "86dad0f439f0ce86cd33a6b171b2e3c3f2e9f2eb2bd435e3a2431547ce037e52",
+      "actual_sha256": "86dad0f439f0ce86cd33a6b171b2e3c3f2e9f2eb2bd435e3a2431547ce037e52",
+      "response_bytes": 191200,
+      "raw_path": "migration/raw-html/onderwijs-project-slimme-vuilnisbak-4933c56e4308.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/project-wind",
+      "status": "verified",
+      "expected_sha256": "a1dbc261a98521cbb73c0307d24a190924ae996bfe57cdbd312904a94e8b167a",
+      "actual_sha256": "a1dbc261a98521cbb73c0307d24a190924ae996bfe57cdbd312904a94e8b167a",
+      "response_bytes": 186965,
+      "raw_path": "migration/raw-html/onderwijs-project-wind-d5cca0ae1f1e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/prora-ai-in-het-vakblad-voor-leraren-oude-talen",
+      "status": "verified",
+      "expected_sha256": "ffeb4db6f809db01cb8672fb8cdf6d6bcab5df480af4b92b28e499012a206b64",
+      "actual_sha256": "ffeb4db6f809db01cb8672fb8cdf6d6bcab5df480af4b92b28e499012a206b64",
+      "response_bytes": 221516,
+      "raw_path": "migration/raw-html/onderwijs-prora-ai-in-het-vakblad-voor-leraren-oude-talen-b99909d09752.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/python-in-de-klas",
+      "status": "verified",
+      "expected_sha256": "4b5304f8856202b9a8ab678b63aae74734a0e289c332d23bc390e96ca6d6e0ed",
+      "actual_sha256": "4b5304f8856202b9a8ab678b63aae74734a0e289c332d23bc390e96ca6d6e0ed",
+      "response_bytes": 214230,
+      "raw_path": "migration/raw-html/onderwijs-python-in-de-klas-6598cf771944.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/recensiesenjongerentaal",
+      "status": "verified",
+      "expected_sha256": "aa6b28a80c967792456a3b95195feb7e37b4387b45d6aa91cd5074a4bff2008f",
+      "actual_sha256": "aa6b28a80c967792456a3b95195feb7e37b4387b45d6aa91cd5074a4bff2008f",
+      "response_bytes": 207882,
+      "raw_path": "migration/raw-html/onderwijs-recensiesenjongerentaal-a7dffdf1731a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/roma-aeterna",
+      "status": "verified",
+      "expected_sha256": "a2ea722eda5969b98c17da8eb962ec6064a90d1f39b72ee1a3ed379f0d656861",
+      "actual_sha256": "a2ea722eda5969b98c17da8eb962ec6064a90d1f39b72ee1a3ed379f0d656861",
+      "response_bytes": 158098,
+      "raw_path": "migration/raw-html/onderwijs-roma-aeterna-a88073c932cf.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/schrijftaken-zonder-aiaiai",
+      "status": "verified",
+      "expected_sha256": "eab71c319c8c97de96e86b6512fcf53349d7f5275f889c641a349f5fc6b32d7d",
+      "actual_sha256": "eab71c319c8c97de96e86b6512fcf53349d7f5275f889c641a349f5fc6b32d7d",
+      "response_bytes": 170277,
+      "raw_path": "migration/raw-html/onderwijs-schrijftaken-zonder-aiaiai-ae7c6726ad04.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/sensei-jouw-teacherbot",
+      "status": "verified",
+      "expected_sha256": "6b880b685b4780423d802b53af6f27c240f43663f0029f6b90a9900af3472a6e",
+      "actual_sha256": "6b880b685b4780423d802b53af6f27c240f43663f0029f6b90a9900af3472a6e",
+      "response_bytes": 131413,
+      "raw_path": "migration/raw-html/onderwijs-sensei-jouw-teacherbot-f294182e4074.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/social-media",
+      "status": "verified",
+      "expected_sha256": "d9bdfff0b317b0d209f82d1c89023dfa6cfb679ef0c512e7bf4dc0632ff126c4",
+      "actual_sha256": "d9bdfff0b317b0d209f82d1c89023dfa6cfb679ef0c512e7bf4dc0632ff126c4",
+      "response_bytes": 188665,
+      "raw_path": "migration/raw-html/onderwijs-social-media-d7e0fae812c1.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/super-marcus",
+      "status": "verified",
+      "expected_sha256": "59589eb06d0cea255e08101e416f7005c12ff7e9041324f6bf7a00c2376f2b8c",
+      "actual_sha256": "59589eb06d0cea255e08101e416f7005c12ff7e9041324f6bf7a00c2376f2b8c",
+      "response_bytes": 194269,
+      "raw_path": "migration/raw-html/onderwijs-super-marcus-4d9623eaa071.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/taalalgoritmes-en-sentimentsanalyse",
+      "status": "verified",
+      "expected_sha256": "d042117190fc8bc3c0f6ad01d00a357dfd20c33b471d3a2424ca8f2ba41c0c53",
+      "actual_sha256": "d042117190fc8bc3c0f6ad01d00a357dfd20c33b471d3a2424ca8f2ba41c0c53",
+      "response_bytes": 233383,
+      "raw_path": "migration/raw-html/onderwijs-taalalgoritmes-en-sentimentsanalyse-33d4f41b74e5.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/taalalgoritmes-op-de-werkvloer",
+      "status": "verified",
+      "expected_sha256": "cbfeb8624a255a5737e331c4f2896ed24c8798c9035d4017174f9b1e0869ccd0",
+      "actual_sha256": "cbfeb8624a255a5737e331c4f2896ed24c8798c9035d4017174f9b1e0869ccd0",
+      "response_bytes": 235636,
+      "raw_path": "migration/raw-html/onderwijs-taalalgoritmes-op-de-werkvloer-2fb08c6c98df.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/taaltechnologie-op-de-redactie",
+      "status": "verified",
+      "expected_sha256": "0e31147e24d2fcdf1a0281b773827ebb263fbe8fc56e0f1eb98757a53af12ab2",
+      "actual_sha256": "0e31147e24d2fcdf1a0281b773827ebb263fbe8fc56e0f1eb98757a53af12ab2",
+      "response_bytes": 259987,
+      "raw_path": "migration/raw-html/onderwijs-taaltechnologie-op-de-redactie-5b95c401de73.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/%23VlaanderenLeest",
+      "status": "verified",
+      "expected_sha256": "5603d3d02d56879ec1233b907d93f2cd7397deb0f14edea8cd19b4f9b141d8d7",
+      "actual_sha256": "5603d3d02d56879ec1233b907d93f2cd7397deb0f14edea8cd19b4f9b141d8d7",
+      "response_bytes": 124963,
+      "raw_path": "migration/raw-html/onderwijs-tag-23VlaanderenLeest-5dfbe589e37e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/%23vlaanderenleestdag",
+      "status": "verified",
+      "expected_sha256": "76fcf4603f1899a5283ee031344d098bec7b293c86e37507696bbb73238ac7c0",
+      "actual_sha256": "76fcf4603f1899a5283ee031344d098bec7b293c86e37507696bbb73238ac7c0",
+      "response_bytes": 115512,
+      "raw_path": "migration/raw-html/onderwijs-tag-23vlaanderenleestdag-6ebc10cc1b48.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/3D",
+      "status": "verified",
+      "expected_sha256": "338ecda5c81523bd1861a1d3b40971a1f173c1645a5f863da30e8bd4bdd6edb8",
+      "actual_sha256": "338ecda5c81523bd1861a1d3b40971a1f173c1645a5f863da30e8bd4bdd6edb8",
+      "response_bytes": 115012,
+      "raw_path": "migration/raw-html/onderwijs-tag-3D-1a01d23e7972.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Abelardus",
+      "status": "verified",
+      "expected_sha256": "a8b2f8d342c6c6591d102248dcb33cf92fc45615b4abe9d8ee4212d0598f9ba0",
+      "actual_sha256": "a8b2f8d342c6c6591d102248dcb33cf92fc45615b4abe9d8ee4212d0598f9ba0",
+      "response_bytes": 136331,
+      "raw_path": "migration/raw-html/onderwijs-tag-Abelardus-f69c8c4181a9.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/ai",
+      "status": "verified",
+      "expected_sha256": "908459621bef1955def4c34719a75c8932dcc49d28dacee77c26dfb23e895da0",
+      "actual_sha256": "908459621bef1955def4c34719a75c8932dcc49d28dacee77c26dfb23e895da0",
+      "response_bytes": 149581,
+      "raw_path": "migration/raw-html/onderwijs-tag-ai-89fc13ed0a49.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/AI",
+      "status": "verified",
+      "expected_sha256": "91b0f696d2baaddb59e7dea9db78b9213dfe358d43b0947aa7d26f9573f02e45",
+      "actual_sha256": "91b0f696d2baaddb59e7dea9db78b9213dfe358d43b0947aa7d26f9573f02e45",
+      "response_bytes": 151293,
+      "raw_path": "migration/raw-html/onderwijs-tag-AI-e92199dd9a1e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/AI+in",
+      "status": "verified",
+      "expected_sha256": "d55f1b501f7d9b7ff8b024fc71f4224607d75f305842aea88272938843f9c5a3",
+      "actual_sha256": "d55f1b501f7d9b7ff8b024fc71f4224607d75f305842aea88272938843f9c5a3",
+      "response_bytes": 115378,
+      "raw_path": "migration/raw-html/onderwijs-tag-AI-in-fcd858512836.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/AI+in+de+klas",
+      "status": "verified",
+      "expected_sha256": "86a3daf89156b797df003105970f173ed7be7b448f4cf2c7c04752135102adaa",
+      "actual_sha256": "86a3daf89156b797df003105970f173ed7be7b448f4cf2c7c04752135102adaa",
+      "response_bytes": 160136,
+      "raw_path": "migration/raw-html/onderwijs-tag-AI-in-de-klas-fe5514fe361e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/AI+in+het+onderwijs",
+      "status": "verified",
+      "expected_sha256": "c8a4cc0f85fd749d08113135ef2218ecd187cb9497c82cc24a7971de58993eb4",
+      "actual_sha256": "c8a4cc0f85fd749d08113135ef2218ecd187cb9497c82cc24a7971de58993eb4",
+      "response_bytes": 126641,
+      "raw_path": "migration/raw-html/onderwijs-tag-AI-in-het-onderwijs-d28f1ec7bcc9.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/ai+in+the+classroom",
+      "status": "verified",
+      "expected_sha256": "b34bdbe149f9e357261417659af5d13e862336744d12f7e83f387f196f03bb87",
+      "actual_sha256": "b34bdbe149f9e357261417659af5d13e862336744d12f7e83f387f196f03bb87",
+      "response_bytes": 119401,
+      "raw_path": "migration/raw-html/onderwijs-tag-ai-in-the-classroom-87f70689e31a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/AIKEA",
+      "status": "verified",
+      "expected_sha256": "40039de916a2af4f4169a39bfe7ef85fdc7862c29f7bf4a195cabf2e0ddf720b",
+      "actual_sha256": "40039de916a2af4f4169a39bfe7ef85fdc7862c29f7bf4a195cabf2e0ddf720b",
+      "response_bytes": 129240,
+      "raw_path": "migration/raw-html/onderwijs-tag-AIKEA-539d59c10bbd.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Art",
+      "status": "verified",
+      "expected_sha256": "c131e6a90e54017ea7428d3c72729a4d04cb4faaefddc253bb66273bb26791ef",
+      "actual_sha256": "c131e6a90e54017ea7428d3c72729a4d04cb4faaefddc253bb66273bb26791ef",
+      "response_bytes": 140533,
+      "raw_path": "migration/raw-html/onderwijs-tag-Art-82b9ae016a5b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/artifici%C3%ABle+intelligentie",
+      "status": "verified",
+      "expected_sha256": "ef2ac1e19132bdf7ebc8945e45224dd783fd0b8cc3759378ff9757e384872a3c",
+      "actual_sha256": "ef2ac1e19132bdf7ebc8945e45224dd783fd0b8cc3759378ff9757e384872a3c",
+      "response_bytes": 186539,
+      "raw_path": "migration/raw-html/onderwijs-tag-artifici-C3-ABle-intelligentie-5cd78411bd7a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/artificial+intelligence",
+      "status": "verified",
+      "expected_sha256": "36eea05f98a42a2ffe077809fa04cef65d533effb7e22fc26e982a28c51b67a3",
+      "actual_sha256": "36eea05f98a42a2ffe077809fa04cef65d533effb7e22fc26e982a28c51b67a3",
+      "response_bytes": 191610,
+      "raw_path": "migration/raw-html/onderwijs-tag-artificial-intelligence-f964800174d4.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/bag+of+words",
+      "status": "verified",
+      "expected_sha256": "27271156c5df725aeaa67d16b1fb5941c6d745825b559efb0ca706d4888f4a0e",
+      "actual_sha256": "27271156c5df725aeaa67d16b1fb5941c6d745825b559efb0ca706d4888f4a0e",
+      "response_bytes": 115092,
+      "raw_path": "migration/raw-html/onderwijs-tag-bag-of-words-0b5cc74f1709.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/beethoven",
+      "status": "verified",
+      "expected_sha256": "cf1c2abf21299c9221a5972c85797e54fd2b996bced2a2e51ed51195297664c8",
+      "actual_sha256": "cf1c2abf21299c9221a5972c85797e54fd2b996bced2a2e51ed51195297664c8",
+      "response_bytes": 116835,
+      "raw_path": "migration/raw-html/onderwijs-tag-beethoven-676d23e02bac.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Brussel",
+      "status": "verified",
+      "expected_sha256": "c0f58d1a856d914c097799334a3bc3e216da3c119abcaed14b56e054481baeb0",
+      "actual_sha256": "c0f58d1a856d914c097799334a3bc3e216da3c119abcaed14b56e054481baeb0",
+      "response_bytes": 115106,
+      "raw_path": "migration/raw-html/onderwijs-tag-Brussel-e8e84fcb1b4c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/ChatGPT",
+      "status": "verified",
+      "expected_sha256": "789d38ba28f305ab9da7c3b5197cf9e68add134d4b8884a2cf1ac420a4619101",
+      "actual_sha256": "789d38ba28f305ab9da7c3b5197cf9e68add134d4b8884a2cf1ac420a4619101",
+      "response_bytes": 145182,
+      "raw_path": "migration/raw-html/onderwijs-tag-ChatGPT-5ed3f97e0877.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/ChatGPT+in+de+klas",
+      "status": "verified",
+      "expected_sha256": "09f9e8971addf3e50dadc64fdbce914eabc1ff49c607001a1d5c29d299a49763",
+      "actual_sha256": "09f9e8971addf3e50dadc64fdbce914eabc1ff49c607001a1d5c29d299a49763",
+      "response_bytes": 115643,
+      "raw_path": "migration/raw-html/onderwijs-tag-ChatGPT-in-de-klas-71679459edc9.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/CLIP",
+      "status": "verified",
+      "expected_sha256": "537d7f9063387e996970c033b3c13f642551257575c42e2beb2e868b13adbc79",
+      "actual_sha256": "537d7f9063387e996970c033b3c13f642551257575c42e2beb2e868b13adbc79",
+      "response_bytes": 134612,
+      "raw_path": "migration/raw-html/onderwijs-tag-CLIP-a733920e9f37.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/coding",
+      "status": "verified",
+      "expected_sha256": "24b061bfa667b05319ada4baccac81f4fd7e060dd0766800f7951688681128af",
+      "actual_sha256": "24b061bfa667b05319ada4baccac81f4fd7e060dd0766800f7951688681128af",
+      "response_bytes": 135365,
+      "raw_path": "migration/raw-html/onderwijs-tag-coding-34e5a3c06238.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/computational+thinking",
+      "status": "verified",
+      "expected_sha256": "2d41ed307104d12822f21d382df8a248ce098f5309c9ca2834d4c770639b2975",
+      "actual_sha256": "2d41ed307104d12822f21d382df8a248ce098f5309c9ca2834d4c770639b2975",
+      "response_bytes": 115801,
+      "raw_path": "migration/raw-html/onderwijs-tag-computational-thinking-4f91af654266.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/computationeel+denken",
+      "status": "verified",
+      "expected_sha256": "514e08f1ff0e6f938a7e7f68eaa71c90ff815b83468adcbc9fe0e33141f5d66c",
+      "actual_sha256": "514e08f1ff0e6f938a7e7f68eaa71c90ff815b83468adcbc9fe0e33141f5d66c",
+      "response_bytes": 121786,
+      "raw_path": "migration/raw-html/onderwijs-tag-computationeel-denken-12e79138a2ac.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Dag+van+de+klassieke+talen",
+      "status": "verified",
+      "expected_sha256": "269b0cf44eb70f677b43c0b32ccc73d4304c57222939cf04dbb0cb40d57a2374",
+      "actual_sha256": "269b0cf44eb70f677b43c0b32ccc73d4304c57222939cf04dbb0cb40d57a2374",
+      "response_bytes": 142942,
+      "raw_path": "migration/raw-html/onderwijs-tag-Dag-van-de-klassieke-talen-35e234cde7e3.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/dag+van+het+latijn",
+      "status": "verified",
+      "expected_sha256": "4f741ce1ed557aae33c3fb661a5551ad0bf11231964778d4edd58207702b9f46",
+      "actual_sha256": "4f741ce1ed557aae33c3fb661a5551ad0bf11231964778d4edd58207702b9f46",
+      "response_bytes": 128509,
+      "raw_path": "migration/raw-html/onderwijs-tag-dag-van-het-latijn-6062cbdc9ffe.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Dag+van+Klassieke+Talen",
+      "status": "verified",
+      "expected_sha256": "fc58140360577c184e487138cbeec5238edc6173d1bec2c8dc30c19dc0e19f38",
+      "actual_sha256": "fc58140360577c184e487138cbeec5238edc6173d1bec2c8dc30c19dc0e19f38",
+      "response_bytes": 125638,
+      "raw_path": "migration/raw-html/onderwijs-tag-Dag-van-Klassieke-Talen-a9005d318145.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/DALL-E",
+      "status": "verified",
+      "expected_sha256": "6d2d6e273e87e5858d24c9a2f6d5a3407f6d7e17f2856b71b1eb6948fdd8fc69",
+      "actual_sha256": "6d2d6e273e87e5858d24c9a2f6d5a3407f6d7e17f2856b71b1eb6948fdd8fc69",
+      "response_bytes": 125407,
+      "raw_path": "migration/raw-html/onderwijs-tag-DALL-E-ba9e34d3e51b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Deepfake",
+      "status": "verified",
+      "expected_sha256": "bd8e88888380181a36312c4a4cbc0ae4b952955f5bded554fd8331a424216a60",
+      "actual_sha256": "bd8e88888380181a36312c4a4cbc0ae4b952955f5bded554fd8331a424216a60",
+      "response_bytes": 132058,
+      "raw_path": "migration/raw-html/onderwijs-tag-Deepfake-3a3b6a86f540.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Deepfake+keizers",
+      "status": "verified",
+      "expected_sha256": "ca1b079fb877ca469c49a2e0564a2b1c3b7c94810b42e4d6763b3e0e706b3c6b",
+      "actual_sha256": "ca1b079fb877ca469c49a2e0564a2b1c3b7c94810b42e4d6763b3e0e706b3c6b",
+      "response_bytes": 119013,
+      "raw_path": "migration/raw-html/onderwijs-tag-Deepfake-keizers-8f859071ef39.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Deepfake+Latijn",
+      "status": "verified",
+      "expected_sha256": "936f4e60d4d2349130e4443a23b1690067ec4e5d83366503120801b0517464f3",
+      "actual_sha256": "936f4e60d4d2349130e4443a23b1690067ec4e5d83366503120801b0517464f3",
+      "response_bytes": 119468,
+      "raw_path": "migration/raw-html/onderwijs-tag-Deepfake-Latijn-1d9534fa67de.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/deepfakes",
+      "status": "verified",
+      "expected_sha256": "5831effeee799779e50902ae09d6cda66d484b15b796fb141c8ffcdeba64bdeb",
+      "actual_sha256": "5831effeee799779e50902ae09d6cda66d484b15b796fb141c8ffcdeba64bdeb",
+      "response_bytes": 116911,
+      "raw_path": "migration/raw-html/onderwijs-tag-deepfakes-c378957bb5d5.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/deepmind",
+      "status": "verified",
+      "expected_sha256": "fcf55b5160b1373849ea3a9ab68d6d756dfdb80e47ca8a4f3d7dc712eb065a7d",
+      "actual_sha256": "fcf55b5160b1373849ea3a9ab68d6d756dfdb80e47ca8a4f3d7dc712eb065a7d",
+      "response_bytes": 115718,
+      "raw_path": "migration/raw-html/onderwijs-tag-deepmind-4f0b01c6d1ee.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Design",
+      "status": "verified",
+      "expected_sha256": "d92a8b48a4792e439253251d6a8adeb2bbfc3ba17df0795e0b953ceb968df108",
+      "actual_sha256": "d92a8b48a4792e439253251d6a8adeb2bbfc3ba17df0795e0b953ceb968df108",
+      "response_bytes": 141879,
+      "raw_path": "migration/raw-html/onderwijs-tag-Design-c44af5034baa.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/design+thinking",
+      "status": "verified",
+      "expected_sha256": "ef5ff496ec2cc357b21e50285be68fd0a5e9a32ae41f8d6d563390eac43666aa",
+      "actual_sha256": "ef5ff496ec2cc357b21e50285be68fd0a5e9a32ae41f8d6d563390eac43666aa",
+      "response_bytes": 118699,
+      "raw_path": "migration/raw-html/onderwijs-tag-design-thinking-77258d27e861.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Digitale+Dilemma",
+      "status": "verified",
+      "expected_sha256": "aa596718fade88adf3f144ff138cc9dccebfdc6d7ea278bf2964068c5fc265d4",
+      "actual_sha256": "aa596718fade88adf3f144ff138cc9dccebfdc6d7ea278bf2964068c5fc265d4",
+      "response_bytes": 145311,
+      "raw_path": "migration/raw-html/onderwijs-tag-Digitale-Dilemma-2d174c15874b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Dimidia+dies+diversa+docet",
+      "status": "verified",
+      "expected_sha256": "be68970914400df9d28d953699e7e4c27ec6b6b305ff3516a4143e05a9b85d80",
+      "actual_sha256": "be68970914400df9d28d953699e7e4c27ec6b6b305ff3516a4143e05a9b85d80",
+      "response_bytes": 121780,
+      "raw_path": "migration/raw-html/onderwijs-tag-Dimidia-dies-diversa-docet-d299d4502439.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/dungeons+and+dragons",
+      "status": "verified",
+      "expected_sha256": "ac93431fde4aca4324491e7ef331e36adfeb825d1228c506c63e1938c295d8e4",
+      "actual_sha256": "ac93431fde4aca4324491e7ef331e36adfeb825d1228c506c63e1938c295d8e4",
+      "response_bytes": 114940,
+      "raw_path": "migration/raw-html/onderwijs-tag-dungeons-and-dragons-68341c713133.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/edtech",
+      "status": "verified",
+      "expected_sha256": "a20694f7666b7990d06edc12f6562dc9d458f58d4d77d5d9d09a447f525ba2c6",
+      "actual_sha256": "a20694f7666b7990d06edc12f6562dc9d458f58d4d77d5d9d09a447f525ba2c6",
+      "response_bytes": 115447,
+      "raw_path": "migration/raw-html/onderwijs-tag-edtech-d1dd0f5e5516.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/education",
+      "status": "verified",
+      "expected_sha256": "080f60b18208851cef1e12c2cab03bff608200c61df3b0ba226a1378ab9c4b35",
+      "actual_sha256": "080f60b18208851cef1e12c2cab03bff608200c61df3b0ba226a1378ab9c4b35",
+      "response_bytes": 180999,
+      "raw_path": "migration/raw-html/onderwijs-tag-education-d027e09b35d2.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Education",
+      "status": "verified",
+      "expected_sha256": "ba89f1249b106e5436729bb6f79eb94c3463dd88a7dfe3424f6438777a55df46",
+      "actual_sha256": "ba89f1249b106e5436729bb6f79eb94c3463dd88a7dfe3424f6438777a55df46",
+      "response_bytes": 114966,
+      "raw_path": "migration/raw-html/onderwijs-tag-Education-04a04c85de44.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/emoties",
+      "status": "verified",
+      "expected_sha256": "4b26d4f294be3898111ef89816f779d6b68639e138f7f6d0722df7577d33153c",
+      "actual_sha256": "4b26d4f294be3898111ef89816f779d6b68639e138f7f6d0722df7577d33153c",
+      "response_bytes": 123700,
+      "raw_path": "migration/raw-html/onderwijs-tag-emoties-21cbede3ba70.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/EU+DigComp",
+      "status": "verified",
+      "expected_sha256": "81e685e4f0faad430440807dff5bfcee77f508c48bf122b3703b42cdadd5b73c",
+      "actual_sha256": "81e685e4f0faad430440807dff5bfcee77f508c48bf122b3703b42cdadd5b73c",
+      "response_bytes": 115098,
+      "raw_path": "migration/raw-html/onderwijs-tag-EU-DigComp-83dd3c505422.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/fotografie",
+      "status": "verified",
+      "expected_sha256": "f50828903e26064583b2a87a529f494cb0c7276d9d7864927faad55d50a0dbec",
+      "actual_sha256": "f50828903e26064583b2a87a529f494cb0c7276d9d7864927faad55d50a0dbec",
+      "response_bytes": 114779,
+      "raw_path": "migration/raw-html/onderwijs-tag-fotografie-379a734f9ec1.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/games",
+      "status": "verified",
+      "expected_sha256": "ec29c4eb9c6a97cd0b87cfa063a89070173773223687b693d7fb3e9622c17e92",
+      "actual_sha256": "ec29c4eb9c6a97cd0b87cfa063a89070173773223687b693d7fb3e9622c17e92",
+      "response_bytes": 114888,
+      "raw_path": "migration/raw-html/onderwijs-tag-games-6af3636f8c24.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/gamification",
+      "status": "verified",
+      "expected_sha256": "a5fc6c721ff34a8d611a6559ab87fb993f70a52cf8d204e6dfaeebc0192b521a",
+      "actual_sha256": "a5fc6c721ff34a8d611a6559ab87fb993f70a52cf8d204e6dfaeebc0192b521a",
+      "response_bytes": 126663,
+      "raw_path": "migration/raw-html/onderwijs-tag-gamification-9ac903bc42ad.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/gaming",
+      "status": "verified",
+      "expected_sha256": "a472f204f76889991dbb1f876d5ad34b49218417923294aeb46ee80ee395258f",
+      "actual_sha256": "a472f204f76889991dbb1f876d5ad34b49218417923294aeb46ee80ee395258f",
+      "response_bytes": 117347,
+      "raw_path": "migration/raw-html/onderwijs-tag-gaming-b2828580a45c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Gaming",
+      "status": "verified",
+      "expected_sha256": "884996cc39977d968ffefc3cdf8baed33e453152c955b3ab61e2af9c4a825095",
+      "actual_sha256": "884996cc39977d968ffefc3cdf8baed33e453152c955b3ab61e2af9c4a825095",
+      "response_bytes": 114433,
+      "raw_path": "migration/raw-html/onderwijs-tag-Gaming-6665f0291f3b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/GAN",
+      "status": "verified",
+      "expected_sha256": "ccb1a236e633805850c7dfe4d7975394bae58ac8fd935071890da25e0c143653",
+      "actual_sha256": "ccb1a236e633805850c7dfe4d7975394bae58ac8fd935071890da25e0c143653",
+      "response_bytes": 137320,
+      "raw_path": "migration/raw-html/onderwijs-tag-GAN-d083c706c6b4.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Gent",
+      "status": "verified",
+      "expected_sha256": "dc0e81a3e07134a29f459c159984fbab91758b021cef31f9c62e73d683c7bd51",
+      "actual_sha256": "dc0e81a3e07134a29f459c159984fbab91758b021cef31f9c62e73d683c7bd51",
+      "response_bytes": 119347,
+      "raw_path": "migration/raw-html/onderwijs-tag-Gent-601f677c264a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/geschiedenis",
+      "status": "verified",
+      "expected_sha256": "0f068e432271bd88994026c3bed3bd4e5909a6ca2c2a593df138cc3866d60da1",
+      "actual_sha256": "0f068e432271bd88994026c3bed3bd4e5909a6ca2c2a593df138cc3866d60da1",
+      "response_bytes": 124562,
+      "raw_path": "migration/raw-html/onderwijs-tag-geschiedenis-d40b412f67c0.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/gezichtsherkenning",
+      "status": "verified",
+      "expected_sha256": "4bffab158bad87d011be4d08765abe2dd3e4c170746b27ffc029574d910fdb54",
+      "actual_sha256": "4bffab158bad87d011be4d08765abe2dd3e4c170746b27ffc029574d910fdb54",
+      "response_bytes": 119589,
+      "raw_path": "migration/raw-html/onderwijs-tag-gezichtsherkenning-f650995d3ddf.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Ghent",
+      "status": "verified",
+      "expected_sha256": "f20b4431e3548338e80c8b177e17ed284fe171e30024e2600d284d26d37d567e",
+      "actual_sha256": "f20b4431e3548338e80c8b177e17ed284fe171e30024e2600d284d26d37d567e",
+      "response_bytes": 187558,
+      "raw_path": "migration/raw-html/onderwijs-tag-Ghent-baa8b81f47eb.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Google",
+      "status": "verified",
+      "expected_sha256": "4b6138391f0b6c1d54ef7c077fa8222e8121cea2f0c560bfbaec2bbf6e5dfffb",
+      "actual_sha256": "4b6138391f0b6c1d54ef7c077fa8222e8121cea2f0c560bfbaec2bbf6e5dfffb",
+      "response_bytes": 117681,
+      "raw_path": "migration/raw-html/onderwijs-tag-Google-5c9d4b98c527.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/GPT",
+      "status": "verified",
+      "expected_sha256": "9f01ecdab34ec8b32d2142947c540bd8a70844513ba27f266e3a813f02a287a4",
+      "actual_sha256": "9f01ecdab34ec8b32d2142947c540bd8a70844513ba27f266e3a813f02a287a4",
+      "response_bytes": 125426,
+      "raw_path": "migration/raw-html/onderwijs-tag-GPT-971e4b2b6e65.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/GPT-2",
+      "status": "verified",
+      "expected_sha256": "337671072548b9d6f5919ffd5de5218cfabbdd004de79a4b26f59f778f31e38e",
+      "actual_sha256": "337671072548b9d6f5919ffd5de5218cfabbdd004de79a4b26f59f778f31e38e",
+      "response_bytes": 124702,
+      "raw_path": "migration/raw-html/onderwijs-tag-GPT-2-f4a517a918bf.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/GPT-3",
+      "status": "verified",
+      "expected_sha256": "c14f0b2dd783976aba4a29bdcfda308116a80569340e4c92fed829924140a4f4",
+      "actual_sha256": "c14f0b2dd783976aba4a29bdcfda308116a80569340e4c92fed829924140a4f4",
+      "response_bytes": 128476,
+      "raw_path": "migration/raw-html/onderwijs-tag-GPT-3-763a5519f91b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/GPT4",
+      "status": "verified",
+      "expected_sha256": "e49a1fbb883829b4dc994c8e18c717c06cf12678a699c1fba65a4e49e5158644",
+      "actual_sha256": "e49a1fbb883829b4dc994c8e18c717c06cf12678a699c1fba65a4e49e5158644",
+      "response_bytes": 115044,
+      "raw_path": "migration/raw-html/onderwijs-tag-GPT4-26abd81d140e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/greek",
+      "status": "verified",
+      "expected_sha256": "cc6c1e644326c4e84a17f0b12bdcfdb3ab0a964f9818a7b191ddd78f34ba1737",
+      "actual_sha256": "cc6c1e644326c4e84a17f0b12bdcfdb3ab0a964f9818a7b191ddd78f34ba1737",
+      "response_bytes": 134431,
+      "raw_path": "migration/raw-html/onderwijs-tag-greek-4055dac070c5.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Greek",
+      "status": "verified",
+      "expected_sha256": "c821560d210c5aba9aa108958e3eecbc2ce4b538566e55a2a584e9122627c946",
+      "actual_sha256": "c821560d210c5aba9aa108958e3eecbc2ce4b538566e55a2a584e9122627c946",
+      "response_bytes": 115138,
+      "raw_path": "migration/raw-html/onderwijs-tag-Greek-e5fc0566a657.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/grieks",
+      "status": "verified",
+      "expected_sha256": "1dd90096f66771d1b3bcbb6d73c26018866825a7659bb22bf48470be225fe59b",
+      "actual_sha256": "1dd90096f66771d1b3bcbb6d73c26018866825a7659bb22bf48470be225fe59b",
+      "response_bytes": 119573,
+      "raw_path": "migration/raw-html/onderwijs-tag-grieks-3b03195e75c5.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Grieks",
+      "status": "verified",
+      "expected_sha256": "ee6002f83c9079ac37bce2466894b7ddd9e3d9f7d6dd90e3c30d37f3568d3cc8",
+      "actual_sha256": "ee6002f83c9079ac37bce2466894b7ddd9e3d9f7d6dd90e3c30d37f3568d3cc8",
+      "response_bytes": 125804,
+      "raw_path": "migration/raw-html/onderwijs-tag-Grieks-e8f71eaacff9.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Harry+Potter",
+      "status": "verified",
+      "expected_sha256": "308186ca09d1de835b035d9a5f4197fe780b3bf73b21fc2c8b91948043289c9c",
+      "actual_sha256": "308186ca09d1de835b035d9a5f4197fe780b3bf73b21fc2c8b91948043289c9c",
+      "response_bytes": 134674,
+      "raw_path": "migration/raw-html/onderwijs-tag-Harry-Potter-00aaac978993.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/IKEA",
+      "status": "verified",
+      "expected_sha256": "ab175883be2f892f65441f8a64b86832d53462fb9041424b5dd5be4bbacdbd42",
+      "actual_sha256": "ab175883be2f892f65441f8a64b86832d53462fb9041424b5dd5be4bbacdbd42",
+      "response_bytes": 114701,
+      "raw_path": "migration/raw-html/onderwijs-tag-IKEA-6ef7527847f7.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/inkleuren",
+      "status": "verified",
+      "expected_sha256": "d00fe71169b858a257c6b8dc87d54135b4d2d914c21593da3c0d66534fe56762",
+      "actual_sha256": "d00fe71169b858a257c6b8dc87d54135b4d2d914c21593da3c0d66534fe56762",
+      "response_bytes": 130496,
+      "raw_path": "migration/raw-html/onderwijs-tag-inkleuren-4388c2b514c9.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/ithaca",
+      "status": "verified",
+      "expected_sha256": "11e11784772b0f942c88a183548d9cbb9efaad846ed7d524cff921ef957823fb",
+      "actual_sha256": "11e11784772b0f942c88a183548d9cbb9efaad846ed7d524cff921ef957823fb",
+      "response_bytes": 115700,
+      "raw_path": "migration/raw-html/onderwijs-tag-ithaca-3096aa9dae97.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/javascript",
+      "status": "verified",
+      "expected_sha256": "29724637b6d9acf0d873325c855ac86c44fce55c3127f7dcd2aa4d099e2f9466",
+      "actual_sha256": "29724637b6d9acf0d873325c855ac86c44fce55c3127f7dcd2aa4d099e2f9466",
+      "response_bytes": 118329,
+      "raw_path": "migration/raw-html/onderwijs-tag-javascript-5eada77a8e4c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Jeroen+De+Gussem",
+      "status": "verified",
+      "expected_sha256": "3434061bd95c21e2628f01bafbb98fc605b387267de3cd154ae9babdf3dc7ddd",
+      "actual_sha256": "3434061bd95c21e2628f01bafbb98fc605b387267de3cd154ae9babdf3dc7ddd",
+      "response_bytes": 121238,
+      "raw_path": "migration/raw-html/onderwijs-tag-Jeroen-De-Gussem-c25aeee2c5ab.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Julius+Caesar",
+      "status": "verified",
+      "expected_sha256": "d11784de17adbca5d77d87d7145b6163da5e2e43e221ae0f23996a4750e39190",
+      "actual_sha256": "d11784de17adbca5d77d87d7145b6163da5e2e43e221ae0f23996a4750e39190",
+      "response_bytes": 116119,
+      "raw_path": "migration/raw-html/onderwijs-tag-Julius-Caesar-c7142133ca49.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Keizers",
+      "status": "verified",
+      "expected_sha256": "c3160935b2138173b91b1cc03587e46db6869a02e90ad787b66859997f722529",
+      "actual_sha256": "c3160935b2138173b91b1cc03587e46db6869a02e90ad787b66859997f722529",
+      "response_bytes": 132620,
+      "raw_path": "migration/raw-html/onderwijs-tag-Keizers-65404a84fa71.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/kunst",
+      "status": "verified",
+      "expected_sha256": "d67a52e9ce2e409582864eb32efce2c330b4ed540028a3962d8901af44494912",
+      "actual_sha256": "d67a52e9ce2e409582864eb32efce2c330b4ed540028a3962d8901af44494912",
+      "response_bytes": 122685,
+      "raw_path": "migration/raw-html/onderwijs-tag-kunst-a12802640e55.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/latijn",
+      "status": "verified",
+      "expected_sha256": "6d105a1f95533b13f2695bf11c904368a6616a9891d5e820f908c73907d8a575",
+      "actual_sha256": "6d105a1f95533b13f2695bf11c904368a6616a9891d5e820f908c73907d8a575",
+      "response_bytes": 129739,
+      "raw_path": "migration/raw-html/onderwijs-tag-latijn-08a428f1825f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/latin",
+      "status": "verified",
+      "expected_sha256": "692f29976034e12be7c6a9af8da21ca534f5f7e6ebb7a6282f5c9b0fde5a31ea",
+      "actual_sha256": "692f29976034e12be7c6a9af8da21ca534f5f7e6ebb7a6282f5c9b0fde5a31ea",
+      "response_bytes": 115439,
+      "raw_path": "migration/raw-html/onderwijs-tag-latin-79fbf7cd7873.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/lexicon",
+      "status": "verified",
+      "expected_sha256": "81625e7e22d1f0f77d8a6497afce2883e59b3d3102f9d5d1685c2589b3be3876",
+      "actual_sha256": "81625e7e22d1f0f77d8a6497afce2883e59b3d3102f9d5d1685c2589b3be3876",
+      "response_bytes": 157363,
+      "raw_path": "migration/raw-html/onderwijs-tag-lexicon-e76411329ea3.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Lord+of+the+Rings",
+      "status": "verified",
+      "expected_sha256": "2c441ac44864e6e97e7ad7494b1848c1319fafcfd9ea4af4c49e6f6bc5b28db8",
+      "actual_sha256": "2c441ac44864e6e97e7ad7494b1848c1319fafcfd9ea4af4c49e6f6bc5b28db8",
+      "response_bytes": 115137,
+      "raw_path": "migration/raw-html/onderwijs-tag-Lord-of-the-Rings-c16715eda10c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/matchmaking",
+      "status": "verified",
+      "expected_sha256": "15f26460c9e7eb1e896259f18afba643ee8f0971e01099330dc0213dec3ad79c",
+      "actual_sha256": "15f26460c9e7eb1e896259f18afba643ee8f0971e01099330dc0213dec3ad79c",
+      "response_bytes": 132139,
+      "raw_path": "migration/raw-html/onderwijs-tag-matchmaking-846a8e1bdd62.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/minecraft",
+      "status": "verified",
+      "expected_sha256": "60fc0baec06bdbbb0d53462b63f25cf7035bea6555c3eb29ba8afa42298c9528",
+      "actual_sha256": "60fc0baec06bdbbb0d53462b63f25cf7035bea6555c3eb29ba8afa42298c9528",
+      "response_bytes": 115712,
+      "raw_path": "migration/raw-html/onderwijs-tag-minecraft-6916581734b3.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/moderne+talen",
+      "status": "verified",
+      "expected_sha256": "6682fc890d27a4fdaeb96b50559bacc3f261534e5e07c8bd559f20dc0b485015",
+      "actual_sha256": "6682fc890d27a4fdaeb96b50559bacc3f261534e5e07c8bd559f20dc0b485015",
+      "response_bytes": 125695,
+      "raw_path": "migration/raw-html/onderwijs-tag-moderne-talen-232943927b4c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/muziek",
+      "status": "verified",
+      "expected_sha256": "946a8b75d83d1171ebc86533072f4a04129b4b7ed0d6bb1430c4d4ca8b21f0fc",
+      "actual_sha256": "946a8b75d83d1171ebc86533072f4a04129b4b7ed0d6bb1430c4d4ca8b21f0fc",
+      "response_bytes": 123544,
+      "raw_path": "migration/raw-html/onderwijs-tag-muziek-d7cbcdb0f034.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/natural+language+processor",
+      "status": "verified",
+      "expected_sha256": "8411af5b06db829164bfcdd2d2eb51be267ca36a87dcab7174e32a09177d9aee",
+      "actual_sha256": "8411af5b06db829164bfcdd2d2eb51be267ca36a87dcab7174e32a09177d9aee",
+      "response_bytes": 123854,
+      "raw_path": "migration/raw-html/onderwijs-tag-natural-language-processor-eacd867a8686.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/NLP",
+      "status": "verified",
+      "expected_sha256": "fb1b691052ea24428e842d68ead8f4215a1db792766be060323335181784c72d",
+      "actual_sha256": "fb1b691052ea24428e842d68ead8f4215a1db792766be060323335181784c72d",
+      "response_bytes": 119276,
+      "raw_path": "migration/raw-html/onderwijs-tag-NLP-355226e7d6d9.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/onderwijs",
+      "status": "verified",
+      "expected_sha256": "754781155f26e6a1f7e183c019cae2c1845c177b26d1bf94c2bdfe10104ed63f",
+      "actual_sha256": "754781155f26e6a1f7e183c019cae2c1845c177b26d1bf94c2bdfe10104ed63f",
+      "response_bytes": 175047,
+      "raw_path": "migration/raw-html/onderwijs-tag-onderwijs-3c30cb5d4991.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Onderwijs",
+      "status": "verified",
+      "expected_sha256": "eab1d72c832966a0b02f8b6d9ff70ef32a27e125465447106f53900b6a1dd856",
+      "actual_sha256": "eab1d72c832966a0b02f8b6d9ff70ef32a27e125465447106f53900b6a1dd856",
+      "response_bytes": 124011,
+      "raw_path": "migration/raw-html/onderwijs-tag-Onderwijs-0c558893c7a5.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/oudgrieks",
+      "status": "verified",
+      "expected_sha256": "23fde369c32eb366534090c81e244ad08713af583c1aebc2e2e6906535ea2e31",
+      "actual_sha256": "23fde369c32eb366534090c81e244ad08713af583c1aebc2e2e6906535ea2e31",
+      "response_bytes": 125831,
+      "raw_path": "migration/raw-html/onderwijs-tag-oudgrieks-5668c971d643.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/privacy",
+      "status": "verified",
+      "expected_sha256": "73c56942fd7e95a98b5b8ebbadc902e3ac2721510ab9097e941f717c7a63d05d",
+      "actual_sha256": "73c56942fd7e95a98b5b8ebbadc902e3ac2721510ab9097e941f717c7a63d05d",
+      "response_bytes": 134646,
+      "raw_path": "migration/raw-html/onderwijs-tag-privacy-1383c53dbfd6.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/programmeren",
+      "status": "verified",
+      "expected_sha256": "34872c7bc252909ae7cb62233794d71d2f0a5fba4cfebfd01a1dd9b29d072174",
+      "actual_sha256": "34872c7bc252909ae7cb62233794d71d2f0a5fba4cfebfd01a1dd9b29d072174",
+      "response_bytes": 145738,
+      "raw_path": "migration/raw-html/onderwijs-tag-programmeren-7a6796765c10.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/prompting",
+      "status": "verified",
+      "expected_sha256": "59995fdd849e76dfd0ce11231b6927ada0d4c4a099f7b69aae8d8780ad6ac3a8",
+      "actual_sha256": "59995fdd849e76dfd0ce11231b6927ada0d4c4a099f7b69aae8d8780ad6ac3a8",
+      "response_bytes": 131897,
+      "raw_path": "migration/raw-html/onderwijs-tag-prompting-abf03889c8d2.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/pythia",
+      "status": "verified",
+      "expected_sha256": "df9a5086347ea2f68000519399542bdb60543b4bbbaa51d98c8d8bad64fcd09b",
+      "actual_sha256": "df9a5086347ea2f68000519399542bdb60543b4bbbaa51d98c8d8bad64fcd09b",
+      "response_bytes": 115700,
+      "raw_path": "migration/raw-html/onderwijs-tag-pythia-c252508e0a0c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Pythia",
+      "status": "verified",
+      "expected_sha256": "7ca57d1dc3c35e0fe3351217f3fe475fffdf127b52b2667ec6bea3284e97ac19",
+      "actual_sha256": "7ca57d1dc3c35e0fe3351217f3fe475fffdf127b52b2667ec6bea3284e97ac19",
+      "response_bytes": 121257,
+      "raw_path": "migration/raw-html/onderwijs-tag-Pythia-3bd1c365a007.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/python",
+      "status": "verified",
+      "expected_sha256": "5de96d98de38476cb37eee2d12c0ff8f5beadfdadadbafd46c3fda434eff6860",
+      "actual_sha256": "5de96d98de38476cb37eee2d12c0ff8f5beadfdadadbafd46c3fda434eff6860",
+      "response_bytes": 144369,
+      "raw_path": "migration/raw-html/onderwijs-tag-python-1a4506e0cbea.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/python+in+de+klas",
+      "status": "verified",
+      "expected_sha256": "a17348ebfa1c59ae96b1b8b03d82d9e3e3774d662c74b012aa2d20274a299113",
+      "actual_sha256": "a17348ebfa1c59ae96b1b8b03d82d9e3e3774d662c74b012aa2d20274a299113",
+      "response_bytes": 120121,
+      "raw_path": "migration/raw-html/onderwijs-tag-python-in-de-klas-6b7cc6c33b69.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/rinke+vanhoeck",
+      "status": "verified",
+      "expected_sha256": "1f352118fa507e066511f21624b18bbf24b0fbf2945701ff4ac634b470cbd07f",
+      "actual_sha256": "1f352118fa507e066511f21624b18bbf24b0fbf2945701ff4ac634b470cbd07f",
+      "response_bytes": 114532,
+      "raw_path": "migration/raw-html/onderwijs-tag-rinke-vanhoeck-fa5419236206.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Romeinen",
+      "status": "verified",
+      "expected_sha256": "8a245560d3a59403f48b53139e1deb20ba6522abb1d34de4d59865e2a641cbae",
+      "actual_sha256": "8a245560d3a59403f48b53139e1deb20ba6522abb1d34de4d59865e2a641cbae",
+      "response_bytes": 122796,
+      "raw_path": "migration/raw-html/onderwijs-tag-Romeinen-78e4aa83c3f7.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Romeinse+Keizers",
+      "status": "verified",
+      "expected_sha256": "aa00fce66c7cdf4bb6ed6cc4bc01e3fe4d8d8ed038ff7310be0f8538eff7e898",
+      "actual_sha256": "aa00fce66c7cdf4bb6ed6cc4bc01e3fe4d8d8ed038ff7310be0f8538eff7e898",
+      "response_bytes": 125965,
+      "raw_path": "migration/raw-html/onderwijs-tag-Romeinse-Keizers-53766cda407e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Rowling",
+      "status": "verified",
+      "expected_sha256": "e854a2ed10b8d158cb326bce556059d8e5d7eb2722b9dd2eb845fdf6a195de5f",
+      "actual_sha256": "e854a2ed10b8d158cb326bce556059d8e5d7eb2722b9dd2eb845fdf6a195de5f",
+      "response_bytes": 132103,
+      "raw_path": "migration/raw-html/onderwijs-tag-Rowling-f092ecf5fcc2.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/sentimentsanalyse",
+      "status": "verified",
+      "expected_sha256": "fe0476c5accb11c5257a1bddfc8706cdc76bd181fdf134ec91ec873fdd9de4f1",
+      "actual_sha256": "fe0476c5accb11c5257a1bddfc8706cdc76bd181fdf134ec91ec873fdd9de4f1",
+      "response_bytes": 118962,
+      "raw_path": "migration/raw-html/onderwijs-tag-sentimentsanalyse-b22297475006.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Siri",
+      "status": "verified",
+      "expected_sha256": "a5512a019c0ae4b7a0c0a767519f77233c35b22b629e7862023eb0084ebb5762",
+      "actual_sha256": "a5512a019c0ae4b7a0c0a767519f77233c35b22b629e7862023eb0084ebb5762",
+      "response_bytes": 114921,
+      "raw_path": "migration/raw-html/onderwijs-tag-Siri-d7b582f9ff07.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Stable+Diffusion",
+      "status": "verified",
+      "expected_sha256": "ad4412795537e197ae6b29d42c5e6c18e1c9df4fac3f582e405ad9c0aa094e7d",
+      "actual_sha256": "ad4412795537e197ae6b29d42c5e6c18e1c9df4fac3f582e405ad9c0aa094e7d",
+      "response_bytes": 118509,
+      "raw_path": "migration/raw-html/onderwijs-tag-Stable-Diffusion-330368192aa3.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/STEaM",
+      "status": "verified",
+      "expected_sha256": "9b58df97d93ed3387e47951f58de3a27f162208864fb2c654923550d5d8014ea",
+      "actual_sha256": "9b58df97d93ed3387e47951f58de3a27f162208864fb2c654923550d5d8014ea",
+      "response_bytes": 131202,
+      "raw_path": "migration/raw-html/onderwijs-tag-STEaM-c7ba3751c885.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/STEM",
+      "status": "verified",
+      "expected_sha256": "1bf468b4c813e9df8ab80f86246c8bc167fc0414fbc6ce881c3ccef3c5f54c35",
+      "actual_sha256": "1bf468b4c813e9df8ab80f86246c8bc167fc0414fbc6ce881c3ccef3c5f54c35",
+      "response_bytes": 115091,
+      "raw_path": "migration/raw-html/onderwijs-tag-STEM-0fb52a7334ac.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/super+marcus",
+      "status": "verified",
+      "expected_sha256": "c9479b8a62b67181663945e37389244f06505965db8c4b05b7ad09dfbf04f4ed",
+      "actual_sha256": "c9479b8a62b67181663945e37389244f06505965db8c4b05b7ad09dfbf04f4ed",
+      "response_bytes": 115084,
+      "raw_path": "migration/raw-html/onderwijs-tag-super-marcus-7e7ce394a16e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/taal",
+      "status": "verified",
+      "expected_sha256": "b330603fb975823e8cc870e61f1079812e35e354aeaec0812f2d43c2bc7e41f2",
+      "actual_sha256": "b330603fb975823e8cc870e61f1079812e35e354aeaec0812f2d43c2bc7e41f2",
+      "response_bytes": 135584,
+      "raw_path": "migration/raw-html/onderwijs-tag-taal-41eb30ec9b95.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Taal",
+      "status": "verified",
+      "expected_sha256": "19947d38a864820389288d2bcc36733d0eefd2165aec74fcd9eab35b709211dd",
+      "actual_sha256": "19947d38a864820389288d2bcc36733d0eefd2165aec74fcd9eab35b709211dd",
+      "response_bytes": 122227,
+      "raw_path": "migration/raw-html/onderwijs-tag-Taal-39c6915dc961.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/taalalgoritmes",
+      "status": "verified",
+      "expected_sha256": "319997a76f2fdb5eb7206cdd4c02034d675840a1bec8732f2270c54a04eb1922",
+      "actual_sha256": "319997a76f2fdb5eb7206cdd4c02034d675840a1bec8732f2270c54a04eb1922",
+      "response_bytes": 126243,
+      "raw_path": "migration/raw-html/onderwijs-tag-taalalgoritmes-d4338c635318.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/taaltechnologie",
+      "status": "verified",
+      "expected_sha256": "00d9331b900723cd1e2055b0b9270afbb15d99d9f5967266bc121a314add9eb6",
+      "actual_sha256": "00d9331b900723cd1e2055b0b9270afbb15d99d9f5967266bc121a314add9eb6",
+      "response_bytes": 136291,
+      "raw_path": "migration/raw-html/onderwijs-tag-taaltechnologie-3a9e57ea207a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/teacher+tapp",
+      "status": "verified",
+      "expected_sha256": "107df675f9dc36b1be5f1c585c7be40fe5d73ec7e71eaba699d5a6f6b7be04a0",
+      "actual_sha256": "107df675f9dc36b1be5f1c585c7be40fe5d73ec7e71eaba699d5a6f6b7be04a0",
+      "response_bytes": 133254,
+      "raw_path": "migration/raw-html/onderwijs-tag-teacher-tapp-c3134a50129d.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/teacher+tapp+vlaanderen",
+      "status": "verified",
+      "expected_sha256": "e558e2f0b4f8ae0026d54c1486e5e37d46d962542208932cfda2df45f0a43698",
+      "actual_sha256": "e558e2f0b4f8ae0026d54c1486e5e37d46d962542208932cfda2df45f0a43698",
+      "response_bytes": 124091,
+      "raw_path": "migration/raw-html/onderwijs-tag-teacher-tapp-vlaanderen-b09d2f3425b1.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Thanos",
+      "status": "verified",
+      "expected_sha256": "7dd5d93e991c5ac89e90b3652d57cd394734dacbdcd50f6c24844529abe71cb4",
+      "actual_sha256": "7dd5d93e991c5ac89e90b3652d57cd394734dacbdcd50f6c24844529abe71cb4",
+      "response_bytes": 115275,
+      "raw_path": "migration/raw-html/onderwijs-tag-Thanos-bfb960184f25.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/thea+sommershield",
+      "status": "verified",
+      "expected_sha256": "ff106bda018a9143254601707c48518c0178d00138dbc73038212a58d79bcc72",
+      "actual_sha256": "ff106bda018a9143254601707c48518c0178d00138dbc73038212a58d79bcc72",
+      "response_bytes": 115799,
+      "raw_path": "migration/raw-html/onderwijs-tag-thea-sommershield-d878eee34796.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Thomas+Gils",
+      "status": "verified",
+      "expected_sha256": "832e10f65bbd34d1674dc784af52f9ebf99eac4f04303671aa1a968f234c456c",
+      "actual_sha256": "832e10f65bbd34d1674dc784af52f9ebf99eac4f04303671aa1a968f234c456c",
+      "response_bytes": 157399,
+      "raw_path": "migration/raw-html/onderwijs-tag-Thomas-Gils-e8ed0db83f68.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Tim+Verheyden",
+      "status": "verified",
+      "expected_sha256": "9952f93982b3920afb8dc28beb5ccde992226e94d23754d3cfce4e6dab2511ae",
+      "actual_sha256": "9952f93982b3920afb8dc28beb5ccde992226e94d23754d3cfce4e6dab2511ae",
+      "response_bytes": 121708,
+      "raw_path": "migration/raw-html/onderwijs-tag-Tim-Verheyden-db4ba9c7b291.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/tim+whitmarsh",
+      "status": "verified",
+      "expected_sha256": "bc3b0e94843c8d325ae570e6a0f96e45e53962a4ffa7b1015e5d8f0e49111a66",
+      "actual_sha256": "bc3b0e94843c8d325ae570e6a0f96e45e53962a4ffa7b1015e5d8f0e49111a66",
+      "response_bytes": 130899,
+      "raw_path": "migration/raw-html/onderwijs-tag-tim-whitmarsh-ec7d98087d25.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/tinder",
+      "status": "verified",
+      "expected_sha256": "9b0866b526c798789fe4904babfa17750ccfd2f90d52b54e1102d639c316e0ac",
+      "actual_sha256": "9b0866b526c798789fe4904babfa17750ccfd2f90d52b54e1102d639c316e0ac",
+      "response_bytes": 133778,
+      "raw_path": "migration/raw-html/onderwijs-tag-tinder-ab61b21e61b1.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Tolkien",
+      "status": "verified",
+      "expected_sha256": "11ef59e6d60c673720fa9b7cd9ab0fdaf20ec218cf3da2f50afe37e235cd5e0a",
+      "actual_sha256": "11ef59e6d60c673720fa9b7cd9ab0fdaf20ec218cf3da2f50afe37e235cd5e0a",
+      "response_bytes": 115047,
+      "raw_path": "migration/raw-html/onderwijs-tag-Tolkien-811ed183b01a.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Unesco",
+      "status": "verified",
+      "expected_sha256": "bc083bfb4b68ec35d82c81f07a2b8128bad826c5c6e947fe9cf433c77e92c42f",
+      "actual_sha256": "bc083bfb4b68ec35d82c81f07a2b8128bad826c5c6e947fe9cf433c77e92c42f",
+      "response_bytes": 120330,
+      "raw_path": "migration/raw-html/onderwijs-tag-Unesco-2c3456de396c.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Van+Eyck",
+      "status": "verified",
+      "expected_sha256": "941dfd7df53b4b3ddae9185174927c1882e91b2a1cab504204596ddb462ff3d6",
+      "actual_sha256": "941dfd7df53b4b3ddae9185174927c1882e91b2a1cab504204596ddb462ff3d6",
+      "response_bytes": 134746,
+      "raw_path": "migration/raw-html/onderwijs-tag-Van-Eyck-92eed32de81e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Van+Gogh",
+      "status": "verified",
+      "expected_sha256": "0d203ebcdda005800a0d45b5ac3e9adfdab9c61a0253c36553ac812e3bfc43e1",
+      "actual_sha256": "0d203ebcdda005800a0d45b5ac3e9adfdab9c61a0253c36553ac812e3bfc43e1",
+      "response_bytes": 123800,
+      "raw_path": "migration/raw-html/onderwijs-tag-Van-Gogh-c55aaac6552f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/virtual+reality",
+      "status": "verified",
+      "expected_sha256": "204c14e9ccb3344aa153632e2be9ba76bc7bfa31354a7eb0a3fbd015077abcc3",
+      "actual_sha256": "204c14e9ccb3344aa153632e2be9ba76bc7bfa31354a7eb0a3fbd015077abcc3",
+      "response_bytes": 127618,
+      "raw_path": "migration/raw-html/onderwijs-tag-virtual-reality-7ecaec5649cd.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Vlaanderen+Leest",
+      "status": "verified",
+      "expected_sha256": "e776bbcda1d59d7430af55992095bf14d7cd8fcfa2c481855e090b74ec2ee7ff",
+      "actual_sha256": "e776bbcda1d59d7430af55992095bf14d7cd8fcfa2c481855e090b74ec2ee7ff",
+      "response_bytes": 121587,
+      "raw_path": "migration/raw-html/onderwijs-tag-Vlaanderen-Leest-519e57e1ede4.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Vlaanderenleestdag",
+      "status": "verified",
+      "expected_sha256": "15ff4f872f304a33f129e2cfcae3447720f85b8c8ac25c6c2b536d9072b353b6",
+      "actual_sha256": "15ff4f872f304a33f129e2cfcae3447720f85b8c8ac25c6c2b536d9072b353b6",
+      "response_bytes": 142655,
+      "raw_path": "migration/raw-html/onderwijs-tag-Vlaanderenleestdag-21bc42e4abcc.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/VQGAN",
+      "status": "verified",
+      "expected_sha256": "dc04ab4bd89d21aa4729006fdbc347027c89db60dd6a354d01dfc2c03be23339",
+      "actual_sha256": "dc04ab4bd89d21aa4729006fdbc347027c89db60dd6a354d01dfc2c03be23339",
+      "response_bytes": 115039,
+      "raw_path": "migration/raw-html/onderwijs-tag-VQGAN-ad8acd687a4b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/vr",
+      "status": "verified",
+      "expected_sha256": "61729d034fea0e06de615c2e4a6ebab180c7c6c6036fed17403bdca97ec00006",
+      "actual_sha256": "61729d034fea0e06de615c2e4a6ebab180c7c6c6036fed17403bdca97ec00006",
+      "response_bytes": 117740,
+      "raw_path": "migration/raw-html/onderwijs-tag-vr-21dbd6037913.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/VR",
+      "status": "verified",
+      "expected_sha256": "f6089dbb1958137967abf72d54413709bc04762b143b19e21c27053de548abd0",
+      "actual_sha256": "f6089dbb1958137967abf72d54413709bc04762b143b19e21c27053de548abd0",
+      "response_bytes": 118216,
+      "raw_path": "migration/raw-html/onderwijs-tag-VR-22311df588fc.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/VRT",
+      "status": "verified",
+      "expected_sha256": "ea05e4ed394460a7e8332b09a5bc39f44f9dca74b55a6a14e7c2d7f297c60965",
+      "actual_sha256": "ea05e4ed394460a7e8332b09a5bc39f44f9dca74b55a6a14e7c2d7f297c60965",
+      "response_bytes": 115508,
+      "raw_path": "migration/raw-html/onderwijs-tag-VRT-1d8296f2e5d4.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/Wereldboekendag",
+      "status": "verified",
+      "expected_sha256": "d75a5abad059ec9dd87e86ac4f56b4c9606ad9a77a00000313327f403bf3dd01",
+      "actual_sha256": "d75a5abad059ec9dd87e86ac4f56b4c9606ad9a77a00000313327f403bf3dd01",
+      "response_bytes": 120736,
+      "raw_path": "migration/raw-html/onderwijs-tag-Wereldboekendag-58c0b9bb82a1.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/wordle",
+      "status": "verified",
+      "expected_sha256": "907868423c4da9955e6eff34d764a08275871c56d44788ab8398692833a20b59",
+      "actual_sha256": "907868423c4da9955e6eff34d764a08275871c56d44788ab8398692833a20b59",
+      "response_bytes": 115884,
+      "raw_path": "migration/raw-html/onderwijs-tag-wordle-1dadebea0da4.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tag/yannis+assael",
+      "status": "verified",
+      "expected_sha256": "4053c268bacf74beceeeaf67b957471ca83ebb41ac7eb7a7fd973868704b4628",
+      "actual_sha256": "4053c268bacf74beceeeaf67b957471ca83ebb41ac7eb7a7fd973868704b4628",
+      "response_bytes": 119347,
+      "raw_path": "migration/raw-html/onderwijs-tag-yannis-assael-90c7892c8d34.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/tips-voor-verantwoord-gebruik-en-afspraken",
+      "status": "verified",
+      "expected_sha256": "e2246da12cf2a30423d47e49864d0dc74727b92313acfcc6304be7141ac65137",
+      "actual_sha256": "e2246da12cf2a30423d47e49864d0dc74727b92313acfcc6304be7141ac65137",
+      "response_bytes": 182002,
+      "raw_path": "migration/raw-html/onderwijs-tips-voor-verantwoord-gebruik-en-afspraken-aaaf36561d30.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/train-je-eigen-zelfrijdende-auto",
+      "status": "verified",
+      "expected_sha256": "77e010fa638ce3ef67197e65b43f27b45edf69720ed486b0cc00bafa2ff7c41c",
+      "actual_sha256": "77e010fa638ce3ef67197e65b43f27b45edf69720ed486b0cc00bafa2ff7c41c",
+      "response_bytes": 185249,
+      "raw_path": "migration/raw-html/onderwijs-train-je-eigen-zelfrijdende-auto-7e1e463e10f5.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/voorspel-het-verleden-aeneas",
+      "status": "verified",
+      "expected_sha256": "63b703d354a1b406070a75fee02a77866d42f6aab39d4437cc25b9bdff9249d8",
+      "actual_sha256": "63b703d354a1b406070a75fee02a77866d42f6aab39d4437cc25b9bdff9249d8",
+      "response_bytes": 256214,
+      "raw_path": "migration/raw-html/onderwijs-voorspel-het-verleden-aeneas-bdb7c9916916.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/wall-of-game",
+      "status": "verified",
+      "expected_sha256": "cc50bc0ea0a8429a82ef6984659524a27ae71609aa5658c5a8a8903b2f7e7123",
+      "actual_sha256": "cc50bc0ea0a8429a82ef6984659524a27ae71609aa5658c5a8a8903b2f7e7123",
+      "response_bytes": 193837,
+      "raw_path": "migration/raw-html/onderwijs-wall-of-game-594fecfcc9ad.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/webinar-ai-met-klasse",
+      "status": "verified",
+      "expected_sha256": "d53e61040f0accce3e9be15cab7241656cc264bdf1153911c75e91751172b4cd",
+      "actual_sha256": "d53e61040f0accce3e9be15cab7241656cc264bdf1153911c75e91751172b4cd",
+      "response_bytes": 122451,
+      "raw_path": "migration/raw-html/onderwijs-webinar-ai-met-klasse-2d50b7ec06a6.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs/workshops-en-nascholingen",
+      "status": "verified",
+      "expected_sha256": "ca79e953a6cd0686ab434b8c76abec6910e78094d4daf8cc403be3648f397eaa",
+      "actual_sha256": "ca79e953a6cd0686ab434b8c76abec6910e78094d4daf8cc403be3648f397eaa",
+      "response_bytes": 456481,
+      "raw_path": "migration/raw-html/onderwijs-workshops-en-nascholingen-d77751bd6cae.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/over",
+      "status": "verified",
+      "expected_sha256": "d962a97fb1e295d2e5f37c47828b104b2a75c93437349013a3a0130ddb681eda",
+      "actual_sha256": "d962a97fb1e295d2e5f37c47828b104b2a75c93437349013a3a0130ddb681eda",
+      "response_bytes": 170562,
+      "raw_path": "migration/raw-html/over-021505dbe41d.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/projects",
+      "status": "verified",
+      "expected_sha256": "a7679158445618cf95758360ff1828d433efeb973be5d968b1489e140ffec639",
+      "actual_sha256": "a7679158445618cf95758360ff1828d433efeb973be5d968b1489e140ffec639",
+      "response_bytes": 212131,
+      "raw_path": "migration/raw-html/projects-63ba07c1b4cb.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/robots.txt",
+      "status": "verified",
+      "expected_sha256": "cf0178ae13bd8d20c63ecc2fda1cb826a612d3e96a97c5a555eab403a084dc5c",
+      "actual_sha256": "cf0178ae13bd8d20c63ecc2fda1cb826a612d3e96a97c5a555eab403a084dc5c",
+      "response_bytes": 1511,
+      "raw_path": "migration/raw-html/robots.txt-7ab92b46887d.txt"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/sitemap.xml",
+      "status": "verified",
+      "expected_sha256": "fcafe5bbec87de4dc3aa8c1525f0f7de4913de573cdc76bafd84e0d5ca967ebe",
+      "actual_sha256": "fcafe5bbec87de4dc3aa8c1525f0f7de4913de573cdc76bafd84e0d5ca967ebe",
+      "response_bytes": 444407,
+      "raw_path": "migration/raw-html/sitemap.xml-0fbd31d2b8de.xml"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/verkoopsvoorwaarden",
+      "status": "verified",
+      "expected_sha256": "4b5e4907f37b1f24d0265bb5c345d5a52750a7a5a91bb6c9bf1249a72836bd9e",
+      "actual_sha256": "4b5e4907f37b1f24d0265bb5c345d5a52750a7a5a91bb6c9bf1249a72836bd9e",
+      "response_bytes": 127965,
+      "raw_path": "migration/raw-html/verkoopsvoorwaarden-324fc8515832.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie-1",
+      "status": "approved_exception",
+      "disposition": "excluded_out_of_scope",
+      "expected_sha256": "8c1c44fba85fc969bef8013e0972dcdd7d156fda586b9cd5a0f9360eafb8ea93",
+      "actual_sha256": null,
+      "raw_path": "migration/raw-html/videografie-1-e01bcd78062b.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie/covid-yasmina-jongbloet",
+      "status": "approved_exception",
+      "disposition": "excluded_out_of_scope",
+      "expected_sha256": "8c1c44fba85fc969bef8013e0972dcdd7d156fda586b9cd5a0f9360eafb8ea93",
+      "actual_sha256": null,
+      "raw_path": "migration/raw-html/videografie-covid-yasmina-jongbloet-af69262af806.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie/hout-op-maat",
+      "status": "approved_exception",
+      "disposition": "excluded_out_of_scope",
+      "expected_sha256": "8c1c44fba85fc969bef8013e0972dcdd7d156fda586b9cd5a0f9360eafb8ea93",
+      "actual_sha256": null,
+      "raw_path": "migration/raw-html/videografie-hout-op-maat-46b7d649fa8d.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie/jakobistan-fietspad",
+      "status": "approved_exception",
+      "disposition": "excluded_out_of_scope",
+      "expected_sha256": "8c1c44fba85fc969bef8013e0972dcdd7d156fda586b9cd5a0f9360eafb8ea93",
+      "actual_sha256": null,
+      "raw_path": "migration/raw-html/videografie-jakobistan-fietspad-e6cc67dd6b70.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie/mathias-vercammen-quartet-herbakker-eeklo",
+      "status": "approved_exception",
+      "disposition": "excluded_out_of_scope",
+      "expected_sha256": "8c1c44fba85fc969bef8013e0972dcdd7d156fda586b9cd5a0f9360eafb8ea93",
+      "actual_sha256": null,
+      "raw_path": "migration/raw-html/videografie-mathias-vercammen-quartet-herbakker-eeklo-7714630e76bc.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie/matthias-de-smet-hongyu-chen",
+      "status": "approved_exception",
+      "disposition": "excluded_out_of_scope",
+      "expected_sha256": "8c1c44fba85fc969bef8013e0972dcdd7d156fda586b9cd5a0f9360eafb8ea93",
+      "actual_sha256": null,
+      "raw_path": "migration/raw-html/videografie-matthias-de-smet-hongyu-chen-95b351d5ae9e.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie/promotievideos-montage",
+      "status": "approved_exception",
+      "disposition": "excluded_out_of_scope",
+      "expected_sha256": "8c1c44fba85fc969bef8013e0972dcdd7d156fda586b9cd5a0f9360eafb8ea93",
+      "actual_sha256": null,
+      "raw_path": "migration/raw-html/videografie-promotievideos-montage-046ed769285f.html"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie/wielerkampen-cartouche",
+      "status": "approved_exception",
+      "disposition": "excluded_out_of_scope",
+      "expected_sha256": "8c1c44fba85fc969bef8013e0972dcdd7d156fda586b9cd5a0f9360eafb8ea93",
+      "actual_sha256": null,
+      "raw_path": "migration/raw-html/videografie-wielerkampen-cartouche-6205ca99391a.html"
+    }
+  ]
+}

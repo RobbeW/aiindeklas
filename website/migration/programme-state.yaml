@@ -1,0 +1,33 @@
+schema_version: "1.0.0"
+updated_at: "2026-07-20T10:15:00+02:00"
+execution_mode: "local_first"
+current_phase: "P7"
+status: "owner_decisions_required"
+local_workspace: "."
+local_git:
+  initialised: true
+  branch: "codex/p7-parity-quality"
+  remote_configured: false
+remote_repository:
+  status: "postponed_until_H3"
+  candidate: "RobbeW/aiindeklas"
+registrar:
+  status: "postponed_until_H4"
+production_dns_changed: false
+completed_phases: ["P0", "P1", "P2", "P3", "P4", "P5", "P6"]
+approvals:
+  H1:
+    status: "approved"
+    approved_at: "2026-07-16"
+    decision: "Proceed with recommended dispositions; photography and videography routes are explicitly dated and out of scope."
+  H2:
+    status: "approved"
+    approved_at: "2026-07-16"
+    decision: "Approved as recommended."
+    decision_document: "migration/reports/H2-owner-decision.md"
+active_tasks: ["P7-T01"]
+manual_decisions_required:
+  - "P7: review SEO summaries, workshop structure, media alt text, and publication rights."
+  - "P7: recover or explicitly waive 18 unavailable Squarespace native-video records."
+  - "P7: verify 17 case-only taxonomy route collisions on a case-sensitive build environment."
+next_unblocked_phase: null

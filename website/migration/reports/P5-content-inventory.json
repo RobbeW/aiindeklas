@@ -1,0 +1,1789 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-07-15T19:43:35.755Z",
+  "status": "transformed_pending_owner_review",
+  "counts": {
+    "pages": 9,
+    "articles": 124,
+    "workshops": 12,
+    "projects": 9,
+    "authors": 1,
+    "body_bearing_total": 155,
+    "source_buttons": 178,
+    "asset_candidates": 847,
+    "unresolved_taxonomy_snapshots": 2
+  },
+  "pages": [
+    {
+      "id": "source-page-home",
+      "pathname": "/",
+      "locale": "nl-BE",
+      "migration_status": "transformed",
+      "source_hash": "78a88f8d8800206dc36053e4e3cf631d73e8760be5e6681cf33e5a1f3a24f3fe"
+    },
+    {
+      "id": "source-page-about",
+      "pathname": "/about",
+      "locale": "en",
+      "migration_status": "transformed",
+      "source_hash": "cc333a1cdd71b766c25be236df10bb1eb3d5dce91784946c29f23ef9df86149e"
+    },
+    {
+      "id": "source-page-boek",
+      "pathname": "/boek",
+      "locale": "nl-BE",
+      "migration_status": "transformed",
+      "source_hash": "392e3667e8c7190c746493dd523011f820e5cdf845eb3e440e6e3054f00c8297"
+    },
+    {
+      "id": "source-page-contact",
+      "pathname": "/contact",
+      "locale": "nl-BE",
+      "migration_status": "transformed",
+      "source_hash": "734a2219da46895a4a0e48359e16b0f5202d7f70543639f051eb3f84638aa8dd"
+    },
+    {
+      "id": "source-page-contactinfo",
+      "pathname": "/contactinfo",
+      "locale": "en",
+      "migration_status": "transformed",
+      "source_hash": "6f08b7fec5f4f41b1a5527796e52e0cb9440d5fa0f949697058f71d683f2c499"
+    },
+    {
+      "id": "source-page-onderwijs",
+      "pathname": "/onderwijs",
+      "locale": "nl-BE",
+      "migration_status": "transformed",
+      "source_hash": "2ff7539688b16f415f6ab1f95e155d862d7fefcceec6caa5a58a2727dc7bd3d6"
+    },
+    {
+      "id": "source-page-education",
+      "pathname": "/education",
+      "locale": "en",
+      "migration_status": "transformed",
+      "source_hash": "9519972c3983aa029890ab3e9dc54c5c5f41a5ffcd275c00efa4177d3c837934"
+    },
+    {
+      "id": "source-page-projects",
+      "pathname": "/projects",
+      "locale": "en",
+      "migration_status": "transformed",
+      "source_hash": "a7679158445618cf95758360ff1828d433efeb973be5d968b1489e140ffec639"
+    },
+    {
+      "id": "source-page-verkoopsvoorwaarden",
+      "pathname": "/verkoopsvoorwaarden",
+      "locale": "nl-BE",
+      "migration_status": "transformed",
+      "source_hash": "4b5e4907f37b1f24d0265bb5c345d5a52750a7a5a91bb6c9bf1249a72836bd9e"
+    }
+  ],
+  "articles": [
+    {
+      "id": "source-article-8a683bc387b862f1",
+      "pathname": "/education/1-year-of-ai-in-the-classroom",
+      "locale": "en",
+      "title": "One Year of AI in the Classroom",
+      "published_at": "2022-06-26T21:23:18+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 8562,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-c287c8647f4fe40a",
+      "pathname": "/education/ai-adventure",
+      "locale": "en",
+      "title": "Going on an AI Adventure",
+      "published_at": "2023-08-28T07:36:53+02:00",
+      "migration_status": "transformed",
+      "tags": 13,
+      "categories": 0,
+      "body_characters": 13705,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-e8de3d8554cb9cbb",
+      "pathname": "/education/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde-6n5l5",
+      "locale": "en",
+      "title": "AI & ART - What if … Van Eyck painted my selfie?",
+      "published_at": "2021-11-03T10:15:28+01:00",
+      "migration_status": "transformed",
+      "tags": 6,
+      "categories": 0,
+      "body_characters": 3084,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-b50706e9c312c70a",
+      "pathname": "/education/ai-and-greek-epigraphy-with-a-robot",
+      "locale": "en",
+      "title": "AI Meets Ancient Greek - Muses and Robots",
+      "published_at": "2022-06-20T10:46:08+02:00",
+      "migration_status": "transformed",
+      "tags": 1,
+      "categories": 0,
+      "body_characters": 13845,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-dd380fca03d55312",
+      "pathname": "/education/ai-art-beethovenai-cahsr",
+      "locale": "en",
+      "title": "AI & ART - BEETHOVEN.ai",
+      "published_at": "2021-11-03T10:10:33+01:00",
+      "migration_status": "transformed",
+      "tags": 8,
+      "categories": 0,
+      "body_characters": 3358,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-af2ac38b4b0275a1",
+      "pathname": "/education/ai-art-ontketen-jouw-lyrische-picasso-dyj8h",
+      "locale": "en",
+      "title": "AI & ART - Unleash your lyrical Picasso!",
+      "published_at": "2021-11-03T10:40:50+01:00",
+      "migration_status": "transformed",
+      "tags": 8,
+      "categories": 0,
+      "body_characters": 6942,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-51fd527f31139380",
+      "pathname": "/education/ai-art-thanos-snap-photobomb-begone",
+      "locale": "en",
+      "title": "AI & ART - Thanos Snap: photobomb begone!",
+      "published_at": "2021-12-30T17:10:45+01:00",
+      "migration_status": "transformed",
+      "tags": 6,
+      "categories": 0,
+      "body_characters": 4170,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-70a5969ed006da9e",
+      "pathname": "/education/ai-as-matchmaker",
+      "locale": "en",
+      "title": "AI & US- AI as Matchmaker",
+      "published_at": "2021-11-03T11:01:50+01:00",
+      "migration_status": "transformed",
+      "tags": 10,
+      "categories": 0,
+      "body_characters": 10108,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-25bff6b7fa6f9939",
+      "pathname": "/education/ai-assessment-scale",
+      "locale": "en",
+      "title": "AI Assessment and Teaching Guide",
+      "published_at": "2025-02-19T10:25:59+01:00",
+      "migration_status": "transformed",
+      "tags": 1,
+      "categories": 0,
+      "body_characters": 70672,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-7944bc7997062073",
+      "pathname": "/education/ai-design-aikea",
+      "locale": "en",
+      "title": "AI & DESIGN -AIKEA*",
+      "published_at": "2023-03-19T14:18:29+01:00",
+      "migration_status": "transformed",
+      "tags": 10,
+      "categories": 0,
+      "body_characters": 8133,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-4b4e9fe874d91655",
+      "pathname": "/education/ai-for-education-awards",
+      "locale": "en",
+      "title": "AI For Education Awards",
+      "published_at": "2024-07-18T08:05:13+02:00",
+      "migration_status": "transformed",
+      "tags": 8,
+      "categories": 0,
+      "body_characters": 10796,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-6a22b90112d4d882",
+      "pathname": "/education/ai-greek-epigraphy-poetry-and-ai-with-pythia",
+      "locale": "en",
+      "title": "AI & ANCIENT GREEK - Epigraphy, Poetry and AI with Pythia",
+      "published_at": "2021-11-22T14:34:27+01:00",
+      "migration_status": "transformed",
+      "tags": 8,
+      "categories": 0,
+      "body_characters": 6825,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-961eda437a59ba08",
+      "pathname": "/education/ai-in-the-classroom",
+      "locale": "en",
+      "title": "AI in the Classroom: why and how?",
+      "published_at": "2021-11-03T13:04:12+01:00",
+      "migration_status": "transformed",
+      "tags": 9,
+      "categories": 0,
+      "body_characters": 7235,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-b28f35a645c35091",
+      "pathname": "/education/ai-in-the-classroom-deepfaking-a-deputy-prime-minister",
+      "locale": "en",
+      "title": "AI in the Classroom: Creating a deepfake with a Deputy Prime Minister",
+      "published_at": "2022-02-11T18:39:00+01:00",
+      "migration_status": "transformed",
+      "tags": 1,
+      "categories": 0,
+      "body_characters": 3632,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-a4946882dc08ec35",
+      "pathname": "/education/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven-xyfsa",
+      "locale": "en",
+      "title": "AI & Classical Studies - Bring the Roman Emperors to life!",
+      "published_at": "2021-11-02T18:33:44+01:00",
+      "migration_status": "transformed",
+      "tags": 22,
+      "categories": 0,
+      "body_characters": 1884,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-940c616f97e029be",
+      "pathname": "/education/ai-latin-bring-tacitus-to-life",
+      "locale": "en",
+      "title": "AI and Latin - Bring Tacitus to life!",
+      "published_at": "2022-06-12T21:42:10+02:00",
+      "migration_status": "transformed",
+      "tags": 1,
+      "categories": 0,
+      "body_characters": 10926,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-bc190d1903babc15",
+      "pathname": "/education/ai-sport-inform",
+      "locale": "en",
+      "title": "AI & SPORT - analyse your form with InFORM",
+      "published_at": "2023-01-31T15:46:05+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 11849,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-e923f39a1f03b4c1",
+      "pathname": "/education/ai-taal-auteur-of-ai-teur-ef7mx",
+      "locale": "en",
+      "title": "AI & LANGUAGE- Author of AI-thor?",
+      "published_at": "2021-11-03T10:33:14+01:00",
+      "migration_status": "transformed",
+      "tags": 13,
+      "categories": 0,
+      "body_characters": 4252,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-612be0bb50c0376f",
+      "pathname": "/education/ai-wij-robots-herkennen-onze-emotie-smbe9",
+      "locale": "en",
+      "title": "AI & US- Robots recognize our emotions!",
+      "published_at": "2021-11-03T11:25:50+01:00",
+      "migration_status": "transformed",
+      "tags": 7,
+      "categories": 0,
+      "body_characters": 6806,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-368d7f840acef7b7",
+      "pathname": "/education/ai-wij-robots-herkennen-onze-wereld-bpsfs",
+      "locale": "en",
+      "title": "AI & US - Robots recognize our world!",
+      "published_at": "2021-11-03T11:16:21+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 4443,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-8b9c0c54f48dc02e",
+      "pathname": "/education/bring-greek-myths-to-life",
+      "locale": "en",
+      "title": "Bring Greek myths to life",
+      "published_at": "2023-07-24T16:15:51+02:00",
+      "migration_status": "transformed",
+      "tags": 16,
+      "categories": 0,
+      "body_characters": 10218,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-1fd5a1a8e86177f9",
+      "pathname": "/education/build-your-own-smart-trash-can",
+      "locale": "en",
+      "title": "Build your own smart trash can!",
+      "published_at": "2022-03-07T07:11:11+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 7001,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-1684857a3b380de0",
+      "pathname": "/education/chatgpt-in-the-classroom",
+      "locale": "en",
+      "title": "ChatGPT in the Classroom",
+      "published_at": "2023-02-08T10:15:33+01:00",
+      "migration_status": "transformed",
+      "tags": 7,
+      "categories": 0,
+      "body_characters": 15322,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-1fbc17743bd780bb",
+      "pathname": "/education/chimera",
+      "locale": "en",
+      "title": "The Chimaera - a Fantastical Monster",
+      "published_at": "2023-04-19T09:42:23+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 17677,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-c263afdaae3e7f4b",
+      "pathname": "/education/course-computational-thinking",
+      "locale": "en",
+      "title": "Course on Computational Thinking",
+      "published_at": "2022-08-10T14:36:16+02:00",
+      "migration_status": "transformed",
+      "tags": 5,
+      "categories": 0,
+      "body_characters": 6911,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-5354b2bb5ce65be5",
+      "pathname": "/education/course-computational-thinking-javascript",
+      "locale": "en",
+      "title": "Course on Computational Thinking & Javascript",
+      "published_at": "2022-08-29T10:51:47+02:00",
+      "migration_status": "transformed",
+      "tags": 4,
+      "categories": 0,
+      "body_characters": 6754,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-193c4252b745c34e",
+      "pathname": "/education/define-value",
+      "locale": "en",
+      "title": "Define Value at Maker Faire Gent",
+      "published_at": "2022-04-26T09:37:44+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 5597,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-9a99a1ecde0337a8",
+      "pathname": "/education/design-thinking-project-2030-mjjjl",
+      "locale": "en",
+      "title": "Design Thinking: Project 2030",
+      "published_at": "2021-11-02T18:03:20+01:00",
+      "migration_status": "transformed",
+      "tags": 5,
+      "categories": 0,
+      "body_characters": 2077,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-0770cb06ba006709",
+      "pathname": "/education/digital-storytelling-in-virtual-reality-g4mbc",
+      "locale": "en",
+      "title": "Digital Storytelling in Virtual Reality",
+      "published_at": "2021-12-08T12:35:29+01:00",
+      "migration_status": "transformed",
+      "tags": 3,
+      "categories": 0,
+      "body_characters": 4854,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-97d199ecc65cc49f",
+      "pathname": "/education/digital-storytelling-in-vr-2egfz",
+      "locale": "en",
+      "title": "STEaM Project: Digital Storytelling in Virtual Reality",
+      "published_at": "2021-11-02T18:09:09+01:00",
+      "migration_status": "transformed",
+      "tags": 6,
+      "categories": 0,
+      "body_characters": 3114,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-d7d52f30e602b6e1",
+      "pathname": "/education/discover-latin-with-minecraft",
+      "locale": "en",
+      "title": "Discover Latin with Minecraft!",
+      "published_at": "2022-05-29T18:00:34+02:00",
+      "migration_status": "transformed",
+      "tags": 1,
+      "categories": 0,
+      "body_characters": 6985,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-395ec97dcc1038e3",
+      "pathname": "/education/dive-into-history-with-ai",
+      "locale": "en",
+      "title": "Dive into history with Artificial Intelligence!",
+      "published_at": "2022-02-23T15:48:24+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 3969,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-3fdcbd94f258eba8",
+      "pathname": "/education/greek-minecraft-acropolis-adventure",
+      "locale": "en",
+      "title": "Greek & Minecraft Acropolis Adventure",
+      "published_at": "2023-05-01T19:45:15+02:00",
+      "migration_status": "transformed",
+      "tags": 11,
+      "categories": 0,
+      "body_characters": 7698,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-029689dbb7efb5b2",
+      "pathname": "/education/hey-siri-clone-my-voice",
+      "locale": "en",
+      "title": "AI & LANGUAGE - Hey Siri, clone my voice!",
+      "published_at": "2021-11-03T11:11:31+01:00",
+      "migration_status": "transformed",
+      "tags": 8,
+      "categories": 0,
+      "body_characters": 6694,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-6a936d0012098eb9",
+      "pathname": "/education/ithaca-teaching-history-journal",
+      "locale": "en",
+      "title": "Ithaca - Teaching History Journal",
+      "published_at": "2023-10-09T07:11:36+02:00",
+      "migration_status": "transformed",
+      "tags": 12,
+      "categories": 0,
+      "body_characters": 18958,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-1dc769b023e100fd",
+      "pathname": "/education/latin-and-game-design",
+      "locale": "en",
+      "title": "Latijn and Game Design - Project Nicolai Klimii",
+      "published_at": "2022-06-05T17:29:52+02:00",
+      "migration_status": "transformed",
+      "tags": 1,
+      "categories": 0,
+      "body_characters": 6633,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-504fe83bacc51b09",
+      "pathname": "/education/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto-5jfsh",
+      "locale": "en",
+      "title": "AI & ART: Hidden dimensions in your photos!",
+      "published_at": "2021-11-02T18:26:20+01:00",
+      "migration_status": "transformed",
+      "tags": 5,
+      "categories": 0,
+      "body_characters": 3423,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-e7b9b88780af7677",
+      "pathname": "/education/onderwijs-kleur-de-geschiedenis-met-ai-zwe6w",
+      "locale": "en",
+      "title": "AI & ART: History in colour with AI!",
+      "published_at": "2021-11-02T18:19:54+01:00",
+      "migration_status": "transformed",
+      "tags": 8,
+      "categories": 0,
+      "body_characters": 3258,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-f7ecb99ad89b2739",
+      "pathname": "/education/open-an-ai-art-gallery",
+      "locale": "en",
+      "title": "Open an AI art gallery!",
+      "published_at": "2022-02-23T15:48:31+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 3300,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-c336ebbf300fece5",
+      "pathname": "/education/predicting-the-past-aeneas",
+      "locale": "en",
+      "title": "Predicting the Past - Aeneas",
+      "published_at": "2025-07-23T17:00:00+02:00",
+      "migration_status": "transformed",
+      "tags": 1,
+      "categories": 0,
+      "body_characters": 19508,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-68157271d1fad96e",
+      "pathname": "/education/python-in-the-classroom",
+      "locale": "en",
+      "title": "Python in the Classroom",
+      "published_at": "2023-07-24T13:09:02+02:00",
+      "migration_status": "transformed",
+      "tags": 7,
+      "categories": 0,
+      "body_characters": 12298,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-e2508b4ab92aa691",
+      "pathname": "/education/roma-aeterna-lx2z7",
+      "locale": "en",
+      "title": "Roma Aeterna: Latin in Minecraft",
+      "published_at": "2021-11-02T18:14:20+01:00",
+      "migration_status": "transformed",
+      "tags": 1,
+      "categories": 0,
+      "body_characters": 2752,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-f9fb1503bb130c03",
+      "pathname": "/education/sun-dragons-and-sea-robbers",
+      "locale": "en",
+      "title": "Sun Dragons and Sea Robbers",
+      "published_at": "2023-04-23T09:39:24+02:00",
+      "migration_status": "transformed",
+      "tags": 10,
+      "categories": 0,
+      "body_characters": 6100,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-ac8fea25a65ac75c",
+      "pathname": "/education/train-your-own-self-driving-car",
+      "locale": "en",
+      "title": "Train your own self driving car",
+      "published_at": "2022-03-22T22:20:59+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 8124,
+      "needs_seo_review": false
+    },
+    {
+      "id": "source-article-8618b4cb65e30e1f",
+      "pathname": "/education/wall-of-game",
+      "locale": "en",
+      "title": "Wall of Game",
+      "published_at": "2022-08-29T10:36:15+02:00",
+      "migration_status": "transformed",
+      "tags": 7,
+      "categories": 0,
+      "body_characters": 8078,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-7f32cf1e05761e66",
+      "pathname": "/education/workshops-and-teacher-training",
+      "locale": "en",
+      "title": "Workshops and Teacher Training",
+      "published_at": "2022-05-04T10:50:04+02:00",
+      "migration_status": "transformed",
+      "tags": 1,
+      "categories": 0,
+      "body_characters": 2434,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-5565b5acab0cb7de",
+      "pathname": "/onderwijs/1-jaar-ai-in-de-klas",
+      "locale": "nl-BE",
+      "title": "1 jaar AI in de Klas",
+      "published_at": "2022-06-26T21:21:52+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 8971,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-4a12353c7da3c2c6",
+      "pathname": "/onderwijs/ai-act-van-verplichting-naar-ambitie",
+      "locale": "nl-BE",
+      "title": "AI Act: van verplichting naar ambitie",
+      "published_at": "2025-03-20T11:20:57+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 16718,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-42975a4f004e6f12",
+      "pathname": "/onderwijs/ai-amp-art-wat-als-van-eyck-mijn-selfie-schilderde",
+      "locale": "nl-BE",
+      "title": "AI & ART - Wat als Van Eyck mijn selfie schilderde?",
+      "published_at": "2021-06-28T18:45:20+02:00",
+      "migration_status": "transformed",
+      "tags": 6,
+      "categories": 0,
+      "body_characters": 3358,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-9ba54ae01a87cc2b",
+      "pathname": "/onderwijs/ai-art-beethovenai",
+      "locale": "nl-BE",
+      "title": "AI & ART - BEETHOVEN.ai",
+      "published_at": "2021-06-10T19:00:00+02:00",
+      "migration_status": "transformed",
+      "tags": 5,
+      "categories": 0,
+      "body_characters": 3596,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-b3ab3cc700e80b47",
+      "pathname": "/onderwijs/ai-art-ontketen-jouw-lyrische-picasso",
+      "locale": "nl-BE",
+      "title": "AI & ART - Kan een robot kunst maken?",
+      "published_at": "2021-07-21T15:34:55+02:00",
+      "migration_status": "transformed",
+      "tags": 8,
+      "categories": 0,
+      "body_characters": 7421,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-583d37381371c006",
+      "pathname": "/onderwijs/ai-art-thanos-snap-weg-met-de-photobomb",
+      "locale": "nl-BE",
+      "title": "AI & ART - Thanos Snap: weg met de photobomb!",
+      "published_at": "2021-12-21T18:26:41+01:00",
+      "migration_status": "transformed",
+      "tags": 6,
+      "categories": 0,
+      "body_characters": 4464,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-3a5e2aac900a772d",
+      "pathname": "/onderwijs/ai-design-aikea",
+      "locale": "nl-BE",
+      "title": "AI & DESIGN -AIKEA*",
+      "published_at": "2023-03-15T17:58:06+01:00",
+      "migration_status": "transformed",
+      "tags": 10,
+      "categories": 0,
+      "body_characters": 9295,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-eda7055ae9b9b3e1",
+      "pathname": "/onderwijs/ai-en-grieks-epigrafie-met-een-robot",
+      "locale": "nl-BE",
+      "title": "AI en Grieks - Muzen en Robots",
+      "published_at": "2022-06-19T15:46:05+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 15288,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-74f0e861f14a0b13",
+      "pathname": "/onderwijs/ai-en-latijn-breng-tacitus-tot-leven",
+      "locale": "nl-BE",
+      "title": "AI en Latijn - Breng Tacitus tot leven!",
+      "published_at": "2022-06-12T21:46:05+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 13159,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-2dcf90c9b3c7fbf1",
+      "pathname": "/onderwijs/ai-for-education-awards-tweemaal-prijs",
+      "locale": "nl-BE",
+      "title": "AI For Education Awards - Tweemaal Prijs",
+      "published_at": "2024-07-18T08:01:52+02:00",
+      "migration_status": "transformed",
+      "tags": 6,
+      "categories": 0,
+      "body_characters": 10890,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-11d2cc656f873bc2",
+      "pathname": "/onderwijs/ai-geletterdheid-waarom-moeten-wij-dit-kennen",
+      "locale": "nl-BE",
+      "title": "AI-geletterdheid: waarom moeten wij dit kennen?",
+      "published_at": "2025-11-17T08:00:00+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 8410,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-1fa38b522cd104a9",
+      "pathname": "/onderwijs/ai-grieks-epigrafie-poezie-en-ai-met-pythia",
+      "locale": "nl-BE",
+      "title": "AI & GRIEKS - Epigrafie, Poëzie en AI met Pythia",
+      "published_at": "2021-11-21T23:19:27+01:00",
+      "migration_status": "transformed",
+      "tags": 8,
+      "categories": 0,
+      "body_characters": 7312,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-f0c4fd5179b748cb",
+      "pathname": "/onderwijs/ai-in-de-klas-vicepremier-op-bezoek",
+      "locale": "nl-BE",
+      "title": "AI in de Klas: Vicepremier op bezoek!",
+      "published_at": "2022-02-11T18:32:00+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 3871,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-7650d2cce02738e2",
+      "pathname": "/onderwijs/ai-in-de-klas-waarom-en-hoe",
+      "locale": "nl-BE",
+      "title": "AI in de Klas: waarom en hoe?",
+      "published_at": "2021-11-03T12:51:48+01:00",
+      "migration_status": "transformed",
+      "tags": 8,
+      "categories": 0,
+      "body_characters": 8011,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-afc99bf1c1410d81",
+      "pathname": "/onderwijs/ai-klassieke-talen-breng-de-romeinse-keizers-tot-leven",
+      "locale": "nl-BE",
+      "title": "AI & Klassieke Talen - Breng de Romeinse keizers terug tot leven!",
+      "published_at": "2021-06-02T16:16:34+02:00",
+      "migration_status": "transformed",
+      "tags": 20,
+      "categories": 0,
+      "body_characters": 1791,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-e3e8f1e387e775b5",
+      "pathname": "/onderwijs/ai-paasvakantie",
+      "locale": "nl-BE",
+      "title": "A.I. Paasvakantie",
+      "published_at": "2021-04-11T11:51:54+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 1543,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-31dcfcd88560732f",
+      "pathname": "/onderwijs/ai-sport-inform",
+      "locale": "nl-BE",
+      "title": "AI & SPORT - analyseer jouw vorm met InFORM",
+      "published_at": "2023-01-11T09:15:58+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 12940,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-ffd62e1d6fd79b89",
+      "pathname": "/onderwijs/ai-taal-auteur-of-ai-teur",
+      "locale": "nl-BE",
+      "title": "AI & TAAL - Auteur of AI-teur?",
+      "published_at": "2021-07-14T21:00:33+02:00",
+      "migration_status": "transformed",
+      "tags": 13,
+      "categories": 0,
+      "body_characters": 4507,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-b60910d507429024",
+      "pathname": "/onderwijs/ai-wij-robots-herkennen-onze-emotie",
+      "locale": "nl-BE",
+      "title": "AI & WIJ - Robots herkennen onze emoties!",
+      "published_at": "2021-10-13T18:51:16+02:00",
+      "migration_status": "transformed",
+      "tags": 7,
+      "categories": 0,
+      "body_characters": 7782,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-7ad125152afa1d81",
+      "pathname": "/onderwijs/ai-wij-robots-herkennen-onze-wereld",
+      "locale": "nl-BE",
+      "title": "AI & WIJ - Robots herkennen onze wereld!",
+      "published_at": "2021-10-06T10:20:16+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 4845,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-5f48e2085e3e9071",
+      "pathname": "/onderwijs/ai-wij-tinder-voor-groepswerken",
+      "locale": "nl-BE",
+      "title": "AI & WIJ - “Tinder” voor Groepswerken",
+      "published_at": "2021-07-29T09:24:40+02:00",
+      "migration_status": "transformed",
+      "tags": 10,
+      "categories": 0,
+      "body_characters": 11109,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-d7195fac228c11c0",
+      "pathname": "/onderwijs/avontuuropdeakropolis",
+      "locale": "nl-BE",
+      "title": "Avontuur op de Akropolis (vernieuwd)",
+      "published_at": "2024-12-17T12:54:46+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 11631,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-7103668ece7f328a",
+      "pathname": "/onderwijs/blockly-in-de-klas",
+      "locale": "nl-BE",
+      "title": "Blockly in de Klas",
+      "published_at": "2026-05-16T20:09:49+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 12581,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-2b7454de4732fdae",
+      "pathname": "/onderwijs/bouw-een-slimme-vuilnisbak",
+      "locale": "nl-BE",
+      "title": "Bouw een slimme vuilnisbak!",
+      "published_at": "2022-03-07T07:00:00+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 8050,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-cd4e29a424e704c8",
+      "pathname": "/onderwijs/breng-de-romeinse-keizers-tot-leven",
+      "locale": "nl-BE",
+      "title": "Breng de Romeinse Keizers tot leven",
+      "published_at": "2024-01-04T14:48:51+01:00",
+      "migration_status": "transformed",
+      "tags": 12,
+      "categories": 0,
+      "body_characters": 16988,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-7063bbce46af2b1d",
+      "pathname": "/onderwijs/breng-griekse-mythes-tot-leven-met-ai",
+      "locale": "nl-BE",
+      "title": "Breng Griekse mythes tot leven met AI!",
+      "published_at": "2023-05-03T07:40:31+02:00",
+      "migration_status": "transformed",
+      "tags": 11,
+      "categories": 0,
+      "body_characters": 11500,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-e7fe4968131d5522",
+      "pathname": "/onderwijs/chatgpt-in-de-klas",
+      "locale": "nl-BE",
+      "title": "ChatGPT in de Klas",
+      "published_at": "2023-01-27T15:05:15+01:00",
+      "migration_status": "transformed",
+      "tags": 6,
+      "categories": 0,
+      "body_characters": 16387,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-ec3050318599817b",
+      "pathname": "/onderwijs/de-chimaera-het-fantastische-monster",
+      "locale": "nl-BE",
+      "title": "De Chimaera - Het Fantastische Monster",
+      "published_at": "2022-10-26T14:44:22+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 19131,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-5151f8f6c3a3c30d",
+      "pathname": "/onderwijs/define-value",
+      "locale": "nl-BE",
+      "title": "Define Value op Maker Faire Gent",
+      "published_at": "2022-04-17T11:38:56+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 5942,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-2c23a794324d8a79",
+      "pathname": "/onderwijs/design-thinking-project-2030",
+      "locale": "nl-BE",
+      "title": "Design Thinking: Project 2030",
+      "published_at": "2019-06-19T22:05:26+02:00",
+      "migration_status": "transformed",
+      "tags": 5,
+      "categories": 0,
+      "body_characters": 2118,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-0004d3c56040f2f7",
+      "pathname": "/onderwijs/digital-storytelling-in-virtual-reality",
+      "locale": "nl-BE",
+      "title": "Digital Storytelling in Virtual Reality",
+      "published_at": "2021-12-08T12:23:19+01:00",
+      "migration_status": "transformed",
+      "tags": 3,
+      "categories": 0,
+      "body_characters": 5118,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-2ce286d496577da8",
+      "pathname": "/onderwijs/digital-storytelling-in-vr",
+      "locale": "nl-BE",
+      "title": "STEaM Project: Digital Storytelling in Virtual Reality",
+      "published_at": "2020-03-10T22:05:00+01:00",
+      "migration_status": "transformed",
+      "tags": 6,
+      "categories": 0,
+      "body_characters": 3125,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-bb79d3fd1ba7eb93",
+      "pathname": "/onderwijs/duik-met-ai-de-geschiedenis-in",
+      "locale": "nl-BE",
+      "title": "Duik met AI de geschiedenis in!",
+      "published_at": "2022-02-23T15:45:55+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 4146,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-ab7584a7cb6bd5b4",
+      "pathname": "/onderwijs/grieks-minecraft-akropolis-avontuur",
+      "locale": "nl-BE",
+      "title": "Grieks & Minecraft Akropolis Avontuur",
+      "published_at": "2023-05-01T19:44:55+02:00",
+      "migration_status": "transformed",
+      "tags": 10,
+      "categories": 0,
+      "body_characters": 9004,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-4f005cef04296efe",
+      "pathname": "/onderwijs/handvat-voor-lesmateriaal",
+      "locale": "nl-BE",
+      "title": "Handvat voor Lesmateriaal",
+      "published_at": "2025-02-13T10:09:07+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 78363,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-46932d3b9dd87c29",
+      "pathname": "/onderwijs/het-digitale-dilemma",
+      "locale": "nl-BE",
+      "title": "Het Digitale Dilemma",
+      "published_at": "2024-07-01T09:36:38+02:00",
+      "migration_status": "transformed",
+      "tags": 12,
+      "categories": 0,
+      "body_characters": 11802,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-5992033e2208bf54",
+      "pathname": "/onderwijs/hey-siri-kloon-mijn-stem",
+      "locale": "nl-BE",
+      "title": "AI & TAAL - Hey Siri, kloon mijn stem!",
+      "published_at": "2021-09-30T19:04:32+02:00",
+      "migration_status": "transformed",
+      "tags": 8,
+      "categories": 0,
+      "body_characters": 7130,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-56cad986d22c9d53",
+      "pathname": "/onderwijs/hey-siri-kloon-mijn-stem-2025",
+      "locale": "nl-BE",
+      "title": "Hey Siri … Kloon mijn stem",
+      "published_at": "2025-02-02T16:06:42+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 24520,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-6150264159890832",
+      "pathname": "/onderwijs/html-in-de-klas",
+      "locale": "nl-BE",
+      "title": "HTML in de Klas",
+      "published_at": "2026-05-16T20:09:32+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 10891,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-53a1f21158085814",
+      "pathname": "/onderwijs/in-dialoog-met-ai",
+      "locale": "nl-BE",
+      "title": "In dialoog met AI",
+      "published_at": "2025-06-11T12:02:00+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 14500,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-6a6fdcaaf3655846",
+      "pathname": "/onderwijs/interview-ai-op-een-college",
+      "locale": "nl-BE",
+      "title": "Interview - Impact van AI op Onderwijs",
+      "published_at": "2024-08-17T09:28:06+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 12902,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-d6962c44f61dd7c3",
+      "pathname": "/onderwijs/interview-met-de-geschiedenis",
+      "locale": "nl-BE",
+      "title": "Interview met de Geschiedenis",
+      "published_at": "2024-08-22T11:54:17+02:00",
+      "migration_status": "transformed",
+      "tags": 6,
+      "categories": 0,
+      "body_characters": 52532,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-92bcff719816e650",
+      "pathname": "/onderwijs/ithaca-teaching-history-journal",
+      "locale": "nl-BE",
+      "title": "AI in de Klas - Down Under!",
+      "published_at": "2023-10-09T07:07:10+02:00",
+      "migration_status": "transformed",
+      "tags": 12,
+      "categories": 0,
+      "body_characters": 19661,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-4c80df670c5494d6",
+      "pathname": "/onderwijs/javascript-en-computationeel-denken-in-de-browser",
+      "locale": "nl-BE",
+      "title": "JavaScript in de Klas",
+      "published_at": "2025-10-23T20:29:12+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 6853,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-850800fcfb4fb87a",
+      "pathname": "/onderwijs/javascript-in-de-klas-versie-20",
+      "locale": "nl-BE",
+      "title": "JavaScript in de Klas versie 2.0",
+      "published_at": "2026-05-16T20:09:01+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 12976,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-68985f0ce8ebd320",
+      "pathname": "/onderwijs/latijn-en-game-design",
+      "locale": "nl-BE",
+      "title": "Latijn en Game Design - Project Nicolai Klimii",
+      "published_at": "2022-06-05T17:19:47+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 7227,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-b0a8e3a574de2d65",
+      "pathname": "/onderwijs/latijnse-wordle",
+      "locale": "nl-BE",
+      "title": "Latijnse Wordle",
+      "published_at": "2023-11-20T18:34:50+01:00",
+      "migration_status": "transformed",
+      "tags": 6,
+      "categories": 0,
+      "body_characters": 5960,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-1988d3fc7fc164f8",
+      "pathname": "/onderwijs/lessenreeks-computationeel-denken",
+      "locale": "nl-BE",
+      "title": "Lessenreeks Computationeel Denken",
+      "published_at": "2022-08-05T22:21:55+02:00",
+      "migration_status": "transformed",
+      "tags": 4,
+      "categories": 0,
+      "body_characters": 7822,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-21022e595c733bb9",
+      "pathname": "/onderwijs/lessenreeks-computationeel-denken-javascript",
+      "locale": "nl-BE",
+      "title": "Lessenreeks Computationeel Denken & Javascript",
+      "published_at": "2022-08-24T17:00:23+02:00",
+      "migration_status": "transformed",
+      "tags": 3,
+      "categories": 0,
+      "body_characters": 7335,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-8e2283e39fb0df28",
+      "pathname": "/onderwijs/moeten-robots-auteursrechten-krijgen",
+      "locale": "nl-BE",
+      "title": "Moeten robots auteursrechten krijgen?",
+      "published_at": "2021-04-23T09:29:29+02:00",
+      "migration_status": "transformed",
+      "tags": 6,
+      "categories": 0,
+      "body_characters": 1284,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-450a26c5bca64c25",
+      "pathname": "/onderwijs/onderwijs-ai-en-het-verborgen-perspectief-in-jouw-foto",
+      "locale": "nl-BE",
+      "title": "Onderwijs: A.I. en het verborgen perspectief in jouw foto!",
+      "published_at": "2021-05-26T16:37:21+02:00",
+      "migration_status": "transformed",
+      "tags": 5,
+      "categories": 0,
+      "body_characters": 3737,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-f5a1acc051d8cfec",
+      "pathname": "/onderwijs/onderwijs-kleur-de-geschiedenis-met-ai",
+      "locale": "nl-BE",
+      "title": "AI in de Klas: de geschiedenis is niet zwart-wit!",
+      "published_at": "2021-05-24T23:06:38+02:00",
+      "migration_status": "transformed",
+      "tags": 8,
+      "categories": 0,
+      "body_characters": 2945,
+      "needs_seo_review": false
+    },
+    {
+      "id": "source-article-0db8a50c966ce6e5",
+      "pathname": "/onderwijs/ontdek-latijn-met-minecraft",
+      "locale": "nl-BE",
+      "title": "Ontdek Latijn met Minecraft!",
+      "published_at": "2022-05-29T16:54:18+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 10102,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-548d893d7854e121",
+      "pathname": "/onderwijs/op-avontuur-met-een-ai",
+      "locale": "nl-BE",
+      "title": "Op Avontuur met een AI!",
+      "published_at": "2023-08-25T10:33:23+02:00",
+      "migration_status": "transformed",
+      "tags": 12,
+      "categories": 0,
+      "body_characters": 13650,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-4c8393a53b43ad22",
+      "pathname": "/onderwijs/open-een-ai-kunstgalerij",
+      "locale": "nl-BE",
+      "title": "Open een AI-kunstgalerij!",
+      "published_at": "2022-02-23T15:46:41+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 3464,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-b0967b127382fd06",
+      "pathname": "/onderwijs/over-zonnedraken-en-zeerovers",
+      "locale": "nl-BE",
+      "title": "Over Zonnedraken en Zeerovers",
+      "published_at": "2023-04-23T09:39:35+02:00",
+      "migration_status": "transformed",
+      "tags": 13,
+      "categories": 0,
+      "body_characters": 6747,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-5d66e16dfd9ba8f6",
+      "pathname": "/onderwijs/podcast-de-leraar-denkt-over-ai",
+      "locale": "nl-BE",
+      "title": "Podcast: De Leraar Denkt … Over AI",
+      "published_at": "2023-04-22T17:23:50+02:00",
+      "migration_status": "transformed",
+      "tags": 8,
+      "categories": 0,
+      "body_characters": 1532,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-f9c3244dd20b731f",
+      "pathname": "/onderwijs/project-delphi",
+      "locale": "nl-BE",
+      "title": "Python in Delphi",
+      "published_at": "2026-05-16T20:10:06+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 11690,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-8e1516413c8f1bd5",
+      "pathname": "/onderwijs/project-fijnstof",
+      "locale": "nl-BE",
+      "title": "Project Fijnstof",
+      "published_at": "2026-05-16T20:11:08+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 9874,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-b72e341262ab474a",
+      "pathname": "/onderwijs/project-robothand",
+      "locale": "nl-BE",
+      "title": "Project Robothand",
+      "published_at": "2026-05-16T20:10:22+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 9682,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-4933c56e4308c387",
+      "pathname": "/onderwijs/project-slimme-vuilnisbak",
+      "locale": "nl-BE",
+      "title": "Project Slimme Vuilnisbak",
+      "published_at": "2026-05-16T20:10:52+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 11643,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-d5cca0ae1f1e6ee5",
+      "pathname": "/onderwijs/project-wind",
+      "locale": "nl-BE",
+      "title": "Project Wind",
+      "published_at": "2026-05-16T20:10:37+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 10185,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-b99909d09752a5b5",
+      "pathname": "/onderwijs/prora-ai-in-het-vakblad-voor-leraren-oude-talen",
+      "locale": "nl-BE",
+      "title": "Prora: AI in het vakblad voor leraren Oude Talen",
+      "published_at": "2022-06-17T11:44:32+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 17770,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-6598cf7719441dcc",
+      "pathname": "/onderwijs/python-in-de-klas",
+      "locale": "nl-BE",
+      "title": "Python in de Klas",
+      "published_at": "2023-06-01T21:00:49+02:00",
+      "migration_status": "transformed",
+      "tags": 4,
+      "categories": 0,
+      "body_characters": 13501,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-a7dffdf1731a6933",
+      "pathname": "/onderwijs/recensiesenjongerentaal",
+      "locale": "nl-BE",
+      "title": "Recensies, jongerentaal en taaltechnologie",
+      "published_at": "2025-12-05T12:16:22+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 12882,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-a88073c932cfbfdb",
+      "pathname": "/onderwijs/roma-aeterna",
+      "locale": "nl-BE",
+      "title": "Project Latijn - Roma Aeterna: Latijn in Minecraft",
+      "published_at": "2021-01-29T22:05:00+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 2723,
+      "needs_seo_review": false
+    },
+    {
+      "id": "source-article-ae7c6726ad049341",
+      "pathname": "/onderwijs/schrijftaken-zonder-aiaiai",
+      "locale": "nl-BE",
+      "title": "Schrijftaken zonder AIAIAI",
+      "published_at": "2025-11-02T18:48:59+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 7760,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-f294182e40740f44",
+      "pathname": "/onderwijs/sensei-jouw-teacherbot",
+      "locale": "nl-BE",
+      "title": "Sensei - Jouw Teacherbot",
+      "published_at": "2019-10-01T11:21:00+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 193,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-d7e0fae812c1f10e",
+      "pathname": "/onderwijs/social-media",
+      "locale": "nl-BE",
+      "title": "Taalalgoritmes en Social Media",
+      "published_at": "2024-06-17T19:44:02+02:00",
+      "migration_status": "transformed",
+      "tags": 9,
+      "categories": 0,
+      "body_characters": 12877,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-4d9623eaa0715564",
+      "pathname": "/onderwijs/super-marcus",
+      "locale": "nl-BE",
+      "title": "Super Marcus - Geschiedenis, Latijn én Programmeren",
+      "published_at": "2021-06-17T07:00:00+02:00",
+      "migration_status": "transformed",
+      "tags": 6,
+      "categories": 0,
+      "body_characters": 3271,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-33d4f41b74e578bc",
+      "pathname": "/onderwijs/taalalgoritmes-en-sentimentsanalyse",
+      "locale": "nl-BE",
+      "title": "Taalalgoritmes en Sentimentsanalyse",
+      "published_at": "2023-12-26T11:15:04+01:00",
+      "migration_status": "transformed",
+      "tags": 8,
+      "categories": 0,
+      "body_characters": 22210,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-2fb08c6c98dfeb18",
+      "pathname": "/onderwijs/taalalgoritmes-op-de-werkvloer",
+      "locale": "nl-BE",
+      "title": "Taalalgoritmes op de Werkvloer",
+      "published_at": "2023-12-30T15:16:16+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 21322,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-5b95c401de735621",
+      "pathname": "/onderwijs/taaltechnologie-op-de-redactie",
+      "locale": "nl-BE",
+      "title": "Taaltechnologie op de Redactie",
+      "published_at": "2023-08-28T18:38:24+02:00",
+      "migration_status": "transformed",
+      "tags": 8,
+      "categories": 0,
+      "body_characters": 46759,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-aaaf36561d3061f8",
+      "pathname": "/onderwijs/tips-voor-verantwoord-gebruik-en-afspraken",
+      "locale": "nl-BE",
+      "title": "AI in de Klas - Tips voor Verantwoord Gebruik en Afspraken",
+      "published_at": "2023-09-13T17:58:14+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 4560,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-7e1e463e10f552b2",
+      "pathname": "/onderwijs/train-je-eigen-zelfrijdende-auto",
+      "locale": "nl-BE",
+      "title": "Train je eigen zelfrijdende auto!",
+      "published_at": "2022-03-22T18:08:15+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 8672,
+      "needs_seo_review": false
+    },
+    {
+      "id": "source-article-bdb7c991691689b0",
+      "pathname": "/onderwijs/voorspel-het-verleden-aeneas",
+      "locale": "nl-BE",
+      "title": "Voorspel het verleden - Aeneas",
+      "published_at": "2025-07-23T17:00:00+02:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 22407,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-594fecfcc9ad4b73",
+      "pathname": "/onderwijs/wall-of-game",
+      "locale": "nl-BE",
+      "title": "Wall of Game",
+      "published_at": "2022-08-23T17:36:42+02:00",
+      "migration_status": "transformed",
+      "tags": 5,
+      "categories": 0,
+      "body_characters": 5390,
+      "needs_seo_review": true
+    },
+    {
+      "id": "source-article-2d50b7ec06a6dc46",
+      "pathname": "/onderwijs/webinar-ai-met-klasse",
+      "locale": "nl-BE",
+      "title": "Webinar AI met KLASSE",
+      "published_at": "2024-11-24T15:37:58+01:00",
+      "migration_status": "transformed",
+      "tags": 0,
+      "categories": 0,
+      "body_characters": 277,
+      "needs_seo_review": true
+    }
+  ],
+  "workshops": [
+    {
+      "id": "source-workshop-kennis-in-tijden-van-ai-7ebd13b6",
+      "title": "Kennis in tijden van AI",
+      "migration_status": "needs_review",
+      "duration_display": "Type: Keynote- Duurtijd: 1.5 uur"
+    },
+    {
+      "id": "source-workshop-putting-the-chat-in-chatgpt-a75ca78f",
+      "title": "Putting the chat in ChatGPT",
+      "migration_status": "needs_review",
+      "duration_display": "Type: Workshop - Duurtijd: 2.5 uur"
+    },
+    {
+      "id": "source-workshop-schrijftaken-zonder-aiaiai-981050bd",
+      "title": "Schrijftaken zonder AIAIAI",
+      "migration_status": "needs_review",
+      "duration_display": "Type: Workshop - Duurtijd: 1.5 uur"
+    },
+    {
+      "id": "source-workshop-ai-in-de-klas-van-lesmateriaal-tot-leerlijn-72c29362",
+      "title": "AI in de Klas - van lesmateriaal tot leerlijn",
+      "migration_status": "needs_review",
+      "duration_display": "Type A: Keynote - Duurtijd: 1.5 uurType B: Workshop - Duurtijd 2.5 uur"
+    },
+    {
+      "id": "source-workshop-chatgpt-een-vergiftigd-geschenk-voor-leraar-en-leerling-db2cfee8",
+      "title": "ChatGPT: Een (Vergiftigd) Geschenk voor Leraar en Leerling?",
+      "migration_status": "needs_review",
+      "duration_display": ""
+    },
+    {
+      "id": "source-workshop-ai-en-taaltechnologie-hoe-ga-je-er-effectief-mee-aan-de-slag-in-je-taalles-a9d3d29e",
+      "title": "AI en taaltechnologie: hoe ga je er effectief mee aan de slag in je taalles?",
+      "migration_status": "needs_review",
+      "duration_display": ""
+    },
+    {
+      "id": "source-workshop-ai-in-de-klas-van-a-tot-zwerfvuil-272e9f97",
+      "title": "AI in de Klas: Van A tot Zwerfvuil",
+      "migration_status": "needs_review",
+      "duration_display": "Type: Workshop - Duurtijd: 1.5 uur"
+    },
+    {
+      "id": "source-workshop-python-in-de-klas-1783c11b",
+      "title": "Python in de Klas",
+      "migration_status": "needs_review",
+      "duration_display": "Type: Workshop - Duurtijd: 90 minuten"
+    },
+    {
+      "id": "source-workshop-ai-en-latijn-breng-tacitus-tot-leven-daff17f8",
+      "title": "AI en Latijn - Breng Tacitus Tot Leven",
+      "migration_status": "needs_review",
+      "duration_display": ""
+    },
+    {
+      "id": "source-workshop-latijnse-inscripties-en-ai-op-tocht-met-aeneas-80b9a696",
+      "title": "Latijnse Inscripties en AI - op tocht met Aeneas",
+      "migration_status": "needs_review",
+      "duration_display": "Workshop - 2.5 uur"
+    },
+    {
+      "id": "source-workshop-grieks-en-ai-een-knap-duo-6141d3c1",
+      "title": "Grieks en AI - een knap duo",
+      "migration_status": "needs_review",
+      "duration_display": "Workshop - 1.5 uur (online) of 2 uur (fysiek)"
+    },
+    {
+      "id": "source-workshop-minecraft-en-klassieke-talen-0d14e1d3",
+      "title": "Minecraft & Klassieke Talen",
+      "migration_status": "needs_review",
+      "duration_display": "Workshop - 2 uur"
+    }
+  ],
+  "projects": [
+    {
+      "id": "source-project-blockly",
+      "title": "Blockly",
+      "external_url": "https://robbew.github.io/Blockly/",
+      "migration_status": "transformed"
+    },
+    {
+      "id": "source-project-javascript-in-de-klas",
+      "title": "JavaScript in de Klas",
+      "external_url": "https://robbew.github.io/jsindeklas/",
+      "migration_status": "transformed"
+    },
+    {
+      "id": "source-project-html-in-de-klas",
+      "title": "HTML in de Klas",
+      "external_url": "https://robbew.github.io/htmlindeklas/",
+      "migration_status": "transformed"
+    },
+    {
+      "id": "source-project-delphi",
+      "title": "Python in Delphi",
+      "external_url": "https://robbew.github.io/delphi/",
+      "migration_status": "transformed"
+    },
+    {
+      "id": "source-project-smartplants",
+      "title": "SmartPlants",
+      "external_url": "https://robbew.github.io/smartplants/",
+      "migration_status": "transformed"
+    },
+    {
+      "id": "source-project-robothand",
+      "title": "Project Robothand",
+      "external_url": "https://robbew.github.io/robothand/",
+      "migration_status": "transformed"
+    },
+    {
+      "id": "source-project-projectwind",
+      "title": "Project Wind",
+      "external_url": "https://robbew.github.io/projectwind/",
+      "migration_status": "transformed"
+    },
+    {
+      "id": "source-project-slimme-vuilnisbak",
+      "title": "Project Slimme Vuilnisbak",
+      "external_url": "https://robbew.github.io/slimme_vuilnisbak/",
+      "migration_status": "transformed"
+    },
+    {
+      "id": "source-project-projectfijnstof",
+      "title": "Project Fijnstof",
+      "external_url": "https://robbew.github.io/projectfijnstof/",
+      "migration_status": "transformed"
+    }
+  ],
+  "unresolved_taxonomy": [
+    {
+      "path": "/education/tag/%23VlaanderenLeest",
+      "label": "#VlaanderenLeest",
+      "type": "tag"
+    },
+    {
+      "path": "/education/tag/latin",
+      "label": "latin",
+      "type": "tag"
+    }
+  ],
+  "asset_migration": {
+    "candidates": 847,
+    "downloaded_url_records": 829,
+    "failed_url_records": 18,
+    "unique_downloaded_binaries": 743,
+    "alt_review_url_records": 753,
+    "rights_review_url_records": 829
+  },
+  "route_rendering": {
+    "logical_html_routes": 381,
+    "windows_html_outputs": 364,
+    "case_insensitive_collision_groups": 17,
+    "case_sensitive_parity_review": "P7"
+  },
+  "exclusions": [
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/%23VlaanderenLeest",
+      "disposition": "excluded_derived_from_articles"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/education/tag/latin",
+      "disposition": "excluded_derived_from_articles"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/fotografie",
+      "disposition": "excluded_out_of_scope"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/fotografie/j-s",
+      "disposition": "excluded_out_of_scope"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/fotografie/tk-russell-heartbeat-session",
+      "disposition": "excluded_out_of_scope"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/info",
+      "disposition": "excluded_inaccessible"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/onderwijs?author=6026af1f0584116c943938d2&offset=1666788262501&reversePaginate=true",
+      "disposition": "excluded_noncanonical"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie-1",
+      "disposition": "excluded_out_of_scope"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie/covid-yasmina-jongbloet",
+      "disposition": "excluded_out_of_scope"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie/hout-op-maat",
+      "disposition": "excluded_out_of_scope"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie/jakobistan-fietspad",
+      "disposition": "excluded_out_of_scope"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie/mathias-vercammen-quartet-herbakker-eeklo",
+      "disposition": "excluded_out_of_scope"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie/matthias-de-smet-hongyu-chen",
+      "disposition": "excluded_out_of_scope"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie/promotievideos-montage",
+      "disposition": "excluded_out_of_scope"
+    },
+    {
+      "url": "https://www.robbewulgaert.be/videografie/wielerkampen-cartouche",
+      "disposition": "excluded_out_of_scope"
+    }
+  ]
+}

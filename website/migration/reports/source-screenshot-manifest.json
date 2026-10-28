@@ -1,0 +1,265 @@
+{
+  "generated_at": "2026-07-16T06:58:11.916Z",
+  "results": [
+    {
+      "route": "https://www.robbewulgaert.be/",
+      "profile": "desktop",
+      "status": "captured",
+      "filename": "home-desktop.png",
+      "pageFacts": {
+        "h1Count": 1,
+        "imageCount": 2,
+        "lang": "nl-BE",
+        "title": "Robbe Wulgaert"
+      },
+      "bytes": 246154
+    },
+    {
+      "route": "https://www.robbewulgaert.be/boek",
+      "profile": "desktop",
+      "status": "captured",
+      "filename": "boek-desktop.png",
+      "pageFacts": {
+        "h1Count": 0,
+        "imageCount": 1,
+        "lang": "nl-BE",
+        "title": "AI in de klas: Praktische gids voor onderwijsprofessionals — Robbe Wulgaert"
+      },
+      "bytes": 263668
+    },
+    {
+      "route": "https://www.robbewulgaert.be/onderwijs",
+      "profile": "desktop",
+      "status": "captured",
+      "filename": "onderwijs-index-desktop.png",
+      "pageFacts": {
+        "h1Count": 20,
+        "imageCount": 20,
+        "lang": "nl-BE",
+        "title": "Onderwijs — Robbe Wulgaert"
+      },
+      "bytes": 795133
+    },
+    {
+      "route": "https://www.robbewulgaert.be/onderwijs/workshops-en-nascholingen",
+      "profile": "desktop",
+      "status": "captured",
+      "filename": "workshops-desktop.png",
+      "pageFacts": {
+        "h1Count": 1,
+        "imageCount": 12,
+        "lang": "nl-BE",
+        "title": "Workshops en Nascholingen — Robbe Wulgaert"
+      },
+      "bytes": 1670609
+    },
+    {
+      "route": "https://www.robbewulgaert.be/contact",
+      "profile": "desktop",
+      "status": "captured",
+      "filename": "contact-desktop.png",
+      "pageFacts": {
+        "h1Count": 0,
+        "imageCount": 0,
+        "lang": "nl-BE",
+        "title": "Contact | Ontdek meer, neem contact op! — Robbe Wulgaert"
+      },
+      "bytes": 106145
+    },
+    {
+      "route": "https://www.robbewulgaert.be/about",
+      "profile": "desktop",
+      "status": "captured",
+      "filename": "about-en-desktop.png",
+      "pageFacts": {
+        "h1Count": 2,
+        "imageCount": 3,
+        "lang": "nl-BE",
+        "title": "over — Robbe Wulgaert"
+      },
+      "bytes": 537060
+    },
+    {
+      "route": "https://www.robbewulgaert.be/education",
+      "profile": "desktop",
+      "status": "captured",
+      "filename": "education-index-desktop.png",
+      "pageFacts": {
+        "h1Count": 20,
+        "imageCount": 20,
+        "lang": "nl-BE",
+        "title": "Education — Robbe Wulgaert"
+      },
+      "bytes": 818322
+    },
+    {
+      "route": "https://www.robbewulgaert.be/projects",
+      "profile": "desktop",
+      "status": "captured",
+      "filename": "projects-desktop.png",
+      "pageFacts": {
+        "h1Count": 0,
+        "imageCount": 27,
+        "lang": "nl-BE",
+        "title": "Portfolio - Robbe Wulgaert — Robbe Wulgaert"
+      },
+      "bytes": 420059
+    },
+    {
+      "route": "https://www.robbewulgaert.be/onderwijs/ai-geletterdheid-waarom-moeten-wij-dit-kennen",
+      "profile": "desktop",
+      "status": "captured",
+      "filename": "article-ai-literacy-desktop.png",
+      "pageFacts": {
+        "h1Count": 1,
+        "imageCount": 4,
+        "lang": "nl-BE",
+        "title": "AI-Geletterdheid: waarom moeten we dit kennen? - Onderwijscongres Bugge — Robbe Wulgaert"
+      },
+      "bytes": 988901
+    },
+    {
+      "route": "https://www.robbewulgaert.be/onderwijs/avontuuropdeakropolis",
+      "profile": "desktop",
+      "status": "captured",
+      "filename": "article-image-heavy-desktop.png",
+      "pageFacts": {
+        "h1Count": 1,
+        "imageCount": 28,
+        "lang": "nl-BE",
+        "title": "Avontuur op de Akropolis — Robbe Wulgaert"
+      },
+      "bytes": 1268654
+    },
+    {
+      "route": "https://www.robbewulgaert.be/",
+      "profile": "mobile",
+      "status": "captured",
+      "filename": "home-mobile.png",
+      "pageFacts": {
+        "h1Count": 1,
+        "imageCount": 2,
+        "lang": "nl-BE",
+        "title": "Robbe Wulgaert"
+      },
+      "bytes": 67794
+    },
+    {
+      "route": "https://www.robbewulgaert.be/boek",
+      "profile": "mobile",
+      "status": "captured",
+      "filename": "boek-mobile.png",
+      "pageFacts": {
+        "h1Count": 0,
+        "imageCount": 1,
+        "lang": "nl-BE",
+        "title": "AI in de klas: Praktische gids voor onderwijsprofessionals — Robbe Wulgaert"
+      },
+      "bytes": 104007
+    },
+    {
+      "route": "https://www.robbewulgaert.be/onderwijs",
+      "profile": "mobile",
+      "status": "captured",
+      "filename": "onderwijs-index-mobile.png",
+      "pageFacts": {
+        "h1Count": 20,
+        "imageCount": 20,
+        "lang": "nl-BE",
+        "title": "Onderwijs — Robbe Wulgaert"
+      },
+      "bytes": 189487
+    },
+    {
+      "route": "https://www.robbewulgaert.be/onderwijs/workshops-en-nascholingen",
+      "profile": "mobile",
+      "status": "captured",
+      "filename": "workshops-mobile.png",
+      "pageFacts": {
+        "h1Count": 1,
+        "imageCount": 12,
+        "lang": "nl-BE",
+        "title": "Workshops en Nascholingen — Robbe Wulgaert"
+      },
+      "bytes": 604401
+    },
+    {
+      "route": "https://www.robbewulgaert.be/contact",
+      "profile": "mobile",
+      "status": "captured",
+      "filename": "contact-mobile.png",
+      "pageFacts": {
+        "h1Count": 0,
+        "imageCount": 0,
+        "lang": "nl-BE",
+        "title": "Contact | Ontdek meer, neem contact op! — Robbe Wulgaert"
+      },
+      "bytes": 50889
+    },
+    {
+      "route": "https://www.robbewulgaert.be/about",
+      "profile": "mobile",
+      "status": "captured",
+      "filename": "about-en-mobile.png",
+      "pageFacts": {
+        "h1Count": 2,
+        "imageCount": 3,
+        "lang": "nl-BE",
+        "title": "over — Robbe Wulgaert"
+      },
+      "bytes": 167377
+    },
+    {
+      "route": "https://www.robbewulgaert.be/education",
+      "profile": "mobile",
+      "status": "captured",
+      "filename": "education-index-mobile.png",
+      "pageFacts": {
+        "h1Count": 20,
+        "imageCount": 20,
+        "lang": "nl-BE",
+        "title": "Education — Robbe Wulgaert"
+      },
+      "bytes": 220525
+    },
+    {
+      "route": "https://www.robbewulgaert.be/projects",
+      "profile": "mobile",
+      "status": "captured",
+      "filename": "projects-mobile.png",
+      "pageFacts": {
+        "h1Count": 0,
+        "imageCount": 27,
+        "lang": "nl-BE",
+        "title": "Portfolio - Robbe Wulgaert — Robbe Wulgaert"
+      },
+      "bytes": 253986
+    },
+    {
+      "route": "https://www.robbewulgaert.be/onderwijs/ai-geletterdheid-waarom-moeten-wij-dit-kennen",
+      "profile": "mobile",
+      "status": "captured",
+      "filename": "article-ai-literacy-mobile.png",
+      "pageFacts": {
+        "h1Count": 1,
+        "imageCount": 4,
+        "lang": "nl-BE",
+        "title": "AI-Geletterdheid: waarom moeten we dit kennen? - Onderwijscongres Bugge — Robbe Wulgaert"
+      },
+      "bytes": 291662
+    },
+    {
+      "route": "https://www.robbewulgaert.be/onderwijs/avontuuropdeakropolis",
+      "profile": "mobile",
+      "status": "captured",
+      "filename": "article-image-heavy-mobile.png",
+      "pageFacts": {
+        "h1Count": 1,
+        "imageCount": 28,
+        "lang": "nl-BE",
+        "title": "Avontuur op de Akropolis — Robbe Wulgaert"
+      },
+      "bytes": 347325
+    }
+  ]
+}

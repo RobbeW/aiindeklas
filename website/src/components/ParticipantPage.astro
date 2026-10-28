@@ -1,0 +1,28 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import ParticipantAccordion from "./participant/ParticipantAccordion";
+import { withBase } from "../lib/routing";
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import { createMarkdownProcessor } from "@astrojs/markdown-remark";
+import { load } from "cheerio";
+type Props = { entry: CollectionEntry<"participantPages"> };
+const { entry } = Astro.props; const { data } = entry; const gated = Boolean(data.courtesy_code_digest && data.courtesy_code_salt);
+const hrefFor = (href: string) => href.startsWith("#") || /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(href) ? href : withBase(href);
+const processor = await createMarkdownProcessor();
+const markdown = async (source: string) => { const rendered = (await processor.render(source)).code; const $ = load(`<div data-markdown-fragment>${rendered}</div>`, { xmlMode: false }); $("a[href^='/']").each((_i, el) => { $(el).attr("href", hrefFor($(el).attr("href")!)); }); return $("[data-markdown-fragment]").html() ?? ""; };
+const renderedBlocks = await Promise.all(data.blocks.map(async (block) => block.type === "rich_text" ? { ...block, html: await markdown(block.markdown) } : block.type === "accordion_group" ? { ...block, items: await Promise.all(block.items.map(async (item) => ({ ...item, html: await markdown(item.body) }))) } : block));
+---
+<SiteLayout title={data.title} description={data.intro} lang={data.locale} canonicalPath={data.route_path} noindex>
+  <main id="main-content" class="participant-page">
+    <article class="content-shell" aria-labelledby="participant-title"><p class="participant-page__label">Deelnemerspagina</p><h1 id="participant-title" tabindex="-1">{data.title}</h1>
+      {gated && <section class="participant-gate-shell" data-courtesy-shell aria-labelledby="participant-gate-title"><h2 id="participant-gate-title">Deelnemersmateriaal</h2><p>Vul de toegangscode in die je tijdens de sessie kreeg.</p><form data-courtesy-form class="participant-gate"><label for="courtesy-code">Toegangscode</label><input id="courtesy-code" name="code" type="password" autocomplete="off" required /><button class="ui-button ui-button--primary" type="submit">Toon materialen</button><p role="alert" data-courtesy-error hidden>Die code klopt niet.</p></form></section>}
+      <div data-participant-content hidden={gated}><p class="lead">{data.intro}</p>
+        {renderedBlocks.map((block) => block.type === "rich_text" ? <div class="participant-rich-text" set:html={block.html} /> : block.type === "image" ? <figure><Image src={block.image.src} width={block.image.src.width} height={block.image.src.height} alt={block.image.alt} loading="lazy" />{block.image.caption && <figcaption>{block.image.caption}</figcaption>}</figure> : block.type === "actions" ? <nav aria-label="Bronnen" class="participant-actions">{block.items.map((action) => <a class={`ui-button ui-button--${action.style === "primary" ? "primary" : action.style === "secondary" ? "secondary" : "link"}`} href={hrefFor(action.href)} download={action.download || undefined}>{action.label}</a>)}</nav> : <section aria-label={block.label}><h2>{block.label}</h2><ParticipantAccordion client:load items={block.items.map((item) => ({ title: item.title, body: item.html }))} /></section>)}
+      </div>
+    </article>
+  </main>
+</SiteLayout>
+{gated && <script is:inline define:vars={{ digest: data.courtesy_code_digest, salt: data.courtesy_code_salt }}>
+  const form = document.querySelector('[data-courtesy-form]'); const shell = document.querySelector('[data-courtesy-shell]'); const content = document.querySelector('[data-participant-content]'); const key = `participant-access:${location.pathname}`; const heading = document.querySelector('#participant-title'); const reveal = () => { content?.removeAttribute('hidden'); shell?.remove(); heading?.focus(); }; if (sessionStorage.getItem(key) === 'granted') reveal(); form?.addEventListener('submit', async (event) => { event.preventDefault(); const error = form.querySelector('[data-courtesy-error]'); error?.setAttribute('hidden', ''); const code = new FormData(form).get('code'); const bytes = new TextEncoder().encode(`${salt}:${code}`); const hash = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', bytes)), (byte) => byte.toString(16).padStart(2, '0')).join(''); if (hash === digest) { sessionStorage.setItem(key, 'granted'); reveal(); } else error?.removeAttribute('hidden'); });
+</script>}

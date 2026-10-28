@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "profile": "production-project",
+  "site": "https://robbew.github.io/aiindeklas/",
+  "base": "/aiindeklas/",
+  "html_files": 367,
+  "internal_urls_checked": 11797,
+  "indexable_pages": 356,
+  "noindex_pages": 11,
+  "declared_public_routes": 362,
+  "expected_indexable_pages": 356,
+  "expected_excluded_pages": 11,
+  "unknown_routes": [],
+  "missing_routes": [],
+  "duplicate_routes": [],
+  "index_state_violations": [],
+  "excluded_routes": [
+    {
+      "path": "/404",
+      "reason": "error fallback"
+    },
+    {
+      "path": "/admin",
+      "reason": "internal admin"
+    },
+    {
+      "path": "/boek",
+      "reason": "pending live verification for book content"
+    },
+    {
+      "path": "/contact",
+      "reason": "pending live verification for contact content"
+    },
+    {
+      "path": "/contact-english",
+      "reason": "legacy redirect to /contactinfo"
+    },
+    {
+      "path": "/contactinfo",
+      "reason": "pending live verification for contact content"
+    },
+    {
+      "path": "/english",
+      "reason": "legacy redirect to /about"
+    },
+    {
+      "path": "/onderwijs/workshops-en-nascholingen",
+      "reason": "pending workshop pricing and claim verification"
+    },
+    {
+      "path": "/over",
+      "reason": "legacy home alias canonical /"
+    },
+    {
+      "path": "/verkoopsvoorwaarden",
+      "reason": "pending live and legal verification for sales terms"
+    }
+  ],
+  "canonical_violations": [],
+  "prohibited_copy_findings": [],
+  "sitemap_url_count": 356,
+  "sitemap_missing_urls": [],
+  "sitemap_extra_urls": [],
+  "generated_system_outputs": 2,
+  "errors": [],
+  "status": "passed"
+}

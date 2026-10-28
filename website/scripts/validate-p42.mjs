@@ -1,0 +1,11 @@
+import assert from "node:assert/strict";
+import fs from "node:fs";
+const schema = fs.readFileSync(new URL("../src/content.config.ts", import.meta.url), "utf8");
+const renderer = fs.readFileSync(new URL("../src/components/ParticipantPage.astro", import.meta.url), "utf8");
+const route = fs.readFileSync(new URL("../src/pages/[...path].astro", import.meta.url), "utf8");
+assert.match(schema, /route_path/); assert.match(schema, /participantBlock/); assert.match(route, /Duplicate participant/);
+assert.match(renderer, /noindex/); assert.match(renderer, /sessionStorage/); assert.match(renderer, /createMarkdownProcessor/); assert.match(renderer, /withBase/);
+assert.match(route, /participantEntries/); assert.match(route, /collides with emitted route/);
+assert.doesNotMatch(fs.readFileSync(new URL("../src/pages/sitemap.xml.ts", import.meta.url), "utf8"), /participantPages/);
+assert.doesNotMatch(fs.readFileSync(new URL("../src/pages/admin/content.json.ts", import.meta.url), "utf8"), /participantPages/);
+console.log("P42 static contract: route, ordered blocks, noindex/gate, base-safe links, collision and exclusion checks passed");

@@ -1,0 +1,296 @@
+---
+import { getCollection } from "astro:content";
+import { isActivePath, localeHome, withBase, withoutBase, type SiteLocale } from "../lib/routing";
+
+interface Props {
+  lang: SiteLocale;
+  currentPath?: string;
+  alternatePath?: string | null;
+  hasDirectTranslation?: boolean;
+}
+
+const {
+  lang,
+  currentPath = Astro.url.pathname,
+  alternatePath = null,
+  hasDirectTranslation = false
+} = Astro.props;
+
+const settings = await getCollection("settings");
+const navigationEntry = settings.find(({ data }) => data.kind === "navigation");
+if (!navigationEntry || navigationEntry.data.kind !== "navigation") {
+  throw new Error("Navigation settings are missing");
+}
+
+const logicalPath = withoutBase(currentPath);
+const menu = navigationEntry.data.locales[lang];
+const activePath = menu.items
+  .filter((item) => isActivePath(logicalPath, item.path))
+  .sort((a, b) => b.path.length - a.path.length)[0]?.path;
+const navigationItems = menu.items.map((item) => ({
+  ...item,
+  isActive: item.path === activePath
+}));
+const otherLocale: SiteLocale = lang === "en" ? "nl-BE" : "en";
+const languagePath = hasDirectTranslation && alternatePath ? alternatePath : localeHome(otherLocale);
+const languageLabel = otherLocale === "en"
+  ? hasDirectTranslation ? "Read this page in English" : "English home"
+  : hasDirectTranslation ? "Lees deze pagina in het Nederlands" : "Nederlandse startpagina";
+const languageShortLabel = otherLocale === "en" ? "EN" : "NL";
+---
+
+<header class="site-header" data-site-header>
+  <div class="shell header-inner">
+    <a class="brand" href={withBase(localeHome(lang))} aria-label="Robbe Wulgaert">
+      <span class="brand-name">Robbe Wulgaert</span>
+    </a>
+
+    <button
+      class="menu-button"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      data-menu-button
+    >
+      <span data-menu-label>{lang === "en" ? "Menu" : "Menu"}</span>
+      <span class="menu-icon" aria-hidden="true"></span>
+    </button>
+
+    <nav
+      id="primary-navigation"
+      class="primary-navigation"
+      aria-label={lang === "en" ? "Primary navigation" : "Hoofdnavigatie"}
+      data-menu
+      data-open="false"
+    >
+      <ul class="navigation-list">
+        {navigationItems.map((item) => (
+          <li>
+            <a
+              href={withBase(item.path)}
+              aria-current={item.isActive ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a class="language-link" href={withBase(languagePath)} hreflang={otherLocale} lang={otherLocale} aria-label={languageLabel}>
+        {languageShortLabel}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Only hide the mobile links after this script has initialized successfully.
+  document.documentElement.classList.add("site-js");
+  const desktopMenu = window.matchMedia("(min-width: 52rem)");
+
+  for (const header of document.querySelectorAll<HTMLElement>("[data-site-header]")) {
+    const button = header.querySelector<HTMLButtonElement>("[data-menu-button]");
+    const menu = header.querySelector<HTMLElement>("[data-menu]");
+    if (!button || !menu) continue;
+
+    const setOpen = (open: boolean) => {
+      button.setAttribute("aria-expanded", String(open));
+      menu.dataset.open = String(open);
+    };
+
+    button.addEventListener("click", () => setOpen(button.getAttribute("aria-expanded") !== "true"));
+    menu.addEventListener("click", (event) => {
+      if ((event.target as Element).closest("a")) setOpen(false);
+    });
+    document.addEventListener("click", (event) => {
+      if (!header.contains(event.target as Node)) setOpen(false);
+    });
+    header.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        button.focus();
+      }
+    });
+    desktopMenu.addEventListener("change", () => setOpen(false));
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    z-index: 50;
+    top: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-line) 78%, transparent);
+    background: color-mix(in srgb, var(--color-background) 92%, transparent);
+    backdrop-filter: blur(18px);
+  }
+
+  .header-inner {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 4.75rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    min-width: 0;
+    color: var(--color-brand);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+
+  .menu-button {
+    display: inline-flex;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.7rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-pill);
+    color: var(--color-ink);
+    background: var(--color-surface);
+    padding: 0.65rem 0.9rem;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .menu-icon,
+  .menu-icon::before,
+  .menu-icon::after {
+    display: block;
+    width: 1.15rem;
+    height: 2px;
+    border-radius: 1px;
+    background: currentColor;
+  }
+
+  .menu-icon {
+    position: relative;
+  }
+
+  .menu-icon::before,
+  .menu-icon::after {
+    position: absolute;
+    content: "";
+  }
+
+  .menu-icon::before { transform: translateY(-0.36rem); }
+  .menu-icon::after { transform: translateY(0.36rem); }
+
+  .primary-navigation {
+    position: static;
+    flex: 0 0 100%;
+    min-width: 0;
+    top: calc(100% + 0.65rem);
+    right: var(--page-gutter);
+    left: var(--page-gutter);
+    display: grid;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-panel);
+    background: var(--color-surface);
+    padding: 1rem;
+    box-shadow: var(--shadow-soft);
+    max-block-size: calc(100dvh - 6.25rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  :global(.site-js) .primary-navigation {
+    position: absolute;
+    flex: initial;
+    display: none;
+  }
+  :global(.site-js) .primary-navigation[data-open="true"] { display: grid; gap: 1rem; }
+  .menu-button { display: none; }
+  :global(.site-js) .menu-button { display: inline-flex; }
+
+
+  @keyframes menu-enter {
+    from { opacity: 0; transform: translateY(-0.5rem); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .primary-navigation[data-open="true"] {
+      animation: menu-enter var(--motion-fast) var(--ease-out) both;
+    }
+  }
+
+  .navigation-list {
+    display: grid;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .navigation-list a,
+  .language-link {
+    display: block;
+    min-height: 2.75rem;
+    align-content: center;
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    padding: 0.75rem 0.85rem;
+    font-weight: 760;
+    text-decoration: none;
+  }
+
+  .navigation-list a:hover,
+  .navigation-list a[aria-current="page"] {
+    color: var(--color-brand-dark);
+    background: var(--color-brand-soft);
+  }
+
+  .language-link {
+    border-top: 1px solid var(--color-line);
+    border-radius: 0;
+    color: var(--color-brand-dark);
+    padding-top: 1rem;
+    font-size: 0.92rem;
+  }
+
+  @media (min-width: 52rem) {
+    .header-inner { flex-wrap: nowrap; }
+
+    .menu-button,
+    :global(.site-js) .menu-button { display: none; }
+
+    .primary-navigation,
+    .primary-navigation[data-open="true"],
+    :global(.site-js) .primary-navigation,
+    :global(.site-js) .primary-navigation[data-open="true"] {
+      position: static;
+      flex: 0 1 auto;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      box-shadow: none;
+    }
+
+    .navigation-list { display: flex; align-items: center; }
+
+    .navigation-list a,
+    .language-link { padding: 0.55rem 0.68rem; }
+
+    .language-link {
+      border: 1px solid var(--color-line);
+      border-radius: var(--radius-pill);
+      background: var(--color-surface);
+      padding-inline: 0.85rem;
+    }
+  }
+
+  @media (max-width: 25rem) {
+    .brand-name { font-size: 0.94rem; letter-spacing: -0.04em; }
+    .header-inner { gap: 0.5rem; }
+  }
+</style>

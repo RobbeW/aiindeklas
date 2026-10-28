@@ -1,0 +1,122 @@
+{
+  "generated_at": "2026-07-16T07:03:47.665Z",
+  "results": [
+    {
+      "id": "blockly",
+      "requestedUrl": "https://robbew.github.io/Blockly/",
+      "finalUrl": "https://robbew.github.io/Blockly/",
+      "status": "captured",
+      "bytes": 42913,
+      "facts": {
+        "h1Count": 1,
+        "imageCount": 0,
+        "textSample": "Blockly in de Klas\n        \n          Een kleine website om leerlingen te laten proeven van programmeren: Maze, Turtle, blokken en daarna\n          een beetje c",
+        "title": "Blockly in de Klas"
+      }
+    },
+    {
+      "id": "javascript-in-de-klas",
+      "requestedUrl": "https://robbew.github.io/jsindeklas/",
+      "finalUrl": "https://robbew.github.io/jsindeklas/",
+      "status": "captured",
+      "bytes": 50309,
+      "facts": {
+        "h1Count": 1,
+        "imageCount": 0,
+        "textSample": "Leer computationeel denken en programmeren in JavaScript\n\n        \n          JavaScript in de Klas is een kleine webomgeving voor leerlingen die computationeel ",
+        "title": "JavaScript in de Klas"
+      }
+    },
+    {
+      "id": "html-in-de-klas",
+      "requestedUrl": "https://robbew.github.io/htmlindeklas/",
+      "finalUrl": "https://robbew.github.io/htmlindeklas/",
+      "status": "captured",
+      "bytes": 120556,
+      "facts": {
+        "h1Count": 1,
+        "imageCount": 0,
+        "textSample": "HTML in de Klas\n          Een kleine, lichte oefenomgeving voor leerlingen die hun eerste webpagina's bouwen. Ze schrijven HTML, zien meteen wat er gebeurt en k",
+        "title": "HTML in de Klas"
+      }
+    },
+    {
+      "id": "delphi",
+      "requestedUrl": "https://robbew.github.io/delphi/",
+      "finalUrl": "https://robbew.github.io/delphi/",
+      "status": "captured",
+      "bytes": 39327,
+      "facts": {
+        "h1Count": 1,
+        "imageCount": 0,
+        "textSample": "Project Delphi\n        \n          Delphi is de Python-tegenhanger van JS in de Klas: een eenvoudige browseromgeving\n          waarin leerlingen code schrijven, ",
+        "title": "Project Delphi - Python in de Klas"
+      }
+    },
+    {
+      "id": "smartplants",
+      "requestedUrl": "https://robbew.github.io/smartplants/",
+      "finalUrl": "https://robbew.github.io/smartplants/",
+      "status": "captured",
+      "bytes": 398693,
+      "facts": {
+        "h1Count": 1,
+        "imageCount": 4,
+        "textSample": "Project Smart Plants\n        Bouw een slimme plantmeter.\n        \n          Meet bodemvochtigheid met een sensor, vergelijk droge en natte potgrond\n          en",
+        "title": "Project Smart Plants"
+      }
+    },
+    {
+      "id": "robothand",
+      "requestedUrl": "https://robbew.github.io/robothand/",
+      "finalUrl": "https://robbew.github.io/robothand/",
+      "status": "captured",
+      "bytes": 184651,
+      "facts": {
+        "h1Count": 1,
+        "imageCount": 1,
+        "textSample": "Project Robothand\n        Bouw en bestuur jouw robothand!\n        \n          Leerlingen bouwen een sensorhandschoen, sturen servomotoren aan met Arduino en ontd",
+        "title": "Project Robothand"
+      }
+    },
+    {
+      "id": "projectwind",
+      "requestedUrl": "https://robbew.github.io/projectwind/",
+      "finalUrl": "https://robbew.github.io/projectwind/",
+      "status": "captured",
+      "bytes": 173400,
+      "facts": {
+        "h1Count": 1,
+        "imageCount": 1,
+        "textSample": "Project Wind\n        Onderzoek energie met je eigen windmolen.\n        \n          Bouw, meet en vergelijk. Leerlingen leren hoe een windmolen elektrische energi",
+        "title": "Project Wind"
+      }
+    },
+    {
+      "id": "slimme-vuilnisbak",
+      "requestedUrl": "https://robbew.github.io/slimme_vuilnisbak/",
+      "finalUrl": "https://robbew.github.io/slimme_vuilnisbak/",
+      "status": "captured",
+      "bytes": 59779,
+      "facts": {
+        "h1Count": 1,
+        "imageCount": 3,
+        "textSample": "Slimme Vuilnisbak\n        \n          Leerlingen maken kennis met de volledige levenscyclus van een AI-model. Ze verzamelen data, sorteren,\n          kennen labe",
+        "title": "Slimme Vuilnisbak"
+      }
+    },
+    {
+      "id": "projectfijnstof",
+      "requestedUrl": "https://robbew.github.io/projectfijnstof/",
+      "finalUrl": "https://robbew.github.io/projectfijnstof/",
+      "status": "captured",
+      "bytes": 130619,
+      "facts": {
+        "h1Count": 1,
+        "imageCount": 1,
+        "textSample": "Project Fijnstof\n        \n          Leerlingen formuleren een onderzoeksvraag, meten fijnstof in hun omgeving, vergelijken meetmomenten en schrijven een besluit",
+        "title": "Project Fijnstof"
+      }
+    }
+  ]
+}

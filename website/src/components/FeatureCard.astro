@@ -1,0 +1,52 @@
+---
+import { withBase } from "../lib/routing";
+
+interface Props {
+  number: string;
+  title: string;
+  text: string;
+  href: string;
+  linkLabel: string;
+  hrefLang?: "nl-BE" | "en";
+}
+
+const { number, title, text, href, linkLabel, hrefLang } = Astro.props;
+---
+
+<article class="feature-card">
+  <span class="feature-number" aria-hidden="true">{number}</span>
+  <h3>{title}</h3>
+  <p>{text}</p>
+  <a href={withBase(href)} hreflang={hrefLang}>{linkLabel}<span aria-hidden="true"> →</span></a>
+</article>
+
+<style>
+  .feature-card {
+    display: grid;
+    min-height: 100%;
+    align-content: start;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    padding: clamp(1.35rem, 3vw, 2rem);
+    box-shadow: var(--shadow-card);
+    transition: transform var(--motion-fast) var(--ease-standard), box-shadow var(--motion-fast) var(--ease-standard);
+  }
+
+  .feature-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+
+  .feature-number {
+    display: grid;
+    width: 2.6rem;
+    aspect-ratio: 1;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--color-brand-dark);
+    background: var(--color-brand-soft);
+    font-weight: 900;
+  }
+
+  h3 { margin: 1.4rem 0 0; color: var(--color-ink); font-size: 1.35rem; }
+  p { color: var(--color-muted); }
+  a { width: fit-content; margin-top: auto; font-weight: 850; text-underline-offset: 0.22em; }
+</style>

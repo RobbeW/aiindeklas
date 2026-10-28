@@ -1,0 +1,60 @@
+{
+  "schema": "website-migration.p07-static-business-integrity/v1",
+  "status": "verified_with_live_checks_pending",
+  "static_pages": 9,
+  "workshop_records": 12,
+  "workshop_accordion_groups": 12,
+  "workshop_accordion_headings": [
+    "Programma",
+    "Programma",
+    "Programma",
+    "Programma",
+    "Programma",
+    "Programma",
+    "Programma",
+    "Programma",
+    "Programma",
+    "Programma",
+    "Programma",
+    "Programma"
+  ],
+  "unrelated_general_accordion_excluded": 3,
+  "pricing_records": 13,
+  "volatile_business_pages": [
+    "source-page-boek",
+    "source-page-contact",
+    "source-page-contactinfo",
+    "source-page-verkoopsvoorwaarden"
+  ],
+  "contact_form_source_fields": [
+    "first name",
+    "last name",
+    "email",
+    "question"
+  ],
+  "contact_form_follow_up": "P09",
+  "duration_decisions": [
+    {
+      "record_id": "source-workshop-schrijftaken-zonder-aiaiai-981050bd",
+      "duration_minutes": 120,
+      "confirmed_by": "user",
+      "confirmed_on": "2026-09-20",
+      "provenance": "Source heading/body stated 1.5 hours; practical accordion stated 2.0 hours. User confirmed 2 hours as authoritative; generated variants are normalized to 2 hours."
+    }
+  ],
+  "source_discrepancies": [
+    "P01 summarized rates but omitted workshop accordion commercial facts; reconciled in P07.",
+    "Schrijftaken source duration variants (1.5h heading/body; 2.0h practical accordion) were resolved by user confirmation on 2026-09-20; 2 hours is authoritative.",
+    "Participant feedback and ratings are volatile source claims and require live verification."
+  ],
+  "p01_section_detail_gap": "P01 captured high-level workshop rates but omitted per-workshop accordion service facts; P07 reconciles the 12 source blocks.",
+  "built": {
+    "base": "/aiindeklas/",
+    "file": "C:\\Users\\robbe\\Documents\\IW J1\\website_migration\\legacy_migration\\dist\\onderwijs\\workshops-en-nascholingen.html",
+    "detailed_workshops": 12,
+    "index_links": 12,
+    "pricing_source_marker": true,
+    "noindex": true
+  },
+  "errors": []
+}
