@@ -101,7 +101,7 @@ Open **Bediening → Volledig scherm** once after opening the TV page; browser p
 
 User-reported basic school-laptop/controller classroom tests succeeded on27October2026. The complete three-controller TV setup, browser/driver combination and long unattended performance still need a show-floor rehearsal; synthetic UI tests do not measure that hardware.
 
-The TV presentation uses brief visitor captions, compact observation/reward/Darwin illustrations and contextual joining cues. One real attempts/generation count is shown; detailed updates and data-source accounting stay in Bediening. Idle seats retain a Voorbeeldspel badge. Finished training switches to Test and Zo speelt de computer nu; classroom explanation variants remain available in the normal lessons.
+The TV presentation uses brief visitor captions, compact observation/reward/Darwin illustrations and contextual joining cues. One real attempts/generation count is shown; detailed updates and data-source accounting stay in Bediening. Idle seats retain a Voorbeeldspel badge. Finished Flappy training switches to Test and Zo speelt de computer nu; the car training scene keeps the recorded-round badge described below. Classroom explanation variants remain available in the normal lessons.
 
 
 ### Supplied showroom artwork (29 October 2026)
@@ -109,3 +109,13 @@ The TV presentation uses brief visitor captions, compact observation/reward/Darw
 The demo uses the supplied transparent PNGs from public/assets/demo/. Its ten splash scenes use a scene-to-art catalog; Darwin cycles through four still frames at the existing four-second stage boundaries. The shared-model illustration sits beside the real live flock, and player names/reward labels remain HTML. Normal classroom explanations and all game/training engines are unchanged.
 
 Only the current scene is loaded; Darwin decodes its four frames together before starting that explanation. Image loading has an eight-second bound and pauses scene time. A missing image leaves a readable explanation and allows the loop to continue. These supplied pictures are conceptual illustrations, not literal network architectures, measured results or exact map data. The original PNG bytes are preserved.
+
+### Calm car-training presentation (29 October 2026)
+
+The car demo captures up to ten real completed populations, with twelve independent frozen models in each. Actual evolution still evaluates every selected circuit before selection and runs quickly in the background. Viewing those snapshots does not train again. The display replays ten full population attempts on circuit1 before moving to circuit2 and circuit3. Each circuit starts with three attempts at1×, three at2× and four at4×; a stable square viewport and common map scale prevent track-size jumps. A terminal hold keeps very short attempts readable. If training stops early, only the available real populations are shown.
+
+This scene finishes after its recorded attempts, so it can exceed the nominal75-second allocation. **Bediening → Volgende scène** can explicitly skip viewing once a genuine champion is ready. The visible progress bar measures viewed rounds; actual training counts stay separate in Bediening. The later race uses the real trained champion.
+
+**Bediening → Vergelijk 2× en 8×** optionally places a slower view on the left and faster view on the right. Both use the same recordings and circuit; the faster pane waits before both change circuit together. Switching modes restarts viewing only. The default remains one large view. Reduced-motion preference uses one view at1× with no opacity animation or fast-pane option, including when the preference changes during a session.
+
+Scene changes, circuit changes and Darwin frames use short opacity fades without movement. Preparation, fade, pause, hidden-tab and focus-loss states freeze presentation time and playable input. Returning from a transition requires fresh controller presses. Restart cancels old work and transitions. Browser checks covered phone, TV and4K layout, native fullscreen, pause/restart, complete split and reduced-motion playback; physical-TV endurance and formal flash-safety assessment remain unmeasured.

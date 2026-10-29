@@ -11,12 +11,13 @@ import { scoreCarResult,type EvaluationHooks } from './population-evaluation.ts'
 import { CarEnvironment,type CarEpisodeResult } from '../car/environment.ts';
 import type { CarAction } from '../car/config.ts';
 import type { PopulationFrame } from './live-frame.ts';
+import { appendPresentationSnapshot,createPresentationSnapshot,PRESENTATION_SNAPSHOT_LIMIT,type PresentationPopulationSnapshot } from './presentation-snapshots.ts';
 
 export interface TrackEvaluation {readonly trackId:string;readonly result:CarEpisodeResult;readonly fitness:number}
 export interface GenerationRecord { readonly generation:number;readonly bestFitness:number;readonly meanFitness:number;readonly groupCount:number;readonly agents:readonly {readonly id:string;readonly fitness:number;readonly result:CarEpisodeResult;readonly perTrack:readonly TrackEvaluation[]}[];readonly failureReplay?:{readonly trackId:string;readonly seed:number;readonly actions:readonly CarAction[];readonly result:CarEpisodeResult}; }
-export interface EvolutionProgress { readonly completedGenerations:number;readonly evaluatedEpisodes:number;readonly steps:number;readonly elapsedMs:number;readonly records:readonly GenerationRecord[];readonly trainingTrackIds:readonly string[];readonly champion?:CarSnapshot;readonly milestones?:readonly CarSnapshot[];readonly liveFrame?:PopulationFrame; }
-export interface EvolutionInput { readonly document:CircuitDocument;readonly documents?:readonly CircuitDocument[];readonly populationSize:number;readonly generationBudget:number;readonly stepBudget:number;readonly seed:number;readonly generationStep?:boolean;readonly visualMode?:boolean;readonly visualSpeed?:number;readonly activeTimeLimitMs?:number; }
-export interface EvolutionResult extends EvolutionProgress { readonly reason:'generation_budget'|'step_budget'|'time_limit'; }
+export interface EvolutionProgress { readonly completedGenerations:number;readonly evaluatedEpisodes:number;readonly steps:number;readonly elapsedMs:number;readonly records:readonly GenerationRecord[];readonly trainingTrackIds:readonly string[];readonly champion?:CarSnapshot;readonly milestones?:readonly CarSnapshot[];readonly liveFrame?:PopulationFrame;readonly presentationSnapshot?:PresentationPopulationSnapshot; }
+export interface EvolutionInput { readonly document:CircuitDocument;readonly documents?:readonly CircuitDocument[];readonly populationSize:number;readonly generationBudget:number;readonly stepBudget:number;readonly seed:number;readonly generationStep?:boolean;readonly visualMode?:boolean;readonly visualSpeed?:number;readonly activeTimeLimitMs?:number;readonly capturePresentationSnapshots?:boolean; }
+export interface EvolutionResult extends EvolutionProgress { readonly reason:'generation_budget'|'step_budget'|'time_limit';readonly presentationSnapshots?:readonly PresentationPopulationSnapshot[]; }
 export interface EvolutionHooks extends Omit<EvaluationHooks,'stepBudget'|'onStep'> { readonly onProgress?:(progress:EvolutionProgress)=>void;readonly onStep?:(steps:number)=>void;readonly getSpeed?:()=>number;readonly delay?:(ms:number)=>Promise<void>; }
 const validSpeed=(speed:number)=>Number.isFinite(speed)&&speed>=.5&&speed<=CAR_MAX_PLAYBACK_SPEED;
 
@@ -30,6 +31,7 @@ export async function runEvolutionJob(input:EvolutionInput,hooks:EvolutionHooks=
   if(new Set(trackIds).size!==trackIds.length)throw new Error('Duplicate training circuit');
   const now=hooks.now??(()=>performance.now()),begin=now();let pausedMs=0,pausedAt:number|undefined,steps=0,evaluatedEpisodes=0;
   const records:GenerationRecord[]=[],milestoneMap=new Map<number,CarSnapshot>();let champion:CarSnapshot|undefined,winner:Genome|undefined,winnerFitness=-Infinity,liveFrame:PopulationFrame|undefined;
+  let presentationSnapshots:readonly PresentationPopulationSnapshot[]=Object.freeze([]),presentationCaptureFull=false;
   let population:readonly Genome[]=Object.freeze(Array.from({length:input.populationSize},(_,i)=>createGenome(`g0-a${i}`,0,input.seed+i)));
   const yieldNow=hooks.yieldControl??(()=>new Promise<void>(r=>setTimeout(r,0)));
   const pauseCheck=async()=>{if(hooks.isCancelled?.())throw new Error('Evolution cancelled');while(hooks.isPaused?.()){if(pausedAt===undefined)pausedAt=now();await yieldNow();if(hooks.isCancelled?.())throw new Error('Evolution cancelled');}if(pausedAt!==undefined){pausedMs+=Math.max(0,now()-pausedAt);pausedAt=undefined;}};
@@ -70,9 +72,16 @@ export async function runEvolutionJob(input:EvolutionInput,hooks:EvolutionHooks=
     const best=evaluations.reduce((a,b)=>b.fitness>a.fitness?b:a);if(best.fitness>winnerFitness){winner=population.find(x=>x.id===best.id)!;winnerFitness=best.fitness;}
     champion=createCarSnapshot(genomePolicy(winner!),'evolution',{sources:['fixed_topology_evolution'],trackIds,trainingSeeds:[1000],reinforcementEpisodes:0,interactions:steps,wallTimeMs:elapsed(),generations:records.length});
     for(const key of milestoneMap.keys())if(key!==1&&key!==10)milestoneMap.delete(key);
-    milestoneMap.set(records.length,champion);hooks.onProgress?.(progress());
+    milestoneMap.set(records.length,champion);
+    let presentationSnapshot:PresentationPopulationSnapshot|undefined;
+    if(input.capturePresentationSnapshots && !presentationCaptureFull && presentationSnapshots.length<PRESENTATION_SNAPSHOT_LIMIT){
+      const snapshot=createPresentationSnapshot(g,population,trackIds,perAgent,1000);
+      const next=appendPresentationSnapshot(presentationSnapshots,snapshot);
+      if(next!==presentationSnapshots){presentationSnapshots=next;presentationSnapshot=snapshot;}else presentationCaptureFull=true;
+    }
+    hooks.onProgress?.(Object.freeze({...progress(),...(presentationSnapshot?{presentationSnapshot}:{})}));
     if(g+1<input.generationBudget)population=nextGeneration(population,evaluations.map(e=>({id:e.id,fitness:e.fitness})),g+1,random);
     await yieldNow();
   }
-  await pauseCheck();const final=Object.freeze({...progress(),reason});hooks.onProgress?.(final);return final;
+  await pauseCheck();const final=Object.freeze({...progress(),reason,...(input.capturePresentationSnapshots?{presentationSnapshots}:{})});hooks.onProgress?.(final);return final;
 }

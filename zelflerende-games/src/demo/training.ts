@@ -24,7 +24,7 @@ export function createDemoTraining(){
  return {
   imitation(episodes:readonly DemonstrationEpisode[],progress:(p:ImitationProgress)=>void){return imitation.start({initialSnapshot:demoInitial(),episodes,validationEpisodeIds:[],allowTrainingOnly:true,updateBudget:250,optimizer:'adam',trainingSeed:1701},progress).promise;},
   reward(snapshot:PolicySnapshot,progress:(p:ParallelPracticeProgress)=>void){return reward.start({snapshot,roundBudget:64,agentCount:12,environmentSeed:1720,actionSeed:15000,speed:64,mode:'live',timeBudgetMs:45000},progress).promise;},
-  cars(documents:readonly CircuitDocument[],progress:(p:EvolutionProgress)=>void){return cars.start({document:documents[0]!,documents,populationSize:12,generationBudget:30,stepBudget:50_000_000,seed:1701,visualMode:true,visualSpeed:32,activeTimeLimitMs:65000},progress).promise;},
+  cars(documents:readonly CircuitDocument[],progress:(p:EvolutionProgress)=>void){return cars.start({document:documents[0]!,documents,populationSize:12,generationBudget:30,stepBudget:50_000_000,seed:1701,visualMode:false,activeTimeLimitMs:65000,capturePresentationSnapshots:true},progress).promise;},
   pause(){for(const c of clients)c.pause();},resume(){for(const c of clients)c.resume();},cancel(){for(const c of clients)c.cancel();},dispose(){for(const c of clients)c.dispose();},
  };
 }

@@ -12,23 +12,20 @@ test('only playable scenes offer game controls; explanations can reserve competi
  assert.equal(demoPresentation(scene('f-training')).action,'later');
  assert.equal(demoPresentation(scene('c-training'),{trainingDone:true}).action,'later');
 });
-test('frozen playback switches from learning to Test without implying more updates',()=>{
- for(const id of ['f-training','c-training']){
-  const training=demoPresentation(scene(id)),playback=demoPresentation(scene(id),{trainingDone:true});
-  assert.notEqual(training.badge,'Test');assert.equal(playback.badge,'Test');assert.notEqual(training.title,playback.title);
- }
+test('car recorded playback stays distinct from a frozen Test after training',()=>{
+ assert.equal(demoPresentation(scene('f-training'),{trainingDone:true}).badge,'Test');
+ for(const trainingDone of [false,true])assert.equal(demoPresentation(scene('c-training'),{trainingDone}).badge,'Opgenomen oefenronde');
 });
 test('imitation source badge does not claim human examples while idle',()=>{
  assert.equal(demoPresentation(scene('f-imitation'),{humanExamples:0}).badge,'Voorbeeldspel');
  assert.equal(demoPresentation(scene('f-imitation'),{humanExamples:3}).badge,'Jullie spel + voorbeeldspel');
  assert.equal(demoPresentation(scene('f-imitation'),{trainingDone:true}).badge,'Voorbeeldspel');
 });
-test('one counter uses actual attempts or bounded live/completed generation counts',()=>{
+test('recorded playback shows track, actual sealed count and speed',()=>{
  assert.equal(demoPresentation(scene('f-training'),{birdAttempts:147}).count,'147 pogingen');
- assert.equal(demoPresentation(scene('c-training'),{carGenerations:30}).count,'Generatie 30');
- assert.equal(demoPresentation(scene('c-training'),{trainingDone:true,carGenerations:30}).count,'30 generaties');
- assert.equal(demoPresentation(scene('f-examples'),{humanExamples:3}).count,'3 opnamen');
- assert.equal(demoPresentation(scene('c-training'),{trainingDone:true,carGenerations:1}).count,'1 generatie');
+ const p={trackIndex:2,trackCount:3,attemptIndex:3,availableAttempts:4,archiveSealed:true,speed:1};
+ assert.equal(demoPresentation(scene('c-training'),{carPlayback:p}).count,'Circuit 2/3 · Poging 3/4 · 1×');
+ assert.equal(demoPresentation(scene('c-training'),{carPlayback:{...p,archiveSealed:false}}).count,'Circuit 2/3 · Poging 3/10 · 1×');
  assert.equal(demoPresentation(scene('f-examples'),{humanExamples:1}).count,'1 opname');
 });
 test('scene countdown is visible only for the two three-minute competitions',()=>{

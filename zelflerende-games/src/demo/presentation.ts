@@ -6,6 +6,7 @@ export interface DemoPresentationState {
  readonly birdAttempts?:number;
  readonly carGenerations?:number;
  readonly waiting?:boolean;
+ readonly carPlayback?:{trackIndex:number;trackCount:number;attemptIndex:number;availableAttempts:number;archiveSealed:boolean;speed:number};
 }
 /** Visitor copy follows the actual learning/play state; diagnostic detail stays in Bediening. */
 export function demoPresentation(scene:DemoScene,state:DemoPresentationState={}){
@@ -21,11 +22,14 @@ export function demoPresentation(scene:DemoScene,state:DemoPresentationState={})
   badge=amount(state.humanExamples)>0?'Jullie spel + voorbeeldspel':'Voorbeeldspel';
   if(state.trainingDone)title='De computer heeft geoefend.';
  }
- if(scene.id==='f-training'||scene.id==='c-training'){
+ if(scene.id==='f-training'){
   action='later';
-  if(scene.id==='f-training')count=quantity(state.birdAttempts,'poging','pogingen');
-  else count=state.trainingDone?quantity(state.carGenerations,'generatie','generaties'):`Generatie ${Math.min(30,amount(state.carGenerations)+1)}`;
+  count=quantity(state.birdAttempts,'poging','pogingen');
   if(state.trainingDone){title='Zo speelt de computer nu.';badge='Test';}
+ }
+ if(scene.id==='c-training'){
+  action='later';badge='Opgenomen oefenronde';
+  const p=state.carPlayback;if(p && p.availableAttempts)count=`Circuit ${p.trackIndex}/${p.trackCount} · Poging ${p.attemptIndex}/${p.archiveSealed?p.availableAttempts:10} · ${p.speed}×`;
  }
  if(state.waiting)action='later';
  return {title,body,badge,count,action,showClock:scene.id==='f-match'||scene.id==='c-match'} as const;

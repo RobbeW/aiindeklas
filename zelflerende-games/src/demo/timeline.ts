@@ -66,3 +66,8 @@ export class DemoTimeline {
   reset(): DemoTimelineSnapshot { this.index = 0; this.elapsedMs = 0; this.loop = 0; this.reasons.clear(); return this.snapshot; }
   private validateReason(reason: string): void { if (typeof reason !== 'string' || !reason.trim()) throw new RangeError('pause reason required'); }
 }
+
+/** A car scene completes only after both training and its recorded presentation. */
+export function carTrainingReady(championReady:boolean,playbackComplete:boolean,operatorSkip=false):boolean {
+  return championReady && (operatorSkip || playbackComplete);
+}

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import { strict as assert } from 'node:assert';
-import { DEMO_SCENES, DemoTimeline } from '../src/demo/timeline.ts';
+import { DEMO_SCENES, DemoTimeline, carTrainingReady } from '../src/demo/timeline.ts';
 
 test('timeline carries time, loops and handles large deltas', () => {
   const timeline = new DemoTimeline();
@@ -23,4 +23,12 @@ test('independent pauses discard elapsed time and next/reset work', () => {
   assert.equal(timeline.next().scene.id, 'f-untrained');
   assert.equal(timeline.reset().scene.id, 'f-intro');
   for (const value of [-1, Infinity, NaN]) assert.throws(() => timeline.advance(value));
+});
+
+test('car transition waits for playback and champion unless the operator skips',()=>{
+  assert.equal(carTrainingReady(false,true),false);
+  assert.equal(carTrainingReady(true,false),false);
+  assert.equal(carTrainingReady(true,true),true);
+  assert.equal(carTrainingReady(true,false,true),true);
+  assert.equal(carTrainingReady(false,false,true),false);
 });
