@@ -30,5 +30,27 @@
       ],
       "note": "Sprite artwork authorship and redistribution rights are not established. Road, sensors and Klasauto are code-native."
     }
+  },
+  "demo": {
+    "artwork": {
+      "source": "Thirteen supplied PNGs from new_images, integrated unchanged at the user’s request on 2026-10-29. Observation image supplied on 2026-10-28.",
+      "files": [
+        "00-observation.png",
+        "01-flappy-intro.png",
+        "02-learning-from-examples.png",
+        "03-reward-and-punishment.png",
+        "04-shared-flappy-model.png",
+        "05-flappy-player-lineup.png",
+        "06-car-intro.png",
+        "07-practice-circuits.png",
+        "08-darwin-variation.png",
+        "09-darwin-trial.png",
+        "10-darwin-selection.png",
+        "11-darwin-inheritance.png",
+        "12-car-player-lineup.png",
+        "13-loop-restart.png"
+      ],
+      "note": "User-supplied explanatory illustrations. Live game renderers, actual learning and normal classroom illustrations remain separate."
+    }
   }
 }

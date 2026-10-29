@@ -1,0 +1,16 @@
+/* The supplied PNGs keep their full canvas and alpha; no crop or distortion. */
+.demo-artwork { display:grid; grid-template-rows:minmax(0,1fr) auto; align-items:center; gap:clamp(12px,2vh,24px); width:100%; height:100%; min-height:0; margin:0; text-align:center; }
+.demo-artwork__image { display:block; width:100%; height:100%; min-height:0; max-height:100%; object-fit:contain; }
+.demo-artwork__caption { margin:0; color:var(--ink); font-size:clamp(20px,2vw,38px); font-weight:650; line-height:1.3; }
+.demo-artwork__labels { display:grid; grid-template-columns:repeat(var(--labels),minmax(0,1fr)); gap:8px; }
+.demo-artwork__labels span { min-width:0; }
+.demo-artwork__fallback { max-width:48ch; margin:auto; font-size:clamp(20px,2vw,38px); line-height:1.4; color:var(--muted); }
+.demo-artwork[aria-busy="true"] { min-height:160px; }
+@media(max-width:1000px) {
+ .demo-artwork { height:auto; }
+ .demo-artwork__image { height:auto; max-height:58svh; }
+}
+@media(max-width:600px) {
+ .demo-artwork__caption { font-size:18px; }
+ .demo-artwork__labels { font-size:clamp(13px,3.5vw,18px); gap:4px; }
+}

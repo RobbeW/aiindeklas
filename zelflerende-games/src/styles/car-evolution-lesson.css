@@ -92,6 +92,36 @@
 .evolution-lesson .el__inheritance-key span:nth-child(2) { color:#A32E62; }
 .evolution-lesson .el__inheritance-key span:nth-child(3) { color:#5200FF; }
 
+.evolution-lesson--compact { gap:8px; min-height:330px; padding:10px; }
+.evolution-lesson--compact .el__scene { min-height:270px; }
+.evolution-lesson--compact .el__phase { min-height:38px; padding:5px 10px; border:0; background:transparent; }
+.evolution-lesson--compact .el__phase-copy { margin:0; color:var(--el-ink); font-size:14px; font-weight:700; }
+.evolution-lesson--compact .el__step[hidden] { display:none; }
+.evolution-lesson--compact .el__population { grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; }
+.evolution-lesson--compact .el__pair { min-height:116px; grid-template-columns:minmax(0,1fr) 12px minmax(92px,.85fr); }
+.evolution-lesson--compact .el__car-view > span,
+.evolution-lesson--compact .el__model > span,
+.evolution-lesson--compact .el__selected { display:none !important; }
+.evolution-lesson--compact .el__not-selected { display:inline-flex; }
+.evolution-lesson--compact .el__car-view svg { max-height:88px; }
+.evolution-lesson--compact .el__model svg { width:76px; height:66px; }
+.evolution-lesson--compact .el__family { padding:8px; }
+.evolution-lesson--compact .el__family-tag { font-size:12px; }
+.evolution-lesson--compact .el__parent-chip svg { width:72px; height:60px; }
+.evolution-lesson--compact .el__child-model svg { width:64px; height:60px; }
+.evolution-lesson--compact .el__best strong { font-size:clamp(18px,2.1vw,28px); }
+.evolution-lesson--compact .el__family-tag { font-size:clamp(18px,2vw,26px); }
+.evolution-lesson--compact .el__inheritance-key { display:none; }
+.evolution-lesson--compact .el__actions[hidden] { display:none; }
+.evolution-lesson--compact .el__family { grid-template-columns:minmax(110px,1fr) 20px minmax(180px,1.4fr) minmax(130px,1fr); }
+@media (max-width:650px) {
+  .evolution-lesson--compact { min-height:0; }
+  .evolution-lesson--compact .el__scene { min-height:230px; }
+  .evolution-lesson--compact .el__population { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .evolution-lesson--compact .el__pair { grid-template-columns:minmax(0,1fr) 8px minmax(70px,.7fr); }
+  .evolution-lesson--compact .el__family { grid-template-columns:1fr; }
+}
+
 .evolution-lesson .el__not-selected {display:none;position:absolute;right:3px;top:3px;z-index:2;align-items:center;gap:3px;background:#fff7df;border:1px solid #b9b1a4;border-radius:7px;padding:2px 5px;color:#6d2e00;font-size:11px;font-weight:700}
 .evolution-lesson .el__not-selected svg {width:21px;height:27px}
 .evolution-lesson[data-phase="2"] .el__pair:not([data-car="2"]):not([data-car="5"]) .el__not-selected {display:inline-flex}

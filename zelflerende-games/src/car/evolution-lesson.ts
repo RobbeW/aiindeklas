@@ -35,10 +35,12 @@ function network(index: number): string {
 
 const childModels = [6, 7, 8].map((pattern, i) => `<div class="el__child-model">${network(pattern)}<span>Variant ${i + 1}</span></div>`).join('');
 const unselectedFlame = `<span class="el__not-selected"><svg viewBox="0 0 26 34" aria-hidden="true"><path d="M13 32C0 29 0 16 8 9L9 16C13 12 14 7 14 1C20 8 27 15 24 24C23 29 18 33 13 32Z" fill="#e95300" stroke="#fffdf7" stroke-width="2"/><path d="M13 29C6 27 8 22 13 17C14 21 19 23 17 27C16 29 14 30 13 29Z" fill="#ffdb36"/></svg><span>Niet gekozen</span></span>`;
-const pairs = Array.from({ length: 6 }, (_, i) => `<article class="el__pair" data-car="${i + 1}">
-  <div class="el__car-view">${car(i)}<span>Auto ${i + 1}</span></div><span class="el__pair-arrow" aria-hidden="true">↔</span>
-  <div class="el__model">${network(i)}<span>AI-model ${i + 1}</span></div><span class="el__selected">Geselecteerd</span>${unselectedFlame}
-</article>`).join('');
+function pairsMarkup(compact: boolean): string {
+  return Array.from({ length: 6 }, (_, i) => `<article class="el__pair" data-car="${i + 1}">
+    <div class="el__car-view">${car(i)}${compact ? '' : `<span>Auto ${i + 1}</span>`}</div><span class="el__pair-arrow" aria-hidden="true">↔</span>
+    <div class="el__model">${network(i)}${compact ? '' : `<span>AI-model ${i + 1}</span>`}</div>${compact ? '' : '<span class="el__selected">Geselecteerd</span>'}${compact ? unselectedFlame.replace('<span>Niet gekozen</span>', '') : unselectedFlame}
+  </article>`).join('');
+}
 
 const phases = [
   { title: 'Verschillen', text: 'Elke auto heeft een eigen AI-model met een andere aanpak.' },
@@ -46,27 +48,29 @@ const phases = [
   { title: 'Ouders kiezen', text: 'Modellen die goed rijden op de gekozen oefencircuits krijgen meer kans om hun aanpak door te geven.' },
   { title: 'Nieuwe generatie', text: 'Het beste model bewaren we. Van de geselecteerde modellen maken we nieuwe versies met kleine veranderingen.' },
 ];
+const compactCaptions = ['Elke auto heeft een eigen AI-model.', 'Alle modellen rijden hetzelfde circuit.', 'De beste modellen krijgen nakomelingen.', 'Nieuwe modellen. Kleine verschillen.'];
 
 /** Drawing-only explanation of selection and inheritance; it does not measure learning. */
-export function mountEvolutionLesson(root: HTMLElement, options: { onContinue: () => void; manualTimeline?:boolean }): { setActive(active: boolean): void; setPhase(phase:number):void; dispose(): void } {
+export function mountEvolutionLesson(root: HTMLElement, options: { onContinue: () => void; manualTimeline?:boolean; compact?:boolean }): { setActive(active: boolean): void; setPhase(phase:number):void; dispose(): void } {
+  const compact = options.compact === true;
   const doc = root.ownerDocument;
   const win = doc.defaultView;
   const media = win?.matchMedia('(prefers-reduced-motion: reduce)');
   let reducedMotion = media?.matches ?? false;
-  root.innerHTML = `<section class="evolution-lesson" aria-labelledby="el-title" data-phase="0">
-    <header class="el__header"><p class="el__eyebrow">Van Flappy Bird naar auto's</p><h2 id="el-title" tabindex="-1">Wat zou Darwin doen?</h2>
+  root.innerHTML = `<section class="evolution-lesson${compact ? ' evolution-lesson--compact' : ''}" ${compact ? 'aria-label="Auto-evolutie"' : 'aria-labelledby="el-title"'} data-phase="0">
+    ${compact ? '' : `<header class="el__header"><p class="el__eyebrow">Van Flappy Bird naar auto's</p><h2 id="el-title" tabindex="-1">Wat zou Darwin doen?</h2>
       <p>Charles Darwin beschreef evolutie door natuurlijke selectie. Welke aanpak blijft over als auto's steeds opnieuw racen?</p></header>
-    <p class="el__contrast"><strong>Bij Flappy Bird</strong> gebruikten alle vogels hetzelfde AI-model. <strong>Hier</strong> heeft elke auto een eigen AI-model. Goed rijden hangt af van de gekozen oefencircuits.</p>
-    <div class="el__phase" aria-live="off" aria-atomic="true"><span class="el__step"></span><div><h3 class="el__phase-title"></h3><p class="el__phase-copy"></p></div></div>
-    <div class="el__scene"><div class="el__population" aria-label="Zes auto's met elk een eigen AI-model">${pairs}</div>
-    <section class="el__family" aria-label="Van geselecteerde ouders naar een nieuwe generatie">
-      <div class="el__parents"><span class="el__family-tag">Geselecteerde ouders</span><div class="el__parent-chip el__parent-one">${network(1)}<span>Model 2</span></div><div class="el__parent-chip el__parent-two">${network(4)}<span>Model 5</span></div></div>
+    <p class="el__contrast"><strong>Bij Flappy Bird</strong> gebruikten alle vogels hetzelfde AI-model. <strong>Hier</strong> heeft elke auto een eigen AI-model. Goed rijden hangt af van de gekozen oefencircuits.</p>`}
+    <div class="el__phase" aria-live="off" aria-atomic="true"><span class="el__step"${compact ? ' hidden' : ''}></span><div>${compact ? '' : '<h3 class="el__phase-title"></h3>'}<p class="el__phase-copy"></p></div></div>
+    <div class="el__scene"><div class="el__population" aria-label="Zes auto's met elk een eigen AI-model">${pairsMarkup(compact)}</div>
+    <section class="el__family" aria-label="${compact ? 'Ouders, nakomelingen en beste model' : 'Van geselecteerde ouders naar een nieuwe generatie'}">
+      <div class="el__parents"><span class="el__family-tag">${compact ? 'Ouders' : 'Geselecteerde ouders'}</span><div class="el__parent-chip el__parent-one">${network(1)}${compact ? '' : '<span>Model 2</span>'}</div><div class="el__parent-chip el__parent-two">${network(4)}${compact ? '' : '<span>Model 5</span>'}</div></div>
       <span class="el__branch" aria-hidden="true">→</span>
-      <div class="el__children"><span class="el__family-tag">Nieuwe varianten</span>${childModels}</div>
-      <div class="el__best"><span aria-hidden="true">★</span><div><strong>Beste model: 2</strong><small>Ongewijzigd naar de volgende generatie</small>${network(1)}</div></div>
-    <p class="el__inheritance-key"><span>Van model 2</span><span>Van model 5</span><span>Kleine verandering</span></p></section></div>
-    <p class="el__note">Zo werkt een generatie.</p>
-    <div class="el__actions"><button class="el__phase-control" type="button"></button><button class="el__continue" type="button">Laat de auto's rijden</button></div>
+      <div class="el__children"><span class="el__family-tag">${compact ? 'Nakomelingen' : 'Nieuwe varianten'}</span>${compact ? [6,7,8].map(pattern => `<div class="el__child-model">${network(pattern)}</div>`).join('') : childModels}</div>
+      <div class="el__best"><span aria-hidden="true">★</span><div><strong>${compact ? 'Beste model' : 'Beste model: 2'}</strong>${compact ? '' : '<small>Ongewijzigd naar de volgende generatie</small>'}${network(1)}</div></div>
+    ${compact ? '' : '<p class="el__inheritance-key"><span>Van model 2</span><span>Van model 5</span><span>Kleine verandering</span></p>'}</section></div>
+    ${compact ? '' : '<p class="el__note">Zo werkt een generatie.</p>'}
+    <div class="el__actions"${compact ? ' hidden' : ''}><button class="el__phase-control" type="button"></button><button class="el__continue" type="button">Laat de auto's rijden</button></div>
   </section>`;
   const view = root.querySelector<HTMLElement>('.evolution-lesson')!;
   const phaseButton = view.querySelector<HTMLButtonElement>('.el__phase-control')!;
@@ -83,13 +87,14 @@ export function mountEvolutionLesson(root: HTMLElement, options: { onContinue: (
   const stop = (): void => { if (timer !== undefined) win?.clearTimeout(timer); timer = undefined; view.dataset.animation = 'paused'; };
   const render = (manual = false): void => {
     view.dataset.phase = String(phase);
-    phaseTitle.textContent = phases[phase].title;
-    phaseCopy.textContent = phases[phase].text;
+    if (!compact) phaseTitle!.textContent = phases[phase].title;
+    phaseCopy.textContent = compact ? compactCaptions[phase]! : phases[phase].text;
     step.textContent = `${phase + 1} / 4`;
+    phasePanel.setAttribute('aria-live', manual ? 'polite' : 'off');
+    if (compact) return;
     phaseButton.textContent = reducedMotion ? 'Volgende stap' : playing ? 'Pauzeren' : 'Verder';
     phaseButton.setAttribute('aria-label', reducedMotion ? 'Toon volgende stap' : playing ? 'Animatie pauzeren' : 'Animatie hervatten');
     if(reducedMotion)phaseButton.removeAttribute('aria-pressed');else phaseButton.setAttribute('aria-pressed', String(playing));
-    phasePanel.setAttribute('aria-live', manual ? 'polite' : 'off');
   };
   const advance = (): void => { phase = (phase + 1) % phases.length; };
   const schedule = (): void => {
