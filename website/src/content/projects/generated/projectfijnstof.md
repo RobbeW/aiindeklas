@@ -1,6 +1,6 @@
 ---
 id: "source-project-projectfijnstof"
-title: "Project Fijnstof"
+title: "Particulate Matter Project"
 slug: "projectfijnstof"
 locale: "en"
 translation_key: null
@@ -12,11 +12,11 @@ created_at: null
 updated_at: null
 published_at: null
 author: "robbe-wulgaert"
-excerpt: "sensor research, data reporting, and poster workflow reference"
+excerpt: "The Particulate Matter Project has students investigate air quality using a particulate sensor, Arduino and their own measurements."
 hero: null
 seo:
-  title: "Project Fijnstof"
-  description: "sensor research, data reporting, and poster workflow reference"
+  title: "Particulate Matter Project"
+  description: "The Particulate Matter Project has students investigate air quality using a particulate sensor, Arduino and their own measurements."
   canonical_path: "/projects"
   image: null
   noindex: true
@@ -31,4 +31,4 @@ hardware: []
 featured: true
 ---
 
-sensor research, data reporting, and poster workflow reference
+The Particulate Matter Project has students investigate air quality using a particulate sensor, Arduino and their own measurements. Students practise comparing measurement series and reporting research findings.

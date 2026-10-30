@@ -1,6 +1,6 @@
 ---
 id: "source-project-projectwind"
-title: "Project Wind"
+title: "Wind Project"
 slug: "projectwind"
 locale: "en"
 translation_key: null
@@ -12,11 +12,11 @@ created_at: null
 updated_at: null
 published_at: null
 author: "robbe-wulgaert"
-excerpt: "research workflow, reporting, privacy, and project landing reference"
+excerpt: "The Wind Project has students build a wind turbine and use a micro:bit to investigate the electrical energy it generates."
 hero: null
 seo:
-  title: "Project Wind"
-  description: "research workflow, reporting, privacy, and project landing reference"
+  title: "Wind Project"
+  description: "The Wind Project has students build a wind turbine and use a micro:bit to investigate the electrical energy it generates."
   canonical_path: "/projects"
   image: null
   noindex: true
@@ -31,4 +31,4 @@ hardware: []
 featured: true
 ---
 
-research workflow, reporting, privacy, and project landing reference
+The Wind Project has students build a wind turbine and use a micro:bit to investigate the electrical energy it generates. Students practise measuring electrical quantities and comparing trials and drawing conclusions.

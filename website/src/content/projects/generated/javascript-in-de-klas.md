@@ -1,6 +1,6 @@
 ---
 id: "source-project-javascript-in-de-klas"
-title: "JavaScript in de Klas"
+title: "JavaScript in the Classroom"
 slug: "javascript-in-de-klas"
 locale: "en"
 translation_key: null
@@ -12,11 +12,11 @@ created_at: null
 updated_at: null
 published_at: null
 author: "robbe-wulgaert"
-excerpt: "canonical design and platform-family reference"
+excerpt: "JavaScript in the Classroom is a browser environment where students write, run and test code alongside each exercise."
 hero: null
 seo:
-  title: "JavaScript in de Klas"
-  description: "canonical design and platform-family reference"
+  title: "JavaScript in the Classroom"
+  description: "JavaScript in the Classroom is a browser environment where students write, run and test code alongside each exercise."
   canonical_path: "/projects"
   image: null
   noindex: true
@@ -31,4 +31,4 @@ hardware: []
 featured: true
 ---
 
-canonical design and platform-family reference
+JavaScript in the Classroom is a browser environment where students write, run and test code alongside each exercise. Students practise selection and loops and drawing patterns with turtle graphics.

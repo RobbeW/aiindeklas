@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { integrateGameSitemap } from "./assembled-game.mjs";
 import { cp, mkdir, readFile, readdir, rm, stat } from "node:fs/promises";
 import { dirname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -95,7 +96,9 @@ for (const sourceFile of gameSourceFiles) {
     throw new Error("Game file hash mismatch after copy: " + relative(gameDist, sourceFile));
   }
 }
+const gameIndexing = await integrateGameSitemap(output, gameTarget);
 report.zelflerende_games = {
+  ...gameIndexing,
   destination: "zelflerende-games/",
   file_count: gameSourceFiles.length,
   sha256: Object.fromEntries(await Promise.all(gameSourceFiles.map(async (file) => [

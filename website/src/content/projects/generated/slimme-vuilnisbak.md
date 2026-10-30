@@ -1,6 +1,6 @@
 ---
 id: "source-project-slimme-vuilnisbak"
-title: "Project Slimme Vuilnisbak"
+title: "Smart Bin"
 slug: "slimme-vuilnisbak"
 locale: "en"
 translation_key: null
@@ -12,11 +12,11 @@ created_at: null
 updated_at: null
 published_at: null
 author: "robbe-wulgaert"
-excerpt: "AI project and lifecycle explanation reference"
+excerpt: "Smart Bin has students train and test an image recognition model and connect its prediction to a microcontroller."
 hero: null
 seo:
-  title: "Project Slimme Vuilnisbak"
-  description: "AI project and lifecycle explanation reference"
+  title: "Smart Bin"
+  description: "Smart Bin has students train and test an image recognition model and connect its prediction to a microcontroller."
   canonical_path: "/projects"
   image: null
   noindex: true
@@ -31,4 +31,4 @@ hardware: []
 featured: true
 ---
 
-AI project and lifecycle explanation reference
+Smart Bin has students train and test an image recognition model and connect its prediction to a microcontroller. Students practise labelling data and testing models and discussing confidence and missing examples.

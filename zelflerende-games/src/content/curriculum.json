@@ -1,0 +1,182 @@
+{
+  "version": 1,
+  "section": {
+    "kicker": {
+      "nl": "Plaats in de leerlijn",
+      "en": "Place in the learning path"
+    },
+    "title": {
+      "nl": "Van platformen naar projecten.",
+      "en": "From platforms to projects."
+    },
+    "intro": {
+      "nl": "De platformen bouwen het computationeel denken op. De projecten gebruiken dat denken in een vakoverschrijdende opdracht waarin leerlingen bouwen, meten, testen en besluiten.",
+      "en": "The platforms build computational thinking. The projects use that thinking in a cross-curricular assignment in which students build, measure, test and conclude."
+    },
+    "ariaLabel": {
+      "nl": "Leerlijn van platformen en projecten",
+      "en": "Learning path of platforms and projects"
+    }
+  },
+  "root": {
+    "title": {
+      "nl": "Leren computationeel denken",
+      "en": "Learning computational thinking"
+    },
+    "description": {
+      "nl": "van blokken naar code, van code naar onderzoek",
+      "en": "from blocks to code, from code to research"
+    },
+    "href": "https://www.aiindeklas.be"
+  },
+  "platforms": [
+    {
+      "id": "blockly",
+      "title": {
+        "nl": "Blockly",
+        "en": "Blockly"
+      },
+      "description": {
+        "nl": "visueel denken in stappen.",
+        "en": "visual step-by-step thinking."
+      },
+      "href": "https://robbew.github.io/Blockly/"
+    },
+    {
+      "id": "javascript",
+      "title": {
+        "nl": "JavaScript",
+        "en": "JavaScript"
+      },
+      "description": {
+        "nl": "logica in echte code.",
+        "en": "logic in real code."
+      },
+      "href": "https://robbew.github.io/jsindeklas/"
+    },
+    {
+      "id": "html",
+      "title": {
+        "nl": "HTML",
+        "en": "HTML"
+      },
+      "description": {
+        "nl": "webpagina's structureren.",
+        "en": "structuring webpages."
+      },
+      "href": "https://robbew.github.io/htmlindeklas/"
+    },
+    {
+      "id": "dodona",
+      "title": {
+        "nl": "Dodona",
+        "en": "Dodona"
+      },
+      "description": {
+        "nl": "Python in de Klas met opvolging.",
+        "en": "Python in the Classroom with tracking."
+      },
+      "href": "https://dodona.be/nl/courses/2641/"
+    },
+    {
+      "id": "delphi",
+      "title": {
+        "nl": "Delphi",
+        "en": "Delphi"
+      },
+      "description": {
+        "nl": "Python oefenen in de browser.",
+        "en": "Practice Python in the browser."
+      },
+      "href": "https://robbew.github.io/delphi/"
+    }
+  ],
+  "projects": [
+    {
+      "id": "smartplants",
+      "title": {
+        "nl": "Smart Plants",
+        "en": "Smart Plants"
+      },
+      "description": {
+        "nl": "Arduino, bodemvochtigheid, kalibratie en data.",
+        "en": "Arduino, soil moisture, calibration and data."
+      },
+      "href": "https://robbew.github.io/smartplants/"
+    },
+    {
+      "id": "robothand",
+      "title": {
+        "nl": "Robothand",
+        "en": "Robotic hand"
+      },
+      "description": {
+        "nl": "Arduino, sensoren, servo's en beweging.",
+        "en": "Arduino, sensors, servos and movement."
+      },
+      "href": "https://robbew.github.io/robothand/"
+    },
+    {
+      "id": "wind",
+      "title": {
+        "nl": "Wind",
+        "en": "Wind"
+      },
+      "description": {
+        "nl": "Micro:bit, energie, spanning en stroom.",
+        "en": "Micro:bit, energy, voltage and current."
+      },
+      "href": "https://robbew.github.io/projectwind/"
+    },
+    {
+      "id": "slimme_vuilnisbak",
+      "title": {
+        "nl": "Slimme vuilnisbak",
+        "en": "Smart bin"
+      },
+      "description": {
+        "nl": "AI, beeldherkenning, data en microcontrollers.",
+        "en": "AI, image recognition, data and microcontrollers."
+      },
+      "href": "https://robbew.github.io/slimme_vuilnisbak/"
+    },
+    {
+      "id": "games",
+      "title": {
+        "nl": "Zelflerende games",
+        "en": "Self-learning games"
+      },
+      "description": {
+        "nl": "Aan de slag met machine learning",
+        "en": "Getting started with machine learning"
+      },
+      "href": "https://robbew.github.io/aiindeklas/zelflerende-games/"
+    },
+    {
+      "id": "fijnstof",
+      "title": {
+        "nl": "Fijnstof",
+        "en": "Particulate matter"
+      },
+      "description": {
+        "nl": "Arduino, luchtkwaliteit, data en postersessie.",
+        "en": "Arduino, air quality, data and poster session."
+      },
+      "href": "https://robbew.github.io/projectfijnstof/"
+    }
+  ],
+  "labels": {
+    "platforms": {
+      "nl": "Platformen",
+      "en": "Platforms"
+    },
+    "projects": {
+      "nl": "STEaM-projecten",
+      "en": "STEaM projects"
+    },
+    "dodonaPair": {
+      "nl": "Dodona en Delphi",
+      "en": "Dodona and Delphi"
+    }
+  }
+}

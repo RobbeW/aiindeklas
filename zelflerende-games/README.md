@@ -39,7 +39,7 @@ Learner screens use short Dutch instructions. Flappy explanations and questions 
 
 The current UI supports `?view=flappy&step=teach` and `?view=car&step=population` deep links, browser history, example deletion undo and scoped experiment removal. An initial splash clears when the app is ready and provides startup failure/retry feedback. See `../docs/validation/ui-improvements.md`. The separate root `index.html` is a read-only Blockly landing-page design reference, analyzed in `../docs/design/landing-reference.md`; it is not part of this app package.
 
-The default URL now opens the dedicated **Zelflerend in de Klas** landing. `?view=games` opens the game chooser; existing game/stage URLs still open exercises directly. Teacher lesson cards are available at `leskaarten.html` with print styles. Copy follows the author's practical Dutch reference voice. See `../docs/validation/landing-page.md`; the supplied root reference remains unchanged.
+The default URL now opens the dedicated **Zelflerende games** landing. `?view=games` opens the game chooser; existing game/stage URLs still open exercises directly. Teacher lesson cards are available at `leskaarten.html` with print styles. Copy follows the author's practical Dutch reference voice. See `../docs/validation/landing-page.md`; the supplied root reference remains unchanged.
 
 ## Flappy lesson pages
 
@@ -119,3 +119,17 @@ This scene finishes after its recorded attempts, so it can exceed the nominal75-
 **Bediening → Vergelijk 2× en 8×** optionally places a slower view on the left and faster view on the right. Both use the same recordings and circuit; the faster pane waits before both change circuit together. Switching modes restarts viewing only. The default remains one large view. Reduced-motion preference uses one view at1× with no opacity animation or fast-pane option, including when the preference changes during a session.
 
 Scene changes, circuit changes and Darwin frames use short opacity fades without movement. Preparation, fade, pause, hidden-tab and focus-loss states freeze presentation time and playable input. Returning from a transition requires fresh controller presses. Restart cancels old work and transitions. Browser checks covered phone, TV and4K layout, native fullscreen, pause/restart, complete split and reduced-motion playback; physical-TV endurance and formal flash-safety assessment remain unmeasured.
+
+## Licence and credits
+
+Original project material by Robbe Wulgaert is covered by [LICENSE.md](LICENSE.md). Third-party material retains its own terms and notices; see [credits](public/credits.json). The existing [MIT licence](public/licenses/flappy-source-MIT.txt) applies to the covered legacy Flappy Bird software, not its artwork.
+
+The built landing is complete static HTML in Dutch (`index.html`) and English (`en.html`), generated from the same renderer used by the application. The URL selects the language; saved browser preferences never replace an explicitly requested language. The classroom exercises retain their original Dutch interface. Shared curriculum and reviewed SEO facts are generated from the IW workspace before packaging; the copied app builds independently without that workspace at runtime.
+
+## Static SEO build and preview
+
+`npm run build` type-checks, bundles the app, prerenders both landing documents, writes their sitemap and then records the source version. `PUBLIC_INDEXING_ENABLED=false npm run build` produces noindex landing documents and an empty app sitemap. Generated preview SEO also remains noindex when the environment flag is omitted. Rebuild from public generated SEO before preparing a public release.
+
+Both languages retain the existing query routes, including Flappy, car, editor and demo. JavaScript is required for those interactive activities; the introductory landing, facts, curriculum, privacy and licence remain readable without it.
+
+Authoring-workspace release preparation now uses `node scripts/prepare-seo-release.mjs --fixture-test`. This tool is intentionally excluded from the independently buildable game source package. The earlier `prepare-pages-release.mjs` is a legacy migration helper, not the current SEO handoff.

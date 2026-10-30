@@ -4,6 +4,7 @@ import { mountAppRouter } from './app/router.ts';
 import { mountCircuitWorkshop } from './tracks/workshop-view.ts';
 const root=document.querySelector<HTMLElement>('#app');
 const ready=()=>{root?.removeAttribute('inert');root?.removeAttribute('aria-busy');document.querySelector('#loading-splash')?.remove();};
+if(root && (new URLSearchParams(location.search).has('view') || new URLSearchParams(location.search).get('demo')==='1')) { document.documentElement.lang='nl-BE'; root.innerHTML='<p role="status">De speelvelden laden…</p>'; root.setAttribute('aria-busy','true'); }
 async function start(){
  if(!root)return;
  if(new URLSearchParams(location.search).get('demo')==='1'){await mountShowFloor(root);}

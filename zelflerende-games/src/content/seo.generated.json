@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "project": {
+    "id": "games",
+    "source_dir": "AI Zelfrijdende Auto/web",
+    "canonical": "https://robbew.github.io/aiindeklas/zelflerende-games/",
+    "category": "project",
+    "title": {
+      "nl": "Zelflerende games",
+      "en": "Self-learning games"
+    },
+    "description": {
+      "nl": "Zelflerende games laat leerlingen met Flappy Bird en een raceauto onderzoeken hoe een computer leert uit voorbeelden, beloningen en selectie.",
+      "en": "Self-learning games lets students use Flappy Bird and a racing car to explore how a computer learns from examples, rewards and selection."
+    },
+    "definition": {
+      "nl": "Zelflerende games laat leerlingen met Flappy Bird en een raceauto onderzoeken hoe een computer leert uit voorbeelden, beloningen en selectie.",
+      "en": "Self-learning games lets students use Flappy Bird and a racing car to explore how a computer learns from examples, rewards and selection."
+    },
+    "facts": [
+      {
+        "label": {
+          "nl": "Games",
+          "en": "Games"
+        },
+        "value": {
+          "nl": "Flappy Bird en raceauto",
+          "en": "Flappy Bird and racing car"
+        }
+      },
+      {
+        "label": {
+          "nl": "Werkwijze",
+          "en": "Approach"
+        },
+        "value": {
+          "nl": "Spelen, voorspellen, trainen en vergelijken",
+          "en": "Play, predict, train and compare"
+        }
+      },
+      {
+        "label": {
+          "nl": "Benodigd",
+          "en": "Requirements"
+        },
+        "value": {
+          "nl": "Laptop met toetsenbord; code schrijven hoeft niet",
+          "en": "Laptop with keyboard; no coding required"
+        }
+      }
+    ],
+    "teaches": {
+      "nl": [
+        "Voorbeelden en beloningen onderzoeken",
+        "Modellen eerlijk vergelijken"
+      ],
+      "en": [
+        "Exploring examples and rewards",
+        "Comparing models fairly"
+      ]
+    },
+    "image": {
+      "path": "social-preview.png",
+      "alt": {
+        "nl": "Zelflerende games — lesproject",
+        "en": "Self-learning Games — learning project"
+      }
+    },
+    "licensePath": "LICENSE.md"
+  },
+  "author": {
+    "id": "https://robbew.github.io/aiindeklas/#robbe-wulgaert",
+    "url": "https://robbew.github.io/aiindeklas/",
+    "name": "Robbe Wulgaert"
+  },
+  "locales": {
+    "nl": {
+      "lang": "nl-BE",
+      "title": "Zelflerende games",
+      "description": "Zelflerende games laat leerlingen met Flappy Bird en een raceauto onderzoeken hoe een computer leert uit voorbeelden, beloningen en selectie.",
+      "canonical": "https://robbew.github.io/aiindeklas/zelflerende-games/",
+      "headHtml": "<title>Zelflerende games</title>\n<meta name=\"description\" content=\"Zelflerende games laat leerlingen met Flappy Bird en een raceauto onderzoeken hoe een computer leert uit voorbeelden, beloningen en selectie.\">\n<meta name=\"robots\" content=\"index, follow, max-image-preview:large\">\n<link rel=\"canonical\" href=\"https://robbew.github.io/aiindeklas/zelflerende-games/\">\n<link rel=\"alternate\" hreflang=\"nl-BE\" href=\"https://robbew.github.io/aiindeklas/zelflerende-games/\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://robbew.github.io/aiindeklas/zelflerende-games/en.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://robbew.github.io/aiindeklas/zelflerende-games/\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:locale\" content=\"nl_BE\">\n<meta property=\"og:title\" content=\"Zelflerende games\">\n<meta property=\"og:description\" content=\"Zelflerende games laat leerlingen met Flappy Bird en een raceauto onderzoeken hoe een computer leert uit voorbeelden, beloningen en selectie.\">\n<meta property=\"og:url\" content=\"https://robbew.github.io/aiindeklas/zelflerende-games/\">\n<meta property=\"og:image\" content=\"https://robbew.github.io/aiindeklas/zelflerende-games/social-preview.png\">\n<meta property=\"og:image:alt\" content=\"Zelflerende games — lesproject\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:title\" content=\"Zelflerende games\">\n<meta name=\"twitter:description\" content=\"Zelflerende games laat leerlingen met Flappy Bird en een raceauto onderzoeken hoe een computer leert uit voorbeelden, beloningen en selectie.\">\n<meta name=\"twitter:image\" content=\"https://robbew.github.io/aiindeklas/zelflerende-games/social-preview.png\">\n<meta name=\"twitter:image:alt\" content=\"Zelflerende games — lesproject\">\n<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://robbew.github.io/aiindeklas/zelflerende-games/#webpage\",\"url\":\"https://robbew.github.io/aiindeklas/zelflerende-games/\",\"name\":\"Zelflerende games\",\"description\":\"Zelflerende games laat leerlingen met Flappy Bird en een raceauto onderzoeken hoe een computer leert uit voorbeelden, beloningen en selectie.\",\"inLanguage\":\"nl-BE\",\"about\":{\"@id\":\"https://robbew.github.io/aiindeklas/zelflerende-games/#resource\"},\"mainEntity\":{\"@id\":\"https://robbew.github.io/aiindeklas/zelflerende-games/#resource\"}},{\"@type\":\"Person\",\"@id\":\"https://robbew.github.io/aiindeklas/#robbe-wulgaert\",\"name\":\"Robbe Wulgaert\",\"url\":\"https://robbew.github.io/aiindeklas/\"},{\"@type\":[\"CreativeWork\",\"LearningResource\"],\"@id\":\"https://robbew.github.io/aiindeklas/zelflerende-games/#resource\",\"name\":\"Zelflerende games\",\"description\":\"Zelflerende games laat leerlingen met Flappy Bird en een raceauto onderzoeken hoe een computer leert uit voorbeelden, beloningen en selectie.\",\"url\":\"https://robbew.github.io/aiindeklas/zelflerende-games/\",\"creator\":{\"@id\":\"https://robbew.github.io/aiindeklas/#robbe-wulgaert\"},\"license\":\"https://robbew.github.io/aiindeklas/zelflerende-games/LICENSE.md\",\"inLanguage\":\"nl-BE\",\"teaches\":[\"Voorbeelden en beloningen onderzoeken\",\"Modellen eerlijk vergelijken\"],\"abstract\":\"Games: Flappy Bird en raceauto; Werkwijze: Spelen, voorspellen, trainen en vergelijken; Benodigd: Laptop met toetsenbord; code schrijven hoeft niet\"}]}</script>",
+      "definition": "Zelflerende games laat leerlingen met Flappy Bird en een raceauto onderzoeken hoe een computer leert uit voorbeelden, beloningen en selectie.",
+      "facts": [
+        {
+          "label": "Games",
+          "value": "Flappy Bird en raceauto"
+        },
+        {
+          "label": "Werkwijze",
+          "value": "Spelen, voorspellen, trainen en vergelijken"
+        },
+        {
+          "label": "Benodigd",
+          "value": "Laptop met toetsenbord; code schrijven hoeft niet"
+        }
+      ],
+      "teaches": [
+        "Voorbeelden en beloningen onderzoeken",
+        "Modellen eerlijk vergelijken"
+      ]
+    },
+    "en": {
+      "lang": "en",
+      "title": "Self-learning games",
+      "description": "Self-learning games lets students use Flappy Bird and a racing car to explore how a computer learns from examples, rewards and selection.",
+      "canonical": "https://robbew.github.io/aiindeklas/zelflerende-games/en.html",
+      "headHtml": "<title>Self-learning games</title>\n<meta name=\"description\" content=\"Self-learning games lets students use Flappy Bird and a racing car to explore how a computer learns from examples, rewards and selection.\">\n<meta name=\"robots\" content=\"index, follow, max-image-preview:large\">\n<link rel=\"canonical\" href=\"https://robbew.github.io/aiindeklas/zelflerende-games/en.html\">\n<link rel=\"alternate\" hreflang=\"nl-BE\" href=\"https://robbew.github.io/aiindeklas/zelflerende-games/\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://robbew.github.io/aiindeklas/zelflerende-games/en.html\">\n<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://robbew.github.io/aiindeklas/zelflerende-games/\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:locale\" content=\"en_GB\">\n<meta property=\"og:title\" content=\"Self-learning games\">\n<meta property=\"og:description\" content=\"Self-learning games lets students use Flappy Bird and a racing car to explore how a computer learns from examples, rewards and selection.\">\n<meta property=\"og:url\" content=\"https://robbew.github.io/aiindeklas/zelflerende-games/en.html\">\n<meta property=\"og:image\" content=\"https://robbew.github.io/aiindeklas/zelflerende-games/social-preview.png\">\n<meta property=\"og:image:alt\" content=\"Self-learning Games — learning project\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:title\" content=\"Self-learning games\">\n<meta name=\"twitter:description\" content=\"Self-learning games lets students use Flappy Bird and a racing car to explore how a computer learns from examples, rewards and selection.\">\n<meta name=\"twitter:image\" content=\"https://robbew.github.io/aiindeklas/zelflerende-games/social-preview.png\">\n<meta name=\"twitter:image:alt\" content=\"Self-learning Games — learning project\">\n<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://robbew.github.io/aiindeklas/zelflerende-games/en.html#webpage\",\"url\":\"https://robbew.github.io/aiindeklas/zelflerende-games/en.html\",\"name\":\"Self-learning games\",\"description\":\"Self-learning games lets students use Flappy Bird and a racing car to explore how a computer learns from examples, rewards and selection.\",\"inLanguage\":\"en\",\"about\":{\"@id\":\"https://robbew.github.io/aiindeklas/zelflerende-games/#resource\"},\"mainEntity\":{\"@id\":\"https://robbew.github.io/aiindeklas/zelflerende-games/#resource\"}},{\"@type\":\"Person\",\"@id\":\"https://robbew.github.io/aiindeklas/#robbe-wulgaert\",\"name\":\"Robbe Wulgaert\",\"url\":\"https://robbew.github.io/aiindeklas/\"},{\"@type\":[\"CreativeWork\",\"LearningResource\"],\"@id\":\"https://robbew.github.io/aiindeklas/zelflerende-games/#resource\",\"name\":\"Self-learning games\",\"description\":\"Self-learning games lets students use Flappy Bird and a racing car to explore how a computer learns from examples, rewards and selection.\",\"url\":\"https://robbew.github.io/aiindeklas/zelflerende-games/\",\"creator\":{\"@id\":\"https://robbew.github.io/aiindeklas/#robbe-wulgaert\"},\"license\":\"https://robbew.github.io/aiindeklas/zelflerende-games/LICENSE.md\",\"inLanguage\":\"en\",\"teaches\":[\"Exploring examples and rewards\",\"Comparing models fairly\"],\"abstract\":\"Games: Flappy Bird and racing car; Approach: Play, predict, train and compare; Requirements: Laptop with keyboard; no coding required\"}]}</script>",
+      "definition": "Self-learning games lets students use Flappy Bird and a racing car to explore how a computer learns from examples, rewards and selection.",
+      "facts": [
+        {
+          "label": "Games",
+          "value": "Flappy Bird and racing car"
+        },
+        {
+          "label": "Approach",
+          "value": "Play, predict, train and compare"
+        },
+        {
+          "label": "Requirements",
+          "value": "Laptop with keyboard; no coding required"
+        }
+      ],
+      "teaches": [
+        "Exploring examples and rewards",
+        "Comparing models fairly"
+      ]
+    }
+  }
+}

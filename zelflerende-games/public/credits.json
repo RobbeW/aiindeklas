@@ -1,4 +1,8 @@
 {
+  "originalMaterial": {
+    "license": "LICENSE.md",
+    "scope": "Original project material created by Robbe Wulgaert. Third-party materials retain their own terms and notices; the legacy MIT notice applies to covered Flappy Bird software."
+  },
   "flappy": {
     "artwork": {
       "source": "Sprites copied unchanged from the supplied FlappyBird/assets/sprites/ folder at the user’s request (2026-10-24).",

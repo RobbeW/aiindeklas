@@ -1,6 +1,6 @@
 ---
 id: "source-project-robothand"
-title: "Project Robothand"
+title: "Robotic Hand Project"
 slug: "robothand"
 locale: "en"
 translation_key: null
@@ -12,11 +12,11 @@ created_at: null
 updated_at: null
 published_at: null
 author: "robbe-wulgaert"
-excerpt: "STEaM project, hardware, privacy, and project landing reference"
+excerpt: "The Robotic Hand Project has students build a sensor glove that controls a robotic hand through Arduino and servo motors."
 hero: null
 seo:
-  title: "Project Robothand"
-  description: "STEaM project, hardware, privacy, and project landing reference"
+  title: "Robotic Hand Project"
+  description: "The Robotic Hand Project has students build a sensor glove that controls a robotic hand through Arduino and servo motors."
   canonical_path: "/projects"
   image: null
   noindex: true
@@ -31,4 +31,4 @@ hardware: []
 featured: true
 ---
 
-STEaM project, hardware, privacy, and project landing reference
+The Robotic Hand Project has students build a sensor glove that controls a robotic hand through Arduino and servo motors. Students practise processing sensor readings and controlling actuators and testing gestures.

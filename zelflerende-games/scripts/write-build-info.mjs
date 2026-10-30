@@ -8,7 +8,7 @@ async function files(path){
  const entries=await readdir(path,{withFileTypes:true});
  return(await Promise.all(entries.sort((a,b)=>a.name.localeCompare(b.name,'en')).map(entry=>entry.isDirectory()?files(join(path,entry.name)):entry.isFile()?[join(path,entry.name)]:[]))).flat();
 }
-const inputs=[...(await files(join(root,'src'))),...(await files(join(root,'public'))),...['scripts/write-build-info.mjs','index.html','package.json','package-lock.json','tsconfig.json'].map(p=>join(root,p))].sort();
+const inputs=[...(await files(join(root,'src'))),...(await files(join(root,'public'))),...['scripts/write-build-info.mjs','scripts/prerender.mjs','index.html','package.json','package-lock.json','tsconfig.json'].map(p=>join(root,p))].sort();
 const hash=createHash('sha256');
 for(const path of inputs){hash.update(relative(root,path).split('\\').join('/')+'\0');hash.update(await readFile(path));hash.update('\0');}
 const sourceSha256=hash.digest('hex');

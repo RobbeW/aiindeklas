@@ -3,6 +3,7 @@ import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 import YAML from "yaml";
+import { isAssembledGameUrl } from "../../scripts/assembled-game.mjs";
 import {
   excludedRouteReasons,
   normalizeRoute,
@@ -173,6 +174,7 @@ export const validateBuiltSite = async ({
       errors.push(`${label}: internal ${kind} escapes configured base (${rawUrl})`);
       return;
     }
+    if (isAssembledGameUrl(target, kind)) return;
     const targetFile = outputFileForLogicalPath(logical, outputDirectory);
     if (!await exists(targetFile)) {
       const counterpart = collisionCounterparts.get(logical);

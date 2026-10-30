@@ -1,6 +1,6 @@
 ---
 id: "source-project-delphi"
-title: "Python in Delphi"
+title: "Project Delphi"
 slug: "delphi"
 locale: "en"
 translation_key: null
@@ -12,11 +12,11 @@ created_at: null
 updated_at: null
 published_at: null
 author: "robbe-wulgaert"
-excerpt: "canonical design, background treatment, and browser-tool reference"
+excerpt: "Project Delphi is a browser learning environment where students write, run and practise Python with automatic feedback."
 hero: null
 seo:
-  title: "Python in Delphi"
-  description: "canonical design, background treatment, and browser-tool reference"
+  title: "Project Delphi"
+  description: "Project Delphi is a browser learning environment where students write, run and practise Python with automatic feedback."
   canonical_path: "/projects"
   image: null
   noindex: true
@@ -31,4 +31,4 @@ hardware: []
 featured: true
 ---
 
-canonical design, background treatment, and browser-tool reference
+Project Delphi is a browser learning environment where students write, run and practise Python with automatic feedback. Students practise variables, conditions and loops and testing and improving python code.

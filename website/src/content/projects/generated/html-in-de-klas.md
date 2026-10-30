@@ -1,6 +1,6 @@
 ---
 id: "source-project-html-in-de-klas"
-title: "HTML in de Klas"
+title: "HTML in the Classroom"
 slug: "html-in-de-klas"
 locale: "en"
 translation_key: null
@@ -12,11 +12,11 @@ created_at: null
 updated_at: null
 published_at: null
 author: "robbe-wulgaert"
-excerpt: "canonical design and responsive layout reference"
+excerpt: "HTML in the Classroom is a browser practice environment where students write HTML and immediately preview their webpage."
 hero: null
 seo:
-  title: "HTML in de Klas"
-  description: "canonical design and responsive layout reference"
+  title: "HTML in the Classroom"
+  description: "HTML in the Classroom is a browser practice environment where students write HTML and immediately preview their webpage."
   canonical_path: "/projects"
   image: null
   noindex: true
@@ -31,4 +31,4 @@ hardware: []
 featured: true
 ---
 
-canonical design and responsive layout reference
+HTML in the Classroom is a browser practice environment where students write HTML and immediately preview their webpage. Students practise structuring webpages with html and adding text, lists and media.

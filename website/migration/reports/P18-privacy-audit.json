@@ -1,10 +1,10 @@
 {
   "schema": "website-migration.p18-privacy-audit/v2",
   "artifact": "../_site",
-  "html_pages": 367,
-  "pages_with_privacy_information": 362,
-  "pages_with_consent_controls": 362,
-  "pages_with_privacy_preference_storage": 362,
+  "html_pages": 371,
+  "pages_with_privacy_information": 363,
+  "pages_with_consent_controls": 363,
+  "pages_with_privacy_preference_storage": 363,
   "automatic_external_resources": 0,
   "passed": true,
   "problems": []

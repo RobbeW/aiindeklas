@@ -78,7 +78,7 @@
     }
   ],
   "unresolved_case_collision_pairs": [],
-  "case_sensitive_route_verification": false,
+  "case_sensitive_route_verification": true,
   "expected_index_state": "indexable",
   "status": "passed",
   "failures": []

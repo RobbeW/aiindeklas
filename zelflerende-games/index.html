@@ -5,37 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f8f7f3" />
     <link rel="icon" type="image/png" sizes="64x64" href="./favicon.png?v=ff7968036640" />
-    <title>Zelflerende games — AI in de Klas</title>
-    <meta name="description" content="Kan jij een computer leren spelen? Geef voorbeelden in Flappy Bird, laat het model zelf oefenen en ontdek hoe raceauto’s leren over verschillende generaties." />
-    <meta name="author" content="Robbe Wulgaert · AI in de Klas" />
-    <meta name="copyright" content="Copyright (c) 2026 Robbe Wulgaert" />
-    <link rel="canonical" href="https://robbew.github.io/aiindeklas/zelflerende-games/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="nl_BE" />
-    <meta property="og:site_name" content="AI in de Klas" />
-    <meta property="og:title" content="Zelflerende games — AI in de Klas" />
-    <meta property="og:description" content="Speel Flappy Bird, bouw een racecircuit en onderzoek hoe een computer leert door voorbeelden, beloningen en selectie." />
-    <meta property="og:url" content="https://robbew.github.io/aiindeklas/zelflerende-games/" />
-    <style>
-      #loading-splash{position:fixed;inset:0;z-index:100;background:#F8F7F3;color:#160033;display:grid;place-items:center;font-family:system-ui,sans-serif;text-align:center;padding:24px}
-      #loading-splash .splash-mark{width:80px;height:80px;margin:0 auto 22px;border:3px solid #e2ddea;border-top-color:#5200FF;border-radius:24px;display:grid;place-items:center;animation:loading-pulse 1.4s ease-in-out infinite}
-      #loading-splash h1{font-size:clamp(28px,5vw,44px);letter-spacing:-.04em;margin:8px 0}
-      #loading-splash .splash-kicker{color:#5200FF;font-size:12px;font-weight:750;letter-spacing:.14em;text-transform:uppercase}
-      #loading-splash p{line-height:1.6}#loading-splash a{color:#3700B3}
-      @keyframes loading-pulse{50%{transform:translateY(-5px);box-shadow:0 10px 28px #5200ff15}}
-      @media(prefers-reduced-motion:reduce){#loading-splash .splash-mark{animation:none}}
-    </style>
+    <!-- SEO_HEAD -->
   </head>
   <body>
-    <div id="loading-splash" role="status" aria-live="polite">
-      <div><div class="splash-mark" aria-hidden="true"><svg width="46" height="46" viewBox="0 0 48 48"><path d="M12 33V15a8 8 0 0 1 8-8h8a8 8 0 0 1 8 8v18a8 8 0 0 1-8 8h-8a8 8 0 0 1-8-8Z" fill="none" stroke="#5200FF" stroke-width="4"/><path d="M11 24h26" stroke="#3DFFD0" stroke-width="5"/><circle cx="24" cy="24" r="5" fill="#5200FF"/></svg></div>
-      <p class="splash-kicker">AI in de klas</p><h1>Zelflerende games</h1><p id="loading-message">De speelvelden laden…</p><a id="loading-retry" href="" hidden>Probeer opnieuw</a>
-      <noscript><p>Schakel JavaScript in om te spelen en modellen te trainen.</p><style>#loading-message,.splash-mark{display:none!important}</style></noscript></div>
-    </div>
-    <div id="app" aria-busy="true" inert></div>
-    <script>
-      window.addEventListener('error',function(){var message=document.getElementById('loading-message');if(message){message.textContent='Laden lukt niet. Controleer je verbinding en probeer opnieuw.';document.getElementById('loading-retry').hidden=false;}},true);
-    </script>
+    <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

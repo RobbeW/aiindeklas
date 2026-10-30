@@ -1,6 +1,6 @@
 ---
 id: "source-project-smartplants"
-title: "SmartPlants"
+title: "Smart Plants Project"
 slug: "smartplants"
 locale: "en"
 translation_key: null
@@ -12,11 +12,11 @@ created_at: null
 updated_at: null
 published_at: null
 author: "robbe-wulgaert"
-excerpt: "structured research-project and bilingual toggle reference"
+excerpt: "The Smart Plants Project has students measure soil moisture and calibrate a sensor to build a plant monitor."
 hero: null
 seo:
-  title: "SmartPlants"
-  description: "structured research-project and bilingual toggle reference"
+  title: "Smart Plants Project"
+  description: "The Smart Plants Project has students measure soil moisture and calibrate a sensor to build a plant monitor."
   canonical_path: "/projects"
   image: null
   noindex: true
@@ -31,4 +31,4 @@ hardware: []
 featured: true
 ---
 
-structured research-project and bilingual toggle reference
+The Smart Plants Project has students measure soil moisture and calibrate a sensor to build a plant monitor. Students practise calibrating sensors and recognising input, processing and output.
