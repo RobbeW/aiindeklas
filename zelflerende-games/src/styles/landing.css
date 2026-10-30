@@ -145,3 +145,22 @@
  .landing-page .lp-game-art { height: 200px; }
  .landing-page .lp-game-art .lp-track-scene svg { max-height: 195px; }
 }
+
+.landing-page .lp-family-tree { margin-top: 32px; }
+.landing-page .lp-tree-root { display: flex; justify-content: center; }
+.landing-page .lp-tree-node { display: flex; flex-direction: column; gap: 5px; padding: 15px 18px; border: 1px solid var(--border); border-radius: 12px; background: white; color: var(--ink); box-shadow: 0 8px 28px #16003308; transition: transform var(--motion-fast) var(--ease-standard), border-color var(--motion-fast) var(--ease-standard); }
+.landing-page .lp-tree-node:hover { transform: translateY(-1px); border-color: var(--brand-purple); }
+.landing-page .lp-tree-node span { color: var(--muted); font-size: 14px; line-height: 1.5; }
+.landing-page .lp-tree-node.root { text-align: center; border-color: var(--brand-purple); background: var(--brand-purple); color: white; }
+.landing-page .lp-tree-node.root span { color: white; }
+.landing-page .lp-tree-node.dodona { background: var(--brand-aqua); }
+.landing-page .lp-tree-node.current { border: 2px solid var(--brand-purple); background: #f1ebff; }
+.landing-page .lp-tree-branches { position: relative; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 32px; padding-top: 36px; }
+.landing-page .lp-tree-branches::before { content: ''; position: absolute; top: 0; left: 50%; height: 20px; border-left: 2px solid var(--border); }
+.landing-page .lp-tree-branch { position: relative; border-top: 2px solid var(--border); padding-top: 18px; }
+.landing-page .lp-branch-title { margin-bottom: 12px; color: var(--brand-purple-dark); font-weight: 800; }
+.landing-page .lp-tree-stack { display: grid; gap: 10px; }
+.landing-page .lp-delphi-dodona-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.landing-page .lp-logic-note { margin-top: 24px; padding: 18px; border-left: 3px solid var(--brand-purple); color: var(--muted); background: white; line-height: 1.6; }
+@media (max-width: 600px) { .landing-page .lp-tree-branches, .landing-page .lp-delphi-dodona-pair { grid-template-columns: minmax(0,1fr); } }
+@media (prefers-reduced-motion: reduce) { .landing-page .lp-tree-node { transition: none; } .landing-page .lp-tree-node:hover { transform: none; } }
