@@ -3,7 +3,7 @@ import { strict as assert } from 'node:assert';
 import { createServer } from 'vite';
 import { readFile } from 'node:fs/promises';
 
-test('shared renderer uses URL locale and registry facts', async () => {
+test('shared renderer uses URL locale and definition', async () => {
  const server=await createServer({server:{middlewareMode:true,ws:false},appType:'custom'});
  try {
   const {renderLandingMarkup,landingLocale}=await server.ssrLoadModule('/src/app/landing-render.ts');
@@ -12,7 +12,10 @@ test('shared renderer uses URL locale and registry facts', async () => {
   const nl=renderLandingMarkup('nl','./'), en=renderLandingMarkup('en','./');
   assert.match(nl,/Zelflerende games laat leerlingen/);
   assert.match(en,/Self-learning games lets students/i);
-  assert.match(en,/Requirements/);
+  for (const markup of [nl, en]) {
+   assert.doesNotMatch(markup,/class="lp-facts"/);
+   assert.match(markup, /class="lp-tree-node root" href="https:\/\/www\.robbewulgaert\.be"/);
+  }
   assert.match(en,/<a href="en.html" data-language-choice="en" aria-current="page">/);
   assert.match(en,/Privacy and licence/);
   assert.match(nl,/src="\.\/assets\/flappy\//);
