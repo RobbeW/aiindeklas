@@ -71,7 +71,7 @@ export async function mountFlappyDuelView(
             <p id="duel-computer-summary" class="duel-side-summary" aria-live="off">Score: 0 · 0.0 s</p>
           </article>
         </div>
-        <p class="muted">Gebruik Spatie of ↑, of kies Flap. Een wedstrijd pauzeert zodra je dit venster verlaat.</p>
+        <p class="muted">Gebruik Spatie of ↑, kies Flap of druk op A op een standaardcontroller. Een wedstrijd pauzeert zodra je dit venster verlaat.</p>
       </section>
     </main>
   `;
@@ -104,7 +104,7 @@ export async function mountFlappyDuelView(
   let accumulatorMs = 0;
   let disposed = false;
   let loaded = false;
-  const input = createFlappyInput({ button: flapButton, canvas: playerCanvas, window: windowRef, document: documentRef });
+  const input = createFlappyInput({ button: flapButton, canvas: playerCanvas, window: windowRef, document: documentRef, gamepad: true });
 
   const stopFrame = (): void => {
     if (frameHandle !== undefined) windowRef.cancelAnimationFrame(frameHandle);

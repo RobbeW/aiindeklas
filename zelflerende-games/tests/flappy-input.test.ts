@@ -17,7 +17,7 @@ interface InputHarness {
   readonly button: HTMLButtonElement;
 }
 
-function createHarness(): InputHarness {
+function createHarness(gamepadProvider?: import("../src/input/flappy-gamepad.ts").FlappyPadProvider): InputHarness {
   const windowTarget = new EventTarget();
   const documentRef = Object.assign(new EventTarget(), {
     body: {} as Element,
@@ -32,6 +32,8 @@ function createHarness(): InputHarness {
     canvas,
     window: windowTarget as unknown as Window,
     document: documentRef as unknown as Document,
+    gamepad: !!gamepadProvider,
+    gamepadProvider,
   });
   return { input, windowTarget, documentRef, canvas, button };
 }
@@ -129,4 +131,16 @@ test("play episode reset reuses the recorded seed and clears the result", () => 
   assert.equal(FLAPPY_PLAY_SEED, 20261022);
   assert.deepEqual(again, first);
   assert.equal(environment.completedResult, undefined);
+});
+
+
+test("controller flaps join the normal action queue and held buttons do not repeat", () => {
+  let held = false;
+  const harness = createHarness(() => [{connected: true, mapping: "standard", buttons: [{pressed: held, touched: false, value: held ? 1 : 0}]}]);
+  held = true; assert.equal(harness.input.consumeAction(), 1);
+  assert.equal(harness.input.consumeAction(), 0);
+  harness.input.reset(); assert.equal(harness.input.consumeAction(), 0);
+  held = false; assert.equal(harness.input.consumeAction(), 0);
+  held = true; assert.equal(harness.input.consumeAction(), 1);
+  harness.input.dispose();
 });

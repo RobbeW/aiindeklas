@@ -38,10 +38,16 @@ export async function mountFlappyLearningView(root:HTMLElement,options:{state?:F
  const getState=():FlappyLearningState=>({teach,postRl,practice,human,records:modelRecords,notes});
  const publish=()=>options.onChange?.(getState());
  const updateTeach=(value:TeachState)=>{const id=value.imitationSnapshot&&!value.imitationIsStale?stableIdentity(value.imitationSnapshot.parameters):'';if(id!==imitationId){postRl=undefined;practice=undefined;imitationId=id;}teach=value;publish();};
- const answer=(field:keyof LessonAnswers,label:string)=>{
+ const answer=(field:keyof LessonAnswers,label:string,hypotheses?:readonly string[])=>{
   const wrapper=document.createElement('div');wrapper.className='lesson-answer';const caption=document.createElement('label'),input=document.createElement('textarea');
   input.id=`answer-${currentTab}-${field}`;input.rows=3;input.maxLength=MAX_ANSWER_LENGTH;input.value=notes[currentTab]?.[field]??'';caption.htmlFor=input.id;caption.textContent=label;
-  const step=currentTab;input.addEventListener('input',()=>{notes={...notes,[step]:{prediction:'',reflection:'',nextTry:'',...notes[step],[field]:input.value}};publish();});wrapper.append(caption,input);return wrapper;
+  const step=currentTab;input.addEventListener('input',()=>{notes={...notes,[step]:{prediction:'',reflection:'',nextTry:'',...notes[step],[field]:input.value}};publish();});wrapper.append(caption);
+  if(hypotheses){
+   const list=document.createElement('ul');list.id=`${input.id}-hypotheses`;
+   for(const hypothesis of hypotheses){const item=document.createElement('li');item.textContent=hypothesis;list.append(item);}
+   input.setAttribute('aria-describedby',list.id);wrapper.append(list);
+  }
+  wrapper.append(input);return wrapper;
  };
  const addAction=(label:string,page:LessonPage,secondary=false,tab:ExperienceStep=currentTab)=>{const button=document.createElement('button');button.type='button';button.textContent=label;if(secondary)button.className='secondary';button.onclick=()=>void show(tab,page,true);actions.append(button);};
  async function show(tab:ExperienceStep,page:LessonPage='before',focus=false){
@@ -71,7 +77,7 @@ export async function mountFlappyLearningView(root:HTMLElement,options:{state?:F
    const prediction=notes[tab]?.prediction;
    host.innerHTML=`<section class="card lesson-brief"><p class="eyebrow">${esc(tabs.find(([id])=>id===tab)![1])} · Terugblik</p><h1 tabindex="-1" class="lesson-screen-title">Wat heb je ontdekt?</h1>${tab==='compare'&&prediction?`<blockquote><strong>Je voorspelling</strong><p>${esc(prediction)}</p></blockquote>`:''}<div class="lesson-results-summary"></div><div class="lesson-answers"></div></section>`;
    if(tab==='practice'&&practice?.trainingRuns?.length){const list=document.createElement('ul');list.className='training-run-list';for(const run of practice.trainingRuns){const li=document.createElement('li');li.textContent=`${run.rounds}${run.requestedRounds&&run.requestedRounds!==run.rounds?` van ${run.requestedRounds}`:''} rondes · ${run.agents} vogels · ${run.mode==='fast'?'snelle training':`${run.speed}×`} · ${(run.elapsedMs/1000).toFixed(1).replace('.',',')} s`;const score=document.createElement('p');score.textContent=run.modelCheck?practiceCheckText(run.modelCheck):`Gemiddelde score tijdens oefenen: ${run.meanScore.toFixed(1).replace('.',',')} punten. Geen test vóór en na deze training bewaard.`;li.append(score);list.append(li);}host.querySelector('.lesson-results-summary')!.append(list);}
-   host.querySelector('.lesson-answers')!.append(answer('reflection',phase.reflection));
+   host.querySelector('.lesson-answers')!.append(answer('reflection',phase.reflection,phase.hypotheses));
    if(tab==='play')host.querySelector('.lesson-answers')!.append(answer('nextTry',phase.nextTry??'Hoe presteerde het ongetrainde AI-model? Kan je dit verklaren?'));
    addAction('Terug naar het experiment','experiment',true);const next=tabs[tabs.findIndex(([id])=>id===tab)+1];if(next)addAction(`Volgende: ${next[1].replace(/^\d+ · /,'')}`,'before',false,next[0]);
   }else{
@@ -79,7 +85,7 @@ export async function mountFlappyLearningView(root:HTMLElement,options:{state?:F
    const experiment=host.querySelector<HTMLElement>('.lesson-experiment-host')!;
    if(tab==='practice'&&(!teach?.imitationSnapshot||teach.imitationIsStale)){const b=document.createElement('button');b.className='secondary';b.textContent='Ga naar voorbeelden en train je model';b.onclick=()=>void show('teach','experiment',true);host.querySelector('.lesson-guidance')!.append(b);}
    // Mount the existing simulation only on the experiment page; leaving it stops active work.
-   addAction('Terug naar vooraf','before',true);addAction('Naar de terugblik','after');if(tab==='teach'){const note=document.createElement('p');note.className='lesson-note';note.textContent='Rond je opname af voordat je deze pagina verlaat. Een onafgemaakte opname wordt niet bewaard.';host.append(note);}
+   addAction('Terug naar vooraf','before',true);addAction('Naar de terugblik','after');
    try{
     let view:{dispose():void};
     if(tab==='play')view=await mountFlappyDuelView(experiment);

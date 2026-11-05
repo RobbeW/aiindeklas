@@ -54,7 +54,6 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
     <section class="card" aria-labelledby="teach-title">
       <p class="eyebrow">AI in de klas · leren van voorbeelden</p>
       <h1 id="teach-title">Kijk hoe ik speel</h1>
-      <p>Neem voorbeelden op, train het model en test het op nieuwe openingen.</p>
       <div class="teach__columns">
         <section class="teach__game" aria-labelledby="teach-game-title">
           <h2 id="teach-game-title">Jouw demonstratie</h2>
@@ -62,7 +61,7 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
           <div class="teach__actions"><button id="teach-pause" class="secondary" type="button" disabled>Pauzeer</button><button id="teach-restart" class="secondary" type="button" disabled>Opnieuw starten</button></div>
           <p id="teach-score">Score: 0 · 0 stappen</p>
           <canvas id="teach-canvas" tabindex="0" aria-label="Flappy speelveld; selecteer voor Spatie of pijltje omhoog"></canvas>
-          <p class="muted">Start de opname en flap met Spatie, ↑ of de knop. Pauzeren slaat niets op.</p>
+          <p class="muted">Start de opname en flap met Spatie, ↑, de knop of A op een standaardcontroller. Pauzeren slaat niets op.</p>
           <button id="teach-flap" class="secondary" type="button" disabled>Flap</button>
         </section>
         <section class="teach__panel" aria-label="Oefen en train">
@@ -130,7 +129,7 @@ export async function mountFlappyTeachView(root: HTMLElement, options: TeachView
   let cloneEnvironment: FlappyEnvironment | undefined;
   let clonePolicy: FrozenCloneController | undefined;
   let currentWorld = new FlappyEnvironment();
-  const input = createFlappyInput({ button: flap, canvas });
+  const input = createFlappyInput({ button: flap, canvas, gamepad: true });
 
   const episodeSignature = (): string => dataset.getEpisodes().map((episode) => `${episode.id}:${episode.seed}`).join('|');
   const getState = (): TeachState => Object.freeze({

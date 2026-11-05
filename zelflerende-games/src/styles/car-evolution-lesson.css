@@ -51,7 +51,6 @@
 .evolution-lesson .el__best strong, .evolution-lesson .el__best small { display: block; }
 .evolution-lesson .el__best strong, .evolution-lesson .el__best small { font-size: 13px; }
 .evolution-lesson .el__best small { margin-top: 2px; color: var(--el-muted); line-height: 1.35; }
-.evolution-lesson .el__note { margin: -7px 0 0; color: var(--el-muted); font-size: 13px; }
 .evolution-lesson .el__actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 9px; }
 .evolution-lesson .el__actions button { min-height: 44px; padding: 9px 15px; border: 1px solid #39342d; border-radius: 11px; color: var(--el-ink); background: #fffdf7; font: 650 14px/1.2 system-ui,sans-serif; cursor: pointer; transition: transform var(--motion-fast) var(--ease-standard),background-color var(--motion-fast) var(--ease-standard); }
 .evolution-lesson .el__actions button:hover { transform: translateY(-1px); background: #e8e0d2; }

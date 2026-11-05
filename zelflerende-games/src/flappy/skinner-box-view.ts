@@ -44,7 +44,7 @@ export function mountSkinnerBox(root: HTMLElement): { dispose(): void } {
   const base = (import.meta as ImportMeta & { env?: { BASE_URL?: string } }).env?.BASE_URL ?? '/';
   root.innerHTML = `<section class="skinner-box" aria-labelledby="sb-title">
     <header class="sb__header"><p class="sb__eyebrow">Bekijk het stap voor stap</p><h3 id="sb-title">Licht, hendel en gevolg</h3><p>Het licht geeft aan wat er gebeurt.</p></header>
-    <figure class="sb__figure"><div class="sb__stage">${svg(`${base}assets/flappy/redbird-midflap.png`)}</div><figcaption class="sb__caption">Aangepaste illustratie voor de klas.</figcaption></figure>
+    <figure class="sb__figure"><div class="sb__stage">${svg(`${base}assets/flappy/redbird-midflap.png`)}</div></figure>
     <div class="sb__readout" role="status" aria-live="polite" aria-atomic="true"><div><span class="sb__label">VOORBEELD</span><h3 class="sb__step-title"></h3></div><p class="sb__step-copy"></p><p class="sb__counter">Voer <strong class="sb__total">0</strong> · Schok <strong class="sb__penalty-total">0</strong></p></div>
     <div class="sb__controls" aria-label="Bediening van de illustratie"><button class="secondary sb__play" type="button">Afspelen</button><button class="secondary sb__next" type="button">Volgende</button><button class="secondary sb__reset" type="button">Opnieuw</button></div>
   </section>`;

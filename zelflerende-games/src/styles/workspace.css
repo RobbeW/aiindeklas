@@ -21,11 +21,14 @@
 .lesson-actions { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin: 6px 0; }
 .lesson-actions:empty { display: none; }
 .app-stage .context-help { margin-top: 8px; padding: 8px 0; }
-.app-stage .car-play { display: grid; grid-template-columns: minmax(0,1fr) minmax(220px,280px); gap: 8px 16px; align-content: start; }
-.app-stage .car-play > :not(canvas) { grid-column: 2; margin: 0; }
-.app-stage .car-play > canvas { grid-column: 1; grid-row: 1 / span 12; align-self: start; margin: 0 auto; width: min(100%,58svh) !important; max-height: 58svh; object-fit: contain; }
-.app-stage .car-play .toolbar { align-content: start; }
-.app-stage .car-play .muted { font-size: 12px; }
+.app-stage .car-play { display:grid; gap:12px; align-content:start; }
+.app-stage .car-play > p,.app-stage .car-play > h2 { margin:0; }
+.app-stage .car-play > .game-fullscreen { display:grid; grid-template-columns:minmax(0,1fr) minmax(220px,300px); gap:12px 20px; align-items:start; }
+.app-stage .car-play .car-game-canvas { width:min(100%,58svh)!important; max-height:58svh; object-fit:contain; }
+.app-stage .car-play-controls { display:grid; gap:10px; justify-items:start; }
+.app-stage .car-play-controls > * { margin:0; }
+.app-stage .car-play-controls .vehicle-choice { border-top:1px solid var(--border); padding-top:10px; width:100%; }
+.app-stage .car-play .muted { font-size:12px; }
 .app-stage .car-imitation > h2,.app-stage .car-teach > h2 { font-size: 20px; }
 .app-stage .car-teach { gap: 8px; padding: 8px; }
 .app-stage .car-teach > h2,.app-stage .car-teach > p { margin: 0; }
@@ -82,9 +85,8 @@
 .game-card-copy h2 { margin: 0; }
 .game-card-copy button { margin-top: auto; }
 @media(max-width:800px) {
- .app-stage .car-play { grid-template-columns: minmax(0,1fr); }
- .app-stage .car-play > :not(canvas) { grid-column: 1; }
- .app-stage .car-play > canvas { grid-column: 1; grid-row: auto; order: -1; max-height: 50svh; }
+ .app-stage .car-play > .game-fullscreen { grid-template-columns:minmax(0,1fr); }
+ .app-stage .car-play .car-game-canvas { max-height:50svh; }
  .app-stage .teach__columns,.practice-layout { grid-template-columns: minmax(0,1fr); }
  .app-stage .learning-shell,.app-stage .car-learning { column-gap: 8px; }
  .app-stage .lesson-actions button { font-size: 13px; }
@@ -128,13 +130,14 @@
  .app-stage .car-imitation > .toolbar { grid-column: 2; grid-row: 3; margin-top: 0; }
  .app-stage .car-imitation > .car-fit-status { grid-column: 2; grid-row: 4; }
  .app-stage .car-imitation > .car-collector { grid-column: 1; grid-row: 3 / span 4; }
- .app-stage .car-imitation .car-play { grid-template-columns: minmax(0,1fr) 190px; gap: 6px; padding: 8px; }
+ .app-stage .car-imitation .car-play { gap:6px; padding:8px; }
+ .app-stage .car-imitation .car-play > .game-fullscreen { grid-template-columns:minmax(0,1fr) minmax(0,190px); }
  .app-stage .car-imitation .car-play button { font-size: 13px; padding: 8px 10px; }
  .app-stage .car-imitation .car-play > p { font-size: 12px; }
  .app-stage .car-imitation .car-teach > h2 { display: none; }
  .app-stage .car-imitation .car-clone:empty { display: none; }
 }
-@media(min-width:1000px){.app-stage .car-imitation .car-play > canvas{width:min(100%,43svh)!important;max-height:43svh}}
+@media(min-width:1000px){.app-stage .car-imitation .car-play .car-game-canvas{width:min(100%,43svh)!important;max-height:43svh}}
 @media(max-width:999px){
  .app-stage .car-imitation{display:flex;flex-direction:column;gap:8px}
  .app-stage .car-imitation > h2,.app-stage .car-imitation > p:not(.car-fit-status){order:0}

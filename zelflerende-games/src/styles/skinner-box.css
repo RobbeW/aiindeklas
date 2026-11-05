@@ -58,7 +58,6 @@
 .skinner-box .sb__reward rect { fill: #fff9e9; stroke: var(--sb-ink); stroke-width: 3; }
 .skinner-box .sb__reward text { fill: var(--sb-ink); font-size: 22px; font-weight: 800; }
 .skinner-box .sb__paper-grain { fill: url(#sb-paper); opacity: .12; pointer-events: none; }
-.skinner-box .sb__caption { margin-top: 6px; color: var(--sb-muted); font: 12px/1.45 system-ui, sans-serif; }
 .skinner-box .sb__readout {
   display: grid;
   grid-template-columns: minmax(140px, .7fr) minmax(0, 2fr) auto;

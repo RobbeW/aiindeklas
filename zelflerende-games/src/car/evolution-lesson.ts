@@ -59,7 +59,7 @@ export function mountEvolutionLesson(root: HTMLElement, options: { onContinue: (
   let reducedMotion = media?.matches ?? false;
   root.innerHTML = `<section class="evolution-lesson${compact ? ' evolution-lesson--compact' : ''}" ${compact ? 'aria-label="Auto-evolutie"' : 'aria-labelledby="el-title"'} data-phase="0">
     ${compact ? '' : `<header class="el__header"><p class="el__eyebrow">Van Flappy Bird naar auto's</p><h2 id="el-title" tabindex="-1">Wat zou Darwin doen?</h2>
-      <p>Charles Darwin beschreef evolutie door natuurlijke selectie. Welke aanpak blijft over als auto's steeds opnieuw racen?</p></header>
+      <p>Charles Darwin beschreef evolutie door natuurlijke selectie. Deze aanpak kunnen we gebruiken om onze auto's beter te laten racen!</p></header>
     <p class="el__contrast"><strong>Bij Flappy Bird</strong> gebruikten alle vogels hetzelfde AI-model. <strong>Hier</strong> heeft elke auto een eigen AI-model. Goed rijden hangt af van de gekozen oefencircuits.</p>`}
     <div class="el__phase" aria-live="off" aria-atomic="true"><span class="el__step"${compact ? ' hidden' : ''}></span><div>${compact ? '' : '<h3 class="el__phase-title"></h3>'}<p class="el__phase-copy"></p></div></div>
     <div class="el__scene"><div class="el__population" aria-label="Zes auto's met elk een eigen AI-model">${pairsMarkup(compact)}</div>
@@ -69,7 +69,6 @@ export function mountEvolutionLesson(root: HTMLElement, options: { onContinue: (
       <div class="el__children"><span class="el__family-tag">${compact ? 'Nakomelingen' : 'Nieuwe varianten'}</span>${compact ? [6,7,8].map(pattern => `<div class="el__child-model">${network(pattern)}</div>`).join('') : childModels}</div>
       <div class="el__best"><span aria-hidden="true">★</span><div><strong>${compact ? 'Beste model' : 'Beste model: 2'}</strong>${compact ? '' : '<small>Ongewijzigd naar de volgende generatie</small>'}${network(1)}</div></div>
     ${compact ? '' : '<p class="el__inheritance-key"><span>Van model 2</span><span>Van model 5</span><span>Kleine verandering</span></p>'}</section></div>
-    ${compact ? '' : '<p class="el__note">Zo werkt een generatie.</p>'}
     <div class="el__actions"${compact ? ' hidden' : ''}><button class="el__phase-control" type="button"></button><button class="el__continue" type="button">Laat de auto's rijden</button></div>
   </section>`;
   const view = root.querySelector<HTMLElement>('.evolution-lesson')!;

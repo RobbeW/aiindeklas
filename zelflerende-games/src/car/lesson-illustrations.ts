@@ -23,7 +23,7 @@ const scenes:Record<Scene,{label:string;body:string}>={
 /** Illustrative scenes only; no synthetic scores or model updates are presented as experiment results. */
 export function mountCarLessonIllustration(root:HTMLElement,scene:Scene){
  const data=scenes[scene],win=root.ownerDocument.defaultView,media=win?.matchMedia('(prefers-reduced-motion: reduce)');let paused=false,disposed=false,visible=true;
- root.innerHTML=`<figure class="car-illustration" aria-label="${data.label}"><div class="cl-scene">${data.body}</div><figcaption>${scene==='play'?'Het AI-model krijgt afstanden en snelheid, en kiest rechtdoor, links of rechts.':scene==='edit'?'Vergroot de bouwruimte zonder je bestaande tegels te wissen.':scene==='tracks'?'Alle modellen krijgen dezelfde circuits, in dezelfde volgorde.':'Tijdens de test blijft het AI-model gelijk.'}</figcaption>${scene==='play'?'<button type="button" class="secondary cl-pause">Pauzeer beeld</button>':''}</figure>`;
+ root.innerHTML=`<figure class="car-illustration" aria-label="${data.label}"><div class="cl-scene">${data.body}</div>${scene==='play'?'<figcaption>Het AI-model krijgt afstanden en snelheid, en kiest rechtdoor, links of rechts.</figcaption>':''}${scene==='play'?'<button type="button" class="secondary cl-pause">Pauzeer beeld</button>':''}</figure>`;
  const figure=root.querySelector<HTMLElement>('figure')!,button=root.querySelector<HTMLButtonElement>('.cl-pause');
  const update=()=>{const reduced=media?.matches??false;figure.classList.toggle('cl-paused',paused||reduced||!visible||root.ownerDocument.hidden);if(button){button.hidden=reduced;button.disabled=reduced;button.textContent=reduced?'Stilstaand beeld':paused?'Speel beeld af':'Pauzeer beeld';}};
  if(button)button.onclick=()=>{paused=!paused;update();};

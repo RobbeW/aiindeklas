@@ -30,7 +30,13 @@ export function mountCarPlayView(root:HTMLElement,options:CarPlayOptions){
   if(options.controller)q('.car-instructions').textContent=options.controllerMode==='replay'?'Opgenomen poging · er wordt niet geleerd.':'Vast model · er wordt niet geleerd.';
   q('.car-speed-notice').hidden=env.config.version!=='car-world-v1';
   const canvas=q<HTMLCanvasElement>('#car-canvas'),start=q<HTMLButtonElement>('#car-start'),pause=q<HTMLButtonElement>('#car-pause'),status=q('#car-status');
-  const game=document.createElement('div');game.className='game-fullscreen';const section=root.querySelector('.car-play')!;section.append(game);const fullscreen=document.createElement('button');fullscreen.type='button';fullscreen.className='secondary game-fullscreen-button';game.append(fullscreen,root.querySelector('.car-play > .toolbar')!,status,q('#car-score'),q('#car-input-status'),canvas);const fullscreenControl=mountGameFullscreen(game,fullscreen,message=>{status.textContent=message;});
+  const game=document.createElement('div');game.className='game-fullscreen';
+  const controls=document.createElement('div');controls.className='car-play-controls';
+  const section=root.querySelector('.car-play')!;section.append(game);
+  const fullscreen=document.createElement('button');fullscreen.type='button';fullscreen.className='secondary game-fullscreen-button';
+  controls.append(root.querySelector('.car-play > .toolbar')!,fullscreen,status,q('#car-score'),q('#car-input-status'));
+  game.append(canvas,controls);
+  const fullscreenControl=mountGameFullscreen(game,fullscreen,message=>{status.textContent=message;});
   canvas.classList.add('car-game-canvas');canvas.style.setProperty('--game-screen-width', `${70*options.document.width/options.document.height}vh`);canvas.style.width=`min(100%,${70*options.document.width/options.document.height}vh)`;const renderer=createCarRenderer(canvas,env.route);
   let phase:'ready'|'running'|'paused'|'finished'='ready',disposed=false,raf:number|undefined,last:number|undefined,accumulator=0;
   const input=createCarInput({canvas,enabled:()=>phase==='running'&&!options.controller});
@@ -50,7 +56,7 @@ export function mountCarPlayView(root:HTMLElement,options:CarPlayOptions){
   start.onclick=begin;pause.onclick=pauseRun;q<HTMLButtonElement>('#car-reset').onclick=fresh;q<HTMLInputElement>('#car-sensors').onchange=render;
   window.addEventListener('blur',pauseRun);const visibility=()=>{if(document.hidden)pauseRun();};document.addEventListener('visibilitychange',visibility);
   fresh();
-  const vehicleChoice=mountVehicleChoice(root.querySelector('.car-play')!,render);
+  const vehicleChoice=mountVehicleChoice(controls,render);
   const initialPaint=requestAnimationFrame(()=>{if(!disposed)render();});
   return{getEnvironment:()=>env,dispose(){fullscreenControl.dispose();disposed=true;cancelAnimationFrame(initialPaint);stop();input.dispose();vehicleChoice.dispose();renderer.dispose();window.removeEventListener('blur',pauseRun);document.removeEventListener('visibilitychange',visibility);root.replaceChildren();}};
 }

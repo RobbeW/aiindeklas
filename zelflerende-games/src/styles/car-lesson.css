@@ -1,10 +1,9 @@
 .car-lesson {max-width:1280px;margin:auto;scroll-margin-top:16px;min-width:0;display:block}
-.app-shell:has(.car-lesson)>footer {display:none}
 .car-lesson .lesson-pages {display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-bottom:16px}
 .car-lesson .lesson-pages button {padding:10px 16px}
 .car-lesson .lesson-pages [aria-current="page"] {background:var(--brand-purple);color:white}
 .car-lesson .lesson-actions {display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:20px}
-.car-lesson .car-brief {max-width:940px;margin:12px auto 24px;padding:clamp(22px,4vw,42px)}
+.car-lesson .car-brief {max-width:none;margin:12px 0 24px;padding:clamp(22px,4vw,42px)}
 .car-lesson .car-brief h1 {font-size:clamp(28px,4vw,42px);line-height:1.12;color:var(--brand-purple-dark);margin-top:8px}
 .car-lesson .lesson-explanation,.car-lesson .car-brief>p {font-size:17px;line-height:1.65;max-width:72ch}
 .car-lesson .car-answers {margin-top:24px}

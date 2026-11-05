@@ -16,7 +16,11 @@
       "title": "Doe het voor.",
       "explanation": "De computer kijkt mee terwijl jij speelt en bewaart wat je doet.",
       "prediction": "Wanneer je traint voor een loopwedstrijd, studeert voor een grote toets wiskunde of een pro wil worden in Flappy Bird, wat weet je dan over het aantal trainingssessies?",
-      "reflection": "Je trainde het AI-model eerst met weinig data, daarna met steeds meer data. Wat kan je besluiten over de prestaties van het AI-model in deze taak in relatie met de hoeveelheid trainingsdata?",
+      "reflection": "Je trainde het AI-model eerst met weinig data, daarna met steeds meer data. Beoordeel de volgende twee hypotheses:",
+      "hypotheses": [
+        "Het AI-model zal beter presteren met meer opnames en voorbeelden.",
+        "Als mens meer voorbeelden opnemen duurt lang om prestaties echt te verbeteren."
+      ],
       "nextTry": "Welk extra voorbeeld zou je opnemen om dat te onderzoeken?",
       "takeaway": "",
       "instructions": []

@@ -39,10 +39,14 @@ export async function mountCarLearningView(root:HTMLElement,options:{state?:CarL
  const answer=(field:'prediction'|'reflection',label:string)=>{const wrap=document.createElement('div');wrap.className='lesson-answer';const l=document.createElement('label'),input=document.createElement('textarea');input.id=`car-answer-${currentStep}-${field}`;input.rows=3;input.maxLength=MAX_ANSWER_LENGTH;input.value=state.notes?.[currentStep]?.[field]??'';l.htmlFor=input.id;l.textContent=label;const step=currentStep;input.oninput=()=>{state={...state,notes:{...state.notes,[step]:{prediction:'',reflection:'',...state.notes?.[step],[field]:input.value}}};publish();};wrap.append(l,input);return wrap;};
  const useDocument=(document:CircuitDocument)=>{buildRoute(document);const changed=trackIdentity(document)!==trackIdentity(state.document);state={...state,document,draft:document,...(changed?{practice:undefined,teach:state.teach?{...state.teach,stale:!!state.teach.imitation}:undefined}:{})};publish();};
  function show(step:CarLessonStep,page:LessonPage='before',focus=false){
-  if(disposed)return;const token=++epoch;active?.dispose();active=undefined;currentStep=step;currentPage=page;
+  if(disposed)return;if(step==='edit'&&page==='after')page='experiment';
+  const token=++epoch;active?.dispose();active=undefined;currentStep=step;currentPage=page;
   const phase=intro.phases.find(p=>p.id===step)!;const index=entries.findIndex(([id])=>id===step);
   for(const b of nav.querySelectorAll<HTMLButtonElement>('[data-step]'))if(b.dataset.step===step)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');
-  for(const b of pageNav.querySelectorAll<HTMLButtonElement>('[data-page]'))if(b.dataset.page===page)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');
+  for(const b of pageNav.querySelectorAll<HTMLButtonElement>('[data-page]')){
+   b.hidden=step==='edit'&&b.dataset.page==='after';
+   if(b.dataset.page===page)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');
+  }
   menu.setCurrent(all.find(([id])=>id===step)![1]);options.onStepChange?.(step,page);actions.replaceChildren();
   const host=document.createElement('div');host.className=`car-lesson-screen car-lesson-screen--${page}`;stage.replaceChildren(host);
   if(page==='before'){
@@ -55,12 +59,27 @@ export async function mountCarLearningView(root:HTMLElement,options:{state?:CarL
    host.innerHTML=`<section class="card car-brief"><p class="eyebrow">${esc(all.find(([id])=>id===step)![1])} · Terugblik</p><h1 tabindex="-1">Wat heb je ontdekt?</h1><div class="car-result-summary"></div><div class="car-answers"></div></section>`;
    const summary=host.querySelector<HTMLElement>('.car-result-summary')!;
    if(step==='tracks')summary.textContent=`Je oefenreeks: ${state.library!.selectedIds.map(id=>state.library!.entries.find(e=>e.id===id)?.name).filter(Boolean).join(' → ')||'nog geen circuits gekozen'}.`;
-   if(step==='population'&&state.evolution){const e=state.evolution,currentIds=state.library!.selectedIds.map(id=>trackIdentity(state.library!.entries.find(x=>x.id===id)!.document)),earlier=stableIdentity(e.trainingTrackIds)!==stableIdentity(currentIds);summary.textContent=`${earlier?'Eerdere oefenreeks · ':''}${e.completedGenerations} ${e.completedGenerations===1?'generatie':'generaties'} · ${e.evaluatedEpisodes} complete ritten · ${(e.elapsedMs/1000).toFixed(1).replace('.',',')} seconden oefentijd.`;}
-   host.querySelector('.car-answers')!.append(answer('reflection',phase.reflection));addAction('Terug naar het experiment',step,'experiment',true);const next=entries[index+1];if(index>=0&&next)addAction(`Volgende: ${next[1].replace(/^\d+ · /,'')}`,next[0],'before');
+   if(step==='population'&&state.evolution){
+    const evolution=state.evolution;
+    const currentIds=state.library!.selectedIds.map(id=>trackIdentity(state.library!.entries.find(entry=>entry.id===id)!.document));
+    const earlier=stableIdentity(evolution.trainingTrackIds)!==stableIdentity(currentIds);
+    summary.textContent=`${earlier?'Eerdere oefenreeks · ':''}${evolution.completedGenerations} ${evolution.completedGenerations===1?'generatie':'generaties'} · ${evolution.evaluatedEpisodes} complete ritten · ${(evolution.elapsedMs/1000).toFixed(1).replace('.',',')} seconden oefentijd.`;
+    const first=evolution.records[0],last=evolution.records.at(-1);
+    if(first&&last){
+     const scores=document.createElement('p');
+     const format=(score:number)=>score.toLocaleString('nl-BE',{maximumFractionDigits:2});
+     const describe=(label:string,record:typeof first)=>`${label} (generatie ${record.generation+1}): beste ${format(record.bestFitness)}, gemiddeld ${format(record.meanFitness)}`;
+     scores.textContent=`${describe('Eerste',first)}${last===first?'':` · ${describe('Laatste',last)}`}.`;summary.append(scores);
+    }
+   }
+   if(phase.reflection)host.querySelector('.car-answers')!.append(answer('reflection',phase.reflection));
+   addAction('Terug naar het experiment',step,'experiment',true);const next=entries[index+1];if(index>=0&&next)addAction(`Volgende: ${next[1].replace(/^\d+ · /,'')}`,next[0],'before');
   }else{
    host.innerHTML='<h1 class="car-experiment-title" tabindex="-1"></h1><div class="car-experiment-host"></div>';
    host.querySelector('h1')!.textContent=phase.title;const experiment=host.querySelector<HTMLElement>('.car-experiment-host')!;
-   addAction('Terug naar vooraf',step,'before',true);addAction('Naar de terugblik',step,'after');
+   addAction('Terug naar vooraf',step,'before',true);
+   if(step==='edit')addAction('Volgende: Kies oefencircuits','tracks','before');
+   else addAction('Naar de terugblik',step,'after');
    try{
     if(step==='play')active=mountCarPlayView(experiment,{document:state.document});
     else if(step==='edit')active=mountCircuitWorkshop(experiment,{document:state.draft??state.document,onChange:draft=>{state={...state,draft};publish();},onTest:document=>{useDocument(document);show('play','experiment',true);},onSave:(name,document)=>{state={...state,library:saveCircuit(state.library!,name,document)};useDocument(document);}});
@@ -87,7 +106,6 @@ export async function mountCarLearningView(root:HTMLElement,options:{state?:CarL
   if(focus){const heading=host.querySelector<HTMLElement>('h1')!;heading.focus({preventScroll:true});root.scrollIntoView({block:'start',behavior:'instant'});}
  }
  for(const [key,text]of entries){const b=document.createElement('button');b.type='button';b.className='secondary';b.textContent=text;b.dataset.step=key;b.onclick=()=>show(key,'before',true);nav.append(b);}
- const extras=document.createElement('details');extras.className='context-help';extras.innerHTML='<summary>Extra gereedschap</summary>';for(const[key,text]of legacy){const b=document.createElement('button');b.type='button';b.className='secondary';b.textContent=text;b.dataset.step=key;b.onclick=()=>show(key,'before',true);extras.append(b);}nav.append(extras);
  for(const[key,text]of pages){const b=document.createElement('button');b.type='button';b.className='secondary';b.textContent=text;b.dataset.page=key;b.onclick=()=>{if(currentPage!==key)show(currentStep,key,true);};pageNav.append(b);}
  publish();show(all.some(([id])=>id===options.initialStep)?options.initialStep as CarLessonStep:'play',options.initialLesson??'before');
  return{getState:()=>state,dispose(){disposed=true;epoch++;active?.dispose();menu.dispose();root.replaceChildren();}};

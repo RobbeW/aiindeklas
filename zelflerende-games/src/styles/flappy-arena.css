@@ -1,4 +1,4 @@
-.app-shell:has(.flappy-arena) { max-width:1920px; }
+
 .app-stage .flappy-lesson.flappy-lesson--arena { max-width:none; }
 .flappy-lesson--arena > .lesson-pages,.flappy-lesson--arena > .lesson-delete { display:none; }
 .flappy-arena { --arena-red:#b92d21; --arena-blue:#245ac3; --arena-yellow:#8a6100; --arena-purple:#6330c5; width:100%; padding:8px 0 0; }

@@ -1,9 +1,12 @@
+import { createFlappyPadEdges, type FlappyPadProvider } from "./flappy-gamepad.ts";
 export interface FlappyInputOptions {
   readonly button: HTMLButtonElement;
   readonly canvas: HTMLCanvasElement;
   /** Injectable event hosts keep the input queue testable and reusable in duel views. */
   readonly window?: Window;
   readonly document?: Document;
+  readonly gamepad?: boolean;
+  readonly gamepadProvider?: FlappyPadProvider;
 }
 
 export interface FlappyInput {
@@ -18,6 +21,8 @@ export function createFlappyInput(options: FlappyInputOptions): FlappyInput {
   const windowRef = options.window ?? documentRef.defaultView;
   if (!windowRef) throw new Error("Flappy input requires a browser window event target.");
 
+  const pad = options.gamepad ? createFlappyPadEdges(0, options.gamepadProvider) : undefined;
+  pad?.reset();
   let queued = false;
   let disposed = false;
   const heldKeys = new Set<string>();
@@ -47,6 +52,7 @@ export function createFlappyInput(options: FlappyInputOptions): FlappyInput {
   const reset = (): void => {
     queued = false;
     heldKeys.clear();
+    pad?.reset();
   };
   const onBlur = (): void => reset();
   const onVisibilityChange = (): void => {
@@ -62,7 +68,9 @@ export function createFlappyInput(options: FlappyInputOptions): FlappyInput {
 
   return {
     consumeAction(): 0 | 1 {
-      if (disposed || !queued) return 0;
+      if (disposed) return 0;
+      if (documentRef.visibilityState !== "hidden" && pad?.poll()) queued = true;
+      if (!queued) return 0;
       queued = false;
       return 1;
     },

@@ -43,8 +43,8 @@ export function renderLandingMarkup(locale:LandingLocale,baseUrl:string):string 
    <details class="lp-card lp-privacy-details">
     <summary>Privacy</summary>
     <div class="lp-privacy-content">
-     <p>De spellen en het trainen van modellen gebeuren in je browser. Je voorbeelden, modellen, antwoorden en resultaten worden lokaal op dit toestel bewaard zolang browseropslag beschikbaar is. Ze worden niet naar een eigen server gestuurd. Een bestand importeren of exporteren doe je zelf via het platform. Dit project gebruikt geen eigen analytics of advertentiecookies.</p>
-     <p>Gebruik je een gedeeld toestel? Exporteer je werk als je het wilt bewaren en verwijder daarna je experiment via Mijn experiment. Bij gewiste of onbeschikbare browseropslag kan lokaal werk verloren gaan.</p>
+     <p>De spellen en het trainen van modellen gebeuren in je browser. Je voorbeelden, modellen, antwoorden en resultaten worden lokaal op dit toestel bewaard zolang browseropslag beschikbaar is. Ze worden niet naar een eigen server gestuurd. Dit project gebruikt geen eigen analytics of advertentiecookies.</p>
+     <p>Gebruik je een gedeeld toestel? Wis na afloop de sitegegevens in je browser als je je werk van dit toestel wilt verwijderen. Bij gewiste of onbeschikbare browseropslag kan lokaal werk verloren gaan.</p>
      <p>GitHub Pages registreert het IP-adres van bezoekers voor beveiligingsdoeleinden. Open je een externe link, dan geldt het privacybeleid van die aanbieder.</p>
      <p><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection" target="_blank" rel="noopener">Lees hoe GitHub Pages technische bezoekgegevens verwerkt.</a></p>
     </div>
@@ -53,13 +53,13 @@ export function renderLandingMarkup(locale:LandingLocale,baseUrl:string):string 
     <summary>Licentie</summary>
     <div class="lp-privacy-content">
      <p>Het oorspronkelijke projectmateriaal van Robbe Wulgaert mag gratis worden gebruikt, gekopieerd en aangepast voor onderwijs, op voorwaarde dat “Robbe Wulgaert – AI in de Klas” duidelijk zichtbaar wordt vermeld, waar redelijkerwijs mogelijk met een link naar het oorspronkelijke project. Commerciële verkoop, betaalde verspreiding, sublicentiëring of herverpakking als commercieel product is niet toegestaan zonder voorafgaande schriftelijke toestemming. Voor ander gebruik buiten onderwijs is ook voorafgaande schriftelijke toestemming nodig. Componenten van derden blijven onder hun eigen licenties vallen.</p>
-     <p><a href="${baseUrl}LICENSE.md">Lees de volledige licentievoorwaarden.</a> <a href="${baseUrl}credits.json">Bekijk bronnen en credits.</a> <a href="${baseUrl}licenses/flappy-source-MIT.txt">Lees de meegeleverde softwarelicentie.</a></p>
+     <p><a href="${baseUrl}LICENSE.md">Lees de volledige licentievoorwaarden.</a> <a href="${baseUrl}licenses/flappy-source-MIT.txt">Lees de meegeleverde softwarelicentie.</a></p>
     </div>
    </details>
   </div>
  </section>
  <section class="lp-section lp-last-section" aria-labelledby="closing-title"><div class="lp-closing"><h2 id="closing-title">${esc(content.closing.title)}</h2><a class="lp-button lp-light" href="?view=flappy&amp;step=play" data-game="flappy">Begin met Flappy Bird</a></div></section>
- </main><footer class="lp-footer"><div><strong>Zelflerende games</strong><p>Robbe Wulgaert · AI in de Klas<br>© 2026 Robbe Wulgaert</p></div><nav aria-label="Meer informatie"><a href="#privacy-license">Privacy en licentie</a><a href="#leerkrachten">Voor leerkrachten</a><a href="${baseUrl}credits.json">Bronnen en credits</a><a href="https://www.aiindeklas.be" target="_blank" rel="noopener">AI in de Klas</a><a href="https://www.robbewulgaert.be" target="_blank" rel="noopener">robbewulgaert.be</a></nav></footer></div>`;
+ </main><footer class="lp-footer"><div><strong>Zelflerende games</strong><p>Robbe Wulgaert · AI in de Klas<br>© 2026 Robbe Wulgaert</p></div><nav aria-label="Meer informatie"><a href="#privacy-license">Privacy en licentie</a><a href="#leerkrachten">Voor leerkrachten</a><a href="https://www.aiindeklas.be" target="_blank" rel="noopener">AI in de Klas</a><a href="https://www.robbewulgaert.be" target="_blank" rel="noopener">robbewulgaert.be</a></nav></footer></div>`;
  if(locale==='en'){
   const dictionary:Record<string,string>={...translations};
   const addPairs=(value:unknown)=>{if(!value||typeof value!=='object')return;const obj=value as Record<string,unknown>;if(typeof obj.nl==='string'&&typeof obj.en==='string')dictionary[obj.nl]=obj.en;else Object.values(obj).forEach(addPairs);};

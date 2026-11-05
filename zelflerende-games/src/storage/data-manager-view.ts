@@ -22,7 +22,7 @@ export function mountDataManagerView(root: HTMLElement, options: DataManagerOpti
     .data-manager__confirmation-actions { display:flex; flex-wrap:wrap; gap:10px; }
     .data-manager button:focus-visible,.data-manager select:focus-visible { outline:3px solid var(--brand-purple); outline-offset:2px; }
   </style><section class="card data-manager">
-    <h1>Mijn experimenten</h1>
+    <h1>Mijn gegevens</h1>
     <p>Je werk blijft in deze browser. Download een bestand als reservekopie of om verder te gaan op een ander apparaat.</p>
     <details class="context-help"><summary>Wat wordt bewaard?</summary><p>Voorbeelden, modellen, circuits en metingen staan in je bestand. Terugkijkopnamen en livebeelden worden niet meegenomen. Er is geen cloudreservekopie: browsergegevens wissen kan je werk verwijderen. Deel geen namen of andere persoonsgegevens.</p></details>
     <p class="storage-state" role="status"></p>

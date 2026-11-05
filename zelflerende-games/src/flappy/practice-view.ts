@@ -1,3 +1,4 @@
+import {createFlappyPadEdges} from '../input/flappy-gamepad.ts';
 import { mountGameFullscreen } from '../ui/game-fullscreen.ts';
 import {WorkerJobClient,WorkerJobCancelledError} from '../core/worker-client.ts';
 import {type ParallelPracticeInput,type ParallelPracticeProgress,type ParallelPracticeResult,PARALLEL_ROUND_OPTIONS,parallelPracticeMode} from '../learning/parallel-practice.ts';
@@ -20,12 +21,13 @@ export async function mountFlappyPracticeView(root:HTMLElement,options:PracticeV
  <div class="parallel-controls"><label for="practice-agents">Vogels tegelijk<select id="practice-agents"><option>6</option><option selected>12</option><option>18</option><option>24</option></select></label>
  <label for="practice-budget">Trainingsrondes (epochs)<select id="practice-budget">${PARALLEL_ROUND_OPTIONS.map(n=>`<option value="${n}" ${n===32?'selected':''}>${n}</option>`).join('')}</select></label>
  <label for="practice-speed">Snelheid<select id="practice-speed"><option value="1">1×</option><option value="4">4×</option><option value="16" selected>16×</option><option value="64">64×</option></select></label></div>
+ <p class="muted">Controller: druk op Start om het oefenen te starten, pauzeren of hervatten. Het model bestuurt de vogels zelf.</p>
  <p class="parallel-epoch">Eén trainingsronde: iedere vogel speelt één poging. Daarna leert hetzelfde AI-model van hun beloningen en straffen.</p>
  <p class="parallel-fast-note" hidden><strong>Snelle training · spelbeeld uit</strong>De vogels blijven oefenen. We tekenen hun spel niet, zodat de computer sneller kan rekenen. Een training duurt maximaal twee minuten. Je voortgang blijft bewaard; je kunt daarna verder oefenen.</p>
  <div class="toolbar"><button id="practice-start" disabled>Start zelfstandig oefenen</button><button id="practice-pause" class="secondary" disabled>Pauzeer oefenen</button><button id="practice-cancel" class="secondary" disabled>Stop oefenen</button><button id="practice-reset-baseline" class="secondary">Begin met jouw imitatie</button></div><p id="practice-origin" role="status"></p>
  <p class="parallel-model-check" hidden></p><section class="parallel-fast-result" hidden><p class="parallel-fast-summary"></p><button class="practice-test-model">Test jouw AI-model</button></section>
  <div class="parallel-layout"><section class="parallel-game"><h2 class="parallel-flock-title">Twaalf vogels leren samen</h2><canvas class="parallel-canvas" role="img" aria-label="Vogels die echte trainingspogingen uitvoeren"></canvas><div class="parallel-agents" aria-label="Trainende vogels"></div></section>
- <section class="parallel-feedback" aria-label="Van spelen naar leren"><div class="parallel-model">${chipIcon}<strong>Gedeeld AI-model</strong><p class="parallel-model-state">Jouw imitatie is het startpunt</p></div><p class="parallel-rewards">Beloning en straf uit de lopende ronde</p><span class="parallel-flow-arrow" aria-hidden="true">↓</span><p class="parallel-loop-state">Vogels spelen → beloning en straf → AI-model leert</p><div class="parallel-numbers"><p><strong class="parallel-rounds">0</strong> trainingsrondes</p><p><strong class="parallel-attempts">0</strong> voltooide pogingen</p><p><strong class="parallel-time">0,0 s</strong> trainingstijd</p></div><progress id="practice-progress" max="32" value="0" aria-label="Voltooide trainingsrondes"></progress><p id="practice-status" role="status" aria-live="polite">Kies het aantal vogels en trainingsrondes.</p></section></div></section>`;
+ <section class="parallel-feedback" aria-label="Van spelen naar leren"><h2>Gedeeld AI-model</h2><div class="parallel-model">${chipIcon}<p class="parallel-model-state">Jouw imitatie is het startpunt</p></div><p class="parallel-rewards">Beloning en straf uit de lopende ronde</p><span class="parallel-flow-arrow" aria-hidden="true">↓</span><p class="parallel-loop-state">Vogels spelen → beloning en straf → AI-model leert</p><div class="parallel-numbers"><p><strong class="parallel-rounds">0</strong> trainingsrondes</p><p><strong class="parallel-attempts">0</strong> voltooide pogingen</p><p><strong class="parallel-time">0,0 s</strong> trainingstijd</p></div><progress id="practice-progress" max="32" value="0" aria-label="Voltooide trainingsrondes"></progress><p id="practice-status" role="status" aria-live="polite">Kies het aantal vogels en trainingsrondes.</p></section></div></section>`;
  const q=<T extends HTMLElement=HTMLElement>(s:string)=>root.querySelector<T>(s)!;
  const start=q<HTMLButtonElement>('#practice-start'),pause=q<HTMLButtonElement>('#practice-pause'),stop=q<HTMLButtonElement>('#practice-cancel'),reset=q<HTMLButtonElement>('#practice-reset-baseline');
  const agents=q<HTMLSelectElement>('#practice-agents'),rounds=q<HTMLSelectElement>('#practice-budget'),speed=q<HTMLSelectElement>('#practice-speed'),status=q('#practice-status'),bar=q<HTMLProgressElement>('#practice-progress');
@@ -98,7 +100,9 @@ export async function mountFlappyPracticeView(root:HTMLElement,options:PracticeV
   } catch {active=false;controls();if(fast()){gym.update({status:'error',completed:0,budget:Number(rounds.value),attempts:0,elapsedMs:0,message:'De training kon niet starten. Probeer opnieuw.',canTest:canTest()});}}
  };
  pause.onclick=setPause;stop.onclick=()=>client.cancel();reset.onclick=()=>options.onReset?.();test.onclick=goTest;agents.onchange=idle;rounds.onchange=idle;
- const blur=()=>{if(active&&!paused)setPause();};const visibility=()=>{if(document.hidden)blur();};window.addEventListener('blur',blur);document.addEventListener('visibilitychange',visibility);idle();
+ const pad=createFlappyPadEdges(9);pad.reset();let padFrame=0;
+ const pollPad=()=>{if(disposed)return;if(document.visibilityState==='visible' && document.hasFocus()){if(pad.poll()){if(active)setPause();else if(!start.disabled && !document.querySelector('dialog[open]'))start.click();}}else pad.reset();padFrame=requestAnimationFrame(pollPad);};padFrame=requestAnimationFrame(pollPad);
+ const blur=()=>{pad.reset();if(active&&!paused)setPause();};const visibility=()=>{if(document.hidden)blur();};window.addEventListener('blur',blur);document.addEventListener('visibilitychange',visibility);idle();
  return {
   setSource(snapshot:PolicySnapshot|undefined,force=false){
    if(!force&&source===snapshot)return;epoch++;client.cancel();source=snapshot;active=false;paused=false;latest=undefined;current=undefined;result=undefined;runs=[];baseSteps=baseElapsed=0;
@@ -112,6 +116,6 @@ export async function mountFlappyPracticeView(root:HTMLElement,options:PracticeV
    q('.parallel-attempts').textContent=String(p.episodes);q('.parallel-time').textContent=`${seconds(p.elapsedMs)} s`;status.textContent='De vorige training is bewaard. Je kunt verder oefenen.';idle();
   },
   getProgress:()=>latest,getResult:()=>result,
-  dispose(){fullscreenControl.dispose();disposed=true;epoch++;client.dispose();gym.dispose();renderer.dispose();window.removeEventListener('blur',blur);document.removeEventListener('visibilitychange',visibility);root.replaceChildren();}
+  dispose(){fullscreenControl.dispose();disposed=true;cancelAnimationFrame(padFrame);epoch++;client.dispose();gym.dispose();renderer.dispose();window.removeEventListener('blur',blur);document.removeEventListener('visibilitychange',visibility);root.replaceChildren();}
  };
 }
