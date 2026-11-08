@@ -67,12 +67,9 @@
 .landing-page .lp-path li { padding: 18px; border-top: 2px solid var(--brand-purple); background: white; border-right: 1px solid var(--border); }
 .landing-page .lp-step-number { display: block; font-size: 12px; color: var(--brand-purple-dark); font-weight: 800; margin-bottom: 12px; }
 .landing-page .lp-path p { color: var(--muted); font-size: 14px; line-height: 1.6; }
-.landing-page .lp-teacher-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: start; }
-.landing-page .lp-teacher-points { list-style: none; padding: 0; display: grid; gap: 14px; margin: 24px 0 0; }
+.landing-page .lp-teacher-points { list-style: none; padding: 0; display: grid; gap: 14px; margin: 24px 0 0; max-width: 760px; }
 .landing-page .lp-teacher-points li { padding-left: 18px; position: relative; color: var(--muted); font-size: 15px; }
 .landing-page .lp-teacher-points li::before { content: ''; position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--brand-purple); top: .5em; left: 0; }
-.landing-page .lp-classroom { background: #f1ebff; border: 1px solid #e2d5ff; border-radius: 16px; padding: 28px; }
-.landing-page .lp-classroom p { font-size: 15px; line-height: 1.7; color: var(--muted); margin: 12px 0; }
 .landing-page .lp-literacy { padding-top: 16px; }
 .landing-page .lp-literacy-goals { list-style: none; margin: 0 0 24px; padding: 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px 36px; }
 .landing-page .lp-literacy-goals li { border-left: 3px solid var(--border); padding-left: 18px; }
@@ -109,7 +106,6 @@
  .landing-page .lp-card { padding: 20px; }
  .landing-page .lp-game-art { min-height: 0; height: 160px; }
  .landing-page .lp-game-art .lp-track-scene svg { max-height: 150px; }
- .landing-page .lp-teacher-grid { grid-template-columns: 1fr; }
  .landing-page .lp-path { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
  .landing-page .lp-path li { border-right: 0; border-radius: 0 0 12px 12px; }
  .landing-page .lp-closing { flex-direction: column; align-items: start; }
